@@ -1,0 +1,444 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+ 
+ <title></title>
+ <link href="/atom.xml" rel="self"/>
+ <link href=""/>
+ <updated>2012-05-01T13:32:16-07:00</updated>
+ <id></id>
+ <author>
+   <name></name>
+   <email></email>
+ </author>
+
+ 
+ <entry>
+   <title>Additional sources of noise</title>
+   <link href="/economics/2012/04/30/Sethi.html"/>
+   <updated>2012-04-30T00:00:00-07:00</updated>
+   <id>h/economics/2012/04/30/Sethi</id>
+   <content type="html">&lt;h1&gt;Sethi Model&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;author Carl Boettiger, &lt;a href=&quot;mailto:cboettig@gmail.com&quot;&gt;cboettig@gmail.com&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;license: CC0&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Implements a numerical version of the SDP described in (Sethi &lt;em&gt;et. al.&lt;/em&gt; 2005).&lt;/p&gt;
+
+&lt;p&gt;Clear the workspace and load package dependencies: &lt;/p&gt;
+
+&lt;p&gt;Define noise parameters &lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;r&quot;&gt;sigma_g &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0.1&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;# Noise in population growth&lt;/span&gt;
+sigma_m &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0.1&lt;/span&gt;     &lt;span class=&quot;c1&quot;&gt;# noise in stock assessment measurement&lt;/span&gt;
+sigma_i &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0.1&lt;/span&gt;     &lt;span class=&quot;c1&quot;&gt;# noise in implementation of the quota&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;we&amp;#39;ll use log normal noise functions. 
+For Reed, only &lt;code&gt;z_g&lt;/code&gt; will be random.
+Sethi et al will add the other forms of noise: &lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;r&quot;&gt;z_g &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&quot;kr&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; rlnorm&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;  &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; sigma_g&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# mean 1&lt;/span&gt;
+z_m &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&quot;kr&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; rlnorm&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;  &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; sigma_m&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# mean 1&lt;/span&gt;
+z_i &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&quot;kr&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; rlnorm&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;  &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; sigma_i&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# mean 1&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Chose the state equation / population dynamics function&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;r&quot;&gt;f &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; BevHolt
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Note that the &lt;code&gt;pdg_control&lt;/code&gt; pacakge already has a definition for the &lt;code&gt;BevHolt&lt;/code&gt; function, (typing the function name prints the function)&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;r&quot;&gt;BevHolt
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text&quot;&gt;function (x, h, p) 
+{
+    x &amp;lt;- max(0, x - h)
+    A &amp;lt;- p[1]
+    B &amp;lt;- p[2]
+    sapply(x, function(x) {
+        x &amp;lt;- max(0, x)
+        max(0, A * x/(1 + B * x))
+    })
+}
+&amp;lt;environment: namespace:pdgControl&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;That is, \( f(x,h) = \frac{A x}{1 + B x} \)&lt;/p&gt;
+
+&lt;p&gt;Of course we could pass in any custom function of stocksize &lt;code&gt;x&lt;/code&gt;, harvest &lt;code&gt;h&lt;/code&gt; and parameter vector &lt;code&gt;p&lt;/code&gt; in place of &lt;code&gt;BevHolt&lt;/code&gt;.  Note that we would need to write this function explicitly so that it can take vector values of &lt;code&gt;x&lt;/code&gt; (i.e. uses &lt;code&gt;sapply&lt;/code&gt;), an annoying feature of &lt;code&gt;R&lt;/code&gt; for users comming from Matlab.  &lt;/p&gt;
+
+&lt;p&gt;We must now define parameters for the function.  Note that the positive stationary root of the model is given by \( \frac{A-1}{B} \), which we&amp;#39;ll store for future reference as &lt;code&gt;K&lt;/code&gt;.  &lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;r&quot;&gt;pars &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; c&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1.5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0.05&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+K &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;pars&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;pars&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;and we use a harvest-based profit function with default parameters&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;r&quot;&gt;profit &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; profit_harvest&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;price&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; c0 &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0.01&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;The &lt;code&gt;profit_harvest&lt;/code&gt; function has the form &lt;/p&gt;
+
+&lt;p&gt;\[ \Pi = h - \left( c_0  + c_1 \frac{h}{x} \right) \frac{h}{x} \]&lt;/p&gt;
+
+&lt;p&gt;conditioned on \( h &amp;gt; x \) and \(x &amp;gt; 0 \).  Note that the R code defines a function from another function using a trick known as a &lt;em&gt;closure&lt;/em&gt;.  Again we could write a custom profit function as long as it can take a vector stock size &lt;code&gt;x&lt;/code&gt; and a scalar harvest level &lt;code&gt;h&lt;/code&gt;.  Details for provided functions can be found in the manual, i.e. &lt;code&gt;?profit_harvest&lt;/code&gt;. &lt;/p&gt;
+
+&lt;p&gt;Now we must set up the discrete grids for stock size and havest levels (which will use same resolution as for stock), in order to calculate the SDP solution.   Here we set the gridsize to 100.  &lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;r&quot;&gt;x_grid &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; seq&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; K&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; length &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;  
+h_grid &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; x_grid  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3&gt;Calculate the transition matrix (with noise in growth only)&lt;/h3&gt;
+
+&lt;p&gt;We calculate the stochastic transition matrix for the probability of going from any state \(x&lt;em&gt;t \) to any other state \(x&lt;/em&gt;{t+1}\) the following year, for each possible choice of harvest \( h_t \).  This provides a look-up table for the dynamic programming calculations.  &lt;/p&gt;
+
+&lt;p&gt;In the Sethi case, computing the distribution over multiple sources of noise is actually quite difficult.  Simulation turns out to be more efficient than numerically integrating over each distribution.  This code parallelizes the operation over four cores, but can be scaled to an arbitrary cluster. &lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;r&quot;&gt;require&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;snowfall&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; 
+sfInit&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;parallel&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;TRUE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; cpu&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+SDP_Mat &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; SDP_by_simulation&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;f&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; pars&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; x_grid&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; h_grid&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; z_g&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; z_m&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; z_i&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; reps&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;999&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text&quot;&gt;Library ggplot2 loaded.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Note that &lt;code&gt;SDP_Mat&lt;/code&gt; is specified from the calculation above, as are our grids and our profit function. &lt;code&gt;OptTime&lt;/code&gt; is the stopping time.  &lt;code&gt;xT&lt;/code&gt; specifies a boundary condition at the stopping time. A reward for meeting this boundary must be specified for it to make any difference.  &lt;code&gt;delta&lt;/code&gt; indicates the economic discount rate. Again, details are in the function documentation.   &lt;/p&gt;
+
+&lt;h3&gt;Find the optimum by dynamic programming&lt;/h3&gt;
+
+&lt;p&gt;Bellman&amp;#39;s algorithm to compute the optimal solution for all possible trajectories. &lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;r&quot;&gt;opt &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; find_dp_optim&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;SDP_Mat&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; x_grid&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; h_grid&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; OptTime&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;25&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; xT&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; 
+                     profit&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; delta&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;0.05&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; reward&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3&gt;Simulate&lt;/h3&gt;
+
+&lt;p&gt;Now we&amp;#39;ll simulate 100 replicates of this stochastic process under the optimal harvest policy determined above.&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;r&quot;&gt;sims &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; lapply&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;:&lt;span class=&quot;m&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kr&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;i&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+  ForwardSimulate&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;f&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; pars&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; x_grid&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; h_grid&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; x0&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;K&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; opt&lt;span class=&quot;p&quot;&gt;$&lt;/span&gt;D&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; z_g&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; z_m&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; z_i&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;The forward simulation algorithm needs an initial condition &lt;code&gt;x0&lt;/code&gt; which we set equal to the carrying capacity, as well as our population dynamics &lt;code&gt;f&lt;/code&gt;, parameters &lt;code&gt;pars&lt;/code&gt;, grids, and noise coefficients.  Recall in the Reed case only &lt;code&gt;z_g&lt;/code&gt;, growth, is stochastic, while in the Sethi example we now have three forms of stochasticity -- growth, measurement, and implementation.   &lt;/p&gt;
+
+&lt;h2&gt;Summarize and plot the results&lt;/h2&gt;
+
+&lt;p&gt;R makes it easy to work with this big replicate data set.  We make data tidy (melt), fast (data.tables), and nicely labeled.&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;r&quot;&gt;dat &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; melt&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;sims&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; id&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;names&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;sims&lt;span class=&quot;p&quot;&gt;[[&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]]))&lt;/span&gt;  
+dt &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; data.table&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;dat&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+setnames&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;dt&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;L1&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;reps&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# names are nice&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3&gt;Plots&lt;/h3&gt;
+
+&lt;p&gt;Let&amp;#39;s begin by looking at the dynamics of a single replicate. The line shows Reed&amp;#39;s S, the level above which the stock should be harvested (where catch should be the difference between stock and S).  To confirm that this policy is being followed, note that harvesting only occurs when the stock is above this line, and harvest is proportional to the amount by which it is above.  Change the replicate &lt;code&gt;reps==&lt;/code&gt; to see the results from a different replicate.  &lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;r&quot;&gt;ggplot&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;subset&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;dt&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;reps&lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;
+  geom_line&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;aes&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;time&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; fishstock&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;
+  geom_abline&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;intercept&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;opt&lt;span class=&quot;p&quot;&gt;$&lt;/span&gt;S&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; slope &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;
+  geom_line&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;aes&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;time&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; harvest&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; col&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;darkgreen&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://farm9.staticflickr.com/8007/7130135757_09c23e3e5a_o.png&quot; alt=&quot;plot of chunk onerep&quot;&gt; &lt;/p&gt;
+
+&lt;p&gt;This plot summarizes the stock dynamics by visualizing the replicates. Reed&amp;#39;s S shown again.&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;r&quot;&gt;p1 &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; ggplot&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;dt&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; geom_abline&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;intercept&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;opt&lt;span class=&quot;p&quot;&gt;$&lt;/span&gt;S&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; slope &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; 
+p1 &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; geom_line&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;aes&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;time&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; fishstock&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; group &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; reps&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; alpha &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0.2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://farm9.staticflickr.com/8148/6984061776_d15e7d073f_o.png&quot; alt=&quot;plot of chunk all&quot;&gt; &lt;/p&gt;
+
+&lt;p&gt;We can also look at the harvest dynamics:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;r&quot;&gt;p1 &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; geom_line&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;aes&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;time&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; harvest&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; group &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; reps&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; alpha &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0.1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; col&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;darkgreen&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://farm8.staticflickr.com/7188/6984052718_6e932cedf8_o.png&quot; alt=&quot;plot of chunk harvestplot&quot;&gt; &lt;/p&gt;
+
+&lt;p&gt;This strategy is supposed to be a constant-escapement strategy. We can visualize the escapement: &lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;r&quot;&gt;p1 &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; geom_line&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;aes&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;time&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; escapement&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; group &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; reps&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; alpha &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0.1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; col&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;darkgrey&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://farm8.staticflickr.com/7096/6984052922_b4ab50f14b_o.png&quot; alt=&quot;plot of chunk escapement&quot;&gt; &lt;/p&gt;
+
+&lt;h3&gt;Visualizing the optimal policy&lt;/h3&gt;
+
+&lt;p&gt;Note that when the boundary is sufficiently far away, i.e. for the first couple timesteps, the optimal policy is stationary.  The optimal policy is shown here over time, where the color indicates the harvest recommended for each possible stock value at that time (shown on the vertical axis). Observe that the solution does not correspond to a simple Reed-style rule.  &lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;r&quot;&gt;policy &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; melt&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;opt&lt;span class=&quot;p&quot;&gt;$&lt;/span&gt;D&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+policy_zoom &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; subset&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;policy&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; x_grid&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;Var1&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; max&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;dt&lt;span class=&quot;p&quot;&gt;$&lt;/span&gt;fishstock&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+p5 &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; ggplot&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;policy_zoom&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; 
+  geom_point&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;aes&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;Var2&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;x_grid&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;Var1&lt;span class=&quot;p&quot;&gt;]),&lt;/span&gt; col&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;h_grid&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;value&lt;span class=&quot;p&quot;&gt;]))&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; 
+  labs&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;x &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;time&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; y &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;fishstock&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;
+  scale_colour_gradientn&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;colours &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; rainbow&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;
+  geom_abline&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;intercept&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;opt&lt;span class=&quot;p&quot;&gt;$&lt;/span&gt;S&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; slope &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; 
+p5
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://farm8.staticflickr.com/7198/7130146133_bf7083f9d2_o.png&quot; alt=&quot;plot of chunk policy&quot;&gt; &lt;/p&gt;
+
+&lt;p&gt;The harvest intensity is limited by the stock size.&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;r&quot;&gt;p6 &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; ggplot&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;policy_zoom&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; 
+  geom_point&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;aes&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;Var2&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;x_grid&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;Var1&lt;span class=&quot;p&quot;&gt;]),&lt;/span&gt; col&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;x_grid&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;Var1&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; h_grid&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;value&lt;span class=&quot;p&quot;&gt;]))&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; 
+  labs&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;x &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;time&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; y &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;fishstock&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;
+  scale_colour_gradientn&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;colours &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; rainbow&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;
+  geom_abline&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;intercept&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;opt&lt;span class=&quot;p&quot;&gt;$&lt;/span&gt;S&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; slope &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; 
+p6 &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; geom_line&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;aes&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;time&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; fishstock&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; group &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; reps&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; alpha &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0.1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; data&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;dt&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://farm9.staticflickr.com/8007/6984063036_ea9d9ac47d_o.png&quot; alt=&quot;plot of chunk policy2&quot;&gt; &lt;/p&gt;
+
+&lt;h1&gt;References&lt;/h1&gt;
+
+&lt;p&gt;Sethi G, Costello C, Fisher A, Hanemann M and Karp L (2005).
+&amp;quot;Fishery management under multiple uncertainty.&amp;quot; &lt;em&gt;Journal of
+Environmental Economics and Management&lt;/em&gt;, &lt;em&gt;50&lt;/em&gt;. ISSN 00950696,
+&lt;a href=&quot;http://dx.doi.org/10.1016/j.jeem.2004.11.005&quot;&gt;http://dx.doi.org/10.1016/j.jeem.2004.11.005&lt;/a&gt;&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Project tracking</title>
+   <link href="/logistics/2012/04/27/notes.html"/>
+   <updated>2012-04-27T00:00:00-07:00</updated>
+   <id>h/logistics/2012/04/27/notes</id>
+   <content type="html">&lt;h1&gt;Ecology&lt;/h1&gt;
+
+&lt;h2&gt;&lt;a href=&quot;https://github.com/cboettig/pdg_control&quot;&gt;PDG Control&lt;/a&gt;&lt;/h2&gt;
+
+&lt;p&gt;Has become a variety of different directions: &lt;/p&gt;
+
+&lt;h3&gt;&lt;a href=&quot;https://github.com/cboettig/pdg_control/tree/master/inst/examples/policycosts&quot;&gt;Policy Costs&lt;/a&gt;&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Considering different norms&lt;/li&gt;
+&lt;li&gt;When can policy costs pay for themselves?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Additional Noise&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Starts with replicating Sethi et al. (2005).&lt;/li&gt;
+&lt;li&gt;Consider the performance of various non-optimal solutions, particularly regarding imperfect implementation&lt;/li&gt;
+&lt;li&gt;These are losely collected in &lt;a href=&quot;https://github.com/cboettig/pdg_control/tree/master/inst/examples/robustness&quot;&gt;Robustness examples&lt;/a&gt;, needs some evaluation of the most interesting. &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Approaches to parameter, structural, and state uncertainty&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;(Morph of) Training problem II from the working group. &lt;/li&gt;
+&lt;li&gt;Active adaptive management using grid -- for model choice example. DONE&lt;/li&gt;
+&lt;li&gt;Add: Myopic Bayes passive adaptive management for model choice&lt;/li&gt;
+&lt;li&gt;Compare to: stationary (no learning) solution averaging over models&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;&lt;a href=&quot;https://github.com/cboettig/earlywarning&quot;&gt;Warning signals&lt;/a&gt;&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Accepted!&lt;/li&gt;
+&lt;li&gt;Copy up on &lt;a href=&quot;http://arxiv.org/abs/1204.6231&quot;&gt;arxiv&lt;/a&gt;. &lt;/li&gt;
+&lt;li&gt;Streamline code and examples. Began updating functions to work in a more generic manner that is better for connecting in pipelines and swapping between indicators.  Move examples over from wiki to &lt;code&gt;inst/examples&lt;/code&gt;. &lt;/li&gt;
+&lt;li&gt;What to do with older repo &lt;code&gt;warningsignals&lt;/code&gt; vs newer codebase &lt;code&gt;earlywarning&lt;/code&gt;?&lt;/li&gt;
+&lt;li&gt;Provide a generic early warning signals package? Perhaps Vasilis would be interested in helping?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Fallacy&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Write introduction with more basic background on warning signals&lt;/li&gt;
+&lt;li&gt;Touch up discussion, edits.&lt;/li&gt;
+&lt;li&gt;Updated runs from codebase. Heavy computation makes quick replication difficult&lt;/li&gt;
+&lt;li&gt;draft sent to Alan&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1&gt;Evolution&lt;/h1&gt;
+
+&lt;p&gt;I&amp;#39;m also still wrapping up a variety of projects on the Evolution front. &lt;/p&gt;
+
+&lt;h2&gt;&lt;a href=&quot;https://github.com/ropensci/treebase&quot;&gt;treebase&lt;/a&gt;&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/ropensci/treeBASE/tree/master/inst/doc/treebase&quot;&gt;Dynamic manuscript&lt;/a&gt;.  Reorganize, simplify?&lt;/li&gt;
+&lt;li&gt;add, document, employ the additional functions to avoid &lt;code&gt;sapply&lt;/code&gt; commands.&lt;/li&gt;
+&lt;li&gt;Prune examples?&lt;/li&gt;
+&lt;li&gt;iEvoBio challenge entry?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;&lt;a href=&quot;https://github.com/cboettig/wrightscape&quot;&gt;Wrightscape&lt;/a&gt;&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Start synthesizing documents&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/cboettig/wrightscape/blob/master/inst/examples/manuscript.md&quot;&gt;Evidence for release in open lever ratio and kt&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/cboettig/wrightscape/blob/master/inst/examples/simulate_release.md&quot;&gt;Illustrating the different models&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Consider updated data format outputs and graphical processing functions for the model choice steps&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;&lt;a href=&quot;https://github.com/ropensci/rfishbase&quot;&gt;fishbase&lt;/a&gt;&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;submitted! &lt;a href=&quot;https://github.com/ropensci/rfishbase/tree/master/inst/doc/rfishbase&quot;&gt;Dynamic document&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;handling of reference ids example for Patrick&lt;/li&gt;
+&lt;li&gt;Working word templatese for Pandoc odt/docx?&lt;/li&gt;
+&lt;li&gt;Push updated copy to CRAN&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;&lt;a href=&quot;https://github.com/cboettig/AdaptiveDynamics&quot;&gt;Adaptive dynamics&lt;/a&gt;&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;What to do with time-to-branching results from Vienna with Ulf?&lt;/li&gt;
+&lt;li&gt;What to do with nice fast branching process simulation code? &lt;/li&gt;
+&lt;/ul&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Notes</title>
+   <link href="/logistics/2012/04/25/notes.html"/>
+   <updated>2012-04-25T00:00:00-07:00</updated>
+   <id>h/logistics/2012/04/25/notes</id>
+   <content type="html">&lt;p&gt;Working on IGPS Presentation.&lt;/p&gt;
+
+&lt;p&gt;Experimenting with recent tools for Amazon cloud computing via R.  &lt;a href=&quot;https://github.com/armstrtw/AWS.tools&quot;&gt;Whit Armstrong&amp;#39;s packages&lt;/a&gt; seem like a good place to start, but some trouble with credentials on both this and on Segue at the moment.  &lt;/p&gt;
+
+&lt;p&gt;Submitted nominations for EVE Seminar.  Splitting nominations among the theory group, this year I&amp;#39;ve filed nominations for &lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://resource.wur.nl/en/wetenschap/detail/ecologist_marten_scheffer_the_spirit_must_be_free&quot;&gt;Marten Scheffer (profile)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.science.org.au/scientists/interviews/p/hp.html&quot;&gt;Hugh Possingham (profile)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://dragonfly.ecology.uga.edu/drakelab&quot;&gt;John Drake&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Jekyll vs Wordpress</title>
+   <link href="/OpenScience/2012/04/19/Jekyll-vs-Wordpress.html"/>
+   <updated>2012-04-19T00:00:00-07:00</updated>
+   <id>h/OpenScience/2012/04/19/Jekyll-vs-Wordpress</id>
+   <content type="html">&lt;p&gt;I am now trying out a Jekyll-based platform rather than a Wordpress based for 
+my website and lab notebook.  Don&amp;#39;t worry, the Wordpress site still remains where
+it was with links intact, I&amp;#39;ve simply remapped the homepage.  &lt;/p&gt;
+
+&lt;h1&gt;Why switch?&lt;/h1&gt;
+
+&lt;p&gt;Wordpress was great, meeting most of my needs for a customizable site that I 
+couldn&amp;#39;t really accomplish in my first online notebook on 
+&lt;a href=&quot;http://openwetware.org&quot;&gt;OpenWetWare&lt;/a&gt;. Unfortunately, despite caching and 
+a variety of other optimization steps, Wordpress remains very demanding
+of computational power, and consequently both expensive and unstable to traffic
+bursts. Relying on Wordpress.com would avoid this, but loses some of the 
+customization and flexibility -- particularly plugins for 
+&lt;a href=&quot;http://mathjax.org&quot;&gt;MathJax&lt;/a&gt; and 
+&lt;a href=&quot;http://wordpress.org/extend/plugins/kcite/&quot;&gt;kcite&lt;/a&gt;, as well as anything 
+needing a script.  The 
+&lt;a href=&quot;http://en.support.wordpress.com/com-vs-org/&quot;&gt;Wordpress.com vs Wordpress.org&lt;/a&gt;
+page sums up the trade-offs between these options very well. &lt;/p&gt;
+
+&lt;p&gt;Jekyll is a way to have the best of both worlds: speed, reliability and minimal cost 
+coupled with boundless flexibility. Wordpress, like many Web2.0 applications,
+relies on a database to dynamically build pages when they are called.  This makes 
+the platform flexible but also slow and heavy.  Jekyll builds a static site ahead
+of time out of markdown files that contain the site&amp;#39;s content, with just a tiny
+bit of pain-text metadata at the top saying how the page or post should appear.
+The actual layout is given as an HTML template that has little tags on where to 
+insert the text. Because the HTML is built in advance,
+when a user visits the site it can load instantly with essentially no demand on
+the server. (This is essentially what dynamic websites attempt to accomplish by
+caching). Surprisingly, compiling even a large website takes only a second.   &lt;/p&gt;
+
+&lt;p&gt;My greatest reservation in this shift comes from the vibrant user and developer
+community on Wordpress (Wordpress powers an estimated 14% of the top 1 million websites)
+including a 
+&lt;a href=&quot;https://groups.google.com/forum/#!forum/wordpress-for-scientists&quot;&gt;Wordpress-for-Scientists group&lt;/a&gt;. 
+This means that almost anything you 
+want has already been done.  A downside is the need to know PHP and Wordpress-specific 
+implementation to do anything the community hasn&amp;#39;t already provided.  Thanks to
+Github and it&amp;#39;s particular appeal to the developer community as a &amp;quot;hacker&amp;#39;s blog&amp;quot;
+Jekyll has a powerful and growing community of it&amp;#39;s own. It&amp;#39;s not a content management
+system (CMS), and unlike Wordpress will doubtfully ever become one -- but several 
+tools are now coming online to make Jekyll more accessible, such as 
+&lt;a href=&quot;http://octopress.org/&quot;&gt;octopress&lt;/a&gt;, &lt;a href=&quot;http://jekyllbootstrap.com/&quot;&gt;jekyllbootstrap&lt;/a&gt; 
+and &lt;a href=&quot;http://ruhoh.com/&quot;&gt;ruhoh&lt;/a&gt;. These provide some good examples of how to do the 
+more tricky dynamic things like generating an atom feed or a list of posts by tag.
+These also get away from having to generate custom CSS and HTML -- however, with rich
+CSS options such as twitter-bootstrap available, I&amp;#39;ve found I actually prefer writing
+my own HTML templates for pages and posts. &lt;/p&gt;
+
+&lt;p&gt;Still, the emphasis on Github and the somewhat convoluted dependencies on Ruby surely
+make Jekyll a bit intimidating to new users looking to set up a simple website or lab 
+notebook.  On the plus side, very little of what one learns to create a Jekyll site
+is specific to Jekyll, making it both faster to learn coming from some web development
+background and useful beyond the immediate application here.  &lt;/p&gt;
+
+&lt;h1&gt;My basic requirements for an electronic notebook&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Dynamic (Blog) posts and static pages &lt;/li&gt;
+&lt;li&gt;RSS feed &lt;/li&gt;
+&lt;li&gt;Comments &lt;/li&gt;
+&lt;li&gt;Categories &amp;amp; tags &lt;/li&gt;
+&lt;li&gt;Search &lt;/li&gt;
+&lt;li&gt;MathJax equations (and numbering) &lt;/li&gt;
+&lt;li&gt;Dynamic citations &lt;/li&gt;
+&lt;li&gt;Syntax highlighting &lt;/li&gt;
+&lt;li&gt;Writing posts in markdown &lt;/li&gt;
+&lt;li&gt;Version control &lt;/li&gt;
+&lt;li&gt;Visitor statistics&lt;/li&gt;
+&lt;li&gt;embeddable content (twitter streams, feeds, etc.),&lt;/li&gt;
+&lt;li&gt;customization of appearance&lt;/li&gt;
+&lt;li&gt;ease of use&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I&amp;#39;m glad that Wordpress.org and Jekyll both meet these requirements.  &lt;/p&gt;
+
+&lt;h1&gt;Some remaining concerns in switching&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;Wordpress can generate rss feeds for any category or tag on the fly&lt;/em&gt;.  Looks like this is now &lt;a href=&quot;https://github.com/pattex/jekyll-tagging&quot;&gt;possible in Jekyll&lt;/a&gt;. &lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Wordpress can toggle password and privacy control for each post&lt;/em&gt;. On a independently hosted site, this could be done with an &lt;code&gt;.htaccess&lt;/code&gt; file and independent hosting (pointless if the source is hosted on github). I known several partially open lab notebooks would have a problem with this.  I use privacy controls occasionally when a collaborator may have reservations, and always for requested editorial reviews.  Such things can remain on my Wordpress site or off-line entirely. &lt;/li&gt;
+&lt;li&gt;Due in part to heavy use of plugins with short-code, migrating my existing posts out of Wordpress and into a static site seems pretty much impossible.  Presumably this should be doable at the front end HTML, if not from the database, but my attempts have been unsuccessful.  For now, old content will continue to live on my Wordpress site.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1&gt;Jekyll Configuration Notes&lt;/h1&gt;
+
+&lt;p&gt;Probably the only annoying step in setting up a Jekyll blog is getting the right versions of Ruby running.  Strictly speaking, this is unnecessary for sites hosted on Github, which will run Jekyll automatically.  I host on my Dreamhost VPS, for which it is easiest just to compile locally using Jekyll and push on the output HTML files, created in &lt;code&gt;_site&lt;/code&gt;, to the server.  &lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Dynamic posts -- out of the box &lt;/li&gt;
+&lt;li&gt;RSS feed -- just create an appropriate &lt;a href=&quot;https://github.com/cboettig/cboettig.github.com/blob/master/atom.xml&quot;&gt;atom.xml file&lt;/a&gt; with a bit of Jekyll Liquid code.&lt;/li&gt;
+&lt;li&gt;Comments -- paste Disqus code into &lt;a href=&quot;https://github.com/cboettig/cboettig.github.com/blob/master/_layouts/default.html&quot;&gt;html template&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Categories &amp;amp; tags -- built-in through YML frontmatter&lt;/li&gt;
+&lt;li&gt;Search -- Google search or Tipue&lt;/li&gt;
+&lt;li&gt;MathJax equations (and numbering) -- &lt;a href=&quot;https://github.com/cboettig/cboettig.github.com/blob/master/_layouts/default.html&quot;&gt;Just add the javascript call to the html template&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Dynamic citations -- Pandoc or my knitcitations tool, for now.&lt;/li&gt;
+&lt;li&gt;Syntax highlighting -- use Github notation with Redcarpet2&lt;/li&gt;
+&lt;li&gt;Writing posts in markdown -- native&lt;/li&gt;
+&lt;li&gt;Version control -- &lt;a href=&quot;https://github.com/cboettig/cboettig.github.com/&quot;&gt;on Github&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Visitor statistics -- &lt;a href=&quot;https://github.com/cboettig/cboettig.github.com/blob/master/_layouts/default.html&quot;&gt;Google analytics in layout&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;embeddable content (twitter streams, feeds, etc.) -- add scripts to html templates&lt;/li&gt;
+&lt;li&gt;customization of appearance -- &lt;a href=&quot;http://twitter.github.com/bootstrap&quot;&gt;twitter bootstrap&lt;/a&gt; for the css and javascript + html templates&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;ease of use -- The ability to move around markdown documents and html layouts. &lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Getting &lt;a href=&quot;http://askubuntu.com/questions/91693/how-do-you-uninstall-ruby-1-8-7-and-install-ruby-1-9-2&quot;&gt;out of 1.8.7 and into 1.9.2&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Redcarpet isn&amp;#39;t the default interpreter, but works better. However, &lt;a href=&quot;http://stackoverflow.com/questions/8395347/gollum-wiki-undefined-method-new-for-redcarpetmodule&quot;&gt;it&amp;#39;s latest version has issues&lt;/a&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;I find it better to use the Redcarpet2, &lt;a href=&quot;https://github.com/nono/Jekyll-plugins&quot;&gt;and a plugin&lt;/a&gt; that lets one use Github-flavored markdown code blocks instead of the silly liquid highlight tags (markdown should be markdown after all). Unfortunately this prevents Github&amp;#39;s Jekyll from building the site at the moment, which doesn&amp;#39;t yet support Redcarpet2.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;http://stackoverflow.com/questions/255170/markdown-and-image-alignment&quot;&gt;image alignment in markdown&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;http://code.lancepollard.com/jquery-disqus-plugin&quot;&gt;markdown in diqus&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;HTML layouts can import chunks from separate files given in &lt;code&gt;_include&lt;/code&gt; directory using a bit of liquid code. See &lt;a href=&quot;https://github.com/spo11/kismetik-jekyll&quot;&gt;an example&lt;/a&gt;.  Perfect for creating layouts out of different combinations of elements.  &lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+ </entry>
+ 
+ 
+</feed>

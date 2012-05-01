@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Project tracking:  </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="/assets/css/bootstrap.css" rel="stylesheet"> 
+    <link href="/assets/css/bootstrap-responsive.css" rel="stylesheet"> 
+    <link href="/assets/css/docs.css" rel="stylesheet"> 
+    <link href="/assets/css/solarized.css" rel="stylesheet"> 
+  </head>
+
+  <body data-spy="scroll" data-target=".subnav" data-offset="50">
+
+
+  <!-- Navbar
+    ================================================== -->
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="./index.html">Carl Boettiger</a>
+          <div class="nav-collapse">
+            <ul class="nav">
+              <li class="">
+                <a href="/index.html">Home</a>
+              </li>
+              <li class="">
+                <a href="/vita.html">Vita</a>
+              </li>
+              <li class="">
+                <a href="/research.html">Research</a>
+              </li>
+             <li class="">
+                <a href="/teaching.html">Teaching</a>
+              </li>
+             <li class="">
+                <a href="/lab-notebook.html">Lab Notebook</a>
+              </li>
+           </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+
+<!-- Masthead ================================================= -->
+ 
+<header class="jumbotron subhead">
+<div class="inner">
+    <!-- Search bar -->
+    <form class="well form-search pull-right" method="get" action="http://google.com/search">
+      <fieldset role="search">
+        <input type="hidden" name="q" value="site:carlboettiger.info" />
+        <input class="search-query" type="text" name="q" results="0" placeholder="Search"/>
+      </fieldset>
+    </form>
+    <!-- Heading -->
+    <h1 class="entry-title">Project tracking</h1>
+    <p></p>
+  </div>
+
+</header>
+<hr class="soften">
+
+
+      <!-- Body, where Jekyll will insert the formatted content from the Markdown files -->
+
+      <div class="row">
+        <div class="span8">
+          <h1>Ecology</h1>
+
+<h2><a href="https://github.com/cboettig/pdg_control">PDG Control</a></h2>
+
+<p>Has become a variety of different directions: </p>
+
+<h3><a href="https://github.com/cboettig/pdg_control/tree/master/inst/examples/policycosts">Policy Costs</a></h3>
+
+<ul>
+<li>Considering different norms</li>
+<li>When can policy costs pay for themselves?</li>
+</ul>
+
+<h3>Additional Noise</h3>
+
+<ul>
+<li>Starts with replicating Sethi et al. (2005).</li>
+<li>Consider the performance of various non-optimal solutions, particularly regarding imperfect implementation</li>
+<li>These are losely collected in <a href="https://github.com/cboettig/pdg_control/tree/master/inst/examples/robustness">Robustness examples</a>, needs some evaluation of the most interesting. </li>
+</ul>
+
+<h3>Approaches to parameter, structural, and state uncertainty</h3>
+
+<ul>
+<li>(Morph of) Training problem II from the working group. </li>
+<li>Active adaptive management using grid -- for model choice example. DONE</li>
+<li>Add: Myopic Bayes passive adaptive management for model choice</li>
+<li>Compare to: stationary (no learning) solution averaging over models</li>
+</ul>
+
+<h2><a href="https://github.com/cboettig/earlywarning">Warning signals</a></h2>
+
+<ul>
+<li>Accepted!</li>
+<li>Copy up on <a href="http://arxiv.org/abs/1204.6231">arxiv</a>. </li>
+<li>Streamline code and examples. Began updating functions to work in a more generic manner that is better for connecting in pipelines and swapping between indicators.  Move examples over from wiki to <code>inst/examples</code>. </li>
+<li>What to do with older repo <code>warningsignals</code> vs newer codebase <code>earlywarning</code>?</li>
+<li>Provide a generic early warning signals package? Perhaps Vasilis would be interested in helping?</li>
+</ul>
+
+<h2>Fallacy</h2>
+
+<ul>
+<li>Write introduction with more basic background on warning signals</li>
+<li>Touch up discussion, edits.</li>
+<li>Updated runs from codebase. Heavy computation makes quick replication difficult</li>
+<li>draft sent to Alan</li>
+</ul>
+
+<h1>Evolution</h1>
+
+<p>I&#39;m also still wrapping up a variety of projects on the Evolution front. </p>
+
+<h2><a href="https://github.com/ropensci/treebase">treebase</a></h2>
+
+<ul>
+<li><a href="https://github.com/ropensci/treeBASE/tree/master/inst/doc/treebase">Dynamic manuscript</a>.  Reorganize, simplify?</li>
+<li>add, document, employ the additional functions to avoid <code>sapply</code> commands.</li>
+<li>Prune examples?</li>
+<li>iEvoBio challenge entry?</li>
+</ul>
+
+<h2><a href="https://github.com/cboettig/wrightscape">Wrightscape</a></h2>
+
+<ul>
+<li>Start synthesizing documents</li>
+<li><a href="https://github.com/cboettig/wrightscape/blob/master/inst/examples/manuscript.md">Evidence for release in open lever ratio and kt</a></li>
+<li><a href="https://github.com/cboettig/wrightscape/blob/master/inst/examples/simulate_release.md">Illustrating the different models</a></li>
+<li>Consider updated data format outputs and graphical processing functions for the model choice steps</li>
+</ul>
+
+<h2><a href="https://github.com/ropensci/rfishbase">fishbase</a></h2>
+
+<ul>
+<li>submitted! <a href="https://github.com/ropensci/rfishbase/tree/master/inst/doc/rfishbase">Dynamic document</a></li>
+<li>handling of reference ids example for Patrick</li>
+<li>Working word templatese for Pandoc odt/docx?</li>
+<li>Push updated copy to CRAN</li>
+</ul>
+
+<h2><a href="https://github.com/cboettig/AdaptiveDynamics">Adaptive dynamics</a></h2>
+
+<ul>
+<li>What to do with time-to-branching results from Vienna with Ulf?</li>
+<li>What to do with nice fast branching process simulation code? </li>
+</ul>
+
+        </div>
+
+
+        <!-- Custom sidebar -->      
+        <div class="span4">
+          <div class="sidebar">
+            Posted on
+            <time pubdate datetime="2012-04-27T00:00:00-07:00" itemprop="datePublished">27 April 2012</time>. </br>
+            <span itemprop="keywords">
+            
+            </span>
+          </div>
+        </div>
+      </div>
+
+<!--
+      <div id="related">
+        <h2>Related Posts</h2>
+        <ul class="posts">
+          
+            <li><span>30 Apr 2012</span> &raquo; <a href="/economics/2012/04/30/Sethi.html">Additional sources of noise</a></li>
+          
+            <li><span>25 Apr 2012</span> &raquo; <a href="/logistics/2012/04/25/notes.html">Notes</a></li>
+          
+            <li><span>19 Apr 2012</span> &raquo; <a href="/OpenScience/2012/04/19/Jekyll-vs-Wordpress.html">Jekyll vs Wordpress</a></li>
+          
+        </ul>
+      </div>
+-->
+
+      <!-- Disqus Comments -->
+      <div class="row">
+        <div class="span8">          
+            <div id="disqus_thread"></div>
+            <script type="text/javascript">
+                var disqus_shortname = 'cboettig'; // required: replace example with your forum shortname
+                /* * * DON'T EDIT BELOW THIS LINE * * */
+                (function() {
+                    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                    dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        </div>
+      </div>
+
+
+
+
+
+      <!-- Footer
+      ================================================== -->
+
+      <footer class="footer">
+
+          <div class="row">
+            <div class="span2">
+               <a href="https://twitter.com/cboettig" class="twitter-follow-button" data-link-color="#0069D6" data-show-count="true">@cboettig</a> 
+             <iframe class="github-btn" src="http://markdotto.github.com/github-buttons/github-btn.html?user=cboettig&repo=cboettig.github.com&type=fork&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="98px" height="20px"></iframe>
+            </div>
+           <div class="span1 offset8">
+              <a rel="license" href="http://creativecommons.org/publicdomain/zero/1.0/"><img src="http://i.creativecommons.org/l/zero/1.0/88x31.png" style="float:left;margin:0 5 0 0;" alt="CC0" /></a>
+            </div>
+            <div class="span1">
+              <a rel=license href="http://onsclaims.wikispaces.com/"><img align="right" alt="ONS" style="border-width: 0pt;" src="http://onsclaims.wikispaces.com/file/view/ons-sci2-icon.png"> </a><br/>
+              </br> 
+              </br> 
+            </div>
+        </div>
+      </footer>
+    </div><!-- /container -->
+
+
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config"> MathJax.Hub.Config({ TeX: { equationNumbers: {autoNumber: "all"} } });       </script>
+    <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+    <script src="/assets/js/bootstrap-collapse.js"></script>
+    <!--
+    <script src="/assets/js/google-code-prettify/prettify.js"></script>
+    <script src="/assets/js/jquery.js"></script>
+    <script src="/assets/js/bootstrap-transition.js"></script>
+    <script src="/assets/js/bootstrap-alert.js"></script>
+    <script src="/assets/js/bootstrap-modal.js"></script>
+    <script src="/assets/js/bootstrap-dropdown.js"></script>
+    <script src="/assets/js/bootstrap-scrollspy.js"></script>
+    <script src="/assets/js/bootstrap-tab.js"></script>
+    <script src="/assets/js/bootstrap-tooltip.js"></script>
+    <script src="/assets/js/bootstrap-popover.js"></script>
+    <script src="/assets/js/bootstrap-button.js"></script>
+    <script src="/assets/js/bootstrap-carousel.js"></script>
+    <script src="/assets/js/bootstrap-typeahead.js"></script>
+    <script src="/assets/js/application.js"></script>
+    -->
+
+
+    <!-- Google Analytics
+    ================================================== -->
+  <script type="text/javascript">
+          var _gaq = _gaq || [];
+          _gaq.push(['_setAccount', 'UA-29776516-1']);
+          _gaq.push(['_trackPageview']);
+          (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+          })();
+  </script>
+
+  </body>
+</html>
