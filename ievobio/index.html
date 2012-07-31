@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js ie6" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!-->  <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+	<title>R and Open Science</title>
+
+	<meta name="description" content="An introduction to R's role in facilitating open science">
+	<meta name="author" content="Carl Boettiger, Karthik Ram, Scott Chamberlain">
+	<meta name="viewport" content="width=1024, user-scalable=no">
+	<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">	
+	<!-- Core and extension CSS files -->
+	<link rel="stylesheet" href="core/deck.core.css">
+	<link rel="stylesheet" href="extensions/goto/deck.goto.css">
+	<link rel="stylesheet" href="extensions/menu/deck.menu.css">
+	<link rel="stylesheet" href="extensions/navigation/deck.navigation.css">
+	<link rel="stylesheet" href="extensions/status/deck.status.css">
+	<link rel="stylesheet" href="extensions/hash/deck.hash.css">
+	<link rel="stylesheet" href="themes/style/web-2.0.css">
+	<link rel="stylesheet" href="themes/transition/fade.css">
+	<link rel="stylesheet" href="themes/style/knitr.css">
+	<link href="ss-social/webfonts/ss-social.css" rel="stylesheet" />
+	<link href="ss-standard/webfonts/ss-standard.css" rel="stylesheet"/>
+	<script src="modernizr.custom.js"></script>
+</head>
+
+<!-- 
+# Index of slides
+Title
+Science
+Open Science
+R tools for open science
+Making data availabe = greater citations for paper
+Ropensci
+	- Dryad
+	- Figshare
+	- RMendeley
+	- RFishbase
+DataONE
+	- Overview
+	- Provenance working group
+R + github = collaborative, reproducible science
+	- knitr
+	- 
+ -->
+
+
+ <body class="deck-container">
+
+
+
+<!--    ##############    slide delimiter  ##############    -->
+<section class="slide" id="ropensci">
+	<div>
+	<br><br><br>
+	<hgroup>
+	<img src="images/ropensci.png">
+	<center><h3>Creating Code, Creating Community <i class="ss-globe"></i></h3><br><br>
+	<h2>
+	<ul class="bubbles desktop only">
+	    <li class="ss-social-circle ss-icon">
+	      <a href="https://twitter.com/ropensci" style="color:#79cef7;">&#xF611</a>
+	    </li>
+
+	    <li class="ss-social-circle ss-icon">
+	      <a href="https://github.com/ropensci" style="color: #485b63;">&#xF670;</a>
+	    </li>
+
+	    <li class="ss-social-circle ss-icon">
+	    <a  href="http://gplus.to/ropensci"  style="color: #dc0026;">&#xF613;</a>
+	    </li>
+
+	    <li class="ss-social-circle ss-icon">
+	      <a href="mailto:info@ropensci.org" style="color:#25418a;">&#x2709;</a>
+	    </li>
+	</ul>
+	</h2></center>
+	</hgroup>
+	</div>
+</section>
+
+<!--    ##############    slide delimiter  ##############    -->
+
+<section class="slide" id="treebase">
+<br><br>
+	<div>
+ <img src="treebase.png" width=200px> <br><br><br>
+</div>
+<h1> <i class="ss-plus"></i> </h1>
+<div>
+</div>
+	<div>
+  <br><br>
+  <br><br>
+</div>
+	<div>
+ <img src="Rlogo.png" width=200px>
+	</div>	
+
+</section>
+
+
+
+<section class="slide" id="why">
+	<h1>Why R?</h1>
+</section>
+
+
+<section class="slide" id="gui_analysis_is_bad">
+	<img src="images/old-way.png">
+</section>
+
+
+<!--    ##############    slide delimiter  ##############    -->
+
+
+<section class="slide" id="R_is_better">
+	<br><br>
+	<pre class="knitr"><div class="source"><span class="functioncall">glm</span><span class="keyword">(</span><span class="symbol">y</span> <span class="keyword">~</span> <span class="keyword">-</span><span class="number">1</span> <span class="keyword">+</span> <span class="symbol">a</span> <span class="keyword">+</span> <span class="symbol">c</span> <span class="keyword">+</span> <span class="symbol">z</span> <span class="keyword">+</span> <span class="symbol">a</span><span class="keyword">:</span><span class="symbol">z</span><span class="keyword">,</span> <span class="argument">data</span> <span class="argument">=</span> <span class="symbol">mydata</span><span class="keyword">,</span> <span class="argument">maxit</span> <span class="argument">=</span> <span class="number">30</span><span class="keyword">)</span></div></pre>
+	<br><br>
+	<h3>This is <u>reproducible</u>, <u>repeatable</u> and can serve as a analytic workflow.</h3>
+</section>
+
+<!--    ##############    slide delimiter  ##############    -->
+
+<section class="slide" id="github_and_writing">
+<br> <br> 
+<div>
+<h2>R + Reproducible Papers <i class="ss-icon ss-write"></i></span></h2>
+</div>	
+<div>
+<img src="images//knitr.png" height="348" width="924">
+<br><br> <br> 
+<pre>Xie Y (2012). <a href="http://yihui.name/knitr/">knitr</a>: A general-purpose package for dynamic report generation in R.</pre>
+</div>	
+</section>
+
+<!--    ##############    slide delimiter  ##############    -->
+<section class="slide" id="open_science_tools">
+<h1><i class="ss-users"></i> Community speaks R </h1>
+</section>
+
+
+
+<!--    ##############    slide delimiter  ##############    -->
+
+<section class="slide" id="publishing_R_packages">
+<br><br>
+	<div>
+	<img src="images/r_in_journals.png" height="419" width="795">
+	<br><br><center><h3>R packages are increasing showing up in domain journals.</h3></center>
+	<i class="ss-icon ss-link"> <a href="http://onlinelibrary.wiley.com/doi/10.1111/j.1755-0998.2011.03108.x/abstract?deniedAccessCustomisedMessage=&userIsAuthenticated=false"> Source</a></i>
+	</div>	
+</section>
+
+
+
+<!--    ##############    slide delimiter  ##############    -->
+
+
+<section class="slide" id="ropensci_team">
+
+	<br>
+	<div>
+		<h3><i class="ss-users"> Development team</i></h3><br>
+ 	<table cellpadding=20 cellspacing=10>
+ 		<tr> 
+ 		<!-- Carl -->		
+ 		<td align="left"><img src="images/carl84x84.png"><center>Carl Boettiger</center>
+ 				<ul class="bubbles desktop only">
+ 			<li class="ss-social-circle ss-icon"><a href="https://twitter.com/cboettig" style="color:#c9e9d3;">&#xF611;</a></li>
+ 			<li><a href="http://www.carlboettiger.info/"  style="color:#c9e9d3;" class="ss-icon">&#x1F517;</a></li>
+		</ul></center><br>
+ 		<img src="images/photo_spacer.png">	
+ 		</td>
+
+ 		<!-- Karthik -->
+ 		<td><img src="images/photo_spacer.png">	</td>	
+ 		<td><img src="images/karthik84x84.png"><center>Karthik Ram<br>
+ 		<ul class="bubbles desktop only">
+ 			<li class="ss-social-circle ss-icon"><a href="https://twitter.com/_inundata" style="color:#c9e9d3;">&#xF611;</a></li>
+ 			<li><a href="http://inundata.org/"  style="color:#c9e9d3;" class="ss-icon">&#x1F517;</a></li>
+		</ul></center><br><img src="images/photo_spacer.png">
+		</td>
+
+		<!-- Scott -->
+ 		<td><img src="images/photo_spacer.png">	</td>	
+ 		<td><img src="images/scott84x84.png"><center>Scott Chamberlain<br>
+ 				<ul class="bubbles desktop only">
+ 			<li class="ss-social-circle ss-icon"><a href="https://twitter.com/recology_" style="color:#c9e9d3;">&#xF611;</a></li>
+ 			<li><a href="http://schamberlain.github.com/"  style="color:#c9e9d3;" class="ss-icon">&#x1F517;</a></li>
+		</ul></center><br><img src="images/photo_spacer.png">
+		</td> 		
+
+ 		</tr>
+ 	</table><br>
+ 	</div>
+ <br><br>
+ 	<div>
+	<h3><i class="ss-users"> Advisory team</i></h3>
+ 	<table>
+ 		<tr>
+ 		<!-- Duncan -->
+         <td><img src="images/duncan84x84.png" height="84" width="84"><center>Duncan <br>Temple Lang</center>
+		<ul class="bubbles desktop only">
+ 			<li><a href="http://www.omegahat.org/"  style="color:#c9e9d3;" class="ss-icon">&#x1F517;</a></li>
+		</ul><img src="images/photo_spacer.png"></td>
+
+		<!-- Hadley -->
+      <td><img src="images/photo_spacer2.png">	</td>		
+         <td><img src="images/hadley84x84.png"><center>Hadley Wickham<br><br>
+         <ul class="bubbles desktop only">
+ 		 <li class="ss-social-circle ss-icon"><a href="https://twitter.com/hadleywickham" style="color:#c9e9d3;">&#xF611;</a></li>
+ 		<li><a href="http://had.co.nz/"  style="color:#c9e9d3;" class="ss-icon">&#x1F517;</a></li>
+		</ul></center><br><img src="images/photo_spacer.png"></td>
+
+		<!-- Bertram -->
+       <td><img src="images/photo_spacer2.png">	</td>	
+         <td><img src="images/bertram84x84.png" height="84" width="84"><center>Bertram <br>Ludascher</center>
+         <ul class="bubbles desktop only">
+ 		 <li><a href="http://daks.ucdavis.edu/"  style="color:#c9e9d3;" class="ss-icon">&#x1F517;</a></li>
+		</ul><img src="images/photo_spacer.png"></td>
+		<td><img src="images/photo_spacer2.png">	</td>	
+
+		<!-- Matt  -->
+         <td><img src="images/matt84x84.png"><center>Matt Jones<br><br>
+         <ul class="bubbles desktop only">
+ 		<li><a href="http://www.nceas.ucsb.edu/~jones/"  style="color:#c9e9d3;" class="ss-icon">&#x1F517;</a></li>
+		</ul></center>
+        <br><img src="images/photo_spacer.png"></td>
+		</tr>
+ 		</table>
+ 		</div>		
+</section>
+
+<!--    ##############    slide delimiter  ##############    -->
+<section class="slide" id="ropensci_packages">
+<h2>Ropensci's Packages</h2>
+<div>
+<img src="repos.png" width=700px>
+</div>	
+</section>
+
+<!--    ##############    slide delimiter  ##############    -->
+<section class="slide" id="ropensci_packages_github">
+<h2>Ropensci's Packages</h2>
+<div>
+<img src="ropensci_github_feed.png" width=700px>
+</div>	
+</section>
+
+
+
+
+
+
+<section class="slide" id="github_and_science">
+<br><br>
+<div>
+<center><h2>Rapid peer-peer sharing of code is great for science</h2></center><br>
+<br>
+<center><h3>In progress R packages can easily be tested and deployed using <code>devtools</code></h3></center><br>
+<pre class="knitr"><span class="functioncall">library</span><span class="keyword">(</span><span class="symbol">devtools</span><span class="keyword">)</span>
+<span class="functioncall">install_github</span><span class="keyword">(</span><span class="string">"RMendeley"</span><span class="keyword">,</span> <span class="string">"ropensci"</span><span class="keyword">)</span>
+</pre>
+</div>	
+</section>
+
+
+<!--    ##############    summary slide  ##############    -->
+<section class="slide" id="summary">
+  <div>
+  <br><br><br>
+    <h2>
+    <i class="ss-sync">data reuse</i>, <br> 
+    <i class="ss-connection"> new collaborations</i>, <br> 
+    <i class="ss-fork"> new tools</i>, <br> 
+    <i class="ss-barchart"> interactive visualization</i>,  <br> 
+    <i class="ss-notebook"> open notebooks</i>.
+    </h2>
+  </div>
+</section>
+
+
+<!--    ##############    closing slide  ##############    -->
+<section class="slide" id="outro">
+	<div>
+	<hgroup>
+	<h1><i class="ss-link"> </i>&nbsp; ropensci.org</h1>
+	<h3>	<!-- You can also &nbsp;<i class="ss-download"> </i>&nbsp; a copy.<br> -->
+	Please <i class="ss-icon ss-social"><a href="mailto:info@ropensci.org" style="color:#59c54a;">&#x2709;</a></i> us if you have feedback or ideas for collaborations. <br><br>
+	All ropensci projects are on <i class="ss-icon ss-social-circle"><a href="http://github.com/ropensci"  style="color:#010101;">&#xF670;</a></i><br>
+	also on <i class="ss-social-circle ss-icon"><a href="http://twitter.com/ropensci"  style="color:#79cef7;">&#xF620;</a></i>, and <i class="ss-social-circle ss-icon"><a href="http://gplus.to/ropensci" style="color: #dc0026;">&#xF613;</a></i>
+</h3>
+</hgroup>
+</div>
+</section>
+
+<!-- ============================================================================= -->
+<!-- ====      END PRESENTATION  ==== -->
+<!-- Everything below can be ignored (just js libraries) -->
+<!-- ============================================================================= -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- deck.navigation snippet -->
+<a href="#" class="deck-prev-link" title="Previous">&#8592;</a>
+<a href="#" class="deck-next-link" title="Next">&#8594;</a>
+
+<!-- deck.status snippet -->
+<p class="deck-status">
+	<span class="deck-status-current"></span>
+	/
+	<span class="deck-status-total"></span>
+</p>
+
+<!-- deck.goto snippet -->
+<form action="." method="get" class="goto-form">
+	<label for="goto-slide">Go to slide:</label>
+	<input type="text" name="slidenum" id="goto-slide" list="goto-datalist">
+	<datalist id="goto-datalist"></datalist>
+	<input type="submit" value="Go">
+</form>
+
+<!-- deck.hash snippet -->
+<a href="." title="Permalink to this slide" class="deck-permalink">#</a>
+
+
+<!-- Grab CDN jQuery, with a protocol relative URL; fall back to local if offline -->
+<script src="//ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+<script>window.jQuery || document.write('<script src="jquery-1.7.min.js"><\/script>')</script>
+
+<!-- Deck Core and extensions -->
+<script src="core/deck.core.js"></script>
+<script src="extensions/hash/deck.hash.js"></script>
+<script src="extensions/menu/deck.menu.js"></script>
+<script src="extensions/goto/deck.goto.js"></script>
+<script src="extensions/status/deck.status.js"></script>
+<script src="extensions/navigation/deck.navigation.js"></script>
+<script src="extensions/blank/deck.blank.js"></script>
+
+<!-- Initialize the deck -->
+<script>
+$(function() {
+	$.deck('.slide');
+});
+</script>
+
+</body>
+</html>
