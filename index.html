@@ -1,140 +1,254 @@
 <!DOCTYPE html>
-
+<!-- saved from url=(0014)about:internet -->
 <html>
-  <head>
-    <title>Carl Boettiger &hearts; Open Source</title>
-    <link rel="stylesheet" type="text/css" href="assets/reset.css">
-    <link rel="stylesheet" type="text/css" href="assets/grid.css">
-    <link rel="stylesheet" type="text/css" href="assets/style.css">
-    <script type="text/javascript" src="assets/jquery-1.7.1.min.js"></script>
-    <script type="text/javascript" src="assets/strftime.js"></script>
-    <script type="text/javascript">
-    (function ($, undefined) {
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 
-      // Put custom repo URL's in this object, keyed by repo name.
-      var repoUrls = {
-      };
-      // Put custom repo descriptions in this object, keyed by repo name.
-      var repoDescriptions = {
-      };
+<title>Carl Boettiger</title>
 
-      function repoUrl(repo) {
-        return repoUrls[repo.name] || repo.html_url;
-      }
-      function repoDescription(repo) {
-        return repoDescriptions[repo.name] || repo.description;
-      }
+<style type="text/css">
+body, td {
+   font-family: sans-serif;
+   background-color: white;
+   font-size: 12px;
+   margin: 8px;
+}
 
-      function addRecentlyUpdatedRepo(repo) {
-        var $item = $("<li>");
+tt, code, pre {
+   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
+}
 
-        var $name = $("<a>").attr("href", repo.html_url).text(repo.name);
-        $item.append($("<span>").addClass("name").append($name));
+h1 { 
+   font-size:2.2em; 
+}
 
-        var $time = $("<a>").attr("href", repo.html_url + "/commits").text(strftime("%h %e, %Y", repo.pushed_at));
-        $item.append($("<span>").addClass("time").append($time));
+h2 { 
+   font-size:1.8em; 
+}
 
-        $item.append('<span class="bullet">&sdot;</span>');
+h3 { 
+   font-size:1.4em; 
+}
 
-        var $watchers = $("<a>").attr("href", repo.html_url + "/watchers").text(repo.watchers + " watchers");
-        $item.append($("<span>").addClass("watchers").append($watchers));
+h4 { 
+   font-size:1.0em; 
+}
 
-        $item.append('<span class="bullet">&sdot;</span>');
+h5 { 
+   font-size:0.9em; 
+}
 
-        var $forks = $("<a>").attr("href", repo.html_url + "/network").text(repo.forks + " forks");
-        $item.append($("<span>").addClass("forks").append($forks));
+h6 { 
+   font-size:0.8em; 
+}
 
-        $item.appendTo("#recently-updated-repos");
-      }
+a:visited {
+   color: rgb(50%, 0%, 50%);
+}
 
-      function addRepo(repo) {
-        var $item = $("<li>").addClass("repo grid-1 " + (repo.language || '').toLowerCase());
-        var $link = $("<a>").attr("href", repoUrl(repo)).appendTo($item);
-        $link.append($("<h2>").text(repo.name));
-        $link.append($("<h3>").text(repo.watchers + " watchers" + " / " + repo.forks + " forks"));
-        $link.append($("<p>").text(repoDescription(repo)));
-        $link.append($("<p>").text("Updated " + 
-          strftime("%h %e, %Y", repo.pushed_at)));
-        $link.append($("<h3>").addClass("language").text(repo.language));
-        
-        $item.appendTo("#repos");
-      }
+pre {	
+   margin-top: 0;
+   max-width: 95%;
+   border: 1px solid #ccc;
+   white-space: pre-wrap;
+}
 
-      $.getJSON("https://api.github.com/users/cboettig/repos?per_page=100&callback=?", function (result) {
-        var repos = result.data;
+pre code {
+   display: block; padding: 0.5em;
+}
 
-        $(function () {
-          $("#num-repos").text(repos.length);
+code.r {
+   background-color: #F8F8F8;
+}
 
-          // Convert pushed_at to Date.
-          $.each(repos, function (i, repo) {
-            repo.pushed_at = new Date(repo.pushed_at);
+table, td, th {
+  border: none;
+}
 
-            var weekHalfLife  = 1.146 * Math.pow(10, -9);
+blockquote {
+   color:#666666;
+   margin:0;
+   padding-left: 1em;
+   border-left: 0.5em #EEE solid;
+}
 
-            var pushDelta    = (new Date) - Date.parse(repo.pushed_at);
-            var createdDelta = (new Date) - Date.parse(repo.created_at);
+hr {
+   height: 0px;
+   border-bottom: none;
+   border-top-width: thin;
+   border-top-style: dotted;
+   border-top-color: #999999;
+}
 
-            var weightForPush = 1;
-            var weightForWatchers = 1.314 * Math.pow(10, 7);
+@media print {
+   * { 
+      background: transparent !important; 
+      color: black !important; 
+      filter:none !important; 
+      -ms-filter: none !important; 
+   }
 
-            repo.hotness = weightForPush * Math.pow(Math.E, -1 * weekHalfLife * pushDelta);
-            repo.hotness += weightForWatchers * repo.watchers / createdDelta;
-          });
+   body { 
+      font-size:12pt; 
+      max-width:100%; 
+   }
+       
+   a, a:visited { 
+      text-decoration: underline; 
+   }
 
-          // Sort by highest # of watchers.
-          repos.sort(function (a, b) {
-            if (a.hotness < b.hotness) return 1;
-            if (b.hotness < a.hotness) return -1;
-            return 0;
-          });
+   hr { 
+      visibility: hidden;
+      page-break-before: always;
+   }
 
-          $.each(repos, function (i, repo) {
-            addRepo(repo);
-          });
+   pre, blockquote { 
+      padding-right: 1em; 
+      page-break-inside: avoid; 
+   }
 
-          // Sort by most-recently pushed to.
-          repos.sort(function (a, b) {
-            if (a.pushed_at < b.pushed_at) return 1;
-            if (b.pushed_at < a.pushed_at) return -1;
-            return 0;
-          });
+   tr, img { 
+      page-break-inside: avoid; 
+   }
 
-          $.each(repos.slice(0, 3), function (i, repo) {
-            addRecentlyUpdatedRepo(repo);
-          });
-        });
-      });
+   img { 
+      max-width: 100% !important; 
+   }
 
-    })(jQuery);
-    </script>
-  </head>
-  <body>
-    <div id="wrapper" class="grid clearfix">
-      <div id="main" class="grid-1">
-        <div><h1>Carl Boettiger's github repos</h1></div>
-        <p>This is an index to my open source repos on github</p>
-        <p>Page based on <a href="http://twitter.github.com/">http://twitter.github.com/</a> and <a href="http://hadley.github.com/">http://hadley.github.com/</a></p>
+   @page :left { 
+      margin: 15mm 20mm 15mm 10mm; 
+   }
+     
+   @page :right { 
+      margin: 15mm 10mm 15mm 20mm; 
+   }
 
-      </div>
+   p, h2, h3 { 
+      orphans: 3; widows: 3; 
+   }
 
-      <div class="grid grid-3">
-        <div id="statistics" class="grid-1 alpha header">
-          <h1>Statistics</h1>
-          <p>
-            <a href="https://github.com/cboettig/repositories"><span id="num-repos">&nbsp;</span> public repos</a>
-            <br>
-          </p>
-          <p class="email"><a href="mailto:cboettig@ucdavis.edu">cboettig@ucdavis.edu</a></p>
-        </div>
+   h2, h3 { 
+      page-break-after: avoid; 
+   }
+}
 
-        <div id="recently-updated" class="grid-2 omega header">
-          <h1>Recently updated <a href="https://github.com/cboettig/repositories">View All on GitHub</a></h1>
-          <ol id="recently-updated-repos"></ol>
-        </div>
-      </div>
+</style>
 
-      <ol id="repos"></ol>
-    </div>
-  </body>
+
+
+
+
+</head>
+
+<body>
+<hr/>
+
+<p><a href="">Home</a> | <a href="">Research</a> | <a href="">CV</a> | <a href="">Blog</a></p>
+
+<hr/>
+
+<h1>Carl Boettiger</h1>
+
+<p><img src="https://secure.gravatar.com/avatar/9dc8783d8ff42565db30cc90e29ad01c?s=220" alt=""/> </p>
+
+<p>I&#39;m  a post-doctoral researcher with Marc Mangel 
+and Steve Munch in the Center for Stock Assessment Research, at
+UC Santa Cruz, working on regime shifts in ecology and evolution.
+Such shifts mark the most dramatic events in complex systems; 
+understanding and forecasting these events challenges the capacity
+of both our statistical methods and the data available. My 
+research aims to extend and quantify the limits of understanding
+through nonparametric Bayesian inference, high performance computing
+and big data sets. I keep an open lab notebook, as I describe in
+this <a href="/lab-notebook.html">introduction</a>.</p>
+
+<hr/>
+
+<h2>education</h2>
+
+<ul>
+<li><p>2012 Ph.D Population Biology, <strong>University of California, Davis</strong>. Mentor: Alan Hastings</p></li>
+<li><p>2007 A.B in Physics <strong>Princeton University</strong>, with honors and certificates in <em>biophysics</em> and <em>applied and computational mathematics.</em> </p></li>
+</ul>
+
+<h2>publications</h2>
+
+<ol>
+<li>Carl Boettiger, Alan Hastings (2012). <strong>Early Warning Signals and the
+Prosecutor’s Fallacy</strong> 4734-4739.  <em>Proceedings of the Royal Society B</em> 279 (1748).  <a href="http://dx.doi.org/10.1098/rspb.2012.2085">doi</a>
+(<a href="http://www.mendeley.com/download/public/98752/4972355691/dd5fdd8ebbfc05d9ebf415761be200805254d22e/dl.pdf">pdf</a>) 
+(<a href="http://arxiv.org/abs/1210.1204">arXiv</a>) (<a href="https://github.com/cboettig/earlywarning/blob/prosecutor/inst/examples/fallacy.md">code</a>) </li>
+<li>Carl Boettiger, Duncan Temple Lang, Peter
+Wainwright (2012). <strong>rfishbase: exploring, manipulating and visualizing
+FishBase data from R</strong>, 2030–2039. <em>Journal of Fish Biology</em>. 81 (6).
+<a href="http://dx.doi.org/10.1111/j.1095-8649.2012.03464.x">doi</a>:10.1111/j.1095-8649.2012.03464.x
+(<a href="http://www.mendeley.com/download/public/98752/5024008901/62843551297c5c9d3e1c2e5513697b85fcc0b6fc/dl.pdf">pdf</a>)
+(<a href="https://github.com/ropensci/rfishbase/blob/master/inst/doc/rfishbase/rfishbase_github.md">preprint</a>)
+(<a href="https://github.com/ropensci/rfishbase">code</a>) 
+(<a href="http://cran.at.r-project.org/web/packages/rfishbase/">R package</a>) </li>
+<li>Carl Boettiger, Duncan Temple Lang (2012).  <strong>Treebase: An R
+package for discovery, access and manipulation of online
+phylogenies</strong>, <em>Methods in Ecology and Evolution</em>. 
+<a href="http://dx.doi.org/10.1111/j.2041-210X.2012.00247.x">doi</a>:10.1111/j.2041-210X.2012.00247.x
+(<a href="http://www.mendeley.com/download/public/98752/4976371531/463d3755b618c40e35dca223e27162c08fbc061a/dl.pdf">pdf</a>)
+(<a href="https://github.com/ropensci/treebase/blob/master/inst/doc/treebase/treebase_github.md">preprint</a>)
+(<a href="https://github.com/ropensci/treebase">code</a>) 
+(<a href="http://cran.at.r-project.org/web/packages/treebase/">R package</a>)</li>
+<li>Carl Boettiger and Alan Hastings (2012). <strong>Quantifying Limits to Detection 
+of Early Warning for Critical Transitions</strong>, 2527-2539. <em>Journal of the Royal Society:
+Interface</em> 9 (75) <a href="http://dx.doi.org/10.1098/rsif.2012.0125">doi</a>:10.1098/rsif.2012.0125 
+(<a href="http://www.mendeley.com/download/public/98752/4711221423/df767d6b5f0fbf44cc236470307992b019e6c149/dl.pdf">pdf</a>)
+(<a href="http://arxiv.org/abs/1204.6231">arXiv</a>)
+(<a href="https://github.com/cboettig/earlywarning">code</a>)</li>
+<li>Jeremy M. Beaulieu, Dwueng-Chwuan Jhwueng, Carl Boettiger and Brian
+O’Meara, (2012). <strong>Modeling Stabilizing Selection: Expanding the
+Ornstein-Uhlenbeck Model of Adaptive Evolution</strong>, 2369-2383. <em>Evolution</em> 66 (8). 
+<a href="http://dx.doi.org/10.1111/j.1558-5646.2012.01619.x">doi</a>:10.1111/j.1558-5646.2012.01619.x 
+(<a href="http://www.mendeley.com/download/public/98752/4605481493/dfca8df9311b372425a204c1a6587ecee2b275dc/dl.pdf">pdf</a>)
+(<a href="http://cran.r-project.org/web/packages/OUwie/index.html">code</a>)</li>
+<li>Carl Boettiger, Graham Coop, Peter Ralph (2012) <strong>Is your phylogeny
+informative? Measuring the power of comparative methods</strong>,  2240-51. <em>Evolution</em> 66 (7).
+<a href="http://dx.doi.org/10.1111/j.1558-5646.2011.01574.x">doi</a>:10.1111/j.1558-5646.2011.01574.x 
+(<a href="http://www.mendeley.com/download/public/98752/4485545653/566ffaffaf0fa6fb8f847096b742bc465aca3a8e/dl.pdf">pdf</a>)
+(<a href="http://arxiv.org/abs/1110.4944">arXiv</a>)
+(<a href="https://github.com/cboettig/pmc">code</a>)
+(<a href="http://datadryad.org/handle/10255/dryad.37645">data in <img src="http://carlboettiger.info/assets/img/dryad.jpg" alt=""/></a>)</li>
+<li>Carl Boettiger, Jonathan Dushoff, Joshua S Weitz (2010) <strong>Fluctuation
+domains in adaptive evolution</strong>, 6-13. <em>Theoretical Population
+Biology</em> 77 (1).
+<a href="http://dx.doi.org/10.1016/j.tpb.2009.10.003">doi</a>:10.1016/j.tpb.2009.10.003 
+(<a href="http://www.mendeley.com/download/public/98752/3107791751/8b066644aca2e396fd5e120d563026c8d560dc77/dl.pdf">pdf</a>)
+(<a href="http://arxiv.org/abs/1004.4233">arXiv</a>)
+(<a href="https://github.com/cboettig/fluctuationDomains">code</a>)
+(<a href="http://datadryad.org/handle/10255/dryad.37625">data in <img src="http://carlboettiger.info/assets/img/dryad.jpg" alt=""/></a>)</li>
+<li>James J. Wray, Neta A. Bahcall, Paul Bode, Carl Boettiger, Phillip
+Hopkins. (2006) <strong>The Shape, Multiplicity, and Evolution of
+Superclusters in ΛCDM Cosmology</strong>, 907-916. <em>The Astrophysical
+Journal</em> 652 (2).
+<a href="http://dx.doi.org/10.1086/508600">doi</a>:10.1086/508600 
+(<a href="http://www.mendeley.com/download/public/98752/3107796991/fa842dca56ce0d0941132db7cfdd0e259a448973/dl.pdf">pdf</a>)
+(<a href="http://arxiv.org/abs/astro-ph/0603060">arXiv</a>)</li>
+</ol>
+
+<h3>submitted</h3>
+
+<ul>
+<li>Samantha A. Price, Lars Schmitz, Philip S. L. Anderson, Carl Boettiger, Peter C. Wainwright. <strong>Comparing
+disparity between traits using the Ornstein-Uhlenbeck model: a test of
+functional constraint on the eyes of labrid fishes.</strong></li>
+</ul>
+
+<hr/>
+
+<h2>Contact</h2>
+
+<ul>
+<li>gmail: <a href="mailto:carl.boettiger@noaa.gov">carl.boettiger@noaa.gov</a></li>
+<li>github: <a href="https://github.com/cboettig">cboettig</a></li>
+<li>twitter: <a href="http://twitter.com/cboettig">@cboettig</a></li>
+</ul>
+
+</body>
+
 </html>
+
