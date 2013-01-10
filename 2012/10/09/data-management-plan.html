@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head prefix="dc: http://purl.org/dc/terms/ og: http://ogp.me/ns#">
+    <meta charset="utf-8" /> 
+    <title>Data Management Plan</title>
+    <meta name="author" content="Carl Boettiger" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+
+  
+
+
+<!-- HTML5 metadata -->
+<meta name="keywords" content="Science, Ecology, Evolution, Open Science, Reproducible Research" />
+<meta name="description" content="My open lab notebook- research in theoretical ecology and evolution" />
+<!-- RDFa Metadata (in DublinCore) -->
+<meta property="dc:title" content="Data Management Plan" />
+<meta property="dc:creator" content="Carl Boettiger" />
+<meta property="dc:date" content="2013-01-10T12:36:56-08:00" />
+<meta property="dc:type" content="Lab Notebook Entry" /> <!-- article? entry?-->
+<meta property="dc:format" content="text/html" />
+<meta property="dc:language" content="en" />
+<meta property="dc:source" content="Lab Notebook" />
+<!-- RDFa Metadata (in OpenGraph) -->
+<meta property="og:title" content="Data Management Plan" />
+<meta property="og:author" content="http://www.carlboettiger.info/index.html" />  <!-- Should be Liquid? URI? -->
+<meta property="http://ogp.me/ns/profile#first_name" content="Carl"/>
+<meta property="http://ogp.me/ns/profile#last_name" content="Boettiger"/>
+<meta property="http://ogp.me/ns/article#published_time" content="2013-01-10T12:36:56-08:00" />
+<meta property="og:site_name" content="Lab Notebook" /> <!-- Same as dc:source? -->
+<meta property="og:url" content="http://www.carlboettiger.info/2012/10/09/data-management-plan.html" />
+<meta property="og:type" content="article" />
+<!-- Google Scholar Metadata -->
+<meta name="resource_type" content="Lab Notebook"/>
+<meta name="citation_journal_title" content="Lab Notebook"/>
+<meta name="citation_publication_date" content="10 Jan 2013"/>
+<meta name="citation_date" content="10 Jan 2013"/>
+<meta name="citation_author" content="Carl Boettiger"/>
+<meta name="citation_title" content="Data Management Plan"/>
+
+    <!-- CSS Stylesheets (toggled with javascript) -->
+    <link href="/assets/css/light.css" rel="stylesheet"
+          type="text/css" id="stl" title="light" />
+    <link href="/assets/css/dark.css" rel="alternate stylesheet" 
+          type="text/css" title="dark" />
+    <!-- Javascript needed for theme toggle, load immediately -->
+    <script type="text/javascript" src="/assets/js/switch-css.js"></script>
+    <script type="text/javascript">
+      set_style_from_cookie(); 
+    </script>
+  </head>
+  <body> 
+  
+<!-- Navbar  ================================================== -->
+<div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+      <a class="brand" href="/README.html"><i style="float:right;" class="icon-info-sign" alt="info" rel="tooltip" title="Credits and technical information about this site" data-placement="bottom"></i></a>
+      <div class="nav-collapse">
+        <ul class="nav">
+          <li>
+          <a href="/index.html">Home</a></li>
+
+          <li>
+          <a href="/vita.html">Vita</a></li>
+
+          <li>
+          <a href="/research.html">Research</a></li>
+
+          <li>
+          <a href="/teaching.html">Teaching</a></li>
+
+          <li>
+          <a href="/community.html">Community</a></li>
+
+          <li>
+          <a href="/lab-notebook.html">Lab Notebook</a></li>
+
+        </ul>
+      </div><!--/.nav-collapse -->
+      <form class="navbar-search pull-right" method="get" action="http://google.com/search">
+         <p>
+         <input type="hidden" name="q" value="site:carlboettiger.info" />
+         <input type="text" class="search-query" name="q" />
+         <button class="btn btn-mini" type="submit"><i class="icon-search"></i></button> 
+         </p>
+       </form>
+     </div> <!-- /container -->
+   </div> <!-- /navbar-inner -->
+ </div> <!-- /navbar -->
+
+
+
+  <div class="container"> 
+    <article> <!-- includes header and entry, but not footer -->
+    <header class="jumbotron subhead">
+      <h1 class="entry-title">Data Management Plan</h1>
+      <p></p>
+    </header>
+
+
+      <div class="row">
+        <div class="span7 offset1">
+          <p>Writing out a data management plan for myself. Suggestions and feedback welcome.</p>
+<h2 id="data-types-and-structure">Data Types and Structure</h2>
+<p>All source code, documentation, scripts and data for the analyses performed in the course of this research shall be maintained in a digital compendium using the <a href="http://cran.r-project.org/doc/manuals/R-exts.html#Package-structure">R package structure</a> as recommended in Gentleman and Lang (2007). The progress and results of this research shall be regularly chronicled in an electronic lab notebook, maintained openly at <a href="http://carlboettiger.info/lab-notebook.html">carlboettiger.info/lab-notebook.html</a>. Figures and other results are maintained with the source-code required to reproduce them by writing these analyses using <a href="http://yihui.name/knitr">knitr</a> dynamic documentation.</p>
+<h2 id="data-acquisition-integrity-and-quality">Data Acquisition, Integrity and Quality</h2>
+<p>The lab notebook is written and maintained in plain text (UTF-8) and rendered in HTML5. Likewise, the R package compendium will maintain all source code, scripts and documentation in plain-text (UTF-8) files. Plain-text files with standard encodings help retain compatibility independent of software. Both the notebook entries and the compendium will be maintained in unique <a href="http://git-scm.com/">git</a> repositories.</p>
+<p>Git repositories use unique SHA hashes to protect against corruption. Synchronized backups of the git repositories are maintained on local and remote servers (RAID 6) to protect against hardware failures, as well as on the public international software repository, Github <a href="https://github.com/cboettig">github.com/cboettig</a>. Version history preserves a time-line of changes and protects against user error.</p>
+<p>Archival copies of notebook entries shall be published annually to <a href="http://figshare.com">figshare</a> where they are assigned DOIs and preserved by the <a href="http://www.clockss.org/clockss/Home">CLOCKSS</a> geopolitically distributed 12 node global archive. Likewise an archival copy of the R compendium shall be published to figshare at the time of each peer-reviewed publication.</p>
+<p>Any data produced by simulations used in these analyses will be archived accordingly in the compendium. Any data associated with a peer-reviewed publication will be deposited in plain text csv files in the <a href="http://datadryad.org/">Dryad digital repository</a> for the biosciences, unless provided by a third party whose terms of use forbid this. No generation of empirical data is anticipated.</p>
+<h2 id="rights-management-dissemination">Rights Management &amp; Dissemination</h2>
+<p>All products generated by this research will be licensed under permissive licenses supporting reuse, re-distribution, and derivatives for free for any purpose without request from a major online repository; Table 1.</p>
+<table>
+<caption>Licenses reflect the <a href="http://pantonprinciples.org/">Panton Principles</a> for open data and the <a href="http://sciencecodemanifesto.org/">Science Code Manifesto</a>. Distribution uses internationally recognized and freely accessible public repositories best suited for the dissemination of each product.</caption>
+<thead>
+<tr class="header">
+<th align="left">Product</th>
+<th align="left">License</th>
+<th align="left">Distribution</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">publications</td>
+<td align="left"><a href="http://creativecommons.org/licenses/by/3.0/">cc-by</a></td>
+<td align="left"><a href="http://arxiv.org">arXiv</a></td>
+</tr>
+<tr class="even">
+<td align="left">software</td>
+<td align="left"><a href="http://en.wikipedia.org/wiki/BSD_licenses">FreeBSD</a></td>
+<td align="left"><a href="http://github.com/cboettig">Github</a>, <a href="http://figshare.com">figshare</a></td>
+</tr>
+<tr class="odd">
+<td align="left">data</td>
+<td align="left"><a href="http://creativecommons.org/publicdomain/zero/1.0/">cc-zero</a></td>
+<td align="left"><a href="http://datadryad.org">Dryad</a></td>
+</tr>
+<tr class="even">
+<td align="left">research notebook</td>
+<td align="left"><a href="http://creativecommons.org/publicdomain/zero/1.0/">cc-zero</a></td>
+<td align="left"><a href="http://github.com/cboettig/labnotebook">Github</a>, <a href="http://figshare.com">figshare</a></td>
+</tr>
+</tbody>
+</table>
+<p>Peer-reviewed publications will target preprint-friendly publishers and an author’s preprint will be posted on the arXiv under a Creative Commons Attribution license to facilitate access and distribution.</p>
+<h2 id="references">References</h2>
+<p>Gentleman R and Temple Lang D (2007). “Statistical Analyses And Reproducible Research.” <em>Journal of Computational And Graphical Statistics</em>, <em>16</em>. ISSN 1061-8600, <URL:
+http://dx.doi.org/10.1198/106186007X178663>.</p>
+        </div>
+
+
+        <!-- Custom sidebar -->      
+        <div class="span4">
+          <div class="sidebar">
+            <aside prefix="dc: http://purl.org/dc/terms/ og:http://ogp.me/ns/article#">
+<i class="icon-calendar"></i>
+<time datetime="2012-10-09T00:00:00-07:00" 
+      property="dc:created">09 Oct 2012</time>.
+<br />
+          
+            <p><a class="btn btn-mini" rel="prev" href='/2012/10/05/notes.html'><i class="icon-chevron-left"></i> prev</a>
+          
+          
+          <a class="btn btn-mini" rel="next" href='/2012/10/10/prosecutors-fallacy.html'>next <i class="icon-chevron-right"></i></a></p>
+          
+
+
+<br />
+
+
+<p> <a class="btn btn-mini" href="https://github.com/cboettig/labnotebook/commits/master/_posts/2012-10-09-data-management-plan.md"><i class="icon-time"></i> history</a></p>
+<br />
+Posted in 
+  <a rel="tag" class="category" href="/categories.html#open-science"><span property="dc:subject og:section">open-science</span></a>
+  
+
+
+
+<br />
+tags: 
+
+
+</aside>
+
+         </div>
+       </div>
+
+      </div>
+      <!-- Disqus Comments -->
+      <div class="row disqus">
+        <div class="span8">          
+            <div id="disqus_thread"></div>
+            <script type="text/javascript">
+                var disqus_shortname = 'cboettig'; // required: replace example with your forum shortname
+                /* * * DON'T EDIT BELOW THIS LINE * * */
+                (function() {
+                    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                    dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        </div>
+      </div>
+
+
+
+</article>
+<footer class="footer">
+  <form style="font-size:10px">
+    <div class="pull-right">
+      <span rel="tooltip" title="switch to dark theme">
+        <a onclick="switch_style('dark'); return false;" name="theme" value="dark" id="dark" class="btn btn-mini"><i class="icon-adjust"></i></a> 
+      </span>
+      <span rel="tooltip" title="switch to light theme">
+        <a onclick="switch_style('light');return false;" name="theme" value="light" id="light" class="btn btn-mini"><i class="icon-certificate"></i></a> 
+      </span>
+    </div>
+  </form>
+          <div class="row">
+            <div class="span4 socialicons" style="font-size:20px" vocab="http://xmlns.com/foaf/0.1/" typeof="Person" resource="#me">
+              <span rel="tooltip" title="email me">
+                <a property="account" href="mailto:cboettig@gmail.com" onclick="recordOutboundLink(this, 'Outbound Links', 'email'); return false;"><i class="icon-envelope-alt"></i></a>
+              </span>
+              <span rel="tooltip" title="follow me on twitter (reading, discussing)">
+                <a property="account" href="https://twitter.com/cboettig" onclick="recordOutboundLink(this, 'Outbound Links', 'Twitter'); return false;"><i class="icon-twitter"></i></a> 
+              </span>
+              <!--              <a property="account" href="https://plus.google.com/" onclick="recordOutboundLink(this, 'Outbound Links', 'GPlus'); return false;"><i class="icon-google-plus"></i></a> -->
+              <span rel="tooltip" title="follow me on Github (code, research)">
+                <a property="account" href="https://github.com/cboettig" onclick="recordOutboundLink(this, 'Outbound Links', 'Github'); return false;"><i class="icon-github" alt="github"></i></a> 
+              </span>  
+              <!--              <a property="account" href="http://www.mendeley.com/profiles/carl-boettiger" onclick="recordOutboundLink(this, 'Outbound Links', 'Mendeley'); return false;"><img src="/assets/img/icon-mendeley.png" alt="mendeley" /></a>  -->
+              <span rel="tooltip" title="subscribe to RSS feeds for my open lab notebook">
+                <a href="/atom.xml" onclick="recordOutboundLink(this, 'Outbound Links', 'RSS'); return false;"><i class="icon-rss" ></i></a>
+              </span>
+            </div>
+            <div class="span2" style="text-align:center">
+              <span rel="tooltip" 
+                    title="An Open Notebook Science (ONS) project claim: Entry provides all content (AC) immediately (I) or without significant delay.  See link for details"><a rel="license" href="http://onsclaims.wikispaces.com/" 
+                onclick="recordOutboundLink(this, 'Outbound Links', 'ONS_claim'); return false;" 
+                ><img src="http://onsclaims.wikispaces.com/file/view/ons-aci2-icon.png" alt="ONS" /></a>
+            </span>
+            </div>
+            <div class="span4">
+              <a property="http://creativecommons.org/ns#license" href="http://creativecommons.org/publicdomain/zero/1.0/" onclick="recordOutboundLink(this, 'Outbound Links', 'CC0'); return false;"><img src="http://i.creativecommons.org/l/zero/1.0/88x31.png" alt="CC0" style="float:right" /></a> 
+            </div>
+        </div>
+      </footer>
+    </div><!-- /container -->
+    
+        <!-- Le javascript
+    ================================================== -->
+
+    <!-- Placed at the end of the document so the pages load faster -->
+    <!-- JQuery, used on a few pages -->
+    <script type="text/javascript" src="http://www.carlboettiger.info/assets/js/jquery.js"></script>
+    <!-- Equations using MathJax -->
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config"> MathJax.Hub.Config({ TeX: { equationNumbers: {autoNumber: "all"} } });       </script>
+    <!-- Twitter Bootstrap Javascript -->
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-transition.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-collapse.js"></script> <!-- for collapsing navbar-->
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-tooltip.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-alert.js"></script>
+
+    <script type="text/javascript">
+      $(document).ready(function (){
+        $("[rel=tooltip]").tooltip();
+      });
+    </script>
+
+    <!-- Unused Twitter Bootstrap Javascript 
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-dropdown.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/google-code-prettify/prettify.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-modal.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-scrollspy.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-tab.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-popover.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-button.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-carousel.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-typeahead.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/application.js"></script>
+    -->
+
+
+      <script type="text/javascript">
+          var _gaq = _gaq || [];
+          _gaq.push(['_setAccount', 'UA-18401403-1']);
+          _gaq.push(['_trackPageview']);
+          (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+          })();
+  </script>
+
+
+
+<script type="text/javascript">
+function recordOutboundLink(link, category, action) {
+  try {
+    var pageTracker=_gat._getTracker("UA-18401403-1");
+    pageTracker._trackEvent(category, action);
+    setTimeout('document.location = "' + link.href + '"', 100)
+  }catch(err){}
+}
+</script>
+
+
+        
+<!-- Start Open Web Analytics Tracker -->
+<script type="text/javascript">
+//<![CDATA[
+var owa_baseUrl = 'http://www.carlboettiger.info/openwebanalytics/';
+var owa_cmds = owa_cmds || [];
+owa_cmds.push(['setSiteId', '2886faa411a4139a6c6f97b5a1f38697']);
+owa_cmds.push(['trackPageView']);
+owa_cmds.push(['trackClicks']);
+owa_cmds.push(['trackDomStream']);
+
+(function() {
+  var _owa = document.createElement('script'); _owa.type = 'text/javascript'; _owa.async = true;
+  owa_baseUrl = ('https:' == document.location.protocol ? window.owa_baseSecUrl || owa_baseUrl.replace(/http:/, 'https:') : owa_baseUrl );
+  _owa.src = owa_baseUrl + 'modules/base/js/owa.tracker-combined-min.js';
+  var _owa_s = document.getElementsByTagName('script')[0]; _owa_s.parentNode.insertBefore(_owa, _owa_s);
+}());
+//]]>
+</script>
+<!-- End Open Web Analytics Code -->
+        
+
+  </body>
+</html>
+

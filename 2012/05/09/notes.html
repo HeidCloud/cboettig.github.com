@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head prefix="dc: http://purl.org/dc/terms/ og: http://ogp.me/ns#">
+    <meta charset="utf-8" /> 
+    <title>Infering Partially Observable Markov Processes with Iterative Particle Filtering</title>
+    <meta name="author" content="Carl Boettiger" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+
+  
+
+
+<!-- HTML5 metadata -->
+<meta name="keywords" content="Science, Ecology, Evolution, Open Science, Reproducible Research" />
+<meta name="description" content="My open lab notebook- research in theoretical ecology and evolution" />
+<!-- RDFa Metadata (in DublinCore) -->
+<meta property="dc:title" content="Infering Partially Observable Markov Processes with Iterative Particle Filtering" />
+<meta property="dc:creator" content="Carl Boettiger" />
+<meta property="dc:date" content="2013-01-10T12:36:56-08:00" />
+<meta property="dc:type" content="Lab Notebook Entry" /> <!-- article? entry?-->
+<meta property="dc:format" content="text/html" />
+<meta property="dc:language" content="en" />
+<meta property="dc:source" content="Lab Notebook" />
+<!-- RDFa Metadata (in OpenGraph) -->
+<meta property="og:title" content="Infering Partially Observable Markov Processes with Iterative Particle Filtering" />
+<meta property="og:author" content="http://www.carlboettiger.info/index.html" />  <!-- Should be Liquid? URI? -->
+<meta property="http://ogp.me/ns/profile#first_name" content="Carl"/>
+<meta property="http://ogp.me/ns/profile#last_name" content="Boettiger"/>
+<meta property="http://ogp.me/ns/article#published_time" content="2013-01-10T12:36:56-08:00" />
+<meta property="og:site_name" content="Lab Notebook" /> <!-- Same as dc:source? -->
+<meta property="og:url" content="http://www.carlboettiger.info/2012/05/09/notes.html" />
+<meta property="og:type" content="article" />
+<!-- Google Scholar Metadata -->
+<meta name="resource_type" content="Lab Notebook"/>
+<meta name="citation_journal_title" content="Lab Notebook"/>
+<meta name="citation_publication_date" content="10 Jan 2013"/>
+<meta name="citation_date" content="10 Jan 2013"/>
+<meta name="citation_author" content="Carl Boettiger"/>
+<meta name="citation_title" content="Infering Partially Observable Markov Processes with Iterative Particle Filtering"/>
+
+    <!-- CSS Stylesheets (toggled with javascript) -->
+    <link href="/assets/css/light.css" rel="stylesheet"
+          type="text/css" id="stl" title="light" />
+    <link href="/assets/css/dark.css" rel="alternate stylesheet" 
+          type="text/css" title="dark" />
+    <!-- Javascript needed for theme toggle, load immediately -->
+    <script type="text/javascript" src="/assets/js/switch-css.js"></script>
+    <script type="text/javascript">
+      set_style_from_cookie(); 
+    </script>
+  </head>
+  <body> 
+  
+<!-- Navbar  ================================================== -->
+<div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+      <a class="brand" href="/README.html"><i style="float:right;" class="icon-info-sign" alt="info" rel="tooltip" title="Credits and technical information about this site" data-placement="bottom"></i></a>
+      <div class="nav-collapse">
+        <ul class="nav">
+          <li>
+          <a href="/index.html">Home</a></li>
+
+          <li>
+          <a href="/vita.html">Vita</a></li>
+
+          <li>
+          <a href="/research.html">Research</a></li>
+
+          <li>
+          <a href="/teaching.html">Teaching</a></li>
+
+          <li>
+          <a href="/community.html">Community</a></li>
+
+          <li>
+          <a href="/lab-notebook.html">Lab Notebook</a></li>
+
+        </ul>
+      </div><!--/.nav-collapse -->
+      <form class="navbar-search pull-right" method="get" action="http://google.com/search">
+         <p>
+         <input type="hidden" name="q" value="site:carlboettiger.info" />
+         <input type="text" class="search-query" name="q" />
+         <button class="btn btn-mini" type="submit"><i class="icon-search"></i></button> 
+         </p>
+       </form>
+     </div> <!-- /container -->
+   </div> <!-- /navbar-inner -->
+ </div> <!-- /navbar -->
+
+
+
+  <div class="container"> 
+    <article> <!-- includes header and entry, but not footer -->
+    <header class="jumbotron subhead">
+      <h1 class="entry-title">Infering Partially Observable Markov Processes with Iterative Particle Filtering</h1>
+      <p></p>
+    </header>
+
+
+      <div class="row">
+        <div class="span7 offset1">
+          <p>Excellent talk by Ed Ionides at UC Davis today (led me to miss Weds session of Data to Knowledge).</p>
+<h1 id="ed-ionides">Ed Ionides</h1>
+<p>six problems of Bjonstead and Grenfell: an appeal for arbitrary nonlinear partially observed vector valued stochastic models.<br />POMP doesn’t mix well in the winbugs.</p>
+<p>simulation-based algorithm (plug-and-play)</p>
+<p>Think of a process being defined by:</p>
+<ul>
+<li><code>rprocess()</code></li>
+<li><code>dprocess()</code></li>
+<li><code>rmeasure()</code></li>
+<li><code>dmeasure()</code></li>
+</ul>
+<p>In general we need some subset of these processes:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">type</th>
+<th align="left">rprocess</th>
+<th align="left">dprocess</th>
+<th align="left">rmeasure</th>
+<th align="left">dmeasure</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">iterative filtering</td>
+<td align="left">X</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">X</td>
+</tr>
+<tr class="even">
+<td align="left">Lui-West SCM</td>
+<td align="left">X</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">X</td>
+</tr>
+<tr class="odd">
+<td align="left">EM by SCM</td>
+<td align="left">X</td>
+<td align="left">X</td>
+<td align="left"></td>
+<td align="left">X</td>
+</tr>
+<tr class="even">
+<td align="left">MCMC</td>
+<td align="left"></td>
+<td align="left">X</td>
+<td align="left"></td>
+<td align="left">X</td>
+</tr>
+<tr class="odd">
+<td align="left">Nonlin forecasting</td>
+<td align="left">X</td>
+<td align="left"></td>
+<td align="left">X</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">Particle MCMC</td>
+<td align="left">X</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">X</td>
+</tr>
+<tr class="odd">
+<td align="left">Probe matching</td>
+<td align="left">X</td>
+<td align="left"></td>
+<td align="left">X</td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<h2 id="bayesian-plug-and-play">Bayesian plug-and-play</h2>
+<ul>
+<li>Artificial parameter evolution (Liu &amp; West 2001)</li>
+<li>Approximate Bayesian Computing (Toni et al Interface 2009)</li>
+<li>Particle MCMC [@Andrieu2010]</li>
+</ul>
+<h2 id="non-bayesian">Non-Bayesian</h2>
+<ul>
+<li>Simulation-based prediction rules [@Kendall1999] “Probe-matching”</li>
+<li>Simulated likelihood of summary statistics [@Wood2010]</li>
+<li>Iterated filtering [@Ionides2006]</li>
+<li>Nonlinear forecasting</li>
+</ul>
+<p>“Likelihood-free” inference – i.e. don’t have the likelihood equation unlike MCMC, EM need <code>dprocess()</code></p>
+<ul>
+<li>Compare to optimization “gradient-free” methods.</li>
+<li>or to Keverkidis “equation-free” (2003,2004).</li>
+</ul>
+<p>Approximate Bayesian methods and simulated moment methods lead to loss of <em>statistical</em> efficiency Iterated filtering enables almost exact likelihood-based inference.</p>
+<p>ODEs have been plug-and-play (numerical) for a long time. We want this to be true for SDEs as well.</p>
+<h2 id="filtering">Filtering</h2>
+<ul>
+<li>Think “Kalman filter”. Particle filter is a simulated approximation approach for the likelihood function.</li>
+<li>Iterative filtering is a much more clever way to search for the best fit model than some traditional optimization routine that wants a smooth likelihood function.</li>
+</ul>
+<p>Theorem: derivative of the log-likelihood is the small-noise limit of a weighted average of local filtering. In:</p>
+<ul>
+<li>[@Ionides2006] (pseudo-code)</li>
+<li>[@Ionides2011] (proofs)</li>
+</ul>
+<p>Scientists like life on the edge of identifiability, &gt; Minimal complexity acceptable to scientsits approx maximimal complexity acceptable to available data</p>
+<ul>
+<li>Ah, <a href="http://www.stat.lsa.umich.edu/~ionides/pubs/davis12.pdf">Ed’s slides are available online</a>.</li>
+<li>Some good information on the <a href="http://pomp.r-forge.r-project.org/">pomp website</a> as well.</li>
+</ul>
+<h1 id="exploring-iterative-filtering-in-pomp">Exploring Iterative Filtering in POMP</h1>
+<p><a href="https://github.com/cboettig/populationdynamics/blob/497d4ce4c401833464ccaff6edd518133f4e9b0c/inst/examples/pomp_explore.md">my example exploration</a>, following the <a href="http://cran.at.r-project.org/web/packages/pomp/vignettes/intro_to_pomp.pdf">introductory vignette.</a></p>
+<p>Note that the iterative filtering algorithm took a little over 16 minutes on ten processors on the farm cluster. pomp does not provide any parallelization. Particles must communicate at each iteration. With tight communication loops, could probably get substantial acceleration on MPI or GPU.</p>
+<p>(Would be interesting to drive the simulation with Gillespie algorithm, something richer than a crude discritization. Depending on timescale, may result in very computationally intensive requirements).</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">require</span>(pomp)
+gompertz.proc.sim &lt;- function(x, t, params, delta.t, ...) {
+    r &lt;- params[<span class="st">&quot;r&quot;</span>]
+    K &lt;- params[<span class="st">&quot;K&quot;</span>]
+    sigma &lt;- params[<span class="st">&quot;sigma&quot;</span>]
+    X &lt;- x[<span class="st">&quot;X&quot;</span>]  <span class="co"># the state at time t:</span>
+    ## generate a log-normal random variable:
+    eps &lt;- <span class="kw">exp</span>(<span class="kw">rnorm</span>(<span class="dt">n =</span> <span class="dv">1</span>, <span class="dt">mean =</span> <span class="dv">0</span>, <span class="dt">sd =</span> sigma))
+    ## compute the state at time t+delta.t:
+    S &lt;- <span class="kw">exp</span>(-r * delta.t)
+    <span class="kw">c</span>(<span class="dt">X =</span> <span class="kw">unname</span>(K^(<span class="dv">1</span> - S) * X^S * eps))
+}</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">gompertz.meas.sim &lt;- function(x, t, params, ...) {
+    tau &lt;- params[<span class="st">&quot;tau&quot;</span>]
+    X &lt;- x[<span class="st">&quot;X&quot;</span>]  <span class="co"># state at time t:</span>
+    y &lt;- <span class="kw">c</span>(<span class="dt">Y =</span> <span class="kw">unname</span>(<span class="kw">rlnorm</span>(<span class="dt">n =</span> <span class="dv">1</span>, <span class="dt">meanlog =</span> <span class="kw">log</span>(X), <span class="dt">sd =</span> tau)))
+}</code></pre>
+<p>create a container of class <code>pomp</code> to hold the model and data.</p>
+<pre class="sourceCode r"><code class="sourceCode r">gompertz &lt;- <span class="kw">pomp</span>(<span class="dt">data =</span> <span class="kw">data.frame</span>(<span class="dt">time =</span> <span class="dv">1</span>:<span class="dv">100</span>, <span class="dt">Y =</span> <span class="ot">NA</span>), <span class="dt">times =</span> <span class="st">&quot;time&quot;</span>, 
+    <span class="dt">rprocess =</span> <span class="kw">discrete.time.sim</span>(<span class="dt">step.fun =</span> gompertz.proc.sim, <span class="dt">delta.t =</span> <span class="dv">1</span>), 
+    <span class="dt">rmeasure =</span> gompertz.meas.sim, <span class="dt">t0 =</span> <span class="dv">0</span>)</code></pre>
+<p>Parameters and inital condition:</p>
+<pre class="sourceCode r"><code class="sourceCode r">theta &lt;- <span class="kw">c</span>(<span class="dt">r =</span> <span class="fl">0.1</span>, <span class="dt">K =</span> <span class="dv">1</span>, <span class="dt">sigma =</span> <span class="fl">0.1</span>, <span class="dt">tau =</span> <span class="fl">0.1</span>, <span class="dt">X.0 =</span> <span class="dv">1</span>)</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">gompertz &lt;- <span class="kw">simulate</span>(gompertz, <span class="dt">params =</span> theta)
+<span class="kw">plot</span>(gompertz, <span class="dt">variables =</span> <span class="st">&quot;Y&quot;</span>)</code></pre>
+<div class="figure">
+<img src="http://farm9.staticflickr.com/8012/7168130004_62bc33148d_o.png" alt="plot of chunk simulate" /><p class="caption">plot of chunk simulate</p>
+</div>
+<p>Likelihood using a particle filter (sequential Monte Carlo) requires the measurement density (but not the process density).</p>
+<pre class="sourceCode r"><code class="sourceCode r">gompertz.meas.dens &lt;- function(y, x, t, params, log, ...) {
+    tau &lt;- params[<span class="st">&quot;tau&quot;</span>]
+    ## state at time t:
+    X &lt;- x[<span class="st">&quot;X&quot;</span>]
+    ## observation at time t:
+    Y &lt;- y[<span class="st">&quot;Y&quot;</span>]
+    ## compute the likelihood of Y|X,tau
+    <span class="kw">dlnorm</span>(<span class="dt">x =</span> Y, <span class="dt">meanlog =</span> <span class="kw">log</span>(X), <span class="dt">sdlog =</span> tau, <span class="dt">log =</span> log)
+}</code></pre>
+<p>Stick the new function into our container:</p>
+<pre class="sourceCode r"><code class="sourceCode r">gompertz &lt;- <span class="kw">pomp</span>(gompertz, <span class="dt">dmeasure =</span> gompertz.meas.dens)</code></pre>
+<p>Then we get a point estimate of the likelihood,</p>
+<pre class="sourceCode r"><code class="sourceCode r">pf &lt;- <span class="kw">pfilter</span>(gompertz, <span class="dt">params =</span> theta, <span class="dt">Np =</span> <span class="dv">1000</span>)
+<span class="kw">logLik</span>(pf)</code></pre>
+<pre><code>[1] 49.29</code></pre>
+<h3 id="iterated-filtering">Iterated filtering</h3>
+<p>We will do this in the transformed variable space, so we add our transformation method to the container:</p>
+<pre class="sourceCode r"><code class="sourceCode r">gompertz &lt;- <span class="kw">pomp</span>(gompertz, <span class="dt">parameter.transform =</span> function(params, 
+    ...) {
+    <span class="kw">exp</span>(params)
+}, <span class="dt">parameter.inv.transform =</span> function(params, ...) {
+    <span class="kw">log</span>(params)
+})</code></pre>
+<p>Now we’re ready for an iterated-filtering run. This is gonna be slow, so let’s set up a parallel architecture first:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">require</span>(snowfall)
+<span class="kw">sfInit</span>(<span class="dt">parallel =</span> <span class="ot">TRUE</span>, <span class="dt">cpu =</span> <span class="dv">10</span>)</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">rep &lt;- function(dummy_index) {
+    estpars &lt;- <span class="kw">c</span>(<span class="st">&quot;r&quot;</span>, <span class="st">&quot;sigma&quot;</span>, <span class="st">&quot;tau&quot;</span>)
+    theta.guess &lt;- <span class="kw">coef</span>(gompertz)
+    theta.guess[estpars] &lt;- <span class="kw">rlnorm</span>(<span class="dt">n =</span> <span class="kw">length</span>(estpars), <span class="dt">meanlog =</span> <span class="kw">log</span>(theta.guess[estpars]), 
+        <span class="dt">sdlog =</span> <span class="dv">1</span>)
+    <span class="kw">mif</span>(gompertz, <span class="dt">Nmif =</span> <span class="dv">100</span>, <span class="dt">start =</span> theta.guess, <span class="dt">transform =</span> <span class="ot">TRUE</span>, <span class="dt">pars =</span> estpars, 
+        <span class="dt">rw.sd =</span> <span class="kw">c</span>(<span class="dt">r =</span> <span class="fl">0.02</span>, <span class="dt">sigma =</span> <span class="fl">0.02</span>, <span class="dt">tau =</span> <span class="fl">0.05</span>), <span class="dt">Np =</span> <span class="dv">2000</span>, <span class="dt">var.factor =</span> <span class="dv">4</span>, 
+        <span class="dt">ic.lag =</span> <span class="dv">10</span>, <span class="dt">cooling.factor =</span> <span class="fl">0.999</span>, <span class="dt">max.fail =</span> <span class="dv">10</span>)
+}
+<span class="kw">sfExportAll</span>()
+<span class="kw">system.time</span>(mf &lt;- <span class="kw">sfSapply</span>(<span class="dv">1</span>:<span class="dv">10</span>, rep))</code></pre>
+<pre><code>   user  system elapsed 
+   0.02    0.00 1037.39 </code></pre>
+<p>Average parameter estimates (compare to theta)</p>
+<pre class="sourceCode r"><code class="sourceCode r">theta.mif &lt;- <span class="kw">apply</span>(<span class="kw">sapply</span>(mf, coef), <span class="dv">1</span>, mean)
+theta.mif</code></pre>
+<pre><code>      r       K   sigma     tau     X.0 
+0.04385 1.00000 0.09647 0.10495 1.00000 </code></pre>
+<p>Evaluating the log-likelihoods at the convergent parameters requires the particle filter. This line applies the particle filter to each of the parameter estimates</p>
+<p><code>r loglik.mif &lt;- replicate(n = 10, logLik(pfilter(mf[[1]], params = theta.mif,      Np = 10000))) bl &lt;- mean(loglik.mif) loglik.mif.est &lt;- bl + log(mean(exp(loglik.mif - bl))) loglik.mif.se &lt;- sd(exp(loglik.mif - bl))/exp(loglik.mif.est - bl) c(est = loglik.mif.est, se = loglik.mif.se)</code> <code>est       se  51.45397  0.09316</code></p>
+<p>“True” uses the original model and coefficients rather than the estimated one, but still approximates the log.likelihood using particle filtering</p>
+<pre class="sourceCode r"><code class="sourceCode r">loglik.true &lt;- <span class="kw">replicate</span>(<span class="dt">n =</span> <span class="dv">10</span>, <span class="kw">logLik</span>(<span class="kw">pfilter</span>(gompertz, <span class="dt">params =</span> <span class="kw">coef</span>(gompertz), 
+    <span class="dt">Np =</span> <span class="dv">10000</span>)))
+loglik.true.est &lt;- bl + <span class="kw">log</span>(<span class="kw">mean</span>(<span class="kw">exp</span>(loglik.true - bl)))
+loglik.true.se &lt;- <span class="kw">sd</span>(<span class="kw">exp</span>(loglik.true - bl))/<span class="kw">exp</span>(loglik.true.est - 
+    bl)
+<span class="kw">c</span>(<span class="dt">est =</span> loglik.true.est, <span class="dt">se =</span> loglik.true.se)</code></pre>
+<pre><code>    est      se 
+50.0128  0.1062 </code></pre>
+        </div>
+
+
+        <!-- Custom sidebar -->      
+        <div class="span4">
+          <div class="sidebar">
+            <aside prefix="dc: http://purl.org/dc/terms/ og:http://ogp.me/ns/article#">
+<i class="icon-calendar"></i>
+<time datetime="2012-05-09T00:00:00-07:00" 
+      property="dc:created">09 May 2012</time>.
+<br />
+          
+            <p><a class="btn btn-mini" rel="prev" href='/2012/05/08/notes.html'><i class="icon-chevron-left"></i> prev</a>
+          
+          
+          <a class="btn btn-mini" rel="next" href='/2012/05/10/notes.html'>next <i class="icon-chevron-right"></i></a></p>
+          
+
+
+<br />
+
+
+<p> <a class="btn btn-mini" href="https://github.com/cboettig/labnotebook/commits/master/_posts/2012-05-09-notes.md"><i class="icon-time"></i> history</a></p>
+<br />
+Posted in 
+  <a rel="tag" class="category" href="/categories.html#seminar"><span property="dc:subject og:section">seminar</span></a>
+  
+
+
+
+<br />
+tags: 
+  <a rel="tag" class="tag" href="/tags.html#algorithms">#<span property="og:tag http://schema.org/BlogPosting/keywords">algorithms</span></a>
+  
+
+
+
+</aside>
+
+         </div>
+       </div>
+
+      </div>
+      <!-- Disqus Comments -->
+      <div class="row disqus">
+        <div class="span8">          
+            <div id="disqus_thread"></div>
+            <script type="text/javascript">
+                var disqus_shortname = 'cboettig'; // required: replace example with your forum shortname
+                /* * * DON'T EDIT BELOW THIS LINE * * */
+                (function() {
+                    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                    dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        </div>
+      </div>
+
+
+
+</article>
+<footer class="footer">
+  <form style="font-size:10px">
+    <div class="pull-right">
+      <span rel="tooltip" title="switch to dark theme">
+        <a onclick="switch_style('dark'); return false;" name="theme" value="dark" id="dark" class="btn btn-mini"><i class="icon-adjust"></i></a> 
+      </span>
+      <span rel="tooltip" title="switch to light theme">
+        <a onclick="switch_style('light');return false;" name="theme" value="light" id="light" class="btn btn-mini"><i class="icon-certificate"></i></a> 
+      </span>
+    </div>
+  </form>
+          <div class="row">
+            <div class="span4 socialicons" style="font-size:20px" vocab="http://xmlns.com/foaf/0.1/" typeof="Person" resource="#me">
+              <span rel="tooltip" title="email me">
+                <a property="account" href="mailto:cboettig@gmail.com" onclick="recordOutboundLink(this, 'Outbound Links', 'email'); return false;"><i class="icon-envelope-alt"></i></a>
+              </span>
+              <span rel="tooltip" title="follow me on twitter (reading, discussing)">
+                <a property="account" href="https://twitter.com/cboettig" onclick="recordOutboundLink(this, 'Outbound Links', 'Twitter'); return false;"><i class="icon-twitter"></i></a> 
+              </span>
+              <!--              <a property="account" href="https://plus.google.com/" onclick="recordOutboundLink(this, 'Outbound Links', 'GPlus'); return false;"><i class="icon-google-plus"></i></a> -->
+              <span rel="tooltip" title="follow me on Github (code, research)">
+                <a property="account" href="https://github.com/cboettig" onclick="recordOutboundLink(this, 'Outbound Links', 'Github'); return false;"><i class="icon-github" alt="github"></i></a> 
+              </span>  
+              <!--              <a property="account" href="http://www.mendeley.com/profiles/carl-boettiger" onclick="recordOutboundLink(this, 'Outbound Links', 'Mendeley'); return false;"><img src="/assets/img/icon-mendeley.png" alt="mendeley" /></a>  -->
+              <span rel="tooltip" title="subscribe to RSS feeds for my open lab notebook">
+                <a href="/atom.xml" onclick="recordOutboundLink(this, 'Outbound Links', 'RSS'); return false;"><i class="icon-rss" ></i></a>
+              </span>
+            </div>
+            <div class="span2" style="text-align:center">
+              <span rel="tooltip" 
+                    title="An Open Notebook Science (ONS) project claim: Entry provides all content (AC) immediately (I) or without significant delay.  See link for details"><a rel="license" href="http://onsclaims.wikispaces.com/" 
+                onclick="recordOutboundLink(this, 'Outbound Links', 'ONS_claim'); return false;" 
+                ><img src="http://onsclaims.wikispaces.com/file/view/ons-aci2-icon.png" alt="ONS" /></a>
+            </span>
+            </div>
+            <div class="span4">
+              <a property="http://creativecommons.org/ns#license" href="http://creativecommons.org/publicdomain/zero/1.0/" onclick="recordOutboundLink(this, 'Outbound Links', 'CC0'); return false;"><img src="http://i.creativecommons.org/l/zero/1.0/88x31.png" alt="CC0" style="float:right" /></a> 
+            </div>
+        </div>
+      </footer>
+    </div><!-- /container -->
+    
+        <!-- Le javascript
+    ================================================== -->
+
+    <!-- Placed at the end of the document so the pages load faster -->
+    <!-- JQuery, used on a few pages -->
+    <script type="text/javascript" src="http://www.carlboettiger.info/assets/js/jquery.js"></script>
+    <!-- Equations using MathJax -->
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config"> MathJax.Hub.Config({ TeX: { equationNumbers: {autoNumber: "all"} } });       </script>
+    <!-- Twitter Bootstrap Javascript -->
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-transition.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-collapse.js"></script> <!-- for collapsing navbar-->
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-tooltip.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-alert.js"></script>
+
+    <script type="text/javascript">
+      $(document).ready(function (){
+        $("[rel=tooltip]").tooltip();
+      });
+    </script>
+
+    <!-- Unused Twitter Bootstrap Javascript 
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-dropdown.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/google-code-prettify/prettify.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-modal.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-scrollspy.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-tab.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-popover.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-button.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-carousel.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-typeahead.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/application.js"></script>
+    -->
+
+
+      <script type="text/javascript">
+          var _gaq = _gaq || [];
+          _gaq.push(['_setAccount', 'UA-18401403-1']);
+          _gaq.push(['_trackPageview']);
+          (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+          })();
+  </script>
+
+
+
+<script type="text/javascript">
+function recordOutboundLink(link, category, action) {
+  try {
+    var pageTracker=_gat._getTracker("UA-18401403-1");
+    pageTracker._trackEvent(category, action);
+    setTimeout('document.location = "' + link.href + '"', 100)
+  }catch(err){}
+}
+</script>
+
+
+        
+<!-- Start Open Web Analytics Tracker -->
+<script type="text/javascript">
+//<![CDATA[
+var owa_baseUrl = 'http://www.carlboettiger.info/openwebanalytics/';
+var owa_cmds = owa_cmds || [];
+owa_cmds.push(['setSiteId', '2886faa411a4139a6c6f97b5a1f38697']);
+owa_cmds.push(['trackPageView']);
+owa_cmds.push(['trackClicks']);
+owa_cmds.push(['trackDomStream']);
+
+(function() {
+  var _owa = document.createElement('script'); _owa.type = 'text/javascript'; _owa.async = true;
+  owa_baseUrl = ('https:' == document.location.protocol ? window.owa_baseSecUrl || owa_baseUrl.replace(/http:/, 'https:') : owa_baseUrl );
+  _owa.src = owa_baseUrl + 'modules/base/js/owa.tracker-combined-min.js';
+  var _owa_s = document.getElementsByTagName('script')[0]; _owa_s.parentNode.insertBefore(_owa, _owa_s);
+}());
+//]]>
+</script>
+<!-- End Open Web Analytics Code -->
+        
+
+  </body>
+</html>
+

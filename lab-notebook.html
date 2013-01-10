@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head prefix="dc: http://purl.org/dc/terms/ og: http://ogp.me/ns#">
+    <meta charset="utf-8" /> 
+    <title>Lab Notebook</title>
+    <meta name="author" content="Carl Boettiger" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+
+  
+
+
+<!-- HTML5 metadata -->
+<meta name="keywords" content="Science, Ecology, Evolution, Open Science, Reproducible Research" />
+<meta name="description" content="My open lab notebook- research in theoretical ecology and evolution" />
+<!-- RDFa Metadata (in DublinCore) -->
+<meta property="dc:title" content="Lab Notebook" />
+<meta property="dc:creator" content="Carl Boettiger" />
+<meta property="dc:date" content="2013-01-10T12:36:56-08:00" />
+<meta property="dc:type" content="Lab Notebook Entry" /> <!-- article? entry?-->
+<meta property="dc:format" content="text/html" />
+<meta property="dc:language" content="en" />
+<meta property="dc:source" content="Lab Notebook" />
+<!-- RDFa Metadata (in OpenGraph) -->
+<meta property="og:title" content="Lab Notebook" />
+<meta property="og:author" content="http://www.carlboettiger.info/index.html" />  <!-- Should be Liquid? URI? -->
+<meta property="http://ogp.me/ns/profile#first_name" content="Carl"/>
+<meta property="http://ogp.me/ns/profile#last_name" content="Boettiger"/>
+<meta property="http://ogp.me/ns/article#published_time" content="2013-01-10T12:36:56-08:00" />
+<meta property="og:site_name" content="Lab Notebook" /> <!-- Same as dc:source? -->
+<meta property="og:url" content="http://www.carlboettiger.info/lab-notebook.html" />
+<meta property="og:type" content="article" />
+<!-- Google Scholar Metadata -->
+<meta name="resource_type" content="Lab Notebook"/>
+<meta name="citation_journal_title" content="Lab Notebook"/>
+<meta name="citation_publication_date" content="10 Jan 2013"/>
+<meta name="citation_date" content="10 Jan 2013"/>
+<meta name="citation_author" content="Carl Boettiger"/>
+<meta name="citation_title" content="Lab Notebook"/>
+
+    <!-- CSS Stylesheets (toggled with javascript) -->
+    <link href="/assets/css/light.css" rel="stylesheet"
+          type="text/css" id="stl" title="light" />
+    <link href="/assets/css/dark.css" rel="alternate stylesheet" 
+          type="text/css" title="dark" />
+    <!-- Javascript needed for theme toggle, load immediately -->
+    <script type="text/javascript" src="/assets/js/switch-css.js"></script>
+    <script type="text/javascript">
+      set_style_from_cookie(); 
+    </script>
+  </head>
+  <body> 
+  
+<!-- Navbar  ================================================== -->
+<div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+      <a class="brand" href="/README.html"><i style="float:right;" class="icon-info-sign" alt="info" rel="tooltip" title="Credits and technical information about this site" data-placement="bottom"></i></a>
+      <div class="nav-collapse">
+        <ul class="nav">
+          <li>
+          <a href="/index.html">Home</a></li>
+
+          <li>
+          <a href="/vita.html">Vita</a></li>
+
+          <li>
+          <a href="/research.html">Research</a></li>
+
+          <li>
+          <a href="/teaching.html">Teaching</a></li>
+
+          <li>
+          <a href="/community.html">Community</a></li>
+
+          <li class="active">
+          <a href="/lab-notebook.html">Lab Notebook</a></li>
+
+        </ul>
+      </div><!--/.nav-collapse -->
+      <form class="navbar-search pull-right" method="get" action="http://google.com/search">
+         <p>
+         <input type="hidden" name="q" value="site:carlboettiger.info" />
+         <input type="text" class="search-query" name="q" />
+         <button class="btn btn-mini" type="submit"><i class="icon-search"></i></button> 
+         </p>
+       </form>
+     </div> <!-- /container -->
+   </div> <!-- /navbar-inner -->
+ </div> <!-- /navbar -->
+
+
+
+  <div class="container"> 
+    <article> <!-- includes header and entry, but not footer -->
+    <header class="jumbotron subhead">
+      <h1 class="entry-title">Lab Notebook</h1>
+      <p>(<a href="http://www.carlboettiger.info/2012/09/28/Welcome-to-my-lab-notebook.html">Introduction</a>)</p>
+    </header>
+
+
+
+
+    <div class="row">
+      <div class="span12">
+        <div class="sidebar" style="font-size:0.85em">
+          <div class="span3">
+            <h4>  <a property="account" href="https://github.com/cboettig" onclick="recordOutboundLink(this, 'Outbound Links', 'Github'); return false;"><i class="icon-github" alt="github"></i> Coding </a></h4> 
+            <ul><li>cboettig opened issue cboettig/labnotebook#52: <em>Mendeley plugin sometimes gets link to paper incorrect</em> <a href="https://github.com/cboettig/labnotebook/issues/52">08:32 2013/01/10</a></li><li>cboettig pushed to master at cboettig/labnotebook: <em>editing research page #47, minor formating</em> <a href="https://github.com/cboettig/labnotebook/compare/c6cc73423a...539b557aff">08:25 2013/01/10</a></li><li>cboettig pushed to testing at cboettig/labnotebook: <em>working or research page</em> <a href="https://github.com/cboettig/labnotebook/compare/dc56dfc12b...c41a885a9e">07:36 2013/01/10</a></li><li>cboettig closed issue cboettig/pdg_control#43: <em>Run policy-costs table with latest version of multiple uncertainty algorithm</em> <a href="https://github.com/cboettig/pdg_control/issues/43">07:12 2013/01/10</a></li></ul>
+          </div>
+          <div class="span3">
+            <h4> <a property="account" href="https://twitter.com/cboettig" onclick="recordOutboundLink(this, 'Outbound Links', 'Twitter'); return false;"><i class="icon-twitter"></i> Discussing </a></h4> 
+            <ul><li><p>RT @ctitusbrown: Openness and online rep recognized in my grant reviews!? (blog post) <a href="http://t.co/2e2dsrKn">http://t.co/2e2dsrKn</a></p>
+ <a href="http://twitter.com/cboettig/statuses/289464028986748928">12:09 2013/01/10</a> </li><li><p>App-lifying USGS Earth Science Data <a href="http://t.co/9b7PKCfr">http://t.co/9b7PKCfr</a> via @ChallengePost</p>
+ <a href="http://twitter.com/cboettig/statuses/289115057898549248">01:02 2013/01/09</a> </li><li><p>RT @_inundata: 1/40 scholars active on Twitter
+&gt;2 million on Mendeley, 25K blog entries been about peer-reviewed research papers. wow ...</p>
+ <a href="http://twitter.com/cboettig/statuses/289105999397261313">12:26 2013/01/09</a> </li><li><p>RT @noamross: A Nature Comment by @cboettig and Alan Hastings: &#39;Generic&#39; warning signals of tipping points are unlikely to exist:  http: ...</p>
+ <a href="http://twitter.com/cboettig/statuses/289105222343741441">12:23 2013/01/09</a> </li></ul>
+          </div> 
+          <div class="span3">
+            <h4> <a href="http://www.mendeley.com/profiles/carl-boettiger" onClick="recordOutboundLink(this, 'Outbound Links', 'Mendeley'); return false;"><i class="icon-book"></i> Reading </a></h4> 
+            <ul><li>A simple direct method for finding persistence times of populations and application to conservation problems: Proceedings of the National Academy of … (1993). M Mangel, C Tier et al. <a href="/catalog/simple-direct-method-finding-persistence-times-populations-application-conservation-problems/">05:58 2013/01/10</a></li><li>Superspreading and the effect of individual variation on disease emergence.: Nature (2005). Volume: 438, Issue: 7066. Pages: 355-9. J O Lloyd-Smith, S J Schreiber, P E Kopp, W M Getz et al. <a href="/catalog/superspreading-effect-individual-variation-disease-emergence-15/">05:58 2013/01/10</a></li><li>Environmental Variation and the Persistence of Small Populations: Ecological Applications (1992). Volume: 2, Issue: 1. Pages: 18. Peter B. Stacey, Mark Taper et al. <a href="/research/environmental-variation-persistence-small-populations-1/">05:58 2013/01/10</a></li></ul>
+          </div> 
+         </div>
+      </div> 
+    </div>
+
+    <div class="row">
+      <div class="span12">
+         <hr>
+         <div class="sidebar">
+            <div class="span3">
+               <h4> <a href="http://www.carlboettiger.info/atom.xml"
+               onClick="recordOutboundLink(this,
+               'Outbound Links', 'RSS'); return false;"
+               ><i class="icon-rss" ></i> Entries</a></h4>
+            </div>
+          </div>
+          <div class="span9"> <br/> </div>
+
+          <div class="postpreview">
+            <div class="row">
+              
+                <div class="span3">
+                  <header><h4><a href="http://www.carlboettiger.info/2012/12/30/learning-jekyll.html">Learning Jekyll</a></h4></header>
+<p><span></span></p>
+<p style="text-align:right; font-style:italic"> 30 Dec 2012</p>
+<article>
+Some quick thoughts on learning Jekyll
+After recieving a few queries on how to get started with Jekyll I thought I’d jot down my own opinions here. Of course there is already rather good documentation for the software and plenty of blogs providing tutorials. While no doubt more than adequate, I have more opinions on how to get started actually learning what’s going on than I could easily fit in... 
+</article> <!--Should we close article on excerpt?  -->
+<!-- note that post.content is pulled in with html formatting --> 
+<!--    </ul> </ol> </code> </strong> </em> </pre>  force close any open tags? --> 
+<p> <a href="http://www.carlboettiger.info/2012/12/30/learning-jekyll.html"> <em>Read more</em></a> </p>
+<br />
+<br />
+
+
+                </div>
+              
+                <div class="span3">
+                  <header><h4><a href="http://www.carlboettiger.info/2012/12/27/notes.html">Notes</a></h4></header>
+<p><span></span></p>
+<p style="text-align:right; font-style:italic"> 27 Dec 2012</p>
+<article>
+Nonparametric Bayes
+Continuing sensitivity analysis
+The commit log to sensitivity.md and earlier to myer-exploration.md (now depricated) capture the summary figures for replicate runs of the observation data, with commits corresponding to various parameter configurations, etc. Here is a nice collection of replicates from sensitivity.md
+
+Harvest during observations Tweaked calculation of observa... 
+</article> <!--Should we close article on excerpt?  -->
+<!-- note that post.content is pulled in with html formatting --> 
+<!--    </ul> </ol> </code> </strong> </em> </pre>  force close any open tags? --> 
+<p> <a href="http://www.carlboettiger.info/2012/12/27/notes.html"> <em>Read more</em></a> </p>
+<br />
+<br />
+
+
+                </div>
+              
+                <div class="span3">
+                  <header><h4><a href="http://www.carlboettiger.info/2012/12/23/notes.html">Notes</a></h4></header>
+<p><span></span></p>
+<p style="text-align:right; font-style:italic"> 23 Dec 2012</p>
+<article>
+
+added generation of observational data under varying harvest conditions (issue #19)
+added MLE fit based on the data-generating model (issue #20)
+GP plot with and without nugget variance (issue #17)
+Run longer simulations under policy such that sustainable profits clearly beat out collapsing the fishery (part of issue #22)
+ 
+</article> <!--Should we close article on excerpt?  -->
+<!-- note that post.content is pulled in with html formatting --> 
+<!--    </ul> </ol> </code> </strong> </em> </pre>  force close any open tags? --> 
+<p> <a href="http://www.carlboettiger.info/2012/12/23/notes.html"> <em>Read more</em></a> </p>
+<br />
+<br />
+
+
+                </div>
+              
+            </div>
+            <div class="row">
+              
+                <div class="span3">
+                  <header><h4><a href="http://www.carlboettiger.info/2012/12/21/progress-summary.html">Progress Summary</a></h4></header>
+<p><span></span></p>
+<p style="text-align:right; font-style:italic"> 21 Dec 2012</p>
+<article>
+Progress mid-October through mid-December
+80% Time: nonparametric-bayes
+The bulk of my time has been spent becoming familiar with the literature on Gaussian Processes and their numerical implementation. I have written my own Gaussian process code from scratch to convince myself of my understanding of the methodology, and explored some of the related numerical issues addressing computational spe... 
+</article> <!--Should we close article on excerpt?  -->
+<!-- note that post.content is pulled in with html formatting --> 
+<!--    </ul> </ol> </code> </strong> </em> </pre>  force close any open tags? --> 
+<p> <a href="http://www.carlboettiger.info/2012/12/21/progress-summary.html"> <em>Read more</em></a> </p>
+<br />
+<br />
+
+
+                </div>
+              
+                <div class="span3">
+                  <header><h4><a href="http://www.carlboettiger.info/2012/12/20/results-comparing-gp-to-parametric.html">Results Comparing Gp To Parametric</a></h4></header>
+<p><span></span></p>
+<p style="text-align:right; font-style:italic"> 20 Dec 2012</p>
+<article>
+Comparison of the Gaussian process inference to the true optimum and a parametric estimate.
+
+
+
+Comparison across 100 simulations under the policies inferred from each approach show the nearly optimal performance of the GP and the tragic crashes introduced by the parametric management.
+
+
+
+Sensitivity analysis
+Working through an exploratory sensitivity analysis to see GP performance over differen... 
+</article> <!--Should we close article on excerpt?  -->
+<!-- note that post.content is pulled in with html formatting --> 
+<!--    </ul> </ol> </code> </strong> </em> </pre>  force close any open tags? --> 
+<p> <a href="http://www.carlboettiger.info/2012/12/20/results-comparing-gp-to-parametric.html"> <em>Read more</em></a> </p>
+<br />
+<br />
+
+
+                </div>
+              
+                <div class="span3">
+                  <header><h4><a href="http://www.carlboettiger.info/2012/12/19/exploring-gp-model-space.html">Exploring Gp Model Space</a></h4></header>
+<p><span></span></p>
+<p style="text-align:right; font-style:italic"> 19 Dec 2012</p>
+<article>
+Trying to think about a more systematic way to go about varying the parameters: the underlying parametric model has 3 parameters for the stock-recruitment curve’s deterministic skeleton, plus growth noise. (My first exploratory phase has been just to try different things. See my various tweaks in the history log Clearly time to be more systematic about both running and visualizing the various c... 
+</article> <!--Should we close article on excerpt?  -->
+<!-- note that post.content is pulled in with html formatting --> 
+<!--    </ul> </ol> </code> </strong> </em> </pre>  force close any open tags? --> 
+<p> <a href="http://www.carlboettiger.info/2012/12/19/exploring-gp-model-space.html"> <em>Read more</em></a> </p>
+<br />
+<br />
+
+
+                </div>
+              
+            </div>
+            <div class="row">
+              
+                <div class="span3">
+                  <header><h4><a href="http://www.carlboettiger.info/2012/12/17/random_ews_example.html">Random_ews_example</a></h4></header>
+<p><span></span></p>
+<p style="text-align:right; font-style:italic"> 17 Dec 2012</p>
+<article>
+ENSO EWS
+Let’s just see what happens with the MEI data for PDO:
+dat &lt;- read.table(&quot;http://carlboettiger.info/assets/data/mei.csv&quot;, header=TRUE)
+print(xtable::xtable(head(dat)), type=&quot;html&quot;)
+
+
+
+     
+YEAR
+  
+DECJAN
+  
+JANFEB
+  
+FEBMAR
+  
+MARAPR
+  
+APRMAY
+  
+MAYJUN
+  
+JUNJUL
+  
+JULAUG
+  
+AUGSEP
+  
+SEPOCT
+  
+OCTNOV
+  
+NOVDEC
+  
+    
+1
+  
+1950
+  
+-1.02
+  
+-1.15
+  
+-1.29
+  
+-1... 
+</article> <!--Should we close article on excerpt?  -->
+<!-- note that post.content is pulled in with html formatting --> 
+<!--    </ul> </ol> </code> </strong> </em> </pre>  force close any open tags? --> 
+<p> <a href="http://www.carlboettiger.info/2012/12/17/random_ews_example.html"> <em>Read more</em></a> </p>
+<br />
+<br />
+
+
+                </div>
+              
+                <div class="span3">
+                  <header><h4><a href="http://www.carlboettiger.info/2012/12/15/nonparametric-bayes-comparisons.html">Nonparametric Bayes Comparisons</a></h4></header>
+<p><span></span></p>
+<p style="text-align:right; font-style:italic"> 15 Dec 2012</p>
+<article>
+Notes on structure of examples
+Externalized code so that different example scripts call identical commands for fitting and plotting to avoid duplication of code. Example scripts tend to be pretty text poor at the moment, would probably benefit by better descriptions in the markdown. May still involve redundant and potentially out of date descriptions though.
+Currently, externalized code for GP ... 
+</article> <!--Should we close article on excerpt?  -->
+<!-- note that post.content is pulled in with html formatting --> 
+<!--    </ul> </ol> </code> </strong> </em> </pre>  force close any open tags? --> 
+<p> <a href="http://www.carlboettiger.info/2012/12/15/nonparametric-bayes-comparisons.html"> <em>Read more</em></a> </p>
+<br />
+<br />
+
+
+                </div>
+              
+                <div class="span3">
+                  <header><h4><a href="http://www.carlboettiger.info/2012/12/11/nonparametric-bayes-notes.html">Nonparametric Bayes Notes</a></h4></header>
+<p><span></span></p>
+<p style="text-align:right; font-style:italic"> 11 Dec 2012</p>
+<article>
+
+Code gp_transition_matrix for generic multi-dimensional case
+
+Understanding Gaussian Process performance
+If the estimated recruitment dynamics correspond to population dynamics that are non-persistent (might call this non self-sustaining, but in a rather stricter sense than when Reed (1979) introduced that term), and if no reward is offered at the terminal time point for a standing stock (zero... 
+</article> <!--Should we close article on excerpt?  -->
+<!-- note that post.content is pulled in with html formatting --> 
+<!--    </ul> </ol> </code> </strong> </em> </pre>  force close any open tags? --> 
+<p> <a href="http://www.carlboettiger.info/2012/12/11/nonparametric-bayes-notes.html"> <em>Read more</em></a> </p>
+<br />
+<br />
+
+
+                </div>
+              
+            </div>
+         </div> <!-- end postpreview -->
+       </div> <!-- end span12-->
+    </div> <!--end row -->
+
+    <div class="row">
+      <div class="span9">
+        <div class="socialicons">
+          <p> <a href="/archives.html"><i class="icon-th"></i> Archives by date</a></p> 
+          <p> <a href="/categories.html"><i class="icon-list"></i> All entries by category</a> </p>
+          <p> <a href="/tags.html"><i class="icon-tags"></i> All entries by tag</a> </p>
+        </div>
+      </div> <!--end span12 -->
+    </div> <!--end row -->
+
+</article>
+<footer class="footer">
+  <form style="font-size:10px">
+    <div class="pull-right">
+      <span rel="tooltip" title="switch to dark theme">
+        <a onclick="switch_style('dark'); return false;" name="theme" value="dark" id="dark" class="btn btn-mini"><i class="icon-adjust"></i></a> 
+      </span>
+      <span rel="tooltip" title="switch to light theme">
+        <a onclick="switch_style('light');return false;" name="theme" value="light" id="light" class="btn btn-mini"><i class="icon-certificate"></i></a> 
+      </span>
+    </div>
+  </form>
+          <div class="row">
+            <div class="span4 socialicons" style="font-size:20px" vocab="http://xmlns.com/foaf/0.1/" typeof="Person" resource="#me">
+              <span rel="tooltip" title="email me">
+                <a property="account" href="mailto:cboettig@gmail.com" onclick="recordOutboundLink(this, 'Outbound Links', 'email'); return false;"><i class="icon-envelope-alt"></i></a>
+              </span>
+              <span rel="tooltip" title="follow me on twitter (reading, discussing)">
+                <a property="account" href="https://twitter.com/cboettig" onclick="recordOutboundLink(this, 'Outbound Links', 'Twitter'); return false;"><i class="icon-twitter"></i></a> 
+              </span>
+              <!--              <a property="account" href="https://plus.google.com/" onclick="recordOutboundLink(this, 'Outbound Links', 'GPlus'); return false;"><i class="icon-google-plus"></i></a> -->
+              <span rel="tooltip" title="follow me on Github (code, research)">
+                <a property="account" href="https://github.com/cboettig" onclick="recordOutboundLink(this, 'Outbound Links', 'Github'); return false;"><i class="icon-github" alt="github"></i></a> 
+              </span>  
+              <!--              <a property="account" href="http://www.mendeley.com/profiles/carl-boettiger" onclick="recordOutboundLink(this, 'Outbound Links', 'Mendeley'); return false;"><img src="/assets/img/icon-mendeley.png" alt="mendeley" /></a>  -->
+              <span rel="tooltip" title="subscribe to RSS feeds for my open lab notebook">
+                <a href="/atom.xml" onclick="recordOutboundLink(this, 'Outbound Links', 'RSS'); return false;"><i class="icon-rss" ></i></a>
+              </span>
+            </div>
+            <div class="span2" style="text-align:center">
+              <span rel="tooltip" 
+                    title="An Open Notebook Science (ONS) project claim: Entry provides all content (AC) immediately (I) or without significant delay.  See link for details"><a rel="license" href="http://onsclaims.wikispaces.com/" 
+                onclick="recordOutboundLink(this, 'Outbound Links', 'ONS_claim'); return false;" 
+                ><img src="http://onsclaims.wikispaces.com/file/view/ons-aci2-icon.png" alt="ONS" /></a>
+            </span>
+            </div>
+            <div class="span4">
+              <a property="http://creativecommons.org/ns#license" href="http://creativecommons.org/publicdomain/zero/1.0/" onclick="recordOutboundLink(this, 'Outbound Links', 'CC0'); return false;"><img src="http://i.creativecommons.org/l/zero/1.0/88x31.png" alt="CC0" style="float:right" /></a> 
+            </div>
+        </div>
+      </footer>
+    </div><!-- /container -->
+    
+        <!-- Le javascript
+    ================================================== -->
+
+    <!-- Placed at the end of the document so the pages load faster -->
+    <!-- JQuery, used on a few pages -->
+    <script type="text/javascript" src="http://www.carlboettiger.info/assets/js/jquery.js"></script>
+    <!-- Equations using MathJax -->
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config"> MathJax.Hub.Config({ TeX: { equationNumbers: {autoNumber: "all"} } });       </script>
+    <!-- Twitter Bootstrap Javascript -->
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-transition.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-collapse.js"></script> <!-- for collapsing navbar-->
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-tooltip.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-alert.js"></script>
+
+    <script type="text/javascript">
+      $(document).ready(function (){
+        $("[rel=tooltip]").tooltip();
+      });
+    </script>
+
+    <!-- Unused Twitter Bootstrap Javascript 
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-dropdown.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/google-code-prettify/prettify.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-modal.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-scrollspy.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-tab.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-popover.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-button.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-carousel.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-typeahead.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/application.js"></script>
+    -->
+
+
+      <script type="text/javascript">
+          var _gaq = _gaq || [];
+          _gaq.push(['_setAccount', 'UA-18401403-1']);
+          _gaq.push(['_trackPageview']);
+          (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+          })();
+  </script>
+
+
+
+<script type="text/javascript">
+function recordOutboundLink(link, category, action) {
+  try {
+    var pageTracker=_gat._getTracker("UA-18401403-1");
+    pageTracker._trackEvent(category, action);
+    setTimeout('document.location = "' + link.href + '"', 100)
+  }catch(err){}
+}
+</script>
+
+
+        
+<!-- Start Open Web Analytics Tracker -->
+<script type="text/javascript">
+//<![CDATA[
+var owa_baseUrl = 'http://www.carlboettiger.info/openwebanalytics/';
+var owa_cmds = owa_cmds || [];
+owa_cmds.push(['setSiteId', '2886faa411a4139a6c6f97b5a1f38697']);
+owa_cmds.push(['trackPageView']);
+owa_cmds.push(['trackClicks']);
+owa_cmds.push(['trackDomStream']);
+
+(function() {
+  var _owa = document.createElement('script'); _owa.type = 'text/javascript'; _owa.async = true;
+  owa_baseUrl = ('https:' == document.location.protocol ? window.owa_baseSecUrl || owa_baseUrl.replace(/http:/, 'https:') : owa_baseUrl );
+  _owa.src = owa_baseUrl + 'modules/base/js/owa.tracker-combined-min.js';
+  var _owa_s = document.getElementsByTagName('script')[0]; _owa_s.parentNode.insertBefore(_owa, _owa_s);
+}());
+//]]>
+</script>
+<!-- End Open Web Analytics Code -->
+        
+
+  </body>
+</html>
+
+

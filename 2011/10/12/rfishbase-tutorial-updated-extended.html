@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head prefix="dc: http://purl.org/dc/terms/ og: http://ogp.me/ns#">
+    <meta charset="utf-8" /> 
+    <title>rfishbase Tutorial - updated & extended</title>
+    <meta name="author" content="Carl Boettiger" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+
+  
+
+
+<!-- HTML5 metadata -->
+<meta name="keywords" content="Science, Ecology, Evolution, Open Science, Reproducible Research" />
+<meta name="description" content="My open lab notebook- research in theoretical ecology and evolution" />
+<!-- RDFa Metadata (in DublinCore) -->
+<meta property="dc:title" content="rfishbase Tutorial - updated & extended" />
+<meta property="dc:creator" content="Carl Boettiger" />
+<meta property="dc:date" content="2013-01-10T12:36:56-08:00" />
+<meta property="dc:type" content="Lab Notebook Entry" /> <!-- article? entry?-->
+<meta property="dc:format" content="text/html" />
+<meta property="dc:language" content="en" />
+<meta property="dc:source" content="Lab Notebook" />
+<!-- RDFa Metadata (in OpenGraph) -->
+<meta property="og:title" content="rfishbase Tutorial - updated & extended" />
+<meta property="og:author" content="http://www.carlboettiger.info/index.html" />  <!-- Should be Liquid? URI? -->
+<meta property="http://ogp.me/ns/profile#first_name" content="Carl"/>
+<meta property="http://ogp.me/ns/profile#last_name" content="Boettiger"/>
+<meta property="http://ogp.me/ns/article#published_time" content="2013-01-10T12:36:56-08:00" />
+<meta property="og:site_name" content="Lab Notebook" /> <!-- Same as dc:source? -->
+<meta property="og:url" content="http://www.carlboettiger.info/2011/10/12/rfishbase-tutorial-updated-extended.html" />
+<meta property="og:type" content="article" />
+<!-- Google Scholar Metadata -->
+<meta name="resource_type" content="Lab Notebook"/>
+<meta name="citation_journal_title" content="Lab Notebook"/>
+<meta name="citation_publication_date" content="10 Jan 2013"/>
+<meta name="citation_date" content="10 Jan 2013"/>
+<meta name="citation_author" content="Carl Boettiger"/>
+<meta name="citation_title" content="rfishbase Tutorial - updated & extended"/>
+
+    <!-- CSS Stylesheets (toggled with javascript) -->
+    <link href="/assets/css/light.css" rel="stylesheet"
+          type="text/css" id="stl" title="light" />
+    <link href="/assets/css/dark.css" rel="alternate stylesheet" 
+          type="text/css" title="dark" />
+    <!-- Javascript needed for theme toggle, load immediately -->
+    <script type="text/javascript" src="/assets/js/switch-css.js"></script>
+    <script type="text/javascript">
+      set_style_from_cookie(); 
+    </script>
+  </head>
+  <body> 
+  
+<!-- Navbar  ================================================== -->
+<div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+      <a class="brand" href="/README.html"><i style="float:right;" class="icon-info-sign" alt="info" rel="tooltip" title="Credits and technical information about this site" data-placement="bottom"></i></a>
+      <div class="nav-collapse">
+        <ul class="nav">
+          <li>
+          <a href="/index.html">Home</a></li>
+
+          <li>
+          <a href="/vita.html">Vita</a></li>
+
+          <li>
+          <a href="/research.html">Research</a></li>
+
+          <li>
+          <a href="/teaching.html">Teaching</a></li>
+
+          <li>
+          <a href="/community.html">Community</a></li>
+
+          <li>
+          <a href="/lab-notebook.html">Lab Notebook</a></li>
+
+        </ul>
+      </div><!--/.nav-collapse -->
+      <form class="navbar-search pull-right" method="get" action="http://google.com/search">
+         <p>
+         <input type="hidden" name="q" value="site:carlboettiger.info" />
+         <input type="text" class="search-query" name="q" />
+         <button class="btn btn-mini" type="submit"><i class="icon-search"></i></button> 
+         </p>
+       </form>
+     </div> <!-- /container -->
+   </div> <!-- /navbar-inner -->
+ </div> <!-- /navbar -->
+
+
+
+  <div class="container"> 
+    <article> <!-- includes header and entry, but not footer -->
+    <header class="jumbotron subhead">
+      <h1 class="entry-title">rfishbase Tutorial - updated & extended</h1>
+      <p></p>
+    </header>
+
+
+      <div class="row">
+        <div class="span7 offset1">
+          <p>Updated rfishbase package. Include querying for a list of scientific names and the addition of more quantitative traits, though the selection is still somewhat limited. Demo includes how to grab some data to match a phylogenetic tree, and some regular expression (grep) searches for feeding behavior.</p>
+<p><a href="https://github.com/cboettig/rfishbase">Source code</a></p>
+<p><a href="https://github.com/downloads/cboettig/rfishbase/rfishbase_0.0-4.zip">Windows binary also available</a>.</p>
+<pre class="sourceCode R"><code class="sourceCode r">
+<span class="co"># demo.R</span>
+<span class="kw">rm</span>(<span class="dt">list=</span><span class="kw">ls</span>())
+<span class="kw">require</span>(rfishbase)
+
+###### Grabbing, Loading &amp; Caching Fishbase Data ######
+
+## Download and parse data for first 40 ids (36 fish)
+<span class="co">#fish.data &lt;- getData(1:40)</span>
+
+## Or just load the cached copy of the full fishbase data:
+## Note that this loads the copy distributed with rfishbase.
+<span class="kw">data</span>(fishbase)
+
+## To get the most recent copy of fishbase, update the cache
+## and load that.  The update may take up to 24 hours.  
+<span class="co"># updateCache() </span>
+<span class="co"># loadCache(&quot;2011-10-12fishdata.Rdat&quot;)</span>
+
+
+###### Sample Analysis #########
+
+## Lets start by looking at the distribution of all age data available:
+yr &lt;- <span class="kw">getSize</span>(fish.data, <span class="st">&quot;age&quot;</span>)
+<span class="kw">hist</span>(yr, <span class="dt">breaks=</span><span class="dv">40</span>, <span class="dt">main=</span><span class="st">&quot;Age Distribution&quot;</span>, <span class="dt">xlab=</span><span class="st">&quot;age (years)&quot;</span>); 
+nfish &lt;- <span class="kw">length</span>(fish.data)
+
+
+<span class="co"># We can create partitions by taxon.  For instance, we get the index</span>
+<span class="co"># to all fish wrasses and parrotfish by searching for both families</span>
+<span class="co"># note the use of a &quot;regular expression&quot; to specify the OR command in the search</span>
+labrid &lt;- <span class="kw">familySearch</span>(<span class="st">&quot;(Labridae|Scaridae)&quot;</span>, fish.data)
+goby &lt;- <span class="kw">familySearch</span>(<span class="st">&quot;Gobiidae&quot;</span>, fish.data)
+
+
+## Let&#39;s see if there are more labrid species or goby speices on reefs:
+
+<span class="co"># get all the labrids that are reefs </span>
+labrid.reef &lt;- <span class="kw">habitatSearch</span>(<span class="st">&quot;reef&quot;</span>, fish.data[labrid])
+<span class="co"># How many species are reef labrids:</span>
+<span class="kw">sum</span>(labrid.reef) <span class="co"># same as: length(fish.data[labrid][labrid.reef])</span>
+<span class="co"># How many reef gobies:</span>
+<span class="kw">sum</span> (<span class="kw">habitatSearch</span>(<span class="st">&quot;reef&quot;</span>, fish.data[goby]) )
+
+
+<span class="co"># Let&#39;s plot the log length distribution of freshwater vs marine fish: </span>
+<span class="kw">hist</span>(<span class="kw">log</span>( <span class="kw">getSize</span> (fish.data[<span class="kw">habitatSearch</span>(<span class="st">&quot;freshwater&quot;</span>, fish.data)], <span class="st">&quot;length&quot;</span>)),
+         <span class="dt">col=</span><span class="kw">rgb</span>(<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,.<span class="dv">5</span>), <span class="dt">breaks=</span><span class="dv">40</span>, <span class="dt">freq=</span>F, <span class="dt">xlab=</span><span class="st">&quot;length&quot;</span>, <span class="dt">main=</span><span class="st">&quot;marine fish are bigger&quot;</span>)
+<span class="kw">hist</span>(<span class="kw">log</span>( <span class="kw">getSize</span> (fish.data[<span class="kw">habitatSearch</span>(<span class="st">&quot;marine&quot;</span>, fish.data)], <span class="st">&quot;length&quot;</span>)),
+          <span class="dt">col=</span><span class="kw">rgb</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,.<span class="dv">5</span>), <span class="dt">breaks=</span><span class="dv">40</span>, <span class="dt">add=</span>T, <span class="dt">freq=</span>F)
+
+<span class="co"># Note that we can also find anadromous fish:</span>
+anadromous &lt;-  <span class="kw">habitatSearch</span>(<span class="st">&quot;anadromous&quot;</span>, fish.data)
+
+
+
+<span class="co"># this is useful for phylogenetic comparative methods.  For instance, load the labrid tree:</span>
+<span class="kw">require</span>(ape)
+<span class="kw">data</span>(labridtree)
+
+<span class="co"># get the species names (&amp; remove underscores)</span>
+tree$tip.label&lt;-<span class="kw">gsub</span>(<span class="st">&quot;_&quot;</span>, <span class="st">&quot; &quot;</span>, tree$tip.label)
+tip.labels &lt;- tree$tip.label
+
+
+myfish &lt;- <span class="kw">findSpecies</span>(tip.labels, fish.data) 
+species.names &lt;- <span class="kw">sapply</span>(fish.data[myfish], function(x) x$ScientificName)
+
+<span class="co"># create a trait matrix of fin data</span>
+traits &lt;- <span class="kw">getQuantTraits</span>(fish.data[myfish])
+<span class="kw">rownames</span>(traits) &lt;- species.names
+depths &lt;- <span class="kw">getDepth</span>(fish.data[myfish])
+<span class="kw">rownames</span>(depths) &lt;- species.names
+
+size &lt;- <span class="kw">getSize</span>(fish.data[myfish], <span class="st">&quot;length&quot;</span>)
+<span class="kw">names</span>(size) &lt;- species.names
+
+<span class="co"># who&#39;s missing from treebase entirely?</span>
+missing&lt;-tip.labels[! tip.labels %in% species.names ]
+tr&lt;- <span class="kw">drop.tip</span>(tree, missing)
+<span class="co"># drop species with NAs for max depth</span>
+depth &lt;- depths[,<span class="dv">2</span>]
+missing&lt;-<span class="kw">names</span>(depth[<span class="kw">is.na</span>(depth)])
+tr&lt;- <span class="kw">drop.tip</span>(tr, missing)
+<span class="co"># repeat for NAs for length</span>
+missing&lt;-<span class="kw">names</span>(size[<span class="kw">is.na</span>(size)])
+tr&lt;- <span class="kw">drop.tip</span>(tr, missing)
+
+<span class="co"># drop all the data not in the tree </span>
+pruned.names &lt;- tr$tip.label
+size &lt;- size[pruned.names]
+depth &lt;- depth[pruned.names]
+
+<span class="co"># Does depth correlate with size after correcting for phylogeny?</span>
+x &lt;- <span class="kw">pic</span>(size, tr)
+y &lt;- <span class="kw">pic</span>(depth, tr)
+<span class="kw">summary</span>(<span class="kw">lm</span>(y~x<span class="dv">-1</span>)) <span class="co"># Yes</span>
+
+
+<span class="kw">require</span>(geiger)
+bm &lt;- <span class="kw">fitContinuous</span>(tr, depth, <span class="dt">model=</span><span class="st">&quot;BM&quot;</span>)
+ou &lt;- <span class="kw">fitContinuous</span>(tr, depth, <span class="dt">model=</span><span class="st">&quot;OU&quot;</span>)
+
+
+invert &lt;- <span class="kw">sapply</span>(fish.data, function(x) <span class="kw">length</span>(<span class="kw">grep</span>(<span class="st">&quot;invertebrate&quot;</span>, x$trophic))&gt;<span class="dv">0</span>)
+piscivore &lt;- <span class="kw">sapply</span>(fish.data, function(x) <span class="kw">length</span>(<span class="kw">grep</span>(<span class="st">&quot;(piscivore|fish)&quot;</span>, x$trophic))&gt;<span class="dv">0</span>)
+<span class="kw">hist</span>(<span class="kw">log</span>( <span class="kw">getSize</span> (fish.data[invert], <span class="st">&quot;length&quot;</span>)),
+         <span class="dt">col=</span><span class="kw">rgb</span>(<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,.<span class="dv">5</span>), <span class="dt">breaks=</span><span class="dv">40</span>, <span class="dt">freq=</span>F, <span class="dt">xlab=</span><span class="st">&quot;length&quot;</span>, <span class="dt">main=</span><span class="st">&quot;invert eaters vs piscivores&quot;</span>)
+<span class="kw">hist</span>(<span class="kw">log</span>( <span class="kw">getSize</span> (fish.data[piscivore], <span class="st">&quot;length&quot;</span>)),
+          <span class="dt">col=</span><span class="kw">rgb</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,.<span class="dv">5</span>), <span class="dt">breaks=</span><span class="dv">40</span>, <span class="dt">add=</span>T, <span class="dt">freq=</span>F)
+
+
+
+
+
+## Using a treebase tree
+<span class="kw">require</span>(rtreebase)
+## Need to find an example of a fish tree on treebase that has branchlengths
+<span class="co">#trees &lt;- search_treebase(&quot;Scarus&quot;, by=&quot;taxon&quot;, branch=TRUE)</span>
+<span class="co">#str &lt;- trees[[1]]$tip.label</span>
+<span class="co">#gsub(&quot;(\\w+)_(\\w+)_.*&quot;, &quot;\\1 \\2&quot;, str)</span>
+<span class="co">#myfish &lt;- findSpecies(species, fish.data) </span>
+<span class="co">#getQuantTraits(fish.data[myfish])</span>
+
+
+</code></pre>
+        </div>
+
+
+        <!-- Custom sidebar -->      
+        <div class="span4">
+          <div class="sidebar">
+            <aside prefix="dc: http://purl.org/dc/terms/ og:http://ogp.me/ns/article#">
+<i class="icon-calendar"></i>
+<time datetime="2011-10-12T04:59:49-07:00" 
+      property="dc:created">12 Oct 2011</time>.
+<br />
+          
+            <p><a class="btn btn-mini" rel="prev" href='/2011/10/11/lou-botsford-cpb-seminar.html'><i class="icon-chevron-left"></i> prev</a>
+          
+          
+          <a class="btn btn-mini" rel="next" href='/2011/10/12/wednesday-10.html'>next <i class="icon-chevron-right"></i></a></p>
+          
+
+
+<br />
+
+
+<p> <a class="btn btn-mini" href="https://github.com/cboettig/labnotebook/commits/master/_posts/2011-10-12-rfishbase-tutorial-updated-extended.md"><i class="icon-time"></i> history</a></p>
+<br />
+Posted in 
+  <a rel="tag" class="category" href="/categories.html#computation"><span property="dc:subject og:section">computation</span></a>
+  
+
+
+
+<br />
+tags: 
+  <a rel="tag" class="tag" href="/tags.html#fishbase">#<span property="og:tag http://schema.org/BlogPosting/keywords">fishbase</span></a>
+  
+
+
+
+</aside>
+
+         </div>
+       </div>
+
+      </div>
+      <!-- Disqus Comments -->
+      <div class="row disqus">
+        <div class="span8">          
+            <div id="disqus_thread"></div>
+            <script type="text/javascript">
+                var disqus_shortname = 'cboettig'; // required: replace example with your forum shortname
+                /* * * DON'T EDIT BELOW THIS LINE * * */
+                (function() {
+                    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                    dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        </div>
+      </div>
+
+
+
+</article>
+<footer class="footer">
+  <form style="font-size:10px">
+    <div class="pull-right">
+      <span rel="tooltip" title="switch to dark theme">
+        <a onclick="switch_style('dark'); return false;" name="theme" value="dark" id="dark" class="btn btn-mini"><i class="icon-adjust"></i></a> 
+      </span>
+      <span rel="tooltip" title="switch to light theme">
+        <a onclick="switch_style('light');return false;" name="theme" value="light" id="light" class="btn btn-mini"><i class="icon-certificate"></i></a> 
+      </span>
+    </div>
+  </form>
+          <div class="row">
+            <div class="span4 socialicons" style="font-size:20px" vocab="http://xmlns.com/foaf/0.1/" typeof="Person" resource="#me">
+              <span rel="tooltip" title="email me">
+                <a property="account" href="mailto:cboettig@gmail.com" onclick="recordOutboundLink(this, 'Outbound Links', 'email'); return false;"><i class="icon-envelope-alt"></i></a>
+              </span>
+              <span rel="tooltip" title="follow me on twitter (reading, discussing)">
+                <a property="account" href="https://twitter.com/cboettig" onclick="recordOutboundLink(this, 'Outbound Links', 'Twitter'); return false;"><i class="icon-twitter"></i></a> 
+              </span>
+              <!--              <a property="account" href="https://plus.google.com/" onclick="recordOutboundLink(this, 'Outbound Links', 'GPlus'); return false;"><i class="icon-google-plus"></i></a> -->
+              <span rel="tooltip" title="follow me on Github (code, research)">
+                <a property="account" href="https://github.com/cboettig" onclick="recordOutboundLink(this, 'Outbound Links', 'Github'); return false;"><i class="icon-github" alt="github"></i></a> 
+              </span>  
+              <!--              <a property="account" href="http://www.mendeley.com/profiles/carl-boettiger" onclick="recordOutboundLink(this, 'Outbound Links', 'Mendeley'); return false;"><img src="/assets/img/icon-mendeley.png" alt="mendeley" /></a>  -->
+              <span rel="tooltip" title="subscribe to RSS feeds for my open lab notebook">
+                <a href="/atom.xml" onclick="recordOutboundLink(this, 'Outbound Links', 'RSS'); return false;"><i class="icon-rss" ></i></a>
+              </span>
+            </div>
+            <div class="span2" style="text-align:center">
+              <span rel="tooltip" 
+                    title="An Open Notebook Science (ONS) project claim: Entry provides all content (AC) immediately (I) or without significant delay.  See link for details"><a rel="license" href="http://onsclaims.wikispaces.com/" 
+                onclick="recordOutboundLink(this, 'Outbound Links', 'ONS_claim'); return false;" 
+                ><img src="http://onsclaims.wikispaces.com/file/view/ons-aci2-icon.png" alt="ONS" /></a>
+            </span>
+            </div>
+            <div class="span4">
+              <a property="http://creativecommons.org/ns#license" href="http://creativecommons.org/publicdomain/zero/1.0/" onclick="recordOutboundLink(this, 'Outbound Links', 'CC0'); return false;"><img src="http://i.creativecommons.org/l/zero/1.0/88x31.png" alt="CC0" style="float:right" /></a> 
+            </div>
+        </div>
+      </footer>
+    </div><!-- /container -->
+    
+        <!-- Le javascript
+    ================================================== -->
+
+    <!-- Placed at the end of the document so the pages load faster -->
+    <!-- JQuery, used on a few pages -->
+    <script type="text/javascript" src="http://www.carlboettiger.info/assets/js/jquery.js"></script>
+    <!-- Equations using MathJax -->
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config"> MathJax.Hub.Config({ TeX: { equationNumbers: {autoNumber: "all"} } });       </script>
+    <!-- Twitter Bootstrap Javascript -->
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-transition.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-collapse.js"></script> <!-- for collapsing navbar-->
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-tooltip.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-alert.js"></script>
+
+    <script type="text/javascript">
+      $(document).ready(function (){
+        $("[rel=tooltip]").tooltip();
+      });
+    </script>
+
+    <!-- Unused Twitter Bootstrap Javascript 
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-dropdown.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/google-code-prettify/prettify.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-modal.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-scrollspy.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-tab.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-popover.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-button.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-carousel.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-typeahead.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/application.js"></script>
+    -->
+
+
+      <script type="text/javascript">
+          var _gaq = _gaq || [];
+          _gaq.push(['_setAccount', 'UA-18401403-1']);
+          _gaq.push(['_trackPageview']);
+          (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+          })();
+  </script>
+
+
+
+<script type="text/javascript">
+function recordOutboundLink(link, category, action) {
+  try {
+    var pageTracker=_gat._getTracker("UA-18401403-1");
+    pageTracker._trackEvent(category, action);
+    setTimeout('document.location = "' + link.href + '"', 100)
+  }catch(err){}
+}
+</script>
+
+
+        
+<!-- Start Open Web Analytics Tracker -->
+<script type="text/javascript">
+//<![CDATA[
+var owa_baseUrl = 'http://www.carlboettiger.info/openwebanalytics/';
+var owa_cmds = owa_cmds || [];
+owa_cmds.push(['setSiteId', '2886faa411a4139a6c6f97b5a1f38697']);
+owa_cmds.push(['trackPageView']);
+owa_cmds.push(['trackClicks']);
+owa_cmds.push(['trackDomStream']);
+
+(function() {
+  var _owa = document.createElement('script'); _owa.type = 'text/javascript'; _owa.async = true;
+  owa_baseUrl = ('https:' == document.location.protocol ? window.owa_baseSecUrl || owa_baseUrl.replace(/http:/, 'https:') : owa_baseUrl );
+  _owa.src = owa_baseUrl + 'modules/base/js/owa.tracker-combined-min.js';
+  var _owa_s = document.getElementsByTagName('script')[0]; _owa_s.parentNode.insertBefore(_owa, _owa_s);
+}());
+//]]>
+</script>
+<!-- End Open Web Analytics Code -->
+        
+
+  </body>
+</html>
+

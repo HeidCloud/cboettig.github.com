@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head prefix="dc: http://purl.org/dc/terms/ og: http://ogp.me/ns#">
+    <meta charset="utf-8" /> 
+    <title>wrightscape profiling</title>
+    <meta name="author" content="Carl Boettiger" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+
+  
+
+
+<!-- HTML5 metadata -->
+<meta name="keywords" content="Science, Ecology, Evolution, Open Science, Reproducible Research" />
+<meta name="description" content="My open lab notebook- research in theoretical ecology and evolution" />
+<!-- RDFa Metadata (in DublinCore) -->
+<meta property="dc:title" content="wrightscape profiling" />
+<meta property="dc:creator" content="Carl Boettiger" />
+<meta property="dc:date" content="2013-01-10T12:36:56-08:00" />
+<meta property="dc:type" content="Lab Notebook Entry" /> <!-- article? entry?-->
+<meta property="dc:format" content="text/html" />
+<meta property="dc:language" content="en" />
+<meta property="dc:source" content="Lab Notebook" />
+<!-- RDFa Metadata (in OpenGraph) -->
+<meta property="og:title" content="wrightscape profiling" />
+<meta property="og:author" content="http://www.carlboettiger.info/index.html" />  <!-- Should be Liquid? URI? -->
+<meta property="http://ogp.me/ns/profile#first_name" content="Carl"/>
+<meta property="http://ogp.me/ns/profile#last_name" content="Boettiger"/>
+<meta property="http://ogp.me/ns/article#published_time" content="2013-01-10T12:36:56-08:00" />
+<meta property="og:site_name" content="Lab Notebook" /> <!-- Same as dc:source? -->
+<meta property="og:url" content="http://www.carlboettiger.info/2011/04/24/wrightscape-profiling.html" />
+<meta property="og:type" content="article" />
+<!-- Google Scholar Metadata -->
+<meta name="resource_type" content="Lab Notebook"/>
+<meta name="citation_journal_title" content="Lab Notebook"/>
+<meta name="citation_publication_date" content="10 Jan 2013"/>
+<meta name="citation_date" content="10 Jan 2013"/>
+<meta name="citation_author" content="Carl Boettiger"/>
+<meta name="citation_title" content="wrightscape profiling"/>
+
+    <!-- CSS Stylesheets (toggled with javascript) -->
+    <link href="/assets/css/light.css" rel="stylesheet"
+          type="text/css" id="stl" title="light" />
+    <link href="/assets/css/dark.css" rel="alternate stylesheet" 
+          type="text/css" title="dark" />
+    <!-- Javascript needed for theme toggle, load immediately -->
+    <script type="text/javascript" src="/assets/js/switch-css.js"></script>
+    <script type="text/javascript">
+      set_style_from_cookie(); 
+    </script>
+  </head>
+  <body> 
+  
+<!-- Navbar  ================================================== -->
+<div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+      <a class="brand" href="/README.html"><i style="float:right;" class="icon-info-sign" alt="info" rel="tooltip" title="Credits and technical information about this site" data-placement="bottom"></i></a>
+      <div class="nav-collapse">
+        <ul class="nav">
+          <li>
+          <a href="/index.html">Home</a></li>
+
+          <li>
+          <a href="/vita.html">Vita</a></li>
+
+          <li>
+          <a href="/research.html">Research</a></li>
+
+          <li>
+          <a href="/teaching.html">Teaching</a></li>
+
+          <li>
+          <a href="/community.html">Community</a></li>
+
+          <li>
+          <a href="/lab-notebook.html">Lab Notebook</a></li>
+
+        </ul>
+      </div><!--/.nav-collapse -->
+      <form class="navbar-search pull-right" method="get" action="http://google.com/search">
+         <p>
+         <input type="hidden" name="q" value="site:carlboettiger.info" />
+         <input type="text" class="search-query" name="q" />
+         <button class="btn btn-mini" type="submit"><i class="icon-search"></i></button> 
+         </p>
+       </form>
+     </div> <!-- /container -->
+   </div> <!-- /navbar-inner -->
+ </div> <!-- /navbar -->
+
+
+
+  <div class="container"> 
+    <article> <!-- includes header and entry, but not footer -->
+    <header class="jumbotron subhead">
+      <h1 class="entry-title">wrightscape profiling</h1>
+      <p></p>
+    </header>
+
+
+      <div class="row">
+        <div class="span7 offset1">
+          <p>Optimization at the R level is substantially slower than at the C level:</p>
+<pre><code>system.time(wright_test = wright(data,tree,regimes, alpha=ou2@sqrt.alpha^2, sigma=ou2@sigma))
+   user  system elapsed
+ 82.157   0.068  82.346
+system.time(ws2 = wrightscape(trait, labrid$tree, regime=labrid$regimes, (ou2@sqrt.alpha)^2, ou2@sigma, theta=ou2@theta[[1]]))
+iter:   229, llik = 34.750, size = 0.000,
+ par values =  0.000069  2.456353  0.000026  0.225234  0.973002  0.488713
+   user  system elapsed
+  4.964   0.000   4.971</code></pre>
+<p>This is possibly due to repeating the lca matrix calculation. As it’s not done in a separate R function yet, the profiler cannot tell us this.</p>
+<p>Updated code to use a separate function (already had a separate C function in anticipation of this, so just needed a separate wrapper for it. Wrote a bit of type-checking, error handling, and documentation for the new functions, still could be expanded.</p>
+<pre><code>system.time(wright_test2 &lt;- wright(data,tree,regimes, alpha=ou2@sqrt.alpha^2, sigma=ou2@sigma))
+   user  system elapsed
+  7.329   0.028   7.372</code></pre>
+<p>Now it’s still slower, but only by factor of 2, instead of a factor of 20.</p>
+<p>Next, will check comparison of the parameter convergence:</p>
+<pre><code> wright_test2
+$par
+[1]  2.2659839 -3.2141702  4.5873655  6.0465643  0.6557786 -0.6525537  0.2020016
+
+$value
+[1] -42.07038
+
+$counts
+function gradient
+     502       NA 
+
+$convergence
+[1] 1</code></pre>
+<p>Should clearly add labels to the output. This is Xo, alpha1, alph2, sigma1, sigma2, theta1, theta2. Already a problem that it has estimated a negative alpha – probably as a consequence, the algorithm has terminated but not converged.</p>
+<p>The likelihood calculation does not include checks on parameter values that must be positive – as seen by $value, the likelihood function is still being evaluated ((just to verify this, consider</p>
+<pre><code> multiOU_lik(data, tree, regimes, alpha=wright_test2$par[2:3], sigma=wright_test2$par[4:5], theta=wright_test2$par[6:7], X=wright_test2$par[1])</code></pre>
+<p>))</p>
+<p>We can add error handling for these values or try a bounded optimizer – it would be nice to have some more rigorous guidelines on choosing the numerical optimizer and handling in this case. Particularly curious how well the simplex and other methods due in facing local peaks.</p>
+<p>Bounded optimizer objects to non-finite values. Adding simple -Inf likelihood condition on negative parameters and increasing maximum iterations beyond 2000, Nelder-Mead still fails to converge, exiting with degenerate simplex, though gets a likelihood of similar values. Values are comparable but not very close matches to the gsl algorithm in the C code. Probably worth exploring with simulated annealing too.</p>
+<pre><code>ws2$data     ws2$tree     ws2$regimes  ws2$loglik   ws2$Xo       ws2$alpha    ws2$theta    ws2$sigma    
+&gt; c(ws2$Xo, ws2$alpha, ws2$theta, ws2$sigma)
+[1] 2.252339e-01 6.919340e-05 2.456353e+00 2.593147e-05 2.252339e-01
+[6] 9.730023e-01 4.887133e-01
+&gt; wright_test2$par
+[1]  1.918392e+00  7.880160e-10  5.834572e+00  5.045619e+00  6.890863e-01
+[6] -8.452617e+00  2.207771e-01</code></pre>
+<p>see git log for details.</p>
+        </div>
+
+
+        <!-- Custom sidebar -->      
+        <div class="span4">
+          <div class="sidebar">
+            <aside prefix="dc: http://purl.org/dc/terms/ og:http://ogp.me/ns/article#">
+<i class="icon-calendar"></i>
+<time datetime="2011-04-24T11:50:11-07:00" 
+      property="dc:created">24 Apr 2011</time>.
+<br />
+          
+            <p><a class="btn btn-mini" rel="prev" href='/2011/04/22/release-of-constraint-in-labrids.html'><i class="icon-chevron-left"></i> prev</a>
+          
+          
+          <a class="btn btn-mini" rel="next" href='/2011/04/25/treebase-interface-continued.html'>next <i class="icon-chevron-right"></i></a></p>
+          
+
+
+<br />
+
+
+<p> <a class="btn btn-mini" href="https://github.com/cboettig/labnotebook/commits/master/_posts/2011-04-24-wrightscape-profiling.md"><i class="icon-time"></i> history</a></p>
+<br />
+Posted in 
+  <a rel="tag" class="category" href="/categories.html#computation"><span property="dc:subject og:section">computation</span></a>
+  , 
+
+  <a rel="tag" class="category" href="/categories.html#evolution"><span property="dc:subject og:section">evolution</span></a>
+  
+
+
+
+<br />
+tags: 
+
+
+</aside>
+
+         </div>
+       </div>
+
+      </div>
+      <!-- Disqus Comments -->
+      <div class="row disqus">
+        <div class="span8">          
+            <div id="disqus_thread"></div>
+            <script type="text/javascript">
+                var disqus_shortname = 'cboettig'; // required: replace example with your forum shortname
+                /* * * DON'T EDIT BELOW THIS LINE * * */
+                (function() {
+                    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                    dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        </div>
+      </div>
+
+
+
+</article>
+<footer class="footer">
+  <form style="font-size:10px">
+    <div class="pull-right">
+      <span rel="tooltip" title="switch to dark theme">
+        <a onclick="switch_style('dark'); return false;" name="theme" value="dark" id="dark" class="btn btn-mini"><i class="icon-adjust"></i></a> 
+      </span>
+      <span rel="tooltip" title="switch to light theme">
+        <a onclick="switch_style('light');return false;" name="theme" value="light" id="light" class="btn btn-mini"><i class="icon-certificate"></i></a> 
+      </span>
+    </div>
+  </form>
+          <div class="row">
+            <div class="span4 socialicons" style="font-size:20px" vocab="http://xmlns.com/foaf/0.1/" typeof="Person" resource="#me">
+              <span rel="tooltip" title="email me">
+                <a property="account" href="mailto:cboettig@gmail.com" onclick="recordOutboundLink(this, 'Outbound Links', 'email'); return false;"><i class="icon-envelope-alt"></i></a>
+              </span>
+              <span rel="tooltip" title="follow me on twitter (reading, discussing)">
+                <a property="account" href="https://twitter.com/cboettig" onclick="recordOutboundLink(this, 'Outbound Links', 'Twitter'); return false;"><i class="icon-twitter"></i></a> 
+              </span>
+              <!--              <a property="account" href="https://plus.google.com/" onclick="recordOutboundLink(this, 'Outbound Links', 'GPlus'); return false;"><i class="icon-google-plus"></i></a> -->
+              <span rel="tooltip" title="follow me on Github (code, research)">
+                <a property="account" href="https://github.com/cboettig" onclick="recordOutboundLink(this, 'Outbound Links', 'Github'); return false;"><i class="icon-github" alt="github"></i></a> 
+              </span>  
+              <!--              <a property="account" href="http://www.mendeley.com/profiles/carl-boettiger" onclick="recordOutboundLink(this, 'Outbound Links', 'Mendeley'); return false;"><img src="/assets/img/icon-mendeley.png" alt="mendeley" /></a>  -->
+              <span rel="tooltip" title="subscribe to RSS feeds for my open lab notebook">
+                <a href="/atom.xml" onclick="recordOutboundLink(this, 'Outbound Links', 'RSS'); return false;"><i class="icon-rss" ></i></a>
+              </span>
+            </div>
+            <div class="span2" style="text-align:center">
+              <span rel="tooltip" 
+                    title="An Open Notebook Science (ONS) project claim: Entry provides all content (AC) immediately (I) or without significant delay.  See link for details"><a rel="license" href="http://onsclaims.wikispaces.com/" 
+                onclick="recordOutboundLink(this, 'Outbound Links', 'ONS_claim'); return false;" 
+                ><img src="http://onsclaims.wikispaces.com/file/view/ons-aci2-icon.png" alt="ONS" /></a>
+            </span>
+            </div>
+            <div class="span4">
+              <a property="http://creativecommons.org/ns#license" href="http://creativecommons.org/publicdomain/zero/1.0/" onclick="recordOutboundLink(this, 'Outbound Links', 'CC0'); return false;"><img src="http://i.creativecommons.org/l/zero/1.0/88x31.png" alt="CC0" style="float:right" /></a> 
+            </div>
+        </div>
+      </footer>
+    </div><!-- /container -->
+    
+        <!-- Le javascript
+    ================================================== -->
+
+    <!-- Placed at the end of the document so the pages load faster -->
+    <!-- JQuery, used on a few pages -->
+    <script type="text/javascript" src="http://www.carlboettiger.info/assets/js/jquery.js"></script>
+    <!-- Equations using MathJax -->
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config"> MathJax.Hub.Config({ TeX: { equationNumbers: {autoNumber: "all"} } });       </script>
+    <!-- Twitter Bootstrap Javascript -->
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-transition.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-collapse.js"></script> <!-- for collapsing navbar-->
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-tooltip.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-alert.js"></script>
+
+    <script type="text/javascript">
+      $(document).ready(function (){
+        $("[rel=tooltip]").tooltip();
+      });
+    </script>
+
+    <!-- Unused Twitter Bootstrap Javascript 
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-dropdown.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/google-code-prettify/prettify.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-modal.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-scrollspy.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-tab.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-popover.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-button.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-carousel.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-typeahead.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/application.js"></script>
+    -->
+
+
+      <script type="text/javascript">
+          var _gaq = _gaq || [];
+          _gaq.push(['_setAccount', 'UA-18401403-1']);
+          _gaq.push(['_trackPageview']);
+          (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+          })();
+  </script>
+
+
+
+<script type="text/javascript">
+function recordOutboundLink(link, category, action) {
+  try {
+    var pageTracker=_gat._getTracker("UA-18401403-1");
+    pageTracker._trackEvent(category, action);
+    setTimeout('document.location = "' + link.href + '"', 100)
+  }catch(err){}
+}
+</script>
+
+
+        
+<!-- Start Open Web Analytics Tracker -->
+<script type="text/javascript">
+//<![CDATA[
+var owa_baseUrl = 'http://www.carlboettiger.info/openwebanalytics/';
+var owa_cmds = owa_cmds || [];
+owa_cmds.push(['setSiteId', '2886faa411a4139a6c6f97b5a1f38697']);
+owa_cmds.push(['trackPageView']);
+owa_cmds.push(['trackClicks']);
+owa_cmds.push(['trackDomStream']);
+
+(function() {
+  var _owa = document.createElement('script'); _owa.type = 'text/javascript'; _owa.async = true;
+  owa_baseUrl = ('https:' == document.location.protocol ? window.owa_baseSecUrl || owa_baseUrl.replace(/http:/, 'https:') : owa_baseUrl );
+  _owa.src = owa_baseUrl + 'modules/base/js/owa.tracker-combined-min.js';
+  var _owa_s = document.getElementsByTagName('script')[0]; _owa_s.parentNode.insertBefore(_owa, _owa_s);
+}());
+//]]>
+</script>
+<!-- End Open Web Analytics Code -->
+        
+
+  </body>
+</html>
+

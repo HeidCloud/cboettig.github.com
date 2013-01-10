@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head prefix="dc: http://purl.org/dc/terms/ og: http://ogp.me/ns#">
+    <meta charset="utf-8" /> 
+    <title>Reading Notes, presentation prep, treebase error handling</title>
+    <meta name="author" content="Carl Boettiger" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+
+  
+
+
+<!-- HTML5 metadata -->
+<meta name="keywords" content="Science, Ecology, Evolution, Open Science, Reproducible Research" />
+<meta name="description" content="My open lab notebook- research in theoretical ecology and evolution" />
+<!-- RDFa Metadata (in DublinCore) -->
+<meta property="dc:title" content="Reading Notes, presentation prep, treebase error handling" />
+<meta property="dc:creator" content="Carl Boettiger" />
+<meta property="dc:date" content="2013-01-10T12:36:56-08:00" />
+<meta property="dc:type" content="Lab Notebook Entry" /> <!-- article? entry?-->
+<meta property="dc:format" content="text/html" />
+<meta property="dc:language" content="en" />
+<meta property="dc:source" content="Lab Notebook" />
+<!-- RDFa Metadata (in OpenGraph) -->
+<meta property="og:title" content="Reading Notes, presentation prep, treebase error handling" />
+<meta property="og:author" content="http://www.carlboettiger.info/index.html" />  <!-- Should be Liquid? URI? -->
+<meta property="http://ogp.me/ns/profile#first_name" content="Carl"/>
+<meta property="http://ogp.me/ns/profile#last_name" content="Boettiger"/>
+<meta property="http://ogp.me/ns/article#published_time" content="2013-01-10T12:36:56-08:00" />
+<meta property="og:site_name" content="Lab Notebook" /> <!-- Same as dc:source? -->
+<meta property="og:url" content="http://www.carlboettiger.info/2011/04/28/thursday-reading-notes.html" />
+<meta property="og:type" content="article" />
+<!-- Google Scholar Metadata -->
+<meta name="resource_type" content="Lab Notebook"/>
+<meta name="citation_journal_title" content="Lab Notebook"/>
+<meta name="citation_publication_date" content="10 Jan 2013"/>
+<meta name="citation_date" content="10 Jan 2013"/>
+<meta name="citation_author" content="Carl Boettiger"/>
+<meta name="citation_title" content="Reading Notes, presentation prep, treebase error handling"/>
+
+    <!-- CSS Stylesheets (toggled with javascript) -->
+    <link href="/assets/css/light.css" rel="stylesheet"
+          type="text/css" id="stl" title="light" />
+    <link href="/assets/css/dark.css" rel="alternate stylesheet" 
+          type="text/css" title="dark" />
+    <!-- Javascript needed for theme toggle, load immediately -->
+    <script type="text/javascript" src="/assets/js/switch-css.js"></script>
+    <script type="text/javascript">
+      set_style_from_cookie(); 
+    </script>
+  </head>
+  <body> 
+  
+<!-- Navbar  ================================================== -->
+<div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+      <a class="brand" href="/README.html"><i style="float:right;" class="icon-info-sign" alt="info" rel="tooltip" title="Credits and technical information about this site" data-placement="bottom"></i></a>
+      <div class="nav-collapse">
+        <ul class="nav">
+          <li>
+          <a href="/index.html">Home</a></li>
+
+          <li>
+          <a href="/vita.html">Vita</a></li>
+
+          <li>
+          <a href="/research.html">Research</a></li>
+
+          <li>
+          <a href="/teaching.html">Teaching</a></li>
+
+          <li>
+          <a href="/community.html">Community</a></li>
+
+          <li>
+          <a href="/lab-notebook.html">Lab Notebook</a></li>
+
+        </ul>
+      </div><!--/.nav-collapse -->
+      <form class="navbar-search pull-right" method="get" action="http://google.com/search">
+         <p>
+         <input type="hidden" name="q" value="site:carlboettiger.info" />
+         <input type="text" class="search-query" name="q" />
+         <button class="btn btn-mini" type="submit"><i class="icon-search"></i></button> 
+         </p>
+       </form>
+     </div> <!-- /container -->
+   </div> <!-- /navbar-inner -->
+ </div> <!-- /navbar -->
+
+
+
+  <div class="container"> 
+    <article> <!-- includes header and entry, but not footer -->
+    <header class="jumbotron subhead">
+      <h1 class="entry-title">Reading Notes, presentation prep, treebase error handling</h1>
+      <p></p>
+    </header>
+
+
+      <div class="row">
+        <div class="span7 offset1">
+          <h2 id="reading">Reading</h2>
+<pre><code>* Oikos journal [recently started](http://oikosjournal.wordpress.com/2011/03/01/welcome-to-the-oikos-blog/) a rather nice blog. A journal long responsible for some of the best examples of developing and confronting ecological theory with empirical results, with an commendable emphasis on general principles and synthesis, it&#39;s nice to see them enter the Web2.0 ecosystem. Editor Jeremy Fox has a nice [introduction](http://oikosjournal.wordpress.com/2011/03/20/fox-quick-biography-and-some-thoughts-on-the-past-and-future-of-oikos/) to the goals of the blog -- check out the &quot;[new idea](http://oikosjournal.wordpress.com/category/new-ideas/)s&quot; categories for worthwhile reading. Thanks to Ethan White&#39;s [post on Jabberwocky Ecology](http://jabberwocky.weecology.org/2011/04/27/oikos-has-a-blog-blogrolling/) for bringing this to my attention. Particularly enjoyed the classic Borges quote linked as a pdf in the discussion of hand waving in ecology, which was so good I had to jot it down here ((On Exactitude in Science</code></pre>
+<p>Jorge Luis Borges, Collected Fictions, translated by Andrew Hurley. …In that Empire, the Art of Cartography attained such Perfection that the map of a single Province occupied the entirety of a City, and the map of the Empire, the entirety of a Province. In time, those Unconscionable Maps no longer satisfied, and the Cartographers Guilds struck a Map of the Empire whose size was that of the Empire, and which coincided point for point with it. The following Generations, who were not so fond of the Study of Cartography as their Forebears had been, saw that that vast Map was Useless, and not without some Pitilessness was it, that they delivered it up to the Inclemencies of Sun and Winters. In the Deserts of the West, still today, there are Tattered Ruins of that Map, inhabited by Animals and Beggars; in all the Land there is no other Relic of the Disciplines of Geography. —Suarez Miranda,Viajes de varones prudentes, Libro IV,Cap. XLV, Lerida, 1658))</p>
+<pre><code>* Excellent/very relevant piece on fluctuations in fish population dynamics, (Shelton &amp; Mangel, 2011).
+
+
+* New warning signals [article](http://www.jstor.org/stable/full/10.1086/659945) by Vasilis in Am Nat.(Dakos _et. al._ 2011) ((Hmm.. JSTOR uses DOIs in its URL, but Am Nat doesn&#39;t seem to process the dois for the ahead-of-print articles. Hence no automatic citation)). And of course Carpenter et. al&#39;s empirical study in a lake ecosystem, in _Science_(Carpenter _et. al._ 2011)
+
+
+* Ecological monographs has a nice article on stability, resilience and phase shifts in the classic otter-urchin system, nice alterantive stable states example despite temporal and site heterogeneity. (Watson &amp; Estes, 2011)
+
+
+* Species and trait diversification rates: Science article in electric fishes. (based on Brownie. Supplement claims AICc avoids type I errors associated with small sample size in chi^2, unfortunately I think the error rate remains high.) Diversification rates follow (Rabosky _et. al._ 2007), comparing fit by likelihood ratio, estimated mu/lambda by trying 4 values,</code></pre>
+<blockquote>
+<p>Given our small dataset and the difficulty in estimating extinction rates from comparative data (Rabosky, 2010), we set the relative extinction fraction to ε = μ / λ rather than attempting to estimate it from the data (Alfaro <em>et. al.</em> 2009). We repeated our analyses using a range of ε values (ε = 0, 0.5, 0.9, and 0.99) (Rabosky <em>et. al.</em> 2007).</p>
+</blockquote>
+<p>Hmm… irregular optimization method… Highlights the need for adequate power and estimates there-of to make inferences from phylogenetic data.</p>
+<ul>
+<li>Also in <em>Science</em> Sidlauskas and colleagues make the most of Facebook (Sidlauskas <em>et. al.</em> 2011) for fish ids.</li>
+</ul>
+<h2 id="hastings-lab-presentation">Hastings lab presentation</h2>
+<p>Presentation in Hastings lab on Warning Signals.  Background. methods. Results.</p>
+<h2 id="prep-wainwright-lab-presentation">Prep Wainwright lab presentation</h2>
+<h3 id="next-tuesday">(next Tuesday)</h3>
+<ul>
+<li><p>Replicate (Price <em>et. al.</em> 2010) (on full Labrid dataset?)</p></li>
+<li><p>Repeat with release of constraint model, unconstrained model</p></li>
+<li><p>MCMC implementation?</p></li>
+<li><p>Assembling TreeBASE demo and further goals</p></li>
+<li><p>Attempt improved optimizer for TreePar package</p></li>
+</ul>
+<h2 id="coding">Coding</h2>
+<p>Exploring better error handling for TreeBASE package. From Duncan:</p>
+<pre class="sourceCode r"><code class="sourceCode r">
+ans &lt;- <span class="kw">try</span>(<span class="kw">read.nexus</span>(con))
+<span class="co"># and then check the class of ans to see if it is &quot;try-error&quot;,</span>
+ if(<span class="kw">is</span>(ans, <span class="st">&quot;try-error&quot;</span>)) {
+     <span class="co"># do something for the error</span>
+ } else {
+      <span class="co"># you have your object</span>
+     ....
+ }</code></pre>
+<blockquote>
+<p>The second approach is to manage the HTTP request for the document so that you can detect when the file is not available. You can use either getURL() or getURLContent() in the RCurl package.</p>
+</blockquote>
+<pre class="sourceCode r"><code class="sourceCode r">
+ txt = <span class="kw">getURL</span>(<span class="st">&quot;http://purl.org/phylo/treebase/phylows/tree/TB2:Tr9917?format=nexus&quot;</span>,
+               <span class="dt">header =</span> <span class="ot">TRUE</span>, <span class="dt">followlocation =</span> <span class="ot">TRUE</span>)
+ <span class="kw">parseHTTPHeader</span>(txt)</code></pre>
+<blockquote>
+<p>In this case, the HTTP server returns a status code of 302 to indicate that the URL has moved. Following that redirection, we get a 200 status indicating success and the content is the HTML you see in your browser that indicates authorization issues. So to verify an error, you’d have to parse the HTML and look for the tell-tale message.</p>
+</blockquote>
+<p>It would be better if the server returned a 40* error status indicating authorization problems.When getURL() returns regular content, you can pass that to read.nexus() as a text connection, e.g.</p>
+<pre class="sourceCode r"><code class="sourceCode r">
+  o = <span class="kw">read.nexus</span>(<span class="kw">textConnection</span>(txt))</code></pre>
+<h2 id="play-ubuntu-release">Play: ubuntu release</h2>
+<p>And wow, the new Ubuntu release (11.04, Natty Nawhal) is no small shift. OpenOffice-&gt;LibreOffice, Rhythmbox replaced with Banshee, and omg, the veritable GNOME interface replaced with something I’ve never heard of (<a href="http://en.wikipedia.org/wiki/Unity_%28desktop_environment%29">Unity</a>, developed by Canonical). Described as a “smart-phone style” interface and “easier than a Mac”, I don’t know – if those things should count as universal praise. Overall pretty <a href="http://www.zdnet.com/blog/open-source/what-you-need-to-know-about-the-new-ubuntu/8760">promising</a>. ## References</p>
+<p>
+Shelton A and Mangel M (2011). “Fluctuations of Fish Populations And The Magnifying Effects of Fishing.” <EM>Proceedings of The National Academy of Sciences</EM>, <B>108</B>. ISSN 0027-8424, <a href="http://dx.doi.org/10.1073/pnas.1100334108">http://dx.doi.org/10.1073/pnas.1100334108</a>.
+<p>
+Dakos V, Kéfi S, Rietkerk M, van Nes E and Scheffer M (2011). “Slowing Down in Spatially Patterned Ecosystems at The Brink of Collapse.” <EM>The American Naturalist</EM>, <B>177</B>. ISSN 00030147, <a href="http://dx.doi.org/10.1086/659945">http://dx.doi.org/10.1086/659945</a>.
+<p>
+Carpenter S, Cole J, Pace M, Batt R, Brock W, Cline T, Coloso J, Hodgson J, Kitchell J, Seekell D, Smith L and Weidel B (2011). “Early Warnings of Regime Shifts: A Whole-Ecosystem Experiment.” <EM>Science</EM>, <B>332</B>. ISSN 0036-8075, <a href="http://dx.doi.org/10.1126/science.1203672">http://dx.doi.org/10.1126/science.1203672</a>.
+<p>
+Watson J and Estes J (2011). “Stability, Resilience, And Phase Shifts in Rocky Subtidal Communities Along The West Coast of Vancouver Island, Canada.” <EM>Ecological Monographs</EM>, <B>81</B>. ISSN 0012-9615, <a href="http://dx.doi.org/10.1890/10-0262.1">http://dx.doi.org/10.1890/10-0262.1</a>.
+<p>
+Rabosky D, Donnellan S, Talaba A and Lovette I (2007). “Exceptional Among-Lineage Variation in Diversification Rates During The Radiation of Australia’S Most Diverse Vertebrate Clade.” <EM>Proceedings of The Royal Society B: Biological Sciences</EM>, <B>274</B>. ISSN 0962-8452, <a href="http://dx.doi.org/10.1098/rspb.2007.0924">http://dx.doi.org/10.1098/rspb.2007.0924</a>.
+<p>
+Rabosky D (2010). “Extinction Rates Should Not be Estimated From Molecular Phylogenies.” <EM>Evolution</EM>, <B>64</B>. <a href="http://dx.doi.org/10.1111/j.1558-5646.2009.00926.x">http://dx.doi.org/10.1111/j.1558-5646.2009.00926.x</a>.
+<p>
+Alfaro M, Santini F, Brock C, Alamillo H, Dornburg A, Rabosky D, Carnevale G and Harmon L (2009). “Nine Exceptional Radiations Plus High Turnover Explain Species Diversity in Jawed Vertebrates.” <EM>Proceedings of The National Academy of Sciences</EM>, <B>106</B>. ISSN 0027-8424, <a href="http://dx.doi.org/10.1073/pnas.0811087106">http://dx.doi.org/10.1073/pnas.0811087106</a>.
+<p>
+Sidlauskas B, Bernard C, Bloom D, Bronaugh W, Clementson M and Vari R (2011). “Ichthyologists Hooked on Facebook.” <EM>Science</EM>, <B>332</B>. ISSN 0036-8075, <a href="http://dx.doi.org/10.1126/science.332.6029.537-c">http://dx.doi.org/10.1126/science.332.6029.537-c</a>.
+<p>
+<p>Price S, Wainwright P, Bellwood D, Kazancioglu E, Collar D and Near T (2010). “Functional Innovations And Morphological Diversification in Parrotfish.” <EM>Evolution</EM>. <a href="http://dx.doi.org/10.1111/j.1558-5646.2010.01036.x">http://dx.doi.org/10.1111/j.1558-5646.2010.01036.x</a>.</p>
+        </div>
+
+
+        <!-- Custom sidebar -->      
+        <div class="span4">
+          <div class="sidebar">
+            <aside prefix="dc: http://purl.org/dc/terms/ og:http://ogp.me/ns/article#">
+<i class="icon-calendar"></i>
+<time datetime="2011-04-28T06:59:43-07:00" 
+      property="dc:created">28 Apr 2011</time>.
+<br />
+          
+            <p><a class="btn btn-mini" rel="prev" href='/2011/04/27/wednesday-4.html'><i class="icon-chevron-left"></i> prev</a>
+          
+          
+          <a class="btn btn-mini" rel="next" href='/2011/04/29/friday-notes-on-labrids-notes-on-transforms-and-size-corrections.html'>next <i class="icon-chevron-right"></i></a></p>
+          
+
+
+<br />
+
+
+<p> <a class="btn btn-mini" href="https://github.com/cboettig/labnotebook/commits/master/_posts/2011-04-28-thursday-reading-notes.md"><i class="icon-time"></i> history</a></p>
+<br />
+Posted in 
+  <a rel="tag" class="category" href="/categories.html#evolution"><span property="dc:subject og:section">evolution</span></a>
+  , 
+
+  <a rel="tag" class="category" href="/categories.html#ecology"><span property="dc:subject og:section">ecology</span></a>
+  
+
+
+
+<br />
+tags: 
+  <a rel="tag" class="tag" href="/tags.html#code-tricks">#<span property="og:tag http://schema.org/BlogPosting/keywords">code-tricks</span></a>
+  , 
+
+  <a rel="tag" class="tag" href="/tags.html#reading">#<span property="og:tag http://schema.org/BlogPosting/keywords">reading</span></a>
+  
+
+
+
+</aside>
+
+         </div>
+       </div>
+
+      </div>
+      <!-- Disqus Comments -->
+      <div class="row disqus">
+        <div class="span8">          
+            <div id="disqus_thread"></div>
+            <script type="text/javascript">
+                var disqus_shortname = 'cboettig'; // required: replace example with your forum shortname
+                /* * * DON'T EDIT BELOW THIS LINE * * */
+                (function() {
+                    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                    dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        </div>
+      </div>
+
+
+
+</article>
+<footer class="footer">
+  <form style="font-size:10px">
+    <div class="pull-right">
+      <span rel="tooltip" title="switch to dark theme">
+        <a onclick="switch_style('dark'); return false;" name="theme" value="dark" id="dark" class="btn btn-mini"><i class="icon-adjust"></i></a> 
+      </span>
+      <span rel="tooltip" title="switch to light theme">
+        <a onclick="switch_style('light');return false;" name="theme" value="light" id="light" class="btn btn-mini"><i class="icon-certificate"></i></a> 
+      </span>
+    </div>
+  </form>
+          <div class="row">
+            <div class="span4 socialicons" style="font-size:20px" vocab="http://xmlns.com/foaf/0.1/" typeof="Person" resource="#me">
+              <span rel="tooltip" title="email me">
+                <a property="account" href="mailto:cboettig@gmail.com" onclick="recordOutboundLink(this, 'Outbound Links', 'email'); return false;"><i class="icon-envelope-alt"></i></a>
+              </span>
+              <span rel="tooltip" title="follow me on twitter (reading, discussing)">
+                <a property="account" href="https://twitter.com/cboettig" onclick="recordOutboundLink(this, 'Outbound Links', 'Twitter'); return false;"><i class="icon-twitter"></i></a> 
+              </span>
+              <!--              <a property="account" href="https://plus.google.com/" onclick="recordOutboundLink(this, 'Outbound Links', 'GPlus'); return false;"><i class="icon-google-plus"></i></a> -->
+              <span rel="tooltip" title="follow me on Github (code, research)">
+                <a property="account" href="https://github.com/cboettig" onclick="recordOutboundLink(this, 'Outbound Links', 'Github'); return false;"><i class="icon-github" alt="github"></i></a> 
+              </span>  
+              <!--              <a property="account" href="http://www.mendeley.com/profiles/carl-boettiger" onclick="recordOutboundLink(this, 'Outbound Links', 'Mendeley'); return false;"><img src="/assets/img/icon-mendeley.png" alt="mendeley" /></a>  -->
+              <span rel="tooltip" title="subscribe to RSS feeds for my open lab notebook">
+                <a href="/atom.xml" onclick="recordOutboundLink(this, 'Outbound Links', 'RSS'); return false;"><i class="icon-rss" ></i></a>
+              </span>
+            </div>
+            <div class="span2" style="text-align:center">
+              <span rel="tooltip" 
+                    title="An Open Notebook Science (ONS) project claim: Entry provides all content (AC) immediately (I) or without significant delay.  See link for details"><a rel="license" href="http://onsclaims.wikispaces.com/" 
+                onclick="recordOutboundLink(this, 'Outbound Links', 'ONS_claim'); return false;" 
+                ><img src="http://onsclaims.wikispaces.com/file/view/ons-aci2-icon.png" alt="ONS" /></a>
+            </span>
+            </div>
+            <div class="span4">
+              <a property="http://creativecommons.org/ns#license" href="http://creativecommons.org/publicdomain/zero/1.0/" onclick="recordOutboundLink(this, 'Outbound Links', 'CC0'); return false;"><img src="http://i.creativecommons.org/l/zero/1.0/88x31.png" alt="CC0" style="float:right" /></a> 
+            </div>
+        </div>
+      </footer>
+    </div><!-- /container -->
+    
+        <!-- Le javascript
+    ================================================== -->
+
+    <!-- Placed at the end of the document so the pages load faster -->
+    <!-- JQuery, used on a few pages -->
+    <script type="text/javascript" src="http://www.carlboettiger.info/assets/js/jquery.js"></script>
+    <!-- Equations using MathJax -->
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config"> MathJax.Hub.Config({ TeX: { equationNumbers: {autoNumber: "all"} } });       </script>
+    <!-- Twitter Bootstrap Javascript -->
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-transition.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-collapse.js"></script> <!-- for collapsing navbar-->
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-tooltip.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-alert.js"></script>
+
+    <script type="text/javascript">
+      $(document).ready(function (){
+        $("[rel=tooltip]").tooltip();
+      });
+    </script>
+
+    <!-- Unused Twitter Bootstrap Javascript 
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-dropdown.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/google-code-prettify/prettify.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-modal.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-scrollspy.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-tab.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-popover.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-button.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-carousel.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-typeahead.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/application.js"></script>
+    -->
+
+
+      <script type="text/javascript">
+          var _gaq = _gaq || [];
+          _gaq.push(['_setAccount', 'UA-18401403-1']);
+          _gaq.push(['_trackPageview']);
+          (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+          })();
+  </script>
+
+
+
+<script type="text/javascript">
+function recordOutboundLink(link, category, action) {
+  try {
+    var pageTracker=_gat._getTracker("UA-18401403-1");
+    pageTracker._trackEvent(category, action);
+    setTimeout('document.location = "' + link.href + '"', 100)
+  }catch(err){}
+}
+</script>
+
+
+        
+<!-- Start Open Web Analytics Tracker -->
+<script type="text/javascript">
+//<![CDATA[
+var owa_baseUrl = 'http://www.carlboettiger.info/openwebanalytics/';
+var owa_cmds = owa_cmds || [];
+owa_cmds.push(['setSiteId', '2886faa411a4139a6c6f97b5a1f38697']);
+owa_cmds.push(['trackPageView']);
+owa_cmds.push(['trackClicks']);
+owa_cmds.push(['trackDomStream']);
+
+(function() {
+  var _owa = document.createElement('script'); _owa.type = 'text/javascript'; _owa.async = true;
+  owa_baseUrl = ('https:' == document.location.protocol ? window.owa_baseSecUrl || owa_baseUrl.replace(/http:/, 'https:') : owa_baseUrl );
+  _owa.src = owa_baseUrl + 'modules/base/js/owa.tracker-combined-min.js';
+  var _owa_s = document.getElementsByTagName('script')[0]; _owa_s.parentNode.insertBefore(_owa, _owa_s);
+}());
+//]]>
+</script>
+<!-- End Open Web Analytics Code -->
+        
+
+  </body>
+</html>
+

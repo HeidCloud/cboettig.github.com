@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head prefix="dc: http://purl.org/dc/terms/ og: http://ogp.me/ns#">
+    <meta charset="utf-8" /> 
+    <title>Multiple Uncertainty</title>
+    <meta name="author" content="Carl Boettiger" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+
+  
+
+
+<!-- HTML5 metadata -->
+<meta name="keywords" content="Science, Ecology, Evolution, Open Science, Reproducible Research" />
+<meta name="description" content="My open lab notebook- research in theoretical ecology and evolution" />
+<!-- RDFa Metadata (in DublinCore) -->
+<meta property="dc:title" content="Multiple Uncertainty" />
+<meta property="dc:creator" content="Carl Boettiger" />
+<meta property="dc:date" content="2013-01-10T12:36:56-08:00" />
+<meta property="dc:type" content="Lab Notebook Entry" /> <!-- article? entry?-->
+<meta property="dc:format" content="text/html" />
+<meta property="dc:language" content="en" />
+<meta property="dc:source" content="Lab Notebook" />
+<!-- RDFa Metadata (in OpenGraph) -->
+<meta property="og:title" content="Multiple Uncertainty" />
+<meta property="og:author" content="http://www.carlboettiger.info/index.html" />  <!-- Should be Liquid? URI? -->
+<meta property="http://ogp.me/ns/profile#first_name" content="Carl"/>
+<meta property="http://ogp.me/ns/profile#last_name" content="Boettiger"/>
+<meta property="http://ogp.me/ns/article#published_time" content="2013-01-10T12:36:56-08:00" />
+<meta property="og:site_name" content="Lab Notebook" /> <!-- Same as dc:source? -->
+<meta property="og:url" content="http://www.carlboettiger.info/2012/10/01/multiple-uncertainty.html" />
+<meta property="og:type" content="article" />
+<!-- Google Scholar Metadata -->
+<meta name="resource_type" content="Lab Notebook"/>
+<meta name="citation_journal_title" content="Lab Notebook"/>
+<meta name="citation_publication_date" content="10 Jan 2013"/>
+<meta name="citation_date" content="10 Jan 2013"/>
+<meta name="citation_author" content="Carl Boettiger"/>
+<meta name="citation_title" content="Multiple Uncertainty"/>
+
+    <!-- CSS Stylesheets (toggled with javascript) -->
+    <link href="/assets/css/light.css" rel="stylesheet"
+          type="text/css" id="stl" title="light" />
+    <link href="/assets/css/dark.css" rel="alternate stylesheet" 
+          type="text/css" title="dark" />
+    <!-- Javascript needed for theme toggle, load immediately -->
+    <script type="text/javascript" src="/assets/js/switch-css.js"></script>
+    <script type="text/javascript">
+      set_style_from_cookie(); 
+    </script>
+  </head>
+  <body> 
+  
+<!-- Navbar  ================================================== -->
+<div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+      <a class="brand" href="/README.html"><i style="float:right;" class="icon-info-sign" alt="info" rel="tooltip" title="Credits and technical information about this site" data-placement="bottom"></i></a>
+      <div class="nav-collapse">
+        <ul class="nav">
+          <li>
+          <a href="/index.html">Home</a></li>
+
+          <li>
+          <a href="/vita.html">Vita</a></li>
+
+          <li>
+          <a href="/research.html">Research</a></li>
+
+          <li>
+          <a href="/teaching.html">Teaching</a></li>
+
+          <li>
+          <a href="/community.html">Community</a></li>
+
+          <li>
+          <a href="/lab-notebook.html">Lab Notebook</a></li>
+
+        </ul>
+      </div><!--/.nav-collapse -->
+      <form class="navbar-search pull-right" method="get" action="http://google.com/search">
+         <p>
+         <input type="hidden" name="q" value="site:carlboettiger.info" />
+         <input type="text" class="search-query" name="q" />
+         <button class="btn btn-mini" type="submit"><i class="icon-search"></i></button> 
+         </p>
+       </form>
+     </div> <!-- /container -->
+   </div> <!-- /navbar-inner -->
+ </div> <!-- /navbar -->
+
+
+
+  <div class="container"> 
+    <article> <!-- includes header and entry, but not footer -->
+    <header class="jumbotron subhead">
+      <h1 class="entry-title">Multiple Uncertainty</h1>
+      <p></p>
+    </header>
+
+
+      <div class="row">
+        <div class="span7 offset1">
+          <p>Let</p>
+<ul>
+<li><code>y</code> be measured stock size, subject to measurement error from true stock <code>x</code></li>
+<li><code>q</code> be harvest quota, subject to implementation error from actual harvest, <code>h</code></li>
+</ul>
+<p>Stock next year is also subject to stochastic growth shock \(z_g\), (note that \(f\) will also depend on the harvest, <code>h</code>, unless \(x_t\) is taken as the escapement population, \(x-h\)).</p>
+<p>\[ x_{t+1} = z_g f(x_t) \]</p>
+<p>In discrete space, let <code>X</code> be a vector representing the probability distribution of having stock \(x\) at time \(t\), restricted to some finite grid of dimension \(n\). Let \(P_g(x | \mu, \sigma_g)\) be the probability density function of the shock \(z_g\) over states \(x\), given parameter \(\sigma\) and mean \(\mu\). We can write the distribution \(X_{t+1}\) as the result of a matrix-vector product, \(X_{t+1} = \mathbb{F} X_t\) where the elements of F are given by</p>
+<p>\[ F_{ij} = P_g(x_i, f(x_j), \sigma_g) \]</p>
+<p>and \(\mathbb{F}\) is also a function of the harvest level, \(\mathbb{F_h}\).</p>
+<p>When we consider measurement uncertainty, we allow the vector \(\vec Y\) to represent the measured stock size, and the true stock size \(\vec X\) is a random variable distributed around it. In the discrete space we may represent this as \(X = \mathbb{M} \vec Y\), where \(M\) is an \(n\) by \(n\) grid representing the role of measurement uncertainty, \(M_{ij} = P_m(x_i, x_j, \sigma_m)\). The state equation now evolves in belief space,</p>
+<p>\[ Y_{t+1} = \mathbb{F}_h \mathbb{M} \vec Y_t \]</p>
+<p>If there is implementation uncertainty as well and \(f\) is a function of the escapement population (those remaining after a harvest \(h\)), we can impliment this as an additional transition matrix \(I_{ij} = P_i(x_i, x_j-h, \sigma_i)\), and the state equation becomes</p>
+<p>\[ Y_{t+1} = \mathbb{F} \mathbb{M} \mathbb{I}_h \vec Y_t \]</p>
+<p>Note that the implementation matrix is a function of the harvest level, so that we need a different matrix for each \(h\), whether or not we introduce measurement uncertainty (instead of a different \(\mathbb{F}\) matrix for each harvest as before.)</p>
+<h2 id="results">Results</h2>
+<p>Linked in the automatically generated commit log:</p>
+<ul><li>
+parallel mapply support added <a href="https://github.com/cboettig/pdg_control/commit/3da799190fd4818ef85653314e3469fcb5d8e431">01:21 am 2012/10/02</a>
+</li><li>
+Merge branch ‘master’ of github.com:cboettig/pdg_control <a href="https://github.com/cboettig/pdg_control/commit/b0b512e850db6e5dc206a1e6ba3c2d978f23e33a">01:12 am 2012/10/02</a>
+</li><li>
+trying larger grid to remove edge effects <a href="https://github.com/cboettig/pdg_control/commit/6a0da81edb5b399fb64246ffb2ac6ac2575f7c35">01:11 am 2012/10/02</a>
+</li><li>
+edge effects become obvious in the all-high noise case <a href="https://github.com/cboettig/pdg_control/commit/0f635a7f1a9e9d956b680113ead5fbb961e3511a">01:07 am 2012/10/02</a>
+</li><li>
+Merge branch ‘master’ of github.com:cboettig/pdg_control <a href="https://github.com/cboettig/pdg_control/commit/5171c17e7123470f2cb47970400ead36f60905e2">01:03 am 2012/10/02</a>
+</li><li>
+<p>exploring high measurement only uncertainty - seems to show no deviation from constant escapement.</p>
+Note that the deterministic fails due to the singular pdfn distribution <a href="https://github.com/cboettig/pdg_control/commit/877c943ab11a3b9f08ef3fb0463998db64503a71">12:59 am 2012/10/02</a>
+</li><li>
+merge <a href="https://github.com/cboettig/pdg_control/commit/6a8d881f307ac73fc61a267f8f41bed54b60ac07">12:35 am 2012/10/02</a>
+</li><li>
+figure3 <a href="https://github.com/cboettig/pdg_control/commit/83a4ad58f17186df81ea1dfeef4b633730264f92">12:33 am 2012/10/02</a>
+</li><li>
+and now with images uploaded <a href="https://github.com/cboettig/pdg_control/commit/d7002f387131b7321b19965ab676a7090eae31eb">11:59 pm 2012/10/01</a>
+</li><li>
+small multiple uncertainty: working example! Uses matrix approach in R/SDP_multiple_uncertainty.R <a href="https://github.com/cboettig/pdg_control/commit/608d3d714668498eef32d85bddf70d4aa18c9b0e">11:58 pm 2012/10/01</a>
+</li><li>
+clean up directory, updated documentation <a href="https://github.com/cboettig/pdg_control/commit/b9fa0622840c7eb8e32b0ef70cf75aab231ac67b">11:29 pm 2012/10/01</a>
+</li><li>
+merge <a href="https://github.com/cboettig/pdg_control/commit/ad0fe803782cfdce691ab2677cedad4940b8827d">11:24 pm 2012/10/01</a>
+</li><li>
+attempting multiple uncertainties using matrix approach – Example on growth-noise alone <a href="https://github.com/cboettig/pdg_control/commit/86751f86d9389067ecaa6bd5662777970db2f9f5">11:24 pm 2012/10/01</a>
+</li><li>
+old changes <a href="https://github.com/cboettig/pdg_control/commit/de9132ccf10146b3fc35f291656a61c52338e75f">11:20 pm 2012/10/01</a>
+</li></ul>
+        </div>
+
+
+        <!-- Custom sidebar -->      
+        <div class="span4">
+          <div class="sidebar">
+            <aside prefix="dc: http://purl.org/dc/terms/ og:http://ogp.me/ns/article#">
+<i class="icon-calendar"></i>
+<time datetime="2012-10-01T00:00:00-07:00" 
+      property="dc:created">01 Oct 2012</time>.
+<br />
+          
+            <p><a class="btn btn-mini" rel="prev" href='/2012/09/28/Welcome-to-my-lab-notebook.html'><i class="icon-chevron-left"></i> prev</a>
+          
+          
+          <a class="btn btn-mini" rel="next" href='/2012/10/02/solarized-colors.html'>next <i class="icon-chevron-right"></i></a></p>
+          
+
+
+<br />
+
+
+<p> <a class="btn btn-mini" href="https://github.com/cboettig/labnotebook/commits/master/_posts/2012-10-01-multiple-uncertainty.md"><i class="icon-time"></i> history</a></p>
+<br />
+Posted in 
+  <a rel="tag" class="category" href="/categories.html#ecology"><span property="dc:subject og:section">ecology</span></a>
+  
+
+
+
+<br />
+tags: 
+  <a rel="tag" class="tag" href="/tags.html#decision-theory">#<span property="og:tag http://schema.org/BlogPosting/keywords">decision-theory</span></a>
+  , 
+
+  <a rel="tag" class="tag" href="/tags.html#PDG+Control">#<span property="og:tag http://schema.org/BlogPosting/keywords">PDG Control</span></a>
+  
+
+
+
+</aside>
+
+         </div>
+       </div>
+
+      </div>
+      <!-- Disqus Comments -->
+      <div class="row disqus">
+        <div class="span8">          
+            <div id="disqus_thread"></div>
+            <script type="text/javascript">
+                var disqus_shortname = 'cboettig'; // required: replace example with your forum shortname
+                /* * * DON'T EDIT BELOW THIS LINE * * */
+                (function() {
+                    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                    dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        </div>
+      </div>
+
+
+
+</article>
+<footer class="footer">
+  <form style="font-size:10px">
+    <div class="pull-right">
+      <span rel="tooltip" title="switch to dark theme">
+        <a onclick="switch_style('dark'); return false;" name="theme" value="dark" id="dark" class="btn btn-mini"><i class="icon-adjust"></i></a> 
+      </span>
+      <span rel="tooltip" title="switch to light theme">
+        <a onclick="switch_style('light');return false;" name="theme" value="light" id="light" class="btn btn-mini"><i class="icon-certificate"></i></a> 
+      </span>
+    </div>
+  </form>
+          <div class="row">
+            <div class="span4 socialicons" style="font-size:20px" vocab="http://xmlns.com/foaf/0.1/" typeof="Person" resource="#me">
+              <span rel="tooltip" title="email me">
+                <a property="account" href="mailto:cboettig@gmail.com" onclick="recordOutboundLink(this, 'Outbound Links', 'email'); return false;"><i class="icon-envelope-alt"></i></a>
+              </span>
+              <span rel="tooltip" title="follow me on twitter (reading, discussing)">
+                <a property="account" href="https://twitter.com/cboettig" onclick="recordOutboundLink(this, 'Outbound Links', 'Twitter'); return false;"><i class="icon-twitter"></i></a> 
+              </span>
+              <!--              <a property="account" href="https://plus.google.com/" onclick="recordOutboundLink(this, 'Outbound Links', 'GPlus'); return false;"><i class="icon-google-plus"></i></a> -->
+              <span rel="tooltip" title="follow me on Github (code, research)">
+                <a property="account" href="https://github.com/cboettig" onclick="recordOutboundLink(this, 'Outbound Links', 'Github'); return false;"><i class="icon-github" alt="github"></i></a> 
+              </span>  
+              <!--              <a property="account" href="http://www.mendeley.com/profiles/carl-boettiger" onclick="recordOutboundLink(this, 'Outbound Links', 'Mendeley'); return false;"><img src="/assets/img/icon-mendeley.png" alt="mendeley" /></a>  -->
+              <span rel="tooltip" title="subscribe to RSS feeds for my open lab notebook">
+                <a href="/atom.xml" onclick="recordOutboundLink(this, 'Outbound Links', 'RSS'); return false;"><i class="icon-rss" ></i></a>
+              </span>
+            </div>
+            <div class="span2" style="text-align:center">
+              <span rel="tooltip" 
+                    title="An Open Notebook Science (ONS) project claim: Entry provides all content (AC) immediately (I) or without significant delay.  See link for details"><a rel="license" href="http://onsclaims.wikispaces.com/" 
+                onclick="recordOutboundLink(this, 'Outbound Links', 'ONS_claim'); return false;" 
+                ><img src="http://onsclaims.wikispaces.com/file/view/ons-aci2-icon.png" alt="ONS" /></a>
+            </span>
+            </div>
+            <div class="span4">
+              <a property="http://creativecommons.org/ns#license" href="http://creativecommons.org/publicdomain/zero/1.0/" onclick="recordOutboundLink(this, 'Outbound Links', 'CC0'); return false;"><img src="http://i.creativecommons.org/l/zero/1.0/88x31.png" alt="CC0" style="float:right" /></a> 
+            </div>
+        </div>
+      </footer>
+    </div><!-- /container -->
+    
+        <!-- Le javascript
+    ================================================== -->
+
+    <!-- Placed at the end of the document so the pages load faster -->
+    <!-- JQuery, used on a few pages -->
+    <script type="text/javascript" src="http://www.carlboettiger.info/assets/js/jquery.js"></script>
+    <!-- Equations using MathJax -->
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config"> MathJax.Hub.Config({ TeX: { equationNumbers: {autoNumber: "all"} } });       </script>
+    <!-- Twitter Bootstrap Javascript -->
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-transition.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-collapse.js"></script> <!-- for collapsing navbar-->
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-tooltip.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-alert.js"></script>
+
+    <script type="text/javascript">
+      $(document).ready(function (){
+        $("[rel=tooltip]").tooltip();
+      });
+    </script>
+
+    <!-- Unused Twitter Bootstrap Javascript 
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-dropdown.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/google-code-prettify/prettify.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-modal.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-scrollspy.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-tab.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-popover.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-button.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-carousel.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-typeahead.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/application.js"></script>
+    -->
+
+
+      <script type="text/javascript">
+          var _gaq = _gaq || [];
+          _gaq.push(['_setAccount', 'UA-18401403-1']);
+          _gaq.push(['_trackPageview']);
+          (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+          })();
+  </script>
+
+
+
+<script type="text/javascript">
+function recordOutboundLink(link, category, action) {
+  try {
+    var pageTracker=_gat._getTracker("UA-18401403-1");
+    pageTracker._trackEvent(category, action);
+    setTimeout('document.location = "' + link.href + '"', 100)
+  }catch(err){}
+}
+</script>
+
+
+        
+<!-- Start Open Web Analytics Tracker -->
+<script type="text/javascript">
+//<![CDATA[
+var owa_baseUrl = 'http://www.carlboettiger.info/openwebanalytics/';
+var owa_cmds = owa_cmds || [];
+owa_cmds.push(['setSiteId', '2886faa411a4139a6c6f97b5a1f38697']);
+owa_cmds.push(['trackPageView']);
+owa_cmds.push(['trackClicks']);
+owa_cmds.push(['trackDomStream']);
+
+(function() {
+  var _owa = document.createElement('script'); _owa.type = 'text/javascript'; _owa.async = true;
+  owa_baseUrl = ('https:' == document.location.protocol ? window.owa_baseSecUrl || owa_baseUrl.replace(/http:/, 'https:') : owa_baseUrl );
+  _owa.src = owa_baseUrl + 'modules/base/js/owa.tracker-combined-min.js';
+  var _owa_s = document.getElementsByTagName('script')[0]; _owa_s.parentNode.insertBefore(_owa, _owa_s);
+}());
+//]]>
+</script>
+<!-- End Open Web Analytics Code -->
+        
+
+  </body>
+</html>
+

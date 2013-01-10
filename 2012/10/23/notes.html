@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head prefix="dc: http://purl.org/dc/terms/ og: http://ogp.me/ns#">
+    <meta charset="utf-8" /> 
+    <title>Gaussian process inference on sample functions</title>
+    <meta name="author" content="Carl Boettiger" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+
+  
+
+
+<!-- HTML5 metadata -->
+<meta name="keywords" content="Science, Ecology, Evolution, Open Science, Reproducible Research" />
+<meta name="description" content="My open lab notebook- research in theoretical ecology and evolution" />
+<!-- RDFa Metadata (in DublinCore) -->
+<meta property="dc:title" content="Gaussian process inference on sample functions" />
+<meta property="dc:creator" content="Carl Boettiger" />
+<meta property="dc:date" content="2013-01-10T12:36:56-08:00" />
+<meta property="dc:type" content="Lab Notebook Entry" /> <!-- article? entry?-->
+<meta property="dc:format" content="text/html" />
+<meta property="dc:language" content="en" />
+<meta property="dc:source" content="Lab Notebook" />
+<!-- RDFa Metadata (in OpenGraph) -->
+<meta property="og:title" content="Gaussian process inference on sample functions" />
+<meta property="og:author" content="http://www.carlboettiger.info/index.html" />  <!-- Should be Liquid? URI? -->
+<meta property="http://ogp.me/ns/profile#first_name" content="Carl"/>
+<meta property="http://ogp.me/ns/profile#last_name" content="Boettiger"/>
+<meta property="http://ogp.me/ns/article#published_time" content="2013-01-10T12:36:56-08:00" />
+<meta property="og:site_name" content="Lab Notebook" /> <!-- Same as dc:source? -->
+<meta property="og:url" content="http://www.carlboettiger.info/2012/10/23/notes.html" />
+<meta property="og:type" content="article" />
+<!-- Google Scholar Metadata -->
+<meta name="resource_type" content="Lab Notebook"/>
+<meta name="citation_journal_title" content="Lab Notebook"/>
+<meta name="citation_publication_date" content="10 Jan 2013"/>
+<meta name="citation_date" content="10 Jan 2013"/>
+<meta name="citation_author" content="Carl Boettiger"/>
+<meta name="citation_title" content="Gaussian process inference on sample functions"/>
+
+    <!-- CSS Stylesheets (toggled with javascript) -->
+    <link href="/assets/css/light.css" rel="stylesheet"
+          type="text/css" id="stl" title="light" />
+    <link href="/assets/css/dark.css" rel="alternate stylesheet" 
+          type="text/css" title="dark" />
+    <!-- Javascript needed for theme toggle, load immediately -->
+    <script type="text/javascript" src="/assets/js/switch-css.js"></script>
+    <script type="text/javascript">
+      set_style_from_cookie(); 
+    </script>
+  </head>
+  <body> 
+  
+<!-- Navbar  ================================================== -->
+<div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+      <a class="brand" href="/README.html"><i style="float:right;" class="icon-info-sign" alt="info" rel="tooltip" title="Credits and technical information about this site" data-placement="bottom"></i></a>
+      <div class="nav-collapse">
+        <ul class="nav">
+          <li>
+          <a href="/index.html">Home</a></li>
+
+          <li>
+          <a href="/vita.html">Vita</a></li>
+
+          <li>
+          <a href="/research.html">Research</a></li>
+
+          <li>
+          <a href="/teaching.html">Teaching</a></li>
+
+          <li>
+          <a href="/community.html">Community</a></li>
+
+          <li>
+          <a href="/lab-notebook.html">Lab Notebook</a></li>
+
+        </ul>
+      </div><!--/.nav-collapse -->
+      <form class="navbar-search pull-right" method="get" action="http://google.com/search">
+         <p>
+         <input type="hidden" name="q" value="site:carlboettiger.info" />
+         <input type="text" class="search-query" name="q" />
+         <button class="btn btn-mini" type="submit"><i class="icon-search"></i></button> 
+         </p>
+       </form>
+     </div> <!-- /container -->
+   </div> <!-- /navbar-inner -->
+ </div> <!-- /navbar -->
+
+
+
+  <div class="container"> 
+    <article> <!-- includes header and entry, but not footer -->
+    <header class="jumbotron subhead">
+      <h1 class="entry-title">Gaussian process inference on sample functions</h1>
+      <p></p>
+    </header>
+
+
+      <div class="row">
+        <div class="span7 offset1">
+          <ul>
+<li>This example uses the direct inversion of the covariance function. I have also been exploring the potentially faster Cholksy decomposition without success. Sometimes the match is very good, other times not, see <a href="https://github.com/cboettig/nonparametric-bayes/blob/c0624f95ece642dbcfa7d7bbeb8fd43c84354a3a/inst/examples/compare-cholsky.md">compare-cholsky.md</a></li>
+<li>This example also on github as <a href="https://github.com/cboettig/nonparametric-bayes/blob/c0624f95ece642dbcfa7d7bbeb8fd43c84354a3a/inst/examples/reed-example.md">reed-example.md</a>.<br /></li>
+<li>Basic likelihood optimization needs to be checked. See commits <a href="https://github.com/cboettig/nonparametric-bayes/commit/e35135230f92c5ee646225cdb4b0c3fa47dd8ead">estimating <code>sigma_n</code></a> and <a href="https://github.com/cboettig/nonparametric-bayes/commit/d03db9312f7bbdacb451022f1e83ed11c682841d">estimating <code>l</code></a>. Compare the example below to <a href="https://github.com/cboettig/nonparametric-bayes/blob/11666fb029ef213854065d86d08f03723d2cd828/inst/examples/reed-example.md">a different set of fixed hyperparameters here</a></li>
+</ul>
+<h2 id="example">Example</h2>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">require</span>(pdgControl)
+<span class="kw">require</span>(ggplot2)</code></pre>
+<p>Simulate some training data under a stochastic growth function with standard parameterization,</p>
+<pre class="sourceCode r"><code class="sourceCode r">f &lt;- BevHolt
+p &lt;- <span class="kw">c</span>(<span class="fl">1.5</span>, <span class="fl">0.05</span>)
+K &lt;- (p[<span class="dv">1</span>] - <span class="dv">1</span>)/p[<span class="dv">2</span>]</code></pre>
+<p>Noise function</p>
+<pre class="sourceCode r"><code class="sourceCode r">z_g &lt;- function(sigma_g) <span class="kw">rlnorm</span>(<span class="dv">1</span>, <span class="dv">0</span>, sigma_g)  <span class="co">#1+(2*runif(1, 0,  1)-1)*sigma_g #</span></code></pre>
+<p>Parameter definitions</p>
+<pre class="sourceCode r"><code class="sourceCode r">x_grid = <span class="kw">seq</span>(<span class="dv">0</span>, <span class="fl">1.5</span> * K, <span class="dt">length =</span> <span class="dv">100</span>)
+T &lt;- <span class="dv">40</span>
+sigma_g &lt;- <span class="fl">0.1</span>
+x &lt;- <span class="kw">numeric</span>(T)
+x[<span class="dv">1</span>] &lt;- <span class="dv">1</span></code></pre>
+<p>Simulation</p>
+<pre class="sourceCode r"><code class="sourceCode r">for (t in <span class="dv">1</span>:(T - <span class="dv">1</span>)) x[t + <span class="dv">1</span>] = <span class="kw">z_g</span>(sigma_g) * <span class="kw">f</span>(x[t], <span class="dt">h =</span> <span class="dv">0</span>, <span class="dt">p =</span> p)
+
+<span class="kw">plot</span>(x)</code></pre>
+<div class="figure">
+<img src="http://farm9.staticflickr.com/8190/8117649167_f5002b7024_o.png" /><p class="caption"></p>
+</div>
+<p>Predict the function over the target grid</p>
+<pre class="sourceCode r"><code class="sourceCode r">obs &lt;- <span class="kw">data.frame</span>(<span class="dt">x =</span> x[<span class="dv">1</span>:(T - <span class="dv">1</span>)], <span class="dt">y =</span> x[<span class="dv">2</span>:T])
+X &lt;- x_grid
+<span class="kw">library</span>(nonparametricbayes)
+gp &lt;- <span class="kw">gp_fit</span>(obs, X, <span class="kw">c</span>(<span class="dt">sigma_n =</span> <span class="fl">0.05</span>, <span class="dt">l =</span> <span class="dv">10</span>))</code></pre>
+<p>Gaussian Process inference from this model. True model shown in red.</p>
+<pre class="sourceCode r"><code class="sourceCode r">df &lt;- <span class="kw">data.frame</span>(<span class="dt">x =</span> X, <span class="dt">y =</span> gp$Ef, <span class="dt">ymin =</span> (gp$Ef - <span class="dv">2</span> * <span class="kw">sqrt</span>(<span class="kw">abs</span>(<span class="kw">diag</span>(gp$Cf)))), 
+    <span class="dt">ymax =</span> (gp$Ef + <span class="dv">2</span> * <span class="kw">sqrt</span>(<span class="kw">abs</span>(<span class="kw">diag</span>(gp$Cf)))))
+true &lt;- <span class="kw">data.frame</span>(<span class="dt">x =</span> X, <span class="dt">y =</span> <span class="kw">sapply</span>(X, f, <span class="dv">0</span>, p))
+<span class="kw">require</span>(ggplot2)
+<span class="kw">ggplot</span>(df) + <span class="kw">geom_ribbon</span>(<span class="kw">aes</span>(x, y, <span class="dt">ymin =</span> ymin, <span class="dt">ymax =</span> ymax), <span class="dt">fill =</span> <span class="st">&quot;gray80&quot;</span>) + 
+    <span class="kw">geom_line</span>(<span class="kw">aes</span>(x, y)) + <span class="kw">geom_point</span>(<span class="dt">data =</span> obs, <span class="kw">aes</span>(x, y)) + <span class="kw">geom_line</span>(<span class="dt">data =</span> true, 
+    <span class="kw">aes</span>(x, y), <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">lty =</span> <span class="dv">2</span>)</code></pre>
+<div class="figure">
+<img src="http://farm9.staticflickr.com/8336/8117660178_beeca82760_o.png" /><p class="caption"></p>
+</div>
+<h2 id="another-example-using-the-may-model">Another example using the May model</h2>
+<pre class="sourceCode r"><code class="sourceCode r">f &lt;- May
+p &lt;- <span class="kw">c</span>(<span class="dt">r =</span> <span class="fl">0.75</span>, <span class="dt">k =</span> <span class="dv">10</span>, <span class="dt">a =</span> <span class="fl">1.2</span>, <span class="dt">H =</span> <span class="dv">1</span>, <span class="dt">Q =</span> <span class="dv">3</span>)
+K &lt;- <span class="dv">8</span>  <span class="co"># approx</span></code></pre>
+<p>Model dynamics look like this:</p>
+<pre class="sourceCode r"><code class="sourceCode r">birth &lt;- function(x) p[<span class="st">&quot;r&quot;</span>] * (<span class="dv">1</span> - x/p[<span class="st">&quot;k&quot;</span>])
+death &lt;- function(x) p[<span class="st">&quot;a&quot;</span>] * x^(p[<span class="st">&quot;Q&quot;</span>] - <span class="dv">1</span>)/(x^p[<span class="st">&quot;Q&quot;</span>] + p[<span class="st">&quot;H&quot;</span>])
+df &lt;- <span class="kw">data.frame</span>(<span class="dt">x =</span> x_grid, <span class="dt">b =</span> <span class="kw">sapply</span>(x_grid, birth), <span class="dt">d =</span> <span class="kw">sapply</span>(x_grid, 
+    death))
+<span class="kw">ggplot</span>(df) + <span class="kw">geom_line</span>(<span class="kw">aes</span>(x, b), <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>) + <span class="kw">geom_line</span>(<span class="kw">aes</span>(x, 
+    d), <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>)</code></pre>
+<div class="figure">
+<img src="http://farm9.staticflickr.com/8046/8117660240_31c8d052c4_o.png" /><p class="caption"></p>
+</div>
+<p>Simulation</p>
+<pre class="sourceCode r"><code class="sourceCode r">x[<span class="dv">1</span>] = <span class="fl">2.5</span>
+for (t in <span class="dv">1</span>:(T - <span class="dv">1</span>)) x[t + <span class="dv">1</span>] = <span class="kw">z_g</span>(sigma_g) * <span class="kw">f</span>(x[t], <span class="dt">h =</span> <span class="dv">0</span>, <span class="dt">p =</span> p)
+<span class="kw">plot</span>(x)</code></pre>
+<div class="figure">
+<img src="http://farm9.staticflickr.com/8330/8117649515_59c703d880_o.png" /><p class="caption"></p>
+</div>
+<p>Predict the function over the target grid</p>
+<pre class="sourceCode r"><code class="sourceCode r">obs &lt;- <span class="kw">data.frame</span>(<span class="dt">x =</span> x[<span class="dv">1</span>:(T - <span class="dv">1</span>)], <span class="dt">y =</span> x[<span class="dv">2</span>:T])
+X &lt;- x_grid
+<span class="kw">library</span>(nonparametricbayes)
+gp &lt;- <span class="kw">gp_fit</span>(obs, X, <span class="kw">c</span>(<span class="dt">sigma_n =</span> <span class="fl">0.05</span>, <span class="dt">l =</span> <span class="dv">10</span>))</code></pre>
+<p>Gaussian Process inference from this model</p>
+<pre class="sourceCode r"><code class="sourceCode r">df &lt;- <span class="kw">data.frame</span>(<span class="dt">x =</span> X, <span class="dt">y =</span> gp$Ef, <span class="dt">ymin =</span> (gp$Ef - <span class="dv">2</span> * <span class="kw">sqrt</span>(<span class="kw">abs</span>(<span class="kw">diag</span>(gp$Cf)))), 
+    <span class="dt">ymax =</span> (gp$Ef + <span class="dv">2</span> * <span class="kw">sqrt</span>(<span class="kw">abs</span>(<span class="kw">diag</span>(gp$Cf)))))
+true &lt;- <span class="kw">data.frame</span>(<span class="dt">x =</span> X, <span class="dt">y =</span> <span class="kw">sapply</span>(X, f, <span class="dv">0</span>, p))
+<span class="kw">ggplot</span>(df) + <span class="kw">geom_ribbon</span>(<span class="kw">aes</span>(x, y, <span class="dt">ymin =</span> ymin, <span class="dt">ymax =</span> ymax), <span class="dt">fill =</span> <span class="st">&quot;gray80&quot;</span>) + 
+    <span class="kw">geom_line</span>(<span class="kw">aes</span>(x, y)) + <span class="kw">geom_point</span>(<span class="dt">data =</span> obs, <span class="kw">aes</span>(x, y)) + <span class="kw">geom_line</span>(<span class="dt">data =</span> true, 
+    <span class="kw">aes</span>(x, y), <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">lty =</span> <span class="dv">2</span>)</code></pre>
+<div class="figure">
+<img src="http://farm9.staticflickr.com/8325/8117660460_a53eb7c10c_o.png" /><p class="caption"></p>
+</div>
+        </div>
+
+
+        <!-- Custom sidebar -->      
+        <div class="span4">
+          <div class="sidebar">
+            <aside prefix="dc: http://purl.org/dc/terms/ og:http://ogp.me/ns/article#">
+<i class="icon-calendar"></i>
+<time datetime="2012-10-23T00:00:00-07:00" 
+      property="dc:created">23 Oct 2012</time>.
+<br />
+          
+            <p><a class="btn btn-mini" rel="prev" href='/2012/10/22/notes.html'><i class="icon-chevron-left"></i> prev</a>
+          
+          
+          <a class="btn btn-mini" rel="next" href='/2012/10/23/semantic-markup-examples-for-the-lab-notebook.html'>next <i class="icon-chevron-right"></i></a></p>
+          
+
+
+<br />
+
+
+<p> <a class="btn btn-mini" href="https://github.com/cboettig/labnotebook/commits/master/_posts/2012-10-23-notes.md"><i class="icon-time"></i> history</a></p>
+<br />
+Posted in 
+  <a rel="tag" class="category" href="/categories.html#ecology"><span property="dc:subject og:section">ecology</span></a>
+  
+
+
+
+<br />
+tags: 
+  <a rel="tag" class="tag" href="/tags.html#nonparametric-bayes">#<span property="og:tag http://schema.org/BlogPosting/keywords">nonparametric-bayes</span></a>
+  
+
+
+
+</aside>
+
+         </div>
+       </div>
+
+      </div>
+      <!-- Disqus Comments -->
+      <div class="row disqus">
+        <div class="span8">          
+            <div id="disqus_thread"></div>
+            <script type="text/javascript">
+                var disqus_shortname = 'cboettig'; // required: replace example with your forum shortname
+                /* * * DON'T EDIT BELOW THIS LINE * * */
+                (function() {
+                    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                    dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        </div>
+      </div>
+
+
+
+</article>
+<footer class="footer">
+  <form style="font-size:10px">
+    <div class="pull-right">
+      <span rel="tooltip" title="switch to dark theme">
+        <a onclick="switch_style('dark'); return false;" name="theme" value="dark" id="dark" class="btn btn-mini"><i class="icon-adjust"></i></a> 
+      </span>
+      <span rel="tooltip" title="switch to light theme">
+        <a onclick="switch_style('light');return false;" name="theme" value="light" id="light" class="btn btn-mini"><i class="icon-certificate"></i></a> 
+      </span>
+    </div>
+  </form>
+          <div class="row">
+            <div class="span4 socialicons" style="font-size:20px" vocab="http://xmlns.com/foaf/0.1/" typeof="Person" resource="#me">
+              <span rel="tooltip" title="email me">
+                <a property="account" href="mailto:cboettig@gmail.com" onclick="recordOutboundLink(this, 'Outbound Links', 'email'); return false;"><i class="icon-envelope-alt"></i></a>
+              </span>
+              <span rel="tooltip" title="follow me on twitter (reading, discussing)">
+                <a property="account" href="https://twitter.com/cboettig" onclick="recordOutboundLink(this, 'Outbound Links', 'Twitter'); return false;"><i class="icon-twitter"></i></a> 
+              </span>
+              <!--              <a property="account" href="https://plus.google.com/" onclick="recordOutboundLink(this, 'Outbound Links', 'GPlus'); return false;"><i class="icon-google-plus"></i></a> -->
+              <span rel="tooltip" title="follow me on Github (code, research)">
+                <a property="account" href="https://github.com/cboettig" onclick="recordOutboundLink(this, 'Outbound Links', 'Github'); return false;"><i class="icon-github" alt="github"></i></a> 
+              </span>  
+              <!--              <a property="account" href="http://www.mendeley.com/profiles/carl-boettiger" onclick="recordOutboundLink(this, 'Outbound Links', 'Mendeley'); return false;"><img src="/assets/img/icon-mendeley.png" alt="mendeley" /></a>  -->
+              <span rel="tooltip" title="subscribe to RSS feeds for my open lab notebook">
+                <a href="/atom.xml" onclick="recordOutboundLink(this, 'Outbound Links', 'RSS'); return false;"><i class="icon-rss" ></i></a>
+              </span>
+            </div>
+            <div class="span2" style="text-align:center">
+              <span rel="tooltip" 
+                    title="An Open Notebook Science (ONS) project claim: Entry provides all content (AC) immediately (I) or without significant delay.  See link for details"><a rel="license" href="http://onsclaims.wikispaces.com/" 
+                onclick="recordOutboundLink(this, 'Outbound Links', 'ONS_claim'); return false;" 
+                ><img src="http://onsclaims.wikispaces.com/file/view/ons-aci2-icon.png" alt="ONS" /></a>
+            </span>
+            </div>
+            <div class="span4">
+              <a property="http://creativecommons.org/ns#license" href="http://creativecommons.org/publicdomain/zero/1.0/" onclick="recordOutboundLink(this, 'Outbound Links', 'CC0'); return false;"><img src="http://i.creativecommons.org/l/zero/1.0/88x31.png" alt="CC0" style="float:right" /></a> 
+            </div>
+        </div>
+      </footer>
+    </div><!-- /container -->
+    
+        <!-- Le javascript
+    ================================================== -->
+
+    <!-- Placed at the end of the document so the pages load faster -->
+    <!-- JQuery, used on a few pages -->
+    <script type="text/javascript" src="http://www.carlboettiger.info/assets/js/jquery.js"></script>
+    <!-- Equations using MathJax -->
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config"> MathJax.Hub.Config({ TeX: { equationNumbers: {autoNumber: "all"} } });       </script>
+    <!-- Twitter Bootstrap Javascript -->
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-transition.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-collapse.js"></script> <!-- for collapsing navbar-->
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-tooltip.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-alert.js"></script>
+
+    <script type="text/javascript">
+      $(document).ready(function (){
+        $("[rel=tooltip]").tooltip();
+      });
+    </script>
+
+    <!-- Unused Twitter Bootstrap Javascript 
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-dropdown.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/google-code-prettify/prettify.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-modal.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-scrollspy.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-tab.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-popover.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-button.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-carousel.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-typeahead.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/application.js"></script>
+    -->
+
+
+      <script type="text/javascript">
+          var _gaq = _gaq || [];
+          _gaq.push(['_setAccount', 'UA-18401403-1']);
+          _gaq.push(['_trackPageview']);
+          (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+          })();
+  </script>
+
+
+
+<script type="text/javascript">
+function recordOutboundLink(link, category, action) {
+  try {
+    var pageTracker=_gat._getTracker("UA-18401403-1");
+    pageTracker._trackEvent(category, action);
+    setTimeout('document.location = "' + link.href + '"', 100)
+  }catch(err){}
+}
+</script>
+
+
+        
+<!-- Start Open Web Analytics Tracker -->
+<script type="text/javascript">
+//<![CDATA[
+var owa_baseUrl = 'http://www.carlboettiger.info/openwebanalytics/';
+var owa_cmds = owa_cmds || [];
+owa_cmds.push(['setSiteId', '2886faa411a4139a6c6f97b5a1f38697']);
+owa_cmds.push(['trackPageView']);
+owa_cmds.push(['trackClicks']);
+owa_cmds.push(['trackDomStream']);
+
+(function() {
+  var _owa = document.createElement('script'); _owa.type = 'text/javascript'; _owa.async = true;
+  owa_baseUrl = ('https:' == document.location.protocol ? window.owa_baseSecUrl || owa_baseUrl.replace(/http:/, 'https:') : owa_baseUrl );
+  _owa.src = owa_baseUrl + 'modules/base/js/owa.tracker-combined-min.js';
+  var _owa_s = document.getElementsByTagName('script')[0]; _owa_s.parentNode.insertBefore(_owa, _owa_s);
+}());
+//]]>
+</script>
+<!-- End Open Web Analytics Code -->
+        
+
+  </body>
+</html>
+

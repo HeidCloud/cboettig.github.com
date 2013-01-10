@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head prefix="dc: http://purl.org/dc/terms/ og: http://ogp.me/ns#">
+    <meta charset="utf-8" /> 
+    <title>Phylo: Luke Harmon</title>
+    <meta name="author" content="Carl Boettiger" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+
+  
+
+
+<!-- HTML5 metadata -->
+<meta name="keywords" content="Science, Ecology, Evolution, Open Science, Reproducible Research" />
+<meta name="description" content="My open lab notebook- research in theoretical ecology and evolution" />
+<!-- RDFa Metadata (in DublinCore) -->
+<meta property="dc:title" content="Phylo: Luke Harmon" />
+<meta property="dc:creator" content="Carl Boettiger" />
+<meta property="dc:date" content="2013-01-10T12:36:56-08:00" />
+<meta property="dc:type" content="Lab Notebook Entry" /> <!-- article? entry?-->
+<meta property="dc:format" content="text/html" />
+<meta property="dc:language" content="en" />
+<meta property="dc:source" content="Lab Notebook" />
+<!-- RDFa Metadata (in OpenGraph) -->
+<meta property="og:title" content="Phylo: Luke Harmon" />
+<meta property="og:author" content="http://www.carlboettiger.info/index.html" />  <!-- Should be Liquid? URI? -->
+<meta property="http://ogp.me/ns/profile#first_name" content="Carl"/>
+<meta property="http://ogp.me/ns/profile#last_name" content="Boettiger"/>
+<meta property="http://ogp.me/ns/article#published_time" content="2013-01-10T12:36:56-08:00" />
+<meta property="og:site_name" content="Lab Notebook" /> <!-- Same as dc:source? -->
+<meta property="og:url" content="http://www.carlboettiger.info/2011/02/25/phyloseminar-luke-harmon.html" />
+<meta property="og:type" content="article" />
+<!-- Google Scholar Metadata -->
+<meta name="resource_type" content="Lab Notebook"/>
+<meta name="citation_journal_title" content="Lab Notebook"/>
+<meta name="citation_publication_date" content="10 Jan 2013"/>
+<meta name="citation_date" content="10 Jan 2013"/>
+<meta name="citation_author" content="Carl Boettiger"/>
+<meta name="citation_title" content="Phylo: Luke Harmon"/>
+
+    <!-- CSS Stylesheets (toggled with javascript) -->
+    <link href="/assets/css/light.css" rel="stylesheet"
+          type="text/css" id="stl" title="light" />
+    <link href="/assets/css/dark.css" rel="alternate stylesheet" 
+          type="text/css" title="dark" />
+    <!-- Javascript needed for theme toggle, load immediately -->
+    <script type="text/javascript" src="/assets/js/switch-css.js"></script>
+    <script type="text/javascript">
+      set_style_from_cookie(); 
+    </script>
+  </head>
+  <body> 
+  
+<!-- Navbar  ================================================== -->
+<div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+      <a class="brand" href="/README.html"><i style="float:right;" class="icon-info-sign" alt="info" rel="tooltip" title="Credits and technical information about this site" data-placement="bottom"></i></a>
+      <div class="nav-collapse">
+        <ul class="nav">
+          <li>
+          <a href="/index.html">Home</a></li>
+
+          <li>
+          <a href="/vita.html">Vita</a></li>
+
+          <li>
+          <a href="/research.html">Research</a></li>
+
+          <li>
+          <a href="/teaching.html">Teaching</a></li>
+
+          <li>
+          <a href="/community.html">Community</a></li>
+
+          <li>
+          <a href="/lab-notebook.html">Lab Notebook</a></li>
+
+        </ul>
+      </div><!--/.nav-collapse -->
+      <form class="navbar-search pull-right" method="get" action="http://google.com/search">
+         <p>
+         <input type="hidden" name="q" value="site:carlboettiger.info" />
+         <input type="text" class="search-query" name="q" />
+         <button class="btn btn-mini" type="submit"><i class="icon-search"></i></button> 
+         </p>
+       </form>
+     </div> <!-- /container -->
+   </div> <!-- /navbar-inner -->
+ </div> <!-- /navbar -->
+
+
+
+  <div class="container"> 
+    <article> <!-- includes header and entry, but not footer -->
+    <header class="jumbotron subhead">
+      <h1 class="entry-title">Phylo: Luke Harmon</h1>
+      <p></p>
+    </header>
+
+
+      <div class="row">
+        <div class="span7 offset1">
+          <p>My notes on Luke Harmon’s excellent talk on <a href="http://phyloseminar.org/">Phyloseminar</a> this morning.  See the <a href="http://phyloseminar.org/recorded.html">recording</a> of Luke’s actual talk to know what he said, below are my thoughts and notes to myself having watched the talk.</p>
+<p>Luke summarizes his goal rather nicely as:</p>
+<blockquote>
+<p>Analyzing the data that people actually have to answer the questions they actually want to know</p>
+</blockquote>
+<p>For him, this focuses on incomplete trees and non-Brownian models.   Two of the three methods he discussed cover incomplete trees, two use BM and one doesn’t care about character evolution to begin with.  All use the birth-death model of speciation, despite the worrying assumption that species are, on average, increasing exponentially.  Despite the tally, I’m pretty excited about the methods proposed (well, the second two), because they move us in that direction with a decent expression of the uncertainty resulting from the data people actually have (by virtue of being Bayesian.  Not that you have to be Bayesian to do this, but somehow bootstrapping and confidence intervals don’t seem standard practice in implementation of comparative methods in Frequentist quantities, while the Bayesian ones always show you the posteriors.)</p>
+<h2 id="medusa-fossil-medusa">Medusa &amp; Fossil Medusa</h2>
+<h3 id="medusa">Medusa</h3>
+<p>Dealing with incomplete trees: Rabosky et al 2007(Rabosky <em>et. al.</em> 2007) incomplete trees partition the likelihood:</p>
+<p>$ L = L_p + L_t $</p>
+<p>phylogenetically resolved, taxonomic (unresolved part of the tree).  Calculate the likelihood of the birth-death parameter values on the <em>T</em> unresolved parts of the tree (where the _i_th clade has $ n_i$ taxa) simply as:</p>
+<p>\[ \log L_t = \sum_{i=1}^T \log(1-\beta_i) + \sum _{i=1}^T(n_i -1)\log \beta_i\]</p>
+<p>where</p>
+<p>\[ \beta_i = \frac{\exp(rt_i)-1}{exp(rt_i) - a}\]</p>
+<p>where <em>a</em> is the extinction fraction (death rate over birth rate) and <em>r</em> the diversification rate (birth rate minus death rate).</p>
+<p>Stepping through the tree proposing and accepting/rejecting rate shifts by AIC: uses a rule-of-thumb difference of 4 AIC units.  Luke suggests larger trees should use a larger difference.  Obviously I’d prefer something more concrete given the poor performance AIC <a href="http://www.carlboettiger.info/archives/635">tends to have in</a>other comparative approaches.</p>
+<h3 id="fossil-medusa">Fossil Medusa</h3>
+<p>Luke asks us: so what if we know that there were more extinct taxa at one point than are represented by $ n_i$ tip taxa? The expectation under the birth death model is that of exponential growth in total number of species.  (Since we are using the birth-death model, this outcome is still possible, and indeed is included in the probability above.  Because it is very unexpected outcome, it contributes rather little to that probability though.)</p>
+<p>We could make this observation more probable by assuming that at some point the diversification rate shifted around the time of this observation, either slowing down or even resulting in a net extinction rate.  <em>**Fossil Medusa **</em>does this by estimating different the likelihood of getting up to the $ m_i$ extinct taxa by the observed time, and then letting it assume a new rate to get to the \(n_i\) present-day taxa starting with $ m_i$ taxa[ref]Must require a new equation to have starting condition that isn’t a single species: should be a simple rescaling.[/ref]</p>
+<p>This seems strange to me– The location of this shift is placed by the fossil dates, there is no reason to believe it couldn’t have occurred earlier or later.  This is worrisome as rate estimates depend strongly on branch length.  Second, we have to justify that the fossils of lost species still have a common ancestor at the beginning of this unresolved clade.  Does this require that the $ m_i$ extinct taxa actually all co-occur at the given time, or just existed somewhere in the interval?  Certainly the former seems to be the assumption of the method, but may be hard to establish in the data(?)</p>
+<p>Luke observes that typical birth death estimates result in zero extinction estimates. because it reduces uncertainty and makes the data more probable, and that models lack density dependence sensu Dan Rabosky’s recent work (Rabosky &amp; Glor, 2010)</p>
+<p>Luke also observes the multiple comparisons issue inherent in the Medusa approach.</p>
+<h2 id="auteur">Auteur</h2>
+<p><a href="http://www.wsu.edu/~storfer/eastman/">Jon Eastman</a> has implemented a RJMCMC (see(GREEN, 1995)) of multiple diversification rates on phylogenetic tree.  Assumes Brownian motion and a tree known without error etc etc but seems like a fantastic step forward to me.  As a reversible jump model, it allows proposals of split and merge events where the diversification rate can change on the tree.  This moves us away from the rather problematic requirement to compare “painted” trees, or propose diversification rate relative to an inferred ancestral history of another discrete trait (which is interesting if that’s the hypothesis, and can be integrated over the stochastic character mappings – but it requires such a trait whose history motivates the rate shifts, which is rather restrictive!).</p>
+<p>Note: this seems to be similar to the spirit of Liam’s MCMC method for rate variation; see for the <a href="http://phytools.blogspot.com/2011/02/mcmc-method-for-rate-variation.html">description</a> on his development blog.</p>
+<h2 id="mecca">MECCA</h2>
+<p><a href="http://www.eeb.ucla.edu/gradstudents/slater/Graham/Graham_J_Slater.html">Graham Slater’s</a> ABC approach in which unresolved clades are simulated by birth-death process.  Gives posterior distributions on parameter estimates.  Can be applied to differences in diversification rates.  I think the particularly innovative thing here is in testing the ability of an ABC approach (Csilléry <em>et. al.</em> 2010) to get us out of the challenge of missing taxa in a meaningful, model-driven way.  I’m actually rather nervous about ABC when it hinges on a set of parameters that are rather far from being sufficient statistics.  The probability of the birth-death rates depends very strongly on the number of taxa, and very weakly on the topology, so it’s a rather weak way to fill in the missing topology.</p>
+<p>Essentially this can be seen as a correction to diversification rate estimates in the following sense.  Treating the clade as an unresolved polytome would underestimate diversification rates, because it gives longer time of independent drift for traits to diversify.  Forcing a birth-death tree structure makes a rather twiggy tree to replace the unresolved section, which results in an estimate of diversification rate $ $ that will be much higher, and probably an overestimate relative to any density-dependent tree structure.</p>
+<h2 id="closing">Closing</h2>
+<p>At the end a mention of a couple other new directions that I agree are dead on.  Traits connected to diversification rates, as in recent work from  FitzJohn and Sally Otto’s group at UBC(FitzJohn <em>et. al.</em> 2009),(FitzJohn, 2010). – very interesting, but as Luke points out, a great way to make your trait estimates really susceptible to the missing taxa problem.  (Luke answers a seminar question on the impact of missing taxa – Brownian diversification rate isn’t very sensitive to this, while things that depend directly on predicting number of species, such as birth and death rates, are hugely effected).</p>
+<p>Also mentions  Dan Rabosky concerns over estimations in rates (Rabosky, 2010).  I couldn’t agree more that realistic diversification models are crucial.</p>
+<h2 id="references">References</h2>
+<p>
+Rabosky D, Donnellan S, Talaba A and Lovette I (2007). “Exceptional Among-Lineage Variation in Diversification Rates During The Radiation of Australia’S Most Diverse Vertebrate Clade.” <EM>Proceedings of The Royal Society B: Biological Sciences</EM>, <B>274</B>. ISSN 0962-8452, <a href="http://dx.doi.org/10.1098/rspb.2007.0924">http://dx.doi.org/10.1098/rspb.2007.0924</a>.
+<p>
+Rabosky D and Glor R (2010). “From The Cover: Equilibrium Speciation Dynamics in A Model Adaptive Radiation of Island Lizards.” <EM>Proceedings of The National Academy of Sciences</EM>, <B>107</B>. ISSN 0027-8424, <a href="http://dx.doi.org/10.1073/pnas.1007606107">http://dx.doi.org/10.1073/pnas.1007606107</a>.
+<p>
+GREEN P (1995). “Reversible Jump Markov Chain Monte Carlo Computation And Bayesian Model Determination.” <EM>Biometrika</EM>, <B>82</B>. ISSN 0006-3444, <a href="http://dx.doi.org/10.1093/biomet/82.4.711">http://dx.doi.org/10.1093/biomet/82.4.711</a>.
+<p>
+Csilléry K, Blum M, Gaggiotti O and François O (2010). “Approximate Bayesian Computation (Abc) in Practice.” <EM>Trends in Ecology &amp; Evolution</EM>, <B>25</B>. ISSN 01695347, <a href="http://dx.doi.org/10.1016/j.tree.2010.04.001">http://dx.doi.org/10.1016/j.tree.2010.04.001</a>.
+<p>
+FitzJohn R, Maddison W and Otto S (2009). “Estimating Trait-Dependent Speciation And Extinction Rates From Incompletely Resolved Phylogenies.” <EM>Systematic Biology</EM>, <B>58</B>. ISSN 1063-5157, <a href="http://dx.doi.org/10.1093/sysbio/syp067">http://dx.doi.org/10.1093/sysbio/syp067</a>.
+<p>
+FitzJohn R (2010). “Quantitative Traits And Diversification.” <EM>Systematic Biology</EM>, <B>59</B>. ISSN 1063-5157, <a href="http://dx.doi.org/10.1093/sysbio/syq053">http://dx.doi.org/10.1093/sysbio/syq053</a>.
+<p>
+<p>Rabosky D (2010). “Primary Controls on Species Richness in Higher Taxa.” <EM>Systematic Biology</EM>, <B>59</B>. ISSN 1063-5157, <a href="http://dx.doi.org/10.1093/sysbio/syq060">http://dx.doi.org/10.1093/sysbio/syq060</a>.</p>
+        </div>
+
+
+        <!-- Custom sidebar -->      
+        <div class="span4">
+          <div class="sidebar">
+            <aside prefix="dc: http://purl.org/dc/terms/ og:http://ogp.me/ns/article#">
+<i class="icon-calendar"></i>
+<time datetime="2011-02-25T06:36:16-08:00" 
+      property="dc:created">25 Feb 2011</time>.
+<br />
+          
+            <p><a class="btn btn-mini" rel="prev" href='/2011/02/23/esa-2011-abstract.html'><i class="icon-chevron-left"></i> prev</a>
+          
+          
+          <a class="btn btn-mini" rel="next" href='/2011/02/25/is-bm-nested-in-ou-understanding-likelihoods-of-ouch.html'>next <i class="icon-chevron-right"></i></a></p>
+          
+
+
+<br />
+
+
+<p> <a class="btn btn-mini" href="https://github.com/cboettig/labnotebook/commits/master/_posts/2011-02-25-phyloseminar-luke-harmon.md"><i class="icon-time"></i> history</a></p>
+<br />
+Posted in 
+  <a rel="tag" class="category" href="/categories.html#evolution"><span property="dc:subject og:section">evolution</span></a>
+  , 
+
+  <a rel="tag" class="category" href="/categories.html#seminar"><span property="dc:subject og:section">seminar</span></a>
+  
+
+
+
+<br />
+tags: 
+
+
+</aside>
+
+         </div>
+       </div>
+
+      </div>
+      <!-- Disqus Comments -->
+      <div class="row disqus">
+        <div class="span8">          
+            <div id="disqus_thread"></div>
+            <script type="text/javascript">
+                var disqus_shortname = 'cboettig'; // required: replace example with your forum shortname
+                /* * * DON'T EDIT BELOW THIS LINE * * */
+                (function() {
+                    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                    dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        </div>
+      </div>
+
+
+
+</article>
+<footer class="footer">
+  <form style="font-size:10px">
+    <div class="pull-right">
+      <span rel="tooltip" title="switch to dark theme">
+        <a onclick="switch_style('dark'); return false;" name="theme" value="dark" id="dark" class="btn btn-mini"><i class="icon-adjust"></i></a> 
+      </span>
+      <span rel="tooltip" title="switch to light theme">
+        <a onclick="switch_style('light');return false;" name="theme" value="light" id="light" class="btn btn-mini"><i class="icon-certificate"></i></a> 
+      </span>
+    </div>
+  </form>
+          <div class="row">
+            <div class="span4 socialicons" style="font-size:20px" vocab="http://xmlns.com/foaf/0.1/" typeof="Person" resource="#me">
+              <span rel="tooltip" title="email me">
+                <a property="account" href="mailto:cboettig@gmail.com" onclick="recordOutboundLink(this, 'Outbound Links', 'email'); return false;"><i class="icon-envelope-alt"></i></a>
+              </span>
+              <span rel="tooltip" title="follow me on twitter (reading, discussing)">
+                <a property="account" href="https://twitter.com/cboettig" onclick="recordOutboundLink(this, 'Outbound Links', 'Twitter'); return false;"><i class="icon-twitter"></i></a> 
+              </span>
+              <!--              <a property="account" href="https://plus.google.com/" onclick="recordOutboundLink(this, 'Outbound Links', 'GPlus'); return false;"><i class="icon-google-plus"></i></a> -->
+              <span rel="tooltip" title="follow me on Github (code, research)">
+                <a property="account" href="https://github.com/cboettig" onclick="recordOutboundLink(this, 'Outbound Links', 'Github'); return false;"><i class="icon-github" alt="github"></i></a> 
+              </span>  
+              <!--              <a property="account" href="http://www.mendeley.com/profiles/carl-boettiger" onclick="recordOutboundLink(this, 'Outbound Links', 'Mendeley'); return false;"><img src="/assets/img/icon-mendeley.png" alt="mendeley" /></a>  -->
+              <span rel="tooltip" title="subscribe to RSS feeds for my open lab notebook">
+                <a href="/atom.xml" onclick="recordOutboundLink(this, 'Outbound Links', 'RSS'); return false;"><i class="icon-rss" ></i></a>
+              </span>
+            </div>
+            <div class="span2" style="text-align:center">
+              <span rel="tooltip" 
+                    title="An Open Notebook Science (ONS) project claim: Entry provides all content (AC) immediately (I) or without significant delay.  See link for details"><a rel="license" href="http://onsclaims.wikispaces.com/" 
+                onclick="recordOutboundLink(this, 'Outbound Links', 'ONS_claim'); return false;" 
+                ><img src="http://onsclaims.wikispaces.com/file/view/ons-aci2-icon.png" alt="ONS" /></a>
+            </span>
+            </div>
+            <div class="span4">
+              <a property="http://creativecommons.org/ns#license" href="http://creativecommons.org/publicdomain/zero/1.0/" onclick="recordOutboundLink(this, 'Outbound Links', 'CC0'); return false;"><img src="http://i.creativecommons.org/l/zero/1.0/88x31.png" alt="CC0" style="float:right" /></a> 
+            </div>
+        </div>
+      </footer>
+    </div><!-- /container -->
+    
+        <!-- Le javascript
+    ================================================== -->
+
+    <!-- Placed at the end of the document so the pages load faster -->
+    <!-- JQuery, used on a few pages -->
+    <script type="text/javascript" src="http://www.carlboettiger.info/assets/js/jquery.js"></script>
+    <!-- Equations using MathJax -->
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config"> MathJax.Hub.Config({ TeX: { equationNumbers: {autoNumber: "all"} } });       </script>
+    <!-- Twitter Bootstrap Javascript -->
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-transition.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-collapse.js"></script> <!-- for collapsing navbar-->
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-tooltip.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-alert.js"></script>
+
+    <script type="text/javascript">
+      $(document).ready(function (){
+        $("[rel=tooltip]").tooltip();
+      });
+    </script>
+
+    <!-- Unused Twitter Bootstrap Javascript 
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-dropdown.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/google-code-prettify/prettify.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-modal.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-scrollspy.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-tab.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-popover.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-button.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-carousel.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-typeahead.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/application.js"></script>
+    -->
+
+
+      <script type="text/javascript">
+          var _gaq = _gaq || [];
+          _gaq.push(['_setAccount', 'UA-18401403-1']);
+          _gaq.push(['_trackPageview']);
+          (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+          })();
+  </script>
+
+
+
+<script type="text/javascript">
+function recordOutboundLink(link, category, action) {
+  try {
+    var pageTracker=_gat._getTracker("UA-18401403-1");
+    pageTracker._trackEvent(category, action);
+    setTimeout('document.location = "' + link.href + '"', 100)
+  }catch(err){}
+}
+</script>
+
+
+        
+<!-- Start Open Web Analytics Tracker -->
+<script type="text/javascript">
+//<![CDATA[
+var owa_baseUrl = 'http://www.carlboettiger.info/openwebanalytics/';
+var owa_cmds = owa_cmds || [];
+owa_cmds.push(['setSiteId', '2886faa411a4139a6c6f97b5a1f38697']);
+owa_cmds.push(['trackPageView']);
+owa_cmds.push(['trackClicks']);
+owa_cmds.push(['trackDomStream']);
+
+(function() {
+  var _owa = document.createElement('script'); _owa.type = 'text/javascript'; _owa.async = true;
+  owa_baseUrl = ('https:' == document.location.protocol ? window.owa_baseSecUrl || owa_baseUrl.replace(/http:/, 'https:') : owa_baseUrl );
+  _owa.src = owa_baseUrl + 'modules/base/js/owa.tracker-combined-min.js';
+  var _owa_s = document.getElementsByTagName('script')[0]; _owa_s.parentNode.insertBefore(_owa, _owa_s);
+}());
+//]]>
+</script>
+<!-- End Open Web Analytics Code -->
+        
+
+  </body>
+</html>
+

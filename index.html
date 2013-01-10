@@ -1,254 +1,307 @@
-<!DOCTYPE html>
-<!-- saved from url=(0014)about:internet -->
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 
-<title>Carl Boettiger</title>
+  <!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head prefix="dc: http://purl.org/dc/terms/ og: http://ogp.me/ns#">
+    <meta charset="utf-8" /> 
+    <title>Carl Boettiger</title>
+    <meta name="author" content="Carl Boettiger" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
 
-<style type="text/css">
-body, td {
-   font-family: sans-serif;
-   background-color: white;
-   font-size: 12px;
-   margin: 8px;
+  
+
+
+<!-- HTML5 metadata -->
+<meta name="keywords" content="Science, Ecology, Evolution, Open Science, Reproducible Research" />
+<meta name="description" content="My open lab notebook- research in theoretical ecology and evolution" />
+<!-- RDFa Metadata (in DublinCore) -->
+<meta property="dc:title" content="Carl Boettiger" />
+<meta property="dc:creator" content="Carl Boettiger" />
+<meta property="dc:date" content="2013-01-10T12:36:56-08:00" />
+<meta property="dc:type" content="Lab Notebook Entry" /> <!-- article? entry?-->
+<meta property="dc:format" content="text/html" />
+<meta property="dc:language" content="en" />
+<meta property="dc:source" content="Lab Notebook" />
+<!-- RDFa Metadata (in OpenGraph) -->
+<meta property="og:title" content="Carl Boettiger" />
+<meta property="og:author" content="http://www.carlboettiger.info/index.html" />  <!-- Should be Liquid? URI? -->
+<meta property="http://ogp.me/ns/profile#first_name" content="Carl"/>
+<meta property="http://ogp.me/ns/profile#last_name" content="Boettiger"/>
+<meta property="http://ogp.me/ns/article#published_time" content="2013-01-10T12:36:56-08:00" />
+<meta property="og:site_name" content="Lab Notebook" /> <!-- Same as dc:source? -->
+<meta property="og:url" content="http://www.carlboettiger.info/index.html" />
+<meta property="og:type" content="article" />
+<!-- Google Scholar Metadata -->
+<meta name="resource_type" content="Lab Notebook"/>
+<meta name="citation_journal_title" content="Lab Notebook"/>
+<meta name="citation_publication_date" content="10 Jan 2013"/>
+<meta name="citation_date" content="10 Jan 2013"/>
+<meta name="citation_author" content="Carl Boettiger"/>
+<meta name="citation_title" content="Carl Boettiger"/>
+
+    <!-- CSS Stylesheets (toggled with javascript) -->
+    <link href="/assets/css/light.css" rel="stylesheet"
+          type="text/css" id="stl" title="light" />
+    <link href="/assets/css/dark.css" rel="alternate stylesheet" 
+          type="text/css" title="dark" />
+    <!-- Javascript needed for theme toggle, load immediately -->
+    <script type="text/javascript" src="/assets/js/switch-css.js"></script>
+    <script type="text/javascript">
+      set_style_from_cookie(); 
+    </script>
+  </head>
+  <body> 
+  
+<!-- Navbar  ================================================== -->
+<div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+      <a class="brand" href="/README.html"><i style="float:right;" class="icon-info-sign" alt="info" rel="tooltip" title="Credits and technical information about this site" data-placement="bottom"></i></a>
+      <div class="nav-collapse">
+        <ul class="nav">
+          <li class="active">
+          <a href="/index.html">Home</a></li>
+
+          <li>
+          <a href="/vita.html">Vita</a></li>
+
+          <li>
+          <a href="/research.html">Research</a></li>
+
+          <li>
+          <a href="/teaching.html">Teaching</a></li>
+
+          <li>
+          <a href="/community.html">Community</a></li>
+
+          <li>
+          <a href="/lab-notebook.html">Lab Notebook</a></li>
+
+        </ul>
+      </div><!--/.nav-collapse -->
+      <form class="navbar-search pull-right" method="get" action="http://google.com/search">
+         <p>
+         <input type="hidden" name="q" value="site:carlboettiger.info" />
+         <input type="text" class="search-query" name="q" />
+         <button class="btn btn-mini" type="submit"><i class="icon-search"></i></button> 
+         </p>
+       </form>
+     </div> <!-- /container -->
+   </div> <!-- /navbar-inner -->
+ </div> <!-- /navbar -->
+
+
+
+  <div class="container"> 
+    <article> <!-- includes header and entry, but not footer -->
+    <header class="jumbotron subhead">
+      <h1 class="entry-title">Carl Boettiger</h1>
+      <p>Theoretical Ecology and Evolution</p>
+    </header>
+
+
+
+      <div class="row">
+        <div class="span8 offset1">
+            <div id="me" prefix=
+"foaf: http://xmlns.com/foaf/0.1/ schema: http://schema.org/Person"
+typeof="foaf:Person schema:Person" resource=
+"http://carlboettiger.info#me">
+  <p><img property="foaf:depiction" src=
+  "assets/img/carlboettiger.png" alt="Photo of Carl Boettiger"
+  style="float: right; margin: 10px 10px"> I'm <a property=
+  "foaf:homepage schema:url" href=
+  "http://carlboettiger.info"><span property=
+  "foaf:name schema:name"><span property=
+  "foaf:givenName schema:givenName">Carl</span> <span property=
+  "foaf:familyName schema:familyName">Boettiger</span></span></a>,
+  <span property="schema:jobTitle">a post-doctoral
+  researcher</span> with <span property=
+  "foaf:knows"><span typeof="foaf:Person"><span property=
+  "foaf:name"><a property="foaf:homepage" href=
+  "http://users.soe.ucsc.edu/~msmangel/">Marc
+  Mangel</a></span></span></span> and <span property=
+  "foaf:knows"><span typeof="foaf:Person"><span property=
+  "foaf:name"><a property="foaf:homepage" href=
+  "http://swfsc.noaa.gov/staff.aspx?&amp;id=17294">Steve
+  Munch</a></span></span></span> in the <a property=
+  "schema:affiliation" href=
+  "http://users.soe.ucsc.edu/~msmangel/CSTAR.html">Center for
+  Stock Assessment Research</a>, at <a property=
+  "foaf:workplaceHomepage" href="http://www.ucsc.edu/">UC Santa
+  Cruz</a>, working on <span property="foaf:interest">regime
+  shifts</span> in <span property="foaf:interest">ecology</span>
+  and <span property="foaf:interest">evolution</span>. Such
+  shifts mark the most dramatic events in <span property=
+  "foaf:interest">complex systems</span>; understanding and
+  forecasting these events challenges the capacity of both our
+  statistical methods and the data available. My research aims to
+  extend and quantify the limits of understanding through
+  <span property="foaf:interest">nonparametric Bayesian
+  inference</span>, <span property="foaf:interest">high
+  performance computing</span> and <span property=
+  "foaf:interest">big data</span> sets. I keep an open
+  <a property="foaf:currentProject" href=
+  "http://www.carlboettiger.info/lab-notebook.html">lab
+  notebook</a>, as I describe in this <a href=
+  "http://www.carlboettiger.info/2012/09/28/Welcome-to-my-lab-notebook.html">
+  introduction</a>.</p>
+
+  <ul class="unstyled" style="font-size:.8em;line-height=.8em;margin:-5px">
+    <!--
+    <li> Office: 3156 Wickson Hall </li>
+    -->
+    <li><strong>Mail:</strong> <span property="schema:address"
+    typeof="http://schema.org/PostalAddress" vocab=
+    "http://schema.org/PostalAddress/"><span property=
+    "streetAddress">Center for Stock Assessment Research, Department of Applied Math and Statistics,  
+      University of California, Mail Stop SOE-2</span>, <span property=
+    "addressLocality">Santa Cruz</span>, <span property=
+    "addressRegion">CA</span> <span property=
+    "postalCode">95064</span>,<span property=
+    "addressCountry">USA</span></span></li>
+<li><strong>ORCID ID</strong>: <a href="https://orcid.org/0000-0002-1642-628X">0000-0002-1642-628X</a>
+<li><strong>Email &amp; online networks</strong>: linked from icons below.</li>
+  </ul>
+</div>
+
+
+        </div>
+      </div>
+
+
+
+  </article>
+<footer class="footer">
+  <form style="font-size:10px">
+    <div class="pull-right">
+      <span rel="tooltip" title="switch to dark theme">
+        <a onclick="switch_style('dark'); return false;" name="theme" value="dark" id="dark" class="btn btn-mini"><i class="icon-adjust"></i></a> 
+      </span>
+      <span rel="tooltip" title="switch to light theme">
+        <a onclick="switch_style('light');return false;" name="theme" value="light" id="light" class="btn btn-mini"><i class="icon-certificate"></i></a> 
+      </span>
+    </div>
+  </form>
+          <div class="row">
+            <div class="span4 socialicons" style="font-size:20px" vocab="http://xmlns.com/foaf/0.1/" typeof="Person" resource="#me">
+              <span rel="tooltip" title="email me">
+                <a property="account" href="mailto:cboettig@gmail.com" onclick="recordOutboundLink(this, 'Outbound Links', 'email'); return false;"><i class="icon-envelope-alt"></i></a>
+              </span>
+              <span rel="tooltip" title="follow me on twitter (reading, discussing)">
+                <a property="account" href="https://twitter.com/cboettig" onclick="recordOutboundLink(this, 'Outbound Links', 'Twitter'); return false;"><i class="icon-twitter"></i></a> 
+              </span>
+              <!--              <a property="account" href="https://plus.google.com/" onclick="recordOutboundLink(this, 'Outbound Links', 'GPlus'); return false;"><i class="icon-google-plus"></i></a> -->
+              <span rel="tooltip" title="follow me on Github (code, research)">
+                <a property="account" href="https://github.com/cboettig" onclick="recordOutboundLink(this, 'Outbound Links', 'Github'); return false;"><i class="icon-github" alt="github"></i></a> 
+              </span>  
+              <!--              <a property="account" href="http://www.mendeley.com/profiles/carl-boettiger" onclick="recordOutboundLink(this, 'Outbound Links', 'Mendeley'); return false;"><img src="/assets/img/icon-mendeley.png" alt="mendeley" /></a>  -->
+              <span rel="tooltip" title="subscribe to RSS feeds for my open lab notebook">
+                <a href="/atom.xml" onclick="recordOutboundLink(this, 'Outbound Links', 'RSS'); return false;"><i class="icon-rss" ></i></a>
+              </span>
+            </div>
+            <div class="span2" style="text-align:center">
+              <span rel="tooltip" 
+                    title="An Open Notebook Science (ONS) project claim: Entry provides all content (AC) immediately (I) or without significant delay.  See link for details"><a rel="license" href="http://onsclaims.wikispaces.com/" 
+                onclick="recordOutboundLink(this, 'Outbound Links', 'ONS_claim'); return false;" 
+                ><img src="http://onsclaims.wikispaces.com/file/view/ons-aci2-icon.png" alt="ONS" /></a>
+            </span>
+            </div>
+            <div class="span4">
+              <a property="http://creativecommons.org/ns#license" href="http://creativecommons.org/publicdomain/zero/1.0/" onclick="recordOutboundLink(this, 'Outbound Links', 'CC0'); return false;"><img src="http://i.creativecommons.org/l/zero/1.0/88x31.png" alt="CC0" style="float:right" /></a> 
+            </div>
+        </div>
+      </footer>
+    </div><!-- /container -->
+    
+        <!-- Le javascript
+    ================================================== -->
+
+    <!-- Placed at the end of the document so the pages load faster -->
+    <!-- JQuery, used on a few pages -->
+    <script type="text/javascript" src="http://www.carlboettiger.info/assets/js/jquery.js"></script>
+    <!-- Equations using MathJax -->
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config"> MathJax.Hub.Config({ TeX: { equationNumbers: {autoNumber: "all"} } });       </script>
+    <!-- Twitter Bootstrap Javascript -->
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-transition.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-collapse.js"></script> <!-- for collapsing navbar-->
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-tooltip.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-alert.js"></script>
+
+    <script type="text/javascript">
+      $(document).ready(function (){
+        $("[rel=tooltip]").tooltip();
+      });
+    </script>
+
+    <!-- Unused Twitter Bootstrap Javascript 
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-dropdown.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/google-code-prettify/prettify.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-modal.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-scrollspy.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-tab.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-popover.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-button.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-carousel.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-typeahead.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/application.js"></script>
+    -->
+
+
+      <script type="text/javascript">
+          var _gaq = _gaq || [];
+          _gaq.push(['_setAccount', 'UA-18401403-1']);
+          _gaq.push(['_trackPageview']);
+          (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+          })();
+  </script>
+
+
+
+<script type="text/javascript">
+function recordOutboundLink(link, category, action) {
+  try {
+    var pageTracker=_gat._getTracker("UA-18401403-1");
+    pageTracker._trackEvent(category, action);
+    setTimeout('document.location = "' + link.href + '"', 100)
+  }catch(err){}
 }
-
-tt, code, pre {
-   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
-}
-
-h1 { 
-   font-size:2.2em; 
-}
-
-h2 { 
-   font-size:1.8em; 
-}
-
-h3 { 
-   font-size:1.4em; 
-}
-
-h4 { 
-   font-size:1.0em; 
-}
-
-h5 { 
-   font-size:0.9em; 
-}
-
-h6 { 
-   font-size:0.8em; 
-}
-
-a:visited {
-   color: rgb(50%, 0%, 50%);
-}
-
-pre {	
-   margin-top: 0;
-   max-width: 95%;
-   border: 1px solid #ccc;
-   white-space: pre-wrap;
-}
-
-pre code {
-   display: block; padding: 0.5em;
-}
-
-code.r {
-   background-color: #F8F8F8;
-}
-
-table, td, th {
-  border: none;
-}
-
-blockquote {
-   color:#666666;
-   margin:0;
-   padding-left: 1em;
-   border-left: 0.5em #EEE solid;
-}
-
-hr {
-   height: 0px;
-   border-bottom: none;
-   border-top-width: thin;
-   border-top-style: dotted;
-   border-top-color: #999999;
-}
-
-@media print {
-   * { 
-      background: transparent !important; 
-      color: black !important; 
-      filter:none !important; 
-      -ms-filter: none !important; 
-   }
-
-   body { 
-      font-size:12pt; 
-      max-width:100%; 
-   }
-       
-   a, a:visited { 
-      text-decoration: underline; 
-   }
-
-   hr { 
-      visibility: hidden;
-      page-break-before: always;
-   }
-
-   pre, blockquote { 
-      padding-right: 1em; 
-      page-break-inside: avoid; 
-   }
-
-   tr, img { 
-      page-break-inside: avoid; 
-   }
-
-   img { 
-      max-width: 100% !important; 
-   }
-
-   @page :left { 
-      margin: 15mm 20mm 15mm 10mm; 
-   }
-     
-   @page :right { 
-      margin: 15mm 10mm 15mm 20mm; 
-   }
-
-   p, h2, h3 { 
-      orphans: 3; widows: 3; 
-   }
-
-   h2, h3 { 
-      page-break-after: avoid; 
-   }
-}
-
-</style>
+</script>
 
 
+        
+<!-- Start Open Web Analytics Tracker -->
+<script type="text/javascript">
+//<![CDATA[
+var owa_baseUrl = 'http://www.carlboettiger.info/openwebanalytics/';
+var owa_cmds = owa_cmds || [];
+owa_cmds.push(['setSiteId', '2886faa411a4139a6c6f97b5a1f38697']);
+owa_cmds.push(['trackPageView']);
+owa_cmds.push(['trackClicks']);
+owa_cmds.push(['trackDomStream']);
 
+(function() {
+  var _owa = document.createElement('script'); _owa.type = 'text/javascript'; _owa.async = true;
+  owa_baseUrl = ('https:' == document.location.protocol ? window.owa_baseSecUrl || owa_baseUrl.replace(/http:/, 'https:') : owa_baseUrl );
+  _owa.src = owa_baseUrl + 'modules/base/js/owa.tracker-combined-min.js';
+  var _owa_s = document.getElementsByTagName('script')[0]; _owa_s.parentNode.insertBefore(_owa, _owa_s);
+}());
+//]]>
+</script>
+<!-- End Open Web Analytics Code -->
+        
 
-
-</head>
-
-<body>
-<hr/>
-
-<p><a href="">Home</a> | <a href="/research.html">Research</a> | <a href="">CV</a> | <a href="">Blog</a></p>
-
-<hr/>
-
-<h1>Carl Boettiger</h1>
-
-<p><img src="https://secure.gravatar.com/avatar/9dc8783d8ff42565db30cc90e29ad01c?s=220" alt=""/> </p>
-
-<p>I&#39;m  a post-doctoral researcher with Marc Mangel 
-and Steve Munch in the Center for Stock Assessment Research, at
-UC Santa Cruz, working on regime shifts in ecology and evolution.
-Such shifts mark the most dramatic events in complex systems; 
-understanding and forecasting these events challenges the capacity
-of both our statistical methods and the data available. My 
-research aims to extend and quantify the limits of understanding
-through nonparametric Bayesian inference, high performance computing
-and big data sets. I keep an open lab notebook, as I describe in
-this <a href="/lab-notebook.html">introduction</a>.</p>
-
-<hr/>
-
-<h2>education</h2>
-
-<ul>
-<li><p>2012 Ph.D Population Biology, <strong>University of California, Davis</strong>. Mentor: Alan Hastings</p></li>
-<li><p>2007 A.B in Physics <strong>Princeton University</strong>, with honors and certificates in <em>biophysics</em> and <em>applied and computational mathematics.</em> </p></li>
-</ul>
-
-<h2>publications</h2>
-
-<ol>
-<li>Carl Boettiger, Alan Hastings (2012). <strong>Early Warning Signals and the
-Prosecutor’s Fallacy</strong> 4734-4739.  <em>Proceedings of the Royal Society B</em> 279 (1748).  <a href="http://dx.doi.org/10.1098/rspb.2012.2085">doi</a>
-(<a href="http://www.mendeley.com/download/public/98752/4972355691/dd5fdd8ebbfc05d9ebf415761be200805254d22e/dl.pdf">pdf</a>) 
-(<a href="http://arxiv.org/abs/1210.1204">arXiv</a>) (<a href="https://github.com/cboettig/earlywarning/blob/prosecutor/inst/examples/fallacy.md">code</a>) </li>
-<li>Carl Boettiger, Duncan Temple Lang, Peter
-Wainwright (2012). <strong>rfishbase: exploring, manipulating and visualizing
-FishBase data from R</strong>, 2030–2039. <em>Journal of Fish Biology</em>. 81 (6).
-<a href="http://dx.doi.org/10.1111/j.1095-8649.2012.03464.x">doi</a>:10.1111/j.1095-8649.2012.03464.x
-(<a href="http://www.mendeley.com/download/public/98752/5024008901/62843551297c5c9d3e1c2e5513697b85fcc0b6fc/dl.pdf">pdf</a>)
-(<a href="https://github.com/ropensci/rfishbase/blob/master/inst/doc/rfishbase/rfishbase_github.md">preprint</a>)
-(<a href="https://github.com/ropensci/rfishbase">code</a>) 
-(<a href="http://cran.at.r-project.org/web/packages/rfishbase/">R package</a>) </li>
-<li>Carl Boettiger, Duncan Temple Lang (2012).  <strong>Treebase: An R
-package for discovery, access and manipulation of online
-phylogenies</strong>, <em>Methods in Ecology and Evolution</em>. 
-<a href="http://dx.doi.org/10.1111/j.2041-210X.2012.00247.x">doi</a>:10.1111/j.2041-210X.2012.00247.x
-(<a href="http://www.mendeley.com/download/public/98752/4976371531/463d3755b618c40e35dca223e27162c08fbc061a/dl.pdf">pdf</a>)
-(<a href="https://github.com/ropensci/treebase/blob/master/inst/doc/treebase/treebase_github.md">preprint</a>)
-(<a href="https://github.com/ropensci/treebase">code</a>) 
-(<a href="http://cran.at.r-project.org/web/packages/treebase/">R package</a>)</li>
-<li>Carl Boettiger and Alan Hastings (2012). <strong>Quantifying Limits to Detection 
-of Early Warning for Critical Transitions</strong>, 2527-2539. <em>Journal of the Royal Society:
-Interface</em> 9 (75) <a href="http://dx.doi.org/10.1098/rsif.2012.0125">doi</a>:10.1098/rsif.2012.0125 
-(<a href="http://www.mendeley.com/download/public/98752/4711221423/df767d6b5f0fbf44cc236470307992b019e6c149/dl.pdf">pdf</a>)
-(<a href="http://arxiv.org/abs/1204.6231">arXiv</a>)
-(<a href="https://github.com/cboettig/earlywarning">code</a>)</li>
-<li>Jeremy M. Beaulieu, Dwueng-Chwuan Jhwueng, Carl Boettiger and Brian
-O’Meara, (2012). <strong>Modeling Stabilizing Selection: Expanding the
-Ornstein-Uhlenbeck Model of Adaptive Evolution</strong>, 2369-2383. <em>Evolution</em> 66 (8). 
-<a href="http://dx.doi.org/10.1111/j.1558-5646.2012.01619.x">doi</a>:10.1111/j.1558-5646.2012.01619.x 
-(<a href="http://www.mendeley.com/download/public/98752/4605481493/dfca8df9311b372425a204c1a6587ecee2b275dc/dl.pdf">pdf</a>)
-(<a href="http://cran.r-project.org/web/packages/OUwie/index.html">code</a>)</li>
-<li>Carl Boettiger, Graham Coop, Peter Ralph (2012) <strong>Is your phylogeny
-informative? Measuring the power of comparative methods</strong>,  2240-51. <em>Evolution</em> 66 (7).
-<a href="http://dx.doi.org/10.1111/j.1558-5646.2011.01574.x">doi</a>:10.1111/j.1558-5646.2011.01574.x 
-(<a href="http://www.mendeley.com/download/public/98752/4485545653/566ffaffaf0fa6fb8f847096b742bc465aca3a8e/dl.pdf">pdf</a>)
-(<a href="http://arxiv.org/abs/1110.4944">arXiv</a>)
-(<a href="https://github.com/cboettig/pmc">code</a>)
-(<a href="http://datadryad.org/handle/10255/dryad.37645">data in <img src="http://carlboettiger.info/assets/img/dryad.jpg" alt=""/></a>)</li>
-<li>Carl Boettiger, Jonathan Dushoff, Joshua S Weitz (2010) <strong>Fluctuation
-domains in adaptive evolution</strong>, 6-13. <em>Theoretical Population
-Biology</em> 77 (1).
-<a href="http://dx.doi.org/10.1016/j.tpb.2009.10.003">doi</a>:10.1016/j.tpb.2009.10.003 
-(<a href="http://www.mendeley.com/download/public/98752/3107791751/8b066644aca2e396fd5e120d563026c8d560dc77/dl.pdf">pdf</a>)
-(<a href="http://arxiv.org/abs/1004.4233">arXiv</a>)
-(<a href="https://github.com/cboettig/fluctuationDomains">code</a>)
-(<a href="http://datadryad.org/handle/10255/dryad.37625">data in <img src="http://carlboettiger.info/assets/img/dryad.jpg" alt=""/></a>)</li>
-<li>James J. Wray, Neta A. Bahcall, Paul Bode, Carl Boettiger, Phillip
-Hopkins. (2006) <strong>The Shape, Multiplicity, and Evolution of
-Superclusters in ΛCDM Cosmology</strong>, 907-916. <em>The Astrophysical
-Journal</em> 652 (2).
-<a href="http://dx.doi.org/10.1086/508600">doi</a>:10.1086/508600 
-(<a href="http://www.mendeley.com/download/public/98752/3107796991/fa842dca56ce0d0941132db7cfdd0e259a448973/dl.pdf">pdf</a>)
-(<a href="http://arxiv.org/abs/astro-ph/0603060">arXiv</a>)</li>
-</ol>
-
-<h3>submitted</h3>
-
-<ul>
-<li>Samantha A. Price, Lars Schmitz, Philip S. L. Anderson, Carl Boettiger, Peter C. Wainwright. <strong>Comparing
-disparity between traits using the Ornstein-Uhlenbeck model: a test of
-functional constraint on the eyes of labrid fishes.</strong></li>
-</ul>
-
-<hr/>
-
-<h2>Contact</h2>
-
-<ul>
-<li>gmail: <a href="mailto:carl.boettiger@noaa.gov">carl.boettiger@noaa.gov</a></li>
-<li>github: <a href="https://github.com/cboettig">cboettig</a></li>
-<li>twitter: <a href="http://twitter.com/cboettig">@cboettig</a></li>
-</ul>
-
-</body>
-
+  </body>
 </html>
 
+
+    

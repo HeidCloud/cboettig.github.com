@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head prefix="dc: http://purl.org/dc/terms/ og: http://ogp.me/ns#">
+    <meta charset="utf-8" /> 
+    <title>Building a semantic notebook</title>
+    <meta name="author" content="Carl Boettiger" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+
+  
+
+
+<!-- HTML5 metadata -->
+<meta name="keywords" content="Science, Ecology, Evolution, Open Science, Reproducible Research" />
+<meta name="description" content="My open lab notebook- research in theoretical ecology and evolution" />
+<!-- RDFa Metadata (in DublinCore) -->
+<meta property="dc:title" content="Building a semantic notebook" />
+<meta property="dc:creator" content="Carl Boettiger" />
+<meta property="dc:date" content="2013-01-10T12:36:56-08:00" />
+<meta property="dc:type" content="Lab Notebook Entry" /> <!-- article? entry?-->
+<meta property="dc:format" content="text/html" />
+<meta property="dc:language" content="en" />
+<meta property="dc:source" content="Lab Notebook" />
+<!-- RDFa Metadata (in OpenGraph) -->
+<meta property="og:title" content="Building a semantic notebook" />
+<meta property="og:author" content="http://www.carlboettiger.info/index.html" />  <!-- Should be Liquid? URI? -->
+<meta property="http://ogp.me/ns/profile#first_name" content="Carl"/>
+<meta property="http://ogp.me/ns/profile#last_name" content="Boettiger"/>
+<meta property="http://ogp.me/ns/article#published_time" content="2013-01-10T12:36:56-08:00" />
+<meta property="og:site_name" content="Lab Notebook" /> <!-- Same as dc:source? -->
+<meta property="og:url" content="http://www.carlboettiger.info/2011/05/08/building-a-semantic-notebook.html" />
+<meta property="og:type" content="article" />
+<!-- Google Scholar Metadata -->
+<meta name="resource_type" content="Lab Notebook"/>
+<meta name="citation_journal_title" content="Lab Notebook"/>
+<meta name="citation_publication_date" content="10 Jan 2013"/>
+<meta name="citation_date" content="10 Jan 2013"/>
+<meta name="citation_author" content="Carl Boettiger"/>
+<meta name="citation_title" content="Building a semantic notebook"/>
+
+    <!-- CSS Stylesheets (toggled with javascript) -->
+    <link href="/assets/css/light.css" rel="stylesheet"
+          type="text/css" id="stl" title="light" />
+    <link href="/assets/css/dark.css" rel="alternate stylesheet" 
+          type="text/css" title="dark" />
+    <!-- Javascript needed for theme toggle, load immediately -->
+    <script type="text/javascript" src="/assets/js/switch-css.js"></script>
+    <script type="text/javascript">
+      set_style_from_cookie(); 
+    </script>
+  </head>
+  <body> 
+  
+<!-- Navbar  ================================================== -->
+<div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+      <a class="brand" href="/README.html"><i style="float:right;" class="icon-info-sign" alt="info" rel="tooltip" title="Credits and technical information about this site" data-placement="bottom"></i></a>
+      <div class="nav-collapse">
+        <ul class="nav">
+          <li>
+          <a href="/index.html">Home</a></li>
+
+          <li>
+          <a href="/vita.html">Vita</a></li>
+
+          <li>
+          <a href="/research.html">Research</a></li>
+
+          <li>
+          <a href="/teaching.html">Teaching</a></li>
+
+          <li>
+          <a href="/community.html">Community</a></li>
+
+          <li>
+          <a href="/lab-notebook.html">Lab Notebook</a></li>
+
+        </ul>
+      </div><!--/.nav-collapse -->
+      <form class="navbar-search pull-right" method="get" action="http://google.com/search">
+         <p>
+         <input type="hidden" name="q" value="site:carlboettiger.info" />
+         <input type="text" class="search-query" name="q" />
+         <button class="btn btn-mini" type="submit"><i class="icon-search"></i></button> 
+         </p>
+       </form>
+     </div> <!-- /container -->
+   </div> <!-- /navbar-inner -->
+ </div> <!-- /navbar -->
+
+
+
+  <div class="container"> 
+    <article> <!-- includes header and entry, but not footer -->
+    <header class="jumbotron subhead">
+      <h1 class="entry-title">Building a semantic notebook</h1>
+      <p></p>
+    </header>
+
+
+      <div class="row">
+        <div class="span7 offset1">
+          <p>What would a semantic lab notebook look like?  What would be possible with such a structure, ideally?  What is already possible now?  There’s a lot that can be done with an electronic notebook that adds value over a paper notebook: browsing by categories and tags, embedding links, time-stamping entries, searching the full text, and having automated trackbacks or pingbacks when a post is mentioned in another post or appears elsewhere on the web. Despite these advantages, I think a lot more could be possible with a semantic notebook – where links can be identified with an ontology describing the relationship. I’ve found a couple current tools very promising, and would be interested in developing some of these much further.</p>
+<p>There’s been a lot written about the potential for linked data and a semantic web elsewhere [cite rel=‘cito:discusses’]10.2200/S00334ED1V01Y201102WBE001[/cite], here I outline what’s already possible and what I’d like to see in the context of a lab notebook. My notebook links three primary content sources: literature citations, graphs, and code; as I’ve <a href="http://www.carlboettiger.info/archives/211">described before</a>. A more semantic version could make the connections between these elements explicit and machine readable, opening the door to many more possibilities.<br />  <a href="http://www.carlboettiger.info/wp-content/uploads/2010/11/mynotebook.png"><img src="http://www.carlboettiger.info/wp-content/uploads/2010/11/mynotebook-300x123.png" /></a></p>
+<h3 id="citations">Citations:</h3>
+<h4 id="existing-capabilities">Existing capabilities</h4>
+<p>A lot of linked-data meta-data is already supported for citations, but a lot more could be possible.  In my notebook, the citations are included by DOI whenever possible, using the <a href="http://wordpress.org/extend/plugins/kcite/">KCite</a> plugin.  <a href="http://inkdroid.org/journal/2011/04/25/dois-as-linked-data/">DOI’s are linked data</a>.  Further information can be added to any link using the [cite source=‘doi’ rel=‘cito:discusses’]10.1186/2041-1480-1-S1-S6[/cite] [cite source=‘url’ rel=‘cito:discusses’]http://wordpress.org/extend/plugins/link-to-link/[/cite] plugin, which in addition to DOIs can add indicate the reason for the citation.  <a href="http://wordpress.org/extend/plugins/link-to-link/installation/">Link-2-Link</a> adds the citation to the link library in Wordpress, and can import bibtex documents, though this tends not to be as convenient as citing directly from DOI when it is available.  I’m not sure if <a href="http://wordpress.org/extend/plugins/kcite/">KCite</a> will include the cito relationship if it is written in without <a href="http://wordpress.org/extend/plugins/link-to-link/installation/">Link-2-Link</a>, as:</p>
+<pre><code>[cite source=&#39;doi&#39; rel=&#39;cito:discusses&#39;]10.1186/2041-1480-1-S1-S6[/cite]</code></pre>
+<h4 id="desired-capabilities">Desired capabilities:</h4>
+<p>It would be nice to do a lot more though. First, it would be great to be able to browse this data efficiently. It would be great to parse the whole notebook to generate citation statistics, with the ability to identify such things as: which articles I most cite, what reasons I most cite for (from CiTO), links to posts where I disagree with an article, what authors I most cite ((more challenging since it involves looking up information not directly embedded into the post)), etc.</p>
+<p>Next, it would be great to be able to include more information in linked data format and pull in information available from other sources. Most of my citations are correspond to objects in my Mendeley library, where they have added tags, notes, date added to my library, categories, groups, as well as the full suite of further data and reader statistics exposed by Mendeley (such as illustrated in <a href="http://readermeter.org/">ReaderMeter</a> and <a href="http://dev.mendeley.com/">Mendeley API</a>).</p>
+<h3 id="images-and-code">Images and Code:</h3>
+<h4 id="whats-already-possible">What’s already possible</h4>
+<p>Graphs (stored on Flickr) have a direct correspondence to the code that generated them (stored on Github).  This connection could be exposed through some semantic mark-up, identifying which code corresponds to which images and vice versa, as well as identifying such meta-data as when the code was committed or the image generated, author, tags, version, and relationship with other versions and codes. This meta-data already exists for the most part, but cannot be queried by a machine (give me older/newer versions of this code, or all results run from this code, etc). Both code and images have stable identifiers/urls. Within code, versions and dependencies are already handled explicitly, though not perhaps in a machine-readable way. Code is assigned to different repositories, images to different tags, both with timestamps for commits. These connections between code an results have been discussed by Gavish and Donoho in <a href="http://www.stanford.edu/~vcs/AAAS2011/">universal identifiers for computational results</a>, among others, but could be particularly powerful using semantic markup.</p>
+<h4 id="making-this-semantic">Making this semantic</h4>
+<p>The simplest goal would be to extract the information that these links refer to code or refer to images, presumably possible by domain information / plugin short code identification. Following these links then, some metadata is already exposed by Flickr or github in RDF. <a href="http://inspector.sindice.com/inspect?url=http%3A%2F%2Fwww.flickr.com%2Fphotos%2Fcboettig%2F5692100650&amp;content=#SIGMA">Flickr returns</a>the title, license, and identifiers. Github<a href="http://inspector.sindice.com/inspect?url=http%3A%2F%2Fgithub.com%2Fcboettig%2FComparative-Phylogenetics%2Fblob%2Ff75d2f79b0469112bf2635e321006e1079fa2c41%2Ftreebase%2FR%2Ftreebase.R&amp;content=">seems to return</a> only the title.  Ideally, having come across any graph in the notebook, one could obtain some identifier which would recover other instances where the image has appeared, identify the code that created it (with the code revision history) and pages that link to the code, as well as author information, license (software and image), platform information, etc.</p>
+<h3 id="other-content">Other content</h3>
+<p>There’s a lot of other content that is not treated here. References to people are an obvious candidate for semantic content, though FOAF and XFN (built into Wordpress links) don’t seem to capture the notions of “adviser,” “labmate,” or “co-author,” etc. Pulling up all references to a particular person in the notebook might be useful.</p>
+<p>Markup for identifying data analyzed in a post would also be useful. Like articles, <a href="http://datacite.org/">data is more and more frequently being assigned a DOI</a>, so the goal is simply to couple the post id, graphs and code that analyze the data more tightly to this identifier. A different solution may be necessary for unpublished data, or for indicating the subset or combination of published data sets used.</p>
+<p>Aquiring DOIs for computational results and posts from the California Digital Library’s <a href="http://www.cdlib.org/services/uc3/ezid/index.html">EZID</a> would make richer meta-data tracking possible. This might be possible to implement for figures through FigShare as well.</p>
+<h3 id="other-wordpress-plugins">Other Wordpress Plugins</h3>
+<p>Basic meta-data about the post can be included through the Wordpress plugin <a href="http://dev.squarecows.com/projects/wp-rdfa/">wp-rdfa</a>, providing FOAF relationships for admin/editors/authors in the wordpress database and Dublin Core relationships to identify the authors and post title, but are quite limited. A variety of other Wordpress plugins  also provide semantic support, including  <a href="http://www.ontos.com/o_eng/index.php?cs=1">ontos feeder</a>, <a href="http://fgiasson.com/blog/index.php/2007/09/01/blogs-wordpress-zitgist-and-the-semantic-web/">zlinks</a>, <a href="http://wordpress.org/extend/plugins/wpmu-talis-triple-uploader/">WPMU-talis-triples-uploader</a> (<a href="http://www.talis.com">Talis</a>), but I’m not sure any provide the kind of  capacity I discuss above (most attempt to automatically link content from other web sources).  This semantic <a href="http://inspector.sindice.com/index.jsp">inspector tool</a> is quite useful, as well as a rich example of markup of a scientist’s page <a href="http://egonw.github.com/">from Egon</a>.</p>
+<h3 id="feedback">Feedback?</h3>
+<p>I’m curious what others think about these possibility, what they’d like to see in a semantic notebook, and if anyone would be interested in helping further develop these tools, at least in a Wordpress context.</p>
+        </div>
+
+
+        <!-- Custom sidebar -->      
+        <div class="span4">
+          <div class="sidebar">
+            <aside prefix="dc: http://purl.org/dc/terms/ og:http://ogp.me/ns/article#">
+<i class="icon-calendar"></i>
+<time datetime="2011-05-08T11:39:49-07:00" 
+      property="dc:created">08 May 2011</time>.
+<br />
+          
+            <p><a class="btn btn-mini" rel="prev" href='/2011/05/06/reproducible-research-large-data-sets-and-si2.html'><i class="icon-chevron-left"></i> prev</a>
+          
+          
+          <a class="btn btn-mini" rel="next" href='/2011/05/08/sunday-a-few-treebase-r-package-updates.html'>next <i class="icon-chevron-right"></i></a></p>
+          
+
+
+<br />
+
+
+<p> <a class="btn btn-mini" href="https://github.com/cboettig/labnotebook/commits/master/_posts/2011-05-08-building-a-semantic-notebook.md"><i class="icon-time"></i> history</a></p>
+<br />
+Posted in 
+  <a rel="tag" class="category" href="/categories.html#open-science"><span property="dc:subject og:section">open-science</span></a>
+  
+
+
+
+<br />
+tags: 
+  <a rel="tag" class="tag" href="/tags.html#plugins">#<span property="og:tag http://schema.org/BlogPosting/keywords">plugins</span></a>
+  
+
+
+
+</aside>
+
+         </div>
+       </div>
+
+      </div>
+      <!-- Disqus Comments -->
+      <div class="row disqus">
+        <div class="span8">          
+            <div id="disqus_thread"></div>
+            <script type="text/javascript">
+                var disqus_shortname = 'cboettig'; // required: replace example with your forum shortname
+                /* * * DON'T EDIT BELOW THIS LINE * * */
+                (function() {
+                    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                    dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        </div>
+      </div>
+
+
+
+</article>
+<footer class="footer">
+  <form style="font-size:10px">
+    <div class="pull-right">
+      <span rel="tooltip" title="switch to dark theme">
+        <a onclick="switch_style('dark'); return false;" name="theme" value="dark" id="dark" class="btn btn-mini"><i class="icon-adjust"></i></a> 
+      </span>
+      <span rel="tooltip" title="switch to light theme">
+        <a onclick="switch_style('light');return false;" name="theme" value="light" id="light" class="btn btn-mini"><i class="icon-certificate"></i></a> 
+      </span>
+    </div>
+  </form>
+          <div class="row">
+            <div class="span4 socialicons" style="font-size:20px" vocab="http://xmlns.com/foaf/0.1/" typeof="Person" resource="#me">
+              <span rel="tooltip" title="email me">
+                <a property="account" href="mailto:cboettig@gmail.com" onclick="recordOutboundLink(this, 'Outbound Links', 'email'); return false;"><i class="icon-envelope-alt"></i></a>
+              </span>
+              <span rel="tooltip" title="follow me on twitter (reading, discussing)">
+                <a property="account" href="https://twitter.com/cboettig" onclick="recordOutboundLink(this, 'Outbound Links', 'Twitter'); return false;"><i class="icon-twitter"></i></a> 
+              </span>
+              <!--              <a property="account" href="https://plus.google.com/" onclick="recordOutboundLink(this, 'Outbound Links', 'GPlus'); return false;"><i class="icon-google-plus"></i></a> -->
+              <span rel="tooltip" title="follow me on Github (code, research)">
+                <a property="account" href="https://github.com/cboettig" onclick="recordOutboundLink(this, 'Outbound Links', 'Github'); return false;"><i class="icon-github" alt="github"></i></a> 
+              </span>  
+              <!--              <a property="account" href="http://www.mendeley.com/profiles/carl-boettiger" onclick="recordOutboundLink(this, 'Outbound Links', 'Mendeley'); return false;"><img src="/assets/img/icon-mendeley.png" alt="mendeley" /></a>  -->
+              <span rel="tooltip" title="subscribe to RSS feeds for my open lab notebook">
+                <a href="/atom.xml" onclick="recordOutboundLink(this, 'Outbound Links', 'RSS'); return false;"><i class="icon-rss" ></i></a>
+              </span>
+            </div>
+            <div class="span2" style="text-align:center">
+              <span rel="tooltip" 
+                    title="An Open Notebook Science (ONS) project claim: Entry provides all content (AC) immediately (I) or without significant delay.  See link for details"><a rel="license" href="http://onsclaims.wikispaces.com/" 
+                onclick="recordOutboundLink(this, 'Outbound Links', 'ONS_claim'); return false;" 
+                ><img src="http://onsclaims.wikispaces.com/file/view/ons-aci2-icon.png" alt="ONS" /></a>
+            </span>
+            </div>
+            <div class="span4">
+              <a property="http://creativecommons.org/ns#license" href="http://creativecommons.org/publicdomain/zero/1.0/" onclick="recordOutboundLink(this, 'Outbound Links', 'CC0'); return false;"><img src="http://i.creativecommons.org/l/zero/1.0/88x31.png" alt="CC0" style="float:right" /></a> 
+            </div>
+        </div>
+      </footer>
+    </div><!-- /container -->
+    
+        <!-- Le javascript
+    ================================================== -->
+
+    <!-- Placed at the end of the document so the pages load faster -->
+    <!-- JQuery, used on a few pages -->
+    <script type="text/javascript" src="http://www.carlboettiger.info/assets/js/jquery.js"></script>
+    <!-- Equations using MathJax -->
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config"> MathJax.Hub.Config({ TeX: { equationNumbers: {autoNumber: "all"} } });       </script>
+    <!-- Twitter Bootstrap Javascript -->
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-transition.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-collapse.js"></script> <!-- for collapsing navbar-->
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-tooltip.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-alert.js"></script>
+
+    <script type="text/javascript">
+      $(document).ready(function (){
+        $("[rel=tooltip]").tooltip();
+      });
+    </script>
+
+    <!-- Unused Twitter Bootstrap Javascript 
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-dropdown.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/google-code-prettify/prettify.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-modal.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-scrollspy.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-tab.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-popover.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-button.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-carousel.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-typeahead.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/application.js"></script>
+    -->
+
+
+      <script type="text/javascript">
+          var _gaq = _gaq || [];
+          _gaq.push(['_setAccount', 'UA-18401403-1']);
+          _gaq.push(['_trackPageview']);
+          (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+          })();
+  </script>
+
+
+
+<script type="text/javascript">
+function recordOutboundLink(link, category, action) {
+  try {
+    var pageTracker=_gat._getTracker("UA-18401403-1");
+    pageTracker._trackEvent(category, action);
+    setTimeout('document.location = "' + link.href + '"', 100)
+  }catch(err){}
+}
+</script>
+
+
+        
+<!-- Start Open Web Analytics Tracker -->
+<script type="text/javascript">
+//<![CDATA[
+var owa_baseUrl = 'http://www.carlboettiger.info/openwebanalytics/';
+var owa_cmds = owa_cmds || [];
+owa_cmds.push(['setSiteId', '2886faa411a4139a6c6f97b5a1f38697']);
+owa_cmds.push(['trackPageView']);
+owa_cmds.push(['trackClicks']);
+owa_cmds.push(['trackDomStream']);
+
+(function() {
+  var _owa = document.createElement('script'); _owa.type = 'text/javascript'; _owa.async = true;
+  owa_baseUrl = ('https:' == document.location.protocol ? window.owa_baseSecUrl || owa_baseUrl.replace(/http:/, 'https:') : owa_baseUrl );
+  _owa.src = owa_baseUrl + 'modules/base/js/owa.tracker-combined-min.js';
+  var _owa_s = document.getElementsByTagName('script')[0]; _owa_s.parentNode.insertBefore(_owa, _owa_s);
+}());
+//]]>
+</script>
+<!-- End Open Web Analytics Code -->
+        
+
+  </body>
+</html>
+

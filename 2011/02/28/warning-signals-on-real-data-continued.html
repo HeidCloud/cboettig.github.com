@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head prefix="dc: http://purl.org/dc/terms/ og: http://ogp.me/ns#">
+    <meta charset="utf-8" /> 
+    <title>Warning Signals on Real data continued</title>
+    <meta name="author" content="Carl Boettiger" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+
+  
+
+
+<!-- HTML5 metadata -->
+<meta name="keywords" content="Science, Ecology, Evolution, Open Science, Reproducible Research" />
+<meta name="description" content="My open lab notebook- research in theoretical ecology and evolution" />
+<!-- RDFa Metadata (in DublinCore) -->
+<meta property="dc:title" content="Warning Signals on Real data continued" />
+<meta property="dc:creator" content="Carl Boettiger" />
+<meta property="dc:date" content="2013-01-10T12:36:56-08:00" />
+<meta property="dc:type" content="Lab Notebook Entry" /> <!-- article? entry?-->
+<meta property="dc:format" content="text/html" />
+<meta property="dc:language" content="en" />
+<meta property="dc:source" content="Lab Notebook" />
+<!-- RDFa Metadata (in OpenGraph) -->
+<meta property="og:title" content="Warning Signals on Real data continued" />
+<meta property="og:author" content="http://www.carlboettiger.info/index.html" />  <!-- Should be Liquid? URI? -->
+<meta property="http://ogp.me/ns/profile#first_name" content="Carl"/>
+<meta property="http://ogp.me/ns/profile#last_name" content="Boettiger"/>
+<meta property="http://ogp.me/ns/article#published_time" content="2013-01-10T12:36:56-08:00" />
+<meta property="og:site_name" content="Lab Notebook" /> <!-- Same as dc:source? -->
+<meta property="og:url" content="http://www.carlboettiger.info/2011/02/28/warning-signals-on-real-data-continued.html" />
+<meta property="og:type" content="article" />
+<!-- Google Scholar Metadata -->
+<meta name="resource_type" content="Lab Notebook"/>
+<meta name="citation_journal_title" content="Lab Notebook"/>
+<meta name="citation_publication_date" content="10 Jan 2013"/>
+<meta name="citation_date" content="10 Jan 2013"/>
+<meta name="citation_author" content="Carl Boettiger"/>
+<meta name="citation_title" content="Warning Signals on Real data continued"/>
+
+    <!-- CSS Stylesheets (toggled with javascript) -->
+    <link href="/assets/css/light.css" rel="stylesheet"
+          type="text/css" id="stl" title="light" />
+    <link href="/assets/css/dark.css" rel="alternate stylesheet" 
+          type="text/css" title="dark" />
+    <!-- Javascript needed for theme toggle, load immediately -->
+    <script type="text/javascript" src="/assets/js/switch-css.js"></script>
+    <script type="text/javascript">
+      set_style_from_cookie(); 
+    </script>
+  </head>
+  <body> 
+  
+<!-- Navbar  ================================================== -->
+<div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+      <a class="brand" href="/README.html"><i style="float:right;" class="icon-info-sign" alt="info" rel="tooltip" title="Credits and technical information about this site" data-placement="bottom"></i></a>
+      <div class="nav-collapse">
+        <ul class="nav">
+          <li>
+          <a href="/index.html">Home</a></li>
+
+          <li>
+          <a href="/vita.html">Vita</a></li>
+
+          <li>
+          <a href="/research.html">Research</a></li>
+
+          <li>
+          <a href="/teaching.html">Teaching</a></li>
+
+          <li>
+          <a href="/community.html">Community</a></li>
+
+          <li>
+          <a href="/lab-notebook.html">Lab Notebook</a></li>
+
+        </ul>
+      </div><!--/.nav-collapse -->
+      <form class="navbar-search pull-right" method="get" action="http://google.com/search">
+         <p>
+         <input type="hidden" name="q" value="site:carlboettiger.info" />
+         <input type="text" class="search-query" name="q" />
+         <button class="btn btn-mini" type="submit"><i class="icon-search"></i></button> 
+         </p>
+       </form>
+     </div> <!-- /container -->
+   </div> <!-- /navbar-inner -->
+ </div> <!-- /navbar -->
+
+
+
+  <div class="container"> 
+    <article> <!-- includes header and entry, but not footer -->
+    <header class="jumbotron subhead">
+      <h1 class="entry-title">Warning Signals on Real data continued</h1>
+      <p></p>
+    </header>
+
+
+      <div class="row">
+        <div class="span7 offset1">
+          <p>Continuing my tweaks to code to apply warning signals to the climate data used in (Dakos <em>et. al.</em> 2008).  After adjusting my code to deal with variably spaced sampling intervals, I reread the <a href="http://www.pnas.org/cgi/data/0802430105/DCSupplemental/Supplemental_PDF#nameddest=STXT">supplement</a> – I had forgotten that they don’t actually consider data with variable time-scales, but instead interpolate the curves to have equally spaced sampling intervals.</p>
+<p>Obviously this is not ideal.  It is true that the autocorrelation would be impacted by non-equally spaced data, while there is no reason to do so for the variance indicator.  Interpolation will decrease the observed variance (clearly), and increase the autocorrelation.</p>
+<p>They also “detrend” the data, which unfortunately must also be somewhat arbitrary and could bias the results.  Certainly for the simulated data there is no reason to detrend the data, since there are no external trends represented (of course this does provide a consistency with the original arbitrary procedure).</p>
+<blockquote>
+<p>We chose a bandwidth in such a way that we do not overfit while still removing the long-term trends visible in the records.</p>
+</blockquote>
+<p>For the purposes of comparison I’ll have to add some code to include this detrending option.</p>
+<h2 id="code-status-variable-timescales">Code Status: Variable Timescales</h2>
+<p>Basic code checks for the time-series data seem to imply that everything is working (modulo checking the handling of the negative time values, discussed below). Still troubleshooting the handling of non-ts objects:</p>
+<p>This works fine:</p>
+<pre><code>&gt; const_pars &lt;- c(Ro=5.0, theta=mean(X[,2]), sigma=sd(X[,2]))
+&gt; const_pars
+        Ro      theta      sigma 
+  5.000000 100.000000   6.591166 
+&gt; Y &lt;- simulateGauss(const_LTC, const_pars, times=seq(1,10,length=200))
+&gt; const &lt;- updateGauss(const_LTC, const_pars, Y, control=list(maxit=1000))</code></pre>
+<p>as does this:</p>
+<pre><code>Y &lt;- simulateGauss(const_LTC, const_pars, times=seq(1,40,length=200))
+const &lt;- updateGauss(const_LTC, const_pars, Y, control=list(maxit=100))</code></pre>
+<p>But this creates warnings but still works: NAs:</p>
+<pre><code>Y &lt;- simulateGauss(const_LTC, const_pars, times=seq(1,10,length=50))
+const &lt;- updateGauss(const_LTC, const_pars, Y, control=list(maxit=1000))
+warnings()
+Warning Messages: 
+1: In rnorm(n, mean = P$Ex, sd = sqrt(P$Vx)) : NAs produced</code></pre>
+<p>And this with the real data, errors:</p>
+<pre><code>&gt; caco3 &lt;- read.table(&quot;caco3.txt&quot;)
+&gt; caco3 &lt;- data.frame(&quot;MYYrs&quot;=-caco3$V1, &quot;CaCO3&quot;=caco3$V2)
+&gt; g_ca &lt;- caco3$MYYrs &gt; -39 &amp; caco3$MYYrs &lt; -32  # Data with collapse (for plot)
+&gt; p_ca &lt;- caco3$MYYrs &gt; -39 &amp; caco3$MYYrs &lt; -34  # Data used in warning signal
+&gt; 
+&gt; X &lt;- data.frame(&quot;time&quot;=caco3$MYYrs[p_ca], &quot;data&quot;=caco3$CaCO3[p_ca])
+&gt; 
+&gt; # Rather annoying to have time backwards and negative, lets reverse this.
+&gt; X &lt;- data.frame(&quot;time&quot;=rev(X[,1] - min(X[,1])), &quot;data&quot;=rev(X[,2]))
+&gt; 
+&gt; pars &lt;- c(Ro=5.0, m= -.04, theta=mean(X[,2]), sigma=sd(X[,2]))
+&gt; const_pars &lt;- c(Ro=5.0, theta=mean(X[,2]), sigma=sd(X[,2]))
+&gt; const &lt;- updateGauss(const_LTC, const_pars, X, control=list(maxit=1000))
+Error in optim(pars, likfn, method = method, ...) : 
+  function cannot be evaluated at initial parameters
+
+Enter a frame number, or 0 to exit   
+
+1: updateGauss(const_LTC, const_pars, X, control = list(maxit = 1000))
+2: gaussian_process.R#79: optim(pars, likfn, method = method, ...)</code></pre>
+<p>Ah ah! Real data contains replicate time samples (or unresolved time intervals at least). These produce -Inf in the call to dc.gauss, so log-likelihood sums to NaN.</p>
+<p>Replicate samples should be averaged out or removed from data-set first. As usual there’s already a <a href="http://stuff.mit.edu/afs/athena.mit.edu/software/r_v2.11.1/lib/R/library/limma/html/avereps.html">clever little R function</a> in some<a href="http://www.bioconductor.org/packages/2.6/bioc/html/limma.html">obscure package</a> to do this:</p>
+<pre><code>require(limma)
+X &lt;-avereps(X, ID=X[,1])</code></pre>
+<p>So looks like the entire code will run (data proccessing, formatting, etc). Now to check convergence:</p>
+<pre><code>caco3 &lt;- read.table(&quot;caco3.txt&quot;)
+caco3 &lt;- data.frame(&quot;MYYrs&quot;=-caco3$V1, &quot;CaCO3&quot;=caco3$V2)
+g_ca &lt;- caco3$MYYrs &gt; -39 &amp; caco3$MYYrs &lt; -32  # Data with collapse (for plot)
+p_ca &lt;- caco3$MYYrs &gt; -39 &amp; caco3$MYYrs &lt; -34  # Data used in warning signal
+X &lt;- data.frame(&quot;time&quot;=caco3$MYYrs[p_ca], &quot;data&quot;=caco3$CaCO3[p_ca])
+# Rather annoying to have time backwards and negative, lets reverse this.
+X &lt;- data.frame(&quot;time&quot;=rev(X[,1] - min(X[,1])), &quot;data&quot;=rev(X[,2]))
+## Also really annoying that there are replicate values, luckily a quick averaging call will remove them. 
+require(limma)
+X &lt;-avereps(X, ID=X[,1])
+pars &lt;- c(Ro=5.0, m= -.04, theta=mean(X[,2]), sigma=sd(X[,2])*5*2)
+const_pars &lt;- c(Ro=5.0, theta=mean(X[,2]), sigma=sd(X[,2])*5*2)
+const &lt;- updateGauss(const_LTC, const_pars, X, control=list(maxit=1000))
+timedep &lt;- updateGauss(timedep_LTC, pars, X, control=list(maxit=1000))
+llik_warning &lt;- 2*(loglik(timedep)-loglik(const))</code></pre>
+<p>I would also like to add an error-handler for this in setmodel, but as it takes the whole timeseries at once rather than entry by entry the check requires more effort (and seems silly to check the whole series for replicate time entries on each call).</p>
+<p><a href="https://github.com/cboettig/structured-populations/commit/e3c83d5a3387a7e0b37be75557b220184f0ecd47">Code</a> also updated to make intelligent estimates of initial parameters for optim() routine (i.e. theta set to data mean, etc).</p>
+<p>Results should appear when complete in the gallery below:</p>
+<p>[flickr-gallery mode=“search” tags=“CaCO3” min_upload_date=“2011-02-28 00:00:00” max_upload_date=“2011-03-02 23:59:59”]</p>
+<h2 id="data-status">Data Status</h2>
+<p>I realized the interpolation problem when breaking the data into the four glaciation periods specified in Table S1 and not having the same number of points as specified.</p>
+<p>Times on the data are given as time-before-present, which is actually a bit annoying (would reverse the end and initial conditions, fine for a stationary process, not so much for the warning signal fit!)  Making the quantities negative at least restores the correct ordering of the data.</p>
+<p>Some handling of this can be seen in the code above.</p>
+<p>and back to writing…</p>
+<h2 id="references">References</h2>
+<p>
+<p>Dakos V, Scheffer M, van Nes E, Brovkin V, Petoukhov V and Held H (2008). “Slowing Down as an Early Warning Signal For Abrupt Climate Change.” <EM>Proceedings of The National Academy of Sciences</EM>, <B>105</B>. ISSN 0027-8424, <a href="http://dx.doi.org/10.1073/pnas.0802430105">http://dx.doi.org/10.1073/pnas.0802430105</a>.</p>
+        </div>
+
+
+        <!-- Custom sidebar -->      
+        <div class="span4">
+          <div class="sidebar">
+            <aside prefix="dc: http://purl.org/dc/terms/ og:http://ogp.me/ns/article#">
+<i class="icon-calendar"></i>
+<time datetime="2011-02-28T04:08:03-08:00" 
+      property="dc:created">28 Feb 2011</time>.
+<br />
+          
+            <p><a class="btn btn-mini" rel="prev" href='/2011/02/27/warning-signals-on-real-data.html'><i class="icon-chevron-left"></i> prev</a>
+          
+          
+          <a class="btn btn-mini" rel="next" href='/2011/03/01/warning-signals-comparing-methods-on-climate-data.html'>next <i class="icon-chevron-right"></i></a></p>
+          
+
+
+<br />
+
+
+<p> <a class="btn btn-mini" href="https://github.com/cboettig/labnotebook/commits/master/_posts/2011-02-28-warning-signals-on-real-data-continued.md"><i class="icon-time"></i> history</a></p>
+<br />
+Posted in 
+  <a rel="tag" class="category" href="/categories.html#ecology"><span property="dc:subject og:section">ecology</span></a>
+  
+
+
+
+<br />
+tags: 
+  <a rel="tag" class="tag" href="/tags.html#warning-signals">#<span property="og:tag http://schema.org/BlogPosting/keywords">warning-signals</span></a>
+  
+
+
+
+</aside>
+
+         </div>
+       </div>
+
+      </div>
+      <!-- Disqus Comments -->
+      <div class="row disqus">
+        <div class="span8">          
+            <div id="disqus_thread"></div>
+            <script type="text/javascript">
+                var disqus_shortname = 'cboettig'; // required: replace example with your forum shortname
+                /* * * DON'T EDIT BELOW THIS LINE * * */
+                (function() {
+                    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                    dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        </div>
+      </div>
+
+
+
+</article>
+<footer class="footer">
+  <form style="font-size:10px">
+    <div class="pull-right">
+      <span rel="tooltip" title="switch to dark theme">
+        <a onclick="switch_style('dark'); return false;" name="theme" value="dark" id="dark" class="btn btn-mini"><i class="icon-adjust"></i></a> 
+      </span>
+      <span rel="tooltip" title="switch to light theme">
+        <a onclick="switch_style('light');return false;" name="theme" value="light" id="light" class="btn btn-mini"><i class="icon-certificate"></i></a> 
+      </span>
+    </div>
+  </form>
+          <div class="row">
+            <div class="span4 socialicons" style="font-size:20px" vocab="http://xmlns.com/foaf/0.1/" typeof="Person" resource="#me">
+              <span rel="tooltip" title="email me">
+                <a property="account" href="mailto:cboettig@gmail.com" onclick="recordOutboundLink(this, 'Outbound Links', 'email'); return false;"><i class="icon-envelope-alt"></i></a>
+              </span>
+              <span rel="tooltip" title="follow me on twitter (reading, discussing)">
+                <a property="account" href="https://twitter.com/cboettig" onclick="recordOutboundLink(this, 'Outbound Links', 'Twitter'); return false;"><i class="icon-twitter"></i></a> 
+              </span>
+              <!--              <a property="account" href="https://plus.google.com/" onclick="recordOutboundLink(this, 'Outbound Links', 'GPlus'); return false;"><i class="icon-google-plus"></i></a> -->
+              <span rel="tooltip" title="follow me on Github (code, research)">
+                <a property="account" href="https://github.com/cboettig" onclick="recordOutboundLink(this, 'Outbound Links', 'Github'); return false;"><i class="icon-github" alt="github"></i></a> 
+              </span>  
+              <!--              <a property="account" href="http://www.mendeley.com/profiles/carl-boettiger" onclick="recordOutboundLink(this, 'Outbound Links', 'Mendeley'); return false;"><img src="/assets/img/icon-mendeley.png" alt="mendeley" /></a>  -->
+              <span rel="tooltip" title="subscribe to RSS feeds for my open lab notebook">
+                <a href="/atom.xml" onclick="recordOutboundLink(this, 'Outbound Links', 'RSS'); return false;"><i class="icon-rss" ></i></a>
+              </span>
+            </div>
+            <div class="span2" style="text-align:center">
+              <span rel="tooltip" 
+                    title="An Open Notebook Science (ONS) project claim: Entry provides all content (AC) immediately (I) or without significant delay.  See link for details"><a rel="license" href="http://onsclaims.wikispaces.com/" 
+                onclick="recordOutboundLink(this, 'Outbound Links', 'ONS_claim'); return false;" 
+                ><img src="http://onsclaims.wikispaces.com/file/view/ons-aci2-icon.png" alt="ONS" /></a>
+            </span>
+            </div>
+            <div class="span4">
+              <a property="http://creativecommons.org/ns#license" href="http://creativecommons.org/publicdomain/zero/1.0/" onclick="recordOutboundLink(this, 'Outbound Links', 'CC0'); return false;"><img src="http://i.creativecommons.org/l/zero/1.0/88x31.png" alt="CC0" style="float:right" /></a> 
+            </div>
+        </div>
+      </footer>
+    </div><!-- /container -->
+    
+        <!-- Le javascript
+    ================================================== -->
+
+    <!-- Placed at the end of the document so the pages load faster -->
+    <!-- JQuery, used on a few pages -->
+    <script type="text/javascript" src="http://www.carlboettiger.info/assets/js/jquery.js"></script>
+    <!-- Equations using MathJax -->
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config"> MathJax.Hub.Config({ TeX: { equationNumbers: {autoNumber: "all"} } });       </script>
+    <!-- Twitter Bootstrap Javascript -->
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-transition.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-collapse.js"></script> <!-- for collapsing navbar-->
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-tooltip.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-alert.js"></script>
+
+    <script type="text/javascript">
+      $(document).ready(function (){
+        $("[rel=tooltip]").tooltip();
+      });
+    </script>
+
+    <!-- Unused Twitter Bootstrap Javascript 
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-dropdown.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/google-code-prettify/prettify.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-modal.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-scrollspy.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-tab.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-popover.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-button.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-carousel.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-typeahead.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/application.js"></script>
+    -->
+
+
+      <script type="text/javascript">
+          var _gaq = _gaq || [];
+          _gaq.push(['_setAccount', 'UA-18401403-1']);
+          _gaq.push(['_trackPageview']);
+          (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+          })();
+  </script>
+
+
+
+<script type="text/javascript">
+function recordOutboundLink(link, category, action) {
+  try {
+    var pageTracker=_gat._getTracker("UA-18401403-1");
+    pageTracker._trackEvent(category, action);
+    setTimeout('document.location = "' + link.href + '"', 100)
+  }catch(err){}
+}
+</script>
+
+
+        
+<!-- Start Open Web Analytics Tracker -->
+<script type="text/javascript">
+//<![CDATA[
+var owa_baseUrl = 'http://www.carlboettiger.info/openwebanalytics/';
+var owa_cmds = owa_cmds || [];
+owa_cmds.push(['setSiteId', '2886faa411a4139a6c6f97b5a1f38697']);
+owa_cmds.push(['trackPageView']);
+owa_cmds.push(['trackClicks']);
+owa_cmds.push(['trackDomStream']);
+
+(function() {
+  var _owa = document.createElement('script'); _owa.type = 'text/javascript'; _owa.async = true;
+  owa_baseUrl = ('https:' == document.location.protocol ? window.owa_baseSecUrl || owa_baseUrl.replace(/http:/, 'https:') : owa_baseUrl );
+  _owa.src = owa_baseUrl + 'modules/base/js/owa.tracker-combined-min.js';
+  var _owa_s = document.getElementsByTagName('script')[0]; _owa_s.parentNode.insertBefore(_owa, _owa_s);
+}());
+//]]>
+</script>
+<!-- End Open Web Analytics Code -->
+        
+
+  </body>
+</html>
+

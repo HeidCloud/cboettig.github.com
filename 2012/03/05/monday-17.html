@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head prefix="dc: http://purl.org/dc/terms/ og: http://ogp.me/ns#">
+    <meta charset="utf-8" /> 
+    <title>Monday</title>
+    <meta name="author" content="Carl Boettiger" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+
+  
+
+
+<!-- HTML5 metadata -->
+<meta name="keywords" content="Science, Ecology, Evolution, Open Science, Reproducible Research" />
+<meta name="description" content="My open lab notebook- research in theoretical ecology and evolution" />
+<!-- RDFa Metadata (in DublinCore) -->
+<meta property="dc:title" content="Monday" />
+<meta property="dc:creator" content="Carl Boettiger" />
+<meta property="dc:date" content="2013-01-10T12:36:56-08:00" />
+<meta property="dc:type" content="Lab Notebook Entry" /> <!-- article? entry?-->
+<meta property="dc:format" content="text/html" />
+<meta property="dc:language" content="en" />
+<meta property="dc:source" content="Lab Notebook" />
+<!-- RDFa Metadata (in OpenGraph) -->
+<meta property="og:title" content="Monday" />
+<meta property="og:author" content="http://www.carlboettiger.info/index.html" />  <!-- Should be Liquid? URI? -->
+<meta property="http://ogp.me/ns/profile#first_name" content="Carl"/>
+<meta property="http://ogp.me/ns/profile#last_name" content="Boettiger"/>
+<meta property="http://ogp.me/ns/article#published_time" content="2013-01-10T12:36:56-08:00" />
+<meta property="og:site_name" content="Lab Notebook" /> <!-- Same as dc:source? -->
+<meta property="og:url" content="http://www.carlboettiger.info/2012/03/05/monday-17.html" />
+<meta property="og:type" content="article" />
+<!-- Google Scholar Metadata -->
+<meta name="resource_type" content="Lab Notebook"/>
+<meta name="citation_journal_title" content="Lab Notebook"/>
+<meta name="citation_publication_date" content="10 Jan 2013"/>
+<meta name="citation_date" content="10 Jan 2013"/>
+<meta name="citation_author" content="Carl Boettiger"/>
+<meta name="citation_title" content="Monday"/>
+
+    <!-- CSS Stylesheets (toggled with javascript) -->
+    <link href="/assets/css/light.css" rel="stylesheet"
+          type="text/css" id="stl" title="light" />
+    <link href="/assets/css/dark.css" rel="alternate stylesheet" 
+          type="text/css" title="dark" />
+    <!-- Javascript needed for theme toggle, load immediately -->
+    <script type="text/javascript" src="/assets/js/switch-css.js"></script>
+    <script type="text/javascript">
+      set_style_from_cookie(); 
+    </script>
+  </head>
+  <body> 
+  
+<!-- Navbar  ================================================== -->
+<div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+      <a class="brand" href="/README.html"><i style="float:right;" class="icon-info-sign" alt="info" rel="tooltip" title="Credits and technical information about this site" data-placement="bottom"></i></a>
+      <div class="nav-collapse">
+        <ul class="nav">
+          <li>
+          <a href="/index.html">Home</a></li>
+
+          <li>
+          <a href="/vita.html">Vita</a></li>
+
+          <li>
+          <a href="/research.html">Research</a></li>
+
+          <li>
+          <a href="/teaching.html">Teaching</a></li>
+
+          <li>
+          <a href="/community.html">Community</a></li>
+
+          <li>
+          <a href="/lab-notebook.html">Lab Notebook</a></li>
+
+        </ul>
+      </div><!--/.nav-collapse -->
+      <form class="navbar-search pull-right" method="get" action="http://google.com/search">
+         <p>
+         <input type="hidden" name="q" value="site:carlboettiger.info" />
+         <input type="text" class="search-query" name="q" />
+         <button class="btn btn-mini" type="submit"><i class="icon-search"></i></button> 
+         </p>
+       </form>
+     </div> <!-- /container -->
+   </div> <!-- /navbar-inner -->
+ </div> <!-- /navbar -->
+
+
+
+  <div class="container"> 
+    <article> <!-- includes header and entry, but not footer -->
+    <header class="jumbotron subhead">
+      <h1 class="entry-title">Monday</h1>
+      <p></p>
+    </header>
+
+
+      <div class="row">
+        <div class="span7 offset1">
+          <ul>
+<li><p>Trivial <a href="https://github.com/cboettig/pdg_control/blob/ed6063bdc65916b816f85078b27f7e2543b89e20/inst/examples/ppii.md">example of a non-optimal but more robust policy</a> by editing the optimal strategy directly. Note in particular that this outperforms the optimal strategy economically as well as ecologically (fewer crashed populations).</p></li>
+<li><p>Running the <a href="https://github.com/cboettig/pdg_control/blob/ed6063bdc65916b816f85078b27f7e2543b89e20/inst/examples/policycost.md">policy-costs model with Beverton Holt</a> <a href="https://github.com/cboettig/pdg_control/blob/21ba4d913e1bf12fb641d3b54b2042fa9a32d498/inst/examples/policycost.md">instead of the Myers function</a> seems to give a clearer picture of a system responding to policy costs. The single-replicate picture probably captures this better than the policy/replicate visualizations..</p></li>
+<li><p>Setup flickr options (tags, description, title, etc) <a href="https://raw.github.com/cboettig/pdg_control/ed6063bdc65916b816f85078b27f7e2543b89e20/inst/examples/policycost_knit_.md">example</a></p></li>
+<li><p>Updated pmc to <a href="https://github.com/cboettig/pmc/commit/f86ca7bfc74af7690c18e1f25184051295edfdf9">handle errors</a> (mostly from svd failures in geiger). Also updated vignette.</p></li>
+</ul>
+<p>Failing to declare the XML namespace was causing my simple xml parsing example to fail.</p>
+<pre class="sourceCode R"><code class="sourceCode r">
+thing = <span class="kw">xmlParse</span>(<span class="kw">getURL</span>(&amp;quot;https<span class="er">://</span>github.com/cboettig/pmc/commits/master.atom&amp;quot;))
+nds = <span class="kw">getNodeSet</span>(thing, <span class="st">&#39;//x:entry&#39;</span>, <span class="dt">namespaces =</span> <span class="kw">c</span>(<span class="dt">x=</span><span class="st">&#39;http://www.w3.org/2005/Atom&#39;</span>))
+<span class="kw">length</span>(nds)</code></pre>
+<p>success. thanks Gabe.</p>
+<h2 id="log">Log</h2>
+<ol style="list-style-type: decimal">
+<li><a href="https://github.com/cboettig/pdg_control/commit/ed6063bdc65916b816f85078b27f7e2543b89e20">updated policycost with more plots</a></li>
+</ol>
+<p><a href="https://github.com/cboettig/pdg_control/commit/ed6063bdc65916b816f85078b27f7e2543b89e20">ed6063bdc6</a> <a href="https://github.com/cboettig/pdg_control/tree/ed6063bdc65916b816f85078b27f7e2543b89e20">Browse code</a></p>
+<p><a href="https://github.com/cboettig">cboettig</a> authored an hour ago</p>
+<ol start="2" style="list-style-type: decimal">
+<li><a href="https://github.com/cboettig/pdg_control/commit/c5c76325ae6f080c8ffd78b75586f8bd4fb9c18b">policy cost using BevHolt model</a></li>
+</ol>
+<p><a href="https://github.com/cboettig/pdg_control/commit/c5c76325ae6f080c8ffd78b75586f8bd4fb9c18b">c5c76325ae</a> <a href="https://github.com/cboettig/pdg_control/tree/c5c76325ae6f080c8ffd78b75586f8bd4fb9c18b">Browse code</a></p>
+<p><a href="https://github.com/cboettig">cboettig</a> authored 3 hours ago</p>
+<ol start="3" style="list-style-type: decimal">
+<li><a href="https://github.com/cboettig/pdg_control/commit/26394e8bfbc48b1ece85aac34dd54b7d6b3de7ab">better notes and profit plots</a></li>
+</ol>
+<p><a href="https://github.com/cboettig/pdg_control/commit/26394e8bfbc48b1ece85aac34dd54b7d6b3de7ab">26394e8bfb</a> <a href="https://github.com/cboettig/pdg_control/tree/26394e8bfbc48b1ece85aac34dd54b7d6b3de7ab">Browse code</a></p>
+<p><a href="https://github.com/cboettig">cboettig</a> authored 6 hours ago</p>
+<ol start="4" style="list-style-type: decimal">
+<li><a href="https://github.com/cboettig/pdg_control/commit/f8daee5a6ef4ef2d8e10c9ae1fa5ffdb77c4dbad">adding some additional plots to ppii</a></li>
+</ol>
+<p><a href="https://github.com/cboettig/pdg_control/commit/f8daee5a6ef4ef2d8e10c9ae1fa5ffdb77c4dbad">f8daee5a6e</a> <a href="https://github.com/cboettig/pdg_control/tree/f8daee5a6ef4ef2d8e10c9ae1fa5ffdb77c4dbad">Browse code</a></p>
+<p><a href="https://github.com/cboettig">cboettig</a> authored 6 hours ago</p>
+<ol start="5" style="list-style-type: decimal">
+<li><a href="https://github.com/cboettig/pdg_control/commit/d2636ccaead8fc7d7c2a8a3b92c792552d1b3dbf">whoops, old parameter values were being used in simulation</a></li>
+</ol>
+<p><a href="https://github.com/cboettig/pdg_control/commit/d2636ccaead8fc7d7c2a8a3b92c792552d1b3dbf">d2636ccaea</a> <a href="https://github.com/cboettig/pdg_control/tree/d2636ccaead8fc7d7c2a8a3b92c792552d1b3dbf">Browse code</a></p>
+<p><a href="https://github.com/cboettig">cboettig</a> authored 7 hours ago</p>
+<ol start="6" style="list-style-type: decimal">
+<li><a href="https://github.com/cboettig/pdg_control/commit/21ba4d913e1bf12fb641d3b54b2042fa9a32d498">policycost with P=.5 (intermediate size penalty)</a></li>
+</ol>
+<p><a href="https://github.com/cboettig/pdg_control/commit/21ba4d913e1bf12fb641d3b54b2042fa9a32d498">21ba4d913e</a> <a href="https://github.com/cboettig/pdg_control/tree/21ba4d913e1bf12fb641d3b54b2042fa9a32d498">Browse code</a></p>
+<p><a href="https://github.com/cboettig">cboettig</a> authored 7 hours ago</p>
+<ol start="7" style="list-style-type: decimal">
+<li><a href="https://github.com/cboettig/pdg_control/commit/0f36a08be95dfeadb1900f0b1156d589221ebf08">rule of thumb - 10% buffer</a></li>
+</ol>
+<p><a href="https://github.com/cboettig/pdg_control/commit/0f36a08be95dfeadb1900f0b1156d589221ebf08">0f36a08be9</a> <a href="https://github.com/cboettig/pdg_control/tree/0f36a08be95dfeadb1900f0b1156d589221ebf08">Browse code</a></p>
+<p><a href="https://github.com/cboettig">cboettig</a> authored 7 hours ago</p>
+<ol start="8" style="list-style-type: decimal">
+<li><a href="https://github.com/cboettig/pdg_control/commit/65b116eb201e79a541c259ef90b3bebb3fd149e4">rule of thumb - harvest LESS not MORE than optimal</a></li>
+</ol>
+<p><a href="https://github.com/cboettig/pdg_control/commit/65b116eb201e79a541c259ef90b3bebb3fd149e4">65b116eb20</a> <a href="https://github.com/cboettig/pdg_control/tree/65b116eb201e79a541c259ef90b3bebb3fd149e4">Browse code</a></p>
+<p><a href="https://github.com/cboettig">cboettig</a> authored 7 hours ago</p>
+<ol start="9" style="list-style-type: decimal">
+<li><a href="https://github.com/cboettig/pdg_control/commit/408d6a92d19b7ac86bf9327d508cd2dc41812bef">edit optimal policy by hand</a></li>
+</ol>
+<p><a href="https://github.com/cboettig/pdg_control/commit/408d6a92d19b7ac86bf9327d508cd2dc41812bef">408d6a92d1</a> <a href="https://github.com/cboettig/pdg_control/tree/408d6a92d19b7ac86bf9327d508cd2dc41812bef">Browse code</a></p>
+<p><a href="https://github.com/cboettig">cboettig</a> authored 7 hours ago</p>
+        </div>
+
+
+        <!-- Custom sidebar -->      
+        <div class="span4">
+          <div class="sidebar">
+            <aside prefix="dc: http://purl.org/dc/terms/ og:http://ogp.me/ns/article#">
+<i class="icon-calendar"></i>
+<time datetime="2012-03-05T08:17:34-08:00" 
+      property="dc:created">05 Mar 2012</time>.
+<br />
+          
+            <p><a class="btn btn-mini" rel="prev" href='/2012/03/03/thursday-friday-saturday.html'><i class="icon-chevron-left"></i> prev</a>
+          
+          
+          <a class="btn btn-mini" rel="next" href='/2012/03/06/tuesday-14.html'>next <i class="icon-chevron-right"></i></a></p>
+          
+
+
+<br />
+
+
+<p> <a class="btn btn-mini" href="https://github.com/cboettig/labnotebook/commits/master/_posts/2012-03-05-monday-17.md"><i class="icon-time"></i> history</a></p>
+<br />
+Posted in 
+  <a rel="tag" class="category" href="/categories.html#ecology"><span property="dc:subject og:section">ecology</span></a>
+  
+
+
+
+<br />
+tags: 
+  <a rel="tag" class="tag" href="/tags.html#PDG+Control">#<span property="og:tag http://schema.org/BlogPosting/keywords">PDG Control</span></a>
+  
+
+
+
+</aside>
+
+         </div>
+       </div>
+
+      </div>
+      <!-- Disqus Comments -->
+      <div class="row disqus">
+        <div class="span8">          
+            <div id="disqus_thread"></div>
+            <script type="text/javascript">
+                var disqus_shortname = 'cboettig'; // required: replace example with your forum shortname
+                /* * * DON'T EDIT BELOW THIS LINE * * */
+                (function() {
+                    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                    dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        </div>
+      </div>
+
+
+
+</article>
+<footer class="footer">
+  <form style="font-size:10px">
+    <div class="pull-right">
+      <span rel="tooltip" title="switch to dark theme">
+        <a onclick="switch_style('dark'); return false;" name="theme" value="dark" id="dark" class="btn btn-mini"><i class="icon-adjust"></i></a> 
+      </span>
+      <span rel="tooltip" title="switch to light theme">
+        <a onclick="switch_style('light');return false;" name="theme" value="light" id="light" class="btn btn-mini"><i class="icon-certificate"></i></a> 
+      </span>
+    </div>
+  </form>
+          <div class="row">
+            <div class="span4 socialicons" style="font-size:20px" vocab="http://xmlns.com/foaf/0.1/" typeof="Person" resource="#me">
+              <span rel="tooltip" title="email me">
+                <a property="account" href="mailto:cboettig@gmail.com" onclick="recordOutboundLink(this, 'Outbound Links', 'email'); return false;"><i class="icon-envelope-alt"></i></a>
+              </span>
+              <span rel="tooltip" title="follow me on twitter (reading, discussing)">
+                <a property="account" href="https://twitter.com/cboettig" onclick="recordOutboundLink(this, 'Outbound Links', 'Twitter'); return false;"><i class="icon-twitter"></i></a> 
+              </span>
+              <!--              <a property="account" href="https://plus.google.com/" onclick="recordOutboundLink(this, 'Outbound Links', 'GPlus'); return false;"><i class="icon-google-plus"></i></a> -->
+              <span rel="tooltip" title="follow me on Github (code, research)">
+                <a property="account" href="https://github.com/cboettig" onclick="recordOutboundLink(this, 'Outbound Links', 'Github'); return false;"><i class="icon-github" alt="github"></i></a> 
+              </span>  
+              <!--              <a property="account" href="http://www.mendeley.com/profiles/carl-boettiger" onclick="recordOutboundLink(this, 'Outbound Links', 'Mendeley'); return false;"><img src="/assets/img/icon-mendeley.png" alt="mendeley" /></a>  -->
+              <span rel="tooltip" title="subscribe to RSS feeds for my open lab notebook">
+                <a href="/atom.xml" onclick="recordOutboundLink(this, 'Outbound Links', 'RSS'); return false;"><i class="icon-rss" ></i></a>
+              </span>
+            </div>
+            <div class="span2" style="text-align:center">
+              <span rel="tooltip" 
+                    title="An Open Notebook Science (ONS) project claim: Entry provides all content (AC) immediately (I) or without significant delay.  See link for details"><a rel="license" href="http://onsclaims.wikispaces.com/" 
+                onclick="recordOutboundLink(this, 'Outbound Links', 'ONS_claim'); return false;" 
+                ><img src="http://onsclaims.wikispaces.com/file/view/ons-aci2-icon.png" alt="ONS" /></a>
+            </span>
+            </div>
+            <div class="span4">
+              <a property="http://creativecommons.org/ns#license" href="http://creativecommons.org/publicdomain/zero/1.0/" onclick="recordOutboundLink(this, 'Outbound Links', 'CC0'); return false;"><img src="http://i.creativecommons.org/l/zero/1.0/88x31.png" alt="CC0" style="float:right" /></a> 
+            </div>
+        </div>
+      </footer>
+    </div><!-- /container -->
+    
+        <!-- Le javascript
+    ================================================== -->
+
+    <!-- Placed at the end of the document so the pages load faster -->
+    <!-- JQuery, used on a few pages -->
+    <script type="text/javascript" src="http://www.carlboettiger.info/assets/js/jquery.js"></script>
+    <!-- Equations using MathJax -->
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config"> MathJax.Hub.Config({ TeX: { equationNumbers: {autoNumber: "all"} } });       </script>
+    <!-- Twitter Bootstrap Javascript -->
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-transition.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-collapse.js"></script> <!-- for collapsing navbar-->
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-tooltip.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-alert.js"></script>
+
+    <script type="text/javascript">
+      $(document).ready(function (){
+        $("[rel=tooltip]").tooltip();
+      });
+    </script>
+
+    <!-- Unused Twitter Bootstrap Javascript 
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-dropdown.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/google-code-prettify/prettify.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-modal.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-scrollspy.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-tab.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-popover.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-button.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-carousel.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/bootstrap-typeahead.js"></script>
+    <script src="http://www.carlboettiger.info/assets/js/application.js"></script>
+    -->
+
+
+      <script type="text/javascript">
+          var _gaq = _gaq || [];
+          _gaq.push(['_setAccount', 'UA-18401403-1']);
+          _gaq.push(['_trackPageview']);
+          (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+          })();
+  </script>
+
+
+
+<script type="text/javascript">
+function recordOutboundLink(link, category, action) {
+  try {
+    var pageTracker=_gat._getTracker("UA-18401403-1");
+    pageTracker._trackEvent(category, action);
+    setTimeout('document.location = "' + link.href + '"', 100)
+  }catch(err){}
+}
+</script>
+
+
+        
+<!-- Start Open Web Analytics Tracker -->
+<script type="text/javascript">
+//<![CDATA[
+var owa_baseUrl = 'http://www.carlboettiger.info/openwebanalytics/';
+var owa_cmds = owa_cmds || [];
+owa_cmds.push(['setSiteId', '2886faa411a4139a6c6f97b5a1f38697']);
+owa_cmds.push(['trackPageView']);
+owa_cmds.push(['trackClicks']);
+owa_cmds.push(['trackDomStream']);
+
+(function() {
+  var _owa = document.createElement('script'); _owa.type = 'text/javascript'; _owa.async = true;
+  owa_baseUrl = ('https:' == document.location.protocol ? window.owa_baseSecUrl || owa_baseUrl.replace(/http:/, 'https:') : owa_baseUrl );
+  _owa.src = owa_baseUrl + 'modules/base/js/owa.tracker-combined-min.js';
+  var _owa_s = document.getElementsByTagName('script')[0]; _owa_s.parentNode.insertBefore(_owa, _owa_s);
+}());
+//]]>
+</script>
+<!-- End Open Web Analytics Code -->
+        
+
+  </body>
+</html>
+
