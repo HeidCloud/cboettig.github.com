@@ -1,56 +1,70 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
   <head prefix="dc: http://purl.org/dc/terms/ og: http://ogp.me/ns#">
-    <meta charset="utf-8" /> 
-    <title>Stochastic Dynamic Programming With Gaussian Process Approx</title>
-    <meta name="author" content="Carl Boettiger" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
+  <meta charset="utf-8" /> 
+  <title>Stochastic Dynamic Programming With Gaussian Process Approx</title>
+  <meta name="author" content="Carl Boettiger" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+
+<!-- Some liquid code so that pages get the site.time creation date -->
 
   
+
 
 
 <!-- HTML5 metadata -->
-<meta name="keywords" content="Science, Ecology, Evolution, Open Science, Reproducible Research" />
-<meta name="description" content="My open lab notebook- research in theoretical ecology and evolution" />
+<meta name="keywords" content="nonparametric-bayes" />
+<meta name="description" content="" />
+<meta name="resource_type" content="website"/> 
 <!-- RDFa Metadata (in DublinCore) -->
 <meta property="dc:title" content="Stochastic Dynamic Programming With Gaussian Process Approx" />
 <meta property="dc:creator" content="Carl Boettiger" />
-<meta property="dc:date" content="2013-01-10T12:36:56-08:00" />
-<meta property="dc:type" content="Lab Notebook Entry" /> <!-- article? entry?-->
+<meta property="dc:date" content="2013-03-25T14:38:44-07:00" />
 <meta property="dc:format" content="text/html" />
 <meta property="dc:language" content="en" />
+<meta property="dc:identifier" content="/2012/10/25/stochastic-dynamic-programming-with-gaussian-process-approx.html" />
+<meta property="dc:rights" content="CC0" />
 <meta property="dc:source" content="Lab Notebook" />
+<meta property="dc:subject" content="Ecology" /> 
+<meta property="dc:type" content="website" /> 
 <!-- RDFa Metadata (in OpenGraph) -->
 <meta property="og:title" content="Stochastic Dynamic Programming With Gaussian Process Approx" />
-<meta property="og:author" content="http://www.carlboettiger.info/index.html" />  <!-- Should be Liquid? URI? -->
+<meta property="og:author" content="http://www.carlboettiger.info/index.html#me" />  <!-- Should be Liquid? URI? -->
 <meta property="http://ogp.me/ns/profile#first_name" content="Carl"/>
 <meta property="http://ogp.me/ns/profile#last_name" content="Boettiger"/>
-<meta property="http://ogp.me/ns/article#published_time" content="2013-01-10T12:36:56-08:00" />
+<meta property="http://ogp.me/ns/article#published_time" content="2013-03-25T14:38:44-07:00" />
 <meta property="og:site_name" content="Lab Notebook" /> <!-- Same as dc:source? -->
 <meta property="og:url" content="http://www.carlboettiger.info/2012/10/25/stochastic-dynamic-programming-with-gaussian-process-approx.html" />
-<meta property="og:type" content="article" />
+<meta property="og:type" content="website" /> 
 <!-- Google Scholar Metadata -->
-<meta name="resource_type" content="Lab Notebook"/>
-<meta name="citation_journal_title" content="Lab Notebook"/>
-<meta name="citation_publication_date" content="10 Jan 2013"/>
-<meta name="citation_date" content="10 Jan 2013"/>
 <meta name="citation_author" content="Carl Boettiger"/>
+<meta name="citation_date" content="25 Mar 2013"/>
 <meta name="citation_title" content="Stochastic Dynamic Programming With Gaussian Process Approx"/>
+<meta name="citation_journal_title" content="Lab Notebook"/>
 
-    <!-- CSS Stylesheets (toggled with javascript) -->
-    <link href="/assets/css/light.css" rel="stylesheet"
-          type="text/css" id="stl" title="light" />
-    <link href="/assets/css/dark.css" rel="alternate stylesheet" 
-          type="text/css" title="dark" />
-    <!-- Javascript needed for theme toggle, load immediately -->
-    <script type="text/javascript" src="/assets/js/switch-css.js"></script>
-    <script type="text/javascript">
-      set_style_from_cookie(); 
-    </script>
-  </head>
-  <body> 
-  
+<!--NOTE: see also the COinS Metadata in span element in footer -->
+
+
+
+
+  <!-- CSS Stylesheets (toggled with javascript) -->
+  <link href="/assets/css/light.css" rel="stylesheet"
+        type="text/css" id="stl" title="light" />
+  <link href="/assets/css/dark.css" rel="alternate stylesheet" 
+        type="text/css" title="dark" />
+  <link href="/assets/css/bootstrap-responsive.css" rel="stylesheet" 
+        type="text/css"/>
+  <!-- Javascript needed for theme toggle, load immediately -->
+  <script type="text/javascript" src="/assets/js/switch-css.js"></script>
+  <script type="text/javascript">
+    set_style_from_cookie(); 
+  </script>
+</head>
+
+
+  <body prefix="dc: http://purl.org/dc/terms/ foaf: http://xmlns.com/foaf/0.1/"> 
+    
 <!-- Navbar  ================================================== -->
 <div class="navbar navbar-fixed-top">
   <div class="navbar-inner">
@@ -60,14 +74,16 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </a>
-      <a class="brand" href="/README.html"><i style="float:right;" class="icon-info-sign" alt="info" rel="tooltip" title="Credits and technical information about this site" data-placement="bottom"></i></a>
+      <a class="brand" href="/README.html"><span  class="showtooltip" 
+          title="Credits and technical information about this site" 
+          data-placement="bottom"><i style="float:right;" class="icon-info-sign" alt="info"></i></span></a>
       <div class="nav-collapse">
         <ul class="nav">
           <li>
           <a href="/index.html">Home</a></li>
 
           <li>
-          <a href="/vita.html">Vita</a></li>
+          <a href="http://www.carlboettiger.info/vita.html">Vita</a></li>
 
           <li>
           <a href="/research.html">Research</a></li>
@@ -83,29 +99,41 @@
 
         </ul>
       </div><!--/.nav-collapse -->
+
+      <!-- Search site using Google's index --><!--
       <form class="navbar-search pull-right" method="get" action="http://google.com/search">
-         <p>
-         <input type="hidden" name="q" value="site:carlboettiger.info" />
-         <input type="text" class="search-query" name="q" />
+        <p>
+          <input type="hidden" name="q" value="site:carlboettiger.info" />
+          <input type="text" class="search-query" name="q" />
+          <button class="btn btn-mini" type="submit"><i class="icon-search"></i></button> 
+        </p>
+      </form>
+      -->
+      <div id="search">
+      <form method="get" class="navbar-search pull-right form-search">
+        <p>
+        <input type="text" name="search-text" id="search-text">
          <button class="btn btn-mini" type="submit"><i class="icon-search"></i></button> 
-         </p>
-       </form>
+        </p>
+      </form>
+      </div>
      </div> <!-- /container -->
    </div> <!-- /navbar-inner -->
  </div> <!-- /navbar -->
 
 
 
-  <div class="container"> 
-    <article> <!-- includes header and entry, but not footer -->
-    <header class="jumbotron subhead">
-      <h1 class="entry-title">Stochastic Dynamic Programming With Gaussian Process Approx</h1>
-      <p></p>
-    </header>
+    <div class="container"> <!-- Responsive grid layout --> 
+
+      <header class="jumbotron subhead">
+  <h1 class="entry-title">Stochastic Dynamic Programming With Gaussian Process Approx</h1>
+  <p></p>
+</header>
 
 
 <div class="row">
   <div class="span7 offset1">
+    <article>
     <p>Here we work out an SDP solution of the Reed (1979) using a Gaussian process approximation. In this example the Gaussian process hyper-parameters haven’t been tuned, so in principle the solution would perform even better, but this is just for illustrative purposes.</p>
 <p>We simulate 40 points under a stochastic growth (lognormal multiplicative noise) Beverton-Holt model and infer the Gaussian process. We start the simulation from a low stock value, giving reasonable but not perfect coverage of the state-space. The prior still has a strong influence outside these regions, so the GP doesn’t quite match the Beverton-Holt curve, as seen in the first figure.</p>
 <p>We solve for the optimal policy function by discretizing the system and using the Gaussian process to fill out the stochastic transition matrix, which we pass to my little stochastic dynamic programming library to determine the policy function. We compare this policy function to the solution for the true F (Beverton-Holt) in the second figure, and note somewhat substantial differences (in particular a clear deviation from the constant escapement rule that emerges, which in itself is quite interesting, all though clearly non optimal in this case.</p>
@@ -121,125 +149,142 @@
 <pre class="sourceCode r"><code class="sourceCode r">opts_knit$<span class="kw">set</span>(<span class="dt">upload.fun =</span> socialR::flickr.url)</code></pre>
 <h3 id="beverton-holt-function">Beverton-Holt function</h3>
 <p>Simulate some training data under a stochastic growth function with standard parameterization,</p>
-<pre class="sourceCode r"><code class="sourceCode r">f &lt;- BevHolt
-p &lt;- <span class="kw">c</span>(<span class="fl">1.5</span>, <span class="fl">0.05</span>)
-K &lt;- (p[<span class="dv">1</span>] - <span class="dv">1</span>)/p[<span class="dv">2</span>]</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">f &lt;-<span class="st"> </span>BevHolt
+p &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">1.5</span>, <span class="fl">0.05</span>)
+K &lt;-<span class="st"> </span>(p[<span class="dv">1</span>] -<span class="st"> </span><span class="dv">1</span>)/p[<span class="dv">2</span>]</code></pre>
 <p>Parameter definitions</p>
-<pre class="sourceCode r"><code class="sourceCode r">x_grid = <span class="kw">seq</span>(<span class="dv">0</span>, <span class="fl">1.5</span> * K, <span class="dt">length =</span> <span class="dv">101</span>)
-T &lt;- <span class="dv">40</span>
-sigma_g &lt;- <span class="fl">0.1</span>
-x &lt;- <span class="kw">numeric</span>(T)
-x[<span class="dv">1</span>] &lt;- <span class="dv">1</span></code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">x_grid =<span class="st"> </span><span class="kw">seq</span>(<span class="dv">0</span>, <span class="fl">1.5</span> *<span class="st"> </span>K, <span class="dt">length =</span> <span class="dv">101</span>)
+T &lt;-<span class="st"> </span><span class="dv">40</span>
+sigma_g &lt;-<span class="st"> </span><span class="fl">0.1</span>
+x &lt;-<span class="st"> </span><span class="kw">numeric</span>(T)
+x[<span class="dv">1</span>] &lt;-<span class="st"> </span><span class="dv">1</span></code></pre>
 <p>Noise function, profit function</p>
-<pre class="sourceCode r"><code class="sourceCode r">z_g &lt;- function() <span class="kw">rlnorm</span>(<span class="dv">1</span>, <span class="dv">0</span>, sigma_g)  <span class="co">#1+(2*runif(1, 0,  1)-1)*sigma_g #</span>
-profit &lt;- <span class="kw">profit_harvest</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>)</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">z_g &lt;-<span class="st"> </span>function() <span class="kw">rlnorm</span>(<span class="dv">1</span>, <span class="dv">0</span>, sigma_g)  <span class="co">#1+(2*runif(1, 0,  1)-1)*sigma_g #</span>
+profit &lt;-<span class="st"> </span><span class="kw">profit_harvest</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>)</code></pre>
 <p>Simulation</p>
-<pre class="sourceCode r"><code class="sourceCode r">for (t in <span class="dv">1</span>:(T - <span class="dv">1</span>)) x[t + <span class="dv">1</span>] = <span class="kw">z_g</span>() * <span class="kw">f</span>(x[t], <span class="dt">h =</span> <span class="dv">0</span>, <span class="dt">p =</span> p)</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">for (t in <span class="dv">1</span>:(T -<span class="st"> </span><span class="dv">1</span>)) x[t +<span class="st"> </span><span class="dv">1</span>] =<span class="st"> </span><span class="kw">z_g</span>() *<span class="st"> </span><span class="kw">f</span>(x[t], <span class="dt">h =</span> <span class="dv">0</span>, <span class="dt">p =</span> p)</code></pre>
 <p>Predict the function over the target grid</p>
-<pre class="sourceCode r"><code class="sourceCode r">obs &lt;- <span class="kw">data.frame</span>(<span class="dt">x =</span> x[<span class="dv">1</span>:(T - <span class="dv">1</span>)], <span class="dt">y =</span> x[<span class="dv">2</span>:T])
-X &lt;- x_grid
+<pre class="sourceCode r"><code class="sourceCode r">obs &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">x =</span> x[<span class="dv">1</span>:(T -<span class="st"> </span><span class="dv">1</span>)], <span class="dt">y =</span> x[<span class="dv">2</span>:T])
+X &lt;-<span class="st"> </span>x_grid
 <span class="kw">library</span>(nonparametricbayes)
-gp &lt;- <span class="kw">gp_fit</span>(obs, X, <span class="kw">c</span>(<span class="dt">sigma_n =</span> <span class="fl">0.5</span>, <span class="dt">l =</span> <span class="fl">1.5</span>))</code></pre>
+gp &lt;-<span class="st"> </span><span class="kw">gp_fit</span>(obs, X, <span class="kw">c</span>(<span class="dt">sigma_n =</span> <span class="fl">0.5</span>, <span class="dt">l =</span> <span class="fl">1.5</span>))</code></pre>
 <p>Gaussian Process inference from this model. True model shown in red.</p>
-<pre class="sourceCode r"><code class="sourceCode r">df &lt;- <span class="kw">data.frame</span>(<span class="dt">x =</span> X, <span class="dt">y =</span> gp$Ef, <span class="dt">ymin =</span> (gp$Ef - <span class="dv">2</span> * <span class="kw">sqrt</span>(<span class="kw">abs</span>(<span class="kw">diag</span>(gp$Cf)))), 
-    <span class="dt">ymax =</span> (gp$Ef + <span class="dv">2</span> * <span class="kw">sqrt</span>(<span class="kw">abs</span>(<span class="kw">diag</span>(gp$Cf)))))
-true &lt;- <span class="kw">data.frame</span>(<span class="dt">x =</span> X, <span class="dt">y =</span> <span class="kw">sapply</span>(X, f, <span class="dv">0</span>, p))
+<pre class="sourceCode r"><code class="sourceCode r">df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">x =</span> X, <span class="dt">y =</span> gp$Ef, <span class="dt">ymin =</span> (gp$Ef -<span class="st"> </span><span class="dv">2</span> *<span class="st"> </span><span class="kw">sqrt</span>(<span class="kw">abs</span>(<span class="kw">diag</span>(gp$Cf)))), 
+    <span class="dt">ymax =</span> (gp$Ef +<span class="st"> </span><span class="dv">2</span> *<span class="st"> </span><span class="kw">sqrt</span>(<span class="kw">abs</span>(<span class="kw">diag</span>(gp$Cf)))))
+true &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">x =</span> X, <span class="dt">y =</span> <span class="kw">sapply</span>(X, f, <span class="dv">0</span>, p))
 <span class="kw">require</span>(ggplot2)
-<span class="kw">ggplot</span>(df) + <span class="kw">geom_ribbon</span>(<span class="kw">aes</span>(x, y, <span class="dt">ymin =</span> ymin, <span class="dt">ymax =</span> ymax), <span class="dt">fill =</span> <span class="st">&quot;gray80&quot;</span>) + 
-    <span class="kw">geom_line</span>(<span class="kw">aes</span>(x, y)) + <span class="kw">geom_point</span>(<span class="dt">data =</span> obs, <span class="kw">aes</span>(x, y)) + <span class="kw">geom_line</span>(<span class="dt">data =</span> true, 
+<span class="kw">ggplot</span>(df) +<span class="st"> </span><span class="kw">geom_ribbon</span>(<span class="kw">aes</span>(x, y, <span class="dt">ymin =</span> ymin, <span class="dt">ymax =</span> ymax), <span class="dt">fill =</span> <span class="st">&quot;gray80&quot;</span>) +<span class="st"> </span>
+<span class="st">    </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(x, y)) +<span class="st"> </span><span class="kw">geom_point</span>(<span class="dt">data =</span> obs, <span class="kw">aes</span>(x, y)) +<span class="st"> </span><span class="kw">geom_line</span>(<span class="dt">data =</span> true, 
     <span class="kw">aes</span>(x, y), <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">lty =</span> <span class="dv">2</span>)</code></pre>
 <div class="figure">
-<img src="http://farm9.staticflickr.com/8464/8123212898_904aa88749_o.png" /><p class="caption"></p>
+<img src="http://farm9.staticflickr.com/8464/8123212898_904aa88749_o.png" />
 </div>
 <h2 id="stochastic-dynamic-programming-solution-based-on-the-posterior-gaussian-process">Stochastic Dynamic programming solution based on the posterior Gaussian process:</h2>
-<pre class="sourceCode r"><code class="sourceCode r">rownorm &lt;- function(M) <span class="kw">t</span>(<span class="kw">apply</span>(M, <span class="dv">1</span>, function(x) x/<span class="kw">sum</span>(x)))
-h_grid &lt;- x_grid</code></pre>
-<p>Define a transition matrix \(F\) from the Gaussian process, giving the probability of going from state \(x_t\) to \(x_{t+1}\). We already have the Gaussian process mean and variance predicted for each point \(x\) on our grid, so this is simply:</p>
-<pre class="sourceCode r"><code class="sourceCode r">V &lt;- <span class="kw">sqrt</span>(<span class="kw">diag</span>(gp$Cf))
-matrices_gp &lt;- <span class="kw">lapply</span>(h_grid, function(h) {
-    F &lt;- <span class="kw">sapply</span>(x_grid, function(x) <span class="kw">dnorm</span>(x, gp$Ef - h, V))
-    F &lt;- <span class="kw">rownorm</span>(F)
+<pre class="sourceCode r"><code class="sourceCode r">rownorm &lt;-<span class="st"> </span>function(M) <span class="kw">t</span>(<span class="kw">apply</span>(M, <span class="dv">1</span>, function(x) x/<span class="kw">sum</span>(x)))
+h_grid &lt;-<span class="st"> </span>x_grid</code></pre>
+<p>Define a transition matrix <span class="math">\(F\)</span> from the Gaussian process, giving the probability of going from state <span class="math">\(x_t\)</span> to <span class="math">\(x_{t+1}\)</span>. We already have the Gaussian process mean and variance predicted for each point <span class="math">\(x\)</span> on our grid, so this is simply:</p>
+<pre class="sourceCode r"><code class="sourceCode r">V &lt;-<span class="st"> </span><span class="kw">sqrt</span>(<span class="kw">diag</span>(gp$Cf))
+matrices_gp &lt;-<span class="st"> </span><span class="kw">lapply</span>(h_grid, function(h) {
+    F &lt;-<span class="st"> </span><span class="kw">sapply</span>(x_grid, function(x) <span class="kw">dnorm</span>(x, gp$Ef -<span class="st"> </span>h, V))
+    F &lt;-<span class="st"> </span><span class="kw">rownorm</span>(F)
 })</code></pre>
-<p>True \(f(x)\)</p>
-<pre class="sourceCode r"><code class="sourceCode r">matrices_true &lt;- <span class="kw">lapply</span>(h_grid, function(h) {
-    mu &lt;- <span class="kw">sapply</span>(x_grid, f, h, p)
-    F_true &lt;- <span class="kw">sapply</span>(x_grid, function(x) <span class="kw">dnorm</span>(x, mu, sigma_g))
-    F_true &lt;- <span class="kw">rownorm</span>(F_true)
+<p>True <span class="math">\(f(x)\)</span></p>
+<pre class="sourceCode r"><code class="sourceCode r">matrices_true &lt;-<span class="st"> </span><span class="kw">lapply</span>(h_grid, function(h) {
+    mu &lt;-<span class="st"> </span><span class="kw">sapply</span>(x_grid, f, h, p)
+    F_true &lt;-<span class="st"> </span><span class="kw">sapply</span>(x_grid, function(x) <span class="kw">dnorm</span>(x, mu, sigma_g))
+    F_true &lt;-<span class="st"> </span><span class="kw">rownorm</span>(F_true)
 })</code></pre>
 <p>Calculate the policy function using the true F:</p>
-<pre class="sourceCode r"><code class="sourceCode r">opt_true &lt;- <span class="kw">find_dp_optim</span>(matrices_true, x_grid, h_grid, <span class="dv">20</span>, <span class="dv">0</span>, profit, 
+<pre class="sourceCode r"><code class="sourceCode r">opt_true &lt;-<span class="st"> </span><span class="kw">find_dp_optim</span>(matrices_true, x_grid, h_grid, <span class="dv">20</span>, <span class="dv">0</span>, profit, 
     <span class="dt">delta =</span> <span class="fl">0.01</span>)</code></pre>
 <p>Calculate using the inferred GP</p>
-<pre class="sourceCode r"><code class="sourceCode r">opt_gp &lt;- <span class="kw">find_dp_optim</span>(matrices_gp, x_grid, h_grid, <span class="dv">20</span>, <span class="dv">0</span>, profit, 
+<pre class="sourceCode r"><code class="sourceCode r">opt_gp &lt;-<span class="st"> </span><span class="kw">find_dp_optim</span>(matrices_gp, x_grid, h_grid, <span class="dv">20</span>, <span class="dv">0</span>, profit, 
     <span class="dt">delta =</span> <span class="fl">0.01</span>)</code></pre>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">require</span>(reshape2)</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r">policies &lt;- <span class="kw">melt</span>(<span class="kw">data.frame</span>(<span class="dt">stock =</span> x_grid, <span class="dt">GP =</span> x_grid[opt_gp$D[, 
+<pre class="sourceCode r"><code class="sourceCode r">policies &lt;-<span class="st"> </span><span class="kw">melt</span>(<span class="kw">data.frame</span>(<span class="dt">stock =</span> x_grid, <span class="dt">GP =</span> x_grid[opt_gp$D[, 
     <span class="dv">1</span>]], <span class="dt">Exact =</span> x_grid[opt_true$D[, <span class="dv">1</span>]]), <span class="dt">id =</span> <span class="st">&quot;stock&quot;</span>)
-q1 &lt;- <span class="kw">ggplot</span>(policies, <span class="kw">aes</span>(stock, stock - value, <span class="dt">color =</span> variable)) + 
-    <span class="kw">geom_point</span>() + <span class="kw">xlab</span>(<span class="st">&quot;stock size&quot;</span>) + <span class="kw">ylab</span>(<span class="st">&quot;escapement&quot;</span>)
+q1 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(policies, <span class="kw">aes</span>(stock, stock -<span class="st"> </span>value, <span class="dt">color =</span> variable)) +<span class="st"> </span>
+<span class="st">    </span><span class="kw">geom_point</span>() +<span class="st"> </span><span class="kw">xlab</span>(<span class="st">&quot;stock size&quot;</span>) +<span class="st"> </span><span class="kw">ylab</span>(<span class="st">&quot;escapement&quot;</span>)
 q1</code></pre>
 <div class="figure">
-<img src="http://farm9.staticflickr.com/8053/8123196485_a3dc43986f_o.png" /><p class="caption"></p>
+<img src="http://farm9.staticflickr.com/8053/8123196485_a3dc43986f_o.png" />
 </div>
 <p>We can see what happens when we attempt to manage a stock using this:</p>
-<pre class="sourceCode r"><code class="sourceCode r">z_g &lt;- function() <span class="kw">rlnorm</span>(<span class="dv">1</span>, <span class="dv">0</span>, sigma_g)</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">z_g &lt;-<span class="st"> </span>function() <span class="kw">rlnorm</span>(<span class="dv">1</span>, <span class="dv">0</span>, sigma_g)</code></pre>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">set.seed</span>(<span class="dv">1</span>)
-sim_gp &lt;- <span class="kw">ForwardSimulate</span>(f, p, x_grid, h_grid, K, opt_gp$D, z_g, 
+sim_gp &lt;-<span class="st"> </span><span class="kw">ForwardSimulate</span>(f, p, x_grid, h_grid, K, opt_gp$D, z_g, 
     <span class="dt">profit =</span> profit)
 <span class="kw">set.seed</span>(<span class="dv">1</span>)
-sim_true &lt;- <span class="kw">ForwardSimulate</span>(f, p, x_grid, h_grid, K, opt_true$D, 
+sim_true &lt;-<span class="st"> </span><span class="kw">ForwardSimulate</span>(f, p, x_grid, h_grid, K, opt_true$D, 
     z_g, <span class="dt">profit =</span> profit)</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r">df &lt;- <span class="kw">data.frame</span>(<span class="dt">time =</span> sim_gp$time, <span class="dt">stock_gp =</span> sim_gp$fishstock, 
+<pre class="sourceCode r"><code class="sourceCode r">df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">time =</span> sim_gp$time, <span class="dt">stock_gp =</span> sim_gp$fishstock, 
     <span class="dt">stock_true =</span> sim_true$fishstock, <span class="dt">harvest_gp =</span> sim_gp$harvest, <span class="dt">havest_true =</span> sim_true$harvest)
-df &lt;- <span class="kw">melt</span>(df, <span class="dt">id =</span> <span class="st">&quot;time&quot;</span>)
-<span class="kw">ggplot</span>(df) + <span class="kw">geom_line</span>(<span class="kw">aes</span>(time, value, <span class="dt">color =</span> variable))</code></pre>
+df &lt;-<span class="st"> </span><span class="kw">melt</span>(df, <span class="dt">id =</span> <span class="st">&quot;time&quot;</span>)
+<span class="kw">ggplot</span>(df) +<span class="st"> </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(time, value, <span class="dt">color =</span> variable))</code></pre>
 <div class="figure">
-<img src="http://farm9.staticflickr.com/8191/8123196619_5b8ab8d81d_o.png" /><p class="caption"></p>
+<img src="http://farm9.staticflickr.com/8191/8123196619_5b8ab8d81d_o.png" />
 </div>
 <p>Total Profits</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sum</span>(sim_gp$profit)</code></pre>
 <pre><code>## [1] 25.43</code></pre>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sum</span>(sim_true$profit)</code></pre>
 <pre><code>## [1] 29.95</code></pre>
+    </article>
   </div>
-  <!-- Custom sidebar -->      
-  <div class="span3">
+  <div class="span4">
     <div class="sidebar">
-      <aside prefix="dc: http://purl.org/dc/terms/ og:http://ogp.me/ns/article#">
-<i class="icon-calendar"></i>
-<time datetime="2012-10-25T00:00:00-07:00" 
-      property="dc:created">25 Oct 2012</time>.
-<br />
-          
-            <p><a class="btn btn-mini" rel="prev" href='/2012/10/24/multiple-uncertainty-value-function-iteration.html'><i class="icon-chevron-left"></i> prev</a>
-          
-          
-          <a class="btn btn-mini" rel="next" href='/2012/10/29/notes.html'>next <i class="icon-chevron-right"></i></a></p>
-          
+      <aside prefix="og:http://ogp.me/ns/article#">
+  <p> <i class="icon-calendar"></i>
+    <time datetime="2012-10-25T00:00:00-07:00" 
+    property="dc:created">25 Oct 2012</time>. 
+  </p>
+  <br />
 
-
-<br />
-
-
-<p> <a class="btn btn-mini" href="https://github.com/cboettig/labnotebook/commits/master/_posts/2012-10-25-stochastic-dynamic-programming-with-gaussian-process-approx.md"><i class="icon-time"></i> history</a></p>
-<br />
-Posted in 
-  <a rel="tag" class="category" href="/categories.html#ecology"><span property="dc:subject og:section">ecology</span></a>
   
-
-
-
-<br />
-tags: 
-  <a rel="tag" class="tag" href="/tags.html#nonparametric-bayes">#<span property="og:tag http://schema.org/BlogPosting/keywords">nonparametric-bayes</span></a>
+    <p><a class="btn btn-mini" rel="prev" href='/2012/10/24/multiple-uncertainty-value-function-iteration.html'><i class="icon-chevron-left"></i> prev</a>
   
+  
+  <a class="btn btn-mini" rel="next" href='/2012/10/29/notes.html'>next <i class="icon-chevron-right"></i></a></p>
+  
+  <br />
 
 
+  <p> <a class="btn btn-mini" href="https://github.com/cboettig/labnotebook/commits/master/_posts2012-10-25-stochastic-dynamic-programming-with-gaussian-process-approx.md"><i class="icon-time"></i> history</a></p>
+
+
+  <p> Posted in 
+     
+      <a rel="dc:subject" class="category" 
+         href="/categories.html#ecology">ecology</a>
+      
+      </p>
+
+
+  <p> tags: 
+    
+      <!-- http://schema.org/BlogPosting/keywords -->
+      <a rel="og:tag" class="tag" 
+        href="/tags.html#nonparametric-bayes">#nonparametric-bayes</a>
+      
+      </p>
+
+
+   <p style="font-style:italic"> pageviews: 60</p>
+  <br/>
+  <br/>
+  <p><small>
+    Last modified: <time 
+                  datetime="2013-01-24T01:05:08-08:00" 
+                  property="dc:modified">24 Jan 2013</time></small>
+  </p>
+  <p><small> SHA Hash: <a href="https://github.com/cboettig/labnotebook/commit/09987a23b808f575ddc168a3ec7396976bbf070a
+"> 09987a23b808f575ddc168a3ec7396976bbf070a
+</a></small></p>
+  
 
 </aside>
 
-      <br />
-      <br />
+      <br/><br/>
       <p> <div>
 <script type="text/javascript" src="/assets/js/jquery.js"></script>
 <script type="text/javascript">
@@ -254,9 +299,10 @@ $(document).ready(function(){
 <input type="button" class="btn btn-mini" value="toggle code" id="toggle_code" />
 </div>
  </p>
-   </div>
+    </div>
   </div>
 </div>
+
       <!-- Disqus Comments -->
       <div class="row disqus">
         <div class="span8">          
@@ -276,85 +322,129 @@ $(document).ready(function(){
 
 
 
-</article>
 <footer class="footer">
-  <form style="font-size:10px">
-    <div class="pull-right">
-      <span rel="tooltip" title="switch to dark theme">
-        <a onclick="switch_style('dark'); return false;" name="theme" value="dark" id="dark" class="btn btn-mini"><i class="icon-adjust"></i></a> 
-      </span>
-      <span rel="tooltip" title="switch to light theme">
-        <a onclick="switch_style('light');return false;" name="theme" value="light" id="light" class="btn btn-mini"><i class="icon-certificate"></i></a> 
-      </span>
+  <!-- ************* Buttons to toggle theme CSS ********************** -->
+    <div class="row">
+      <div class="span12">
+        <form style="font-size:10px" class="pull-right">
+          <a onclick="switch_style('dark'); 
+                      recordOutboundLink(this, 'Outbound Links', 'dark theme'); 
+                      return false;" 
+             name="theme" value="dark" id="dark" 
+             class="btn btn-mini"><span class="showtooltip" 
+                                        title="switch to dark theme"><i class="icon-adjust"></i>
+                                   </span></a>
+          
+          <a onclick="switch_style('light'); 
+                      recordOutboundLink(this, 'Outbound Links', 'light theme'); 
+                      return false;" 
+             name="theme" value="light" id="light" 
+             class="btn btn-mini"><span class="showtooltip" 
+                                        title="switch to light theme"><i class="icon-certificate"></i>
+                                  </span></a>
+        </form>
+      </div>
     </div>
-  </form>
-          <div class="row">
-            <div class="span4 socialicons" style="font-size:20px" vocab="http://xmlns.com/foaf/0.1/" typeof="Person" resource="#me">
-              <span rel="tooltip" title="email me">
-                <a property="account" href="mailto:cboettig@gmail.com" onclick="recordOutboundLink(this, 'Outbound Links', 'email'); return false;"><i class="icon-envelope-alt"></i></a>
-              </span>
-              <span rel="tooltip" title="follow me on twitter (reading, discussing)">
-                <a property="account" href="https://twitter.com/cboettig" onclick="recordOutboundLink(this, 'Outbound Links', 'Twitter'); return false;"><i class="icon-twitter"></i></a> 
-              </span>
-              <!--              <a property="account" href="https://plus.google.com/" onclick="recordOutboundLink(this, 'Outbound Links', 'GPlus'); return false;"><i class="icon-google-plus"></i></a> -->
-              <span rel="tooltip" title="follow me on Github (code, research)">
-                <a property="account" href="https://github.com/cboettig" onclick="recordOutboundLink(this, 'Outbound Links', 'Github'); return false;"><i class="icon-github" alt="github"></i></a> 
-              </span>  
-              <!--              <a property="account" href="http://www.mendeley.com/profiles/carl-boettiger" onclick="recordOutboundLink(this, 'Outbound Links', 'Mendeley'); return false;"><img src="/assets/img/icon-mendeley.png" alt="mendeley" /></a>  -->
-              <span rel="tooltip" title="subscribe to RSS feeds for my open lab notebook">
-                <a href="/atom.xml" onclick="recordOutboundLink(this, 'Outbound Links', 'RSS'); return false;"><i class="icon-rss" ></i></a>
-              </span>
-            </div>
-            <div class="span2" style="text-align:center">
-              <span rel="tooltip" 
-                    title="An Open Notebook Science (ONS) project claim: Entry provides all content (AC) immediately (I) or without significant delay.  See link for details"><a rel="license" href="http://onsclaims.wikispaces.com/" 
-                onclick="recordOutboundLink(this, 'Outbound Links', 'ONS_claim'); return false;" 
-                ><img src="http://onsclaims.wikispaces.com/file/view/ons-aci2-icon.png" alt="ONS" /></a>
-            </span>
-            </div>
-            <div class="span4">
-              <a property="http://creativecommons.org/ns#license" href="http://creativecommons.org/publicdomain/zero/1.0/" onclick="recordOutboundLink(this, 'Outbound Links', 'CC0'); return false;"><img src="http://i.creativecommons.org/l/zero/1.0/88x31.png" alt="CC0" style="float:right" /></a> 
-            </div>
-        </div>
-      </footer>
-    </div><!-- /container -->
-    
-        <!-- Le javascript
+
+<!--************** FOAF information to social networks ***************************** -->
+  <div class="row">
+    <div class="span3 socialicons" style="font-size:20px" typeof="foaf:Person" about="http://www.carlboettiger.info#me">
+      <p>
+          <a rel="foaf:account" alt="email" href="mailto:cboettig@gmail.com" 
+             onclick="recordOutboundLink(this, 'Outbound Links', 'email'); 
+             return false;"><span class="showtooltip" title="email me"><i class="icon-envelope-alt"></i></span></a>
+          <a rel="foaf:account" alt="twitter" href="https://twitter.com/cboettig" 
+             onclick="recordOutboundLink(this, 'Outbound Links', 'Twitter'); 
+             return false;"><span class="showtooltip" title="follow me on twitter (reading, discussing)"><i class="icon-twitter"></i></span></a> 
+          <a rel="foaf:account" alt="github" href="https://github.com/cboettig" 
+             onclick="recordOutboundLink(this, 'Outbound Links', 'Github'); 
+             return false;"><span class="showtooltip" title="follow me on Github (code, research)"><i class="icon-github"></i></span></a>
+      <!--
+          <a rel="foaf:account" href="https://plus.google.com/" 
+             onclick="recordOutboundLink(this, 'Outbound Links', 'GPlus'); 
+             return false;"><i class="icon-google-plus"></i></a>
+          <a rel="foaf:account" href="http://www.mendeley.com/profiles/carl-boettiger" 
+             onclick="recordOutboundLink(this, 'Outbound Links', 'Mendeley'); 
+             return false;"><img src="/assets/img/icon-mendeley.png" alt="mendeley" /></a> 
+           citations on google-scholar
+           stackoverflow
+      -->
+      <a alt="rss" type="application/atom+xml" href="/atom.xml"  
+         class="showtooltip" title="subscribe to RSS feeds for my open lab notebook" 
+         onclick="recordOutboundLink(this, 'Outbound Links', 'RSS'); 
+         return false;"><i class="icon-rss"></i></a>
+       </p>
+    </div>
+    <!--**************** End social links **************************** -->
+    <div class="span1">
+      <br />
+    </div>
+    <div class="span4">
+      <p>
+      <a onclick="recordOutboundLink(this, 'Outbound Links', 'ONS_claim'); return false;" href="http://onsclaims.wikispaces.com/"><img src="http://onsclaims.wikispaces.com/file/view/ons-aci2-icon.png" alt="ONS" class="showtooltip" title="An Open Notebook Science (ONS) project claim: Entry provides all content (AC) immediately (I) or without significant delay.  See link for details"/></a>
+
+      <a title="This site uses linked data semantics. Click to extract as RDF XML." class="btn btn-mini showtooltip" style="font-size: .8em" 
+       href="http://any23.org/?format=rdfxml&validate=validate&uri=http://www.carlboettiger.info/2012/10/25/stochastic-dynamic-programming-with-gaussian-process-approx.html"><i 
+         class="icon-cloud-download" onclick="recordOutboundLink(this, 'Outbound Links', 'RDF'); return false;"></i> RDF</a>
+      </p>
+    </div>
+    <div class="span1">
+      <br />
+    </div>
+    <div class="span3">
+      <p>
+      <a rel="license" property="http://creativecommons.org/ns#license" href="http://creativecommons.org/publicdomain/zero/1.0/" onclick="recordOutboundLink(this, 'Outbound Links', 'CC0'); return false;"><img src="http://i.creativecommons.org/l/zero/1.0/88x31.png" alt="CC0"/></a> 
+      </p>
+    </div>
+
+  </div>
+  
+<!-- COinS metadata (for citation managers like Zotero etc), goes in body text -->
+  <span
+      class="Z3988" 
+      title="ctx_ver=Z39.88-2004
+      &amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Adc
+      &amp;rfr_id=info%3Asid%2Focoins.info%3Agenerator
+      &amp;rft.title=Stochastic Dynamic Programming With Gaussian Process Approx
+      &amp;rft.creator=Carl Boettiger
+      &amp;rft.date=2012-10-25
+      &amp;rft.language=EN
+      &amp;rft.rights=CC0
+      &amp;rft_id=http://www.carlboettiger.info/2012/10/25/stochastic-dynamic-programming-with-gaussian-process-approx.html">
+  </span>
+
+
+
+</footer>
+
+
+
+
+    <!-- Le javascript
     ================================================== -->
 
     <!-- Placed at the end of the document so the pages load faster -->
     <!-- JQuery, used on a few pages -->
-    <script type="text/javascript" src="http://www.carlboettiger.info/assets/js/jquery.js"></script>
+    <script type="text/javascript" src="/assets/js/jquery.js"></script>
     <!-- Equations using MathJax -->
     <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/x-mathjax-config"> MathJax.Hub.Config({ TeX: { equationNumbers: {autoNumber: "all"} } });       </script>
     <!-- Twitter Bootstrap Javascript -->
-    <script src="http://www.carlboettiger.info/assets/js/bootstrap-transition.js"></script>
-    <script src="http://www.carlboettiger.info/assets/js/bootstrap-collapse.js"></script> <!-- for collapsing navbar-->
-    <script src="http://www.carlboettiger.info/assets/js/bootstrap-tooltip.js"></script>
-    <script src="http://www.carlboettiger.info/assets/js/bootstrap-alert.js"></script>
-
+    <script src="/assets/js/bootstrap.min.js"></script>
+    <!-- Tooltip javascript -->
     <script type="text/javascript">
       $(document).ready(function (){
-        $("[rel=tooltip]").tooltip();
+        $(".showtooltip").tooltip();
       });
     </script>
 
-    <!-- Unused Twitter Bootstrap Javascript 
-    <script src="http://www.carlboettiger.info/assets/js/bootstrap-dropdown.js"></script>
-    <script src="http://www.carlboettiger.info/assets/js/google-code-prettify/prettify.js"></script>
-    <script src="http://www.carlboettiger.info/assets/js/bootstrap-modal.js"></script>
-    <script src="http://www.carlboettiger.info/assets/js/bootstrap-scrollspy.js"></script>
-    <script src="http://www.carlboettiger.info/assets/js/bootstrap-tab.js"></script>
-    <script src="http://www.carlboettiger.info/assets/js/bootstrap-popover.js"></script>
-    <script src="http://www.carlboettiger.info/assets/js/bootstrap-button.js"></script>
-    <script src="http://www.carlboettiger.info/assets/js/bootstrap-carousel.js"></script>
-    <script src="http://www.carlboettiger.info/assets/js/bootstrap-typeahead.js"></script>
-    <script src="http://www.carlboettiger.info/assets/js/application.js"></script>
-    -->
+    <!-- Marran's Search Javascript -->
+    <script type="text/javascript" src="/assets/js/porter-stemmer.js"></script>
+    <script type="text/javascript" src="/assets/js/site-search.js"></script>
 
 
-      <script type="text/javascript">
+
+  <script type="text/javascript">
           var _gaq = _gaq || [];
           _gaq.push(['_setAccount', 'UA-18401403-1']);
           _gaq.push(['_trackPageview']);
@@ -400,7 +490,9 @@ owa_cmds.push(['trackDomStream']);
 <!-- End Open Web Analytics Code -->
         
 
+
+
+    </div>
   </body>
 </html>
-
 

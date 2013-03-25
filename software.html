@@ -133,14 +133,16 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </a>
-      <a class="brand" href="/README.html"><i style="float:right;" class="icon-info-sign" alt="info" rel="tooltip" title="Credits and technical information about this site" data-placement="bottom"></i></a>
+      <a class="brand" href="/README.html"><span  class="showtooltip" 
+          title="Credits and technical information about this site" 
+          data-placement="bottom"><i style="float:right;" class="icon-info-sign" alt="info"></i></span></a>
       <div class="nav-collapse">
         <ul class="nav">
           <li>
           <a href="/index.html">Home</a></li>
 
           <li>
-          <a href="/vita.html">Vita</a></li>
+          <a href="http://www.carlboettiger.info/vita.html">Vita</a></li>
 
           <li>
           <a href="/research.html">Research</a></li>
@@ -156,13 +158,24 @@
 
         </ul>
       </div><!--/.nav-collapse -->
+
+      <!-- Search site using Google's index --><!--
       <form class="navbar-search pull-right" method="get" action="http://google.com/search">
-         <p>
-         <input type="hidden" name="q" value="site:carlboettiger.info" />
-         <input type="text" class="search-query" name="q" />
+        <p>
+          <input type="hidden" name="q" value="site:carlboettiger.info" />
+          <input type="text" class="search-query" name="q" />
+          <button class="btn btn-mini" type="submit"><i class="icon-search"></i></button> 
+        </p>
+      </form>
+      -->
+      <div id="search">
+      <form method="get" class="navbar-search pull-right form-search">
+        <p>
+        <input type="text" name="search-text" id="search-text">
          <button class="btn btn-mini" type="submit"><i class="icon-search"></i></button> 
-         </p>
-       </form>
+        </p>
+      </form>
+      </div>
      </div> <!-- /container -->
    </div> <!-- /navbar-inner -->
  </div> <!-- /navbar -->
@@ -211,131 +224,102 @@
 <!--  </body>
 </html> -->
 
-</article>
 <footer class="footer">
-  <form style="font-size:10px">
-    <div class="pull-right">
-      <span rel="tooltip" title="switch to dark theme">
-        <a onclick="switch_style('dark'); return false;" name="theme" value="dark" id="dark" class="btn btn-mini"><i class="icon-adjust"></i></a> 
-      </span>
-      <span rel="tooltip" title="switch to light theme">
-        <a onclick="switch_style('light');return false;" name="theme" value="light" id="light" class="btn btn-mini"><i class="icon-certificate"></i></a> 
-      </span>
+  <!-- ************* Buttons to toggle theme CSS ********************** -->
+    <div class="row">
+      <div class="span12">
+        <form style="font-size:10px" class="pull-right">
+          <a onclick="switch_style('dark'); 
+                      recordOutboundLink(this, 'Outbound Links', 'dark theme'); 
+                      return false;" 
+             name="theme" value="dark" id="dark" 
+             class="btn btn-mini"><span class="showtooltip" 
+                                        title="switch to dark theme"><i class="icon-adjust"></i>
+                                   </span></a>
+          
+          <a onclick="switch_style('light'); 
+                      recordOutboundLink(this, 'Outbound Links', 'light theme'); 
+                      return false;" 
+             name="theme" value="light" id="light" 
+             class="btn btn-mini"><span class="showtooltip" 
+                                        title="switch to light theme"><i class="icon-certificate"></i>
+                                  </span></a>
+        </form>
+      </div>
     </div>
-  </form>
-          <div class="row">
-            <div class="span4 socialicons" style="font-size:20px" vocab="http://xmlns.com/foaf/0.1/" typeof="Person" resource="#me">
-              <span rel="tooltip" title="email me">
-                <a property="account" href="mailto:cboettig@gmail.com" onclick="recordOutboundLink(this, 'Outbound Links', 'email'); return false;"><i class="icon-envelope-alt"></i></a>
-              </span>
-              <span rel="tooltip" title="follow me on twitter (reading, discussing)">
-                <a property="account" href="https://twitter.com/cboettig" onclick="recordOutboundLink(this, 'Outbound Links', 'Twitter'); return false;"><i class="icon-twitter"></i></a> 
-              </span>
-              <!--              <a property="account" href="https://plus.google.com/" onclick="recordOutboundLink(this, 'Outbound Links', 'GPlus'); return false;"><i class="icon-google-plus"></i></a> -->
-              <span rel="tooltip" title="follow me on Github (code, research)">
-                <a property="account" href="https://github.com/cboettig" onclick="recordOutboundLink(this, 'Outbound Links', 'Github'); return false;"><i class="icon-github" alt="github"></i></a> 
-              </span>  
-              <!--              <a property="account" href="http://www.mendeley.com/profiles/carl-boettiger" onclick="recordOutboundLink(this, 'Outbound Links', 'Mendeley'); return false;"><img src="/assets/img/icon-mendeley.png" alt="mendeley" /></a>  -->
-              <span rel="tooltip" title="subscribe to RSS feeds for my open lab notebook">
-                <a href="/atom.xml" onclick="recordOutboundLink(this, 'Outbound Links', 'RSS'); return false;"><i class="icon-rss" ></i></a>
-              </span>
-            </div>
-            <div class="span2" style="text-align:center">
-              <span rel="tooltip" 
-                    title="An Open Notebook Science (ONS) project claim: Entry provides all content (AC) immediately (I) or without significant delay.  See link for details"><a rel="license" href="http://onsclaims.wikispaces.com/" 
-                onclick="recordOutboundLink(this, 'Outbound Links', 'ONS_claim'); return false;" 
-                ><img src="http://onsclaims.wikispaces.com/file/view/ons-aci2-icon.png" alt="ONS" /></a>
-            </span>
-            </div>
-            <div class="span4">
-              <a property="http://creativecommons.org/ns#license" href="http://creativecommons.org/publicdomain/zero/1.0/" onclick="recordOutboundLink(this, 'Outbound Links', 'CC0'); return false;"><img src="http://i.creativecommons.org/l/zero/1.0/88x31.png" alt="CC0" style="float:right" /></a> 
-            </div>
-        </div>
-      </footer>
-    </div><!-- /container -->
-    
-        <!-- Le javascript
-    ================================================== -->
 
-    <!-- Placed at the end of the document so the pages load faster -->
-    <!-- JQuery, used on a few pages -->
-    <script type="text/javascript" src="http://www.carlboettiger.info/assets/js/jquery.js"></script>
-    <!-- Equations using MathJax -->
-    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config"> MathJax.Hub.Config({ TeX: { equationNumbers: {autoNumber: "all"} } });       </script>
-    <!-- Twitter Bootstrap Javascript -->
-    <script src="http://www.carlboettiger.info/assets/js/bootstrap-transition.js"></script>
-    <script src="http://www.carlboettiger.info/assets/js/bootstrap-collapse.js"></script> <!-- for collapsing navbar-->
-    <script src="http://www.carlboettiger.info/assets/js/bootstrap-tooltip.js"></script>
-    <script src="http://www.carlboettiger.info/assets/js/bootstrap-alert.js"></script>
+<!--************** FOAF information to social networks ***************************** -->
+  <div class="row">
+    <div class="span3 socialicons" style="font-size:20px" typeof="foaf:Person" about="http://www.carlboettiger.info#me">
+      <p>
+          <a rel="foaf:account" alt="email" href="mailto:cboettig@gmail.com" 
+             onclick="recordOutboundLink(this, 'Outbound Links', 'email'); 
+             return false;"><span class="showtooltip" title="email me"><i class="icon-envelope-alt"></i></span></a>
+          <a rel="foaf:account" alt="twitter" href="https://twitter.com/cboettig" 
+             onclick="recordOutboundLink(this, 'Outbound Links', 'Twitter'); 
+             return false;"><span class="showtooltip" title="follow me on twitter (reading, discussing)"><i class="icon-twitter"></i></span></a> 
+          <a rel="foaf:account" alt="github" href="https://github.com/cboettig" 
+             onclick="recordOutboundLink(this, 'Outbound Links', 'Github'); 
+             return false;"><span class="showtooltip" title="follow me on Github (code, research)"><i class="icon-github"></i></span></a>
+      <!--
+          <a rel="foaf:account" href="https://plus.google.com/" 
+             onclick="recordOutboundLink(this, 'Outbound Links', 'GPlus'); 
+             return false;"><i class="icon-google-plus"></i></a>
+          <a rel="foaf:account" href="http://www.mendeley.com/profiles/carl-boettiger" 
+             onclick="recordOutboundLink(this, 'Outbound Links', 'Mendeley'); 
+             return false;"><img src="/assets/img/icon-mendeley.png" alt="mendeley" /></a> 
+           citations on google-scholar
+           stackoverflow
+      -->
+      <a alt="rss" type="application/atom+xml" href="/atom.xml"  
+         class="showtooltip" title="subscribe to RSS feeds for my open lab notebook" 
+         onclick="recordOutboundLink(this, 'Outbound Links', 'RSS'); 
+         return false;"><i class="icon-rss"></i></a>
+       </p>
+    </div>
+    <!--**************** End social links **************************** -->
+    <div class="span1">
+      <br />
+    </div>
+    <div class="span4">
+      <p>
+      <a onclick="recordOutboundLink(this, 'Outbound Links', 'ONS_claim'); return false;" href="http://onsclaims.wikispaces.com/"><img src="http://onsclaims.wikispaces.com/file/view/ons-aci2-icon.png" alt="ONS" class="showtooltip" title="An Open Notebook Science (ONS) project claim: Entry provides all content (AC) immediately (I) or without significant delay.  See link for details"/></a>
 
-    <script type="text/javascript">
-      $(document).ready(function (){
-        $("[rel=tooltip]").tooltip();
-      });
-    </script>
+      <a title="This site uses linked data semantics. Click to extract as RDF XML." class="btn btn-mini showtooltip" style="font-size: .8em" 
+       href="http://any23.org/?format=rdfxml&validate=validate&uri=http://www.carlboettiger.info/software.html"><i 
+         class="icon-cloud-download" onclick="recordOutboundLink(this, 'Outbound Links', 'RDF'); return false;"></i> RDF</a>
+      </p>
+    </div>
+    <div class="span1">
+      <br />
+    </div>
+    <div class="span3">
+      <p>
+      <a rel="license" property="http://creativecommons.org/ns#license" href="http://creativecommons.org/publicdomain/zero/1.0/" onclick="recordOutboundLink(this, 'Outbound Links', 'CC0'); return false;"><img src="http://i.creativecommons.org/l/zero/1.0/88x31.png" alt="CC0"/></a> 
+      </p>
+    </div>
 
-    <!-- Unused Twitter Bootstrap Javascript 
-    <script src="http://www.carlboettiger.info/assets/js/bootstrap-dropdown.js"></script>
-    <script src="http://www.carlboettiger.info/assets/js/google-code-prettify/prettify.js"></script>
-    <script src="http://www.carlboettiger.info/assets/js/bootstrap-modal.js"></script>
-    <script src="http://www.carlboettiger.info/assets/js/bootstrap-scrollspy.js"></script>
-    <script src="http://www.carlboettiger.info/assets/js/bootstrap-tab.js"></script>
-    <script src="http://www.carlboettiger.info/assets/js/bootstrap-popover.js"></script>
-    <script src="http://www.carlboettiger.info/assets/js/bootstrap-button.js"></script>
-    <script src="http://www.carlboettiger.info/assets/js/bootstrap-carousel.js"></script>
-    <script src="http://www.carlboettiger.info/assets/js/bootstrap-typeahead.js"></script>
-    <script src="http://www.carlboettiger.info/assets/js/application.js"></script>
-    -->
-
-
-      <script type="text/javascript">
-          var _gaq = _gaq || [];
-          _gaq.push(['_setAccount', 'UA-18401403-1']);
-          _gaq.push(['_trackPageview']);
-          (function() {
-            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-          })();
-  </script>
+  </div>
+  
+<!-- COinS metadata (for citation managers like Zotero etc), goes in body text -->
+  <span
+      class="Z3988" 
+      title="ctx_ver=Z39.88-2004
+      &amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Adc
+      &amp;rfr_id=info%3Asid%2Focoins.info%3Agenerator
+      &amp;rft.title=Research
+      &amp;rft.creator=Carl Boettiger
+      &amp;rft.date=
+      &amp;rft.language=EN
+      &amp;rft.rights=CC0
+      &amp;rft_id=http://www.carlboettiger.info/software.html">
+  </span>
 
 
 
-<script type="text/javascript">
-function recordOutboundLink(link, category, action) {
-  try {
-    var pageTracker=_gat._getTracker("UA-18401403-1");
-    pageTracker._trackEvent(category, action);
-    setTimeout('document.location = "' + link.href + '"', 100)
-  }catch(err){}
-}
-</script>
+</footer>
 
 
-        
-<!-- Start Open Web Analytics Tracker -->
-<script type="text/javascript">
-//<![CDATA[
-var owa_baseUrl = 'http://www.carlboettiger.info/openwebanalytics/';
-var owa_cmds = owa_cmds || [];
-owa_cmds.push(['setSiteId', '2886faa411a4139a6c6f97b5a1f38697']);
-owa_cmds.push(['trackPageView']);
-owa_cmds.push(['trackClicks']);
-owa_cmds.push(['trackDomStream']);
 
-(function() {
-  var _owa = document.createElement('script'); _owa.type = 'text/javascript'; _owa.async = true;
-  owa_baseUrl = ('https:' == document.location.protocol ? window.owa_baseSecUrl || owa_baseUrl.replace(/http:/, 'https:') : owa_baseUrl );
-  _owa.src = owa_baseUrl + 'modules/base/js/owa.tracker-combined-min.js';
-  var _owa_s = document.getElementsByTagName('script')[0]; _owa_s.parentNode.insertBefore(_owa, _owa_s);
-}());
-//]]>
-</script>
-<!-- End Open Web Analytics Code -->
-        
-
-  </body>
-</html>
 
 

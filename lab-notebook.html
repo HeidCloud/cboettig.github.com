@@ -1,56 +1,70 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
   <head prefix="dc: http://purl.org/dc/terms/ og: http://ogp.me/ns#">
-    <meta charset="utf-8" /> 
-    <title>Lab Notebook</title>
-    <meta name="author" content="Carl Boettiger" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
+  <meta charset="utf-8" /> 
+  <title>Lab Notebook</title>
+  <meta name="author" content="Carl Boettiger" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+
+<!-- Some liquid code so that pages get the site.time creation date -->
 
   
+
 
 
 <!-- HTML5 metadata -->
-<meta name="keywords" content="Science, Ecology, Evolution, Open Science, Reproducible Research" />
-<meta name="description" content="My open lab notebook- research in theoretical ecology and evolution" />
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<meta name="resource_type" content="website"/> 
 <!-- RDFa Metadata (in DublinCore) -->
 <meta property="dc:title" content="Lab Notebook" />
 <meta property="dc:creator" content="Carl Boettiger" />
-<meta property="dc:date" content="2013-01-10T12:36:56-08:00" />
-<meta property="dc:type" content="Lab Notebook Entry" /> <!-- article? entry?-->
+<meta property="dc:date" content="2013-03-25T14:38:44-07:00" />
 <meta property="dc:format" content="text/html" />
 <meta property="dc:language" content="en" />
+<meta property="dc:identifier" content="/lab-notebook.html" />
+<meta property="dc:rights" content="CC0" />
 <meta property="dc:source" content="Lab Notebook" />
+<meta property="dc:subject" content="Ecology" /> 
+<meta property="dc:type" content="website" /> 
 <!-- RDFa Metadata (in OpenGraph) -->
 <meta property="og:title" content="Lab Notebook" />
-<meta property="og:author" content="http://www.carlboettiger.info/index.html" />  <!-- Should be Liquid? URI? -->
+<meta property="og:author" content="http://www.carlboettiger.info/index.html#me" />  <!-- Should be Liquid? URI? -->
 <meta property="http://ogp.me/ns/profile#first_name" content="Carl"/>
 <meta property="http://ogp.me/ns/profile#last_name" content="Boettiger"/>
-<meta property="http://ogp.me/ns/article#published_time" content="2013-01-10T12:36:56-08:00" />
+<meta property="http://ogp.me/ns/article#published_time" content="2013-03-25T14:38:44-07:00" />
 <meta property="og:site_name" content="Lab Notebook" /> <!-- Same as dc:source? -->
 <meta property="og:url" content="http://www.carlboettiger.info/lab-notebook.html" />
-<meta property="og:type" content="article" />
+<meta property="og:type" content="website" /> 
 <!-- Google Scholar Metadata -->
-<meta name="resource_type" content="Lab Notebook"/>
-<meta name="citation_journal_title" content="Lab Notebook"/>
-<meta name="citation_publication_date" content="10 Jan 2013"/>
-<meta name="citation_date" content="10 Jan 2013"/>
 <meta name="citation_author" content="Carl Boettiger"/>
+<meta name="citation_date" content="25 Mar 2013"/>
 <meta name="citation_title" content="Lab Notebook"/>
+<meta name="citation_journal_title" content="Lab Notebook"/>
 
-    <!-- CSS Stylesheets (toggled with javascript) -->
-    <link href="/assets/css/light.css" rel="stylesheet"
-          type="text/css" id="stl" title="light" />
-    <link href="/assets/css/dark.css" rel="alternate stylesheet" 
-          type="text/css" title="dark" />
-    <!-- Javascript needed for theme toggle, load immediately -->
-    <script type="text/javascript" src="/assets/js/switch-css.js"></script>
-    <script type="text/javascript">
-      set_style_from_cookie(); 
-    </script>
-  </head>
-  <body> 
-  
+<!--NOTE: see also the COinS Metadata in span element in footer -->
+
+
+
+
+  <!-- CSS Stylesheets (toggled with javascript) -->
+  <link href="/assets/css/light.css" rel="stylesheet"
+        type="text/css" id="stl" title="light" />
+  <link href="/assets/css/dark.css" rel="alternate stylesheet" 
+        type="text/css" title="dark" />
+  <link href="/assets/css/bootstrap-responsive.css" rel="stylesheet" 
+        type="text/css"/>
+  <!-- Javascript needed for theme toggle, load immediately -->
+  <script type="text/javascript" src="/assets/js/switch-css.js"></script>
+  <script type="text/javascript">
+    set_style_from_cookie(); 
+  </script>
+</head>
+
+
+  <body prefix="dc: http://purl.org/dc/terms/ foaf: http://xmlns.com/foaf/0.1/"> 
+    
 <!-- Navbar  ================================================== -->
 <div class="navbar navbar-fixed-top">
   <div class="navbar-inner">
@@ -60,14 +74,16 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </a>
-      <a class="brand" href="/README.html"><i style="float:right;" class="icon-info-sign" alt="info" rel="tooltip" title="Credits and technical information about this site" data-placement="bottom"></i></a>
+      <a class="brand" href="/README.html"><span  class="showtooltip" 
+          title="Credits and technical information about this site" 
+          data-placement="bottom"><i style="float:right;" class="icon-info-sign" alt="info"></i></span></a>
       <div class="nav-collapse">
         <ul class="nav">
           <li>
           <a href="/index.html">Home</a></li>
 
           <li>
-          <a href="/vita.html">Vita</a></li>
+          <a href="http://www.carlboettiger.info/vita.html">Vita</a></li>
 
           <li>
           <a href="/research.html">Research</a></li>
@@ -83,385 +99,810 @@
 
         </ul>
       </div><!--/.nav-collapse -->
+
+      <!-- Search site using Google's index --><!--
       <form class="navbar-search pull-right" method="get" action="http://google.com/search">
-         <p>
-         <input type="hidden" name="q" value="site:carlboettiger.info" />
-         <input type="text" class="search-query" name="q" />
+        <p>
+          <input type="hidden" name="q" value="site:carlboettiger.info" />
+          <input type="text" class="search-query" name="q" />
+          <button class="btn btn-mini" type="submit"><i class="icon-search"></i></button> 
+        </p>
+      </form>
+      -->
+      <div id="search">
+      <form method="get" class="navbar-search pull-right form-search">
+        <p>
+        <input type="text" name="search-text" id="search-text">
          <button class="btn btn-mini" type="submit"><i class="icon-search"></i></button> 
-         </p>
-       </form>
+        </p>
+      </form>
+      </div>
      </div> <!-- /container -->
    </div> <!-- /navbar-inner -->
  </div> <!-- /navbar -->
 
 
 
-  <div class="container"> 
-    <article> <!-- includes header and entry, but not footer -->
-    <header class="jumbotron subhead">
-      <h1 class="entry-title">Lab Notebook</h1>
-      <p>(<a href="http://www.carlboettiger.info/2012/09/28/Welcome-to-my-lab-notebook.html">Introduction</a>)</p>
-    </header>
+    <div class="container"> <!-- Responsive grid layout --> 
+
+      <header class="jumbotron subhead">
+  <h1 class="entry-title">Lab Notebook</h1>
+  <p>(<a href="http://www.carlboettiger.info/2012/09/28/Welcome-to-my-lab-notebook.html">Introduction</a>)</p>
+</header>
 
 
 
-
-    <div class="row">
-      <div class="span12">
-        <div class="sidebar" style="font-size:0.85em">
-          <div class="span3">
-            <h4>  <a property="account" href="https://github.com/cboettig" onclick="recordOutboundLink(this, 'Outbound Links', 'Github'); return false;"><i class="icon-github" alt="github"></i> Coding </a></h4> 
-            <ul><li>cboettig opened issue cboettig/labnotebook#52: <em>Mendeley plugin sometimes gets link to paper incorrect</em> <a href="https://github.com/cboettig/labnotebook/issues/52">08:32 2013/01/10</a></li><li>cboettig pushed to master at cboettig/labnotebook: <em>editing research page #47, minor formating</em> <a href="https://github.com/cboettig/labnotebook/compare/c6cc73423a...539b557aff">08:25 2013/01/10</a></li><li>cboettig pushed to testing at cboettig/labnotebook: <em>working or research page</em> <a href="https://github.com/cboettig/labnotebook/compare/dc56dfc12b...c41a885a9e">07:36 2013/01/10</a></li><li>cboettig closed issue cboettig/pdg_control#43: <em>Run policy-costs table with latest version of multiple uncertainty algorithm</em> <a href="https://github.com/cboettig/pdg_control/issues/43">07:12 2013/01/10</a></li></ul>
-          </div>
-          <div class="span3">
-            <h4> <a property="account" href="https://twitter.com/cboettig" onclick="recordOutboundLink(this, 'Outbound Links', 'Twitter'); return false;"><i class="icon-twitter"></i> Discussing </a></h4> 
-            <ul><li><p>RT @ctitusbrown: Openness and online rep recognized in my grant reviews!? (blog post) <a href="http://t.co/2e2dsrKn">http://t.co/2e2dsrKn</a></p>
- <a href="http://twitter.com/cboettig/statuses/289464028986748928">12:09 2013/01/10</a> </li><li><p>App-lifying USGS Earth Science Data <a href="http://t.co/9b7PKCfr">http://t.co/9b7PKCfr</a> via @ChallengePost</p>
- <a href="http://twitter.com/cboettig/statuses/289115057898549248">01:02 2013/01/09</a> </li><li><p>RT @_inundata: 1/40 scholars active on Twitter
-&gt;2 million on Mendeley, 25K blog entries been about peer-reviewed research papers. wow ...</p>
- <a href="http://twitter.com/cboettig/statuses/289105999397261313">12:26 2013/01/09</a> </li><li><p>RT @noamross: A Nature Comment by @cboettig and Alan Hastings: &#39;Generic&#39; warning signals of tipping points are unlikely to exist:  http: ...</p>
- <a href="http://twitter.com/cboettig/statuses/289105222343741441">12:23 2013/01/09</a> </li></ul>
-          </div> 
-          <div class="span3">
-            <h4> <a href="http://www.mendeley.com/profiles/carl-boettiger" onClick="recordOutboundLink(this, 'Outbound Links', 'Mendeley'); return false;"><i class="icon-book"></i> Reading </a></h4> 
-            <ul><li>A simple direct method for finding persistence times of populations and application to conservation problems: Proceedings of the National Academy of … (1993). M Mangel, C Tier et al. <a href="/catalog/simple-direct-method-finding-persistence-times-populations-application-conservation-problems/">05:58 2013/01/10</a></li><li>Superspreading and the effect of individual variation on disease emergence.: Nature (2005). Volume: 438, Issue: 7066. Pages: 355-9. J O Lloyd-Smith, S J Schreiber, P E Kopp, W M Getz et al. <a href="/catalog/superspreading-effect-individual-variation-disease-emergence-15/">05:58 2013/01/10</a></li><li>Environmental Variation and the Persistence of Small Populations: Ecological Applications (1992). Volume: 2, Issue: 1. Pages: 18. Peter B. Stacey, Mark Taper et al. <a href="/research/environmental-variation-persistence-small-populations-1/">05:58 2013/01/10</a></li></ul>
-          </div> 
-         </div>
+    <div class="row feed">
+      <div class="span3">
+        <h4>  <a property="account" href="https://github.com/cboettig" onclick="recordOutboundLink(this, 'Outbound Links', 'Github'); return false;"><i class="icon-github" alt="github"></i> Coding </a></h4> 
+         <div class="excerpt">
+            <ul><li>cboettig pushed to master at cboettig/labnotebook: <em>note on knitictations page about more recent changes fixing file names to avoid URL forbidden characters remove ampersands in titles</em> <a href="https://github.com/cboettig/labnotebook/compare/4bf8b20420...83d294c33d">07:11 2013/03/25</a></li><li>cboettig commented on issue cboettig/knitcitations#31: <em>Ah, thanks for clarifying. That example is slightly outdated actually. See how this citation renders in the current version by checking out the REA…</em> <a href="https://github.com/cboettig/knitcitations/issues/31#issuecomment-15414211">06:53 2013/03/25</a></li><li>cboettig commented on issue cboettig/labnotebook#74: <em>Implementation: https://github.com/cboettig/labnotebook/blob/4bf8b20420da1efb1c9a94ec7bb12c7c768b68da/_plugins/jekyll-labnotebook-plugins/git_modif…</em> <a href="https://github.com/cboettig/labnotebook/issues/74#issuecomment-15412922">06:40 2013/03/25</a></li><li>cboettig opened issue cboettig/labnotebook#74: <em>Get date modified automatically</em> <a href="https://github.com/cboettig/labnotebook/issues/74">06:39 2013/03/25</a></li><li>cboettig commented on issue cboettig/knitcitations#32: <em>Thanks for the feedback. Added this following the formatting you suggested in the most recent commit. Currently added only to parenthetical citatio…</em> <a href="https://github.com/cboettig/knitcitations/issues/32#issuecomment-15411636">06:26 2013/03/25</a></li></ul>
+        </div>
+      </div>
+      <div class="span3">
+        <h4> <a property="account" href="https://twitter.com/cboettig" onclick="recordOutboundLink(this, 'Outbound Links', 'Twitter'); return false;"><i class="icon-twitter"></i> Discussing </a></h4> 
+         <div class="excerpt">
+           <ul><li><p>&#39;Niche modeling&#39;: that uncomfortable sensation means it&#39;s working. <a href="http://t.co/Ueeq3dVs9v">http://t.co/Ueeq3dVs9v</a></p>
+ <a href="http://twitter.com/cboettig/statuses/316237839111188482">10:19 2013/03/25</a> </li><li><p>Spatial heterogeneity promotes coexistence of rock-paper-scissor metacommunities. <a href="http://t.co/N2cuVqYYjk">http://t.co/N2cuVqYYjk</a></p>
+ <a href="http://twitter.com/cboettig/statuses/316237820643659776">10:19 2013/03/25</a> </li><li><p>RT @datadryad: New Legal Mandate in Hand, #DataSharing Advocates Tackle Cultural Obstacles 
+<a href="http://t.co/8sFD0Rinzw">http://t.co/8sFD0Rinzw</a> #openscience #RDALaunch</p>
+ <a href="http://twitter.com/cboettig/statuses/316236407653941248">10:13 2013/03/25</a> </li><li><p>RT @pgroth: Let&#39;s use git style hash-Uris for science from Tobias Kuhn #btpdf2 <a href="http://t.co/ueRMWWK5RN">http://t.co/ueRMWWK5RN</a></p>
+ <a href="http://twitter.com/cboettig/statuses/314544821350039554">06:11 2013/03/20</a> </li><li><p>Perhaps Google will fund your next grad student or post-doc? Check out the @googleresearch awards, <a href="http://t.co/khWAHtwMnm">http://t.co/khWAHtwMnm</a> due April 15</p>
+ <a href="http://twitter.com/cboettig/statuses/314543891472859138">06:08 2013/03/20</a> </li></ul>
+        </div> 
+      </div> 
+      <div class="span3">
+        <h4> <a href="http://www.mendeley.com/groups/634301/theoretical-ecology/papers/" onClick="recordOutboundLink(this, 'Outbound Links', 'Mendeley'); return false;"><i class="icon-book"></i> Reading </a></h4> 
+        <div class="excerpt">
+          <ul><li>Status and solutions for the world's unassessed fisheries.: Science (New York, N.Y.) (2012). Volume: 338, Issue: 6106. Pages: 517-20. Christopher Costello, Daniel Ovando, Ray Hilborn, Steven D Gaines, Olivier Deschenes, Sarah E Lester et al. <a href="http://www.mendeley.comhttp://www.mendeley.com/c/5582059324/g/634301/costello-2012-status-and-solutions-for-the-worlds-unassessed-fisheries/">03:49 2013/02/25</a></li><li>Decision Accuracy and the Role of Spatial Interaction in Opinion Dynamics: Journal of Statistical Physics (2013). Colin J. Torney, Simon a. Levin, Iain D. Couzin et al. <a href="http://www.mendeley.comhttp://www.mendeley.com/c/5582059314/g/634301/torney-2013-decision-accuracy-and-the-role-of-spatial-interaction-in-opinion-dynamics/">03:47 2013/02/25</a></li><li>A systematic review of mathematical models of mosquito-borne pathogen transmission: 1970-2010: Journal of The Royal Society Interface (2013). Volume: 10, Issue: 81. Pages: 20120921-20120921. Robert C Reiner, T Alex Perkins, Christopher M Barker, Tianchan Niu, Luis Fernando Chaves, Alicia M Ellis, Dylan B George, A. Le Menach, Juliet R C Pulliam, Donal Bisanzio, C. Buckee, Christinah Chiyaka, Derek A T Cummings, Andres J Garcia, Michelle L Gatton, P. W. Gething, David M Hartley, Geoffrey Johnston, Eili Y Klein, Edwin Michael, Steven W Lindsay, A. L. Lloyd, David M Pigott, William K Reisen, Nick Ruktanonchai, Brajendra K Singh, A. J. Tatem, Uriel Kitron, Simon I Hay, Thomas W Scott, David L Smith et al. <a href="http://www.mendeley.com/research/mosquitoborne-pathogen-transmission-1970-2010-a-systematic-review-of-mathematical-models-of-mosqui/">03:18 2013/02/25</a></li><li>Process-based models are required to manage ecological systems in a changing world: Ecosphere (2013). Volume: 4, Issue: February. Pages: 1-12. K Cuddington, MJ Fortin, LR Gerber et al. <a href="http://www.mendeley.comhttp://www.mendeley.com/c/5582059294/g/634301/cuddington-2013-process-based-models-are-required-to-manage-ecological-systems-in-a-changing-world/">03:17 2013/02/25</a></li></ul>
+        </div>
       </div> 
     </div>
 
-    <div class="row">
+    <hr>
+    <div class="row postpreview">
       <div class="span12">
-         <hr>
-         <div class="sidebar">
+        <div class="row">
+          <h4> <a href="http://www.carlboettiger.info/atom.xml"
+                  onClick="recordOutboundLink(this,
+                  'Outbound Links', 'RSS'); return false;"
+                  style="color: inherit;"
+                  ><i class="icon-rss" ></i> Entries</a></h4>
+          
             <div class="span3">
-               <h4> <a href="http://www.carlboettiger.info/atom.xml"
-               onClick="recordOutboundLink(this,
-               'Outbound Links', 'RSS'); return false;"
-               ><i class="icon-rss" ></i> Entries</a></h4>
+              <header><h4><a href="/2013/03/22/research.html">Research</a></h4></header>
+<p><span></span></p>
+<p style="font-style:italic"> 22 Mar 2013</p>
+
+<p style="font-style:italic"> pageviews: (not calculated) </p>
+
+<article>
+<div class="excerpt">
+<h2 id="multiple-uncertainty">multiple-uncertainty</h2>
+<ul>
+<li>Fixed issues with translation to matlab and <code>applyfun</code>. Element-wise calls can use meshgrid arguments directly, and one can force functions to use element-wise operations with <code>bxfun</code>. So the following are equivalent: :</li>
+</ul>
+<pre class="sourceCode matlab"><code class="sourceCode matlab">[X, Y] = meshgrid(x,y)
+applyfun(@min, X, Y)</code></pre>
+<p>or</p>
+<pre class="sourceCode matlab"><code class="sourceCode matlab">function out = element_min(x,y) bxfun(@min, x, y)
+element_min(X, Y)</code></pre>
+<p>Meanwhile my challenge with additional arguments to <code>applyfun</code> can be circumvented with an inline function,</p>
+<pre class="sourceCode matlab"><code class="sourceCode matlab">applyfun(@(x,y) ssum(x,y, additional_arg), X, Y)</code></pre>
+<ul>
+<li>In other developments, may have missed a rownormalization on growth noise.<br /></li>
+<li>Time to run and compare R and matlab codes and send to Jim.</li>
+</ul>
+<h2 id="prosecutors-fallacy">prosecutors-fallacy</h2>
+<p>Check status of runs on farm. Appears that a type error blocked calculations of null distribution. Also, may need further threshold, a threshold of 220 for deviation occurs in 75% of (2000) runs (though depends on run length whether that is sufficiently rare). Threshold of 200 is reached in about 2%. re-running now.</p>
+<p>tweaked my original code a bit to run the case with a single stable state and condition on observing large deviations, and see if the observations prior to the deviation show the ‘spurious’ increase in autocorrelation and variance observed in the original paper.</p>
+<ul>
+<li><a href="https://github.com/cboettig/earlywarning/blob/019d68ee4c6459d9c56f20c84af3a46c98bdbb03/inst/examples/beer.md">Results/code</a></li>
+<li><a href="https://raw.github.com/cboettig/earlywarning/05611419aeb254ed54a0bb0cd2974c5b328e86fe/inst/examples/beer_dat.csv">Data for the conditional on deviation warning signal tau values (44 of the timeseries)</a></li>
+<li><a href="https://raw.github.com/cboettig/earlywarning/05611419aeb254ed54a0bb0cd2974c5b328e86fe/inst/examples/beer_nulldat.csv">tau values for unconditional set (2000 timeseries)</a></li>
+</ul>
+<p>Looks like there is still a bias to me.</p>
+<h3 id="ropensci">ropensci</h3>
+<ul>
+<li><p>write coversheet</p></li>
+<li><p><a href="http://rd-alliance.org">Research Data Alliance</a> launch. Interesting <a href="http://rd-alliance.org/working-groups/current-candidate-groups/">working groups</a>.</p></li>
+</ul> 
+<!-- not that raw_content depends on custom generator, 
+     see _plugins/jekyll-labnotebook-plugins/raw_content --> 
+</article> 
+<p> <a href="/2013/03/22/research.html"> <em>Read more</em></a> </p>
+<br />
+<br />
+
+
             </div>
-          </div>
-          <div class="span9"> <br/> </div>
-
-          <div class="postpreview">
-            <div class="row">
-              
-                <div class="span3">
-                  <header><h4><a href="http://www.carlboettiger.info/2012/12/30/learning-jekyll.html">Learning Jekyll</a></h4></header>
+          
+            <div class="span3">
+              <header><h4><a href="/2013/03/20/research.html">Research</a></h4></header>
 <p><span></span></p>
-<p style="text-align:right; font-style:italic"> 30 Dec 2012</p>
+<p style="font-style:italic"> 20 Mar 2013</p>
+
+<p style="font-style:italic"> pageviews: 9 </p>
+
 <article>
-Some quick thoughts on learning Jekyll
-After recieving a few queries on how to get started with Jekyll I thought I’d jot down my own opinions here. Of course there is already rather good documentation for the software and plenty of blogs providing tutorials. While no doubt more than adequate, I have more opinions on how to get started actually learning what’s going on than I could easily fit in... 
-</article> <!--Should we close article on excerpt?  -->
-<!-- note that post.content is pulled in with html formatting --> 
-<!--    </ul> </ol> </code> </strong> </em> </pre>  force close any open tags? --> 
-<p> <a href="http://www.carlboettiger.info/2012/12/30/learning-jekyll.html"> <em>Read more</em></a> </p>
+<div class="excerpt">
+<h2 id="pomp">pomp</h2>
+<p>Exploring pomp for examples tomorrow. See <a href="https://github.com/cboettig/nonparametric-bayes/tree/master/inst/examples/pomp-example.md">pomp-example</a></p>
+<ul>
+<li>To access help on S4 methods</li>
+<li>print method source code: <code>getMethod(&quot;simulate&quot;, &quot;pomp&quot;)</code></li>
+<li>access help file on available methods: <code>method?show(&quot;pomp&quot;)</code></li>
+<li>pomp <code>simulate</code> method returns object of class pomp with data in <code>object@data</code>, unless user sets either/both of <code>obs=TRUE</code> and <code>state=TRUE</code> to return the observed and true state data (in list objects). Seems to be the only way to get the true state data out of the simulate routine (other than shortcutting the observation method <code>rmeasure</code>). Poor form to change return type based on input options, but oh well.</li>
+</ul>
+<h2 id="prosecutors-fallacy">prosecutor’s fallacy</h2>
+<ul>
+<li>troubleshooting comment runs setup. Some replicates realize their extrema within the first 200 points, causing negative indexing (if not handled) and mismatched length of data objects (if not handled). Improve exception handling and restart runs.</li>
+</ul>
+<h2 id="nonparametric-bayes">nonparametric-bayes</h2>
+<p>Writing writing writing. see repo.</p>
+<h2 id="multiple-uncertainty">multiple-uncertainty</h2>
+<p><strong>Troubleshooting the matlab translation</strong></p>
+<p>Cannot seem to pass an array in place of a variable to matlab’s (okay, actually octave’s) <code>applyfun</code> function:</p>
+<pre class="sourceCode matlab"><code class="sourceCode matlab">function out = ssum(x,y, a)
+  out = (x + y);
+end
+[X, Y] = meshgrid([<span class="fl">1</span>:<span class="fl">5</span>], [<span class="fl">1</span>:<span class="fl">5</span>])
+b = arrayfun(@ssum, X, Y, <span class="fl">1</span>)  %Works fine</code></pre>
+<p>But if the extra argument is a vector this fails.</p>
+<pre class="sourceCode matlab"><code class="sourceCode matlab">b = arrayfun(@ssum, X, Y, [<span class="fl">1</span>:<span class="fl">6</span>])</code></pre>
+<ul>
+<li>Need a convenient way to generate probability densities from continuous distributions in which parameter values and <span class="math">\(x\)</span> values are restricted to a grid. Matlab translation of this didn’t work.</li>
+</ul>
+<p>I want to get the probability density of value <span class="math">\(P\)</span> from uniform distribution between <span class="math">\(\mu - \mu S\)</span> and <span class="math">\(\mu + \mu S\)</span>.  If <span class="math">\(S\)</span> is zero, I want to return unity if <span class="math">\(P\)</span> is equal to <span class="math">\(\mu\)</span>.  The trick is that I want all values discretized to a grid, so P == mu really means if <span class="math">\(P\)</span> and <span class="math">\(\mu\)</span> fall in the same bin of the discrete grid.  </p>
+<p>I thought this function would do it:  </p>
+<pre class="sourceCode matlab"><code class="sourceCode matlab">    function out = snap_to_grid(x, grid)
+      [v,i] = min(abs(grid-x));
+      out = grid(i);  
+    end
+     
+    <span class="co">%% generate various sources of noise, or delta fns if noise is zero</span>
+    function out = pdfn(P, mu, s)
+      grid = [<span class="fl">1</span>:<span class="fl">5</span>]; <span class="co">% dumb grid, ideally an argument to pdfn but doesn&#39;t work</span>
+      if mu == <span class="fl">0</span>
+        out = (P == <span class="fl">0</span>);
+      elseif s &gt; <span class="fl">0</span>
+        if mu &gt; <span class="fl">0</span>
+          out = unifpdf(P, mu * (<span class="fl">1</span> - s), mu * (<span class="fl">1</span> + s));
+        end
+      else  % delta spike
+        P = snap_to_grid(P, grid);
+        mu = snap_to_grid(mu, grid);
+        out = (P == mu);
+      end
+    end</code></pre>
+<p>But clearly I’ve gone wrong somewhere.</p>
+<h2 id="ropensci">ropensci</h2>
+<ul>
+<li>final revisions, reread draft, close outstanding issues.<br /></li>
+<li>troubleshooting SSOAP example. Added <code>checkCircular</code> enables successful parsing, but now no luck generating functions:</li>
+</ul>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(SSOAP)
+wsdl =<span class="st"> </span><span class="kw">processWSDL</span>(<span class="st">&quot;http://www.nbnws.net/ws_3_5/GatewayWebService?wsdl&quot;</span>, <span class="dt">checkCircular=</span><span class="ot">FALSE</span>)
+iface =<span class="st"> </span><span class="kw">genSOAPClientInterface</span>(<span class="dt">def =</span> wsdl)</code></pre> 
+<!-- not that raw_content depends on custom generator, 
+     see _plugins/jekyll-labnotebook-plugins/raw_content --> 
+</article> 
+<p> <a href="/2013/03/20/research.html"> <em>Read more</em></a> </p>
 <br />
 <br />
 
 
-                </div>
-              
-                <div class="span3">
-                  <header><h4><a href="http://www.carlboettiger.info/2012/12/27/notes.html">Notes</a></h4></header>
-<p><span></span></p>
-<p style="text-align:right; font-style:italic"> 27 Dec 2012</p>
-<article>
-Nonparametric Bayes
-Continuing sensitivity analysis
-The commit log to sensitivity.md and earlier to myer-exploration.md (now depricated) capture the summary figures for replicate runs of the observation data, with commits corresponding to various parameter configurations, etc. Here is a nice collection of replicates from sensitivity.md
-
-Harvest during observations Tweaked calculation of observa... 
-</article> <!--Should we close article on excerpt?  -->
-<!-- note that post.content is pulled in with html formatting --> 
-<!--    </ul> </ol> </code> </strong> </em> </pre>  force close any open tags? --> 
-<p> <a href="http://www.carlboettiger.info/2012/12/27/notes.html"> <em>Read more</em></a> </p>
-<br />
-<br />
-
-
-                </div>
-              
-                <div class="span3">
-                  <header><h4><a href="http://www.carlboettiger.info/2012/12/23/notes.html">Notes</a></h4></header>
-<p><span></span></p>
-<p style="text-align:right; font-style:italic"> 23 Dec 2012</p>
-<article>
-
-added generation of observational data under varying harvest conditions (issue #19)
-added MLE fit based on the data-generating model (issue #20)
-GP plot with and without nugget variance (issue #17)
-Run longer simulations under policy such that sustainable profits clearly beat out collapsing the fishery (part of issue #22)
- 
-</article> <!--Should we close article on excerpt?  -->
-<!-- note that post.content is pulled in with html formatting --> 
-<!--    </ul> </ol> </code> </strong> </em> </pre>  force close any open tags? --> 
-<p> <a href="http://www.carlboettiger.info/2012/12/23/notes.html"> <em>Read more</em></a> </p>
-<br />
-<br />
-
-
-                </div>
-              
             </div>
-            <div class="row">
-              
-                <div class="span3">
-                  <header><h4><a href="http://www.carlboettiger.info/2012/12/21/progress-summary.html">Progress Summary</a></h4></header>
-<p><span></span></p>
-<p style="text-align:right; font-style:italic"> 21 Dec 2012</p>
+          
+            <div class="span3">
+              <header><h4><a href="/2013/03/19/collected-notes.html">Collected notes from past few days</a></h4></header>
+<p><span>some writing, some exchange on prosecutor's fallacy, some ropensci, etc</span></p>
+<p style="font-style:italic"> 19 Mar 2013</p>
+
+<p style="font-style:italic"> pageviews: 18 </p>
+
 <article>
-Progress mid-October through mid-December
-80% Time: nonparametric-bayes
-The bulk of my time has been spent becoming familiar with the literature on Gaussian Processes and their numerical implementation. I have written my own Gaussian process code from scratch to convince myself of my understanding of the methodology, and explored some of the related numerical issues addressing computational spe... 
-</article> <!--Should we close article on excerpt?  -->
-<!-- note that post.content is pulled in with html formatting --> 
-<!--    </ul> </ol> </code> </strong> </em> </pre>  force close any open tags? --> 
-<p> <a href="http://www.carlboettiger.info/2012/12/21/progress-summary.html"> <em>Read more</em></a> </p>
+<div class="excerpt">
+<h2 id="friday">Friday</h2>
+<ul>
+<li>some ropensci coordination</li>
+<li>Adapt basic science abstract and broader impacts statement</li>
+<li>some writing on notebook features draft</li>
+<li>nonparametric writing!</li>
+</ul>
+<h2 id="monday">Monday</h2>
+<ul>
+<li>nonparametric-bayes writing. Combining my generic position piece (<a href="https://github.com/cboettig/nonparametric-bayes/tree/master/inst/doc/beyond-mechanistic-models.Rmd">beyond-mechanistic-models.Rmd</a>) with the technical nonparametric-bayes writeup (<a href="https://github.com/cboettig/nonparametric-bayes/tree/master/inst/doc/nonparameteric-bayes.Rmd">nonparametric-bayes.Rmd</a>) to get a more general-audience paper.<br /></li>
+<li>ropensci reviewing</li>
+<li>Note: annoying feature of knitr’s <code>purl</code>: appears to generate valid “external” knitr code, but includes all options in comment headers instead of just the chunk names. This prevents “external” inclusion from identifying these chunks currectly. <code>tangle</code> (option in <code>knit</code>) appears not to generate any header at all. Maybe I’m missing something.</li>
+</ul>
+<h3 id="prosecutors-fallacy-comments">Prosecutor’s Fallacy Comments</h3>
+<ul>
+<li>Further exchanges with John over prosecutors fallacy. Some scratch writing for a potential <a href="">reply piece</a>.</li>
+</ul>
+<p>Our discussion highlighted two potential test cases that would further demonstrate (or refute) that the critical slowing down we observed is an artifact – our ability to detect it in cases that do not transition (e.g. population of all cases reaching a certain excursion) in the original dynamics, and our ability to detect it in scenarios that do not involve transition dynamics at all. Running these two cases as</p>
+<ul>
+<li><a href="https://github.com/cboettig/earlywarning/tree/prosecutor/inst/examples">comment.Rmd</a> – repeat the analysis using a generic threshold deviation rather than only populations that have crashed.<br /></li>
+<li><a href="https://github.com/cboettig/earlywarning/tree/prosecutor/inst/examples">beer.Rmd</a> – repeat analysis in which there is only a single stable point.</li>
+</ul>
+<p>ugh, looks like libraries on zero haven’t been kept up. Some delays before production code will be running.</p>
+<h2 id="tuesday">Tuesday</h2>
+<ul>
+<li>More writing</li>
+<li>Assemble material for applied math club. Going with particle filtering (<span rel="tooltip" title="Ionides E, Breto C and King A (2006). Inference For Nonlinear Dynamical Systems. _Proceedings of The National Academy of Sciences_, *103*. ISSN 0027-8424, http://dx.doi.org/10.1073/pnas.0603181103."><a href="http://dx.doi.org/10.1073/pnas.0603181103" rel="http://purl.org/spar/cito/discusses" >Ionides <em>et. al.</em> 2006</a></span>) and the <code>pomp</code> vignette</li>
+<li>ropensci reviewing</li>
+</ul>
+<h3 id="misc">Misc</h3>
+<ul>
+<li>Sounds like exciting stuff happening a the #btpdf2 conference</li>
+</ul> 
+<!-- not that raw_content depends on custom generator, 
+     see _plugins/jekyll-labnotebook-plugins/raw_content --> 
+</article> 
+<p> <a href="/2013/03/19/collected-notes.html"> <em>Read more</em></a> </p>
 <br />
 <br />
 
 
-                </div>
-              
-                <div class="span3">
-                  <header><h4><a href="http://www.carlboettiger.info/2012/12/20/results-comparing-gp-to-parametric.html">Results Comparing Gp To Parametric</a></h4></header>
-<p><span></span></p>
-<p style="text-align:right; font-style:italic"> 20 Dec 2012</p>
-<article>
-Comparison of the Gaussian process inference to the true optimum and a parametric estimate.
-
-
-
-Comparison across 100 simulations under the policies inferred from each approach show the nearly optimal performance of the GP and the tragic crashes introduced by the parametric management.
-
-
-
-Sensitivity analysis
-Working through an exploratory sensitivity analysis to see GP performance over differen... 
-</article> <!--Should we close article on excerpt?  -->
-<!-- note that post.content is pulled in with html formatting --> 
-<!--    </ul> </ol> </code> </strong> </em> </pre>  force close any open tags? --> 
-<p> <a href="http://www.carlboettiger.info/2012/12/20/results-comparing-gp-to-parametric.html"> <em>Read more</em></a> </p>
-<br />
-<br />
-
-
-                </div>
-              
-                <div class="span3">
-                  <header><h4><a href="http://www.carlboettiger.info/2012/12/19/exploring-gp-model-space.html">Exploring Gp Model Space</a></h4></header>
-<p><span></span></p>
-<p style="text-align:right; font-style:italic"> 19 Dec 2012</p>
-<article>
-Trying to think about a more systematic way to go about varying the parameters: the underlying parametric model has 3 parameters for the stock-recruitment curve’s deterministic skeleton, plus growth noise. (My first exploratory phase has been just to try different things. See my various tweaks in the history log Clearly time to be more systematic about both running and visualizing the various c... 
-</article> <!--Should we close article on excerpt?  -->
-<!-- note that post.content is pulled in with html formatting --> 
-<!--    </ul> </ol> </code> </strong> </em> </pre>  force close any open tags? --> 
-<p> <a href="http://www.carlboettiger.info/2012/12/19/exploring-gp-model-space.html"> <em>Read more</em></a> </p>
-<br />
-<br />
-
-
-                </div>
-              
             </div>
-            <div class="row">
-              
-                <div class="span3">
-                  <header><h4><a href="http://www.carlboettiger.info/2012/12/17/random_ews_example.html">Random_ews_example</a></h4></header>
+          
+        </div>
+
+        <div class="row">
+          
+            <div class="span3">
+              <header><h4><a href="/2013/03/14/notes.html">Notes</a></h4></header>
 <p><span></span></p>
-<p style="text-align:right; font-style:italic"> 17 Dec 2012</p>
+<p style="font-style:italic"> 14 Mar 2013</p>
+
+<p style="font-style:italic"> pageviews: 22 </p>
+
 <article>
-ENSO EWS
-Let’s just see what happens with the MEI data for PDO:
-dat &lt;- read.table(&quot;http://carlboettiger.info/assets/data/mei.csv&quot;, header=TRUE)
-print(xtable::xtable(head(dat)), type=&quot;html&quot;)
-
-
-
-     
-YEAR
-  
-DECJAN
-  
-JANFEB
-  
-FEBMAR
-  
-MARAPR
-  
-APRMAY
-  
-MAYJUN
-  
-JUNJUL
-  
-JULAUG
-  
-AUGSEP
-  
-SEPOCT
-  
-OCTNOV
-  
-NOVDEC
-  
-    
-1
-  
-1950
-  
--1.02
-  
--1.15
-  
--1.29
-  
--1... 
-</article> <!--Should we close article on excerpt?  -->
-<!-- note that post.content is pulled in with html formatting --> 
-<!--    </ul> </ol> </code> </strong> </em> </pre>  force close any open tags? --> 
-<p> <a href="http://www.carlboettiger.info/2012/12/17/random_ews_example.html"> <em>Read more</em></a> </p>
+<div class="excerpt">
+<h2 id="writing">Writing</h2>
+<ul>
+<li>Meeting with Steve over outline</li>
+<li>Writing on nonparametric-bayes manuscript</li>
+<li>A few notes on notebook-features draft</li>
+</ul>
+<h2 id="reading">Reading</h2>
+<ul>
+<li><p>EasyABC by <span rel="tooltip" title="Jabot F, Faure T and Dumoulin N (2013). Easyabc: Performing
+Efficient Approximate Bayesian Computation Sampling Schemes Using
+R. _Methods in Ecology And Evolution_. 
+http://dx.doi.org/10.1111/2041-210X.12050."><a href="http://dx.doi.org/10.1111/2041-210X.12050" rel="http://purl.org/spar/cito/critiques" >Jabot <em>et. al.</em> (2013)</a></span>. While it’s great that MEE publishes this stuff, this is unique in that the authors are updating and improving upon an existing package published by MEE the year before, <span rel="tooltip" title="Brook B, Ellis E, Perring M, Mackay A and Blomqvist L (2013).
+Does The Terrestrial Biosphere Have Planetary Tipping Points?
+_Trends in Ecology & Evolution_. ISSN 01695347, 
+http://dx.doi.org/10.1016/j.tree.2013.01.016."><a href="http://dx.doi.org/10.1016/j.tree.2013.01.016" rel="http://purl.org/spar/cito/discusses" >Brook <em>et. al.</em> (2013)</a></span>. The authors of the recent manuscript have certainly made an important contribution which deserves the traditional recognition provided by a separate publication, but one must wonder why we need another package instead of building on the existing one. Is that necessary for the publication? If only there was a way to fork the original package, make their additions, issue a pull request instead… Could more research follow such a model?</p></li>
+<li>The rise of MOOCs may be old news, but the Nature column has a pretty excellent write-up on them all the same <span rel="tooltip" title="Halpern B, Longo C, Hardy D, McLeod K, Samhouri J, Katona S,
+Kleisner K, Lester S, O’Leary J, Ranelletti M, Rosenberg A,
+Scarborough C, Selig E, Best B, Brumbaugh D, Chapin F, Crowder L,
+Daly K, Doney S, Elfes C, Fogarty M, Gaines S, Jacobsen K, Karrer
+L, Leslie H, Neeley E, Pauly D, Polasky S, Ris B, St Martin K,
+Stone G, Sumaila U and Zeller D (2012). an Index to Assess The
+Health And Benefits of The Global Ocean. _Nature_, *488*. ISSN
+0028-0836,  http://dx.doi.org/10.1038/nature11397."><a href="http://dx.doi.org/10.1038/nature11397" rel="http://purl.org/spar/cito/discusses" >Halpern <em>et. al.</em> (2012)</a></span>, including a discussion of the challenges they face (e.g. completion rates) and how they might address them. Only passingly addresses the challenges these pose for universities seeking to get on board – such as the substantial upfront costs in providing content in a different medium and structure (see this recent <a href="http://www.insidehighered.com/blogs/technology-and-learning/why-moocs-may-drive-higher-ed-costs">Inside HigherEd piece</a>.<br /></li>
+<li><p>Nice column in <em>Nature</em> on job opportunities in risk management, <span rel="tooltip" title="Nelson B (2013). Natural Disasters: A Calculated Risk. _Nature_,
+*495*. ISSN 0028-0836, 
+http://dx.doi.org/10.1038/nj7440-271a."><a href="http://dx.doi.org/10.1038/nj7440-271a" rel="http://purl.org/spar/cito/discusses" >Nelson (2013)</a></span> which highlights the interdisciplinary nature of the work. A pity they find the greatest market for jobs of this type in reinsurance companies and the smallest in academia…</p></li>
+<li><p>TREE debates the existence and relevance of tipping points in global context and <span rel="tooltip" title="Hughes T, Linares C, Dakos V, van de Leemput I and van Nes E
+(2013). Living Dangerously on Borrowed Time During Slow,
+Unrecognized Regime Shifts. _Trends in Ecology & Evolution_,
+*28*. ISSN 01695347, 
+http://dx.doi.org/10.1016/j.tree.2012.08.022."><a href="http://dx.doi.org/10.1016/j.tree.2012.08.022" rel="http://purl.org/spar/cito/critiques" >Hughes <em>et. al.</em> (2013)</a></span>, seemingly on the grounds that the globe isn’t a very connected place.</p></li>
+<li><p>In the same issue, the usual suspects emphasize the idea that transitions due to saddle-node bifurcations need not be fast relative to the timescale of management <span rel="tooltip" title="Brook B, Ellis E, Perring M, Mackay A and Blomqvist L (2013).
+Does The Terrestrial Biosphere Have Planetary Tipping Points?
+_Trends in Ecology & Evolution_. ISSN 01695347, 
+http://dx.doi.org/10.1016/j.tree.2013.01.016."><a href="http://dx.doi.org/10.1016/j.tree.2013.01.016" rel="http://purl.org/spar/cito/critiques" >Brook <em>et. al.</em> (2013)</a></span>. The “fast” transition represents a return to equilibrium at the new laternative stable state. The authors remind us that this transient phase can take a long time (and amazingly failing to cite <span rel="tooltip" title="Hastings A and Higgins K (1994). Persistence of Transients in
+Spatially Structured Ecological Models. _Science_, *263*. ISSN
+0036-8075,  http://dx.doi.org/10.1126/science.263.5150.1133."><a href="http://dx.doi.org/10.1126/science.263.5150.1133" rel="http://purl.org/spar/cito/discusses" >Hastings &amp; Higgins (1994)</a></span>, <span rel="tooltip" title="Hastings A (2001). Transient Dynamics And Persistence of
+Ecological Systems. _Ecology Letters_, *4*. ISSN 1461-023X, 
+http://dx.doi.org/10.1046/j.1461-0248.2001.00220.x."><a href="http://dx.doi.org/10.1046/j.1461-0248.2001.00220.x" rel="http://purl.org/spar/cito/discusses" >Hastings (2001)</a></span>, or <span rel="tooltip" title="Hastings A (2004). Transients: The Key to Long-Term Ecological
+Understanding? _Trends in Ecology & Evolution_, *19*. ISSN
+01695347,  http://dx.doi.org/10.1016/j.tree.2003.09.007."><a href="http://dx.doi.org/10.1016/j.tree.2003.09.007" rel="http://purl.org/spar/cito/discusses" >Hastings (2004)</a></span> in the process).</p></li>
+</ul>
+<h2 id="references">References</h2>
+<ul>
+<li>Barry W. Brook, Erle C. Ellis, Michael P. Perring, Anson W. Mackay, Linus Blomqvist, (2013) Does The Terrestrial Biosphere Have Planetary Tipping Points?. <em>Trends in Ecology &amp; Evolution</em> <a href="http://dx.doi.org/10.1016/j.tree.2013.01.016">10.1016/j.tree.2013.01.016</a></li>
+<li>Benjamin S. Halpern, Catherine Longo, Darren Hardy, Karen L. McLeod, Jameal F. Samhouri, Steven K. Katona, Kristin Kleisner, Sarah E. Lester, Jennifer O’Leary, Marla Ranelletti, Andrew A. Rosenberg, Courtney Scarborough, Elizabeth R. Selig, Benjamin D. Best, Daniel R. Brumbaugh, F. Stuart Chapin, Larry B. Crowder, Kendra L. Daly, Scott C. Doney, Cristiane Elfes, Michael J. Fogarty, Steven D. Gaines, Kelsey I. Jacobsen, Leah Bunce Karrer, Heather M. Leslie, Elizabeth Neeley, Daniel Pauly, Stephen Polasky, Bud Ris, Kevin St Martin, Gregory S. Stone, U. Rashid Sumaila, Dirk Zeller, (2012) an Index to Assess The Health And Benefits of The Global Ocean. <em>Nature</em> <strong>488</strong> <a href="http://dx.doi.org/10.1038/nature11397">10.1038/nature11397</a></li>
+<li>A. Hastings, K. Higgins, (1994) Persistence of Transients in Spatially Structured Ecological Models. <em>Science</em> <strong>263</strong> <a href="http://dx.doi.org/10.1126/science.263.5150.1133">10.1126/science.263.5150.1133</a></li>
+<li>Alan Hastings, (2001) Transient Dynamics And Persistence of Ecological Systems. <em>Ecology Letters</em> <strong>4</strong> <a href="http://dx.doi.org/10.1046/j.1461-0248.2001.00220.x">10.1046/j.1461-0248.2001.00220.x</a></li>
+<li>Alan Hastings, (2004) Transients: The Key to Long-Term Ecological Understanding?. <em>Trends in Ecology &amp; Evolution</em> <strong>19</strong> <a href="http://dx.doi.org/10.1016/j.tree.2003.09.007">10.1016/j.tree.2003.09.007</a></li>
+<li>Terry P. Hughes, Cristina Linares, Vasilis Dakos, Ingrid A. van de Leemput, Egbert H. van Nes, (2013) Living Dangerously on Borrowed Time During Slow, Unrecognized Regime Shifts. <em>Trends in Ecology &amp; Evolution</em> <strong>28</strong> <a href="http://dx.doi.org/10.1016/j.tree.2012.08.022">10.1016/j.tree.2012.08.022</a></li>
+<li>Franck Jabot, Thierry Faure, Nicolas Dumoulin, (2013) Easyabc: Performing Efficient Approximate Bayesian Computation Sampling Schemes Using R. <em>Methods in Ecology And Evolution</em> <a href="http://dx.doi.org/10.1111/2041-210X.12050">10.1111/2041-210X.12050</a></li>
+<li>Bryn Nelson, (2013) Natural Disasters: A Calculated Risk. <em>Nature</em> <strong>495</strong> <a href="http://dx.doi.org/10.1038/nj7440-271a">10.1038/nj7440-271a</a></li>
+</ul> 
+<!-- not that raw_content depends on custom generator, 
+     see _plugins/jekyll-labnotebook-plugins/raw_content --> 
+</article> 
+<p> <a href="/2013/03/14/notes.html"> <em>Read more</em></a> </p>
 <br />
 <br />
 
 
-                </div>
-              
-                <div class="span3">
-                  <header><h4><a href="http://www.carlboettiger.info/2012/12/15/nonparametric-bayes-comparisons.html">Nonparametric Bayes Comparisons</a></h4></header>
-<p><span></span></p>
-<p style="text-align:right; font-style:italic"> 15 Dec 2012</p>
-<article>
-Notes on structure of examples
-Externalized code so that different example scripts call identical commands for fitting and plotting to avoid duplication of code. Example scripts tend to be pretty text poor at the moment, would probably benefit by better descriptions in the markdown. May still involve redundant and potentially out of date descriptions though.
-Currently, externalized code for GP ... 
-</article> <!--Should we close article on excerpt?  -->
-<!-- note that post.content is pulled in with html formatting --> 
-<!--    </ul> </ol> </code> </strong> </em> </pre>  force close any open tags? --> 
-<p> <a href="http://www.carlboettiger.info/2012/12/15/nonparametric-bayes-comparisons.html"> <em>Read more</em></a> </p>
-<br />
-<br />
-
-
-                </div>
-              
-                <div class="span3">
-                  <header><h4><a href="http://www.carlboettiger.info/2012/12/11/nonparametric-bayes-notes.html">Nonparametric Bayes Notes</a></h4></header>
-<p><span></span></p>
-<p style="text-align:right; font-style:italic"> 11 Dec 2012</p>
-<article>
-
-Code gp_transition_matrix for generic multi-dimensional case
-
-Understanding Gaussian Process performance
-If the estimated recruitment dynamics correspond to population dynamics that are non-persistent (might call this non self-sustaining, but in a rather stricter sense than when Reed (1979) introduced that term), and if no reward is offered at the terminal time point for a standing stock (zero... 
-</article> <!--Should we close article on excerpt?  -->
-<!-- note that post.content is pulled in with html formatting --> 
-<!--    </ul> </ol> </code> </strong> </em> </pre>  force close any open tags? --> 
-<p> <a href="http://www.carlboettiger.info/2012/12/11/nonparametric-bayes-notes.html"> <em>Read more</em></a> </p>
-<br />
-<br />
-
-
-                </div>
-              
             </div>
-         </div> <!-- end postpreview -->
-       </div> <!-- end span12-->
+          
+            <div class="span3">
+              <header><h4><a href="/2013/03/13/notes.html">Notes</a></h4></header>
+<p><span></span></p>
+<p style="font-style:italic"> 13 Mar 2013</p>
+
+<p style="font-style:italic"> pageviews: 18 </p>
+
+<article>
+<div class="excerpt">
+<h2 id="multiple-uncertainty">Multiple-uncertainty</h2>
+<ul>
+<li>Created smaller version of table to simplify comparisons</li>
+<li>Switched to stationary policy comparisons only. (Running out over longer time shifts total value a bit but doesn’t amplify scale of the differences much)</li>
+<li>Larger noise amplifies the effects (compare <a href="https://github.com/cboettig/multiple_uncertainty/commits/05637ec8845097c5059902a0f4f841343a44d9bc/inst/examples/smalltable.md">0.3 levels</a> to <a href="https://github.com/cboettig/multiple_uncertainty/blob/05637ec8845097c5059902a0f4f841343a44d9bc/inst/examples/smalltable.mhttps://github.com/cboettig/multiple_uncertainty/blob/05637ec8845097c5059902a0f4f841343a44d9bc/inst/examples/smalltable.mdd">0.5 levels</a>)</li>
+<li>note that averaging over replicates gives rather consistent means. The differences between <a href="https://github.com/cboettig/multiple_uncertainty/blob/05637ec8845097c5059902a0f4f841343a44d9bc/inst/examples/smalltable.md">successive</a> <a href="https://github.com/cboettig/multiple_uncertainty/blob/bea28d918edccd7c7ab8b365cc12632166985e95/inst/examples/smalltable.md">runs</a> of the algorithm give results agreeing to the tenths place at least.</li>
+</ul>
+<div class="figure">
+<img src="http://farm9.staticflickr.com/8381/8555792236_227bdbb05b_o.png" alt="Example escapement, code" /><p class="caption">Example escapement, <a href="https://github.com/cboettig/multiple_uncertainty/blob/05637ec8845097c5059902a0f4f841343a44d9bc/inst/examples/smalltable.md">code</a></p>
+</div>
+<div class="figure">
+<img src="http://farm9.staticflickr.com/8526/8554683747_02d0cecfa6_o.png" alt="the distribution of profits by scenario" /><p class="caption">the distribution of profits by scenario</p>
+</div>
+<h2 id="tables-of-results">Tables of results</h2>
+<p>Note that columns represent the decision-maker’s beliefs about uncertainty and rows represent the true uncertainty present in the simulation.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="left">det</th>
+<th align="left">g</th>
+<th align="left">m</th>
+<th align="left">all</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">det</td>
+<td align="left">19.11</td>
+<td align="left">19.11</td>
+<td align="left">18.81</td>
+<td align="left">18.81</td>
+</tr>
+<tr class="even">
+<td align="left">g</td>
+<td align="left">18.92</td>
+<td align="left">18.63</td>
+<td align="left">18.74</td>
+<td align="left">18.56</td>
+</tr>
+<tr class="odd">
+<td align="left">m</td>
+<td align="left">16.17</td>
+<td align="left">16.76</td>
+<td align="left">17.38</td>
+<td align="left">18.08</td>
+</tr>
+<tr class="even">
+<td align="left">all</td>
+<td align="left">15.54</td>
+<td align="left">14.65</td>
+<td align="left">16.50</td>
+<td align="left">17.15</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="left">det</th>
+<th align="left">g</th>
+<th align="left">m</th>
+<th align="left">all</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">det</td>
+<td align="left">0.00</td>
+<td align="left">0.00</td>
+<td align="left">0.00</td>
+<td align="left">0.00</td>
+</tr>
+<tr class="even">
+<td align="left">g</td>
+<td align="left">4.41</td>
+<td align="left">4.31</td>
+<td align="left">3.59</td>
+<td align="left">3.28</td>
+</tr>
+<tr class="odd">
+<td align="left">m</td>
+<td align="left">3.10</td>
+<td align="left">2.96</td>
+<td align="left">1.60</td>
+<td align="left">1.12</td>
+</tr>
+<tr class="even">
+<td align="left">all</td>
+<td align="left">5.06</td>
+<td align="left">4.89</td>
+<td align="left">4.20</td>
+<td align="left">4.59</td>
+</tr>
+</tbody>
+</table>
+<h3 id="logistic-case">logistic case</h3>
+<ul>
+<li><p>Overcompensatory density dependence is tough on stock. With given discounting (5%) and finite horizon (15 cycles) strategies act <a href="https://github.com/cboettig/multiple_uncertainty/blob/dc6fa3b8c1913cd771e72673083aa80ee733dc62/inst/examples/logistic_uniform.md">conservatively</a>. Hmm, strange that deterministic case is equally effected..</p></li>
+<li><p>running with much weaker <code>r</code> to reduce overcompensatory impacts…</p></li>
+</ul>
+<h3 id="coding">Coding</h3>
+<p>Attempting to translate algorithm into Jim’s native tongue (matlab) for feedback. <a href="https://github.com/cboettig/multiple_uncertainty/blob/fa4404e1719111b28aa23e388519db94c6f990db/R/multiple_uncertainty.R">R version</a> vs <a href="https://github.com/cboettig/multiple_uncertainty/blob/fa4404e1719111b28aa23e388519db94c6f990db/inst/matlab/multiple_uncertainty.m">matlab</a> not there yet…</p>
+<h2 id="reviewing">Reviewing</h2>
+<ul>
+<li>Another review request, another review done.</li>
+</ul>
+<h2 id="misc">Misc</h2>
+<ul>
+<li>With Alistair, playing around with this HMM EM algorithm <a href="https://github.com/gui11aume/HMMt/">gui11aume/HMMt</a>. Also threw in a pull request with documentation. grr, took a bit to understand what was going on with that paper.</li>
+</ul> 
+<!-- not that raw_content depends on custom generator, 
+     see _plugins/jekyll-labnotebook-plugins/raw_content --> 
+</article> 
+<p> <a href="/2013/03/13/notes.html"> <em>Read more</em></a> </p>
+<br />
+<br />
+
+
+            </div>
+          
+            <div class="span3">
+              <header><h4><a href="/2013/03/12/notes.html">Notes</a></h4></header>
+<p><span></span></p>
+<p style="font-style:italic"> 12 Mar 2013</p>
+
+<p style="font-style:italic"> pageviews: 10 </p>
+
+<article>
+<div class="excerpt">
+<h3 id="monday">Monday</h3>
+<ul>
+<li>multiple_uncertainty abstract</li>
+<li>Meeting with Robin Snyder</li>
+<li>application writing</li>
+</ul>
+<h3 id="tuesday">Tuesday</h3>
+<h4 id="morning">Morning</h4>
+<ul>
+<li>applications</li>
+<li>Coordinating summer conference travel</li>
+<li>ropensci proposals</li>
+<li>EML is not an ontology, not analgous to Dublin Core, etc. Just an XML schema. see <a href="https://semtools.ecoinformatics.org/oboe">OBOE</a> for an ecological ontology. to explore later.</li>
+</ul>
+<h3 id="afternoon">Afternoon</h3>
+<h4 id="multiple-uncertainty">multiple-uncertainty</h4>
+<ul>
+<li>Revisiting multiple-uncertainty runs. Running smaller table example. Recoded script to allow arbitrary set of noise configurations to be consistently compared.<br /></li>
+<li>Some debugging. Shared-memory parallelization prohibitive at current memory requirements.<br /></li>
+<li>See: small table example (for issue #3) <a href="https://github.com/cboettig/multiple_uncertainty/commit/a2806b079faf60ac1537e3dc8f129b79aab826f0">04:48 pm 2013/03/12</a></li>
+</ul>
+<h4 id="nonparametric-bayes">nonparametric-bayes</h4>
+<ul>
+<li>Exploring options for approximate dynamic programming. For the moment, working through the basic ADP algorithm presented in Powell (2006).<br /></li>
+<li>in-progress notes: <a href="https://github.com/cboettig/nonparametric-bayes/blob/master/inst/examples/adp-intro.md">latest version</a> <a href="https://github.com/cboettig/nonparametric-bayes/blob/dc45de162b057a1eb53846e030354a02305c9ea5/inst/examples/adp-intro.md">version-stable link</a></li>
+</ul> 
+<!-- not that raw_content depends on custom generator, 
+     see _plugins/jekyll-labnotebook-plugins/raw_content --> 
+</article> 
+<p> <a href="/2013/03/12/notes.html"> <em>Read more</em></a> </p>
+<br />
+<br />
+
+
+            </div>
+          
+        </div>
+
+        <div class="row">
+          
+            <div class="span3">
+              <header><h4><a href="/2013/03/08/notes-from-the-week.html">Notes From The Week</a></h4></header>
+<p><span></span></p>
+<p style="font-style:italic"> 08 Mar 2013</p>
+
+<p style="font-style:italic"> pageviews: 26 </p>
+
+<article>
+<div class="excerpt">
+<p>(Working from Galveston this week while at Louise’s conference, looking after little one. some progress below.)</p>
+<h2 id="monday">Monday</h2>
+<h4 id="alan-skype-meeting">Alan Skype meeting</h4>
+<ul>
+<li>Comment piece / reply</li>
+<li><a href="https://github.com/cboettig/ews-review">ews-review</a></li>
+<li>Comments on TE review?</li>
+<li>IARPA Conference, funding options?</li>
+</ul>
+<h4 id="tasks">Tasks</h4>
+<ul>
+<li>On Marc’s suggestion, writing comparison of pattern-based and mechanism based approaches to modeling, particularly in decision theory context. <a href="https://github.com/cboettig/nonparametric-bayes/blob/cb0f7d5f779bb424e5fb02b06463f946c360017d/inst/doc/beyond-mechanistic-models.md">draft</a> in nonparametric-bayes</li>
+<li>Review edits and writing on <a href="https://github.com/cboettig/ews-review">ews-review</a></li>
+</ul>
+<h2 id="tuesday">Tuesday</h2>
+<h4 id="kathy-skype">Kathy Skype</h4>
+<ul>
+<li>Decision theory in early warning signals?</li>
+<li>NCEAS / SESYNC working group?</li>
+<li>Long term lake monitoring data, including some sedimentary analysis (see <span rel="tooltip" title="Wang R, Dearing J, Langdon P, Zhang E, Yang X, Dakos V and
+Scheffer M (2012). Flickering Gives Early Warning Signals of A
+Critical Transition to A Eutrophic Lake State. _Nature_, *492*.
+ISSN 0028-0836,  http://dx.doi.org/10.1038/nature11655."><a href="http://dx.doi.org/10.1038/nature11655" rel="http://purl.org/spar/cito/discusses" >Wang <em>et. al.</em> (2012)</a></span>).<br /></li>
+<li>Send Kathy TREE articles: <span rel="tooltip" title="Polasky S, Carpenter S, Folke C and Keeler B (2011).
+Decision-Making Under Great Uncertainty: Environmental Management
+in an Era of Global Change. _Trends in Ecology & Evolution_,
+*26*. ISSN 01695347, 
+http://dx.doi.org/10.1016/j.tree.2011.04.007."><a href="http://dx.doi.org/10.1016/j.tree.2011.04.007" rel="http://purl.org/spar/cito/discusses" >Polasky <em>et. al.</em> (2011)</a></span> and <span rel="tooltip" title="Fischer J, Peterson G, Gardner T, Gordon L, Fazey I, Elmqvist T,
+Felton A, Folke C and Dovers S (2009). Integrating Resilience
+Thinking And Optimisation For Conservation. _Trends in Ecology &
+Evolution_, *24*. ISSN 01695347, 
+http://dx.doi.org/10.1016/j.tree.2009.03.020."><a href="http://dx.doi.org/10.1016/j.tree.2009.03.020" rel="http://purl.org/spar/cito/discusses" >Fischer <em>et. al.</em> (2009)</a></span>.</li>
+</ul>
+<h2 id="tasks-1">Tasks</h2>
+<ul>
+<li>Writing comparison of pattern-based and mechanism based approaches to modeling, particularly in decision theory context</li>
+<li>Review edits and writing on <a href="https://github.com/cboettig/ews-review">ews-review</a></li>
+</ul>
+<h2 id="wednesday">Wednesday</h2>
+<ul>
+<li>more of the same.</li>
+</ul>
+<h2 id="friday">Friday</h2>
+<ul>
+<li>Finished and submitted <a href="https://github.com/cboettig/ews-review">ews-review</a>.<br /></li>
+<li>See commit log and <a href="https://github.com/cboettig/ews-review/issues">issues</a> tracker for details.</li>
+</ul>
+<h2 id="notebook-semantics">Notebook: Semantics,</h2>
+<ul>
+<li><p>stemming-based search seems to perform poorly – i.e. cannot find phrases, weight terms in titles, etc, just most frequently occuring terms in a post. Trying lunr, loads full text into memory but should do so only on selecting search bar? See issue <a href="https://github.com/cboettig/labnotebook/issues/7">#7</a></p></li>
+<li><p>Modified google-analytics plugin to make single call to the API see issue <a href="https://github.com/cboettig/labnotebook/issues/66">#66</a></p></li>
+<li><p>Tuning RDFa, primarily on vita. <a href="https://github.com/cboettig/labnotebook/issues/22">#22</a> <a href="https://github.com/cboettig/labnotebook/issues/63">#63</a>. Tuned FOAF referencing to common nodes. Note that <code>rel</code> always applys to links while <code>property</code> applies to the content of the tag (e.g. anchor text, span context). Use <code>rel</code> in span and div elements, etc, to apply to multiple links.</p></li>
+</ul>
+<h2 id="references">References</h2>
+<ul>
+<li>Joern Fischer, Garry D. Peterson, Toby A. Gardner, Line J. Gordon, Ioan Fazey, Thomas Elmqvist, Adam Felton, Carl Folke, Stephen Dovers, (2009) Integrating Resilience Thinking And Optimisation For Conservation. <em>Trends in Ecology &amp; Evolution</em> <strong>24</strong> <a href="http://dx.doi.org/10.1016/j.tree.2009.03.020">10.1016/j.tree.2009.03.020</a></li>
+<li>Stephen Polasky, Stephen R. Carpenter, Carl Folke, Bonnie Keeler, (2011) Decision-Making Under Great Uncertainty: Environmental Management in an Era of Global Change. <em>Trends in Ecology &amp; Evolution</em> <strong>26</strong> <a href="http://dx.doi.org/10.1016/j.tree.2011.04.007">10.1016/j.tree.2011.04.007</a></li>
+<li>Rong Wang, John A. Dearing, Peter G. Langdon, Enlou Zhang, Xiangdong Yang, Vasilis Dakos, Marten Scheffer, (2012) Flickering Gives Early Warning Signals of A Critical Transition to A Eutrophic Lake State. <em>Nature</em> <strong>492</strong> <a href="http://dx.doi.org/10.1038/nature11655">10.1038/nature11655</a></li>
+</ul> 
+<!-- not that raw_content depends on custom generator, 
+     see _plugins/jekyll-labnotebook-plugins/raw_content --> 
+</article> 
+<p> <a href="/2013/03/08/notes-from-the-week.html"> <em>Read more</em></a> </p>
+<br />
+<br />
+
+
+            </div>
+          
+            <div class="span3">
+              <header><h4><a href="/2013/03/02/delayed-release-archives.html">Delayed Release Archives</a></h4></header>
+<p><span></span></p>
+<p style="font-style:italic"> 02 Mar 2013</p>
+
+<p style="font-style:italic"> pageviews: 23 </p>
+
+<article>
+<div class="excerpt">
+<p>Today I dug out a handful (37) posts from the past two years that were published as <a href="http://carlboettiger.info/tags.html#delayed-release">#delayed-release</a> content (and have all been tagged as such to indicate they were not public at their publication date). Many of these were connected to the <a href="http://carlboettiger.info/tags.html#warning-signals">#warning-signals</a> project but involved results that I or Alan weren’t ready to provide ahead of publication, as I discussed in a post when I first began marking some posts for delayed release, <a href="http://www.carlboettiger.info/2011/03/21/challenges-with-collaboration-in-open-science.html">challenges with collaboration in open science</a> These posts were created while on the Wordpress platform and had been marked private, so that they would be invisible to public browsing. Wordpress makes this easy to do, as I discuss in the earlier post. When I switched to a Jekyll platform, these posts all received the yaml header <code>published: false</code> and were also excluded from the Github repository until I could revisit and decide which to release. Managing these posts for release in the Jekyll framework just requires a little command-line fu, <code>grep -l 'published: false' *.md</code> grabs the relevant posts for inspection and release.</p>
+<p>The notebook is currently back to an ONS All-content, immediate, as I have been able to okay the practice with all current major collaborations. (Sure, there’s always stuff that doesn’t make it into the notebook or is not appropriate for the notebook – the most common case of the latter being peer reviews I write for various journals. Though I make a practice of signing my reviews, I believe they still represent private communication unless the authors, editors and journals were to agree to publishing them.) All of these posts would have been released sooner but for finding a minute to remember to do so – perhaps a cautionary example for the delayed release practice.</p>
+<p>Looking back on these posts, I probably would not have delayed most of them today, as I have gotten more comfortable not only with the open notebook, but with discussing the practice with collaborators. My own feelings of not wanting to push my adviser in a discussion of the notebook was as much responsible for these delays as other factors that I discuss in the earlier post. One key thing I wondered about in writing delayed-release posts was whether I would (perhaps subconsciously) write in a different or more candid style than I do for my regular notes. I was glad not to notice any glaring examples (though perhaps a diligent or very bored reader might find some!) of expletives and insulting commentary in the delayed posts. I do notice the overall tone and volume of the textual content changes slightly. However, that trend is actually much more dominant in comparing my very early posts (mostly from the OWW days), which were quite discursive, to the current posts which tend to be much more terse.</p>
+<p>So have a look at the <a href="http://carlboettiger.info/tags.html#delayed-release">#delayed-release</a> posts and let me know what you think!</p> 
+<!-- not that raw_content depends on custom generator, 
+     see _plugins/jekyll-labnotebook-plugins/raw_content --> 
+</article> 
+<p> <a href="/2013/03/02/delayed-release-archives.html"> <em>Read more</em></a> </p>
+<br />
+<br />
+
+
+            </div>
+          
+            <div class="span3">
+              <header><h4><a href="/2013/02/28/notes.html">Notes</a></h4></header>
+<p><span></span></p>
+<p style="font-style:italic"> 28 Feb 2013</p>
+
+<p style="font-style:italic"> pageviews: 34 </p>
+
+<article>
+<div class="excerpt">
+<h2 id="meeting-with-marc">Meeting with Marc</h2>
+<p>Selection of problem: consider simpler models only. Sep through complexity hierarchy at the beginning:</p>
+<ol style="list-style-type: decimal">
+<li>classical approaches are to fix relationship of stock recruitment.<br /></li>
+<li>parameter uncertainty</li>
+<li>Gaussian processes for model uncertainty</li>
+</ol>
+<p>The Discussion section can deal with model uncertainty model choice approaches.</p>
+<ul>
+<li>A method where we don’t have to assume the stock recuritment relationship</li>
+<li>How well we can do with that.<br /></li>
+<li>How much data we need.</li>
+</ul>
+<p>discussion of mathematical presentation, clarity</p>
+<h2 id="misc">Misc</h2>
+<ul>
+<li>Finished review. I should stop signing reviews, then I could write more careless quick impressions.<br /></li>
+<li>discussed potential of a GSOC proposal for an R NEXML parser</li>
+<li>requested to consider presenting at <a href="http://isiconference2013.org/pgs/specsessions.php">ISI Conference</a> session on early warning.</li>
+</ul>
+<h2 id="some-reading-on-semantics">some reading on semantics</h2>
+<p>David Shotton and Tanya Gray have release a CiTO tool for adding semantic data to many major publication platforms, taking a clever approach to annotation that I’ve never considered – croudsourcing to readers (<span class="showtooltip" title="davidshotton (2013). CiTO Reference Annotation Tools. 
+http://semanticpublishing.wordpress.com/2013/02/26/cito-tools/
+[Online. last-accessed: 2013-02-26 15:32:11]. 
+http://semanticpublishing.wordpress.com/2013/02/26/cito-tools/."><a href="http://semanticpublishing.wordpress.com/2013/02/26/cito-tools/" rel="http://purl.org/spar/cito/discusses" >davidshotton, 2013</a></span>). The tool isn’t perfect but is very intuitive. The clever part is that all annotations the reader adds are collated in a database and cand be retrieved through their <a href="http://www.miidi.org/cito/api/">API</a>. Not sure if many readers will make use of this, but time will tell. Meanwhile authors or publishers might pay attention.</p>
+<p>In that vein, David has also written a call of Ten Next Steps for publishers, (<span class="showtooltip" title="davidshotton (2013). Ten next steps for semantic authors and
+publishers. 
+http://semanticpublishing.wordpress.com/2013/02/26/ten-next-steps/
+[Online. last-accessed: 2013-02-28 22:40:01]. 
+http://semanticpublishing.wordpress.com/2013/02/26/ten-next-steps/."><a href="http://semanticpublishing.wordpress.com/2013/02/26/ten-next-steps/" rel="http://purl.org/spar/cito/discusses" >davidshotton, 2013b</a></span>). Some may be redundant, but certainly shows how publishers could go a lot further. If only there was more incentive for publishers to innovate like this instead of crafting clever and questionable strategies to boost impact factors.</p>
+<h2 id="reading">Reading</h2>
+<p>Very interesting paper on implementing/teaching nonlinear model inference to ecologists out today (<span class="showtooltip" title="Bolker B, Gardner B, Maunder M, Berg C, Brooks M, Comita L, Crone
+E, Cubaynes S, Davies T, de Valpine P, Ford J, Gimenez O, Kery M,
+Kim E, Lennert-Cody C, Magnusson A, Martell S, Nash J, Nielsen A,
+Regetz J, Skaug H and Zipkin E (2013). Strategies For Fitting
+Nonlinear Ecological Models in R, ad Model Builder, And Bugs.
+_Methods in Ecology And Evolution_. 
+http://dx.doi.org/10.1111/2041-210X.12044."><a href="http://dx.doi.org/10.1111/2041-210X.12044" rel="http://purl.org/spar/cito/discusses" >Bolker <em>et. al.</em> 2013</a></span>), and the <a href="https://groups.nceas.ucsb.edu/non-linear-modeling/projects">code and data for each of the examples they discuss</a>. Lessons in the mansucript may be familiar to many, but should still be taught more widely in ecology. Should be useful for teaching this stuff in graduate courses too.</p>
+<ul>
+<li>Benjamin M. Bolker, Beth Gardner, Mark Maunder, Casper W. Berg, Mollie Brooks, Liza Comita, Elizabeth Crone, Sarah Cubaynes, Trevor Davies, Perry de Valpine, Jessica Ford, Olivier Gimenez, Marc Kery, Eun Jung Kim, Cleridy Lennert-Cody, Arni Magnusson, Steve Martell, John Nash, Anders Nielsen, Jim Regetz, Hans Skaug, Elise Zipkin, (2013) Strategies For Fitting Nonlinear Ecological Models in R, ad Model Builder, And Bugs. <em>Methods in Ecology And Evolution</em> <a href="http://dx.doi.org/10.1111/2041-210X.12044">10.1111/2041-210X.12044</a></li>
+<li>davidshotton, (2013) CiTO Reference Annotation Tools. <em>Semantic Publishing</em> <a href="http://semanticpublishing.wordpress.com/2013/02/26/cito-tools/">http://semanticpublishing.wordpress.com/2013/02/26/cito-tools/</a></li>
+<li>davidshotton, (2013) Ten next steps for semantic authors and publishers. <em>Semantic Publishing</em> <a href="http://semanticpublishing.wordpress.com/2013/02/26/ten-next-steps/">http://semanticpublishing.wordpress.com/2013/02/26/ten-next-steps/</a></li>
+</ul> 
+<!-- not that raw_content depends on custom generator, 
+     see _plugins/jekyll-labnotebook-plugins/raw_content --> 
+</article> 
+<p> <a href="/2013/02/28/notes.html"> <em>Read more</em></a> </p>
+<br />
+<br />
+
+
+            </div>
+          
+        </div>
+
+      </div>
     </div> <!--end row -->
 
     <div class="row">
-      <div class="span9">
+      <div class="span11 offset1">
         <div class="socialicons">
-          <p> <a href="/archives.html"><i class="icon-th"></i> Archives by date</a></p> 
+          <p> <a href="/archive.html"><i class="icon-calendar"></i> All entries by date</a></p> 
           <p> <a href="/categories.html"><i class="icon-list"></i> All entries by category</a> </p>
           <p> <a href="/tags.html"><i class="icon-tags"></i> All entries by tag</a> </p>
         </div>
-      </div> <!--end span12 -->
+      </div> <!--end span9 -->
     </div> <!--end row -->
 
-</article>
 <footer class="footer">
-  <form style="font-size:10px">
-    <div class="pull-right">
-      <span rel="tooltip" title="switch to dark theme">
-        <a onclick="switch_style('dark'); return false;" name="theme" value="dark" id="dark" class="btn btn-mini"><i class="icon-adjust"></i></a> 
-      </span>
-      <span rel="tooltip" title="switch to light theme">
-        <a onclick="switch_style('light');return false;" name="theme" value="light" id="light" class="btn btn-mini"><i class="icon-certificate"></i></a> 
-      </span>
+  <!-- ************* Buttons to toggle theme CSS ********************** -->
+    <div class="row">
+      <div class="span12">
+        <form style="font-size:10px" class="pull-right">
+          <a onclick="switch_style('dark'); 
+                      recordOutboundLink(this, 'Outbound Links', 'dark theme'); 
+                      return false;" 
+             name="theme" value="dark" id="dark" 
+             class="btn btn-mini"><span class="showtooltip" 
+                                        title="switch to dark theme"><i class="icon-adjust"></i>
+                                   </span></a>
+          
+          <a onclick="switch_style('light'); 
+                      recordOutboundLink(this, 'Outbound Links', 'light theme'); 
+                      return false;" 
+             name="theme" value="light" id="light" 
+             class="btn btn-mini"><span class="showtooltip" 
+                                        title="switch to light theme"><i class="icon-certificate"></i>
+                                  </span></a>
+        </form>
+      </div>
     </div>
-  </form>
-          <div class="row">
-            <div class="span4 socialicons" style="font-size:20px" vocab="http://xmlns.com/foaf/0.1/" typeof="Person" resource="#me">
-              <span rel="tooltip" title="email me">
-                <a property="account" href="mailto:cboettig@gmail.com" onclick="recordOutboundLink(this, 'Outbound Links', 'email'); return false;"><i class="icon-envelope-alt"></i></a>
-              </span>
-              <span rel="tooltip" title="follow me on twitter (reading, discussing)">
-                <a property="account" href="https://twitter.com/cboettig" onclick="recordOutboundLink(this, 'Outbound Links', 'Twitter'); return false;"><i class="icon-twitter"></i></a> 
-              </span>
-              <!--              <a property="account" href="https://plus.google.com/" onclick="recordOutboundLink(this, 'Outbound Links', 'GPlus'); return false;"><i class="icon-google-plus"></i></a> -->
-              <span rel="tooltip" title="follow me on Github (code, research)">
-                <a property="account" href="https://github.com/cboettig" onclick="recordOutboundLink(this, 'Outbound Links', 'Github'); return false;"><i class="icon-github" alt="github"></i></a> 
-              </span>  
-              <!--              <a property="account" href="http://www.mendeley.com/profiles/carl-boettiger" onclick="recordOutboundLink(this, 'Outbound Links', 'Mendeley'); return false;"><img src="/assets/img/icon-mendeley.png" alt="mendeley" /></a>  -->
-              <span rel="tooltip" title="subscribe to RSS feeds for my open lab notebook">
-                <a href="/atom.xml" onclick="recordOutboundLink(this, 'Outbound Links', 'RSS'); return false;"><i class="icon-rss" ></i></a>
-              </span>
-            </div>
-            <div class="span2" style="text-align:center">
-              <span rel="tooltip" 
-                    title="An Open Notebook Science (ONS) project claim: Entry provides all content (AC) immediately (I) or without significant delay.  See link for details"><a rel="license" href="http://onsclaims.wikispaces.com/" 
-                onclick="recordOutboundLink(this, 'Outbound Links', 'ONS_claim'); return false;" 
-                ><img src="http://onsclaims.wikispaces.com/file/view/ons-aci2-icon.png" alt="ONS" /></a>
-            </span>
-            </div>
-            <div class="span4">
-              <a property="http://creativecommons.org/ns#license" href="http://creativecommons.org/publicdomain/zero/1.0/" onclick="recordOutboundLink(this, 'Outbound Links', 'CC0'); return false;"><img src="http://i.creativecommons.org/l/zero/1.0/88x31.png" alt="CC0" style="float:right" /></a> 
-            </div>
-        </div>
-      </footer>
-    </div><!-- /container -->
-    
-        <!-- Le javascript
+
+<!--************** FOAF information to social networks ***************************** -->
+  <div class="row">
+    <div class="span3 socialicons" style="font-size:20px" typeof="foaf:Person" about="http://www.carlboettiger.info#me">
+      <p>
+          <a rel="foaf:account" alt="email" href="mailto:cboettig@gmail.com" 
+             onclick="recordOutboundLink(this, 'Outbound Links', 'email'); 
+             return false;"><span class="showtooltip" title="email me"><i class="icon-envelope-alt"></i></span></a>
+          <a rel="foaf:account" alt="twitter" href="https://twitter.com/cboettig" 
+             onclick="recordOutboundLink(this, 'Outbound Links', 'Twitter'); 
+             return false;"><span class="showtooltip" title="follow me on twitter (reading, discussing)"><i class="icon-twitter"></i></span></a> 
+          <a rel="foaf:account" alt="github" href="https://github.com/cboettig" 
+             onclick="recordOutboundLink(this, 'Outbound Links', 'Github'); 
+             return false;"><span class="showtooltip" title="follow me on Github (code, research)"><i class="icon-github"></i></span></a>
+      <!--
+          <a rel="foaf:account" href="https://plus.google.com/" 
+             onclick="recordOutboundLink(this, 'Outbound Links', 'GPlus'); 
+             return false;"><i class="icon-google-plus"></i></a>
+          <a rel="foaf:account" href="http://www.mendeley.com/profiles/carl-boettiger" 
+             onclick="recordOutboundLink(this, 'Outbound Links', 'Mendeley'); 
+             return false;"><img src="/assets/img/icon-mendeley.png" alt="mendeley" /></a> 
+           citations on google-scholar
+           stackoverflow
+      -->
+      <a alt="rss" type="application/atom+xml" href="/atom.xml"  
+         class="showtooltip" title="subscribe to RSS feeds for my open lab notebook" 
+         onclick="recordOutboundLink(this, 'Outbound Links', 'RSS'); 
+         return false;"><i class="icon-rss"></i></a>
+       </p>
+    </div>
+    <!--**************** End social links **************************** -->
+    <div class="span1">
+      <br />
+    </div>
+    <div class="span4">
+      <p>
+      <a onclick="recordOutboundLink(this, 'Outbound Links', 'ONS_claim'); return false;" href="http://onsclaims.wikispaces.com/"><img src="http://onsclaims.wikispaces.com/file/view/ons-aci2-icon.png" alt="ONS" class="showtooltip" title="An Open Notebook Science (ONS) project claim: Entry provides all content (AC) immediately (I) or without significant delay.  See link for details"/></a>
+
+      <a title="This site uses linked data semantics. Click to extract as RDF XML." class="btn btn-mini showtooltip" style="font-size: .8em" 
+       href="http://any23.org/?format=rdfxml&validate=validate&uri=http://www.carlboettiger.info/lab-notebook.html"><i 
+         class="icon-cloud-download" onclick="recordOutboundLink(this, 'Outbound Links', 'RDF'); return false;"></i> RDF</a>
+      </p>
+    </div>
+    <div class="span1">
+      <br />
+    </div>
+    <div class="span3">
+      <p>
+      <a rel="license" property="http://creativecommons.org/ns#license" href="http://creativecommons.org/publicdomain/zero/1.0/" onclick="recordOutboundLink(this, 'Outbound Links', 'CC0'); return false;"><img src="http://i.creativecommons.org/l/zero/1.0/88x31.png" alt="CC0"/></a> 
+      </p>
+    </div>
+
+  </div>
+  
+<!-- COinS metadata (for citation managers like Zotero etc), goes in body text -->
+  <span
+      class="Z3988" 
+      title="ctx_ver=Z39.88-2004
+      &amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Adc
+      &amp;rfr_id=info%3Asid%2Focoins.info%3Agenerator
+      &amp;rft.title=Lab Notebook
+      &amp;rft.creator=Carl Boettiger
+      &amp;rft.date=
+      &amp;rft.language=EN
+      &amp;rft.rights=CC0
+      &amp;rft_id=http://www.carlboettiger.info/lab-notebook.html">
+  </span>
+
+
+
+</footer>
+
+
+
+
+    <!-- Le javascript
     ================================================== -->
 
     <!-- Placed at the end of the document so the pages load faster -->
     <!-- JQuery, used on a few pages -->
-    <script type="text/javascript" src="http://www.carlboettiger.info/assets/js/jquery.js"></script>
+    <script type="text/javascript" src="/assets/js/jquery.js"></script>
     <!-- Equations using MathJax -->
     <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/x-mathjax-config"> MathJax.Hub.Config({ TeX: { equationNumbers: {autoNumber: "all"} } });       </script>
     <!-- Twitter Bootstrap Javascript -->
-    <script src="http://www.carlboettiger.info/assets/js/bootstrap-transition.js"></script>
-    <script src="http://www.carlboettiger.info/assets/js/bootstrap-collapse.js"></script> <!-- for collapsing navbar-->
-    <script src="http://www.carlboettiger.info/assets/js/bootstrap-tooltip.js"></script>
-    <script src="http://www.carlboettiger.info/assets/js/bootstrap-alert.js"></script>
-
+    <script src="/assets/js/bootstrap.min.js"></script>
+    <!-- Tooltip javascript -->
     <script type="text/javascript">
       $(document).ready(function (){
-        $("[rel=tooltip]").tooltip();
+        $(".showtooltip").tooltip();
       });
     </script>
 
-    <!-- Unused Twitter Bootstrap Javascript 
-    <script src="http://www.carlboettiger.info/assets/js/bootstrap-dropdown.js"></script>
-    <script src="http://www.carlboettiger.info/assets/js/google-code-prettify/prettify.js"></script>
-    <script src="http://www.carlboettiger.info/assets/js/bootstrap-modal.js"></script>
-    <script src="http://www.carlboettiger.info/assets/js/bootstrap-scrollspy.js"></script>
-    <script src="http://www.carlboettiger.info/assets/js/bootstrap-tab.js"></script>
-    <script src="http://www.carlboettiger.info/assets/js/bootstrap-popover.js"></script>
-    <script src="http://www.carlboettiger.info/assets/js/bootstrap-button.js"></script>
-    <script src="http://www.carlboettiger.info/assets/js/bootstrap-carousel.js"></script>
-    <script src="http://www.carlboettiger.info/assets/js/bootstrap-typeahead.js"></script>
-    <script src="http://www.carlboettiger.info/assets/js/application.js"></script>
-    -->
+    <!-- Marran's Search Javascript -->
+    <script type="text/javascript" src="/assets/js/porter-stemmer.js"></script>
+    <script type="text/javascript" src="/assets/js/site-search.js"></script>
 
 
-      <script type="text/javascript">
+
+  <script type="text/javascript">
           var _gaq = _gaq || [];
           _gaq.push(['_setAccount', 'UA-18401403-1']);
           _gaq.push(['_trackPageview']);
@@ -507,7 +948,9 @@ owa_cmds.push(['trackDomStream']);
 <!-- End Open Web Analytics Code -->
         
 
+
+
+    </div>
   </body>
 </html>
-
 

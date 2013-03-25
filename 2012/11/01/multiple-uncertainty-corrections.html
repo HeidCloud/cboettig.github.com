@@ -1,56 +1,70 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
   <head prefix="dc: http://purl.org/dc/terms/ og: http://ogp.me/ns#">
-    <meta charset="utf-8" /> 
-    <title>Multiple Uncertainty Corrections</title>
-    <meta name="author" content="Carl Boettiger" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
+  <meta charset="utf-8" /> 
+  <title>Multiple Uncertainty Corrections</title>
+  <meta name="author" content="Carl Boettiger" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+
+<!-- Some liquid code so that pages get the site.time creation date -->
 
   
+
 
 
 <!-- HTML5 metadata -->
-<meta name="keywords" content="Science, Ecology, Evolution, Open Science, Reproducible Research" />
-<meta name="description" content="My open lab notebook- research in theoretical ecology and evolution" />
+<meta name="keywords" content="multiple-uncertainty, decision-theory" />
+<meta name="description" content="" />
+<meta name="resource_type" content="website"/> 
 <!-- RDFa Metadata (in DublinCore) -->
 <meta property="dc:title" content="Multiple Uncertainty Corrections" />
 <meta property="dc:creator" content="Carl Boettiger" />
-<meta property="dc:date" content="2013-01-10T12:36:56-08:00" />
-<meta property="dc:type" content="Lab Notebook Entry" /> <!-- article? entry?-->
+<meta property="dc:date" content="2013-03-25T14:38:44-07:00" />
 <meta property="dc:format" content="text/html" />
 <meta property="dc:language" content="en" />
+<meta property="dc:identifier" content="/2012/11/01/multiple-uncertainty-corrections.html" />
+<meta property="dc:rights" content="CC0" />
 <meta property="dc:source" content="Lab Notebook" />
+<meta property="dc:subject" content="Ecology" /> 
+<meta property="dc:type" content="website" /> 
 <!-- RDFa Metadata (in OpenGraph) -->
 <meta property="og:title" content="Multiple Uncertainty Corrections" />
-<meta property="og:author" content="http://www.carlboettiger.info/index.html" />  <!-- Should be Liquid? URI? -->
+<meta property="og:author" content="http://www.carlboettiger.info/index.html#me" />  <!-- Should be Liquid? URI? -->
 <meta property="http://ogp.me/ns/profile#first_name" content="Carl"/>
 <meta property="http://ogp.me/ns/profile#last_name" content="Boettiger"/>
-<meta property="http://ogp.me/ns/article#published_time" content="2013-01-10T12:36:56-08:00" />
+<meta property="http://ogp.me/ns/article#published_time" content="2013-03-25T14:38:44-07:00" />
 <meta property="og:site_name" content="Lab Notebook" /> <!-- Same as dc:source? -->
 <meta property="og:url" content="http://www.carlboettiger.info/2012/11/01/multiple-uncertainty-corrections.html" />
-<meta property="og:type" content="article" />
+<meta property="og:type" content="website" /> 
 <!-- Google Scholar Metadata -->
-<meta name="resource_type" content="Lab Notebook"/>
-<meta name="citation_journal_title" content="Lab Notebook"/>
-<meta name="citation_publication_date" content="10 Jan 2013"/>
-<meta name="citation_date" content="10 Jan 2013"/>
 <meta name="citation_author" content="Carl Boettiger"/>
+<meta name="citation_date" content="25 Mar 2013"/>
 <meta name="citation_title" content="Multiple Uncertainty Corrections"/>
+<meta name="citation_journal_title" content="Lab Notebook"/>
 
-    <!-- CSS Stylesheets (toggled with javascript) -->
-    <link href="/assets/css/light.css" rel="stylesheet"
-          type="text/css" id="stl" title="light" />
-    <link href="/assets/css/dark.css" rel="alternate stylesheet" 
-          type="text/css" title="dark" />
-    <!-- Javascript needed for theme toggle, load immediately -->
-    <script type="text/javascript" src="/assets/js/switch-css.js"></script>
-    <script type="text/javascript">
-      set_style_from_cookie(); 
-    </script>
-  </head>
-  <body> 
-  
+<!--NOTE: see also the COinS Metadata in span element in footer -->
+
+
+
+
+  <!-- CSS Stylesheets (toggled with javascript) -->
+  <link href="/assets/css/light.css" rel="stylesheet"
+        type="text/css" id="stl" title="light" />
+  <link href="/assets/css/dark.css" rel="alternate stylesheet" 
+        type="text/css" title="dark" />
+  <link href="/assets/css/bootstrap-responsive.css" rel="stylesheet" 
+        type="text/css"/>
+  <!-- Javascript needed for theme toggle, load immediately -->
+  <script type="text/javascript" src="/assets/js/switch-css.js"></script>
+  <script type="text/javascript">
+    set_style_from_cookie(); 
+  </script>
+</head>
+
+
+  <body prefix="dc: http://purl.org/dc/terms/ foaf: http://xmlns.com/foaf/0.1/"> 
+    
 <!-- Navbar  ================================================== -->
 <div class="navbar navbar-fixed-top">
   <div class="navbar-inner">
@@ -60,14 +74,16 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </a>
-      <a class="brand" href="/README.html"><i style="float:right;" class="icon-info-sign" alt="info" rel="tooltip" title="Credits and technical information about this site" data-placement="bottom"></i></a>
+      <a class="brand" href="/README.html"><span  class="showtooltip" 
+          title="Credits and technical information about this site" 
+          data-placement="bottom"><i style="float:right;" class="icon-info-sign" alt="info"></i></span></a>
       <div class="nav-collapse">
         <ul class="nav">
           <li>
           <a href="/index.html">Home</a></li>
 
           <li>
-          <a href="/vita.html">Vita</a></li>
+          <a href="http://www.carlboettiger.info/vita.html">Vita</a></li>
 
           <li>
           <a href="/research.html">Research</a></li>
@@ -83,75 +99,87 @@
 
         </ul>
       </div><!--/.nav-collapse -->
+
+      <!-- Search site using Google's index --><!--
       <form class="navbar-search pull-right" method="get" action="http://google.com/search">
-         <p>
-         <input type="hidden" name="q" value="site:carlboettiger.info" />
-         <input type="text" class="search-query" name="q" />
+        <p>
+          <input type="hidden" name="q" value="site:carlboettiger.info" />
+          <input type="text" class="search-query" name="q" />
+          <button class="btn btn-mini" type="submit"><i class="icon-search"></i></button> 
+        </p>
+      </form>
+      -->
+      <div id="search">
+      <form method="get" class="navbar-search pull-right form-search">
+        <p>
+        <input type="text" name="search-text" id="search-text">
          <button class="btn btn-mini" type="submit"><i class="icon-search"></i></button> 
-         </p>
-       </form>
+        </p>
+      </form>
+      </div>
      </div> <!-- /container -->
    </div> <!-- /navbar-inner -->
  </div> <!-- /navbar -->
 
 
 
-  <div class="container"> 
-    <article> <!-- includes header and entry, but not footer -->
-    <header class="jumbotron subhead">
-      <h1 class="entry-title">Multiple Uncertainty Corrections</h1>
-      <p></p>
-    </header>
+    <div class="container"> <!-- Responsive grid layout --> 
+
+      <header class="jumbotron subhead">
+  <h1 class="entry-title">Multiple Uncertainty Corrections</h1>
+  <p></p>
+</header>
 
 
-      <div class="row">
-        <div class="span7 offset1">
-          <p>Consider a stock \(x_t\) at time \(t\) that recruits stochastically following harvest \(h_t\) from the escaped population (\(s_t := x_t - h_t\)), \(x_{t+1} = z_g f(s_t)\), where \(z_g\) is a multiplicative stochastic shock to the growth. We imagine the decision maker sets a policy determining the harvest quota \(q_t\) each year, which is implemented as the real harvest with some error \(z_i\), \(h_t = z_i q_t\). Before setting a quota, the decision maker assesses the stock \(y_t = z_m x_t\), so \(y\) is a noisy measurement of the true stock \(x\). The decision maker seeks to maximize the expected present-value of profits \(\Pi(x_t,h_t)\) that are a function of both the actual stock \(x\) and the realized harvest \(h\) over some long term period \(T_{\textrm{max}}\) subject to some discount rate \(\delta\),</p>
-<p>\[ max_{\{q_1 \ldots q_{t_{\textrm{max}}} \}} \sum_{t=1}^{t=t_{\textrm{max}}} \operatorname{E}\left( \Pi(x_t,h_t) \right) \]</p>
+<div class="row">
+  <div class="span7 offset1">
+    <article>
+    <p>Consider a stock <span class="math">\(x_t\)</span> at time <span class="math">\(t\)</span> that recruits stochastically following harvest <span class="math">\(h_t\)</span> from the escaped population (<span class="math">\(s_t := x_t - h_t\)</span>), <span class="math">\(x_{t+1} = z_g f(s_t)\)</span>, where <span class="math">\(z_g\)</span> is a multiplicative stochastic shock to the growth. We imagine the decision maker sets a policy determining the harvest quota <span class="math">\(q_t\)</span> each year, which is implemented as the real harvest with some error <span class="math">\(z_i\)</span>, <span class="math">\(h_t = z_i q_t\)</span>. Before setting a quota, the decision maker assesses the stock <span class="math">\(y_t = z_m x_t\)</span>, so <span class="math">\(y\)</span> is a noisy measurement of the true stock <span class="math">\(x\)</span>. The decision maker seeks to maximize the expected present-value of profits <span class="math">\(\Pi(x_t,h_t)\)</span> that are a function of both the actual stock <span class="math">\(x\)</span> and the realized harvest <span class="math">\(h\)</span> over some long term period <span class="math">\(T_{\textrm{max}}\)</span> subject to some discount rate <span class="math">\(\delta\)</span>,</p>
+<p><span class="math">\[ max_{\{q_1 \ldots q_{t_{\textrm{max}}} \}} \sum_{t=1}^{t=t_{\textrm{max}}} \operatorname{E}\left( \Pi(x_t,h_t) \right) \]</span></p>
 <h2 id="discrete-formulation">Discrete formulation</h2>
-<p>We consider this problem in a discrete state space where \(y\) and \(x\), \(q\) and \(h\) all take values on grids of \(n_y\), \(n_x\), \(n_q\), and \(n_h\) points respectively.</p>
+<p>We consider this problem in a discrete state space where <span class="math">\(y\)</span> and <span class="math">\(x\)</span>, <span class="math">\(q\)</span> and <span class="math">\(h\)</span> all take values on grids of <span class="math">\(n_y\)</span>, <span class="math">\(n_x\)</span>, <span class="math">\(n_q\)</span>, and <span class="math">\(n_h\)</span> points respectively.</p>
 <ul>
-<li><p>Let \(\mathbf{P}\) be the \(n_x\) by \(n_h\) matrix of all possible profits in a time step, as given by \(\Pi(x_i, h_j)\), where rows represent possible stock sizes and columns possible harvests.</p></li>
-<li><p>Let \(\mathbf{M}\) be the row-normalized \(n_y\) by \(n_x\) matrix whose elements are \(z_m(y_i, x_j)\), the probability of observing a stock size \(y_i\) from a true size \(x_j\).</p></li>
-<li><p>Let \(\mathbf{I}\) be the row-normalized \(n_h\) by \(n_q\) matrix whose elements are \(z_i(h_i, q_j)\), the probability of implementing a harvest \(h_i\) given a quota \(q_j\) <strong>Edit</strong>: I had been created in the code as \(n_q\) by \(n_h\), so had to be transposed.</p></li>
-<li><p>Let \(\mathbf{F}_q\) be the tensor of row-normalized \(n_q\) \(n_x\) by \(n_x\) transition matrices given by \(z_g(x_j, \sum_i \sum_j f(x_i, h_j) \mathbf{M}[y_k, x_i] \mathbf{I}[h_j, q_l] )\). By summing over the uncertainty in measurement and implementation, \(\mathbf{F}_q\) is in the space of observed state \(y_t\) into the true stock at the next timestep \(x_{t+1}\), given quota \(q\). We transfer into the future measured state through another application of \(\mathbf{M} \mathbf{F}_q\).</p></li>
-<li><p>The profits expected given a measurement of the stock \(y\) for a quota \(q\) are \(\sum_j \sum_i \Pi(x_i, h_j) p(x_i | y) p(h_j | q)\). Hence the matrix of expected profits for each possible combination of \(y_i\) and \(q_j\) is given by the matrix product \(\mathbf{M} \mathbf{P} \mathbf{I} =: \mathbf{Q}\)</p></li>
-<li><p>Let \(\mathbf{V}_t\) be the \(n_y\) by \(n_q\) matrix at time \(t\) giving the value of choosing quota \(q_j\) having observed stock \(y_i\) and having selected the optimal \(q_{t+1} \ldots q_{t_{\textrm{max}}}\), that is:</p></li>
+<li><p>Let <span class="math">\(\mathbf{P}\)</span> be the <span class="math">\(n_x\)</span> by <span class="math">\(n_h\)</span> matrix of all possible profits in a time step, as given by <span class="math">\(\Pi(x_i, h_j)\)</span>, where rows represent possible stock sizes and columns possible harvests.</p></li>
+<li><p>Let <span class="math">\(\mathbf{M}\)</span> be the row-normalized <span class="math">\(n_y\)</span> by <span class="math">\(n_x\)</span> matrix whose elements are <span class="math">\(z_m(y_i, x_j)\)</span>, the probability of observing a stock size <span class="math">\(y_i\)</span> from a true size <span class="math">\(x_j\)</span>.</p></li>
+<li><p>Let <span class="math">\(\mathbf{I}\)</span> be the row-normalized <span class="math">\(n_h\)</span> by <span class="math">\(n_q\)</span> matrix whose elements are <span class="math">\(z_i(h_i, q_j)\)</span>, the probability of implementing a harvest <span class="math">\(h_i\)</span> given a quota <span class="math">\(q_j\)</span> <strong>Edit</strong>: I had been created in the code as <span class="math">\(n_q\)</span> by <span class="math">\(n_h\)</span>, so had to be transposed.</p></li>
+<li><p>Let <span class="math">\(\mathbf{F}_q\)</span> be the tensor of row-normalized <span class="math">\(n_q\)</span> <span class="math">\(n_x\)</span> by <span class="math">\(n_x\)</span> transition matrices given by <span class="math">\(z_g(x_j,  \sum_i \sum_j f(x_i, h_j) \mathbf{M}[y_k, x_i] \mathbf{I}[h_j, q_l] )\)</span>. By summing over the uncertainty in measurement and implementation, <span class="math">\(\mathbf{F}_q\)</span> is in the space of observed state <span class="math">\(y_t\)</span> into the true stock at the next timestep <span class="math">\(x_{t+1}\)</span>, given quota <span class="math">\(q\)</span>. We transfer into the future measured state through another application of <span class="math">\(\mathbf{M} \mathbf{F}_q\)</span>.</p></li>
+<li><p>The profits expected given a measurement of the stock <span class="math">\(y\)</span> for a quota <span class="math">\(q\)</span> are <span class="math">\(\sum_j \sum_i \Pi(x_i, h_j) p(x_i | y) p(h_j | q)\)</span>. Hence the matrix of expected profits for each possible combination of <span class="math">\(y_i\)</span> and <span class="math">\(q_j\)</span> is given by the matrix product <span class="math">\(\mathbf{M} \mathbf{P} \mathbf{I} =: \mathbf{Q}\)</span></p></li>
+<li><p>Let <span class="math">\(\mathbf{V}_t\)</span> be the <span class="math">\(n_y\)</span> by <span class="math">\(n_q\)</span> matrix at time <span class="math">\(t\)</span> giving the value of choosing quota <span class="math">\(q_j\)</span> having observed stock <span class="math">\(y_i\)</span> and having selected the optimal <span class="math">\(q_{t+1} \ldots q_{t_{\textrm{max}}}\)</span>, that is:</p></li>
 </ul>
-<p>\[ \mathbf{V}_t = \mathbf{Q} + \delta \mathbf{V}_{t+1}(y_t) \]</p>
+<p><span class="math">\[ \mathbf{V}_t = \mathbf{Q} + \delta \mathbf{V}_{t+1}(y_t) \]</span></p>
 <ul>
-<li>Let \(\vec{v}_t\) be the \(n_y\) vector with the maximum value of the each row (i.e. for each state \(y_i\)) of the matrix \(\mathbf{V}_t\), and</li>
-<li>let \(\vec{d}_t\) be the \(n_y\) vector whose elements give the column number (e.g. the \(j\) determine the choice \(q_j\)) of the quota that corresponds to that value.</li>
+<li>Let <span class="math">\(\vec{v}_t\)</span> be the <span class="math">\(n_y\)</span> vector with the maximum value of the each row (i.e. for each state <span class="math">\(y_i\)</span>) of the matrix <span class="math">\(\mathbf{V}_t\)</span>, and</li>
+<li>let <span class="math">\(\vec{d}_t\)</span> be the <span class="math">\(n_y\)</span> vector whose elements give the column number (e.g. the <span class="math">\(j\)</span> determine the choice <span class="math">\(q_j\)</span>) of the quota that corresponds to that value.</li>
 </ul>
-<p>Thus \(\operatorname{max}_q V_t(y_t) = v_t\). Starting from the final timepoint, we know the ending value \(v_T\) as a function of the ending state \(y_T\). The probability of ending up in each possible state for \(y_T\), given a choice of quota \(q\) and the current state \(y_{T-1}\) is given by the transition matrix \(\mathbf{M}\mathbf{F}_q\). The Bellman recursion becomes</p>
-<p>\[ \mathbf{V}_t[,q] = \mathbf{Q}[,q] + \delta \mathbf{M} \mathbf{F}_q v_{t+1} \]</p>
+<p>Thus <span class="math">\(\operatorname{max}_q V_t(y_t) = v_t\)</span>. Starting from the final timepoint, we know the ending value <span class="math">\(v_T\)</span> as a function of the ending state <span class="math">\(y_T\)</span>. The probability of ending up in each possible state for <span class="math">\(y_T\)</span>, given a choice of quota <span class="math">\(q\)</span> and the current state <span class="math">\(y_{T-1}\)</span> is given by the transition matrix <span class="math">\(\mathbf{M}\mathbf{F}_q\)</span>. The Bellman recursion becomes</p>
+<p><span class="math">\[ \mathbf{V}_t[,q] = \mathbf{Q}[,q] + \delta \mathbf{M} \mathbf{F}_q v_{t+1} \]</span></p>
 <h3 id="r-code-algorithm">R code algorithm:</h3>
-<pre class="sourceCode r"><code class="sourceCode r">    Ep &lt;- M %*% P %*% I
-    V &lt;- Ep
+<pre class="sourceCode r"><code class="sourceCode r">    Ep &lt;-<span class="st"> </span>M %*%<span class="st"> </span>P %*%<span class="st"> </span>I
+    V &lt;-<span class="st"> </span>Ep
     for(t in <span class="dv">1</span>:Tmax){                                 
-      D[,(Tmax-t<span class="dv">+1</span>)] &lt;- <span class="kw">apply</span>(V, <span class="dv">1</span>, which.max)        
-      v_t &lt;- <span class="kw">apply</span>(V, <span class="dv">1</span>, max)                        
-      V &lt;- <span class="kw">sapply</span>(<span class="dv">1</span>:n_h, function(j){               
-        Ep[,j] + (<span class="dv">1</span>-delta) * M %*% F[[j]] %*% v_t  
+      D[,(Tmax-t<span class="dv">+1</span>)] &lt;-<span class="st"> </span><span class="kw">apply</span>(V, <span class="dv">1</span>, which.max)        
+      v_t &lt;-<span class="st"> </span><span class="kw">apply</span>(V, <span class="dv">1</span>, max)                        
+      V &lt;-<span class="st"> </span><span class="kw">sapply</span>(<span class="dv">1</span>:n_h, function(j){               
+        Ep[,j] +<span class="st"> </span>(<span class="dv">1</span>-delta) *<span class="st"> </span>M %*%<span class="st"> </span>F[[j]] %*%<span class="st"> </span>v_t  
       })
     }
     D</code></pre>
 <p>Where</p>
-<pre class="sourceCode r"><code class="sourceCode r">    P &lt;-  <span class="kw">outer</span>(x_grid, h_grid, profit) 
-    M &lt;- <span class="kw">rownorm</span>( <span class="kw">outer</span>(x_grid, x_grid, pdfn, sigma_m) )
-    I &lt;- <span class="kw">rownorm</span>( <span class="kw">outer</span>(h_grid, h_grid, pdfn, sigma_i) )</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">    P &lt;-<span class="st">  </span><span class="kw">outer</span>(x_grid, h_grid, profit) 
+    M &lt;-<span class="st"> </span><span class="kw">rownorm</span>( <span class="kw">outer</span>(x_grid, x_grid, pdfn, sigma_m) )
+    I &lt;-<span class="st"> </span><span class="kw">rownorm</span>( <span class="kw">outer</span>(h_grid, h_grid, pdfn, sigma_i) )</code></pre>
 <p>F is a bit more complicated:</p>
-<pre class="sourceCode r"><code class="sourceCode r">    F &lt;- <span class="kw">lapply</span>(<span class="dv">1</span>:n_h, function(q){  
+<pre class="sourceCode r"><code class="sourceCode r">    F &lt;-<span class="st"> </span><span class="kw">lapply</span>(<span class="dv">1</span>:n_h, function(q){  
       <span class="kw">t</span>(<span class="kw">sapply</span>(<span class="dv">1</span>:n_x, function(y){
-        out &lt;- <span class="kw">numeric</span>(n_x)
-        mu &lt;- <span class="kw">sum</span>(<span class="kw">sapply</span>(<span class="dv">1</span>:n_x, function(x)
-          <span class="kw">f</span>(x_grid[x],h_grid,p) %*% 
-            I[q,] *  <span class="co"># Implementation error</span>
-            M[x,y])) <span class="co"># Measurement error</span>
+        out &lt;-<span class="st"> </span><span class="kw">numeric</span>(n_x)
+        mu &lt;-<span class="st"> </span><span class="kw">sum</span>(<span class="kw">sapply</span>(<span class="dv">1</span>:n_x, function(x)
+          <span class="kw">f</span>(x_grid[x],h_grid,p) %*%<span class="st"> </span>
+<span class="st">            </span>I[q,] *<span class="st">  </span><span class="co"># Implementation error</span>
+<span class="st">            </span>M[x,y])) <span class="co"># Measurement error</span>
         if(mu==<span class="dv">0</span>)
-          out[<span class="dv">1</span>] &lt;- <span class="dv">1</span>
+          out[<span class="dv">1</span>] &lt;-<span class="st"> </span><span class="dv">1</span>
         else 
-          out &lt;- <span class="kw">dlnorm</span>(x_grid/mu, <span class="dv">0</span>, sigma_g)
+          out &lt;-<span class="st"> </span><span class="kw">dlnorm</span>(x_grid/mu, <span class="dv">0</span>, sigma_g)
         out/<span class="kw">sum</span>(out)
       }))
     })</code></pre>
@@ -162,55 +190,73 @@
 <p><a href="https://github.com/cboettig/pdg_control/blob/bbef99ec43c75ff1dca959c1511b44c5159f4f4c/inst/examples/mult_uncertainty_test.md">example script</a></p>
 <p><strong>Updated Edit</strong></p>
 <div class="figure">
-<img src="http://carlboettiger.info/assets/figures/2012-11-17-f6c225f69f-policyfunctions.png" /><p class="caption"></p>
+<img src="http://www.carlboettiger.info/assets/figures/2012-11-17-f6c225f69f-policyfunctions.png" />
 </div>
 <p><a href="https://github.com/cboettig/pdg_control/commit/954cea9310063150bb42567b19caa272b34d32c2">See notes on code changes inline</a></p>
-        </div>
+    </article>
+  </div>
+  <div class="span4">
+    <div class="sidebar">
+      <aside prefix="og:http://ogp.me/ns/article#">
+  <p> <i class="icon-calendar"></i>
+    <time datetime="2012-11-01T00:00:00-07:00" 
+    property="dc:created">01 Nov 2012</time>. 
+  </p>
+  <br />
 
-
-        <!-- Custom sidebar -->      
-        <div class="span4">
-          <div class="sidebar">
-            <aside prefix="dc: http://purl.org/dc/terms/ og:http://ogp.me/ns/article#">
-<i class="icon-calendar"></i>
-<time datetime="2012-11-01T00:00:00-07:00" 
-      property="dc:created">01 Nov 2012</time>.
-<br />
-          
-            <p><a class="btn btn-mini" rel="prev" href='/2012/10/31/notes.html'><i class="icon-chevron-left"></i> prev</a>
-          
-          
-          <a class="btn btn-mini" rel="next" href='/2012/11/03/altmetrics-conference.html'>next <i class="icon-chevron-right"></i></a></p>
-          
-
-
-<br />
-
-
-<p> <a class="btn btn-mini" href="https://github.com/cboettig/labnotebook/commits/master/_posts/2012-11-01-multiple-uncertainty-corrections.md"><i class="icon-time"></i> history</a></p>
-<br />
-Posted in 
-  <a rel="tag" class="category" href="/categories.html#ecology"><span property="dc:subject og:section">ecology</span></a>
   
-
-
-
-<br />
-tags: 
-  <a rel="tag" class="tag" href="/tags.html#multiple-uncertainty">#<span property="og:tag http://schema.org/BlogPosting/keywords">multiple-uncertainty</span></a>
-  , 
-
-  <a rel="tag" class="tag" href="/tags.html#decision-theory">#<span property="og:tag http://schema.org/BlogPosting/keywords">decision-theory</span></a>
+    <p><a class="btn btn-mini" rel="prev" href='/2012/10/31/notes.html'><i class="icon-chevron-left"></i> prev</a>
   
+  
+  <a class="btn btn-mini" rel="next" href='/2012/11/03/altmetrics-conference.html'>next <i class="icon-chevron-right"></i></a></p>
+  
+  <br />
 
 
+  <p> <a class="btn btn-mini" href="https://github.com/cboettig/labnotebook/commits/master/_posts2012-11-01-multiple-uncertainty-corrections.md"><i class="icon-time"></i> history</a></p>
+
+
+  <p> Posted in 
+     
+      <a rel="dc:subject" class="category" 
+         href="/categories.html#ecology">ecology</a>
+      
+      </p>
+
+
+  <p> tags: 
+    
+      <!-- http://schema.org/BlogPosting/keywords -->
+      <a rel="og:tag" class="tag" 
+        href="/tags.html#multiple-uncertainty">#multiple-uncertainty</a>
+      , 
+      
+      <!-- http://schema.org/BlogPosting/keywords -->
+      <a rel="og:tag" class="tag" 
+        href="/tags.html#decision-theory">#decision-theory</a>
+      
+      </p>
+
+
+   <p style="font-style:italic"> pageviews: 50</p>
+  <br/>
+  <br/>
+  <p><small>
+    Last modified: <time 
+                  datetime="2013-03-05T13:28:14-08:00" 
+                  property="dc:modified">05 Mar 2013</time></small>
+  </p>
+  <p><small> SHA Hash: <a href="https://github.com/cboettig/labnotebook/commit/551088ff56432c90ea61b613084f4a88eb5d8424
+"> 551088ff56432c90ea61b613084f4a88eb5d8424
+</a></small></p>
+  
 
 </aside>
 
-         </div>
-       </div>
+    </div>
+  </div>
+</div>
 
-      </div>
       <!-- Disqus Comments -->
       <div class="row disqus">
         <div class="span8">          
@@ -230,85 +276,129 @@ tags:
 
 
 
-</article>
 <footer class="footer">
-  <form style="font-size:10px">
-    <div class="pull-right">
-      <span rel="tooltip" title="switch to dark theme">
-        <a onclick="switch_style('dark'); return false;" name="theme" value="dark" id="dark" class="btn btn-mini"><i class="icon-adjust"></i></a> 
-      </span>
-      <span rel="tooltip" title="switch to light theme">
-        <a onclick="switch_style('light');return false;" name="theme" value="light" id="light" class="btn btn-mini"><i class="icon-certificate"></i></a> 
-      </span>
+  <!-- ************* Buttons to toggle theme CSS ********************** -->
+    <div class="row">
+      <div class="span12">
+        <form style="font-size:10px" class="pull-right">
+          <a onclick="switch_style('dark'); 
+                      recordOutboundLink(this, 'Outbound Links', 'dark theme'); 
+                      return false;" 
+             name="theme" value="dark" id="dark" 
+             class="btn btn-mini"><span class="showtooltip" 
+                                        title="switch to dark theme"><i class="icon-adjust"></i>
+                                   </span></a>
+          
+          <a onclick="switch_style('light'); 
+                      recordOutboundLink(this, 'Outbound Links', 'light theme'); 
+                      return false;" 
+             name="theme" value="light" id="light" 
+             class="btn btn-mini"><span class="showtooltip" 
+                                        title="switch to light theme"><i class="icon-certificate"></i>
+                                  </span></a>
+        </form>
+      </div>
     </div>
-  </form>
-          <div class="row">
-            <div class="span4 socialicons" style="font-size:20px" vocab="http://xmlns.com/foaf/0.1/" typeof="Person" resource="#me">
-              <span rel="tooltip" title="email me">
-                <a property="account" href="mailto:cboettig@gmail.com" onclick="recordOutboundLink(this, 'Outbound Links', 'email'); return false;"><i class="icon-envelope-alt"></i></a>
-              </span>
-              <span rel="tooltip" title="follow me on twitter (reading, discussing)">
-                <a property="account" href="https://twitter.com/cboettig" onclick="recordOutboundLink(this, 'Outbound Links', 'Twitter'); return false;"><i class="icon-twitter"></i></a> 
-              </span>
-              <!--              <a property="account" href="https://plus.google.com/" onclick="recordOutboundLink(this, 'Outbound Links', 'GPlus'); return false;"><i class="icon-google-plus"></i></a> -->
-              <span rel="tooltip" title="follow me on Github (code, research)">
-                <a property="account" href="https://github.com/cboettig" onclick="recordOutboundLink(this, 'Outbound Links', 'Github'); return false;"><i class="icon-github" alt="github"></i></a> 
-              </span>  
-              <!--              <a property="account" href="http://www.mendeley.com/profiles/carl-boettiger" onclick="recordOutboundLink(this, 'Outbound Links', 'Mendeley'); return false;"><img src="/assets/img/icon-mendeley.png" alt="mendeley" /></a>  -->
-              <span rel="tooltip" title="subscribe to RSS feeds for my open lab notebook">
-                <a href="/atom.xml" onclick="recordOutboundLink(this, 'Outbound Links', 'RSS'); return false;"><i class="icon-rss" ></i></a>
-              </span>
-            </div>
-            <div class="span2" style="text-align:center">
-              <span rel="tooltip" 
-                    title="An Open Notebook Science (ONS) project claim: Entry provides all content (AC) immediately (I) or without significant delay.  See link for details"><a rel="license" href="http://onsclaims.wikispaces.com/" 
-                onclick="recordOutboundLink(this, 'Outbound Links', 'ONS_claim'); return false;" 
-                ><img src="http://onsclaims.wikispaces.com/file/view/ons-aci2-icon.png" alt="ONS" /></a>
-            </span>
-            </div>
-            <div class="span4">
-              <a property="http://creativecommons.org/ns#license" href="http://creativecommons.org/publicdomain/zero/1.0/" onclick="recordOutboundLink(this, 'Outbound Links', 'CC0'); return false;"><img src="http://i.creativecommons.org/l/zero/1.0/88x31.png" alt="CC0" style="float:right" /></a> 
-            </div>
-        </div>
-      </footer>
-    </div><!-- /container -->
-    
-        <!-- Le javascript
+
+<!--************** FOAF information to social networks ***************************** -->
+  <div class="row">
+    <div class="span3 socialicons" style="font-size:20px" typeof="foaf:Person" about="http://www.carlboettiger.info#me">
+      <p>
+          <a rel="foaf:account" alt="email" href="mailto:cboettig@gmail.com" 
+             onclick="recordOutboundLink(this, 'Outbound Links', 'email'); 
+             return false;"><span class="showtooltip" title="email me"><i class="icon-envelope-alt"></i></span></a>
+          <a rel="foaf:account" alt="twitter" href="https://twitter.com/cboettig" 
+             onclick="recordOutboundLink(this, 'Outbound Links', 'Twitter'); 
+             return false;"><span class="showtooltip" title="follow me on twitter (reading, discussing)"><i class="icon-twitter"></i></span></a> 
+          <a rel="foaf:account" alt="github" href="https://github.com/cboettig" 
+             onclick="recordOutboundLink(this, 'Outbound Links', 'Github'); 
+             return false;"><span class="showtooltip" title="follow me on Github (code, research)"><i class="icon-github"></i></span></a>
+      <!--
+          <a rel="foaf:account" href="https://plus.google.com/" 
+             onclick="recordOutboundLink(this, 'Outbound Links', 'GPlus'); 
+             return false;"><i class="icon-google-plus"></i></a>
+          <a rel="foaf:account" href="http://www.mendeley.com/profiles/carl-boettiger" 
+             onclick="recordOutboundLink(this, 'Outbound Links', 'Mendeley'); 
+             return false;"><img src="/assets/img/icon-mendeley.png" alt="mendeley" /></a> 
+           citations on google-scholar
+           stackoverflow
+      -->
+      <a alt="rss" type="application/atom+xml" href="/atom.xml"  
+         class="showtooltip" title="subscribe to RSS feeds for my open lab notebook" 
+         onclick="recordOutboundLink(this, 'Outbound Links', 'RSS'); 
+         return false;"><i class="icon-rss"></i></a>
+       </p>
+    </div>
+    <!--**************** End social links **************************** -->
+    <div class="span1">
+      <br />
+    </div>
+    <div class="span4">
+      <p>
+      <a onclick="recordOutboundLink(this, 'Outbound Links', 'ONS_claim'); return false;" href="http://onsclaims.wikispaces.com/"><img src="http://onsclaims.wikispaces.com/file/view/ons-aci2-icon.png" alt="ONS" class="showtooltip" title="An Open Notebook Science (ONS) project claim: Entry provides all content (AC) immediately (I) or without significant delay.  See link for details"/></a>
+
+      <a title="This site uses linked data semantics. Click to extract as RDF XML." class="btn btn-mini showtooltip" style="font-size: .8em" 
+       href="http://any23.org/?format=rdfxml&validate=validate&uri=http://www.carlboettiger.info/2012/11/01/multiple-uncertainty-corrections.html"><i 
+         class="icon-cloud-download" onclick="recordOutboundLink(this, 'Outbound Links', 'RDF'); return false;"></i> RDF</a>
+      </p>
+    </div>
+    <div class="span1">
+      <br />
+    </div>
+    <div class="span3">
+      <p>
+      <a rel="license" property="http://creativecommons.org/ns#license" href="http://creativecommons.org/publicdomain/zero/1.0/" onclick="recordOutboundLink(this, 'Outbound Links', 'CC0'); return false;"><img src="http://i.creativecommons.org/l/zero/1.0/88x31.png" alt="CC0"/></a> 
+      </p>
+    </div>
+
+  </div>
+  
+<!-- COinS metadata (for citation managers like Zotero etc), goes in body text -->
+  <span
+      class="Z3988" 
+      title="ctx_ver=Z39.88-2004
+      &amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Adc
+      &amp;rfr_id=info%3Asid%2Focoins.info%3Agenerator
+      &amp;rft.title=Multiple Uncertainty Corrections
+      &amp;rft.creator=Carl Boettiger
+      &amp;rft.date=2012-11-01
+      &amp;rft.language=EN
+      &amp;rft.rights=CC0
+      &amp;rft_id=http://www.carlboettiger.info/2012/11/01/multiple-uncertainty-corrections.html">
+  </span>
+
+
+
+</footer>
+
+
+
+
+    <!-- Le javascript
     ================================================== -->
 
     <!-- Placed at the end of the document so the pages load faster -->
     <!-- JQuery, used on a few pages -->
-    <script type="text/javascript" src="http://www.carlboettiger.info/assets/js/jquery.js"></script>
+    <script type="text/javascript" src="/assets/js/jquery.js"></script>
     <!-- Equations using MathJax -->
     <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/x-mathjax-config"> MathJax.Hub.Config({ TeX: { equationNumbers: {autoNumber: "all"} } });       </script>
     <!-- Twitter Bootstrap Javascript -->
-    <script src="http://www.carlboettiger.info/assets/js/bootstrap-transition.js"></script>
-    <script src="http://www.carlboettiger.info/assets/js/bootstrap-collapse.js"></script> <!-- for collapsing navbar-->
-    <script src="http://www.carlboettiger.info/assets/js/bootstrap-tooltip.js"></script>
-    <script src="http://www.carlboettiger.info/assets/js/bootstrap-alert.js"></script>
-
+    <script src="/assets/js/bootstrap.min.js"></script>
+    <!-- Tooltip javascript -->
     <script type="text/javascript">
       $(document).ready(function (){
-        $("[rel=tooltip]").tooltip();
+        $(".showtooltip").tooltip();
       });
     </script>
 
-    <!-- Unused Twitter Bootstrap Javascript 
-    <script src="http://www.carlboettiger.info/assets/js/bootstrap-dropdown.js"></script>
-    <script src="http://www.carlboettiger.info/assets/js/google-code-prettify/prettify.js"></script>
-    <script src="http://www.carlboettiger.info/assets/js/bootstrap-modal.js"></script>
-    <script src="http://www.carlboettiger.info/assets/js/bootstrap-scrollspy.js"></script>
-    <script src="http://www.carlboettiger.info/assets/js/bootstrap-tab.js"></script>
-    <script src="http://www.carlboettiger.info/assets/js/bootstrap-popover.js"></script>
-    <script src="http://www.carlboettiger.info/assets/js/bootstrap-button.js"></script>
-    <script src="http://www.carlboettiger.info/assets/js/bootstrap-carousel.js"></script>
-    <script src="http://www.carlboettiger.info/assets/js/bootstrap-typeahead.js"></script>
-    <script src="http://www.carlboettiger.info/assets/js/application.js"></script>
-    -->
+    <!-- Marran's Search Javascript -->
+    <script type="text/javascript" src="/assets/js/porter-stemmer.js"></script>
+    <script type="text/javascript" src="/assets/js/site-search.js"></script>
 
 
-      <script type="text/javascript">
+
+  <script type="text/javascript">
           var _gaq = _gaq || [];
           _gaq.push(['_setAccount', 'UA-18401403-1']);
           _gaq.push(['_trackPageview']);
@@ -354,6 +444,9 @@ owa_cmds.push(['trackDomStream']);
 <!-- End Open Web Analytics Code -->
         
 
+
+
+    </div>
   </body>
 </html>
 

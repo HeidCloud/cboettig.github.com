@@ -1,56 +1,70 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
   <head prefix="dc: http://purl.org/dc/terms/ og: http://ogp.me/ns#">
-    <meta charset="utf-8" /> 
-    <title>NIMBioS PDG group, Tasks</title>
-    <meta name="author" content="Carl Boettiger" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
+  <meta charset="utf-8" /> 
+  <title>pdg-control PDG group, Tasks</title>
+  <meta name="author" content="Carl Boettiger" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+
+<!-- Some liquid code so that pages get the site.time creation date -->
 
   
+
 
 
 <!-- HTML5 metadata -->
-<meta name="keywords" content="Science, Ecology, Evolution, Open Science, Reproducible Research" />
-<meta name="description" content="My open lab notebook- research in theoretical ecology and evolution" />
+<meta name="keywords" content="pdg-control, pdg-control" />
+<meta name="description" content="" />
+<meta name="resource_type" content="website"/> 
 <!-- RDFa Metadata (in DublinCore) -->
-<meta property="dc:title" content="NIMBioS PDG group, Tasks" />
+<meta property="dc:title" content="pdg-control PDG group, Tasks" />
 <meta property="dc:creator" content="Carl Boettiger" />
-<meta property="dc:date" content="2013-01-10T12:36:56-08:00" />
-<meta property="dc:type" content="Lab Notebook Entry" /> <!-- article? entry?-->
+<meta property="dc:date" content="2013-03-25T14:38:44-07:00" />
 <meta property="dc:format" content="text/html" />
 <meta property="dc:language" content="en" />
+<meta property="dc:identifier" content="/2011/09/15/nimbios-pdg-group-tasks.html" />
+<meta property="dc:rights" content="CC0" />
 <meta property="dc:source" content="Lab Notebook" />
+<meta property="dc:subject" content="Ecology" /> 
+<meta property="dc:type" content="website" /> 
 <!-- RDFa Metadata (in OpenGraph) -->
-<meta property="og:title" content="NIMBioS PDG group, Tasks" />
-<meta property="og:author" content="http://www.carlboettiger.info/index.html" />  <!-- Should be Liquid? URI? -->
+<meta property="og:title" content="pdg-control PDG group, Tasks" />
+<meta property="og:author" content="http://www.carlboettiger.info/index.html#me" />  <!-- Should be Liquid? URI? -->
 <meta property="http://ogp.me/ns/profile#first_name" content="Carl"/>
 <meta property="http://ogp.me/ns/profile#last_name" content="Boettiger"/>
-<meta property="http://ogp.me/ns/article#published_time" content="2013-01-10T12:36:56-08:00" />
+<meta property="http://ogp.me/ns/article#published_time" content="2013-03-25T14:38:44-07:00" />
 <meta property="og:site_name" content="Lab Notebook" /> <!-- Same as dc:source? -->
 <meta property="og:url" content="http://www.carlboettiger.info/2011/09/15/nimbios-pdg-group-tasks.html" />
-<meta property="og:type" content="article" />
+<meta property="og:type" content="website" /> 
 <!-- Google Scholar Metadata -->
-<meta name="resource_type" content="Lab Notebook"/>
-<meta name="citation_journal_title" content="Lab Notebook"/>
-<meta name="citation_publication_date" content="10 Jan 2013"/>
-<meta name="citation_date" content="10 Jan 2013"/>
 <meta name="citation_author" content="Carl Boettiger"/>
-<meta name="citation_title" content="NIMBioS PDG group, Tasks"/>
+<meta name="citation_date" content="25 Mar 2013"/>
+<meta name="citation_title" content="pdg-control PDG group, Tasks"/>
+<meta name="citation_journal_title" content="Lab Notebook"/>
 
-    <!-- CSS Stylesheets (toggled with javascript) -->
-    <link href="/assets/css/light.css" rel="stylesheet"
-          type="text/css" id="stl" title="light" />
-    <link href="/assets/css/dark.css" rel="alternate stylesheet" 
-          type="text/css" title="dark" />
-    <!-- Javascript needed for theme toggle, load immediately -->
-    <script type="text/javascript" src="/assets/js/switch-css.js"></script>
-    <script type="text/javascript">
-      set_style_from_cookie(); 
-    </script>
-  </head>
-  <body> 
-  
+<!--NOTE: see also the COinS Metadata in span element in footer -->
+
+
+
+
+  <!-- CSS Stylesheets (toggled with javascript) -->
+  <link href="/assets/css/light.css" rel="stylesheet"
+        type="text/css" id="stl" title="light" />
+  <link href="/assets/css/dark.css" rel="alternate stylesheet" 
+        type="text/css" title="dark" />
+  <link href="/assets/css/bootstrap-responsive.css" rel="stylesheet" 
+        type="text/css"/>
+  <!-- Javascript needed for theme toggle, load immediately -->
+  <script type="text/javascript" src="/assets/js/switch-css.js"></script>
+  <script type="text/javascript">
+    set_style_from_cookie(); 
+  </script>
+</head>
+
+
+  <body prefix="dc: http://purl.org/dc/terms/ foaf: http://xmlns.com/foaf/0.1/"> 
+    
 <!-- Navbar  ================================================== -->
 <div class="navbar navbar-fixed-top">
   <div class="navbar-inner">
@@ -60,14 +74,16 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </a>
-      <a class="brand" href="/README.html"><i style="float:right;" class="icon-info-sign" alt="info" rel="tooltip" title="Credits and technical information about this site" data-placement="bottom"></i></a>
+      <a class="brand" href="/README.html"><span  class="showtooltip" 
+          title="Credits and technical information about this site" 
+          data-placement="bottom"><i style="float:right;" class="icon-info-sign" alt="info"></i></span></a>
       <div class="nav-collapse">
         <ul class="nav">
           <li>
           <a href="/index.html">Home</a></li>
 
           <li>
-          <a href="/vita.html">Vita</a></li>
+          <a href="http://www.carlboettiger.info/vita.html">Vita</a></li>
 
           <li>
           <a href="/research.html">Research</a></li>
@@ -83,30 +99,42 @@
 
         </ul>
       </div><!--/.nav-collapse -->
+
+      <!-- Search site using Google's index --><!--
       <form class="navbar-search pull-right" method="get" action="http://google.com/search">
-         <p>
-         <input type="hidden" name="q" value="site:carlboettiger.info" />
-         <input type="text" class="search-query" name="q" />
+        <p>
+          <input type="hidden" name="q" value="site:carlboettiger.info" />
+          <input type="text" class="search-query" name="q" />
+          <button class="btn btn-mini" type="submit"><i class="icon-search"></i></button> 
+        </p>
+      </form>
+      -->
+      <div id="search">
+      <form method="get" class="navbar-search pull-right form-search">
+        <p>
+        <input type="text" name="search-text" id="search-text">
          <button class="btn btn-mini" type="submit"><i class="icon-search"></i></button> 
-         </p>
-       </form>
+        </p>
+      </form>
+      </div>
      </div> <!-- /container -->
    </div> <!-- /navbar-inner -->
  </div> <!-- /navbar -->
 
 
 
-  <div class="container"> 
-    <article> <!-- includes header and entry, but not footer -->
-    <header class="jumbotron subhead">
-      <h1 class="entry-title">NIMBioS PDG group, Tasks</h1>
-      <p></p>
-    </header>
+    <div class="container"> <!-- Responsive grid layout --> 
+
+      <header class="jumbotron subhead">
+  <h1 class="entry-title">pdg-control PDG group, Tasks</h1>
+  <p></p>
+</header>
 
 
-      <div class="row">
-        <div class="span7 offset1">
-          <h2 id="tools">Tools</h2>
+<div class="row">
+  <div class="span7 offset1">
+    <article>
+    <h2 id="tools">Tools</h2>
 <ul>
 <li><p>Sharing: Dropbox (Team account? 350 gigs/12 users $1670/yr)</p></li>
 <li><p>Common language for training development: Matlab</p></li>
@@ -128,14 +156,14 @@
 <ol start="3" style="list-style-type: decimal">
 <li>Select an example in which to explore this.  Have simple form:</li>
 </ol>
-<p>\[ \dot x = F(x,y, h) \]</p>
-<p>\[ \dot y = G(x,y) \]</p>
+<p><span class="math">\[ \dot x = F(x,y, h) \]</span></p>
+<p><span class="math">\[ \dot y = G(x,y) \]</span></p>
 <p>(could be discrete time instead.)  Predator-prey?  Age-structure?</p>
 <ol start="4" style="list-style-type: decimal">
 <li>Domain where controllability issues arise:</li>
 </ol>
 <ol style="list-style-type: lower-alpha">
-<li>Put y on fast time scale (see Kellner et al. [cite]10.1111/j.1755-263X.2010.00132.x[/cite])</li>
+<li>Put y on fast time scale (see Kellner et al. Kellner <em>et. al.</em> 2011)</li>
 </ol>
 <p>slow down y (numerically.  Perturbation theory)</p>
 <ol start="2" style="list-style-type: lower-alpha">
@@ -149,15 +177,15 @@
 <h3 id="b-adjustment-costs">1b) Adjustment costs</h3>
 <p>Refs: Everyone should read: Reed 79, Ludwig</p>
 <p>Emperics - Paul/Jim long grass</p>
-<p>\[ x_t = f(x_t -h_t) \epsilon_t \]</p>
-<p>\[ J = \mathbb{E} \left( \sum h_t -c(h_t, h_{t-1} ) \right)\]</p>
+<p><span class="math">\[ x_t = f(x_t -h_t) \epsilon_t \]</span></p>
+<p><span class="math">\[ J = \mathbb{E} \left( \sum h_t -c(h_t, h_{t-1} ) \right)\]</span></p>
 <p>Where the velocity penalties/Regularization take one of these forms:</p>
 <ol style="list-style-type: decimal">
 <li><p>$ c(h)^2 $  Smoothing</p></li>
 <li><p>$ c(h) $ Smoothing</p></li>
-<li><p>$ c(_{h_t h_t-1} ) $  Transaction fee (i.e. Dan’s toy version)</p></li>
-<li><p>$ c_1 <em>{h_t&gt; h</em>{t-1}} $</p></li>
-<li><p>traditional econ penalties $ ch_t^2 $, $ p(h_t)h_t $</p></li>
+<li><p>$ c(<em>{h</em>t h_t-1} ) $  Transaction fee (i.e. Dan’s toy version)</p></li>
+<li><p>$ c_1 <em>{h</em>t&gt; h_{t-1}} $</p></li>
+<li><p>traditional econ penalties $ ch_t^2 <span class="math">\(, \)</span> p(h_t)h_t $</p></li>
 </ol>
 <p>Mechanistic motivation - <strong>Jim</strong></p>
 <p>Jobs: analytical – approach path/ deterministic Led by: <strong>Dan</strong>, with <strong>Jake, Paul</strong></p>
@@ -165,8 +193,8 @@
 <p><strong>Deadline: October 31st. Dan’s analytics, Michael’s numeric model. </strong></p>
 <p><strong>Frank</strong>: MPC exploration of numeric model.</p>
 <h2 id="training-problem-ii">Training Problem II</h2>
-<p>2.0 One-dimensional Myers et al. \[ N_t+1 = \frac{r N_t^{\alpha}}{1+\frac{N_t^{\alpha}}{K} }\] $ &gt; 1 $ gets allee effect.</p>
-<p>$N_0 $ unknown. Cost of gathering information, profit from fishing.</p>
+<p>2.0 One-dimensional Myers et al. <span class="math">\[ N_t+1 = \frac{r N_t^{\alpha}}{1+\frac{N_t^{\alpha}}{K} }\]</span> $ &gt; 1 $ gets allee effect.</p>
+<p><span class="math">\(N_0 \)</span> unknown. Cost of gathering information, profit from fishing.</p>
 <p>Steps:</p>
 <p>Constant strategy, single-step information gathering.</p>
 <p>Information over time. Strategy varies.  Harvest control or effort control? Uncertain information from harvest? (Maybe go back to more classical framework here).</p>
@@ -218,55 +246,76 @@
 <p>Numerics for 1a.  Mechanistic motivation 1b.  Share code. Recruit student</p>
 <p><strong>Carl Toews</strong>*</p>
 <p>Prob 2</p>
-<p>*Group organizers ## References</p>
-<p>
-<p>Sethi G, Costello C, Fisher A, Hanemann M and Karp L (2005). “Fishery Management Under Multiple Uncertainty.” <EM>Journal of Environmental Economics And Management</EM>, <B>50</B>. ISSN 00950696, <a href="http://dx.doi.org/10.1016/j.jeem.2004.11.005">http://dx.doi.org/10.1016/j.jeem.2004.11.005</a>.</p>
-        </div>
+<p>*Group organizers</p>
+<h2 id="references">References</h2>
+<ul>
+<li><p>Sethi G, Costello C, Fisher A, Hanemann M and Karp L (2005). “Fishery Management Under Multiple Uncertainty.” <em>Journal of Environmental Economics And Management</em>, <strong>50</strong>. ISSN 00950696, <a href="http://dx.doi.org/10.1016/j.jeem.2004.11.005">http://dx.doi.org/10.1016/j.jeem.2004.11.005</a>.</p></li>
+<li><p>Optimizing For Multiple Species And Multiple Values: Tradeoffs Inherent in Ecosystem-Based Fisheries Management, Julie B. Kellner, James N. Sanchirico, Alan Hastings, Peter J. Mumby, (2011) <em>Conservation Letters</em>, <strong>4</strong> <a href="http://dx.doi.org/10.1111/j.1755-263X.2010.00132.x">10.1111/j.1755-263X.2010.00132.x</a></p></li>
+</ul>
+    </article>
+  </div>
+  <div class="span4">
+    <div class="sidebar">
+      <aside prefix="og:http://ogp.me/ns/article#">
+  <p> <i class="icon-calendar"></i>
+    <time datetime="2011-09-15T01:59:36-07:00" 
+    property="dc:created">15 Sep 2011</time>. 
+  </p>
+  <br />
 
-
-        <!-- Custom sidebar -->      
-        <div class="span4">
-          <div class="sidebar">
-            <aside prefix="dc: http://purl.org/dc/terms/ og:http://ogp.me/ns/article#">
-<i class="icon-calendar"></i>
-<time datetime="2011-09-15T01:59:36-07:00" 
-      property="dc:created">15 Sep 2011</time>.
-<br />
-          
-            <p><a class="btn btn-mini" rel="prev" href='/2011/09/14/training-problem-ii.html'><i class="icon-chevron-left"></i> prev</a>
-          
-          
-          <a class="btn btn-mini" rel="next" href='/2011/09/15/nimbios-pdg-control-thursday.html'>next <i class="icon-chevron-right"></i></a></p>
-          
-
-
-<br />
-
-
-<p> <a class="btn btn-mini" href="https://github.com/cboettig/labnotebook/commits/master/_posts/2011-09-15-nimbios-pdg-group-tasks.md"><i class="icon-time"></i> history</a></p>
-<br />
-Posted in 
-  <a rel="tag" class="category" href="/categories.html#ecology"><span property="dc:subject og:section">ecology</span></a>
   
-
-
-
-<br />
-tags: 
-  <a rel="tag" class="tag" href="/tags.html#NIMBioS">#<span property="og:tag http://schema.org/BlogPosting/keywords">NIMBioS</span></a>
-  , 
-
-  <a rel="tag" class="tag" href="/tags.html#PDG+Control">#<span property="og:tag http://schema.org/BlogPosting/keywords">PDG Control</span></a>
+    <p><a class="btn btn-mini" rel="prev" href='/2011/09/14/training-problem-ii.html'><i class="icon-chevron-left"></i> prev</a>
   
+  
+  <a class="btn btn-mini" rel="next" href='/2011/09/15/nimbios-pdg-control-thursday.html'>next <i class="icon-chevron-right"></i></a></p>
+  
+  <br />
 
 
+  <p> <a class="btn btn-mini" href="https://github.com/cboettig/labnotebook/commits/master/_posts2011-09-15-nimbios-pdg-group-tasks.md"><i class="icon-time"></i> history</a></p>
+
+
+  <p> Posted in 
+     
+      <a rel="dc:subject" class="category" 
+         href="/categories.html#ecology">ecology</a>
+      
+      </p>
+
+
+  <p> tags: 
+    
+      <!-- http://schema.org/BlogPosting/keywords -->
+      <a rel="og:tag" class="tag" 
+        href="/tags.html#pdg-control">#pdg-control</a>
+      
+      
+      <!-- http://schema.org/BlogPosting/keywords -->
+      <a rel="og:tag" class="tag" 
+        href="/tags.html#pdg-control">#pdg-control</a>
+      
+      </p>
+
+
+   <p style="font-style:italic"> pageviews: 6</p>
+  <br/>
+  <br/>
+  <p><small>
+    Last modified: <time 
+                  datetime="2013-02-24T11:40:25-08:00" 
+                  property="dc:modified">24 Feb 2013</time></small>
+  </p>
+  <p><small> SHA Hash: <a href="https://github.com/cboettig/labnotebook/commit/376d7c9ade8a8c061c0ce0669dd2200a087b13ba
+"> 376d7c9ade8a8c061c0ce0669dd2200a087b13ba
+</a></small></p>
+  
 
 </aside>
 
-         </div>
-       </div>
+    </div>
+  </div>
+</div>
 
-      </div>
       <!-- Disqus Comments -->
       <div class="row disqus">
         <div class="span8">          
@@ -286,85 +335,129 @@ tags:
 
 
 
-</article>
 <footer class="footer">
-  <form style="font-size:10px">
-    <div class="pull-right">
-      <span rel="tooltip" title="switch to dark theme">
-        <a onclick="switch_style('dark'); return false;" name="theme" value="dark" id="dark" class="btn btn-mini"><i class="icon-adjust"></i></a> 
-      </span>
-      <span rel="tooltip" title="switch to light theme">
-        <a onclick="switch_style('light');return false;" name="theme" value="light" id="light" class="btn btn-mini"><i class="icon-certificate"></i></a> 
-      </span>
+  <!-- ************* Buttons to toggle theme CSS ********************** -->
+    <div class="row">
+      <div class="span12">
+        <form style="font-size:10px" class="pull-right">
+          <a onclick="switch_style('dark'); 
+                      recordOutboundLink(this, 'Outbound Links', 'dark theme'); 
+                      return false;" 
+             name="theme" value="dark" id="dark" 
+             class="btn btn-mini"><span class="showtooltip" 
+                                        title="switch to dark theme"><i class="icon-adjust"></i>
+                                   </span></a>
+          
+          <a onclick="switch_style('light'); 
+                      recordOutboundLink(this, 'Outbound Links', 'light theme'); 
+                      return false;" 
+             name="theme" value="light" id="light" 
+             class="btn btn-mini"><span class="showtooltip" 
+                                        title="switch to light theme"><i class="icon-certificate"></i>
+                                  </span></a>
+        </form>
+      </div>
     </div>
-  </form>
-          <div class="row">
-            <div class="span4 socialicons" style="font-size:20px" vocab="http://xmlns.com/foaf/0.1/" typeof="Person" resource="#me">
-              <span rel="tooltip" title="email me">
-                <a property="account" href="mailto:cboettig@gmail.com" onclick="recordOutboundLink(this, 'Outbound Links', 'email'); return false;"><i class="icon-envelope-alt"></i></a>
-              </span>
-              <span rel="tooltip" title="follow me on twitter (reading, discussing)">
-                <a property="account" href="https://twitter.com/cboettig" onclick="recordOutboundLink(this, 'Outbound Links', 'Twitter'); return false;"><i class="icon-twitter"></i></a> 
-              </span>
-              <!--              <a property="account" href="https://plus.google.com/" onclick="recordOutboundLink(this, 'Outbound Links', 'GPlus'); return false;"><i class="icon-google-plus"></i></a> -->
-              <span rel="tooltip" title="follow me on Github (code, research)">
-                <a property="account" href="https://github.com/cboettig" onclick="recordOutboundLink(this, 'Outbound Links', 'Github'); return false;"><i class="icon-github" alt="github"></i></a> 
-              </span>  
-              <!--              <a property="account" href="http://www.mendeley.com/profiles/carl-boettiger" onclick="recordOutboundLink(this, 'Outbound Links', 'Mendeley'); return false;"><img src="/assets/img/icon-mendeley.png" alt="mendeley" /></a>  -->
-              <span rel="tooltip" title="subscribe to RSS feeds for my open lab notebook">
-                <a href="/atom.xml" onclick="recordOutboundLink(this, 'Outbound Links', 'RSS'); return false;"><i class="icon-rss" ></i></a>
-              </span>
-            </div>
-            <div class="span2" style="text-align:center">
-              <span rel="tooltip" 
-                    title="An Open Notebook Science (ONS) project claim: Entry provides all content (AC) immediately (I) or without significant delay.  See link for details"><a rel="license" href="http://onsclaims.wikispaces.com/" 
-                onclick="recordOutboundLink(this, 'Outbound Links', 'ONS_claim'); return false;" 
-                ><img src="http://onsclaims.wikispaces.com/file/view/ons-aci2-icon.png" alt="ONS" /></a>
-            </span>
-            </div>
-            <div class="span4">
-              <a property="http://creativecommons.org/ns#license" href="http://creativecommons.org/publicdomain/zero/1.0/" onclick="recordOutboundLink(this, 'Outbound Links', 'CC0'); return false;"><img src="http://i.creativecommons.org/l/zero/1.0/88x31.png" alt="CC0" style="float:right" /></a> 
-            </div>
-        </div>
-      </footer>
-    </div><!-- /container -->
-    
-        <!-- Le javascript
+
+<!--************** FOAF information to social networks ***************************** -->
+  <div class="row">
+    <div class="span3 socialicons" style="font-size:20px" typeof="foaf:Person" about="http://www.carlboettiger.info#me">
+      <p>
+          <a rel="foaf:account" alt="email" href="mailto:cboettig@gmail.com" 
+             onclick="recordOutboundLink(this, 'Outbound Links', 'email'); 
+             return false;"><span class="showtooltip" title="email me"><i class="icon-envelope-alt"></i></span></a>
+          <a rel="foaf:account" alt="twitter" href="https://twitter.com/cboettig" 
+             onclick="recordOutboundLink(this, 'Outbound Links', 'Twitter'); 
+             return false;"><span class="showtooltip" title="follow me on twitter (reading, discussing)"><i class="icon-twitter"></i></span></a> 
+          <a rel="foaf:account" alt="github" href="https://github.com/cboettig" 
+             onclick="recordOutboundLink(this, 'Outbound Links', 'Github'); 
+             return false;"><span class="showtooltip" title="follow me on Github (code, research)"><i class="icon-github"></i></span></a>
+      <!--
+          <a rel="foaf:account" href="https://plus.google.com/" 
+             onclick="recordOutboundLink(this, 'Outbound Links', 'GPlus'); 
+             return false;"><i class="icon-google-plus"></i></a>
+          <a rel="foaf:account" href="http://www.mendeley.com/profiles/carl-boettiger" 
+             onclick="recordOutboundLink(this, 'Outbound Links', 'Mendeley'); 
+             return false;"><img src="/assets/img/icon-mendeley.png" alt="mendeley" /></a> 
+           citations on google-scholar
+           stackoverflow
+      -->
+      <a alt="rss" type="application/atom+xml" href="/atom.xml"  
+         class="showtooltip" title="subscribe to RSS feeds for my open lab notebook" 
+         onclick="recordOutboundLink(this, 'Outbound Links', 'RSS'); 
+         return false;"><i class="icon-rss"></i></a>
+       </p>
+    </div>
+    <!--**************** End social links **************************** -->
+    <div class="span1">
+      <br />
+    </div>
+    <div class="span4">
+      <p>
+      <a onclick="recordOutboundLink(this, 'Outbound Links', 'ONS_claim'); return false;" href="http://onsclaims.wikispaces.com/"><img src="http://onsclaims.wikispaces.com/file/view/ons-aci2-icon.png" alt="ONS" class="showtooltip" title="An Open Notebook Science (ONS) project claim: Entry provides all content (AC) immediately (I) or without significant delay.  See link for details"/></a>
+
+      <a title="This site uses linked data semantics. Click to extract as RDF XML." class="btn btn-mini showtooltip" style="font-size: .8em" 
+       href="http://any23.org/?format=rdfxml&validate=validate&uri=http://www.carlboettiger.info/2011/09/15/nimbios-pdg-group-tasks.html"><i 
+         class="icon-cloud-download" onclick="recordOutboundLink(this, 'Outbound Links', 'RDF'); return false;"></i> RDF</a>
+      </p>
+    </div>
+    <div class="span1">
+      <br />
+    </div>
+    <div class="span3">
+      <p>
+      <a rel="license" property="http://creativecommons.org/ns#license" href="http://creativecommons.org/publicdomain/zero/1.0/" onclick="recordOutboundLink(this, 'Outbound Links', 'CC0'); return false;"><img src="http://i.creativecommons.org/l/zero/1.0/88x31.png" alt="CC0"/></a> 
+      </p>
+    </div>
+
+  </div>
+  
+<!-- COinS metadata (for citation managers like Zotero etc), goes in body text -->
+  <span
+      class="Z3988" 
+      title="ctx_ver=Z39.88-2004
+      &amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Adc
+      &amp;rfr_id=info%3Asid%2Focoins.info%3Agenerator
+      &amp;rft.title=pdg-control PDG group, Tasks
+      &amp;rft.creator=Carl Boettiger
+      &amp;rft.date=2011-09-15
+      &amp;rft.language=EN
+      &amp;rft.rights=CC0
+      &amp;rft_id=http://www.carlboettiger.info/2011/09/15/nimbios-pdg-group-tasks.html">
+  </span>
+
+
+
+</footer>
+
+
+
+
+    <!-- Le javascript
     ================================================== -->
 
     <!-- Placed at the end of the document so the pages load faster -->
     <!-- JQuery, used on a few pages -->
-    <script type="text/javascript" src="http://www.carlboettiger.info/assets/js/jquery.js"></script>
+    <script type="text/javascript" src="/assets/js/jquery.js"></script>
     <!-- Equations using MathJax -->
     <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/x-mathjax-config"> MathJax.Hub.Config({ TeX: { equationNumbers: {autoNumber: "all"} } });       </script>
     <!-- Twitter Bootstrap Javascript -->
-    <script src="http://www.carlboettiger.info/assets/js/bootstrap-transition.js"></script>
-    <script src="http://www.carlboettiger.info/assets/js/bootstrap-collapse.js"></script> <!-- for collapsing navbar-->
-    <script src="http://www.carlboettiger.info/assets/js/bootstrap-tooltip.js"></script>
-    <script src="http://www.carlboettiger.info/assets/js/bootstrap-alert.js"></script>
-
+    <script src="/assets/js/bootstrap.min.js"></script>
+    <!-- Tooltip javascript -->
     <script type="text/javascript">
       $(document).ready(function (){
-        $("[rel=tooltip]").tooltip();
+        $(".showtooltip").tooltip();
       });
     </script>
 
-    <!-- Unused Twitter Bootstrap Javascript 
-    <script src="http://www.carlboettiger.info/assets/js/bootstrap-dropdown.js"></script>
-    <script src="http://www.carlboettiger.info/assets/js/google-code-prettify/prettify.js"></script>
-    <script src="http://www.carlboettiger.info/assets/js/bootstrap-modal.js"></script>
-    <script src="http://www.carlboettiger.info/assets/js/bootstrap-scrollspy.js"></script>
-    <script src="http://www.carlboettiger.info/assets/js/bootstrap-tab.js"></script>
-    <script src="http://www.carlboettiger.info/assets/js/bootstrap-popover.js"></script>
-    <script src="http://www.carlboettiger.info/assets/js/bootstrap-button.js"></script>
-    <script src="http://www.carlboettiger.info/assets/js/bootstrap-carousel.js"></script>
-    <script src="http://www.carlboettiger.info/assets/js/bootstrap-typeahead.js"></script>
-    <script src="http://www.carlboettiger.info/assets/js/application.js"></script>
-    -->
+    <!-- Marran's Search Javascript -->
+    <script type="text/javascript" src="/assets/js/porter-stemmer.js"></script>
+    <script type="text/javascript" src="/assets/js/site-search.js"></script>
 
 
-      <script type="text/javascript">
+
+  <script type="text/javascript">
           var _gaq = _gaq || [];
           _gaq.push(['_setAccount', 'UA-18401403-1']);
           _gaq.push(['_trackPageview']);
@@ -410,6 +503,9 @@ owa_cmds.push(['trackDomStream']);
 <!-- End Open Web Analytics Code -->
         
 
+
+
+    </div>
   </body>
 </html>
 
