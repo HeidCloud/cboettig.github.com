@@ -4,13 +4,67 @@
  <title>Lab Notebook</title>
  <link href="/atom.xml" rel="self"/>
  <link href=""/>
- <updated>2013-03-26T11:08:49-07:00</updated>
+ <updated>2013-03-26T12:23:42-07:00</updated>
  <id></id>
  <author>
    <name>Carl Boettiger</name>
    <email>cboettig@gmail.com</email>
  </author>
 
+ 
+ <entry>
+   <title>Research</title>
+   <link href="/2013/03/25/research.html"/>
+   <updated>2013-03-25T00:00:00-07:00</updated>
+   <id>h/2013/03/25/research</id>
+   <content type="html">&lt;h2 id=&quot;reading&quot;&gt;Reading&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;(&lt;span class=&quot;showtooltip&quot; title=&quot;Schreiber S and Killingback T (2013). Spatial Heterogeneity
+Promotes Coexistence of Rock–Paper–Scissors Metacommunities.
+_Theoretical Population Biology_. ISSN 00405809, 
+http://dx.doi.org/10.1016/j.tpb.2013.02.004.&quot;&gt;&lt;a href=&quot;http://dx.doi.org/10.1016/j.tpb.2013.02.004&quot; rel=&quot;http://purl.org/spar/cito/discusses&quot; &gt;Schreiber &amp;amp; Killingback, 2013&lt;/a&gt;&lt;/span&gt; )&lt;/li&gt;
+&lt;li&gt;(&lt;span class=&quot;showtooltip&quot; title=&quot;Warren D (2013). ‘Niche Modeling’: That Uncomfortable Sensation
+Means it'S Working. A Reply to Mcinerny And Etienne. _Trends in
+Ecology &amp; Evolution_, *28*. ISSN 01695347, 
+http://dx.doi.org/10.1016/j.tree.2013.02.003.&quot;&gt;&lt;a href=&quot;http://dx.doi.org/10.1016/j.tree.2013.02.003&quot; rel=&quot;http://purl.org/spar/cito/discusses&quot; &gt;Warren, 2013&lt;/a&gt;&lt;/span&gt; )&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;notebook&quot;&gt;Notebook&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Added SHA hashes. See notebook Issues &lt;a href=&quot;https://github.com/cboettig/labnotebook/issues/67&quot;&gt;#67&lt;/a&gt; for details.&lt;/li&gt;
+&lt;li&gt;modification date. &lt;a href=&quot;https://github.com/cboettig/labnotebook/issues/74&quot;&gt;#74&lt;/a&gt;, also involved resolving page path robustly, &lt;a href=&quot;https://github.com/cboettig/labnotebook/issues/73&quot;&gt;#73&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;analytics on history button, layout &lt;a href=&quot;https://github.com/cboettig/labnotebook/issues/72&quot;&gt;#72&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;push dreamhost-based images to flickr See &lt;a href=&quot;https://github.com/cboettig/labnotebook/issues/75&quot;&gt;#75&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;prosecutor&quot;&gt;prosecutor&lt;/h2&gt;
+&lt;p&gt;Run with OU based data. Draw from sde package.&lt;/p&gt;
+&lt;h2 id=&quot;packages&quot;&gt;Packages&lt;/h2&gt;
+&lt;h3 id=&quot;knitcitations&quot;&gt;Knitcitations&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Feature request for additional markup for page ranges &lt;a href=&quot;https://github.com/cboettig/knitcitations/issues/32&quot;&gt;#32&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;rfigshare&quot;&gt;rfigshare&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Handle pull request for rfigshare&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;code-tricks-notes-on-merging-select-files-from-pull-request&quot;&gt;code-tricks: notes on merging select files from pull request&lt;/h4&gt;
+&lt;p&gt;Pull request included changes to files we don’t want to change. To address this, we separate fetch and merge with &lt;code&gt;--no-commit&lt;/code&gt;. First, fetch the remote repository:&lt;/p&gt;
+&lt;pre class=&quot;sourceCode bash&quot;&gt;&lt;code class=&quot;sourceCode bash&quot;&gt;git fetch https://github.com/jcolomb/rfigshare master&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The fetch is at &lt;code&gt;FETCH_HEAD&lt;/code&gt; as it tells us in the console.&lt;/p&gt;
+&lt;p&gt;Now we merge the changes without committing them,&lt;/p&gt;
+&lt;pre class=&quot;sourceCode bash&quot;&gt;&lt;code class=&quot;sourceCode bash&quot;&gt;git merge --no-commit FETCH_HEAD&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;So the changes are all made, but not committed. We can simply unstage the changes we do not want. Since we only want one file, lets start by unstaging all commits&lt;/p&gt;
+&lt;pre class=&quot;sourceCode bash&quot;&gt;&lt;code class=&quot;sourceCode bash&quot;&gt;git reset --&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;So all changes are in our working directory as if we had just made them, but not told git to do anything yet. We can now drop any of the files we did not want to change back to their state at last commit (HEAD), for instance,&lt;/p&gt;
+&lt;pre class=&quot;sourceCode bash&quot;&gt;&lt;code class=&quot;sourceCode bash&quot;&gt;git checkout HEAD inst/examples/tutorial.Rmd&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;while staging the changes to the file we want changed:&lt;/p&gt;
+&lt;pre class=&quot;sourceCode bash&quot;&gt;&lt;code class=&quot;sourceCode bash&quot;&gt;git add R/fs_update.R&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;and finally commit and push the changes.&lt;/p&gt;
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Sebastian J. Schreiber, Timothy P. Killingback, (2013) Spatial Heterogeneity Promotes Coexistence of Rock–Paper–Scissors Metacommunities. &lt;em&gt;Theoretical Population Biology&lt;/em&gt; &lt;a href=&quot;http://dx.doi.org/10.1016/j.tpb.2013.02.004&quot;&gt;10.1016/j.tpb.2013.02.004&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Dan L. Warren, (2013) ‘Niche Modeling’: That Uncomfortable Sensation Means it’S Working. A Reply to Mcinerny And Etienne. &lt;em&gt;Trends in Ecology &amp;amp; Evolution&lt;/em&gt; &lt;strong&gt;28&lt;/strong&gt; &lt;a href=&quot;http://dx.doi.org/10.1016/j.tree.2013.02.003&quot;&gt;10.1016/j.tree.2013.02.003&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content>
+ </entry>
  
  <entry>
    <title>Research</title>
@@ -4037,6 +4091,14 @@ linear &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;dt[, &lt;span cla
 &lt;p&gt;vim set sytnax language, useful for getting R highlighting in &lt;code&gt;.Rmd&lt;/code&gt; files: &lt;code&gt;setf r&lt;/code&gt;, or equivalently, &lt;code&gt;set filetype=r&lt;/code&gt; (must be lowercase r). &lt;code&gt;set filetype&lt;/code&gt; with no argument gives the current filetype.&lt;/p&gt;
 &lt;h3 id=&quot;coding&quot;&gt;Coding&lt;/h3&gt;
 &lt;ul&gt;&lt;li&gt;
+cboettig pushed to master at cboettig/cboettig.github.com: &lt;em&gt;updated posts&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/cboettig.github.com/compare/04c83f2468...c1c0b14263&quot;&gt;07:25 2013/03/26&lt;/a&gt;
+&lt;/li&gt;&lt;li&gt;
+cboettig pushed to master at cboettig/labnotebook: &lt;em&gt;layout on search fixed, avoid lunr search on 404 page new post&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/labnotebook/compare/8e61ee2286...caa51d20d3&quot;&gt;07:23 2013/03/26&lt;/a&gt;
+&lt;/li&gt;&lt;li&gt;
+cboettig pushed to master at ropensci/rfigshare: &lt;em&gt;bump version Use full value TRUE, T not robust (amends pull request #44)&lt;/em&gt; &lt;a href=&quot;https://github.com/ropensci/rfigshare/compare/e830faa829...ddc9be1f3c&quot;&gt;07:21 2013/03/26&lt;/a&gt;
+&lt;/li&gt;&lt;li&gt;
+cboettig pushed to prosecutor at cboettig/earlywarning: &lt;em&gt;replicate for OU process&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/earlywarning/compare/9ff8d5c17f...47fb9fcea3&quot;&gt;07:03 2013/03/26&lt;/a&gt;
+&lt;/li&gt;&lt;li&gt;
 cboettig pushed to master at cboettig/labnotebook: &lt;em&gt;fix localization of image links&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/labnotebook/compare/07b1cfd9ff...8e61ee2286&quot;&gt;06:09 2013/03/26&lt;/a&gt;
 &lt;/li&gt;&lt;li&gt;
 cboettig closed issue ropensci/rfigshare#43: &lt;em&gt;fs_update give an error&lt;/em&gt; &lt;a href=&quot;https://github.com/ropensci/rfigshare/issues/43&quot;&gt;05:56 2013/03/26&lt;/a&gt;
@@ -4044,14 +4106,6 @@ cboettig closed issue ropensci/rfigshare#43: &lt;em&gt;fs_update give an error&l
 cboettig commented on issue ropensci/rfigshare#43: &lt;em&gt;Closed by pull request #44 from @jcolomb Thanks!&lt;/em&gt; &lt;a href=&quot;https://github.com/ropensci/rfigshare/issues/43#issuecomment-15474794&quot;&gt;05:56 2013/03/26&lt;/a&gt;
 &lt;/li&gt;&lt;li&gt;
 cboettig closed pull request ropensci/rfigshare#44: &lt;em&gt;fs_update and other&lt;/em&gt; &lt;a href=&quot;https://github.com/ropensci/rfigshare/pull/44&quot;&gt;05:55 2013/03/26&lt;/a&gt;
-&lt;/li&gt;&lt;li&gt;
-cboettig commented on pull request ropensci/rfigshare#44: &lt;em&gt;Thanks, I just merged the fs_update file and dropped your changes to the tutorial, etc. Should be all set.&lt;/em&gt; &lt;a href=&quot;https://github.com/ropensci/rfigshare/issues/44#issuecomment-15474728&quot;&gt;05:55 2013/03/26&lt;/a&gt;
-&lt;/li&gt;&lt;li&gt;
-cboettig pushed to master at ropensci/rfigshare: &lt;em&gt;cleaning inst/doc&lt;/em&gt; &lt;a href=&quot;https://github.com/ropensci/rfigshare/compare/9a4721378e...e830faa829&quot;&gt;05:53 2013/03/26&lt;/a&gt;
-&lt;/li&gt;&lt;li&gt;
-cboettig pushed to master at cboettig/knitcitations: &lt;em&gt;NEWS reflects changes for page numbering&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/knitcitations/compare/ec57465db5...ecf2b1c1c5&quot;&gt;05:53 2013/03/26&lt;/a&gt;
-&lt;/li&gt;&lt;li&gt;
-cboettig pushed to master at ropensci/rfigshare: &lt;em&gt;merge pull request #44, fixes fs_update updated news and version not ready for tutorials as vignettes yet (perhaps problem with key?)&lt;/em&gt; &lt;a href=&quot;https://github.com/ropensci/rfigshare/compare/b72b335db5...9a4721378e&quot;&gt;05:46 2013/03/26&lt;/a&gt;
 &lt;/li&gt;&lt;/ul&gt;
 
 
