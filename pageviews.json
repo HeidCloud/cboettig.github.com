@@ -1,7 +1,7 @@
 {
   "/": [
-    "4901",
-    "12949"
+    "4911",
+    "12990"
   ],
   "/ Hastings student at UC Davis": [
     "0",
@@ -129,7 +129,7 @@
   ],
   "/2010/02/15/Implementing-warning-signals-metrics.html": [
     "0",
-    "2"
+    "4"
   ],
   "/2010/02/15/Parametric-bootstrapping.html": [
     "0",
@@ -815,6 +815,10 @@
     "2",
     "2"
   ],
+  "/2010/10/18/Teaching.html": [
+    "0",
+    "1"
+  ],
   "/2010/10/19/stochastic-population-dynamics-abstract.html": [
     "1",
     "1"
@@ -856,8 +860,8 @@
     "1"
   ],
   "/2010/11/03/getting-the-details-right-on-the-fourier-transform-approach-to-likelihood.html": [
-    "36",
-    "36"
+    "38",
+    "38"
   ],
   "/2010/11/05/": [
     "0",
@@ -1144,8 +1148,8 @@
     "4"
   ],
   "/2011/03/01/warning-signals-comparing-methods-on-climate-data.html": [
-    "4",
-    "4"
+    "5",
+    "6"
   ],
   "/2011/03/07/bodega-phylogenetics-tutorial-behind-the-scenes-difficulties-in-r-packages.html": [
     "8",
@@ -1172,8 +1176,8 @@
     "2"
   ],
   "/2011/03/15/models-in-phylogenetic-inference.html": [
-    "252",
-    "284"
+    "254",
+    "287"
   ],
   "/2011/03/15/tuesday-2.html": [
     "0",
@@ -1360,8 +1364,8 @@
     "54"
   ],
   "/2011/05/19/algorithms-group-mcmcmc.html": [
-    "107",
-    "122"
+    "108",
+    "123"
   ],
   "/2011/05/19/thursday-5.html": [
     "0",
@@ -1521,7 +1525,7 @@
   ],
   "/2011/07/30/saturday-fisheries-data-survey-warning-signals.html": [
     "11",
-    "16"
+    "17"
   ],
   "/2011/08/02/fisheries-stock-assessments-for-early-warning.html": [
     "0",
@@ -1592,8 +1596,8 @@
     "4"
   ],
   "/2011/08/26/fishbase-from-r-some-xml-parsing.html": [
-    "111",
-    "133"
+    "113",
+    "135"
   ],
   "/2011/08/26/rfishbase-and-some-taxonomy-in-r-with-taxize.html": [
     "34",
@@ -1724,8 +1728,8 @@
     "8"
   ],
   "/2011/10/12/rfishbase-tutorial-updated-extended.html": [
-    "47",
-    "76"
+    "48",
+    "77"
   ],
   "/2011/10/12/wednesday-10.html": [
     "0",
@@ -1764,8 +1768,8 @@
     "5"
   ],
   "/2011/10/24/optimal-control-training-problem-2-problem-statement.html": [
-    "21",
-    "38"
+    "22",
+    "39"
   ],
   "/2011/10/25/treebase-package-on-cran.html": [
     "7",
@@ -1820,8 +1824,8 @@
     "1"
   ],
   "/2011/11/04/sparkleshare-configuration.html": [
-    "1704",
-    "2069"
+    "1709",
+    "2075"
   ],
   "/2011/11/06/sunday-5.html": [
     "0",
@@ -1992,8 +1996,8 @@
     "22"
   ],
   "/2012/02/12/elegant-fast-data-manipulation-with-data-table.html": [
-    "335",
-    "377"
+    "336",
+    "379"
   ],
   "/2012/02/12/saturday-projects-reading-markdown-plugins.html": [
     "4",
@@ -2048,12 +2052,12 @@
     "2"
   ],
   "/2012/02/27/monday-14.html": [
-    "0",
-    "3"
+    "1",
+    "4"
   ],
   "/2012/02/27/using-knitr-and-rwordpress-to-publish-results-directly-from-r-6.html": [
-    "219",
-    "334"
+    "222",
+    "337"
   ],
   "/2012/02/27/using-knitr-and-rwordpress-to-publish-results-directly-from-r.html": [
     "1",
@@ -2061,11 +2065,11 @@
   ],
   "/2012/02/28/knitr-with-flickr-and-wordpress.html": [
     "102",
-    "153"
+    "154"
   ],
   "/2012/02/28/warning-signals-in-fish-collapse.html": [
     "5",
-    "8"
+    "10"
   ],
   "/2012/03/03/thursday-friday-saturday.html": [
     "0",
@@ -2104,8 +2108,8 @@
     "8"
   ],
   "/2012/03/20/citing-r-packages.html": [
-    "718",
-    "783"
+    "722",
+    "787"
   ],
   "/2012/03/20/friday-some-random-notes.html": [
     "2",
@@ -2116,8 +2120,8 @@
     "5"
   ],
   "/2012/03/21/knitr-github-and-a-new-phase-for-the-lab-notebook.html": [
-    "184",
-    "298"
+    "188",
+    "303"
   ],
   "/2012/03/21/policy-costs-to-changing-mangement-tp-1b-apples-to-apples.html": [
     "0",
@@ -2128,8 +2132,8 @@
     "14"
   ],
   "/2012/03/24/citations-in-markdown-using-knitr.html": [
-    "518",
-    "701"
+    "520",
+    "705"
   ],
   "/2012/03/24/citations-in-markdown-usingknitr.html": [
     "0",
@@ -2140,8 +2144,8 @@
     "3"
   ],
   "/2012/03/27/tuesday-pandoc-citations-notes-various.html": [
-    "98",
-    "143"
+    "99",
+    "144"
   ],
   "/2012/03/29/data-to-knowledge-conference-uc-berkeley-application-abstract.html": [
     "5",
@@ -2172,8 +2176,8 @@
     "3"
   ],
   "/2012/04/07/writing-reproducibly-in-the-open-with-knitr.html": [
-    "422",
-    "716"
+    "427",
+    "722"
   ],
   "/2012/04/10/monday-tuesday.html": [
     "0",
@@ -2204,8 +2208,8 @@
     "40"
   ],
   "/2012/05/01/Jekyll-vs-Wordpress.html": [
-    "1047",
-    "1403"
+    "1050",
+    "1406"
   ],
   "/2012/05/01/Jekyll-vs-Wordpress.html)": [
     "5",
@@ -2233,7 +2237,7 @@
   ],
   "/2012/05/06/research-workflow.html": [
     "318",
-    "589"
+    "591"
   ],
   "/2012/05/07/github.com/deads/bigrf": [
     "0",
@@ -2297,19 +2301,19 @@
   ],
   "/2012/05/21/limits-to-detection-of-early-warning-signals.html": [
     "105",
-    "161"
+    "162"
   ],
   "/2012/05/26/exploring-jekyll-layout.html": [
-    "612",
-    "791"
+    "617",
+    "796"
   ],
   "/2012/05/26/exploring-jekyll-layout.html?search-text=jekyll": [
     "0",
     "1"
   ],
   "/2012/05/30/knitcitations.html": [
-    "534",
-    "764"
+    "539",
+    "771"
   ],
   "/2012/06/08/notes.html": [
     "0",
@@ -2393,7 +2397,7 @@
   ],
   "/2012/08/20/notes.html": [
     "8",
-    "25"
+    "26"
   ],
   "/2012/08/22/notes.html": [
     "5",
@@ -2401,7 +2405,7 @@
   ],
   "/2012/08/22/warning-signals-in-management.html": [
     "6",
-    "35"
+    "36"
   ],
   "/2012/08/23/notes.html": [
     "5",
@@ -2436,20 +2440,20 @@
     "196"
   ],
   "/2012/09/27/Migrating-OWW-posts-to-Jekyll.html": [
-    "20",
-    "56"
+    "21",
+    "58"
   ],
   "/2012/09/28/Welcome-to-my-lab-notebook.html": [
-    "361",
-    "1284"
+    "365",
+    "1292"
   ],
   "/2012/10/01/multiple-uncertainty.html": [
     "9",
     "76"
   ],
   "/2012/10/02/solarized-colors.html": [
-    "668",
-    "912"
+    "671",
+    "915"
   ],
   "/2012/10/05/notes.html": [
     "18",
@@ -2488,8 +2492,8 @@
     "92"
   ],
   "/2012/10/16/gaussian-processes.html": [
-    "44",
-    "91"
+    "45",
+    "92"
   ],
   "/2012/10/17/basic-regression-in-gaussian-processes.html": [
     "50",
@@ -2581,11 +2585,11 @@
   ],
   "/2012/11/16/mult-uncertainty.html": [
     "1",
-    "18"
+    "19"
   ],
   "/2012/11/19/sequential-updating.html": [
     "8",
-    "28"
+    "29"
   ],
   "/2012/11/21/notes.html": [
     "4",
@@ -2597,7 +2601,7 @@
   ],
   "/2012/11/23/citing-lab-notebook-entries.html": [
     "331",
-    "426"
+    "427"
   ],
   "/2012/11/23/citing-lab-notebook-entries.html)": [
     "1",
@@ -2617,7 +2621,7 @@
   ],
   "/2012/11/30/Note-on-notebook-figures.html": [
     "7",
-    "23"
+    "24"
   ],
   "/2012/11/30/Note-on-notebook-figures.html, http://www.carlboettiger.info/2012/10/09/data-management-plan.html": [
     "1",
@@ -2689,7 +2693,7 @@
   ],
   "/2012/12/30/learning-jekyll.html": [
     "248",
-    "374"
+    "376"
   ],
   "/2013": [
     "0",
@@ -2713,7 +2717,7 @@
   ],
   "/2013/01/12/tipping-points-comment-in-nature.html": [
     "41",
-    "98"
+    "99"
   ],
   "/2013/01/24/Data-URIs-for-image-archives.html": [
     "27",
@@ -2752,8 +2756,8 @@
     "28"
   ],
   "/2013/02/22/semantic-citations-for-the-notebook-and-knitr.html": [
-    "91",
-    "147"
+    "92",
+    "148"
   ],
   "/2013/02/22/semantic-citations-for-the-notebook-and-knitr.html?search-text=shotton": [
     "0",
@@ -2769,7 +2773,7 @@
   ],
   "/2013/02/28/notes.html": [
     "4",
-    "34"
+    "35"
   ],
   "/2013/03/02/delayed-release-archives.html": [
     "2",
@@ -2777,7 +2781,7 @@
   ],
   "/2013/03/08/notes-from-the-week.html": [
     "2",
-    "26"
+    "28"
   ],
   "/2013/03/12/notes.html": [
     "0",
@@ -2789,15 +2793,19 @@
   ],
   "/2013/03/14/notes.html": [
     "2",
-    "22"
+    "24"
   ],
   "/2013/03/19/collected-notes.html": [
     "4",
-    "18"
+    "21"
   ],
   "/2013/03/20/research.html": [
     "4",
-    "9"
+    "11"
+  ],
+  "/2013/03/22/research.html": [
+    "2",
+    "5"
   ],
   "/211": [
     "0",
@@ -3988,14 +3996,6 @@
     "1"
   ],
   "/?s=derive": [
-    "0",
-    "1"
-  ],
-  "/?s=detrend": [
-    "1",
-    "1"
-  ],
-  "/?s=deut+data": [
     "0",
     "1"
   ]

@@ -4,7 +4,7 @@
  <title>Lab Notebook</title>
  <link href="/atom.xml" rel="self"/>
  <link href=""/>
- <updated>2013-03-25T14:38:44-07:00</updated>
+ <updated>2013-03-26T11:08:49-07:00</updated>
  <id></id>
  <author>
    <name>Carl Boettiger</name>
@@ -1177,10 +1177,10 @@ redcarpet:
 &lt;li&gt;Ran the Allen et al. Allee model under conditions for non-stationary stable states (e.g. period 2, period 4) etc, with and without substantial process noise (to confirm the cyclical pattern). Shows good performance of GP against terrible perfomance of alternative parametric approaches. Closes issue &lt;a href=&quot;https://github.com/cboettig/nonparametric-bayes/issues/16&quot;&gt;#16&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;div class=&quot;figure&quot;&gt;
-&lt;img src=&quot;http://www.carlboettiger.info/assets/figures/2012-12-27-16-11-45-5da7c1081b-unnamed-chunk-2.png&quot; alt=&quot;plot of chunk unnamed-chunk-2&quot; /&gt;&lt;p class=&quot;caption&quot;&gt;plot of chunk unnamed-chunk-2&lt;/p&gt;
+&lt;img src=&quot;/assets/figures/2012-12-27-16-11-45-5da7c1081b-unnamed-chunk-2.png&quot; alt=&quot;plot of chunk unnamed-chunk-2&quot; /&gt;&lt;p class=&quot;caption&quot;&gt;plot of chunk unnamed-chunk-2&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;figure&quot;&gt;
-&lt;img src=&quot;http://www.carlboettiger.info/assets/figures/2012-12-27-16-13-35-5da7c1081b-unnamed-chunk-4.png&quot; alt=&quot;plot of chunk unnamed-chunk-4&quot; /&gt;&lt;p class=&quot;caption&quot;&gt;plot of chunk unnamed-chunk-4&lt;/p&gt;
+&lt;img src=&quot;/assets/figures/2012-12-27-16-13-35-5da7c1081b-unnamed-chunk-4.png&quot; alt=&quot;plot of chunk unnamed-chunk-4&quot; /&gt;&lt;p class=&quot;caption&quot;&gt;plot of chunk unnamed-chunk-4&lt;/p&gt;
 &lt;/div&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;https://github.com/cboettig/nonparametric-bayes/blob/da0fb51032334c0e11f962674d4022cc04b2279b/inst/examples/allee.md&quot;&gt;allee.md&lt;/a&gt;&lt;/li&gt;
@@ -1283,11 +1283,11 @@ redcarpet:
    <id>h/2012/12/20/results-comparing-gp-to-parametric</id>
    <content type="html">&lt;p&gt;Comparison of the Gaussian process inference to the true optimum and a parametric estimate.&lt;/p&gt;
 &lt;div class=&quot;figure&quot;&gt;
-&lt;img src=&quot;http://www.carlboettiger.info/assets/figures/2012-12-20-23-12-06-60abafd424-unnamed-chunk-22.png&quot; /&gt;
+&lt;img src=&quot;/assets/figures/2012-12-20-23-12-06-60abafd424-unnamed-chunk-22.png&quot; /&gt;
 &lt;/div&gt;
 &lt;p&gt;Comparison across 100 simulations under the policies inferred from each approach show the nearly optimal performance of the GP and the tragic crashes introduced by the parametric management.&lt;/p&gt;
 &lt;div class=&quot;figure&quot;&gt;
-&lt;img src=&quot;http://www.carlboettiger.info/assets/figures/2012-12-20-23-12-07-60abafd424-unnamed-chunk-23.png&quot; /&gt;
+&lt;img src=&quot;/assets/figures/2012-12-20-23-12-07-60abafd424-unnamed-chunk-23.png&quot; /&gt;
 &lt;/div&gt;
 &lt;h2 id=&quot;sensitivity-analysis&quot;&gt;Sensitivity analysis&lt;/h2&gt;
 &lt;p&gt;Working through an exploratory sensitivity analysis to see GP performance over different parameters.&lt;/p&gt;
@@ -1296,17 +1296,17 @@ redcarpet:
 &lt;/ul&gt;
 &lt;p&gt;Distribution of yield over replicates shows the parametric model performing rather poorly, while most of the GP replicates perform nearly optimally.&lt;/p&gt;
 &lt;div class=&quot;figure&quot;&gt;
-&lt;img src=&quot;http://www.carlboettiger.info/assets/figures/2012-12-20-23-13-46-60abafd424-unnamed-chunk-3.png&quot; /&gt;
+&lt;img src=&quot;/assets/figures/2012-12-20-23-13-46-60abafd424-unnamed-chunk-3.png&quot; /&gt;
 &lt;/div&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;https://github.com/cboettig/nonparametric-bayes/blob/60abafd4242b3840454b3a138a428a1c633e73fd/inst/examples/myers-exploration.md&quot;&gt;smaller noise&lt;/a&gt;:&lt;/li&gt;
 &lt;/ul&gt;
 &lt;div class=&quot;figure&quot;&gt;
-&lt;img src=&quot;http://www.carlboettiger.info/assets/figures/2012-12-20-22-57-55-96ad28dd6e-unnamed-chunk-3.png&quot; /&gt;
+&lt;img src=&quot;/assets/figures/2012-12-20-22-57-55-96ad28dd6e-unnamed-chunk-3.png&quot; /&gt;
 &lt;/div&gt;
 &lt;p&gt;&lt;a href=&quot;https://github.com/cboettig/nonparametric-bayes/blob/9d5cd1f027bdfe5f356dce83756726c95a6fcdd8/inst/examples/myers-exploration.md&quot;&gt;larger growth-rate parameters&lt;/a&gt;:&lt;/p&gt;
 &lt;div class=&quot;figure&quot;&gt;
-&lt;img src=&quot;http://www.carlboettiger.info/assets/figures/2012-12-20-20-50-42-3f7bd6aa34-unnamed-chunk-3.png&quot; /&gt;
+&lt;img src=&quot;/assets/figures/2012-12-20-20-50-42-3f7bd6aa34-unnamed-chunk-3.png&quot; /&gt;
 &lt;/div&gt;
 &lt;h2 id=&quot;from-the-commit-log&quot;&gt;from the commit log&lt;/h2&gt;
 &lt;ul&gt;
@@ -1401,7 +1401,7 @@ Z &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;k
 &lt;span class=&quot;kw&quot;&gt;require&lt;/span&gt;(earlywarnings)
 a &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;generic_ews&lt;/span&gt;(Z, &lt;span class=&quot;dt&quot;&gt;detrending=&lt;/span&gt;&lt;span class=&quot;st&quot;&gt;&amp;quot;gaussian&amp;quot;&lt;/span&gt;)&lt;/code&gt;&lt;/pre&gt;
 &lt;div class=&quot;figure&quot;&gt;
-&lt;img src=&quot;http://www.carlboettiger.info/assets/figures/2012-12-18-6c85b56d2c-mei2012.png&quot; /&gt;
+&lt;img src=&quot;/assets/figures/2012-12-18-6c85b56d2c-mei2012.png&quot; /&gt;
 &lt;/div&gt;
 &lt;p&gt;How about the data from MacDonald (2005)&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;ftp://ftp.ncdc.noaa.gov/pub/data/paleo/treering/reconstructions/pdo-macdonald2005.txt&quot;&gt;original data link&lt;/a&gt;&lt;/p&gt;
@@ -1411,7 +1411,7 @@ a &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;k
 a &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;generic_ews&lt;/span&gt;(dat, &lt;span class=&quot;dt&quot;&gt;detrending=&lt;/span&gt;&lt;span class=&quot;st&quot;&gt;&amp;quot;gaussian&amp;quot;&lt;/span&gt;)
 &lt;span class=&quot;kw&quot;&gt;dev.off&lt;/span&gt;()&lt;/code&gt;&lt;/pre&gt;
 &lt;div class=&quot;figure&quot;&gt;
-&lt;img src=&quot;http://www.carlboettiger.info/assets/figures/2012-12-18-6c85b56d2c-pdo-macdonald2005.png&quot; /&gt;
+&lt;img src=&quot;/assets/figures/2012-12-18-6c85b56d2c-pdo-macdonald2005.png&quot; /&gt;
 &lt;/div&gt;</content>
  </entry>
  
@@ -1427,45 +1427,45 @@ a &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;k
 &lt;h2 id=&quot;performance-of-gp-compared-to-ricker-on-an-underlying-allee-model&quot;&gt;Performance of GP compared to Ricker on an underlying Allee model&lt;/h2&gt;
 &lt;h3 id=&quot;using-stationary-data-only&quot;&gt;Using stationary data only&lt;/h3&gt;
 &lt;div class=&quot;figure&quot;&gt;
-&lt;img src=&quot;http://www.carlboettiger.info/assets/figures/2012-12-15-f42127cba3-gp-plot.png&quot; alt=&quot;Inferred GP&quot; /&gt;&lt;p class=&quot;caption&quot;&gt;Inferred GP&lt;/p&gt;
+&lt;img src=&quot;/assets/figures/2012-12-15-f42127cba3-gp-plot.png&quot; alt=&quot;Inferred GP&quot; /&gt;&lt;p class=&quot;caption&quot;&gt;Inferred GP&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;figure&quot;&gt;
-&lt;img src=&quot;http://www.carlboettiger.info/assets/figures/2012-12-15-f42127cba3-policy_plot.png&quot; alt=&quot;plot of policy functions&quot; /&gt;&lt;p class=&quot;caption&quot;&gt;plot of policy functions&lt;/p&gt;
+&lt;img src=&quot;/assets/figures/2012-12-15-f42127cba3-policy_plot.png&quot; alt=&quot;plot of policy functions&quot; /&gt;&lt;p class=&quot;caption&quot;&gt;plot of policy functions&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;figure&quot;&gt;
-&lt;img src=&quot;http://www.carlboettiger.info/assets/figures/2012-12-15-f42127cba3-sim-fish.png&quot; alt=&quot;fish stock dynamics&quot; /&gt;&lt;p class=&quot;caption&quot;&gt;fish stock dynamics&lt;/p&gt;
+&lt;img src=&quot;/assets/figures/2012-12-15-f42127cba3-sim-fish.png&quot; alt=&quot;fish stock dynamics&quot; /&gt;&lt;p class=&quot;caption&quot;&gt;fish stock dynamics&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;figure&quot;&gt;
-&lt;img src=&quot;http://www.carlboettiger.info/assets/figures/2012-12-15-f42127cba3-sim-harvest.png&quot; alt=&quot;harvest dynamics&quot; /&gt;&lt;p class=&quot;caption&quot;&gt;harvest dynamics&lt;/p&gt;
+&lt;img src=&quot;/assets/figures/2012-12-15-f42127cba3-sim-harvest.png&quot; alt=&quot;harvest dynamics&quot; /&gt;&lt;p class=&quot;caption&quot;&gt;harvest dynamics&lt;/p&gt;
 &lt;/div&gt;
 &lt;p&gt;(see &lt;a href=&quot;https://github.com/cboettig/nonparametric-bayes/blob/a3aad15b159aae10264e39ccf3cbe0cdb8aec279/inst/examples/myer-example.md&quot;&gt;myer-example.md&lt;/a&gt; for code and more graphs &amp;amp; details)&lt;/p&gt;
 &lt;h3 id=&quot;using-more-data&quot;&gt;Using more data&lt;/h3&gt;
 &lt;div class=&quot;figure&quot;&gt;
-&lt;img src=&quot;http://www.carlboettiger.info/assets/figures/2012-12-15-003da6e98e-gp-plot.png&quot; alt=&quot;Inferred GP&quot; /&gt;&lt;p class=&quot;caption&quot;&gt;Inferred GP&lt;/p&gt;
+&lt;img src=&quot;/assets/figures/2012-12-15-003da6e98e-gp-plot.png&quot; alt=&quot;Inferred GP&quot; /&gt;&lt;p class=&quot;caption&quot;&gt;Inferred GP&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;figure&quot;&gt;
-&lt;img src=&quot;http://www.carlboettiger.info/assets/figures/2012-12-15-003da6e98e-policy_plot.png&quot; alt=&quot;plot of policy functions&quot; /&gt;&lt;p class=&quot;caption&quot;&gt;plot of policy functions&lt;/p&gt;
+&lt;img src=&quot;/assets/figures/2012-12-15-003da6e98e-policy_plot.png&quot; alt=&quot;plot of policy functions&quot; /&gt;&lt;p class=&quot;caption&quot;&gt;plot of policy functions&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;figure&quot;&gt;
-&lt;img src=&quot;http://www.carlboettiger.info/assets/figures/2012-12-15-003da6e98e-sim-fish.png&quot; alt=&quot;plot of sim-fish&quot; /&gt;&lt;p class=&quot;caption&quot;&gt;plot of sim-fish&lt;/p&gt;
+&lt;img src=&quot;/assets/figures/2012-12-15-003da6e98e-sim-fish.png&quot; alt=&quot;plot of sim-fish&quot; /&gt;&lt;p class=&quot;caption&quot;&gt;plot of sim-fish&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;figure&quot;&gt;
-&lt;img src=&quot;http://www.carlboettiger.info/assets/figures/2012-12-15-003da6e98e-sim-harvest.png&quot; alt=&quot;plot of sim-harvest&quot; /&gt;&lt;p class=&quot;caption&quot;&gt;plot of sim-harvest&lt;/p&gt;
+&lt;img src=&quot;/assets/figures/2012-12-15-003da6e98e-sim-harvest.png&quot; alt=&quot;plot of sim-harvest&quot; /&gt;&lt;p class=&quot;caption&quot;&gt;plot of sim-harvest&lt;/p&gt;
 &lt;/div&gt;
 &lt;p&gt;(from &lt;a href=&quot;https://github.com/cboettig/nonparametric-bayes/blob/a1bc09a4a7a2edabbd63916416db6b095d1ead6b/inst/examples/myer-example.md&quot;&gt;earlier myer-example.md&lt;/a&gt;)&lt;/p&gt;
 &lt;h2 id=&quot;comparing-gp-to-estimated-ricker-on-bh-dynamics&quot;&gt;Comparing GP to estimated Ricker on BH dynamics:&lt;/h2&gt;
 &lt;p&gt;GP performs well, but Ricker performs adequately as well: &lt;a href=&quot;https://github.com/cboettig/nonparametric-bayes/blob/cac79bcc42433a6b8720d5d4c5824c57a850a56c/inst/examples/reed-example.md&quot;&gt;reed-example.md&lt;/a&gt; (shows an example with stationary data).&lt;/p&gt;
 &lt;div class=&quot;figure&quot;&gt;
-&lt;img src=&quot;http://www.carlboettiger.info/assets/figures/2012-12-15-8b057f1f24-gp-plot.png&quot; alt=&quot;plot of chunk gp-plot&quot; /&gt;&lt;p class=&quot;caption&quot;&gt;plot of chunk gp-plot&lt;/p&gt;
+&lt;img src=&quot;/assets/figures/2012-12-15-8b057f1f24-gp-plot.png&quot; alt=&quot;plot of chunk gp-plot&quot; /&gt;&lt;p class=&quot;caption&quot;&gt;plot of chunk gp-plot&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;figure&quot;&gt;
-&lt;img src=&quot;http://www.carlboettiger.info/assets/figures/2012-12-15-8b057f1f24-policy_plot.png&quot; alt=&quot;plot of chunk policy_plot&quot; /&gt;&lt;p class=&quot;caption&quot;&gt;plot of chunk policy_plot&lt;/p&gt;
+&lt;img src=&quot;/assets/figures/2012-12-15-8b057f1f24-policy_plot.png&quot; alt=&quot;plot of chunk policy_plot&quot; /&gt;&lt;p class=&quot;caption&quot;&gt;plot of chunk policy_plot&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;figure&quot;&gt;
-&lt;img src=&quot;http://www.carlboettiger.info/assets/figures/2012-12-15-8b057f1f24-sim-fish.png&quot; alt=&quot;plot of chunk sim-fish&quot; /&gt;&lt;p class=&quot;caption&quot;&gt;plot of chunk sim-fish&lt;/p&gt;
+&lt;img src=&quot;/assets/figures/2012-12-15-8b057f1f24-sim-fish.png&quot; alt=&quot;plot of chunk sim-fish&quot; /&gt;&lt;p class=&quot;caption&quot;&gt;plot of chunk sim-fish&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;figure&quot;&gt;
-&lt;img src=&quot;http://www.carlboettiger.info/assets/figures/2012-12-15-8b057f1f24-sim-harvest.png&quot; alt=&quot;plot of chunk sim-harvest&quot; /&gt;&lt;p class=&quot;caption&quot;&gt;plot of chunk sim-harvest&lt;/p&gt;
+&lt;img src=&quot;/assets/figures/2012-12-15-8b057f1f24-sim-harvest.png&quot; alt=&quot;plot of chunk sim-harvest&quot; /&gt;&lt;p class=&quot;caption&quot;&gt;plot of chunk sim-harvest&lt;/p&gt;
 &lt;/div&gt;
 &lt;h2 id=&quot;other-advances&quot;&gt;Other advances&lt;/h2&gt;
 &lt;p&gt;Approaches shown above address a variety of issues as well:&lt;/p&gt;
@@ -1495,12 +1495,12 @@ a &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;k
 &lt;p&gt;Exploring this by comparing evolution of the probability density for the population size under the transition function. Consider this example from a May1979 model (full run in &lt;a href=&quot;&quot;&gt;may1979-example.md&lt;/a&gt;): The Gaussian process infers a rather pessemistic evolution of the probabilty density (grey distribution becomes black distribution when unharvested, 20 years (OptTime)):&lt;/p&gt;
 &lt;h4 id=&quot;gp-transition-function&quot;&gt;GP transition function&lt;/h4&gt;
 &lt;div class=&quot;figure&quot;&gt;
-&lt;img src=&quot;http://www.carlboettiger.info/assets/figures/2012-12-15-a3aad15b15-gp-F-sim.png&quot; alt=&quot;plot of chunk gp-F-sim&quot; /&gt;&lt;p class=&quot;caption&quot;&gt;plot of chunk gp-F-sim&lt;/p&gt;
+&lt;img src=&quot;/assets/figures/2012-12-15-a3aad15b15-gp-F-sim.png&quot; alt=&quot;plot of chunk gp-F-sim&quot; /&gt;&lt;p class=&quot;caption&quot;&gt;plot of chunk gp-F-sim&lt;/p&gt;
 &lt;/div&gt;
 &lt;p&gt;Whereas the actual transition function moves the stock to a tight window around the high carrying capacity:&lt;/p&gt;
 &lt;h4 id=&quot;true-transition-function&quot;&gt;true transition function&lt;/h4&gt;
 &lt;div class=&quot;figure&quot;&gt;
-&lt;img src=&quot;http://www.carlboettiger.info/assets/figures/2012-12-15-a3aad15b15-par-F-sim.png&quot; alt=&quot;plot of chunk par-F-sim&quot; /&gt;&lt;p class=&quot;caption&quot;&gt;plot of chunk par-F-sim&lt;/p&gt;
+&lt;img src=&quot;/assets/figures/2012-12-15-a3aad15b15-par-F-sim.png&quot; alt=&quot;plot of chunk par-F-sim&quot; /&gt;&lt;p class=&quot;caption&quot;&gt;plot of chunk par-F-sim&lt;/p&gt;
 &lt;/div&gt;
 &lt;p&gt;Often this results in a policy function that harvests all the fish, since they won’t persist. Exploring approaches to avoid such solutions, such as adding a reward for leaving some standing stock at the boundary time (issue &lt;a href=&quot;https://github.com/cboettig/nonparametric-bayes/issues/10&quot;&gt;#10&lt;/a&gt;).&lt;/p&gt;
 &lt;h2 id=&quot;multi-species-examples-issue-7&quot;&gt;Multi-species examples (issue &lt;a href=&quot;https://github.com/cboettig/nonparametric-bayes/issues/7&quot;&gt;#7&lt;/a&gt;)&lt;/h2&gt;
@@ -1598,7 +1598,7 @@ priors &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&q
 priors &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;melt&lt;/span&gt;(priors, &lt;span class=&quot;dt&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;st&quot;&gt;&amp;quot;x&amp;quot;&lt;/span&gt;)
 &lt;span class=&quot;kw&quot;&gt;ggplot&lt;/span&gt;(priors) +&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;geom_line&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;aes&lt;/span&gt;(x, value)) +&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;facet_wrap&lt;/span&gt;(~variable, &lt;span class=&quot;dt&quot;&gt;scale=&lt;/span&gt;&lt;span class=&quot;st&quot;&gt;&amp;quot;free&amp;quot;&lt;/span&gt;)&lt;/code&gt;&lt;/pre&gt;
 &lt;div class=&quot;figure&quot;&gt;
-&lt;img src=&quot;http://www.carlboettiger.info/assets/figures/2012-12-10-9b2d792442-unnamed-chunk-5.png&quot; alt=&quot;plot of chunk unnamed-chunk-5&quot; /&gt;&lt;p class=&quot;caption&quot;&gt;plot of chunk unnamed-chunk-5&lt;/p&gt;
+&lt;img src=&quot;/assets/figures/2012-12-10-9b2d792442-unnamed-chunk-5.png&quot; alt=&quot;plot of chunk unnamed-chunk-5&quot; /&gt;&lt;p class=&quot;caption&quot;&gt;plot of chunk unnamed-chunk-5&lt;/p&gt;
 &lt;/div&gt;
 &lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;gp &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;bgp&lt;/span&gt;(&lt;span class=&quot;dt&quot;&gt;X=&lt;/span&gt;x, &lt;span class=&quot;dt&quot;&gt;XX=&lt;/span&gt;X, &lt;span class=&quot;dt&quot;&gt;Z=&lt;/span&gt;y, &lt;span class=&quot;dt&quot;&gt;verb=&lt;/span&gt;&lt;span class=&quot;dv&quot;&gt;0&lt;/span&gt;,
           &lt;span class=&quot;dt&quot;&gt;meanfn=&lt;/span&gt;&lt;span class=&quot;st&quot;&gt;&amp;quot;constant&amp;quot;&lt;/span&gt;, &lt;span class=&quot;dt&quot;&gt;bprior=&lt;/span&gt;&lt;span class=&quot;st&quot;&gt;&amp;quot;b0&amp;quot;&lt;/span&gt;, &lt;span class=&quot;dt&quot;&gt;BTE=&lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;c&lt;/span&gt;(&lt;span class=&quot;dv&quot;&gt;2000&lt;/span&gt;,&lt;span class=&quot;dv&quot;&gt;6000&lt;/span&gt;,&lt;span class=&quot;dv&quot;&gt;2&lt;/span&gt;), &lt;span class=&quot;dt&quot;&gt;m0r1=&lt;/span&gt;&lt;span class=&quot;ot&quot;&gt;FALSE&lt;/span&gt;, 
@@ -1626,7 +1626,7 @@ tgp_dat &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&
 &lt;span class=&quot;st&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;geom_line&lt;/span&gt;(&lt;span class=&quot;dt&quot;&gt;dat =&lt;/span&gt; manual_dat, &lt;span class=&quot;kw&quot;&gt;aes&lt;/span&gt;(x, y), &lt;span class=&quot;dt&quot;&gt;col =&lt;/span&gt; &lt;span class=&quot;st&quot;&gt;&amp;quot;blue&amp;quot;&lt;/span&gt;)  +&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;co&quot;&gt;#MEAN    &lt;/span&gt;
 &lt;span class=&quot;st&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;theme_bw&lt;/span&gt;() +&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;theme&lt;/span&gt;(&lt;span class=&quot;dt&quot;&gt;plot.background =&lt;/span&gt; &lt;span class=&quot;kw&quot;&gt;element_rect&lt;/span&gt;(&lt;span class=&quot;dt&quot;&gt;fill =&lt;/span&gt; &lt;span class=&quot;st&quot;&gt;&amp;quot;transparent&amp;quot;&lt;/span&gt;,&lt;span class=&quot;dt&quot;&gt;colour =&lt;/span&gt; &lt;span class=&quot;ot&quot;&gt;NA&lt;/span&gt;))&lt;/code&gt;&lt;/pre&gt;
 &lt;div class=&quot;figure&quot;&gt;
-&lt;img src=&quot;http://www.carlboettiger.info/assets/figures/2012-12-10-9b2d792442-gp-plot.png&quot; alt=&quot;plot of chunk gp-plot&quot; /&gt;&lt;p class=&quot;caption&quot;&gt;plot of chunk gp-plot&lt;/p&gt;
+&lt;img src=&quot;/assets/figures/2012-12-10-9b2d792442-gp-plot.png&quot; alt=&quot;plot of chunk gp-plot&quot; /&gt;&lt;p class=&quot;caption&quot;&gt;plot of chunk gp-plot&lt;/p&gt;
 &lt;/div&gt;
 &lt;h2 id=&quot;posteriors-of-hyperparameters&quot;&gt;Posteriors of hyperparameters&lt;/h2&gt;
 &lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;&lt;span class=&quot;kw&quot;&gt;require&lt;/span&gt;(reshape2)
@@ -1634,7 +1634,7 @@ hyperparameters &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span
 posteriors &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;melt&lt;/span&gt;(gp$trace$XX[[&lt;span class=&quot;dv&quot;&gt;1&lt;/span&gt;]][,hyperparameters], &lt;span class=&quot;dt&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;st&quot;&gt;&amp;quot;index&amp;quot;&lt;/span&gt;)
 &lt;span class=&quot;kw&quot;&gt;ggplot&lt;/span&gt;(posteriors) +&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;geom_histogram&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;aes&lt;/span&gt;(value)) +&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;facet_wrap&lt;/span&gt;(~variable, &lt;span class=&quot;dt&quot;&gt;scales=&lt;/span&gt;&lt;span class=&quot;st&quot;&gt;&amp;quot;free&amp;quot;&lt;/span&gt;)&lt;/code&gt;&lt;/pre&gt;
 &lt;div class=&quot;figure&quot;&gt;
-&lt;img src=&quot;http://www.carlboettiger.info/assets/figures/2012-12-10-9b2d792442-unnamed-chunk-9.png&quot; alt=&quot;plot of chunk unnamed-chunk-9&quot; /&gt;&lt;p class=&quot;caption&quot;&gt;plot of chunk unnamed-chunk-9&lt;/p&gt;
+&lt;img src=&quot;/assets/figures/2012-12-10-9b2d792442-unnamed-chunk-9.png&quot; alt=&quot;plot of chunk unnamed-chunk-9&quot; /&gt;&lt;p class=&quot;caption&quot;&gt;plot of chunk unnamed-chunk-9&lt;/p&gt;
 &lt;/div&gt;</content>
  </entry>
  
@@ -1772,14 +1772,14 @@ d prior fixed&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;pars &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;melt&lt;/span&gt;(gp$trace$XX[[&lt;span class=&quot;dv&quot;&gt;1&lt;/span&gt;]], &lt;span class=&quot;dt&quot;&gt;id =&lt;/span&gt; &lt;span class=&quot;st&quot;&gt;&amp;quot;index&amp;quot;&lt;/span&gt;)
 &lt;span class=&quot;kw&quot;&gt;ggplot&lt;/span&gt;(pars, &lt;span class=&quot;kw&quot;&gt;aes&lt;/span&gt;(index, value)) +&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;geom_line&lt;/span&gt;() +&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;facet_wrap&lt;/span&gt;(~variable, &lt;span class=&quot;dt&quot;&gt;scales=&lt;/span&gt;&lt;span class=&quot;st&quot;&gt;&amp;quot;free_y&amp;quot;&lt;/span&gt;)&lt;/code&gt;&lt;/pre&gt;
 &lt;div class=&quot;figure&quot;&gt;
-&lt;img src=&quot;http://www.carlboettiger.info/assets/figures/2012-12-04-046b509f8d-unnamed-chunk-5.png&quot; alt=&quot;plot of chunk unnamed-chunk-5&quot; /&gt;&lt;p class=&quot;caption&quot;&gt;plot of chunk unnamed-chunk-5&lt;/p&gt;
+&lt;img src=&quot;/assets/figures/2012-12-04-046b509f8d-unnamed-chunk-5.png&quot; alt=&quot;plot of chunk unnamed-chunk-5&quot; /&gt;&lt;p class=&quot;caption&quot;&gt;plot of chunk unnamed-chunk-5&lt;/p&gt;
 &lt;/div&gt;
 &lt;p&gt;It is possible to calculate summary statistics and check out the distribution of these fellows.&lt;/p&gt;
 &lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;&lt;span class=&quot;kw&quot;&gt;mean&lt;/span&gt;(gp$trace$XX[[&lt;span class=&quot;dv&quot;&gt;1&lt;/span&gt;]][,&lt;span class=&quot;st&quot;&gt;&amp;quot;nug&amp;quot;&lt;/span&gt;])&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;[1] 0.009755&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;&lt;span class=&quot;kw&quot;&gt;ggplot&lt;/span&gt;(pars, &lt;span class=&quot;kw&quot;&gt;aes&lt;/span&gt;(value)) +&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;geom_histogram&lt;/span&gt;() +&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;facet_wrap&lt;/span&gt;(~variable, &lt;span class=&quot;dt&quot;&gt;scales=&lt;/span&gt;&lt;span class=&quot;st&quot;&gt;&amp;quot;free&amp;quot;&lt;/span&gt;)&lt;/code&gt;&lt;/pre&gt;
 &lt;div class=&quot;figure&quot;&gt;
-&lt;img src=&quot;http://www.carlboettiger.info/assets/figures/2012-12-04-046b509f8d-unnamed-chunk-6.png&quot; alt=&quot;plot of chunk unnamed-chunk-6&quot; /&gt;&lt;p class=&quot;caption&quot;&gt;plot of chunk unnamed-chunk-6&lt;/p&gt;
+&lt;img src=&quot;/assets/figures/2012-12-04-046b509f8d-unnamed-chunk-6.png&quot; alt=&quot;plot of chunk unnamed-chunk-6&quot; /&gt;&lt;p class=&quot;caption&quot;&gt;plot of chunk unnamed-chunk-6&lt;/p&gt;
 &lt;/div&gt;
 &lt;h2 id=&quot;extracting-the-estimated-process&quot;&gt;Extracting the estimated process&lt;/h2&gt;
 &lt;p&gt;(The &lt;strong&gt;MAP&lt;/strong&gt;, maximum a posteriori expected mean and variance).&lt;/p&gt;
@@ -1799,7 +1799,7 @@ dat &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot
     p1 &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;p1 +&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;geom_line&lt;/span&gt;(&lt;span class=&quot;dt&quot;&gt;data =&lt;/span&gt; true, &lt;span class=&quot;kw&quot;&gt;aes&lt;/span&gt;(x, y), &lt;span class=&quot;dt&quot;&gt;col =&lt;/span&gt; &lt;span class=&quot;st&quot;&gt;&amp;quot;red&amp;quot;&lt;/span&gt;, &lt;span class=&quot;dt&quot;&gt;lty =&lt;/span&gt; &lt;span class=&quot;dv&quot;&gt;2&lt;/span&gt;) 
 p1 +&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;theme_notebook&lt;/code&gt;&lt;/pre&gt;
 &lt;div class=&quot;figure&quot;&gt;
-&lt;img src=&quot;http://www.carlboettiger.info/assets/figures/2012-12-04-046b509f8d-gp-plot.png&quot; alt=&quot;plot of chunk gp-plot&quot; /&gt;&lt;p class=&quot;caption&quot;&gt;plot of chunk gp-plot&lt;/p&gt;
+&lt;img src=&quot;/assets/figures/2012-12-04-046b509f8d-gp-plot.png&quot; alt=&quot;plot of chunk gp-plot&quot; /&gt;&lt;p class=&quot;caption&quot;&gt;plot of chunk gp-plot&lt;/p&gt;
 &lt;/div&gt;
 &lt;p&gt;Find the actual optimum policy from the true parametric model&lt;/p&gt;
 &lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;x_grid &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;dat$x
@@ -1828,7 +1828,7 @@ policy_plot &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span cla
 &lt;span class=&quot;st&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;geom_point&lt;/span&gt;() +&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;xlab&lt;/span&gt;(&lt;span class=&quot;st&quot;&gt;&amp;quot;stock size&amp;quot;&lt;/span&gt;) +&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;ylab&lt;/span&gt;(&lt;span class=&quot;st&quot;&gt;&amp;quot;escapement&amp;quot;&lt;/span&gt;) 
 policy_plot +&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;theme_notebook&lt;/code&gt;&lt;/pre&gt;
 &lt;div class=&quot;figure&quot;&gt;
-&lt;img src=&quot;http://www.carlboettiger.info/assets/figures/2012-12-04-046b509f8d-policy_plot.png&quot; alt=&quot;plot of chunk policy_plot&quot; /&gt;&lt;p class=&quot;caption&quot;&gt;plot of chunk policy_plot&lt;/p&gt;
+&lt;img src=&quot;/assets/figures/2012-12-04-046b509f8d-policy_plot.png&quot; alt=&quot;plot of chunk policy_plot&quot; /&gt;&lt;p class=&quot;caption&quot;&gt;plot of chunk policy_plot&lt;/p&gt;
 &lt;/div&gt;
 &lt;p&gt;We can see what happens when we attempt to manage a stock using this:&lt;/p&gt;
 &lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;z_g &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;function() &lt;span class=&quot;kw&quot;&gt;rlnorm&lt;/span&gt;(&lt;span class=&quot;dv&quot;&gt;1&lt;/span&gt;,&lt;span class=&quot;dv&quot;&gt;0&lt;/span&gt;, sigma_g)
@@ -1841,7 +1841,7 @@ df &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;
 simplot &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;ggplot&lt;/span&gt;(df) +&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;geom_line&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;aes&lt;/span&gt;(time,value, &lt;span class=&quot;dt&quot;&gt;color=&lt;/span&gt;variable))
 simplot +&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;theme_notebook&lt;/code&gt;&lt;/pre&gt;
 &lt;div class=&quot;figure&quot;&gt;
-&lt;img src=&quot;http://www.carlboettiger.info/assets/figures/2012-12-04-046b509f8d-simplot.png&quot; alt=&quot;plot of chunk simplot&quot; /&gt;&lt;p class=&quot;caption&quot;&gt;plot of chunk simplot&lt;/p&gt;
+&lt;img src=&quot;/assets/figures/2012-12-04-046b509f8d-simplot.png&quot; alt=&quot;plot of chunk simplot&quot; /&gt;&lt;p class=&quot;caption&quot;&gt;plot of chunk simplot&lt;/p&gt;
 &lt;/div&gt;</content>
  </entry>
  
@@ -1858,33 +1858,33 @@ simplot +&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;theme_notebook&lt;/code&
 &lt;h3 id=&quot;figure-3&quot;&gt;Figure 3&lt;/h3&gt;
 &lt;h4 id=&quot;stock-state-variable-dynamics&quot;&gt;Stock (state variable) dynamics&lt;/h4&gt;
 &lt;div class=&quot;figure&quot;&gt;
-&lt;img src=&quot;http://www.carlboettiger.info/assets/figures/2012-12-05-72dc8741fb-p1.png&quot; /&gt;
+&lt;img src=&quot;/assets/figures/2012-12-05-72dc8741fb-p1.png&quot; /&gt;
 &lt;/div&gt;
 &lt;h4 id=&quot;harvest-control-variable-dynamics&quot;&gt;Harvest (control variable) dynamics&lt;/h4&gt;
 &lt;div class=&quot;figure&quot;&gt;
-&lt;img src=&quot;http://www.carlboettiger.info/assets/figures/2012-12-05-72dc8741fb-Figure3.png&quot; /&gt;
+&lt;img src=&quot;/assets/figures/2012-12-05-72dc8741fb-Figure3.png&quot; /&gt;
 &lt;/div&gt;
 &lt;h3 id=&quot;figure-4&quot;&gt;Figure 4&lt;/h3&gt;
 &lt;h4 id=&quot;stock-state-variable-dynamics-1&quot;&gt;Stock (state variable) dynamics&lt;/h4&gt;
 &lt;div class=&quot;figure&quot;&gt;
-&lt;img src=&quot;http://www.carlboettiger.info/assets/figures/2012-12-05-72dc8741fb-Figure4S1.png&quot; /&gt;
+&lt;img src=&quot;/assets/figures/2012-12-05-72dc8741fb-Figure4S1.png&quot; /&gt;
 &lt;/div&gt;
 &lt;div class=&quot;figure&quot;&gt;
-&lt;img src=&quot;http://www.carlboettiger.info/assets/figures/2012-12-05-72dc8741fb-Figure4S2.png&quot; /&gt;
+&lt;img src=&quot;/assets/figures/2012-12-05-72dc8741fb-Figure4S2.png&quot; /&gt;
 &lt;/div&gt;
 &lt;h5 id=&quot;harvest-control-variable-dynamics-1&quot;&gt;Harvest (control variable) dynamics&lt;/h5&gt;
 &lt;div class=&quot;figure&quot;&gt;
-&lt;img src=&quot;http://www.carlboettiger.info/assets/figures/2012-12-05-72dc8741fb-Figure41.png&quot; /&gt;
+&lt;img src=&quot;/assets/figures/2012-12-05-72dc8741fb-Figure41.png&quot; /&gt;
 &lt;/div&gt;
 &lt;div class=&quot;figure&quot;&gt;
-&lt;img src=&quot;http://www.carlboettiger.info/assets/figures/2012-12-05-72dc8741fb-Figure42.png&quot; /&gt;
+&lt;img src=&quot;/assets/figures/2012-12-05-72dc8741fb-Figure42.png&quot; /&gt;
 &lt;/div&gt;
 &lt;p&gt;&lt;a href=&quot;https://github.com/cboettig/pdg_control/blob/25e6f1c1a599440be790a7ec047b8b63540255c5/inst/examples/policycosts/writeup.md&quot;&gt;full knitr file here&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;These are calculated with &lt;code&gt;c0 = 30&lt;/code&gt;. There’s corresponding figures when fishing effort itself is cost-free, &lt;code&gt;c0 = 0&lt;/code&gt;. See &lt;a href=&quot;https://github.com/cboettig/pdg_control/blob/cccec55a8ac2ef47dea99d45fdb732e5028aec98/inst/examples/policycosts/costfree.md&quot;&gt;costfree.md&lt;/a&gt;. Looks like the &lt;code&gt;c2&lt;/code&gt; range needs to be extended for this run.&lt;/p&gt;
 &lt;h3 id=&quot;figure-2&quot;&gt;Figure 2&lt;/h3&gt;
 &lt;p&gt;The apples-to-apples illustration is also generated in this script.&lt;/p&gt;
 &lt;div class=&quot;figure&quot;&gt;
-&lt;img src=&quot;http://www.carlboettiger.info/assets/figures/2012-12-05-72dc8741fb-apples_plot.png&quot; /&gt;
+&lt;img src=&quot;/assets/figures/2012-12-05-72dc8741fb-apples_plot.png&quot; /&gt;
 &lt;/div&gt;
 &lt;h3 id=&quot;misc-notes&quot;&gt;Misc notes&lt;/h3&gt;
 &lt;p&gt;Caching is pretty helpful in fiddling with these slow computations. Sometimes it helps to copy the cache of the intensive part of a run over from the supercomputer to the local machine, and load the whole cache into an interactive R session. Loading the whole cache can be done as such:&lt;/p&gt;
@@ -1909,7 +1909,7 @@ files &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&qu
 &lt;h3 id=&quot;plot-appearance-transparency-in-the-notebook&quot;&gt;Plot appearance (transparency) in the notebook&lt;/h3&gt;
 &lt;p&gt;It’s not easy to generate figures that display nicely in both dark and light themes (well, I should just tell ggplot to use a solarized set of theme colors, but I’m too lazy to write that). Meanwhile, just setting the transparent background to the plot, and transparent grid lines against the grey boxes seems to do pretty well:&lt;/p&gt;
 &lt;div class=&quot;figure&quot;&gt;
-&lt;img src=&quot;http://www.carlboettiger.info/assets/figures/2012-12-04-046b509f8d-unnamed-chunk-6.png&quot; alt=&quot;Example transparent plot&quot; /&gt;&lt;p class=&quot;caption&quot;&gt;Example transparent plot&lt;/p&gt;
+&lt;img src=&quot;/assets/figures/2012-12-04-046b509f8d-unnamed-chunk-6.png&quot; alt=&quot;Example transparent plot&quot; /&gt;&lt;p class=&quot;caption&quot;&gt;Example transparent plot&lt;/p&gt;
 &lt;/div&gt;
 &lt;p&gt;This is accomplished with the codeblock below. Note that we need to tell &lt;code&gt;knitr&lt;/code&gt; chunks to set the background of the png device to transparent, as well as telling ggplot what we want to be transparent:&lt;/p&gt;
 &lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;opts_chunk$&lt;span class=&quot;kw&quot;&gt;set&lt;/span&gt;(&lt;span class=&quot;dt&quot;&gt;dev.args=&lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;list&lt;/span&gt;(&lt;span class=&quot;dt&quot;&gt;bg=&lt;/span&gt;&lt;span class=&quot;st&quot;&gt;&amp;quot;transparent&amp;quot;&lt;/span&gt;))
@@ -1960,13 +1960,13 @@ theme_notebook &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;
 &lt;/ul&gt;
 &lt;p&gt;Now getting reasonable performance of the Gaussian process relative to the optimal policy (also see earlier examples below). Comforting to see that the Gaussian Process results in slightly larger uncertainty and manages slightly more conservatively (higher standing stock, lower harvests). Very conservative outside range of data – resulting in a policy function deviating strongly from Reed’s constant escapement.&lt;/p&gt;
 &lt;div class=&quot;figure&quot;&gt;
-&lt;img src=&quot;http://www.carlboettiger.info/assets/figures/2012-11-28-ca583db171-unnamed-chunk-2.png&quot; alt=&quot;plot of chunk unnamed-chunk-2&quot; /&gt;&lt;p class=&quot;caption&quot;&gt;plot of chunk unnamed-chunk-2&lt;/p&gt;
+&lt;img src=&quot;/assets/figures/2012-11-28-ca583db171-unnamed-chunk-2.png&quot; alt=&quot;plot of chunk unnamed-chunk-2&quot; /&gt;&lt;p class=&quot;caption&quot;&gt;plot of chunk unnamed-chunk-2&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;figure&quot;&gt;
-&lt;img src=&quot;http://www.carlboettiger.info/assets/figures/2012-11-28-ca583db171-policy_plot.png&quot; alt=&quot;plot of chunk policy_plot&quot; /&gt;&lt;p class=&quot;caption&quot;&gt;plot of chunk policy_plot&lt;/p&gt;
+&lt;img src=&quot;/assets/figures/2012-11-28-ca583db171-policy_plot.png&quot; alt=&quot;plot of chunk policy_plot&quot; /&gt;&lt;p class=&quot;caption&quot;&gt;plot of chunk policy_plot&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;figure&quot;&gt;
-&lt;img src=&quot;http://www.carlboettiger.info/assets/figures/2012-11-28-ca583db171-simplot.png&quot; alt=&quot;plot of chunk simplot&quot; /&gt;&lt;p class=&quot;caption&quot;&gt;plot of chunk simplot&lt;/p&gt;
+&lt;img src=&quot;/assets/figures/2012-11-28-ca583db171-simplot.png&quot; alt=&quot;plot of chunk simplot&quot; /&gt;&lt;p class=&quot;caption&quot;&gt;plot of chunk simplot&lt;/p&gt;
 &lt;/div&gt;
 &lt;h3 id=&quot;functionalize-package&quot;&gt;Functionalize package&lt;/h3&gt;
 &lt;p&gt;Existing methods now all implemented in package function &lt;code&gt;gp_fit&lt;/code&gt;, and method for SDP via GP in &lt;code&gt;gp_transition_matrices&lt;/code&gt;.&lt;/p&gt;
@@ -2057,12 +2057,12 @@ npv0&lt;/code&gt;&lt;/pre&gt;
 dat &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;melt&lt;/span&gt;(dat, &lt;span class=&quot;dt&quot;&gt;id =&lt;/span&gt; &lt;span class=&quot;st&quot;&gt;&amp;quot;c2&amp;quot;&lt;/span&gt;)
 &lt;span class=&quot;kw&quot;&gt;ggplot&lt;/span&gt;(dat, &lt;span class=&quot;kw&quot;&gt;aes&lt;/span&gt;(c2, value, &lt;span class=&quot;dt&quot;&gt;col =&lt;/span&gt; variable)) +&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;geom_point&lt;/span&gt;() +&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;geom_line&lt;/span&gt;()&lt;/code&gt;&lt;/pre&gt;
 &lt;div class=&quot;figure&quot;&gt;
-&lt;img src=&quot;http://www.carlboettiger.info/assets/figures/2012-11-28-5e6d8d80ac-npv-plot.png&quot; alt=&quot;plot of chunk npv-plot&quot; /&gt;&lt;p class=&quot;caption&quot;&gt;plot of chunk npv-plot&lt;/p&gt;
+&lt;img src=&quot;/assets/figures/2012-11-28-5e6d8d80ac-npv-plot.png&quot; alt=&quot;plot of chunk npv-plot&quot; /&gt;&lt;p class=&quot;caption&quot;&gt;plot of chunk npv-plot&lt;/p&gt;
 &lt;/div&gt;
 &lt;p&gt;Find the value of &lt;code&gt;c2&lt;/code&gt; that brings each penalty closest to 75% of the cost-free adjustment value:&lt;/p&gt;
 &lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;&lt;span class=&quot;kw&quot;&gt;ggplot&lt;/span&gt;(dat, &lt;span class=&quot;kw&quot;&gt;aes&lt;/span&gt;(c2, (npv0 -&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;value)/npv0, &lt;span class=&quot;dt&quot;&gt;col =&lt;/span&gt; variable)) +&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;geom_point&lt;/span&gt;() +&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;geom_line&lt;/span&gt;()&lt;/code&gt;&lt;/pre&gt;
 &lt;div class=&quot;figure&quot;&gt;
-&lt;img src=&quot;http://www.carlboettiger.info/assets/figures/2012-11-28-5e6d8d80ac-apples_plot.png&quot; alt=&quot;plot of chunk apples_plot&quot; /&gt;&lt;p class=&quot;caption&quot;&gt;plot of chunk apples_plot&lt;/p&gt;
+&lt;img src=&quot;/assets/figures/2012-11-28-5e6d8d80ac-apples_plot.png&quot; alt=&quot;plot of chunk apples_plot&quot; /&gt;&lt;p class=&quot;caption&quot;&gt;plot of chunk apples_plot&lt;/p&gt;
 &lt;/div&gt;
 &lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;closest &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;function(x, v) {
     &lt;span class=&quot;kw&quot;&gt;which.min&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;abs&lt;/span&gt;(v -&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;x))
@@ -2114,21 +2114,21 @@ dt &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;
     &lt;span class=&quot;dt&quot;&gt;y =&lt;/span&gt; &lt;span class=&quot;st&quot;&gt;&amp;quot;stock size&amp;quot;&lt;/span&gt;, &lt;span class=&quot;dt&quot;&gt;title =&lt;/span&gt; &lt;span class=&quot;st&quot;&gt;&amp;quot;Stock Dynamics&amp;quot;&lt;/span&gt;)
 p0&lt;/code&gt;&lt;/pre&gt;
 &lt;div class=&quot;figure&quot;&gt;
-&lt;img src=&quot;http://www.carlboettiger.info/assets/figures/2012-11-28-5e6d8d80ac-p0.png&quot; alt=&quot;plot of chunk p0&quot; /&gt;&lt;p class=&quot;caption&quot;&gt;plot of chunk p0&lt;/p&gt;
+&lt;img src=&quot;/assets/figures/2012-11-28-5e6d8d80ac-p0.png&quot; alt=&quot;plot of chunk p0&quot; /&gt;&lt;p class=&quot;caption&quot;&gt;plot of chunk p0&lt;/p&gt;
 &lt;/div&gt;
 &lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;p1 &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;ggplot&lt;/span&gt;(dt) +&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;geom_line&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;aes&lt;/span&gt;(time, alternate), &lt;span class=&quot;dt&quot;&gt;col =&lt;/span&gt; &lt;span class=&quot;st&quot;&gt;&amp;quot;grey20&amp;quot;&lt;/span&gt;, &lt;span class=&quot;dt&quot;&gt;lwd =&lt;/span&gt; &lt;span class=&quot;dv&quot;&gt;1&lt;/span&gt;) +&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;
 &lt;span class=&quot;st&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;geom_line&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;aes&lt;/span&gt;(time, fishstock), &lt;span class=&quot;dt&quot;&gt;col =&lt;/span&gt; &lt;span class=&quot;kw&quot;&gt;rgb&lt;/span&gt;(&lt;span class=&quot;dv&quot;&gt;0&lt;/span&gt;, &lt;span class=&quot;dv&quot;&gt;0&lt;/span&gt;, &lt;span class=&quot;dv&quot;&gt;1&lt;/span&gt;, &lt;span class=&quot;fl&quot;&gt;0.8&lt;/span&gt;)) +&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;facet_wrap&lt;/span&gt;(~penalty_fn) +&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;
 &lt;span class=&quot;st&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;labs&lt;/span&gt;(&lt;span class=&quot;dt&quot;&gt;x =&lt;/span&gt; &lt;span class=&quot;st&quot;&gt;&amp;quot;time&amp;quot;&lt;/span&gt;, &lt;span class=&quot;dt&quot;&gt;y =&lt;/span&gt; &lt;span class=&quot;st&quot;&gt;&amp;quot;stock size&amp;quot;&lt;/span&gt;, &lt;span class=&quot;dt&quot;&gt;title =&lt;/span&gt; &lt;span class=&quot;st&quot;&gt;&amp;quot;Stock Dynamics&amp;quot;&lt;/span&gt;)
 p1&lt;/code&gt;&lt;/pre&gt;
 &lt;div class=&quot;figure&quot;&gt;
-&lt;img src=&quot;http://www.carlboettiger.info/assets/figures/2012-11-28-5e6d8d80ac-p1.png&quot; alt=&quot;plot of chunk p1&quot; /&gt;&lt;p class=&quot;caption&quot;&gt;plot of chunk p1&lt;/p&gt;
+&lt;img src=&quot;/assets/figures/2012-11-28-5e6d8d80ac-p1.png&quot; alt=&quot;plot of chunk p1&quot; /&gt;&lt;p class=&quot;caption&quot;&gt;plot of chunk p1&lt;/p&gt;
 &lt;/div&gt;
 &lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;p2 &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;ggplot&lt;/span&gt;(dt) +&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;geom_line&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;aes&lt;/span&gt;(time, harvest_alt), &lt;span class=&quot;dt&quot;&gt;col =&lt;/span&gt; &lt;span class=&quot;st&quot;&gt;&amp;quot;grey20&amp;quot;&lt;/span&gt;, &lt;span class=&quot;dt&quot;&gt;lwd =&lt;/span&gt; &lt;span class=&quot;dv&quot;&gt;1&lt;/span&gt;) +&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;
 &lt;span class=&quot;st&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;geom_line&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;aes&lt;/span&gt;(time, harvest), &lt;span class=&quot;dt&quot;&gt;col =&lt;/span&gt; &lt;span class=&quot;kw&quot;&gt;rgb&lt;/span&gt;(&lt;span class=&quot;dv&quot;&gt;0&lt;/span&gt;, &lt;span class=&quot;dv&quot;&gt;0&lt;/span&gt;, &lt;span class=&quot;dv&quot;&gt;1&lt;/span&gt;, &lt;span class=&quot;fl&quot;&gt;0.8&lt;/span&gt;)) +&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;facet_wrap&lt;/span&gt;(~penalty_fn) +&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;
 &lt;span class=&quot;st&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;labs&lt;/span&gt;(&lt;span class=&quot;dt&quot;&gt;x =&lt;/span&gt; &lt;span class=&quot;st&quot;&gt;&amp;quot;time&amp;quot;&lt;/span&gt;, &lt;span class=&quot;dt&quot;&gt;y =&lt;/span&gt; &lt;span class=&quot;st&quot;&gt;&amp;quot;havest intensity (fish taken)&amp;quot;&lt;/span&gt;, &lt;span class=&quot;dt&quot;&gt;title =&lt;/span&gt; &lt;span class=&quot;st&quot;&gt;&amp;quot;Harvest Policy Dynamics&amp;quot;&lt;/span&gt;)
 p2&lt;/code&gt;&lt;/pre&gt;
 &lt;div class=&quot;figure&quot;&gt;
-&lt;img src=&quot;http://www.carlboettiger.info/assets/figures/2012-11-28-5e6d8d80ac-p2.png&quot; alt=&quot;plot of chunk p2&quot; /&gt;&lt;p class=&quot;caption&quot;&gt;plot of chunk p2&lt;/p&gt;
+&lt;img src=&quot;/assets/figures/2012-11-28-5e6d8d80ac-p2.png&quot; alt=&quot;plot of chunk p2&quot; /&gt;&lt;p class=&quot;caption&quot;&gt;plot of chunk p2&lt;/p&gt;
 &lt;/div&gt;</content>
  </entry>
  
@@ -2169,11 +2169,11 @@ p2&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Working out the multiple uncertainty computational performance and noise forms. Fixing a few things in the way log-normal noise was calculated. Uniform noise in particular can still give rather non-smooth policy, needs a bit of digging. Uniform noise doesn’t show the non-monotonicity of the log-normal noise in measurement uncertainty though.&lt;/p&gt;
 &lt;h2 id=&quot;uniform&quot;&gt;Uniform&lt;/h2&gt;
 &lt;div class=&quot;figure&quot;&gt;
-&lt;img src=&quot;http://www.carlboettiger.info/assets/figures/2012-11-23-bcf87363db-policyfunctions.png&quot; alt=&quot;uniform noise policy functions&quot; /&gt;&lt;p class=&quot;caption&quot;&gt;uniform noise policy functions&lt;/p&gt;
+&lt;img src=&quot;/assets/figures/2012-11-23-bcf87363db-policyfunctions.png&quot; alt=&quot;uniform noise policy functions&quot; /&gt;&lt;p class=&quot;caption&quot;&gt;uniform noise policy functions&lt;/p&gt;
 &lt;/div&gt;
 &lt;h2 id=&quot;lognormal&quot;&gt;lognormal&lt;/h2&gt;
 &lt;div class=&quot;figure&quot;&gt;
-&lt;img src=&quot;http://www.carlboettiger.info/assets/figures/2012-11-22-11f7d70977-policyfunctions.png&quot; alt=&quot;log-normal noise policy functions&quot; /&gt;&lt;p class=&quot;caption&quot;&gt;log-normal noise policy functions&lt;/p&gt;
+&lt;img src=&quot;/assets/figures/2012-11-22-11f7d70977-policyfunctions.png&quot; alt=&quot;log-normal noise policy functions&quot; /&gt;&lt;p class=&quot;caption&quot;&gt;log-normal noise policy functions&lt;/p&gt;
 &lt;/div&gt;
 &lt;h3 id=&quot;log&quot;&gt;log&lt;/h3&gt;
 &lt;ul&gt;
@@ -2264,7 +2264,7 @@ p2&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;And probably needs to be written in C at least to have any hope of scaling. See implementation in &lt;a href=&quot;https://github.com/cboettig/nonparametric-bayes/blob/e19802885c6ddf2a30807e6b3addf2b9fa3e2ff0/inst/examples/sequential-method.md&quot;&gt;sequential-method&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Match is perfect (jittered to avoid overplotting the lazy way):&lt;/p&gt;
 &lt;div class=&quot;figure&quot;&gt;
-&lt;img src=&quot;http://www.carlboettiger.info/assets/figures/2012-11-19-58073767b5-unnamed-chunk-6.png&quot; alt=&quot;Sequential vs direct calculation of the mean&quot; /&gt;&lt;p class=&quot;caption&quot;&gt;Sequential vs direct calculation of the mean&lt;/p&gt;
+&lt;img src=&quot;/assets/figures/2012-11-19-58073767b5-unnamed-chunk-6.png&quot; alt=&quot;Sequential vs direct calculation of the mean&quot; /&gt;&lt;p class=&quot;caption&quot;&gt;Sequential vs direct calculation of the mean&lt;/p&gt;
 &lt;/div&gt;
 &lt;p&gt;Now should rewrite to use a grid for the covariance matrices of each data point. Memory intensive but should be much faster than function recursion.&lt;/p&gt;
 &lt;p&gt;(Should also confirm variance calculation in comparison, and test on larger grid sizes)&lt;/p&gt;</content>
@@ -2277,7 +2277,7 @@ p2&lt;/code&gt;&lt;/pre&gt;
    <id>h/2012/11/16/mult-uncertainty</id>
    <content type="html">&lt;p&gt;Fixed the &lt;a href=&quot;http://www.carlboettiger.info/2012/11/01/multiple-uncertainty-corrections.html&quot;&gt;multiple uncertainty calculation&lt;/a&gt; implementation. Code had transposed &lt;span class=&quot;math&quot;&gt;&lt;img src=&quot;http://latex.codecogs.com/png.latex?\mathbb{I}\inline&quot;/&gt;&lt;/span&gt;, also one of the &lt;span class=&quot;math&quot;&gt;&lt;img src=&quot;http://latex.codecogs.com/png.latex?\mathbb{M}\inline&quot;/&gt;&lt;/span&gt; matrices. Should still confirm final implementation. In the below example each case has log-normal growth noise present. The non-monotonic section of the measurement uncertainty&lt;/p&gt;
 &lt;div class=&quot;figure&quot;&gt;
-&lt;img src=&quot;http://www.carlboettiger.info/assets/figures/2012-11-17-f6c225f69f-policyfunctions.png&quot; /&gt;
+&lt;img src=&quot;/assets/figures/2012-11-17-f6c225f69f-policyfunctions.png&quot; /&gt;
 &lt;/div&gt;
 &lt;p&gt;&lt;a href=&quot;https://github.com/cboettig/pdg_control/commit/954cea9310063150bb42567b19caa272b34d32c2&quot;&gt;See notes on code changes inline.&lt;/a&gt;&lt;/p&gt;
 &lt;h4 id=&quot;additional-notes-from-walking-through-algoritm-step-by-step.&quot;&gt;Additional notes from walking through algoritm step by step.&lt;/h4&gt;
@@ -2534,7 +2534,7 @@ p2&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;a href=&quot;https://github.com/cboettig/pdg_control/blob/bbef99ec43c75ff1dca959c1511b44c5159f4f4c/inst/examples/mult_uncertainty_test.md&quot;&gt;example script&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Updated Edit&lt;/strong&gt;&lt;/p&gt;
 &lt;div class=&quot;figure&quot;&gt;
-&lt;img src=&quot;http://www.carlboettiger.info/assets/figures/2012-11-17-f6c225f69f-policyfunctions.png&quot; /&gt;
+&lt;img src=&quot;/assets/figures/2012-11-17-f6c225f69f-policyfunctions.png&quot; /&gt;
 &lt;/div&gt;
 &lt;p&gt;&lt;a href=&quot;https://github.com/cboettig/pdg_control/commit/954cea9310063150bb42567b19caa272b34d32c2&quot;&gt;See notes on code changes inline&lt;/a&gt;&lt;/p&gt;</content>
  </entry>
@@ -2849,7 +2849,7 @@ Posted on
 &lt;span class=&quot;ot&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;st&quot;&gt;&amp;quot;http://i.creativecommons.org/l/zero/1.0/88x31.png&amp;quot;&lt;/span&gt;&lt;span class=&quot;ot&quot;&gt; alt=&lt;/span&gt;&lt;span class=&quot;st&quot;&gt;&amp;quot;CC0&amp;quot;&lt;/span&gt;
 &lt;span class=&quot;ot&quot;&gt;style=&lt;/span&gt;&lt;span class=&quot;st&quot;&gt;&amp;quot;float:right&amp;quot;&lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;&amp;gt;&amp;lt;/a&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;div class=&quot;figure&quot;&gt;
-&lt;img src=&quot;http://www.carlboettiger.info/assets/figures/post-rdfa.png&quot; alt=&quot;When these elements are combined in a given entry, the RDFa generates this structure&quot; /&gt;&lt;p class=&quot;caption&quot;&gt;When these elements are combined in a given entry, the RDFa generates this structure&lt;/p&gt;
+&lt;img src=&quot;/assets/figures/post-rdfa.png&quot; alt=&quot;When these elements are combined in a given entry, the RDFa generates this structure&quot; /&gt;&lt;p class=&quot;caption&quot;&gt;When these elements are combined in a given entry, the RDFa generates this structure&lt;/p&gt;
 &lt;/div&gt;
 &lt;h3 id=&quot;easily-entering-rdfa&quot;&gt;Easily entering RDFa&lt;/h3&gt;
 &lt;p&gt;All of this markup content is either generally static or filled in programatically by Jekyll from the YAML headers (e.g. title, categories, tags, date), leaving me free to put the RDFa into the template files just once and forget about it. In this way I can continue to write everything in Markdown, rather than the more cumbersome HTML riddled by the addition of RDFa attributes. Unfortunately there is no easy way to escape this in writing the Homepage markup, described below, but a single case isn’t so bad.&lt;/p&gt;
@@ -2870,7 +2870,7 @@ I am  &lt;span class=&quot;kw&quot;&gt;&amp;lt;a&lt;/span&gt;&lt;span class=&quo
 &lt;span class=&quot;ot&quot;&gt;property=&lt;/span&gt;&lt;span class=&quot;st&quot;&gt;&amp;quot;schema:jobTitle&amp;quot;&lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;&amp;gt;&lt;/span&gt;a graduate student&lt;span class=&quot;kw&quot;&gt;&amp;lt;/span&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;(This excerpt gives the general flavor, see the html source of &lt;a href=&quot;http://www.carlboettiger.info&quot;&gt;index.html&lt;/a&gt; for a full example.)&lt;/p&gt;
 &lt;div class=&quot;figure&quot;&gt;
-&lt;img src=&quot;http://www.carlboettiger.info/assets/figures/homepage-rdfa.png&quot; alt=&quot;The homepage generates this RDFa structured graph (from rdfa.info/play)&quot; /&gt;&lt;p class=&quot;caption&quot;&gt;The homepage generates this RDFa structured graph (from rdfa.info/play)&lt;/p&gt;
+&lt;img src=&quot;/assets/figures/homepage-rdfa.png&quot; alt=&quot;The homepage generates this RDFa structured graph (from rdfa.info/play)&quot; /&gt;&lt;p class=&quot;caption&quot;&gt;The homepage generates this RDFa structured graph (from rdfa.info/play)&lt;/p&gt;
 &lt;/div&gt;
 &lt;h2 id=&quot;notes&quot;&gt;Notes&lt;/h2&gt;
 &lt;p&gt;Some background reading on semantics&lt;/p&gt;
@@ -4037,21 +4037,21 @@ linear &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;dt[, &lt;span cla
 &lt;p&gt;vim set sytnax language, useful for getting R highlighting in &lt;code&gt;.Rmd&lt;/code&gt; files: &lt;code&gt;setf r&lt;/code&gt;, or equivalently, &lt;code&gt;set filetype=r&lt;/code&gt; (must be lowercase r). &lt;code&gt;set filetype&lt;/code&gt; with no argument gives the current filetype.&lt;/p&gt;
 &lt;h3 id=&quot;coding&quot;&gt;Coding&lt;/h3&gt;
 &lt;ul&gt;&lt;li&gt;
-cboettig pushed to master at cboettig/labnotebook: &lt;em&gt;note on knitictations page about more recent changes fixing file names to avoid URL forbidden characters remove ampersands in titles&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/labnotebook/compare/4bf8b20420...83d294c33d&quot;&gt;07:11 2013/03/25&lt;/a&gt;
+cboettig pushed to master at cboettig/labnotebook: &lt;em&gt;fix localization of image links&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/labnotebook/compare/07b1cfd9ff...8e61ee2286&quot;&gt;06:09 2013/03/26&lt;/a&gt;
 &lt;/li&gt;&lt;li&gt;
-cboettig commented on issue cboettig/knitcitations#31: &lt;em&gt;Ah, thanks for clarifying. That example is slightly outdated actually. See how this citation renders in the current version by checking out the REA…&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/knitcitations/issues/31#issuecomment-15414211&quot;&gt;06:53 2013/03/25&lt;/a&gt;
+cboettig closed issue ropensci/rfigshare#43: &lt;em&gt;fs_update give an error&lt;/em&gt; &lt;a href=&quot;https://github.com/ropensci/rfigshare/issues/43&quot;&gt;05:56 2013/03/26&lt;/a&gt;
 &lt;/li&gt;&lt;li&gt;
-cboettig commented on issue cboettig/labnotebook#74: &lt;em&gt;Implementation: https://github.com/cboettig/labnotebook/blob/4bf8b20420da1efb1c9a94ec7bb12c7c768b68da/&lt;em&gt;plugins/jekyll-labnotebook-plugins/git&lt;/em&gt;modif…&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/labnotebook/issues/74#issuecomment-15412922&quot;&gt;06:40 2013/03/25&lt;/a&gt;
+cboettig commented on issue ropensci/rfigshare#43: &lt;em&gt;Closed by pull request #44 from @jcolomb Thanks!&lt;/em&gt; &lt;a href=&quot;https://github.com/ropensci/rfigshare/issues/43#issuecomment-15474794&quot;&gt;05:56 2013/03/26&lt;/a&gt;
 &lt;/li&gt;&lt;li&gt;
-cboettig opened issue cboettig/labnotebook#74: &lt;em&gt;Get date modified automatically&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/labnotebook/issues/74&quot;&gt;06:39 2013/03/25&lt;/a&gt;
+cboettig closed pull request ropensci/rfigshare#44: &lt;em&gt;fs_update and other&lt;/em&gt; &lt;a href=&quot;https://github.com/ropensci/rfigshare/pull/44&quot;&gt;05:55 2013/03/26&lt;/a&gt;
 &lt;/li&gt;&lt;li&gt;
-cboettig commented on issue cboettig/knitcitations#32: &lt;em&gt;Thanks for the feedback. Added this following the formatting you suggested in the most recent commit. Currently added only to parenthetical citatio…&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/knitcitations/issues/32#issuecomment-15411636&quot;&gt;06:26 2013/03/25&lt;/a&gt;
+cboettig commented on pull request ropensci/rfigshare#44: &lt;em&gt;Thanks, I just merged the fs_update file and dropped your changes to the tutorial, etc. Should be all set.&lt;/em&gt; &lt;a href=&quot;https://github.com/ropensci/rfigshare/issues/44#issuecomment-15474728&quot;&gt;05:55 2013/03/26&lt;/a&gt;
 &lt;/li&gt;&lt;li&gt;
-cboettig pushed to master at cboettig/knitcitations: &lt;em&gt;Provide page range as an option, as requested in #32&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/knitcitations/compare/ecccbc5cf6...87913ad795&quot;&gt;06:25 2013/03/25&lt;/a&gt;
+cboettig pushed to master at ropensci/rfigshare: &lt;em&gt;cleaning inst/doc&lt;/em&gt; &lt;a href=&quot;https://github.com/ropensci/rfigshare/compare/9a4721378e...e830faa829&quot;&gt;05:53 2013/03/26&lt;/a&gt;
 &lt;/li&gt;&lt;li&gt;
-cboettig commented on issue cboettig/knitcitations#32: &lt;em&gt;Thanks for the suggestion. Here’s two options for implementing this: I could on citep add something that works like this: citep(&amp;quot;10.1016/j.tpb.201…&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/knitcitations/issues/32#issuecomment-15409100&quot;&gt;05:48 2013/03/25&lt;/a&gt;
+cboettig pushed to master at cboettig/knitcitations: &lt;em&gt;NEWS reflects changes for page numbering&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/knitcitations/compare/ec57465db5...ecf2b1c1c5&quot;&gt;05:53 2013/03/26&lt;/a&gt;
 &lt;/li&gt;&lt;li&gt;
-cboettig pushed to master at cboettig/labnotebook: &lt;em&gt;added plugins for sha and modified date, closes #67 new posts&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/labnotebook/compare/2be402415a...4bf8b20420&quot;&gt;05:16 2013/03/25&lt;/a&gt;
+cboettig pushed to master at ropensci/rfigshare: &lt;em&gt;merge pull request #44, fixes fs_update updated news and version not ready for tutorials as vignettes yet (perhaps problem with key?)&lt;/em&gt; &lt;a href=&quot;https://github.com/ropensci/rfigshare/compare/b72b335db5...9a4721378e&quot;&gt;05:46 2013/03/26&lt;/a&gt;
 &lt;/li&gt;&lt;/ul&gt;
 
 
