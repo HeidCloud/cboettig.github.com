@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head prefix="dc: http://purl.org/dc/terms/ og: http://ogp.me/ns#">
+  <meta charset="utf-8" /> 
+  <title>The ropensci project</title>
+  <meta name="author" content="Carl Boettiger" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+
+<!-- Some liquid code so that pages get the site.time creation date -->
+
+  
+
+
+
+<!-- HTML5 metadata -->
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<meta name="resource_type" content="website"/> 
+<!-- RDFa Metadata (in DublinCore) -->
+<meta property="dc:title" content="The ropensci project" />
+<meta property="dc:creator" content="Carl Boettiger" />
+<meta property="dc:date" content="2013-04-01T22:57:48-07:00" />
+<meta property="dc:format" content="text/html" />
+<meta property="dc:language" content="en" />
+<meta property="dc:identifier" content="/projects/ropensci.html" />
+<meta property="dc:rights" content="CC0" />
+<meta property="dc:source" content="Lab Notebook" />
+<meta property="dc:subject" content="Ecology" /> 
+<meta property="dc:type" content="website" /> 
+<!-- RDFa Metadata (in OpenGraph) -->
+<meta property="og:title" content="The ropensci project" />
+<meta property="og:author" content="http://www.carlboettiger.info/index.html#me" />  <!-- Should be Liquid? URI? -->
+<meta property="http://ogp.me/ns/profile#first_name" content="Carl"/>
+<meta property="http://ogp.me/ns/profile#last_name" content="Boettiger"/>
+<meta property="http://ogp.me/ns/article#published_time" content="2013-04-01T22:57:48-07:00" />
+<meta property="og:site_name" content="Lab Notebook" /> <!-- Same as dc:source? -->
+<meta property="og:url" content="http://www.carlboettiger.info/projects/ropensci.html" />
+<meta property="og:type" content="website" /> 
+<!-- Google Scholar Metadata -->
+<meta name="citation_author" content="Carl Boettiger"/>
+<meta name="citation_date" content="01 Apr 2013"/>
+<meta name="citation_title" content="The ropensci project"/>
+<meta name="citation_journal_title" content="Lab Notebook"/>
+
+<!--NOTE: see also the COinS Metadata in span element in footer -->
+
+
+
+
+  <!-- CSS Stylesheets (toggled with javascript) -->
+  <link href="/assets/css/light.css" rel="stylesheet"
+        type="text/css" id="stl" title="light" />
+  <link href="/assets/css/dark.css" rel="alternate stylesheet" 
+        type="text/css" title="dark" />
+  <link href="/assets/css/bootstrap-responsive.css" rel="stylesheet" 
+        type="text/css"/>
+  <!-- Javascript needed for theme toggle, load immediately -->
+  <script type="text/javascript" src="/assets/js/switch-css.js"></script>
+  <script type="text/javascript">
+    set_style_from_cookie(); 
+  </script>
+</head>
+
+
+  <body prefix="dc: http://purl.org/dc/terms/ foaf: http://xmlns.com/foaf/0.1/"> 
+    
+<!-- Navbar  ================================================== -->
+<div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+      <a class="brand" href="/README.html"><span  class="showtooltip" 
+          title="Credits and technical information about this site" 
+          data-placement="bottom"><i style="float:right;" class="icon-info-sign" alt="info"></i></span></a>
+      <div class="nav-collapse">
+        <ul class="nav">
+          <li>
+          <a href="/index.html">Home</a></li>
+
+          <li>
+          <a href="http://www.carlboettiger.info/vita.html">Vita</a></li>
+
+          <li>
+          <a href="/research.html">Research</a></li>
+
+          <li>
+          <a href="/teaching.html">Teaching</a></li>
+
+          <li>
+          <a href="/community.html">Community</a></li>
+
+          <li>
+          <a href="/lab-notebook.html">Lab Notebook</a></li>
+
+        </ul>
+      </div><!--/.nav-collapse -->
+
+      <!-- Search site using Google's index --><!--
+      <form class="navbar-search pull-right" method="get" action="http://google.com/search">
+        <p>
+          <input type="hidden" name="q" value="site:carlboettiger.info" />
+          <input type="text" class="search-query" name="q" />
+          <button class="btn btn-mini" type="submit"><i class="icon-search"></i></button> 
+        </p>
+      </form>
+      -->
+      <div id="search">
+      <form method="get" class="navbar-search pull-right form-search">
+        <p>
+        <input type="text" name="search-text" id="search-text">
+         <button class="btn btn-mini" type="submit"><i class="icon-search"></i></button> 
+        </p>
+      </form>
+      </div>
+     </div> <!-- /container -->
+   </div> <!-- /navbar-inner -->
+ </div> <!-- /navbar -->
+
+
+
+    <div class="container"> <!-- Responsive grid layout --> 
+
+      <header class="jumbotron">
+  <h1 class="entry-title">The ropensci project</h1>
+  <h3></h3>
+</header>
+
+
+
+<div class="row">
+  <div class="span2">
+<ul class="nav nav-list">
+<li class="nav-header">Active Projects</li>
+<li 
+   ><a href="/projects/nonparametric-bayes.html">Nonparametric Bayes</a></li>
+<li  ><a href="/projects/multiple-uncertainty.html">Multiple Uncertainty</a></li>
+<li  ><a href="/projects/warning-signals.html">Early Warning Signals</a></li>
+<li  ><a href="/projects/open-science.html">Open Science</a></li>
+<li   
+    class="active" 
+  ><a href="/projects/ropensci.html">ropensci</a></li>
+<li  class="nav-header">Earlier Projects</li> 
+<li  ><a href="/projects/adaptive-dynamics.html">Adaptive Dynamics</a></li>
+<li  ><a href="/projects/phylogenetics.html">Phylogenetics</a></li>
+</ul>
+  </div>
+  <div class="span10">
+    <div class="borderleft" style="font-size: 13px;">
+    
+
+<div class="row">
+  <div class="span6">
+    <h2> Abstract </h2>
+The rOpenSci project is a developer collective I helped found with Scott Chamberlain and Karthik Ram in August 2011.  We create packages that allow access to data repositories through the R statistical programming environment that is already a familiar part of the workflow of many scientists. We also encourage open data and reproducible coding standards, and teach these approaches through hands-on workshops as well as web-based tutorials.  We hope that our tools will not only facilitate drawing data into an environment where it can readily be manipulated, but also one in which those analyses and methods can be easily shared, replicated, and extended by other researchers. While most of the pieces for connecting researchers with these data sources exist as disparate entities, our efforts will provide a unified framework that will be quickly connect researchers to open data.  
+  </div>
+  <div class="span3 borderleft">
+    <h3> Collaborators </h3>
+    <ul>
+      <li> Scott Chamberlain </li>
+      <li> Karthik Ram </li>
+      <li> Ted Hart </li>
+      <li> Duncan Temple-Lang </li>
+    </ul>
+
+    <h3> Funding and Support/Affiliation </h3>
+    <ul>
+      <li> <a href="http://dev.mendeley.com/api-binary-battle/">Mendeley/PLoS Binary Battle</a> prize money </li>
+    </ul>
+  </div>
+</div>
+
+<!-- add icons to title text -->  
+
+<hr>
+
+<div class="row">
+  <div calss="span10">
+    <div class="span3">
+      <h4> <a href="https://github.com/ropensci" style="color:#6c71c4;"><i class="icon-github"></i> Recently created Repos </h4>
+      <ul><li>ropensci created repository rWBclimate: <em></em> <a href="https://github.com/ropensci/rWBclimate">06:31 2013/03/06</a></li><li>ropensci created repository rodash: <em></em> <a href="https://github.com/ropensci/rodash">06:07 2013/03/03</a></li><li>ropensci created repository ropensci_dashboard: <em></em> <a href="https://github.com/ropensci/ropensci_dashboard">02:58 2013/03/03</a></li><li>ropensci created repository challenge: <em></em> <a href="https://github.com/ropensci/challenge">09:31 2013/02/12</a></li><li>ropensci created repository usgs: <em></em> <a href="https://github.com/ropensci/usgs">05:07 2013/02/07</a></li></ul>
+    </div>
+    <div class="span3">
+      <h4><a href="http://twitter.com/ropensci"><i class="icon-twitter"></i> Discussing </a> </h4>
+      <!--  -->
+       <ul><li><p>RT @_inundata: Just updated @ropensci’s @ImpactStory package. Visualize your @github impact:</p>
+
+<p>github<em>plot(github</em>report(“id”))</p>
+
+<p>http://t ...</p>
+ <a href="http://twitter.com/ropensci/statuses/318934841951408128">08:56 2013/04/01</a> </li><li><p>Need #SNPS data? ropensnp is now rsnps - now with @openSNPorg &amp; Broad Institute SNP data <a href="http://t.co/7gKJeKRRHq">http://t.co/7gKJeKRRHq</a> #rstats / @kevin_ushey</p>
+ <a href="http://twitter.com/ropensci/statuses/318859999512240128">03:58 2013/04/01</a> </li><li><p>RT @_inundata: Just coded up a neat way to visualize the impact of @GitHub repos using @ImpactStory 
+<a href="http://t.co/I4kwIBLEVy">http://t.co/I4kwIBLEVy</a></p>
+
+<p>bug reports ...</p>
+ <a href="http://twitter.com/ropensci/statuses/318626293228908544">12:30 2013/04/01</a> </li><li><p>RT @PhyloPic: A new version of <a href="http://t.co/fgXFY3JK5T">http://t.co/fgXFY3JK5T</a> has been launched! Check out the new look and the new API!</p>
+ <a href="http://twitter.com/ropensci/statuses/318386347641548801">08:36 2013/03/31</a> </li><li><p>Thx for your contribution! RT @ibartomeus: .@rOpenSci are awesome. They even created a shinny app to run is.invasive! <a href="http://t.co/wFgzOCJMhI">http://t.co/wFgzOCJMhI</a></p>
+ <a href="http://twitter.com/ropensci/statuses/317300366343548928">08:41 2013/03/28</a> </li></ul>
+    </div>
+    <div class="span3">
+      <h4><a href="" style="color:#dc322f;"> <i class="icon-bookmark" ></i> Reading</a> </h4>
+      <ul><li>Science as an open enterprise: The Royal Society (2012). Pages: 1-104. Geoffrey Boulton, Philip Campbell, Brian Collins, Peter Elias, Wendy Hall, Laurie Graeme, Onora O'Neill, Michael Rawlins, Janet Thornton, Patrick Vallance, Mark Walport et al. <a href="http://www.mendeley.com/catalog/science-open-enterprise-royal-society-science-policy-centre-report-02-12/">10:37 2013/03/12</a></li><li>Reforming science: methodological and cultural reforms.: Infection and Immunity (2012). Volume: 80, Issue: 3. Pages: 891-6. Arturo Casadevall, Ferric C Fang et al. <a href="http://www.mendeley.comhttp://www.mendeley.com/c/5624156064/g/530031/casadevall-2012-reforming-science-methodological-and-cultural-reforms/">10:37 2013/03/12</a></li><li>Reforming science: structural reforms.: Infection and immunity (2012). Volume: 80, Issue: 3. Pages: 897-901. Ferric C Fang, Arturo Casadevall et al. <a href="http://www.mendeley.comhttp://www.mendeley.com/c/5624156084/g/530031/fang-2012-reforming-science-structural-reforms/">10:37 2013/03/12</a></li><li>Diffusion of News about Research: Science Communication (2003). Volume: 25, Issue: 1. Pages: 3-13. Vincent Kiernan et al. <a href="http://www.mendeley.com/catalog/diffusion-news-about-research/">03:17 2013/02/25</a></li></ul>
+    </div>
+  </div>
+</div>
+
+<hr>
+
+<div class="row">
+  <div calss="span10">
+    <div class="span3">
+      <h4> <a href="/vita.html" style="color:#2aa198;"><i class="icon-book"></i> Publications</a> </h4>
+        <ul prefix="datacite: http://purl.org/spar/datacite/">
+          <li >Carl Boettiger, Duncan Temple Lang, Peter Wainwright (2012). <strong>rfishbase: exploring, manipulating and visualizing FishBase data from R</strong>, 2030–2039. <em>Journal of Fish Biology</em>. 81 (6). <a rel="datacite:doi" href="http://dx.doi.org/10.1111/j.1095-8649.2012.03464.x">doi</a>:10.1111/j.1095-8649.2012.03464.x (<a href="http://www.mendeley.com/download/public/98752/5024008901/62843551297c5c9d3e1c2e5513697b85fcc0b6fc/dl.pdf">pdf</a>) (<a href="https://github.com/ropensci/rfishbase/blob/master/inst/doc/rfishbase/rfishbase_github.md">preprint</a>) (<a href="https://github.com/ropensci/rfishbase">code</a>) (<a href="http://cran.at.r-project.org/web/packages/rfishbase/">R package</a>)</li>
+        <li >Carl Boettiger, Duncan Temple Lang (2012). <strong>Treebase: An R package for discovery, access and manipulation of online phylogenies</strong>, <em>Methods in Ecology and Evolution</em>. <a rel="datacite:doi" href="http://dx.doi.org/10.1111/j.2041-210X.2012.00247.x">doi</a>:10.1111/j.2041-210X.2012.00247.x (<a href="http://www.mendeley.com/download/public/98752/4976371531/463d3755b618c40e35dca223e27162c08fbc061a/dl.pdf">pdf</a>) (<a href="https://github.com/ropensci/treebase/blob/master/inst/doc/treebase/treebase_github.md">preprint</a>) (<a href="https://github.com/ropensci/treebase">code</a>) (<a href="http://cran.at.r-project.org/web/packages/treebase/">R package</a>)</li>
+        </ul>
+     </div>
+     <div class="span3">
+      <h4> <a href="/tags.html#ropensci" style="color:#b58900;"><i class="icon-tags" ></i>Tagged notebook entries</a> </h4>
+        
+        <p> <a href="/2013/03/19/collected-notes.html">Collected notes from past few days</a> 
+    <span style="font-style:italic"> 19 Mar 2013</span></p>
+        
+        <p> <a href="/2013/02/14/notes.html">Notes</a> 
+    <span style="font-style:italic"> 14 Feb 2013</span></p>
+        
+        <p> <a href="/2013/02/13/notes.html">Notes</a> 
+    <span style="font-style:italic"> 13 Feb 2013</span></p>
+        
+        <p> <a href="/2013/02/12/notes.html">Notes</a> 
+    <span style="font-style:italic"> 12 Feb 2013</span></p>
+        
+        <p> <a href="/2012/05/10/notes.html">Notes</a> 
+    <span style="font-style:italic"> 10 May 2012</span></p>
+        
+        <p> <a href="/2012/04/26/2012-04-20.html">2012-04-20</a> 
+    <span style="font-style:italic"> 26 Apr 2012</span></p>
+        
+        <p> <a href="/2012/04/19/catching-up.html">Catching up</a> 
+    <span style="font-style:italic"> 19 Apr 2012</span></p>
+        
+        <p> <a href="/2012/04/10/monday-tuesday.html">Monday / Tuesday</a> 
+    <span style="font-style:italic"> 10 Apr 2012</span></p>
+        
+    </div>
+    <div class="span3">
+      <h4> Workshops </h4>
+      <ul>
+      <li><a href="http://www.meetup.com/R-Users/events/66086952/">Bay Area R Users Group</a>, July 10<sup>th</sup>, 2012. Karthik Ram</li>
+      <li><a href="http://cboettig.github.com/talks/ievobio2012/">iEvolBio</a>. Carl Boettiger </li>
+      <li><a href="http://schamberlain.github.com/talks/rvantalk/">Vancouver R Users Group</a>, August 28<sup>th</sup>, 2012. Scott Chamberlain </li>
+      <li> <a href="http://schamberlain.github.com/posterstalks/bestalk/slides/">BES Macroecology Big Data talk</a>. Scott Chamberlain </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+
+
+    </div>
+  </div>
+</div>
+
+
+<footer class="footer">
+  <!-- ************* Buttons to toggle theme CSS ********************** -->
+    <div class="row">
+      <div class="span12">
+        <form style="font-size:10px" class="pull-right">
+          <a onclick="switch_style('dark'); 
+                      recordOutboundLink(this, 'Outbound Links', 'dark theme'); 
+                      return false;" 
+             name="theme" value="dark" id="dark" 
+             class="btn btn-mini"><span class="showtooltip" 
+                                        title="switch to dark theme"><i class="icon-adjust"></i>
+                                   </span></a>
+          
+          <a onclick="switch_style('light'); 
+                      recordOutboundLink(this, 'Outbound Links', 'light theme'); 
+                      return false;" 
+             name="theme" value="light" id="light" 
+             class="btn btn-mini"><span class="showtooltip" 
+                                        title="switch to light theme"><i class="icon-certificate"></i>
+                                  </span></a>
+        </form>
+      </div>
+    </div>
+
+<!--************** FOAF information to social networks ***************************** -->
+  <div class="row">
+    <div class="span3 socialicons" style="font-size:20px" typeof="foaf:Person" about="http://www.carlboettiger.info#me">
+      <p>
+          <a rel="foaf:account" alt="email" href="mailto:cboettig@gmail.com" 
+             onclick="recordOutboundLink(this, 'Outbound Links', 'email'); 
+             return false;"><span class="showtooltip" title="email me"><i class="icon-envelope-alt"></i></span></a>
+          <a rel="foaf:account" alt="twitter" href="https://twitter.com/cboettig" 
+             onclick="recordOutboundLink(this, 'Outbound Links', 'Twitter'); 
+             return false;"><span class="showtooltip" title="follow me on twitter (reading, discussing)"><i class="icon-twitter"></i></span></a> 
+          <a rel="foaf:account" alt="github" href="https://github.com/cboettig" 
+             onclick="recordOutboundLink(this, 'Outbound Links', 'Github'); 
+             return false;"><span class="showtooltip" title="follow me on Github (code, research)"><i class="icon-github"></i></span></a>
+      <!--
+          <a rel="foaf:account" href="https://plus.google.com/" 
+             onclick="recordOutboundLink(this, 'Outbound Links', 'GPlus'); 
+             return false;"><i class="icon-google-plus"></i></a>
+          <a rel="foaf:account" href="http://www.mendeley.com/profiles/carl-boettiger" 
+             onclick="recordOutboundLink(this, 'Outbound Links', 'Mendeley'); 
+             return false;"><img src="/assets/img/icon-mendeley.png" alt="mendeley" /></a> 
+           citations on google-scholar
+           stackoverflow
+      -->
+      <a alt="rss" type="application/atom+xml" href="/atom.xml"  
+         class="showtooltip" title="subscribe to RSS feeds for my open lab notebook" 
+         onclick="recordOutboundLink(this, 'Outbound Links', 'RSS'); 
+         return false;"><i class="icon-rss"></i></a>
+       </p>
+    </div>
+    <!--**************** End social links **************************** -->
+    <div class="span1">
+      <br />
+    </div>
+    <div class="span4">
+      <p>
+      <a onclick="recordOutboundLink(this, 'Outbound Links', 'ONS_claim'); return false;" href="http://onsclaims.wikispaces.com/"><img src="http://onsclaims.wikispaces.com/file/view/ons-aci2-icon.png" alt="ONS" class="showtooltip" title="An Open Notebook Science (ONS) project claim: Entry provides all content (AC) immediately (I) or without significant delay.  See link for details"/></a>
+
+      <a title="This site uses linked data semantics. Click to extract as RDF XML." class="btn btn-mini showtooltip" style="font-size: .8em" 
+       href="http://any23.org/?format=rdfxml&validate=validate&uri=http://www.carlboettiger.info/projects/ropensci.html"><i 
+         class="icon-cloud-download"  onclick="recordOutboundLink(this, 'Outbound Links', 'RDF'); return false;"></i> RDF</a>
+      </p>
+    </div>
+    <div class="span1">
+      <br />
+    </div>
+    <div class="span3">
+      <p>
+      <a rel="license" property="http://creativecommons.org/ns#license" href="http://creativecommons.org/publicdomain/zero/1.0/" onclick="recordOutboundLink(this, 'Outbound Links', 'CC0'); return false;"><img src="http://i.creativecommons.org/l/zero/1.0/88x31.png" alt="CC0"/></a> 
+      </p>
+    </div>
+
+  </div>
+  
+<!-- COinS metadata (for citation managers like Zotero etc), goes in body text -->
+  <span
+      class="Z3988" 
+      title="ctx_ver=Z39.88-2004
+      &amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Adc
+      &amp;rfr_id=info%3Asid%2Focoins.info%3Agenerator
+      &amp;rft.title=The ropensci project
+      &amp;rft.creator=Carl Boettiger
+      &amp;rft.date=
+      &amp;rft.language=EN
+      &amp;rft.rights=CC0
+      &amp;rft_id=http://www.carlboettiger.info/projects/ropensci.html">
+  </span>
+
+
+
+</footer>
+
+
+
+
+    <!-- Le javascript
+    ================================================== -->
+
+    <!-- Placed at the end of the document so the pages load faster -->
+    <!-- JQuery, used on a few pages -->
+    <script type="text/javascript" src="/assets/js/jquery.js"></script>
+    <!-- Equations using MathJax -->
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config"> MathJax.Hub.Config({ TeX: { equationNumbers: {autoNumber: "all"} } });       </script>
+    <!-- Twitter Bootstrap Javascript -->
+    <script src="/assets/js/bootstrap.min.js"></script>
+    <!-- Tooltip javascript -->
+    <script type="text/javascript">
+      $(document).ready(function (){
+        $(".showtooltip").tooltip();
+      });
+    </script>
+
+    <!-- Marran's Search Javascript -->
+    <script type="text/javascript" src="/assets/js/porter-stemmer.js"></script>
+    <script type="text/javascript" src="/assets/js/site-search.js"></script>
+
+
+
+  <script type="text/javascript">
+          var _gaq = _gaq || [];
+          _gaq.push(['_setAccount', 'UA-18401403-1']);
+          _gaq.push(['_trackPageview']);
+          (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+          })();
+  </script>
+
+
+
+<script type="text/javascript">
+function recordOutboundLink(link, category, action) {
+  try {
+    var pageTracker=_gat._getTracker("UA-18401403-1");
+    pageTracker._trackEvent(category, action);
+    setTimeout('document.location = "' + link.href + '"', 100)
+  }catch(err){}
+}
+</script>
+
+
+        
+<!-- Start Open Web Analytics Tracker -->
+<script type="text/javascript">
+//<![CDATA[
+var owa_baseUrl = 'http://www.carlboettiger.info/openwebanalytics/';
+var owa_cmds = owa_cmds || [];
+owa_cmds.push(['setSiteId', '2886faa411a4139a6c6f97b5a1f38697']);
+owa_cmds.push(['trackPageView']);
+owa_cmds.push(['trackClicks']);
+owa_cmds.push(['trackDomStream']);
+
+(function() {
+  var _owa = document.createElement('script'); _owa.type = 'text/javascript'; _owa.async = true;
+  owa_baseUrl = ('https:' == document.location.protocol ? window.owa_baseSecUrl || owa_baseUrl.replace(/http:/, 'https:') : owa_baseUrl );
+  _owa.src = owa_baseUrl + 'modules/base/js/owa.tracker-combined-min.js';
+  var _owa_s = document.getElementsByTagName('script')[0]; _owa_s.parentNode.insertBefore(_owa, _owa_s);
+}());
+//]]>
+</script>
+<!-- End Open Web Analytics Code -->
+        
+
+    
+
+
+    </div>
+  </body>
+</html>
+
