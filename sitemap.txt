@@ -14,6 +14,7 @@ http://carlboettiger.info/R.xml
 http://carlboettiger.info/search.html  
 http://carlboettiger.info/archive.html  
 http://carlboettiger.info/projects/warning-signals.html  
+http://carlboettiger.info/projects/pdg-control.html  
 http://carlboettiger.info/projects/nonparametric-bayes.html  
 http://carlboettiger.info/projects/adaptive-dynamics.html  
 http://carlboettiger.info/projects/multiple-uncertainty.html  

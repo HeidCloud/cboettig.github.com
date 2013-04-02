@@ -4,7 +4,7 @@
  <title>Lab Notebook</title>
  <link href="/atom.xml" rel="self"/>
  <link href=""/>
- <updated>2013-04-02T11:52:28-07:00</updated>
+ <updated>2013-04-02T13:55:30-07:00</updated>
  <id></id>
  <author>
    <name>Carl Boettiger</name>
@@ -4101,6 +4101,10 @@ linear &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;dt[, &lt;span cla
 &lt;p&gt;vim set sytnax language, useful for getting R highlighting in &lt;code&gt;.Rmd&lt;/code&gt; files: &lt;code&gt;setf r&lt;/code&gt;, or equivalently, &lt;code&gt;set filetype=r&lt;/code&gt; (must be lowercase r). &lt;code&gt;set filetype&lt;/code&gt; with no argument gives the current filetype.&lt;/p&gt;
 &lt;h3 id=&quot;coding&quot;&gt;Coding&lt;/h3&gt;
 &lt;ul&gt;&lt;li&gt;
+cboettig pushed to master at cboettig/labnotebook: &lt;em&gt;research page links to project landing pages&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/labnotebook/compare/5c581e3301...5d5906df51&quot;&gt;08:55 2013/04/02&lt;/a&gt;
+&lt;/li&gt;&lt;li&gt;
+cboettig pushed to master at cboettig/cboettig.github.com: &lt;em&gt;updated site&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/cboettig.github.com/compare/16ca933dcf...3da2488780&quot;&gt;07:24 2013/04/02&lt;/a&gt;
+&lt;/li&gt;&lt;li&gt;
 cboettig pushed to master at cboettig/labnotebook: &lt;em&gt;one page version a few quick fixes on feeds&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/labnotebook/compare/6ecb8934b6...5c581e3301&quot;&gt;06:52 2013/04/02&lt;/a&gt;
 &lt;/li&gt;&lt;li&gt;
 cboettig pushed to master at cboettig/cboettig.github.com: &lt;em&gt;updated site&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/cboettig.github.com/compare/ebf4010b26...16ca933dcf&quot;&gt;06:49 2013/04/02&lt;/a&gt;
@@ -4112,10 +4116,6 @@ cboettig closed issue cboettig/knitcitations#34: &lt;em&gt;add package year in k
 cboettig commented on issue cboettig/knitcitations#34: &lt;em&gt;Hehe, I’ve filed an identical issue in Hadley’s repo once upon a time. CRAN adds publication date automatically to the description file when the pa…&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/knitcitations/issues/34#issuecomment-15794169&quot;&gt;06:40 2013/04/02&lt;/a&gt;
 &lt;/li&gt;&lt;li&gt;
 cboettig pushed to master at cboettig/cboettig.github.com: &lt;em&gt;project pages added updated&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/cboettig.github.com/compare/f500e66952...ebf4010b26&quot;&gt;05:18 2013/04/02&lt;/a&gt;
-&lt;/li&gt;&lt;li&gt;
-cboettig pushed to master at cboettig/labnotebook: &lt;em&gt;project page updated&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/labnotebook/compare/a166ab4e2d...6ecb8934b6&quot;&gt;05:57 2013/04/02&lt;/a&gt;
-&lt;/li&gt;&lt;li&gt;
-cboettig pushed to master at cboettig/labnotebook: &lt;em&gt;tags for entries qualifying as blog posts, closes #82&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/labnotebook/compare/63e66aa585...a166ab4e2d&quot;&gt;05:25 2013/04/02&lt;/a&gt;
 &lt;/li&gt;&lt;/ul&gt;
 
 
