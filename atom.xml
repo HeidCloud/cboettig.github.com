@@ -4,7 +4,7 @@
  <title>Lab Notebook</title>
  <link href="/atom.xml" rel="self"/>
  <link href=""/>
- <updated>2013-04-01T22:57:48-07:00</updated>
+ <updated>2013-04-02T11:25:01-07:00</updated>
  <id></id>
  <author>
    <name>Carl Boettiger</name>
@@ -4101,6 +4101,8 @@ linear &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;dt[, &lt;span cla
 &lt;p&gt;vim set sytnax language, useful for getting R highlighting in &lt;code&gt;.Rmd&lt;/code&gt; files: &lt;code&gt;setf r&lt;/code&gt;, or equivalently, &lt;code&gt;set filetype=r&lt;/code&gt; (must be lowercase r). &lt;code&gt;set filetype&lt;/code&gt; with no argument gives the current filetype.&lt;/p&gt;
 &lt;h3 id=&quot;coding&quot;&gt;Coding&lt;/h3&gt;
 &lt;ul&gt;&lt;li&gt;
+cboettig pushed to master at cboettig/cboettig.github.com: &lt;em&gt;project pages added updated&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/cboettig.github.com/compare/f500e66952...ebf4010b26&quot;&gt;05:18 2013/04/02&lt;/a&gt;
+&lt;/li&gt;&lt;li&gt;
 cboettig pushed to master at cboettig/labnotebook: &lt;em&gt;project page updated&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/labnotebook/compare/a166ab4e2d...6ecb8934b6&quot;&gt;05:57 2013/04/02&lt;/a&gt;
 &lt;/li&gt;&lt;li&gt;
 cboettig pushed to master at cboettig/labnotebook: &lt;em&gt;tags for entries qualifying as blog posts, closes #82&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/labnotebook/compare/63e66aa585...a166ab4e2d&quot;&gt;05:25 2013/04/02&lt;/a&gt;
@@ -4114,8 +4116,6 @@ cboettig pushed to master at cboettig/nonparametric-bayes: &lt;em&gt;writing wri
 cboettig opened issue cboettig/labnotebook#82: &lt;em&gt;tag appropriate open-science entries as #blog&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/labnotebook/issues/82&quot;&gt;12:34 2013/04/02&lt;/a&gt;
 &lt;/li&gt;&lt;li&gt;
 cboettig opened issue cboettig/nonparametric-bayes#32: &lt;em&gt;Figure 5: sensitivity analysis&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/nonparametric-bayes/issues/32&quot;&gt;11:00 2013/04/01&lt;/a&gt;
-&lt;/li&gt;&lt;li&gt;
-cboettig opened issue cboettig/nonparametric-bayes#31: &lt;em&gt;Add code explicitly rather than rely on custom but non-generic functions&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/nonparametric-bayes/issues/31&quot;&gt;10:52 2013/04/01&lt;/a&gt;
 &lt;/li&gt;&lt;/ul&gt;
 
 

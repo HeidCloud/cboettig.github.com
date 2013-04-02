@@ -1,7 +1,7 @@
 {
   "/": [
-    "5046",
-    "13246"
+    "5053",
+    "13262"
   ],
   "/ Hastings student at UC Davis": [
     "0",
@@ -881,7 +881,7 @@
   ],
   "/2010/11/07/welcome-to-my-lab-notebook.html": [
     "255",
-    "575"
+    "576"
   ],
   "/2010/11/08/monday-and-some-phylogenetics.html": [
     "2",
@@ -1184,8 +1184,8 @@
     "2"
   ],
   "/2011/03/15/models-in-phylogenetic-inference.html": [
-    "263",
-    "296"
+    "265",
+    "298"
   ],
   "/2011/03/15/tuesday-2.html": [
     "0",
@@ -1344,8 +1344,8 @@
     "3"
   ],
   "/2011/05/06/mendeley-api-in-r.html": [
-    "36",
-    "51"
+    "37",
+    "52"
   ],
   "/2011/05/06/reproducible-research-large-data-sets-and-si2.html": [
     "1",
@@ -1388,8 +1388,8 @@
     "57"
   ],
   "/2011/05/19/algorithms-group-mcmcmc.html": [
-    "113",
-    "128"
+    "115",
+    "130"
   ],
   "/2011/05/19/thursday-5.html": [
     "0",
@@ -1620,8 +1620,8 @@
     "4"
   ],
   "/2011/08/26/fishbase-from-r-some-xml-parsing.html": [
-    "127",
-    "151"
+    "128",
+    "152"
   ],
   "/2011/08/26/rfishbase-and-some-taxonomy-in-r-with-taxize.html": [
     "34",
@@ -1668,8 +1668,8 @@
     "6"
   ],
   "/2011/09/08/discriminating-early-bursts.html": [
-    "1",
-    "4"
+    "2",
+    "5"
   ],
   "/2011/09/09/how-google-views-me-by-search-terms-or-citation-counts.html": [
     "20",
@@ -1832,12 +1832,12 @@
     "2"
   ],
   "/2011/11/01/server-file-management-from-bowser-ajaxplorer-mollify.html": [
-    "172",
-    "195"
+    "173",
+    "196"
   ],
   "/2011/11/01/training-problem-2-update.html": [
-    "2",
-    "4"
+    "3",
+    "5"
   ],
   "/2011/11/02/stochastic-optimal-control.html": [
     "3",
@@ -1848,8 +1848,8 @@
     "1"
   ],
   "/2011/11/04/sparkleshare-configuration.html": [
-    "1744",
-    "2119"
+    "1747",
+    "2122"
   ],
   "/2011/11/06/sunday-5.html": [
     "0",
@@ -1964,16 +1964,16 @@
     "2"
   ],
   "/2012/01/16/are-open-lab-notebooks-considered-prior-publication.html": [
-    "13",
-    "22"
+    "14",
+    "23"
   ],
   "/2012/01/18/wednesday-meetings.html": [
     "0",
     "1"
   ],
   "/2012/01/19/is-your-phylogeny-informative.html": [
-    "71",
-    "114"
+    "72",
+    "115"
   ],
   "/2012/01/20/friday-lab-group-meeting-notes.html": [
     "1",
@@ -2016,8 +2016,8 @@
     "4"
   ],
   "/2012/02/10/thursday-writing-some-latexdiff-notes.html": [
-    "19",
-    "22"
+    "20",
+    "23"
   ],
   "/2012/02/12/elegant-fast-data-manipulation-with-data-table.html": [
     "341",
@@ -2080,8 +2080,8 @@
     "4"
   ],
   "/2012/02/27/using-knitr-and-rwordpress-to-publish-results-directly-from-r-6.html": [
-    "230",
-    "348"
+    "231",
+    "349"
   ],
   "/2012/02/27/using-knitr-and-rwordpress-to-publish-results-directly-from-r.html": [
     "1",
@@ -2132,8 +2132,8 @@
     "8"
   ],
   "/2012/03/20/citing-r-packages.html": [
-    "750",
-    "819"
+    "751",
+    "821"
   ],
   "/2012/03/20/friday-some-random-notes.html": [
     "2",
@@ -2144,8 +2144,8 @@
     "5"
   ],
   "/2012/03/21/knitr-github-and-a-new-phase-for-the-lab-notebook.html": [
-    "194",
-    "316"
+    "195",
+    "317"
   ],
   "/2012/03/21/policy-costs-to-changing-mangement-tp-1b-apples-to-apples.html": [
     "0",
@@ -2156,8 +2156,8 @@
     "14"
   ],
   "/2012/03/24/citations-in-markdown-using-knitr.html": [
-    "548",
-    "737"
+    "552",
+    "742"
   ],
   "/2012/03/24/citations-in-markdown-usingknitr.html": [
     "0",
@@ -2232,8 +2232,8 @@
     "40"
   ],
   "/2012/05/01/Jekyll-vs-Wordpress.html": [
-    "1069",
-    "1428"
+    "1073",
+    "1433"
   ],
   "/2012/05/01/Jekyll-vs-Wordpress.html)": [
     "6",
@@ -2328,16 +2328,16 @@
     "162"
   ],
   "/2012/05/26/exploring-jekyll-layout.html": [
-    "625",
-    "806"
+    "627",
+    "809"
   ],
   "/2012/05/26/exploring-jekyll-layout.html?search-text=jekyll": [
     "0",
     "1"
   ],
   "/2012/05/30/knitcitations.html": [
-    "553",
-    "795"
+    "554",
+    "797"
   ],
   "/2012/05/30/knitcitations.html?search-text=": [
     "0",
@@ -2464,24 +2464,24 @@
     "2"
   ],
   "/2012/09/19/migrating-from-wordpress-to-jekyll.html": [
-    "127",
-    "199"
+    "129",
+    "201"
   ],
   "/2012/09/27/Migrating-OWW-posts-to-Jekyll.html": [
     "21",
     "61"
   ],
   "/2012/09/28/Welcome-to-my-lab-notebook.html": [
-    "380",
-    "1355"
+    "381",
+    "1359"
   ],
   "/2012/10/01/multiple-uncertainty.html": [
     "9",
     "81"
   ],
   "/2012/10/02/solarized-colors.html": [
-    "685",
-    "942"
+    "687",
+    "944"
   ],
   "/2012/10/05/lab-notebook.html": [
     "0",
@@ -2508,8 +2508,8 @@
     "1"
   ],
   "/2012/10/10/prosecutors-fallacy.html": [
-    "21",
-    "45"
+    "22",
+    "46"
   ],
   "/2012/10/11/notes.html": [
     "3",
@@ -2528,8 +2528,8 @@
     "93"
   ],
   "/2012/10/17/basic-regression-in-gaussian-processes.html": [
-    "53",
-    "92"
+    "54",
+    "93"
   ],
   "/2012/10/17/talkingpoints.html": [
     "0",
@@ -2604,8 +2604,8 @@
     "18"
   ],
   "/2012/11/09/better-tagging-practices.html": [
-    "6",
-    "32"
+    "7",
+    "33"
   ],
   "/2012/11/15/notes.html": [
     "9",
@@ -2632,8 +2632,8 @@
     "42"
   ],
   "/2012/11/23/citing-lab-notebook-entries.html": [
-    "334",
-    "432"
+    "335",
+    "433"
   ],
   "/2012/11/23/citing-lab-notebook-entries.html)": [
     "1",
@@ -2653,7 +2653,7 @@
   ],
   "/2012/11/30/Note-on-notebook-figures.html": [
     "7",
-    "24"
+    "25"
   ],
   "/2012/11/30/Note-on-notebook-figures.html, http://www.carlboettiger.info/2012/10/09/data-management-plan.html": [
     "1",
@@ -2728,8 +2728,8 @@
     "95"
   ],
   "/2012/12/30/learning-jekyll.html": [
-    "264",
-    "401"
+    "265",
+    "403"
   ],
   "/2013": [
     "0",
@@ -2753,7 +2753,7 @@
   ],
   "/2013/01/12/tipping-points-comment-in-nature.html": [
     "43",
-    "101"
+    "102"
   ],
   "/2013/01/24/Data-URIs-for-image-archives.html": [
     "27",
@@ -2792,8 +2792,8 @@
     "30"
   ],
   "/2013/02/22/semantic-citations-for-the-notebook-and-knitr.html": [
-    "100",
-    "158"
+    "101",
+    "159"
   ],
   "/2013/02/22/semantic-citations-for-the-notebook-and-knitr.html?search-text=shotton": [
     "0",
@@ -2816,8 +2816,8 @@
     "26"
   ],
   "/2013/03/08/notes-from-the-week.html": [
-    "3",
-    "33"
+    "4",
+    "34"
   ],
   "/2013/03/12/notes.html": [
     "1",
@@ -2849,7 +2849,7 @@
   ],
   "/2013/03/26/research.html": [
     "5",
-    "19"
+    "20"
   ],
   "/211": [
     "0",
