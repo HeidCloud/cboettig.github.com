@@ -13,6 +13,13 @@ http://carlboettiger.info/research.html
 http://carlboettiger.info/R.xml  
 http://carlboettiger.info/search.html  
 http://carlboettiger.info/archive.html  
+http://carlboettiger.info/projects/warning-signals.html  
+http://carlboettiger.info/projects/nonparametric-bayes.html  
+http://carlboettiger.info/projects/adaptive-dynamics.html  
+http://carlboettiger.info/projects/multiple-uncertainty.html  
+http://carlboettiger.info/projects/phylogenetics.html  
+http://carlboettiger.info/projects/ropensci.html  
+http://carlboettiger.info/projects/open-science.html  
 http://carlboettiger.info/lab-notebook.html  
 http://carlboettiger.info/README.html  
 http://carlboettiger.info/sitemap.txt  
@@ -802,6 +809,7 @@ http://carlboettiger.info/wordpress/archives/4482/index.html
 http://carlboettiger.info/archives/4482/index.html 
 
  
+http://carlboettiger.info/2013/03/26/research.html  
 http://carlboettiger.info/2013/03/25/research.html  
 http://carlboettiger.info/2013/03/22/research.html  
 http://carlboettiger.info/2013/03/20/research.html  

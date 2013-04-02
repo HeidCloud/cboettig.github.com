@@ -4,13 +4,36 @@
  <title>Lab Notebook</title>
  <link href="/atom.xml" rel="self"/>
  <link href=""/>
- <updated>2013-03-26T12:23:42-07:00</updated>
+ <updated>2013-04-01T22:57:48-07:00</updated>
  <id></id>
  <author>
    <name>Carl Boettiger</name>
    <email>cboettig@gmail.com</email>
  </author>
 
+ 
+ <entry>
+   <title>Research</title>
+   <link href="/2013/03/26/research.html"/>
+   <updated>2013-03-26T00:00:00-07:00</updated>
+   <id>h/2013/03/26/research</id>
+   <content type="html">&lt;h2 id=&quot;nonparametric-bayes&quot;&gt;nonparametric-bayes&lt;/h2&gt;
+&lt;p&gt;writing writing …&lt;/p&gt;
+&lt;h2 id=&quot;multiple-uncertainty&quot;&gt;multiple-uncertainty&lt;/h2&gt;
+&lt;p&gt;Fixed matlab implementation. (Some fun with matrix transposes in translating from R. &lt;a href=&quot;https://github.com/cboettig/multiple_uncertainty/issues/4&quot;&gt;#4&lt;/a&gt;) See:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/cboettig/multiple_uncertainty/blob/0706ffd2a32e12087a6160fa250e4f3446c6b882/inst/matlab/multiple_uncertainty.m&quot;&gt;multiple-uncertainty.m&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/cboettig/multiple_uncertainty/blob/6f772fb4309bfb24b29a5559551733743a23b738/inst/matlab/testing.m&quot;&gt;example&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Compare to&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/cboettig/multiple_uncertainty/blob/e3506f392ddbee8e33fb97bbe1d6699aee4eadea/R/multiple_uncertainty.R&quot;&gt;R algorithm&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/cboettig/multiple_uncertainty/blob/e3506f392ddbee8e33fb97bbe1d6699aee4eadea/inst/tests/matrices.R&quot;&gt;example&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Matlab code shows the same pattern in which growth noise results in constant escapement, but either implementation or measurement noise cause deviations from this rule (most dramatic in the case of implementation uncertainty).&lt;/p&gt;
+&lt;h2 id=&quot;notebook&quot;&gt;Notebook&lt;/h2&gt;
+&lt;p&gt;Some feedback and ideas from Noam, such as landing pages &lt;a href=&quot;https://github.com/cboettig/labnotebook/issues/78&quot;&gt;#77&lt;/a&gt; and inline intro &lt;a href=&quot;https://github.com/cboettig/labnotebook/issues/78&quot;&gt;#78&lt;/a&gt;. Also fixed history links and SHA links are now unique to their pages &lt;a href=&quot;https://github.com/cboettig/labnotebook/issues/67&quot;&gt;#67&lt;/a&gt;&lt;/p&gt;</content>
+ </entry>
  
  <entry>
    <title>Research</title>
@@ -3612,34 +3635,21 @@ fig2c&lt;/code&gt;&lt;/pre&gt;
 &lt;h2 id=&quot;results&quot;&gt;Results&lt;/h2&gt;
 &lt;p&gt;Linked in the automatically generated commit log:&lt;/p&gt;
 &lt;ul&gt;&lt;li&gt;
-parallel mapply support added &lt;a href=&quot;https://github.com/cboettig/pdg_control/commit/3da799190fd4818ef85653314e3469fcb5d8e431&quot;&gt;01:21 am 2012/10/02&lt;/a&gt;
+documentation &lt;a href=&quot;https://github.com/cboettig/pdg_control/commit/96681a7a7cea35437f0d65929648208200e8ec9d&quot;&gt;02:54 pm 2013/03/13&lt;/a&gt;
 &lt;/li&gt;&lt;li&gt;
-Merge branch ‘master’ of github.com:cboettig/pdg_control &lt;a href=&quot;https://github.com/cboettig/pdg_control/commit/b0b512e850db6e5dc206a1e6ba3c2d978f23e33a&quot;&gt;01:12 am 2012/10/02&lt;/a&gt;
+multiple uncertainty maintained as separate package now &lt;a href=&quot;https://github.com/cboettig/pdg_control/commit/7392816bcf499d37639e332a760e7ac838f4a53e&quot;&gt;02:51 pm 2013/03/13&lt;/a&gt;
 &lt;/li&gt;&lt;li&gt;
-trying larger grid to remove edge effects &lt;a href=&quot;https://github.com/cboettig/pdg_control/commit/6a0da81edb5b399fb64246ffb2ac6ac2575f7c35&quot;&gt;01:11 am 2012/10/02&lt;/a&gt;
+Merge branch ‘master’ of github.com:cboettig/pdg_control &lt;a href=&quot;https://github.com/cboettig/pdg_control/commit/aebd2d522349d72b77bb614fddd07e3406aeeeba&quot;&gt;11:39 pm 2012/12/27&lt;/a&gt;
 &lt;/li&gt;&lt;li&gt;
-edge effects become obvious in the all-high noise case &lt;a href=&quot;https://github.com/cboettig/pdg_control/commit/0f635a7f1a9e9d956b680113ead5fbb961e3511a&quot;&gt;01:07 am 2012/10/02&lt;/a&gt;
+initialized multiple_uncertainty as separate project (branched from pdg_control &lt;a href=&quot;https://github.com/cboettig/pdg_control/commit/e1819cda84f4f74e8607a5e7f41a683312841c7a&quot;&gt;11:38 pm 2012/12/27&lt;/a&gt;
 &lt;/li&gt;&lt;li&gt;
-Merge branch ‘master’ of github.com:cboettig/pdg_control &lt;a href=&quot;https://github.com/cboettig/pdg_control/commit/5171c17e7123470f2cb47970400ead36f60905e2&quot;&gt;01:03 am 2012/10/02&lt;/a&gt;
+multi-dimensional population dynamics examples &lt;a href=&quot;https://github.com/cboettig/pdg_control/commit/ccb873c8caa934075fa568e68e6631dc3a95ced1&quot;&gt;06:22 pm 2012/12/27&lt;/a&gt;
 &lt;/li&gt;&lt;li&gt;
-&lt;p&gt;exploring high measurement only uncertainty - seems to show no deviation from constant escapement.&lt;/p&gt;
-Note that the deterministic fails due to the singular pdfn distribution &lt;a href=&quot;https://github.com/cboettig/pdg_control/commit/877c943ab11a3b9f08ef3fb0463998db64503a71&quot;&gt;12:59 am 2012/10/02&lt;/a&gt;
+As in writeup.md, but example with c0 = c1 = 0 &lt;a href=&quot;https://github.com/cboettig/pdg_control/commit/cccec55a8ac2ef47dea99d45fdb732e5028aec98&quot;&gt;01:26 am 2012/12/06&lt;/a&gt;
 &lt;/li&gt;&lt;li&gt;
-merge &lt;a href=&quot;https://github.com/cboettig/pdg_control/commit/6a8d881f307ac73fc61a267f8f41bed54b60ac07&quot;&gt;12:35 am 2012/10/02&lt;/a&gt;
+include images &lt;a href=&quot;https://github.com/cboettig/pdg_control/commit/25e6f1c1a599440be790a7ec047b8b63540255c5&quot;&gt;05:27 pm 2012/12/05&lt;/a&gt;
 &lt;/li&gt;&lt;li&gt;
-figure3 &lt;a href=&quot;https://github.com/cboettig/pdg_control/commit/83a4ad58f17186df81ea1dfeef4b633730264f92&quot;&gt;12:33 am 2012/10/02&lt;/a&gt;
-&lt;/li&gt;&lt;li&gt;
-and now with images uploaded &lt;a href=&quot;https://github.com/cboettig/pdg_control/commit/d7002f387131b7321b19965ab676a7090eae31eb&quot;&gt;11:59 pm 2012/10/01&lt;/a&gt;
-&lt;/li&gt;&lt;li&gt;
-small multiple uncertainty: working example! Uses matrix approach in R/SDP_multiple_uncertainty.R &lt;a href=&quot;https://github.com/cboettig/pdg_control/commit/608d3d714668498eef32d85bddf70d4aa18c9b0e&quot;&gt;11:58 pm 2012/10/01&lt;/a&gt;
-&lt;/li&gt;&lt;li&gt;
-clean up directory, updated documentation &lt;a href=&quot;https://github.com/cboettig/pdg_control/commit/b9fa0622840c7eb8e32b0ef70cf75aab231ac67b&quot;&gt;11:29 pm 2012/10/01&lt;/a&gt;
-&lt;/li&gt;&lt;li&gt;
-merge &lt;a href=&quot;https://github.com/cboettig/pdg_control/commit/ad0fe803782cfdce691ab2677cedad4940b8827d&quot;&gt;11:24 pm 2012/10/01&lt;/a&gt;
-&lt;/li&gt;&lt;li&gt;
-attempting multiple uncertainties using matrix approach – Example on growth-noise alone &lt;a href=&quot;https://github.com/cboettig/pdg_control/commit/86751f86d9389067ecaa6bd5662777970db2f9f5&quot;&gt;11:24 pm 2012/10/01&lt;/a&gt;
-&lt;/li&gt;&lt;li&gt;
-old changes &lt;a href=&quot;https://github.com/cboettig/pdg_control/commit/de9132ccf10146b3fc35f291656a61c52338e75f&quot;&gt;11:20 pm 2012/10/01&lt;/a&gt;
+added fishstock plots to example &lt;a href=&quot;https://github.com/cboettig/pdg_control/commit/72dc8741fb9aa939e61d66ff0cbc34bcc3b29b78&quot;&gt;05:21 pm 2012/12/05&lt;/a&gt;
 &lt;/li&gt;&lt;/ul&gt;</content>
  </entry>
  
@@ -4091,31 +4101,31 @@ linear &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;dt[, &lt;span cla
 &lt;p&gt;vim set sytnax language, useful for getting R highlighting in &lt;code&gt;.Rmd&lt;/code&gt; files: &lt;code&gt;setf r&lt;/code&gt;, or equivalently, &lt;code&gt;set filetype=r&lt;/code&gt; (must be lowercase r). &lt;code&gt;set filetype&lt;/code&gt; with no argument gives the current filetype.&lt;/p&gt;
 &lt;h3 id=&quot;coding&quot;&gt;Coding&lt;/h3&gt;
 &lt;ul&gt;&lt;li&gt;
-cboettig pushed to master at cboettig/cboettig.github.com: &lt;em&gt;updated posts&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/cboettig.github.com/compare/04c83f2468...c1c0b14263&quot;&gt;07:25 2013/03/26&lt;/a&gt;
+cboettig pushed to master at cboettig/labnotebook: &lt;em&gt;project page updated&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/labnotebook/compare/a166ab4e2d...6ecb8934b6&quot;&gt;05:57 2013/04/02&lt;/a&gt;
 &lt;/li&gt;&lt;li&gt;
-cboettig pushed to master at cboettig/labnotebook: &lt;em&gt;layout on search fixed, avoid lunr search on 404 page new post&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/labnotebook/compare/8e61ee2286...caa51d20d3&quot;&gt;07:23 2013/03/26&lt;/a&gt;
+cboettig pushed to master at cboettig/labnotebook: &lt;em&gt;tags for entries qualifying as blog posts, closes #82&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/labnotebook/compare/63e66aa585...a166ab4e2d&quot;&gt;05:25 2013/04/02&lt;/a&gt;
 &lt;/li&gt;&lt;li&gt;
-cboettig pushed to master at ropensci/rfigshare: &lt;em&gt;bump version Use full value TRUE, T not robust (amends pull request #44)&lt;/em&gt; &lt;a href=&quot;https://github.com/ropensci/rfigshare/compare/e830faa829...ddc9be1f3c&quot;&gt;07:21 2013/03/26&lt;/a&gt;
+cboettig closed issue cboettig/labnotebook#82: &lt;em&gt;tag appropriate open-science entries as #blog&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/labnotebook/issues/82&quot;&gt;05:25 2013/04/02&lt;/a&gt;
 &lt;/li&gt;&lt;li&gt;
-cboettig pushed to prosecutor at cboettig/earlywarning: &lt;em&gt;replicate for OU process&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/earlywarning/compare/9ff8d5c17f...47fb9fcea3&quot;&gt;07:03 2013/03/26&lt;/a&gt;
+cboettig pushed to master at cboettig/labnotebook: &lt;em&gt;tweaking project descriptions updated project page abstracts, presentations&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/labnotebook/compare/788a32c7a7...63e66aa585&quot;&gt;12:44 2013/04/02&lt;/a&gt;
 &lt;/li&gt;&lt;li&gt;
-cboettig pushed to master at cboettig/labnotebook: &lt;em&gt;fix localization of image links&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/labnotebook/compare/07b1cfd9ff...8e61ee2286&quot;&gt;06:09 2013/03/26&lt;/a&gt;
+cboettig pushed to master at cboettig/nonparametric-bayes: &lt;em&gt;writing writing build drafts, update html support automate bibliographic extraction&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/nonparametric-bayes/compare/dafe9ebf33...0e6f39f4df&quot;&gt;12:44 2013/04/02&lt;/a&gt;
 &lt;/li&gt;&lt;li&gt;
-cboettig closed issue ropensci/rfigshare#43: &lt;em&gt;fs_update give an error&lt;/em&gt; &lt;a href=&quot;https://github.com/ropensci/rfigshare/issues/43&quot;&gt;05:56 2013/03/26&lt;/a&gt;
+cboettig opened issue cboettig/labnotebook#82: &lt;em&gt;tag appropriate open-science entries as #blog&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/labnotebook/issues/82&quot;&gt;12:34 2013/04/02&lt;/a&gt;
 &lt;/li&gt;&lt;li&gt;
-cboettig commented on issue ropensci/rfigshare#43: &lt;em&gt;Closed by pull request #44 from @jcolomb Thanks!&lt;/em&gt; &lt;a href=&quot;https://github.com/ropensci/rfigshare/issues/43#issuecomment-15474794&quot;&gt;05:56 2013/03/26&lt;/a&gt;
+cboettig opened issue cboettig/nonparametric-bayes#32: &lt;em&gt;Figure 5: sensitivity analysis&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/nonparametric-bayes/issues/32&quot;&gt;11:00 2013/04/01&lt;/a&gt;
 &lt;/li&gt;&lt;li&gt;
-cboettig closed pull request ropensci/rfigshare#44: &lt;em&gt;fs_update and other&lt;/em&gt; &lt;a href=&quot;https://github.com/ropensci/rfigshare/pull/44&quot;&gt;05:55 2013/03/26&lt;/a&gt;
+cboettig opened issue cboettig/nonparametric-bayes#31: &lt;em&gt;Add code explicitly rather than rely on custom but non-generic functions&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/nonparametric-bayes/issues/31&quot;&gt;10:52 2013/04/01&lt;/a&gt;
 &lt;/li&gt;&lt;/ul&gt;
 
 
 &lt;h3 id=&quot;reading&quot;&gt;Reading&lt;/h3&gt;
 &lt;ul&gt;&lt;li&gt;
-Status and solutions for the world’s unassessed fisheries.: Science (New York, N.Y.) (2012). Volume: 338, Issue: 6106. Pages: 517-20. Christopher Costello, Daniel Ovando, Ray Hilborn, Steven D Gaines, Olivier Deschenes, Sarah E Lester et al. &lt;a href=&quot;http://www.mendeley.comhttp://www.mendeley.com/c/5582059324/g/634301/costello-2012-status-and-solutions-for-the-worlds-unassessed-fisheries/&quot;&gt;03:49 2013/02/25&lt;/a&gt;
+Criticality, adaptability and early-warning signals in time series in a discrete quasispecies model: Frontiers in Biology (2013). R. Fossion, D. a. Hartasánchez, O. Resendis-Antonio, a. Frank et al. &lt;a href=&quot;http://www.mendeley.comhttp://www.mendeley.com/c/5668375674/g/634301/fossion-2013-criticality-adaptability-and-early-warning-signals-in-time-series-in-a-discrete-quasispecies-model/&quot;&gt;08:56 2013/03/28&lt;/a&gt;
 &lt;/li&gt;&lt;li&gt;
-Decision Accuracy and the Role of Spatial Interaction in Opinion Dynamics: Journal of Statistical Physics (2013). Colin J. Torney, Simon a. Levin, Iain D. Couzin et al. &lt;a href=&quot;http://www.mendeley.comhttp://www.mendeley.com/c/5582059314/g/634301/torney-2013-decision-accuracy-and-the-role-of-spatial-interaction-in-opinion-dynamics/&quot;&gt;03:47 2013/02/25&lt;/a&gt;
+Git Can Facilitate Greater Reproducibility and Increased Transparency in Science: Source Code for Biology and Medicine (2013). Volume: 8, Issue: 1. Pages: 7. Karthik Ram et al. &lt;a href=&quot;http://www.mendeley.com/research/git-can-facilitate-greater-reproducibility-and-increased-transparency-in-science-1/&quot;&gt;08:56 2013/03/28&lt;/a&gt;
 &lt;/li&gt;&lt;li&gt;
-A systematic review of mathematical models of mosquito-borne pathogen transmission: 1970-2010: Journal of The Royal Society Interface (2013). Volume: 10, Issue: 81. Pages: 20120921-20120921. Robert C Reiner, T Alex Perkins, Christopher M Barker, Tianchan Niu, Luis Fernando Chaves, Alicia M Ellis, Dylan B George, A. Le Menach, Juliet R C Pulliam, Donal Bisanzio, C. Buckee, Christinah Chiyaka, Derek A T Cummings, Andres J Garcia, Michelle L Gatton, P. W. Gething, David M Hartley, Geoffrey Johnston, Eili Y Klein, Edwin Michael, Steven W Lindsay, A. L. Lloyd, David M Pigott, William K Reisen, Nick Ruktanonchai, Brajendra K Singh, A. J. Tatem, Uriel Kitron, Simon I Hay, Thomas W Scott, David L Smith et al. &lt;a href=&quot;http://www.mendeley.com/research/mosquitoborne-pathogen-transmission-1970-2010-a-systematic-review-of-mathematical-models-of-mosqui/&quot;&gt;03:18 2013/02/25&lt;/a&gt;
+Combining Parameter and State Estimation in Simulation-Based Filtering: Sequential Monte Carlo Methods in Practice (2001). Pages: 197–224. J. Liu, M. West et al. &lt;a href=&quot;http://www.mendeley.com/research/combining-parameter-state-estimation-simulationbased-filtering-2/&quot;&gt;09:38 2013/03/19&lt;/a&gt;
 &lt;/li&gt;&lt;/ul&gt;</content>
  </entry>
  
@@ -20667,9 +20677,9 @@ BM LogLik OU LogLik
    <id>h/2011/02/16/data-mangement-on-uc3-merritt-repository</id>
    <content type="html">&lt;p&gt;I’ve been trying to learn a little more about the potential for data management solutions through the &lt;a href=&quot;http://www.cdlib.org/services/uc3/merritt/index.html&quot;&gt;UC3 Merritt repository&lt;/a&gt;, and decide how this compares to commercial alternatives such as Amazon S3, Picasa/Flickr (obviously for images only), and field-specific and publication specific repositories such as Dryad.  Merritt email support have been very helpful in answering my questions and concerns.&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;Persistence&lt;/strong&gt;:  of the data itself, of the  URLs &amp;amp; object identifiers, of access to the data?  Not surprisingly they have standard redundancy backup procedures for archival standards in place.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;Object identifiers&lt;/strong&gt;:  UC3 also provides DOIs for objects which can be purchased independently of archiving in the Merritt repository and are indexed in Web of Science.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;Cost and pricing structure&lt;/strong&gt;: $1040/Tb/year, prorated for how much storage you actually use.  No charge for upload/download, unlike S3.  &lt;a href=&quot;http://www.cdlib.org/services/uc3/ezid/index.html&quot;&gt;EZID&lt;/a&gt; for DOIs are separate charge:  Annual charge unlimited number of DOIs: $75/user, $375/group, or $1,125 for whole university&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Persistence&lt;/strong&gt;:  of the data itself, of the  URLs &amp;amp; object identifiers, of access to the data?  Not surprisingly they have standard redundancy backup procedures for archival standards in place.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Object identifiers&lt;/strong&gt;:  UC3 also provides DOIs for objects which can be purchased independently of archiving in the Merritt repository and are indexed in Web of Science.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Cost and pricing structure&lt;/strong&gt;: $1040/Tb/year, prorated for how much storage you actually use.  No charge for upload/download, unlike S3.  &lt;a href=&quot;http://www.cdlib.org/services/uc3/ezid/index.html&quot;&gt;EZID&lt;/a&gt; for DOIs are separate charge:  Annual charge unlimited number of DOIs: $75/user, $375/group, or $1,125 for whole university&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;&lt;strong&gt;The Good:&lt;/strong&gt; An institutional repository seems like a safer bet than an Internet business, even if it’s as large as Amazon or Google.  After all, the UC’s have been around a lot longer.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;The Not-So-Good&lt;/strong&gt;: The big concern for me here is that this is guaranteed (both for IDs and for data itself) only as long as you are (or someone else is) paying the annual fee.&lt;/p&gt;
@@ -20903,49 +20913,49 @@ BM LogLik OU LogLik
    <link href="/2011/02/01/the-future-of-data-preparing-researchers-to-face-new-funding-and-publishing-policies.html"/>
    <updated>2011-02-01T01:40:59-08:00</updated>
    <id>h/2011/02/01/the-future-of-data-preparing-researchers-to-face-new-funding-and-publishing-policies</id>
-   <content type="html">&lt;p&gt;I have been working with several of the faculty of UC Davis to prepare a workshop for our department to (1) help make our researchers &lt;strong&gt;aware&lt;/strong&gt; of the new requirements for NSF proposals and journal submissions with regard to data archiving, (2) To explore what new** ** &lt;strong&gt;opportunities&lt;/strong&gt; this creates and what **tools **exist that will help our researchers take maximum advantage of it, and (3) to engage our research community in the discussion of **future standards **for sharing, standardizing, rewarding and funding the archiving of data.&lt;/p&gt;
+   <content type="html">&lt;p&gt;I have been working with several of the faculty of UC Davis to prepare a workshop for our department to (1) help make our researchers &lt;strong&gt;aware&lt;/strong&gt; of the new requirements for NSF proposals and journal submissions with regard to data archiving, (2) To explore what &lt;strong&gt;new opportunities&lt;/strong&gt; this creates and what &lt;strong&gt;tools&lt;/strong&gt; exist that will help our researchers take maximum advantage of it, and (3) to engage our research community in the discussion of &lt;strong&gt;future standards&lt;/strong&gt; for sharing, standardizing, rewarding and funding the archiving of data.&lt;/p&gt;
 &lt;p&gt;I’m very pleased that we have an excellent panel of supportive faculty:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;a href=&quot;http://strong.ucdavis.edu/&quot;&gt;Don Strong&lt;/a&gt;, Editor-in-Chief of &lt;strong&gt;Ecology&lt;/strong&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;a href=&quot;http://www.des.ucdavis.edu/faculty/holyoak/&quot;&gt;Marcel Holyoak&lt;/a&gt;, Editor-in-Chief, &lt;strong&gt;Ecology Letters&lt;/strong&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;a href=&quot;http://phylogenomics.blogspot.com&quot;&gt;Jonathan Eisen,&lt;/a&gt; Editor-in-Chief, &lt;strong&gt;PLoS Biology&lt;/strong&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;a href=&quot;http://two.ucdavis.edu/~me/&quot;&gt;Alan Hastings&lt;/a&gt;, founding Editor-in-Chief, &lt;strong&gt;Theoretical Ecology&lt;/strong&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;a href=&quot;http://www.des.ucdavis.edu/FacultyInfo.aspx?ID_Number=83&quot;&gt;Robert Hijmans&lt;/a&gt;, Asst Professor of Environmental Science &amp;amp; Policy and expert in software infrastructure for reproducible research.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;a href=&quot;http://www.cdlib.org/cdlinfo/2010/05/19/patricia-cruse-digital-preservation-pioneer/&quot;&gt;Trisha Cruse&lt;/a&gt; Director of UC Curation Center at the University of California Digital Library&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://strong.ucdavis.edu/&quot;&gt;Don Strong&lt;/a&gt;, Editor-in-Chief of &lt;strong&gt;Ecology&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.des.ucdavis.edu/faculty/holyoak/&quot;&gt;Marcel Holyoak&lt;/a&gt;, Editor-in-Chief, &lt;strong&gt;Ecology Letters&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://phylogenomics.blogspot.com&quot;&gt;Jonathan Eisen,&lt;/a&gt; Editor-in-Chief, &lt;strong&gt;PLoS Biology&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://two.ucdavis.edu/~me/&quot;&gt;Alan Hastings&lt;/a&gt;, founding Editor-in-Chief, &lt;strong&gt;Theoretical Ecology&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.des.ucdavis.edu/FacultyInfo.aspx?ID_Number=83&quot;&gt;Robert Hijmans&lt;/a&gt;, Asst Professor of Environmental Science &amp;amp; Policy and expert in software infrastructure for reproducible research.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.cdlib.org/cdlinfo/2010/05/19/patricia-cruse-digital-preservation-pioneer/&quot;&gt;Trisha Cruse&lt;/a&gt; Director of UC Curation Center at the University of California Digital Library&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;We are currently working out the format of the workshop.  The current draft consists of three 1.5hr sessions, progressing through the three main goals above in an interactive format.&lt;/p&gt;
 &lt;h3 id=&quot;why-archive&quot;&gt;1) Why Archive?&lt;/h3&gt;
 &lt;h5 id=&quot;weds-march-2nd-230-4p-lsa-1022&quot;&gt;(Weds March 2nd 2:30-4p, LSA 1022)&lt;/h5&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;New &lt;a href=&quot;http://www.cdlib.org/services/uc3/datamanagement/funding.html&quot;&gt;requirements from funders&lt;/a&gt; and publishers.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Recommended practice: What’s ideal, what’s acceptable, what isn’t?&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Types/levels of archiving.  Why repositories?&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Funding data repositories.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Access embargoes.  Citing data/getting credit.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Panel Q&amp;amp;A&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;New &lt;a href=&quot;http://www.cdlib.org/services/uc3/datamanagement/funding.html&quot;&gt;requirements from funders&lt;/a&gt; and publishers.&lt;/li&gt;
+&lt;li&gt;Recommended practice: What’s ideal, what’s acceptable, what isn’t?&lt;/li&gt;
+&lt;li&gt;Types/levels of archiving.  Why repositories?&lt;/li&gt;
+&lt;li&gt;Funding data repositories.&lt;/li&gt;
+&lt;li&gt;Access embargoes.  Citing data/getting credit.&lt;/li&gt;
+&lt;li&gt;Panel Q&amp;amp;A&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&quot;leveraging-data-archives-logistics&quot;&gt;2) Leveraging data archives: logistics&lt;/h3&gt;
 &lt;h5 id=&quot;thurs-march-3nd-230-4p-pes-3001&quot;&gt;(Thurs March 3nd 2:30-4p, PES 3001)&lt;/h5&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;The major repositories.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Discovering data.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Citing data.  Metadata, DOIs, formats, persistent data&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Sharing/archiving code?&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Linked data, ontologies &amp;amp; Semantic web.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Tools for reproducible research.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Panel Q&amp;amp;A&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;The major repositories.&lt;/li&gt;
+&lt;li&gt;Discovering data.&lt;/li&gt;
+&lt;li&gt;Citing data.  Metadata, DOIs, formats, persistent data&lt;/li&gt;
+&lt;li&gt;Sharing/archiving code?&lt;/li&gt;
+&lt;li&gt;Linked data, ontologies &amp;amp; Semantic web.&lt;/li&gt;
+&lt;li&gt;Tools for reproducible research.&lt;/li&gt;
+&lt;li&gt;Panel Q&amp;amp;A&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&quot;looking-ahead-new-scale-new-science&quot;&gt;3) Looking ahead: new scale, new science?&lt;/h3&gt;
 &lt;h5 id=&quot;fri-march-4nd-230-4p-pes-3001&quot;&gt;(Fri March 4nd 2:30-4p, PES 3001)&lt;/h5&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Challenges and Opportunities (&lt;em&gt;i.e.&lt;/em&gt; &lt;a href=&quot;http://www.sciencemag.org/content/331/6018/692.short&quot;&gt;&lt;em&gt;Science&lt;/em&gt; issue&lt;/a&gt;,&lt;a href=&quot;http://www.sciencemag.org/content/331/6018/703.short&quot;&gt;&lt;em&gt;Science&lt;/em&gt; re: Ecology&lt;/a&gt;)&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Integrated databases, standards for data&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Dryad “publication model” vs DataONE model, etc&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Reproducible research&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;UC3’s “data publication” concept?&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Future of credit: Will you be scooped or will you be famous?&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;What roll we can/should have in shaping future standards, expectations &amp;amp; requirements&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Panel Q&amp;amp;A&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;Challenges and Opportunities (&lt;em&gt;i.e.&lt;/em&gt; &lt;a href=&quot;http://www.sciencemag.org/content/331/6018/692.short&quot;&gt;&lt;em&gt;Science&lt;/em&gt; issue&lt;/a&gt;,&lt;a href=&quot;http://www.sciencemag.org/content/331/6018/703.short&quot;&gt;&lt;em&gt;Science&lt;/em&gt; re: Ecology&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Integrated databases, standards for data&lt;/li&gt;
+&lt;li&gt;Dryad “publication model” vs DataONE model, etc&lt;/li&gt;
+&lt;li&gt;Reproducible research&lt;/li&gt;
+&lt;li&gt;UC3’s “data publication” concept?&lt;/li&gt;
+&lt;li&gt;Future of credit: Will you be scooped or will you be famous?&lt;/li&gt;
+&lt;li&gt;What roll we can/should have in shaping future standards, expectations &amp;amp; requirements&lt;/li&gt;
+&lt;li&gt;Panel Q&amp;amp;A&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&quot;resources&quot;&gt;Resources&lt;/h2&gt;
 &lt;p&gt;See the recent discussion of these issues in &lt;a href=&quot;http://www.sciencemag.org/cgi/doi/10.1126/science.331.6018.692&quot;&gt;Science&lt;/a&gt;, &lt;a href=&quot;http://www.nature.com/doifinder/10.1038/nj7333-295a&quot;&gt;Nature&lt;/a&gt;, &lt;a href=&quot;http://linkinghub.elsevier.com/retrieve/pii/S0169534710002697&quot;&gt;TREE&lt;/a&gt;, &lt;a href=&quot;http://www.ncbi.nlm.nih.gov/pubmed/20073990&quot;&gt;Am Nat&lt;/a&gt;, and elsewhere.   I have started assembling a list of resources in my December notes: _&lt;a href=&quot;http://www.carlboettiger.info/archives/502&quot;&gt;Thoughts on the New Policies for Data Archiving at NSF and in Common Journals&lt;/a&gt;. _In addition, there’s more detail available on the &lt;a href=&quot;https://www.nescent.org/wg_dryad/Main_Page&quot;&gt;Dryad Wiki&lt;/a&gt; and from Dryad here:&lt;/p&gt;

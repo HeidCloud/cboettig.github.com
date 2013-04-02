@@ -3,9 +3,9 @@
  
  <title>Lab Notebook - R</title>
  <link href="/R.xml" rel="self"/>
- <link href=""/>
- <updated>2013-03-26T12:23:42-07:00</updated>
- <id></id>
+ <link href="/"/>
+ <updated>2013-04-01T22:57:48-07:00</updated>
+ <id>http://www.carlboettiger.info</id>
  <author>
    <name>Carl Boettiger</name>
    <email>cboettig@gmail.com</email>
@@ -16,7 +16,7 @@
    <title>knitcitations</title>
    <link href="/2012/05/30/knitcitations.html"/>
    <updated>2012-05-30T00:00:00-07:00</updated>
-   <id>h/2012/05/30/knitcitations</id>
+   <id>/2012/05/30/knitcitations</id>
    <content type="html">&lt;p&gt;&lt;strong&gt;EDIT&lt;/strong&gt;: Note that this package has evolved quite a bit from this initial post. While the basic interface is the same, support for additional features and some choices in formatting differ from what is presented here. Please see the &lt;a href=&quot;https://github.com/cboettig/knitcitations/&quot;&gt;README&lt;/a&gt; for the latest introduction to the package. Readers may also be interested in the more recent post discussing the &lt;a href=&quot;http://www.carlboettiger.info/2013/02/22/semantic-citations-for-the-notebook-and-knitr.html&quot;&gt;introduction of several new features including semantic tools in the &lt;code&gt;knitcitations&lt;/code&gt; package&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Markdown is becoming an increasingly popular platform for lightweight and online publishing. While traditional publishing tools like LaTeX and word processors have long had integrated bibliographic management, few tools handle citations for lightweight publishing. I am finding myself more and more drawn to markdown rather then tex/Rnw as my standard format (not least of which is the ease of displaying the files on github, particularly now that we have automatic image uploading. I’ve taken a little whack at generating in-text citations using knitr and other R tools.&lt;/p&gt;
 &lt;h2 id=&quot;installation&quot;&gt;Installation&lt;/h2&gt;
@@ -105,7 +105,7 @@ http://yihui.name/knitr/&gt;.&lt;/p&gt;
    <title>Writing reproducibly in the open with knitr</title>
    <link href="/2012/04/07/writing-reproducibly-in-the-open-with-knitr.html"/>
    <updated>2012-04-07T07:58:36-07:00</updated>
-   <id>h/2012/04/07/writing-reproducibly-in-the-open-with-knitr</id>
+   <id>/2012/04/07/writing-reproducibly-in-the-open-with-knitr</id>
    <content type="html">&lt;p&gt;&lt;a href=&quot;http://en.wikipedia.org/wiki/Sweave&quot;&gt;Sweave&lt;/a&gt; is something of a gold standard in reproducible research. It creates a &lt;em&gt;dynamic document&lt;/em&gt;, written in a mix of LaTeX and R code where the results of the analysis (numbers, figures, tables) are automatically generated from the code and inserted into the resulting pdf document, making them easy to update if the data or methods change. It’s a nice idea, in principle.&lt;/p&gt;
 &lt;p&gt;However, the practical troubles are many. Coauthors don’t know LaTeX, publishers who don’t accept LaTeX or pdfs. The LaTeX myth that you are freed from thinking about formatting, when in fact you have to fill your document with LaTeX specific markup that makes it a burden both to type and to read the source-code. Compiling and debugging your text. And then the reproducibility comes from sharing that Sweave file – a mix of LaTeX and R that almost no one can read easily. Where’s the elegance in that? ((I’m glossing over the additional challenges of highlighting, caching, and formating on the R code side, which have been largely addressed by additional packages and are elegantly solved in knitr.)) Sure, none of these are show-stoppers – I’ve been content with LaTeX for years – but suddenly there’s a better way.&lt;/p&gt;
 &lt;p&gt;Thanks to &lt;a href=&quot;http://yihui.name/knitr/&quot;&gt;knitr&lt;/a&gt;, a successor of Sweave, I can write my publications in &lt;a href=&quot;http://en.wikipedia.org/wiki/Markdown&quot;&gt;markdown&lt;/a&gt;. Unlike LaTeX, HTML, or other markup languages, markdown is designed to be easily read as plain text, but can also be interpreted into pretty HTML, and now into almost any other format thanks to &lt;a href=&quot;http://johnmacfarlane.net/pandoc/&quot;&gt;pandoc&lt;/a&gt;. All of which is to say that writing and sharing just got &lt;em&gt;a lot easier.&lt;/em&gt;&lt;/p&gt;
@@ -122,7 +122,7 @@ http://yihui.name/knitr/&gt;.&lt;/p&gt;
    <title>Citations in markdown using knitr</title>
    <link href="/2012/03/24/citations-in-markdown-using-knitr.html"/>
    <updated>2012-03-24T14:33:27-07:00</updated>
-   <id>h/2012/03/24/citations-in-markdown-using-knitr</id>
+   <id>/2012/03/24/citations-in-markdown-using-knitr</id>
    <content type="html">&lt;p&gt;I am finding myself more and more drawn to markdown rather then tex/Rnw as my standard format (not least of which is the ease of displaying the files on github, particularly now that we have automatic image uploading). One thing I miss from latex is the citation commands. (I understand these can be provided to markdown via Pandoc, but I’d like to simply have to knit the document, and not then run it through pandoc, latex, or another interpreter). I’ve taken a little whack at generating in-text citations using knitr and other R tools.&lt;/p&gt;
 &lt;h3 id=&quot;doi-approach&quot;&gt;DOI Approach&lt;/h3&gt;
 &lt;p&gt;I’ve put some simple functions in a &lt;code&gt;knitcitations&lt;/code&gt; package. The functions use the crossref API to grab citation information given a doi, so I don’t have to generate a bibtex file for papers I’m reading, (inspired by the &lt;a href=&quot;http://wordpress.org/extend/plugins/kcite/&quot;&gt;kcite&lt;/a&gt; package for Wordpress). One can grab my package from github&lt;/p&gt;
@@ -162,7 +162,7 @@ biblio[[&lt;span class=&quot;dv&quot;&gt;1&lt;/span&gt;]]&lt;/code&gt;&lt;/pre&g
    <title>knitr, github, and a new phase for the lab notebook</title>
    <link href="/2012/03/21/knitr-github-and-a-new-phase-for-the-lab-notebook.html"/>
    <updated>2012-03-21T05:13:42-07:00</updated>
-   <id>h/2012/03/21/knitr-github-and-a-new-phase-for-the-lab-notebook</id>
+   <id>/2012/03/21/knitr-github-and-a-new-phase-for-the-lab-notebook</id>
    <content type="html">&lt;p&gt;I have recently modified the basic workflow of my lab notebook since discovering &lt;a href=&quot;http://yihui.name/knitr/&quot;&gt;knitr&lt;/a&gt;. Before, I would write code files which I could track on &lt;a href=&quot;https://github.com&quot;&gt;github&lt;/a&gt;, push figures created by the code to flickr, and then write a notebook entry on wordpress describing what I was doing. I’d embed each figure I wanted into the entry, and each figure got an automatic link to github for the script that created it (which usually worked, though it didn’t say where in the script the command came from, and it required manually specifying the script name).&lt;/p&gt;
 &lt;p&gt;Because knitr allows me to write a single file containing code and formatted text, and will automatically display the code and embed the images, I can avoid that more convoluted workflow and just write.&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;http://farm8.staticflickr.com/7256/7003687571_09f79cfc15_o.png&quot; /&gt;](https://github.com/cboettig/pdg_control/blob/master/inst/examples)&lt;/p&gt;
@@ -191,7 +191,7 @@ biblio[[&lt;span class=&quot;dv&quot;&gt;1&lt;/span&gt;]]&lt;/code&gt;&lt;/pre&g
    <title>Citing R packages</title>
    <link href="/2012/03/20/citing-r-packages.html"/>
    <updated>2012-03-20T03:02:09-07:00</updated>
-   <id>h/2012/03/20/citing-r-packages</id>
+   <id>/2012/03/20/citing-r-packages</id>
    <content type="html">&lt;p&gt;I’m not always careful in citing all the R packages I use. R actually has some rather nice built-in mechanisms to support this, so I really have no excuse. Here’s some quick examples:&lt;/p&gt;
 &lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;
 &lt;span class=&quot;kw&quot;&gt;citation&lt;/span&gt;(&lt;span class=&quot;st&quot;&gt;&amp;quot;ouch&amp;quot;&lt;/span&gt;)&lt;/code&gt;&lt;/pre&gt;
@@ -272,7 +272,7 @@ out &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot
    <title>Elegant & fast data manipulation with data.table</title>
    <link href="/2012/02/12/elegant-fast-data-manipulation-with-data-table.html"/>
    <updated>2012-02-12T05:39:03-08:00</updated>
-   <id>h/2012/02/12/elegant-fast-data-manipulation-with-data-table</id>
+   <id>/2012/02/12/elegant-fast-data-manipulation-with-data-table</id>
    <content type="html">&lt;p&gt;Just learned about the R &lt;a href=&quot;http://cran.r-project.org/web/packages/data.table/index.html&quot;&gt;data.table package&lt;/a&gt; (ht @recology_) makes R data frames into ultra-fast, SQL-like objects.&lt;/p&gt;
 &lt;p&gt;One thing we get is some very nice and powerful syntax. Consider some simple data of replicate time series:&lt;/p&gt;
 &lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;time &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;rep&lt;/span&gt;(&lt;span class=&quot;dv&quot;&gt;1&lt;/span&gt;:&lt;span class=&quot;dv&quot;&gt;10&lt;/span&gt;, &lt;span class=&quot;dv&quot;&gt;10&lt;/span&gt;)
@@ -372,7 +372,7 @@ user  system elapsed
    <title>Is your phylogeny informative?</title>
    <link href="/2012/01/19/is-your-phylogeny-informative.html"/>
    <updated>2012-01-19T06:10:49-08:00</updated>
-   <id>h/2012/01/19/is-your-phylogeny-informative</id>
+   <id>/2012/01/19/is-your-phylogeny-informative</id>
    <content type="html">&lt;p&gt;Yesterday my paper (Boettiger &lt;em&gt;et. al.&lt;/em&gt; 2012)  appeared in early view in Evolution (&lt;a href=&quot;http://www.mendeley.com/download/public/98752/4485545655/9a209c7dd29980fd2e47c06eb8b2d1d7dd6f70d4/dl.pdf&quot;&gt;author’s preprint&lt;/a&gt;),As the open access copy doesn’t appear on pubmed for a while, you can access my author’s copy &lt;a href=&quot;http://www.mendeley.com/download/public/98752/4485545655/9a209c7dd29980fd2e47c06eb8b2d1d7dd6f70d4/dl.pdf&quot;&gt;here&lt;/a&gt;. so I’d like to take this chance to share the back-story and highlight my own view on some of our findings, and the associated &lt;a href=&quot;http://cran.r-project.org/web/packages/pmc/index.html&quot;&gt;package on CRAN&lt;/a&gt;.Just submitted, meanwhile, the code is always on &lt;a href=&quot;https://github.com/cboettig/pmc&quot;&gt;github&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;I didn’t set out to write this paper.  I set out to write a very different paper, introducing a new phylogenetic method for continuous traits that estimates changes in evolutionary constraint.  This adds _even more _parameters than already present in rich models multi-peak OU process, and I wanted to know if it could be justified – if there really was enough information to play the game we already had, before I went and made the situation even worse. Trying to find something rigorous enough to hang my hat on, I ended up writing this paper.&lt;/p&gt;
 &lt;h3 id=&quot;the-short-of-it&quot;&gt;The short of it&lt;/h3&gt;
@@ -426,7 +426,7 @@ user  system elapsed
    <title>Treebase Package On Cran</title>
    <link href="/2011/10/25/treebase-package-on-cran.html"/>
    <updated>2011-10-25T12:06:38-07:00</updated>
-   <id>h/2011/10/25/treebase-package-on-cran</id>
+   <id>/2011/10/25/treebase-package-on-cran</id>
    <content type="html">&lt;p&gt;My treebase package is now up on the &lt;a href=&quot;http://cran.r-project.org/web/packages/treebase/&quot;&gt;CRAN repository&lt;/a&gt;. (Source code is up, the binaries should appear soon). Here’s a few introductory examples to illustrate some of the functionality of the package. Thanks in part to new data deposition requirements at journals such as Evolution, Am Nat, and Sys Bio, and data management plan requirements from NSF, I hope the package will become increasingly useful for teaching by replicating results and for meta-analyses that can be automatically updated as the repository grows. Please contact me with any bugs or requests (or post in the &lt;a href=&quot;https://github.com/cboettig/treeBASE/issues?sort=created&amp;amp;direction=desc&amp;amp;state=open&quot;&gt;issue tracker&lt;/a&gt;).&lt;/p&gt;
 &lt;h2 id=&quot;basic-tree-and-metadata-queries&quot;&gt;Basic tree and metadata queries&lt;/h2&gt;
 &lt;p&gt;Downloading trees by different queries: by author, taxa, &amp;amp; study. More options are described in the help file.&lt;/p&gt;
@@ -539,7 +539,7 @@ is_yule &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&
    <title>Showcasing the latest phylogenetic methods: AUTEUR</title>
    <link href="/2011/07/20/showcasing-the-latest-phylogenetic-methods-auteur.html"/>
    <updated>2011-07-20T08:07:14-07:00</updated>
-   <id>h/2011/07/20/showcasing-the-latest-phylogenetic-methods-auteur</id>
+   <id>/2011/07/20/showcasing-the-latest-phylogenetic-methods-auteur</id>
    <content type="html">&lt;p&gt;While high-speed fish feeding videos may be the signature of the lab, dig a bit deeper and you’ll find a wealth of comparative phylogenetic methods sneaking in.  It’s a natural union – expert functional morphology is the key to good comparative methods, just as phylogenies hold the key to untangling the evolutionary origins of that morphology.  The lab’s own former graduate, &lt;a href=&quot;http://www.brianomeara.info/&quot;&gt;Brian O’Meara&lt;/a&gt;, made a revolutionary step forward in the land of phylogenetic methods when he unveiled &lt;em&gt;Brownie&lt;/em&gt; in 2006, allowing researchers to identify major shifts in trait diversification rates across the tree.  This work spurred not only a flood of empirical applications but also methodological innovations, such as Liam’s &lt;a href=&quot;http://phytools.blogspot.com/2011/07/more-robust-version-of-brownielite.html&quot;&gt;brownie-lite&lt;/a&gt;, and today’s focus: &lt;a href=&quot;http://public.wsu.edu/~storfer/eastman/pages/index.html&quot;&gt;Jon Eastman&lt;/a&gt; &lt;em&gt;et al.&lt;/em&gt;’s auteur package.&lt;/p&gt;
 &lt;p&gt;Auteur, short for “Accommodating uncertainty in trait evolution using R,” is the grown-up Bayesian RJMCMC version of that original idea in &lt;em&gt;Brownie&lt;/em&gt;.  Diversification rates can change along the phylogenetic tree – only this time, you don’t have to specify where those changes could have occurred, or how many there may have been – auteur simply tries them all.&lt;/p&gt;
 &lt;p&gt;If you want the details, definitely go &lt;a href=&quot;http://doi.wiley.com/10.1111/j.1558-5646.2011.01401.x&quot;&gt;read the paper&lt;/a&gt; – it’s all there, clear and thorough.  Meanwhile, what we really want to do, is take it out for a test drive.&lt;/p&gt;
@@ -641,7 +641,7 @@ phy &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;chelonia$phy
    <title>TreeBASE in R: a first tutorial</title>
    <link href="/2011/05/16/treebase-in-r-a-first-tutorial.html"/>
    <updated>2011-05-16T12:46:54-07:00</updated>
-   <id>h/2011/05/16/treebase-in-r-a-first-tutorial</id>
+   <id>/2011/05/16/treebase-in-r-a-first-tutorial</id>
    <content type="html">&lt;p&gt;My TreeBASE R package is essentially functional now.  Here’s a quick tutorial on the kinds of things it can do.  Grab the &lt;a href=&quot;https://github.com/cboettig/treeBASE/archives/master&quot;&gt;treebase package here&lt;/a&gt;, install and load the library into R.&lt;/p&gt;
 &lt;p&gt;TreeBASE provides two APIs to query the database, one which searches by the metadata associated with different publications (called &lt;a href=&quot;http://sourceforge.net/apps/mediawiki/treebase/index.php?title=OAI-PMH&quot;&gt;OAI-PMH&lt;/a&gt;), and another which queries the phylogenies directly (called &lt;a href=&quot;http://sourceforge.net/apps/mediawiki/treebase/index.php?title=API&quot;&gt;Phylo-ws&lt;/a&gt;).  They have somewhat redundant functions, but for our purposes the second one returns the actual data, while the first returns metadata.  A few examples will best illustrate how this all works.  We start with some queries of the metadata directly without downloading any trees.&lt;/p&gt;
 &lt;ol style=&quot;list-style-type: decimal&quot;&gt;
@@ -803,7 +803,7 @@ is_yule &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&
    <title>socialR: Reproducible Research & Notebook integration with R</title>
    <link href="/2010/12/10/socialr-an-r-package-to-track-the-status-of-computations-with-social-network-tools.html"/>
    <updated>2010-12-10T19:44:54-08:00</updated>
-   <id>h/2010/12/10/socialr-an-r-package-to-track-the-status-of-computations-with-social-network-tools</id>
+   <id>/2010/12/10/socialr-an-r-package-to-track-the-status-of-computations-with-social-network-tools</id>
    <content type="html">&lt;p&gt;I’ve created an R package that uses social media tools for reproducible research.  The goal of the package is this: whenever I run a code, output figures are automatically added to my figure repository (Flickr), linked to the timestamped version of the code that produced them in the code repository.  Figures should be tagged by project and be embedded selectively or automatically into this lab notebook.  The basic workflow of the notebook looks like this:[ref]Diagram of my notebook as presented at Science Online, 2011, see other slides in my &lt;a href=&quot;http://www.carlboettiger.info/archives/792&quot;&gt;entry on this&lt;/a&gt;.[/ref]&lt;/p&gt;
 &lt;div class=&quot;figure&quot;&gt;
 &lt;img src=&quot;http://farm6.staticflickr.com/5259/5471680767_34c350314e_o.png&quot; /&gt;
