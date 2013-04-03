@@ -1,7 +1,7 @@
 {
   "/": [
-    "5054",
-    "13266"
+    "5082",
+    "13314"
   ],
   "/ Hastings student at UC Davis": [
     "0",
@@ -821,7 +821,7 @@
   ],
   "/2010/10/18/Teaching.html": [
     "0",
-    "1"
+    "2"
   ],
   "/2010/10/19/stochastic-population-dynamics-abstract.html": [
     "1",
@@ -864,8 +864,8 @@
     "1"
   ],
   "/2010/11/03/getting-the-details-right-on-the-fourier-transform-approach-to-likelihood.html": [
-    "41",
-    "41"
+    "42",
+    "42"
   ],
   "/2010/11/05/": [
     "0",
@@ -1184,8 +1184,8 @@
     "2"
   ],
   "/2011/03/15/models-in-phylogenetic-inference.html": [
-    "266",
-    "299"
+    "268",
+    "301"
   ],
   "/2011/03/15/tuesday-2.html": [
     "0",
@@ -1388,8 +1388,8 @@
     "57"
   ],
   "/2011/05/19/algorithms-group-mcmcmc.html": [
-    "115",
-    "130"
+    "117",
+    "132"
   ],
   "/2011/05/19/thursday-5.html": [
     "0",
@@ -1620,8 +1620,8 @@
     "4"
   ],
   "/2011/08/26/fishbase-from-r-some-xml-parsing.html": [
-    "128",
-    "152"
+    "129",
+    "153"
   ],
   "/2011/08/26/rfishbase-and-some-taxonomy-in-r-with-taxize.html": [
     "34",
@@ -1848,8 +1848,8 @@
     "1"
   ],
   "/2011/11/04/sparkleshare-configuration.html": [
-    "1748",
-    "2123"
+    "1755",
+    "2130"
   ],
   "/2011/11/06/sunday-5.html": [
     "0",
@@ -1868,16 +1868,16 @@
     "1"
   ],
   "/2011/11/10/parallel-computing-on-clusters-in-r-mpi.html": [
-    "127",
-    "144"
+    "128",
+    "145"
   ],
   "/2011/11/10/thursday-12.html": [
     "0",
     "1"
   ],
   "/2011/11/12/non-optimal-outcomes-of-optimal-solutions.html": [
-    "11",
-    "19"
+    "12",
+    "20"
   ],
   "/2011/11/12/of-labrids-and-dubious-convergence.html": [
     "1",
@@ -2001,7 +2001,7 @@
   ],
   "/2012/02/06/some-collaborative-tools-for-science.html": [
     "25",
-    "52"
+    "53"
   ],
   "/2012/02/06/stackoverflow.com": [
     "0",
@@ -2016,16 +2016,16 @@
     "4"
   ],
   "/2012/02/10/thursday-writing-some-latexdiff-notes.html": [
-    "20",
-    "23"
+    "21",
+    "25"
   ],
   "/2012/02/12/elegant-fast-data-manipulation-with-data-table.html": [
-    "342",
-    "388"
+    "343",
+    "389"
   ],
   "/2012/02/12/saturday-projects-reading-markdown-plugins.html": [
-    "4",
-    "8"
+    "5",
+    "9"
   ],
   "/2012/02/12/sunday-6.html": [
     "4",
@@ -2080,8 +2080,8 @@
     "4"
   ],
   "/2012/02/27/using-knitr-and-rwordpress-to-publish-results-directly-from-r-6.html": [
-    "231",
-    "349"
+    "234",
+    "353"
   ],
   "/2012/02/27/using-knitr-and-rwordpress-to-publish-results-directly-from-r.html": [
     "1",
@@ -2132,8 +2132,8 @@
     "8"
   ],
   "/2012/03/20/citing-r-packages.html": [
-    "751",
-    "821"
+    "753",
+    "823"
   ],
   "/2012/03/20/friday-some-random-notes.html": [
     "2",
@@ -2144,8 +2144,8 @@
     "5"
   ],
   "/2012/03/21/knitr-github-and-a-new-phase-for-the-lab-notebook.html": [
-    "195",
-    "317"
+    "197",
+    "319"
   ],
   "/2012/03/21/policy-costs-to-changing-mangement-tp-1b-apples-to-apples.html": [
     "0",
@@ -2156,8 +2156,8 @@
     "14"
   ],
   "/2012/03/24/citations-in-markdown-using-knitr.html": [
-    "552",
-    "742"
+    "555",
+    "745"
   ],
   "/2012/03/24/citations-in-markdown-usingknitr.html": [
     "0",
@@ -2168,8 +2168,8 @@
     "3"
   ],
   "/2012/03/27/tuesday-pandoc-citations-notes-various.html": [
-    "99",
-    "146"
+    "101",
+    "148"
   ],
   "/2012/03/29/data-to-knowledge-conference-uc-berkeley-application-abstract.html": [
     "5",
@@ -2200,8 +2200,8 @@
     "3"
   ],
   "/2012/04/07/writing-reproducibly-in-the-open-with-knitr.html": [
-    "440",
-    "740"
+    "444",
+    "745"
   ],
   "/2012/04/10/monday-tuesday.html": [
     "0",
@@ -2232,8 +2232,8 @@
     "40"
   ],
   "/2012/05/01/Jekyll-vs-Wordpress.html": [
-    "1073",
-    "1433"
+    "1076",
+    "1436"
   ],
   "/2012/05/01/Jekyll-vs-Wordpress.html)": [
     "6",
@@ -2260,8 +2260,8 @@
     "15"
   ],
   "/2012/05/06/research-workflow.html": [
-    "327",
-    "609"
+    "328",
+    "612"
   ],
   "/2012/05/07/github.com/deads/bigrf": [
     "0",
@@ -2336,8 +2336,8 @@
     "1"
   ],
   "/2012/05/30/knitcitations.html": [
-    "554",
-    "797"
+    "556",
+    "799"
   ],
   "/2012/05/30/knitcitations.html?search-text=": [
     "0",
@@ -2472,16 +2472,16 @@
     "61"
   ],
   "/2012/09/28/Welcome-to-my-lab-notebook.html": [
-    "381",
-    "1359"
+    "385",
+    "1373"
   ],
   "/2012/10/01/multiple-uncertainty.html": [
     "9",
     "81"
   ],
   "/2012/10/02/solarized-colors.html": [
-    "687",
-    "944"
+    "689",
+    "946"
   ],
   "/2012/10/05/lab-notebook.html": [
     "0",
@@ -2493,7 +2493,7 @@
   ],
   "/2012/10/09/data-management-plan.htm": [
     "5",
-    "33"
+    "34"
   ],
   "/2012/10/09/data-management-plan.html": [
     "70",
@@ -2528,12 +2528,12 @@
     "93"
   ],
   "/2012/10/17/basic-regression-in-gaussian-processes.html": [
-    "54",
-    "93"
+    "55",
+    "94"
   ],
   "/2012/10/17/talkingpoints.html": [
     "0",
-    "9"
+    "10"
   ],
   "/2012/10/19/notes.html": [
     "2",
@@ -2601,7 +2601,7 @@
   ],
   "/2012/11/08/notes.html": [
     "6",
-    "18"
+    "19"
   ],
   "/2012/11/09/better-tagging-practices.html": [
     "7",
@@ -2632,8 +2632,8 @@
     "42"
   ],
   "/2012/11/23/citing-lab-notebook-entries.html": [
-    "335",
-    "433"
+    "336",
+    "434"
   ],
   "/2012/11/23/citing-lab-notebook-entries.html)": [
     "1",
@@ -2681,7 +2681,7 @@
   ],
   "/2012/12/06/github-issues-tracker:-the-perfect-research-todo-list.html": [
     "83",
-    "117"
+    "118"
   ],
   "/2012/12/07/": [
     "0",
@@ -2728,8 +2728,8 @@
     "95"
   ],
   "/2012/12/30/learning-jekyll.html": [
-    "265",
-    "403"
+    "268",
+    "406"
   ],
   "/2013": [
     "0",
@@ -2785,15 +2785,15 @@
   ],
   "/2013/02/20/seminar-notes.html": [
     "4",
-    "27"
+    "28"
   ],
   "/2013/02/21/notes.html": [
     "3",
     "30"
   ],
   "/2013/02/22/semantic-citations-for-the-notebook-and-knitr.html": [
-    "102",
-    "161"
+    "103",
+    "163"
   ],
   "/2013/02/22/semantic-citations-for-the-notebook-and-knitr.html?search-text=shotton": [
     "0",
@@ -2817,7 +2817,7 @@
   ],
   "/2013/03/08/notes-from-the-week.html": [
     "4",
-    "34"
+    "37"
   ],
   "/2013/03/12/notes.html": [
     "1",
@@ -2833,23 +2833,23 @@
   ],
   "/2013/03/19/collected-notes.html": [
     "4",
-    "41"
+    "42"
   ],
   "/2013/03/20/research.html": [
     "5",
-    "18"
+    "19"
   ],
   "/2013/03/22/research.html": [
-    "7",
-    "35"
+    "8",
+    "36"
   ],
   "/2013/03/25/research.html": [
-    "5",
-    "22"
+    "7",
+    "28"
   ],
   "/2013/03/26/research.html": [
     "5",
-    "21"
+    "23"
   ],
   "/211": [
     "0",
