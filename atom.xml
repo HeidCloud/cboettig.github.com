@@ -4,13 +4,149 @@
  <title>Lab Notebook</title>
  <link href="/atom.xml" rel="self"/>
  <link href=""/>
- <updated>2013-04-03T09:04:58-07:00</updated>
+ <updated>2013-04-04T11:07:14-07:00</updated>
  <id></id>
  <author>
    <name>Carl Boettiger</name>
    <email>cboettig@gmail.com</email>
  </author>
 
+ 
+ <entry>
+   <title>Further Examples Managing Tipping Points With Gp</title>
+   <link href="/2013/04/03/further-examples-managing-tipping-points-with-gp.html"/>
+   <updated>2013-04-03T00:00:00-07:00</updated>
+   <id>h/2013/04/03/further-examples-managing-tipping-points-with-gp</id>
+   <content type="html">&lt;p&gt;See also:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;http://www.carlboettiger.info/2012/12/20/results-comparing-gp-to-parametric.html&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Example with fixed priors on hyperparameters, fixed model type.&lt;/p&gt;
+&lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;&lt;span class=&quot;co&quot;&gt;#inv gamma has mean b / (a - 1) (assuming a&amp;gt;1) and variance b ^ 2 / ((a - 2) * (a - 1) ^ 2) (assuming a&amp;gt;2)&lt;/span&gt;
+s2.p &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;c&lt;/span&gt;(&lt;span class=&quot;dv&quot;&gt;5&lt;/span&gt;,&lt;span class=&quot;dv&quot;&gt;5&lt;/span&gt;)  
+tau2.p &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;c&lt;/span&gt;(&lt;span class=&quot;dv&quot;&gt;5&lt;/span&gt;,&lt;span class=&quot;dv&quot;&gt;1&lt;/span&gt;)
+d.p =&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;c&lt;/span&gt;(&lt;span class=&quot;dv&quot;&gt;10&lt;/span&gt;, &lt;span class=&quot;dv&quot;&gt;1&lt;/span&gt;/&lt;span class=&quot;fl&quot;&gt;0.1&lt;/span&gt;, &lt;span class=&quot;dv&quot;&gt;10&lt;/span&gt;, &lt;span class=&quot;dv&quot;&gt;1&lt;/span&gt;/&lt;span class=&quot;fl&quot;&gt;0.1&lt;/span&gt;)
+nug.p =&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;c&lt;/span&gt;(&lt;span class=&quot;dv&quot;&gt;10&lt;/span&gt;, &lt;span class=&quot;dv&quot;&gt;1&lt;/span&gt;/&lt;span class=&quot;fl&quot;&gt;0.1&lt;/span&gt;, &lt;span class=&quot;dv&quot;&gt;10&lt;/span&gt;, &lt;span class=&quot;dv&quot;&gt;1&lt;/span&gt;/&lt;span class=&quot;fl&quot;&gt;0.1&lt;/span&gt;) &lt;span class=&quot;co&quot;&gt;# gamma mean&lt;/span&gt;
+s2_prior &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;function(x) &lt;span class=&quot;kw&quot;&gt;dinvgamma&lt;/span&gt;(x, s2.p[&lt;span class=&quot;dv&quot;&gt;1&lt;/span&gt;], s2.p[&lt;span class=&quot;dv&quot;&gt;2&lt;/span&gt;])
+tau2_prior &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;function(x) &lt;span class=&quot;kw&quot;&gt;dinvgamma&lt;/span&gt;(x, tau2.p[&lt;span class=&quot;dv&quot;&gt;1&lt;/span&gt;], tau2.p[&lt;span class=&quot;dv&quot;&gt;2&lt;/span&gt;])
+d_prior &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;function(x) &lt;span class=&quot;kw&quot;&gt;dgamma&lt;/span&gt;(x, d.p[&lt;span class=&quot;dv&quot;&gt;1&lt;/span&gt;], &lt;span class=&quot;dt&quot;&gt;scale =&lt;/span&gt; d.p[&lt;span class=&quot;dv&quot;&gt;2&lt;/span&gt;]) +&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;dgamma&lt;/span&gt;(x, d.p[&lt;span class=&quot;dv&quot;&gt;3&lt;/span&gt;], &lt;span class=&quot;dt&quot;&gt;scale =&lt;/span&gt; d.p[&lt;span class=&quot;dv&quot;&gt;4&lt;/span&gt;])
+nug_prior &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;function(x) &lt;span class=&quot;kw&quot;&gt;dgamma&lt;/span&gt;(x, nug.p[&lt;span class=&quot;dv&quot;&gt;1&lt;/span&gt;], &lt;span class=&quot;dt&quot;&gt;scale =&lt;/span&gt; nug.p[&lt;span class=&quot;dv&quot;&gt;2&lt;/span&gt;]) +&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;dgamma&lt;/span&gt;(x, nug.p[&lt;span class=&quot;dv&quot;&gt;3&lt;/span&gt;], &lt;span class=&quot;dt&quot;&gt;scale =&lt;/span&gt; nug.p[&lt;span class=&quot;dv&quot;&gt;4&lt;/span&gt;])
+beta0_prior &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;function(x, tau) &lt;span class=&quot;kw&quot;&gt;dnorm&lt;/span&gt;(x, &lt;span class=&quot;dv&quot;&gt;0&lt;/span&gt;, tau)
+beta =&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;c&lt;/span&gt;(&lt;span class=&quot;dv&quot;&gt;0&lt;/span&gt;)
+priors &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;list&lt;/span&gt;(&lt;span class=&quot;dt&quot;&gt;s2 =&lt;/span&gt; s2_prior, &lt;span class=&quot;dt&quot;&gt;tau2 =&lt;/span&gt; tau2_prior, &lt;span class=&quot;dt&quot;&gt;beta0 =&lt;/span&gt; dnorm, &lt;span class=&quot;dt&quot;&gt;nug =&lt;/span&gt; nug_prior, &lt;span class=&quot;dt&quot;&gt;d =&lt;/span&gt; d_prior, &lt;span class=&quot;dt&quot;&gt;ldetK =&lt;/span&gt; function(x) &lt;span class=&quot;dv&quot;&gt;0&lt;/span&gt;)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;profit =&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;function(x,h) &lt;span class=&quot;kw&quot;&gt;pmin&lt;/span&gt;(x, h)
+delta &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;fl&quot;&gt;0.01&lt;/span&gt;
+OptTime =&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;dv&quot;&gt;20&lt;/span&gt;  &lt;span class=&quot;co&quot;&gt;# stationarity with unstable models is tricky thing&lt;/span&gt;
+reward =&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;dv&quot;&gt;0&lt;/span&gt;
+xT &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;dv&quot;&gt;0&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;f &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;RickerAllee
+&lt;span class=&quot;co&quot;&gt;# c(5, 10, 5) is 2-cycle, c(5.5, 10, 5) is 6 cycle, 5.3 is about 4&lt;/span&gt;
+p &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;c&lt;/span&gt;(&lt;span class=&quot;dv&quot;&gt;2&lt;/span&gt;, &lt;span class=&quot;dv&quot;&gt;10&lt;/span&gt;, &lt;span class=&quot;dv&quot;&gt;5&lt;/span&gt;) 
+K &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;dv&quot;&gt;10&lt;/span&gt;
+allee &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;dv&quot;&gt;5&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;sigma_g &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;fl&quot;&gt;0.05&lt;/span&gt;
+sigma_m &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;fl&quot;&gt;0.0&lt;/span&gt;
+z_g =&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;function() &lt;span class=&quot;kw&quot;&gt;rlnorm&lt;/span&gt;(&lt;span class=&quot;dv&quot;&gt;1&lt;/span&gt;, &lt;span class=&quot;dv&quot;&gt;0&lt;/span&gt;, sigma_g)
+z_m =&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;function() &lt;span class=&quot;dv&quot;&gt;1&lt;/span&gt;+(&lt;span class=&quot;dv&quot;&gt;2&lt;/span&gt;*&lt;span class=&quot;kw&quot;&gt;runif&lt;/span&gt;(&lt;span class=&quot;dv&quot;&gt;1&lt;/span&gt;, &lt;span class=&quot;dv&quot;&gt;0&lt;/span&gt;,  &lt;span class=&quot;dv&quot;&gt;1&lt;/span&gt;)-&lt;span class=&quot;dv&quot;&gt;1&lt;/span&gt;) *&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;sigma_m
+x_grid &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;seq&lt;/span&gt;(&lt;span class=&quot;dv&quot;&gt;0&lt;/span&gt;, &lt;span class=&quot;fl&quot;&gt;1.5&lt;/span&gt; *&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;K, &lt;span class=&quot;dt&quot;&gt;length=&lt;/span&gt;&lt;span class=&quot;dv&quot;&gt;101&lt;/span&gt;)
+h_grid &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;x_grid&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;With parameters 2, 10, 5.&lt;/p&gt;
+&lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;seed_i &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;dv&quot;&gt;1&lt;/span&gt;
+  Xo &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;K &lt;span class=&quot;co&quot;&gt;# observations start from&lt;/span&gt;
+  x0 &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;Xo &lt;span class=&quot;co&quot;&gt;# simulation under policy starts from&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;  obs &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;sim_obs&lt;/span&gt;(Xo, z_g, f, p, &lt;span class=&quot;dt&quot;&gt;Tobs=&lt;/span&gt;&lt;span class=&quot;dv&quot;&gt;35&lt;/span&gt;, &lt;span class=&quot;dt&quot;&gt;nz=&lt;/span&gt;&lt;span class=&quot;dv&quot;&gt;15&lt;/span&gt;, 
+                 &lt;span class=&quot;dt&quot;&gt;harvest =&lt;/span&gt; &lt;span class=&quot;kw&quot;&gt;sort&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;rep&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;seq&lt;/span&gt;(&lt;span class=&quot;dv&quot;&gt;0&lt;/span&gt;, .&lt;span class=&quot;dv&quot;&gt;5&lt;/span&gt;, &lt;span class=&quot;dt&quot;&gt;length=&lt;/span&gt;&lt;span class=&quot;dv&quot;&gt;7&lt;/span&gt;), &lt;span class=&quot;dv&quot;&gt;5&lt;/span&gt;)), &lt;span class=&quot;dt&quot;&gt;seed =&lt;/span&gt; seed_i)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;  alt &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;par_est&lt;/span&gt;(obs,  &lt;span class=&quot;dt&quot;&gt;init =&lt;/span&gt; &lt;span class=&quot;kw&quot;&gt;c&lt;/span&gt;(&lt;span class=&quot;dt&quot;&gt;r=&lt;/span&gt;p[&lt;span class=&quot;dv&quot;&gt;1&lt;/span&gt;], &lt;span class=&quot;dt&quot;&gt;K=&lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;mean&lt;/span&gt;(obs$x), &lt;span class=&quot;dt&quot;&gt;s=&lt;/span&gt;sigma_g))
+  est &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;par_est_allee&lt;/span&gt;(obs, f, p,  &lt;span class=&quot;dt&quot;&gt;init =&lt;/span&gt; &lt;span class=&quot;kw&quot;&gt;c&lt;/span&gt;(&lt;span class=&quot;dv&quot;&gt;2&lt;/span&gt;, &lt;span class=&quot;kw&quot;&gt;mean&lt;/span&gt;(obs$x), &lt;span class=&quot;dv&quot;&gt;2&lt;/span&gt;, &lt;span class=&quot;dt&quot;&gt;s =&lt;/span&gt; sigma_g))&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Which estimates a Ricker model with &lt;span class=&quot;math&quot;&gt;&lt;img src=&quot;http://latex.codecogs.com/png.latex?r =\inline&quot;/&gt;&lt;/span&gt; 2, &lt;span class=&quot;math&quot;&gt;&lt;img src=&quot;http://latex.codecogs.com/png.latex?K =\inline&quot;/&gt;&lt;/span&gt; 6.77, and the Allen allee model with &lt;span class=&quot;math&quot;&gt;&lt;img src=&quot;http://latex.codecogs.com/png.latex?r =\inline&quot;/&gt;&lt;/span&gt; 2, &lt;span class=&quot;math&quot;&gt;&lt;img src=&quot;http://latex.codecogs.com/png.latex?K =\inline&quot;/&gt;&lt;/span&gt; 6.77 and &lt;span class=&quot;math&quot;&gt;&lt;img src=&quot;http://latex.codecogs.com/png.latex?C =\inline&quot;/&gt;&lt;/span&gt; 2.&lt;/p&gt;
+&lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;  gp &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;bgp&lt;/span&gt;(&lt;span class=&quot;dt&quot;&gt;X=&lt;/span&gt;obs$x, &lt;span class=&quot;dt&quot;&gt;XX=&lt;/span&gt;x_grid, &lt;span class=&quot;dt&quot;&gt;Z=&lt;/span&gt;obs$y, &lt;span class=&quot;dt&quot;&gt;verb=&lt;/span&gt;&lt;span class=&quot;dv&quot;&gt;0&lt;/span&gt;,
+          &lt;span class=&quot;dt&quot;&gt;meanfn=&lt;/span&gt;&lt;span class=&quot;st&quot;&gt;&amp;quot;constant&amp;quot;&lt;/span&gt;, &lt;span class=&quot;dt&quot;&gt;bprior=&lt;/span&gt;&lt;span class=&quot;st&quot;&gt;&amp;quot;b0&amp;quot;&lt;/span&gt;, &lt;span class=&quot;dt&quot;&gt;BTE=&lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;c&lt;/span&gt;(&lt;span class=&quot;dv&quot;&gt;2000&lt;/span&gt;,&lt;span class=&quot;dv&quot;&gt;16000&lt;/span&gt;,&lt;span class=&quot;dv&quot;&gt;2&lt;/span&gt;),
+          &lt;span class=&quot;dt&quot;&gt;m0r1=&lt;/span&gt;&lt;span class=&quot;ot&quot;&gt;FALSE&lt;/span&gt;, &lt;span class=&quot;dt&quot;&gt;corr=&lt;/span&gt;&lt;span class=&quot;st&quot;&gt;&amp;quot;exp&amp;quot;&lt;/span&gt;, &lt;span class=&quot;dt&quot;&gt;trace=&lt;/span&gt;&lt;span class=&quot;ot&quot;&gt;TRUE&lt;/span&gt;, 
+          &lt;span class=&quot;dt&quot;&gt;beta =&lt;/span&gt; beta, &lt;span class=&quot;dt&quot;&gt;s2.p =&lt;/span&gt; s2.p, &lt;span class=&quot;dt&quot;&gt;d.p =&lt;/span&gt; d.p, &lt;span class=&quot;dt&quot;&gt;nug.p =&lt;/span&gt; nug.p, &lt;span class=&quot;dt&quot;&gt;tau2.p =&lt;/span&gt; tau2.p,
+          &lt;span class=&quot;dt&quot;&gt;s2.lam =&lt;/span&gt; &lt;span class=&quot;st&quot;&gt;&amp;quot;fixed&amp;quot;&lt;/span&gt;, &lt;span class=&quot;dt&quot;&gt;d.lam =&lt;/span&gt; &lt;span class=&quot;st&quot;&gt;&amp;quot;fixed&amp;quot;&lt;/span&gt;, &lt;span class=&quot;dt&quot;&gt;nug.lam =&lt;/span&gt; &lt;span class=&quot;st&quot;&gt;&amp;quot;fixed&amp;quot;&lt;/span&gt;, &lt;span class=&quot;dt&quot;&gt;tau2.lam =&lt;/span&gt; &lt;span class=&quot;st&quot;&gt;&amp;quot;fixed&amp;quot;&lt;/span&gt;)      
+  &lt;span class=&quot;kw&quot;&gt;gp_plot&lt;/span&gt;(gp, f, p, est$f, est$p, alt$f, alt$p, x_grid, obs, seed_i)&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&quot;figure&quot;&gt;
+&lt;img src=&quot;http://farm9.staticflickr.com/8535/8617059578_b528a1e51c_o.png&quot; /&gt;
+&lt;/div&gt;
+&lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;  &lt;span class=&quot;kw&quot;&gt;posteriors_plot&lt;/span&gt;(gp, priors) &lt;span class=&quot;co&quot;&gt;# needs trace=TRUE!&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&quot;figure&quot;&gt;
+&lt;img src=&quot;http://farm9.staticflickr.com/8540/8617059782_197bdf7edd_o.png&quot; /&gt;
+&lt;/div&gt;
+&lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;  OPT &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;optimal_policy&lt;/span&gt;(gp, f, est$f, alt$f,
+                        p, est$p, alt$p,
+                        x_grid, h_grid, sigma_g, 
+                        sigma_g, sigma_g, &lt;span class=&quot;co&quot;&gt;# est$sigma_g, alt$sigma_g, but those ests are poor&lt;/span&gt;
+                        delta, xT, profit, reward, OptTime)
+  &lt;span class=&quot;kw&quot;&gt;plot_policies&lt;/span&gt;(x_grid, OPT$gp_D, OPT$est_D, OPT$true_D, OPT$alt_D)&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&quot;figure&quot;&gt;
+&lt;img src=&quot;http://farm9.staticflickr.com/8265/8617060456_71afc3e4eb_o.png&quot; /&gt;
+&lt;/div&gt;
+&lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;dt &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;simulate_opt&lt;/span&gt;(OPT, f, p, x_grid, h_grid, x0, z_g, profit)
+&lt;span class=&quot;kw&quot;&gt;sim_plots&lt;/span&gt;(dt, &lt;span class=&quot;dt&quot;&gt;seed=&lt;/span&gt;seed_i)&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&quot;figure&quot;&gt;
+&lt;img src=&quot;http://farm9.staticflickr.com/8113/8617060842_7c088c12d1_o.png&quot; /&gt;
+&lt;/div&gt;
+&lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;&lt;span class=&quot;kw&quot;&gt;profits_stats&lt;/span&gt;(dt)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;       method     V1     sd
+1:         GP 19.337 1.6314
+2: Parametric  6.446 0.3384
+3:       True 20.701 1.8012
+4: Structural  7.650 0.0000&lt;/code&gt;&lt;/pre&gt;</content>
+ </entry>
+ 
+ <entry>
+   <title>Monday   Tuesday</title>
+   <link href="/2013/04/02/Monday---Tuesday.html"/>
+   <updated>2013-04-02T00:00:00-07:00</updated>
+   <id>h/2013/04/02/Monday---Tuesday</id>
+   <content type="html">&lt;h2 id=&quot;writing&quot;&gt;Writing&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;still working on non-parametric bayes draft today..&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;reviewing&quot;&gt;Reviewing&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;review sent to PRSB&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;reading&quot;&gt;Reading&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Came across this rather nice summary of big data in Ecology through some buzz in the twittersphere&lt;span class=&quot;showtooltip&quot; title=&quot;Hampton S, Strasser C, Tewksbury J, Gram W, Budden A, Batcheller
+A, Duke C and Porter J (2013). Big Data And The Future of
+Ecology. _Frontiers in Ecology And The Environment_, *11*, pp.
+156-162. ISSN 1540-9295,  http://dx.doi.org/10.1890/120103.&quot;&gt;&lt;a href=&quot;http://dx.doi.org/10.1890/120103&quot; rel=&quot;http://purl.org/spar/cito/discusses&quot; &gt;Hampton &lt;em&gt;et. al.&lt;/em&gt; (2013)&lt;/a&gt;&lt;/span&gt; .&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;More fishery managment controversy with &lt;span class=&quot;showtooltip&quot; title=&quot;Halpern B, Gaines S, Kleisner K, Longo C, Pauly D, Rosenberg A,
+Samhouri J and Zeller D (2013). Halpern et al. Reply. _Nature_,
+*495*, pp. E7-E7. ISSN 0028-0836, 
+http://dx.doi.org/10.1038/nature11975.&quot;&gt;&lt;a href=&quot;http://dx.doi.org/10.1038/nature11975&quot; rel=&quot;http://purl.org/spar/cito/discusses&quot; &gt;Halpern &lt;em&gt;et. al.&lt;/em&gt; (2013)&lt;/a&gt;&lt;/span&gt; critiquing the ‘ocean food provision index’ from Nature last year, and a subset of that team replying &lt;span class=&quot;showtooltip&quot; title=&quot;Halpern B, Gaines S, Kleisner K, Longo C, Pauly D, Rosenberg A,
+Samhouri J and Zeller D (2013). Halpern et al. Reply. _Nature_,
+*495*, pp. E7-E7. ISSN 0028-0836, 
+http://dx.doi.org/10.1038/nature11975.&quot;&gt;&lt;a href=&quot;http://dx.doi.org/10.1038/nature11975&quot; rel=&quot;http://purl.org/spar/cito/discusses&quot; &gt;Halpern &lt;em&gt;et. al.&lt;/em&gt; (2013)&lt;/a&gt;&lt;/span&gt; . Seems to fall along the usual divisions of whether to use or ignore imperfect data; no doubt the truth lies somewhere in between.&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;Looks like &lt;span class=&quot;showtooltip&quot; title=&quot;Cavanaugh K, Kendall B, Siegel D, Reed D, Alberto F and Assis J
+(2013). Synchrony in Dynamics of Giant Kelp Forests is Driven by
+Both Local Recruitment And Regional Environmental Controls.
+_Ecology_, *94*, pp. 499-509. ISSN 0012-9658, 
+http://dx.doi.org/10.1890/12-0268.1.&quot;&gt;&lt;a href=&quot;http://dx.doi.org/10.1890/12-0268.1&quot; rel=&quot;http://purl.org/spar/cito/discusses&quot; &gt;Cavanaugh &lt;em&gt;et. al.&lt;/em&gt; (2013)&lt;/a&gt;&lt;/span&gt; have a nice synchrony paper in kelp forests which I’m looking forward to reading.&lt;/li&gt;
+&lt;li&gt;Nonlinear forecasting strikes again in PNAS, &lt;span class=&quot;showtooltip&quot; title=&quot;Deyle E, Fogarty M, Hsieh C, Kaufman L, MacCall A, Munch S,
+Perretti C, Ye H and Sugihara G (2013). Predicting Climate
+Effects on Pacific Sardine. _Proceedings of The National Academy
+of Sciences_. ISSN 0027-8424, 
+http://dx.doi.org/10.1073/pnas.1215506110.&quot;&gt;&lt;a href=&quot;http://dx.doi.org/10.1073/pnas.1215506110&quot; rel=&quot;http://purl.org/spar/cito/discusses&quot; &gt;Deyle &lt;em&gt;et. al.&lt;/em&gt; (2013)&lt;/a&gt;&lt;/span&gt; Predicting climate effects on sardine with the usual suspects. May disentangle physical forcing from ecological dynamics.&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span class=&quot;showtooltip&quot; title=&quot;Halpern B, Klein C, Brown C, Beger M, Grantham H, Mangubhai S,
+Ruckelshaus M, Tulloch V, Watts M, White C and Possingham H
+(2013). Achieving The Triple Bottom Line in The Face of Inherent
+Trade-Offs Among Social Equity, Economic Return, And
+Conservation. _Proceedings of The National Academy of Sciences_.
+ISSN 0027-8424,  http://dx.doi.org/10.1073/pnas.1217689110.&quot;&gt;&lt;a href=&quot;http://dx.doi.org/10.1073/pnas.1217689110&quot; rel=&quot;http://purl.org/spar/cito/discusses&quot; &gt;Halpern &lt;em&gt;et. al.&lt;/em&gt; (2013b)&lt;/a&gt;&lt;/span&gt; discuss the classic problem of optimization in conservation: balancing social equity, economic return and conservation needs.&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;ROpenSci is mentioned in a letter to the editor published in Ecotoxicology, (&lt;span class=&quot;showtooltip&quot; title=&quot;Schäfer R, Bundschuh M, Focks A and von der Ohe P (2013). to The
+Editor. _Environmental Toxicology And Chemistry_, *32*, pp.
+734-735.  http://dx.doi.org/10.1002/etc.2140.&quot;&gt;&lt;a href=&quot;http://dx.doi.org/10.1002/etc.2140&quot; rel=&quot;http://purl.org/spar/cito/discusses&quot; &gt;Schäfer &lt;em&gt;et. al.&lt;/em&gt; 2013&lt;/a&gt;&lt;/span&gt; ).&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;Kyle C. Cavanaugh, Bruce E. Kendall, David A. Siegel, Daniel C. Reed, Filipe Alberto, Jorge Assis, (2013) Synchrony in Dynamics of Giant Kelp Forests is Driven by Both Local Recruitment And Regional Environmental Controls. &lt;em&gt;Ecology&lt;/em&gt; &lt;strong&gt;94&lt;/strong&gt; 499-509 &lt;a href=&quot;http://dx.doi.org/10.1890/12-0268.1&quot;&gt;10.1890/12-0268.1&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;E. R. Deyle, M. Fogarty, C.-h. Hsieh, L. Kaufman, A. D. MacCall, S. B. Munch, C. T. Perretti, H. Ye, G. Sugihara, (2013) Predicting Climate Effects on Pacific Sardine. &lt;em&gt;Proceedings of The National Academy of Sciences&lt;/em&gt; &lt;a href=&quot;http://dx.doi.org/10.1073/pnas.1215506110&quot;&gt;10.1073/pnas.1215506110&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Benjamin S. Halpern, Steven D. Gaines, Kristin Kleisner, Catherine Longo, Daniel Pauly, Andrew A. Rosenberg, Jameal F. Samhouri, Dirk Zeller, (2013) Halpern et al. Reply. &lt;em&gt;Nature&lt;/em&gt; &lt;strong&gt;495&lt;/strong&gt; E7-E7 &lt;a href=&quot;http://dx.doi.org/10.1038/nature11975&quot;&gt;10.1038/nature11975&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;B. S. Halpern, C. J. Klein, C. J. Brown, M. Beger, H. S. Grantham, S. Mangubhai, M. Ruckelshaus, V. J. Tulloch, M. Watts, C. White, H. P. Possingham, (2013) Achieving The Triple Bottom Line in The Face of Inherent Trade-Offs Among Social Equity, Economic Return, And Conservation. &lt;em&gt;Proceedings of The National Academy of Sciences&lt;/em&gt; &lt;a href=&quot;http://dx.doi.org/10.1073/pnas.1217689110&quot;&gt;10.1073/pnas.1217689110&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Stephanie E Hampton, Carly A Strasser, Joshua J Tewksbury, Wendy K Gram, Amber E Budden, Archer L Batcheller, Clifford S Duke, John H Porter, (2013) Big Data And The Future of Ecology. &lt;em&gt;Frontiers in Ecology And The Environment&lt;/em&gt; &lt;strong&gt;11&lt;/strong&gt; 156-162 &lt;a href=&quot;http://dx.doi.org/10.1890/120103&quot;&gt;10.1890/120103&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Ralf B. Schäfer, Mirco Bundschuh, Andreas Focks, Peter C. von der Ohe, (2013) to The Editor. &lt;em&gt;Environmental Toxicology And Chemistry&lt;/em&gt; &lt;strong&gt;32&lt;/strong&gt; 734-735 &lt;a href=&quot;http://dx.doi.org/10.1002/etc.2140&quot;&gt;10.1002/etc.2140&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;</content>
+ </entry>
  
  <entry>
    <title>Research</title>
@@ -4101,31 +4237,31 @@ linear &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;dt[, &lt;span cla
 &lt;p&gt;vim set sytnax language, useful for getting R highlighting in &lt;code&gt;.Rmd&lt;/code&gt; files: &lt;code&gt;setf r&lt;/code&gt;, or equivalently, &lt;code&gt;set filetype=r&lt;/code&gt; (must be lowercase r). &lt;code&gt;set filetype&lt;/code&gt; with no argument gives the current filetype.&lt;/p&gt;
 &lt;h3 id=&quot;coding&quot;&gt;Coding&lt;/h3&gt;
 &lt;ul&gt;&lt;li&gt;
-cboettig pushed to master at cboettig/labnotebook: &lt;em&gt;tune language a bit&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/labnotebook/compare/dadd7e0956...024972af36&quot;&gt;04:07 2013/04/03&lt;/a&gt;
+cboettig pushed to master at cboettig/labnotebook: &lt;em&gt;failed to implement authentication for mendeley api.. grr…&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/labnotebook/compare/b9ee309114...35e6c0825d&quot;&gt;01:17 2013/04/04&lt;/a&gt;
 &lt;/li&gt;&lt;li&gt;
-cboettig pushed to master at cboettig/labnotebook: &lt;em&gt;pdg control project added minor fixes&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/labnotebook/compare/5d5906df51...dadd7e0956&quot;&gt;04:05 2013/04/03&lt;/a&gt;
+cboettig commented on issue cboettig/nonparametric-bayes#34: &lt;em&gt;Reasonable constraints: condition on (0, 0) condition on single zero in first derivative …&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/nonparametric-bayes/issues/34#issuecomment-15874914&quot;&gt;01:05 2013/04/04&lt;/a&gt;
 &lt;/li&gt;&lt;li&gt;
-cboettig opened issue cboettig/nonparametric-bayes#33: &lt;em&gt;Compare against fully Bayesian parametric inference case instead of MLEs&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/nonparametric-bayes/issues/33&quot;&gt;10:24 2013/04/02&lt;/a&gt;
+cboettig deleted branch plottofilename at ropensci/rfigshare: &lt;em&gt;&lt;/em&gt; &lt;a href=&quot;https://github.com/&quot;&gt;09:40 2013/04/03&lt;/a&gt;
 &lt;/li&gt;&lt;li&gt;
-cboettig commented on issue ropensci/taxize_#123: &lt;em&gt;This sounds like a use case for options/environments. The simple thing would be to have a function like taxize_options(local=FALSE) defined like: t…&lt;/em&gt; &lt;a href=&quot;https://github.com/ropensci/taxize_/issues/123#issuecomment-15806567&quot;&gt;10:21 2013/04/02&lt;/a&gt;
+cboettig pushed to master at ropensci/rfigshare: &lt;em&gt;Merge pull request #45 from ropensci/plottofilename added convenience function to allow saving ggplot2 plot and getting f…&lt;/em&gt; &lt;a href=&quot;https://github.com/ropensci/rfigshare/compare/ddc9be1f3c...2b67417cd6&quot;&gt;09:39 2013/04/03&lt;/a&gt;
 &lt;/li&gt;&lt;li&gt;
-cboettig pushed to master at cboettig/cboettig.github.com: &lt;em&gt;pdg control project added&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/cboettig.github.com/compare/a4b84e9fee...4c090115c3&quot;&gt;09:24 2013/04/02&lt;/a&gt;
+cboettig merged pull request ropensci/rfigshare#45: &lt;em&gt;added convenience function&lt;/em&gt; &lt;a href=&quot;https://github.com/ropensci/rfigshare/pull/45&quot;&gt;09:39 2013/04/03&lt;/a&gt;
 &lt;/li&gt;&lt;li&gt;
-cboettig pushed to master at cboettig/cboettig.github.com: &lt;em&gt;updated&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/cboettig.github.com/compare/3da2488780...a4b84e9fee&quot;&gt;09:19 2013/04/02&lt;/a&gt;
+cboettig starred willpearse/phyloGenerator: &lt;em&gt;&lt;/em&gt; &lt;a href=&quot;https://github.com/willpearse/phyloGenerator&quot;&gt;08:03 2013/04/03&lt;/a&gt;
 &lt;/li&gt;&lt;li&gt;
-cboettig commented on issue cboettig/labnotebook#48: &lt;em&gt;Testing uptime on Github: http://stats.pingdom.com/goh3gkwp7jec Compare to Dreamhost uptime: http://stats.pingdom.com/fy1sae94ydyi/616612&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/labnotebook/issues/48#issuecomment-15803142&quot;&gt;09:16 2013/04/02&lt;/a&gt;
+cboettig pushed to master at cboettig/labnotebook: &lt;em&gt;draft post new post&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/labnotebook/compare/3f9a444fbb...b9ee309114&quot;&gt;06:33 2013/04/03&lt;/a&gt;
 &lt;/li&gt;&lt;li&gt;
-cboettig pushed to master at cboettig/labnotebook: &lt;em&gt;research page links to project landing pages&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/labnotebook/compare/5c581e3301...5d5906df51&quot;&gt;08:55 2013/04/02&lt;/a&gt;
+cboettig pushed to master at cboettig/labnotebook: &lt;em&gt;display the code toggle button when page has code: true in yaml&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/labnotebook/compare/024972af36...3f9a444fbb&quot;&gt;06:02 2013/04/03&lt;/a&gt;
 &lt;/li&gt;&lt;/ul&gt;
 
 
 &lt;h3 id=&quot;reading&quot;&gt;Reading&lt;/h3&gt;
 &lt;ul&gt;&lt;li&gt;
-Criticality, adaptability and early-warning signals in time series in a discrete quasispecies model: Frontiers in Biology (2013). R. Fossion, D. a. Hartasánchez, O. Resendis-Antonio, a. Frank et al. &lt;a href=&quot;http://www.mendeley.comhttp://www.mendeley.com/c/5668375674/g/634301/fossion-2013-criticality-adaptability-and-early-warning-signals-in-time-series-in-a-discrete-quasispecies-model/&quot;&gt;08:56 2013/03/28&lt;/a&gt;
+Proceedings of the Environmental Information Management Conference 2011 (EIM 2011): Volume: 2011, Issue: Eim. M B Jones, C Gries et al. &lt;a href=&quot;http://www.mendeley.comhttp://www.mendeley.com/c/5683482024/g/634301/jones-2011-proceedings-of-the-environmental-information-management-conference-2011-eim-2011/&quot;&gt;01:33 2013/04/04&lt;/a&gt;
 &lt;/li&gt;&lt;li&gt;
-Git Can Facilitate Greater Reproducibility and Increased Transparency in Science: Source Code for Biology and Medicine (2013). Volume: 8, Issue: 1. Pages: 7. Karthik Ram et al. &lt;a href=&quot;http://www.mendeley.com/research/git-can-facilitate-greater-reproducibility-and-increased-transparency-in-science-1/&quot;&gt;08:56 2013/03/28&lt;/a&gt;
+Big data and the future of ecology: Frontiers in Ecology and the Environment (2013). Pages: 130312142848005. Stephanie E Hampton, Carly a Strasser, Joshua J Tewksbury, Wendy K Gram, Amber E Budden, Archer L Batcheller, Clifford S Duke, John H Porter et al. &lt;a href=&quot;http://www.mendeley.comhttp://www.mendeley.com/c/5683482014/g/634301/hampton-2013-big-data-and-the-future-of-ecology/&quot;&gt;01:33 2013/04/04&lt;/a&gt;
 &lt;/li&gt;&lt;li&gt;
-Combining Parameter and State Estimation in Simulation-Based Filtering: Sequential Monte Carlo Methods in Practice (2001). Pages: 197–224. J. Liu, M. West et al. &lt;a href=&quot;http://www.mendeley.com/research/combining-parameter-state-estimation-simulationbased-filtering-2/&quot;&gt;09:38 2013/03/19&lt;/a&gt;
+Predicting climate effects on Pacific sardine: Proceedings of the National Academy of Sciences (2013). E. R. Deyle, M. Fogarty, C.-h. Hsieh, L. Kaufman, a. D. MacCall, S. B. Munch, C. T. Perretti, H. Ye, G. Sugihara et al. &lt;a href=&quot;http://www.mendeley.comhttp://www.mendeley.com/c/5683482074/g/634301/deyle-2013-predicting-climate-effects-on-pacific-sardine/&quot;&gt;01:33 2013/04/04&lt;/a&gt;
 &lt;/li&gt;&lt;/ul&gt;</content>
  </entry>
  
