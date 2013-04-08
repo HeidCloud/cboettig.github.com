@@ -24,7 +24,7 @@
 <!-- RDFa Metadata (in DublinCore) -->
 <meta property="dc:title" content="A Clever Derivation On Realized Escape Times" />
 <meta property="dc:creator" content="Carl Boettiger" />
-<meta property="dc:date" content="2013-04-08T13:26:36-07:00" />
+<meta property="dc:date" content="2013-04-08T16:08:59-07:00" />
 <meta property="dc:format" content="text/html" />
 <meta property="dc:language" content="en" />
 <meta property="dc:identifier" content="/2013/04/05/a-clever-derivation-on-realized-escape-times.html" />
@@ -37,13 +37,13 @@
 <meta property="og:author" content="http://www.carlboettiger.info/index.html#me" />  <!-- Should be Liquid? URI? -->
 <meta property="http://ogp.me/ns/profile#first_name" content="Carl"/>
 <meta property="http://ogp.me/ns/profile#last_name" content="Boettiger"/>
-<meta property="http://ogp.me/ns/article#published_time" content="2013-04-08T13:26:36-07:00" />
+<meta property="http://ogp.me/ns/article#published_time" content="2013-04-08T16:08:59-07:00" />
 <meta property="og:site_name" content="Lab Notebook" /> <!-- Same as dc:source? -->
 <meta property="og:url" content="http://www.carlboettiger.info/2013/04/05/a-clever-derivation-on-realized-escape-times.html" />
 <meta property="og:type" content="website" /> 
 <!-- Google Scholar Metadata -->
 <meta name="citation_author" content="Carl Boettiger"/>
-<meta name="citation_date" content="2013-04-08T13:26:36-07:00"/>
+<meta name="citation_date" content="2013-04-08T16:08:59-07:00"/>
 <meta name="citation_title" content="A Clever Derivation On Realized Escape Times"/>
 <meta name="citation_journal_title" content="Lab Notebook"/>
 
@@ -156,16 +156,16 @@ http://www.pnas.org/content/82/22/7641.abstract."><a href="http://www.pnas.org/c
 <h2 id="waiting-time">Waiting time</h2>
 <p>The time we must wait before any trajectory can reach a given boundary is a classic hitting-time problem for the OU process that can be solved in several ways. Any of these basically start from PDE that must be satisfied for the hitting time (e.g. see Crispin Gardner, Stochastic Methods) for the OU process at stationary state (<span class="math">\(T_t = 0\)</span>),</p>
 <p><span class="math">\[ \tfrac{\sigma^2}{2} T_{xx} - x T_x = -1 \]</span></p>
-<p>With the appropriate boundary conditions <span class="math">\(T(L) = T(-L) = 0\)</span>. A little integration (see Dynkin’s formula) shows this scales as <span class="math">\(\exp(L^2/\simga^2)\)</span> (Compare to the Brownian walk that doesn’t have to escape any pull, which escapes at rate <span class="math">\(L^2/\sigma^2\)</span>.</p>
+<p>With the appropriate boundary conditions <span class="math">\(T(L) = T(-L) = 0\)</span>. A little integration (see Dynkin’s formula) shows this scales as <span class="math">\(\exp(L^2/\sigma^2)\)</span> (Compare to the Brownian walk that doesn’t have to escape any pull, which escapes at rate <span class="math">\(L^2/\sigma^2\)</span>.</p>
 <h2 id="exit-time">Exit time</h2>
 <p>Most trajectories will thus return many times to the origin (stable point) before finally escaping. But if we focus just on the part of the trajectory from some value near the origin, that eventually escapes without ever crossing the origin again,</p>
-<p><span class="math">\[u_t(x,t) dt = Pr\left(\textrm{exit from }(0; L]\textrm{in the interval } (t, t + dt) \textrm{without having crossed} 0 | X(0) = x\]</span></p>
+<p><span class="math">\[u_t(x,t) dt = Pr\left(\textrm{exit from }(0; L]\textrm{in the interval } (t, t + dt) \textrm{without having crossed} 0 | X(0) = x\right)\]</span></p>
 <p>We are interested in comparing the average time taken by trajectories exiting by time <span class="math">\(t\)</span> relative to the probability of exiting at all (i.e. as <span class="math">\(t \to \infty\)</span>),</p>
-<p><span class="math">\[ T_c(x) = \frac{\int^{\infty}_0 t u_t(x,t) dt }{lim_{t \to \infty} u(x,t) }\]</span></p>
+<p><span class="math">\[ T_c(x) = \frac{\int^{\infty}_0 t u_t(x,t) dt }{\lim_{t \to \infty} u(x,t) }\]</span></p>
 <p>From here we set up the classic hitting time solution for the OU for the <em>time-dependent</em> PDE,</p>
-<p><span class="math">\[u_t = \tfrac{\sigma^2}{2} u_xx = x u_x \]</span>,</p>
+<p><span class="math">\[u_t = \frac{\sigma^2}{2} u_{xx} = x u_x \]</span></p>
 <p>and with initial condition <span class="math">\(u(x,t=0) = 0\)</span>, <span class="math">\(u(0,t) = 0\)</span>, and <span class="math">\(u(L, t) = 1\)</span>. A bit of effort and an approximation to Dawson’s integral for <span class="math">\(L \gg x\)</span> leads Don to bound the mean time to exit,</p>
-<p><span class="math">\[T_c(x) &lt; \tfrac{1}{\sigma} \log\left(\tfrac{L}{\sigma})\]</span></p>
+<p><span class="math">\[T_c(x) &lt; \frac{1}{\sigma} \log\left(\frac{L}{\sigma}\right)\]</span></p>
 <p>as claimed.</p>
 <h2 id="results-from-marcs-other-suggestion">Results from Marc’s other suggestion</h2>
 <p>Marc also suggested exploring this by directly comparing steps left and right. A related way to measure the relative number of steps in the positive direction relative to the negative direction is Kendall’s tau rank correlation coefficient, which also looks at the number of increases relative to the number of decreases.</p>
@@ -247,16 +247,16 @@ http://www.pnas.org/content/82/22/7641.abstract."><a href="http://www.pnas.org/c
       </p>
 
 
-   <p style="font-style:italic"> pageviews: (not calculated)</p>
+   <p style="font-style:italic"> pageviews: 2</p>
   <br/>
   <br/>
   <p><small>
     Last modified: <time 
-                  datetime="2013-04-08T12:00:12-07:00" 
+                  datetime="2013-04-08T16:10:40-07:00" 
                   property="dc:modified">08 Apr 2013</time></small>
   </p>
-  <p><small> SHA Hash: <a href="https://github.com/cboettig/labnotebook/commit/78501aac6ba70d20e893f0e906da7175e3c29cb6
-/_posts/2013-04-05-a-clever-derivation-on-realized-escape-times.md"> 78501aac6ba70d20e893f0e906da7175e3c29cb6
+  <p><small> SHA Hash: <a href="https://github.com/cboettig/labnotebook/commit/f65b347b7ebe7e68fa12cfa251c47035c6ca0753
+/_posts/2013-04-05-a-clever-derivation-on-realized-escape-times.md"> f65b347b7ebe7e68fa12cfa251c47035c6ca0753
 </a></small></p>
   
   <br/>
