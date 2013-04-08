@@ -4,13 +4,246 @@
  <title>Lab Notebook</title>
  <link href="/atom.xml" rel="self"/>
  <link href=""/>
- <updated>2013-04-04T11:07:14-07:00</updated>
+ <updated>2013-04-08T13:26:36-07:00</updated>
  <id></id>
  <author>
    <name>Carl Boettiger</name>
    <email>cboettig@gmail.com</email>
  </author>
 
+ 
+ <entry>
+   <title>A Clever Derivation On Realized Escape Times</title>
+   <link href="/2013/04/05/a-clever-derivation-on-realized-escape-times.html"/>
+   <updated>2013-04-05T00:00:00-07:00</updated>
+   <id>h/2013/04/05/a-clever-derivation-on-realized-escape-times</id>
+   <content type="html">&lt;p&gt;I have often observed (e.g. &lt;span class=&quot;showtooltip&quot; title=&quot;Boettiger C and Hastings A (2012). Early Warning Signals And The
+Prosecutor'S Fallacy. _Proceedings of The Royal Society B:
+Biological Sciences_, *279*, pp. 4734-4739. ISSN 0962-8452, 
+http://dx.doi.org/10.1098/rspb.2012.2085.&quot;&gt;&lt;a href=&quot;http://dx.doi.org/10.1098/rspb.2012.2085&quot; rel=&quot;http://purl.org/spar/cito/citesAsEvidence&quot; &gt;Boettiger &amp;amp; Hastings (2012)&lt;/a&gt;&lt;/span&gt; ) that if purely stochastic transitions out of a potential well happen, then they happen fast (dispite the fact that waiting time for them to happen is very long). Yesterday Marc mentioned an interesting proof of this from Don Ludwig, who was able to show that the waiting time to reach a large deviation in a time &lt;span class=&quot;math&quot;&gt;&lt;img src=&quot;http://latex.codecogs.com/png.latex?t\inline&quot;/&gt;&lt;/span&gt;, given that it reaches it at all, is of the same order as the return time from the large deviation to the equilibrium, &lt;span class=&quot;math&quot;&gt;&lt;img src=&quot;http://latex.codecogs.com/png.latex?\log(L/\sigma)\inline&quot;/&gt;&lt;/span&gt;. That’s an absolutely fascinating conclusion, indeed a bit stronger than even I had expected (the waiting time until an escape is observed rather different! – of order &lt;span class=&quot;math&quot;&gt;&lt;img src=&quot;http://latex.codecogs.com/png.latex?\exp(L^2/\sigma^2)\inline&quot;/&gt;&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;Don’s derivation is repeated in pages 302-311 Marc’s “Theoretical Biologist’s Toolbox,” rather delightfully too (e.g. the “Kumura Maneuver”, or sidenotes such as “it is also kind of fun to do a web search with key words ‘Dawson’s Integral’”). &lt;span class=&quot;showtooltip&quot; title=&quot;Lande R (1985). Expected time for random genetic drift of a
+population between stable phenotypic states. 
+http://www.pnas.org/content/82/22/7641.abstract [Online.
+last-accessed: 2013-04-08 19:58:49]. 
+http://www.pnas.org/content/82/22/7641.abstract.&quot;&gt;&lt;a href=&quot;http://www.pnas.org/content/82/22/7641.abstract&quot; rel=&quot;http://purl.org/spar/cito/citesForInformation&quot; &gt;Lande (1985)&lt;/a&gt;&lt;/span&gt; provides a somewhat different derivation of the same result.&lt;/p&gt;
+&lt;h2 id=&quot;return-time&quot;&gt;Return time&lt;/h2&gt;
+&lt;p&gt;The return time calculation is straight forward. Consider our OU model&lt;/p&gt;
+&lt;p&gt;&lt;span class=&quot;math&quot;&gt;&lt;div style=&quot;text-align:center;&quot;&gt;&lt;img src=&quot;http://latex.codecogs.com/png.latex?dX = - X dt + \sigma dB_t&quot; alt=&quot;dX = - X dt + \sigma dB_t&quot; /&gt;&lt;/div&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;We ask for the return time into a neighborhood &lt;span class=&quot;math&quot;&gt;&lt;img src=&quot;http://latex.codecogs.com/png.latex?\sigma\inline&quot;/&gt;&lt;/span&gt; of the origin, starting at &lt;span class=&quot;math&quot;&gt;&lt;img src=&quot;http://latex.codecogs.com/png.latex?X_0 = L\inline&quot;/&gt;&lt;/span&gt; distant from the origin. The deterministic solution&lt;/p&gt;
+&lt;p&gt;&lt;span class=&quot;math&quot;&gt;&lt;div style=&quot;text-align:center;&quot;&gt;&lt;img src=&quot;http://latex.codecogs.com/png.latex?\tfrac{dx}{dt} = - x&quot; alt=&quot;\tfrac{dx}{dt} = - x&quot; /&gt;&lt;/div&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;implies &lt;span class=&quot;math&quot;&gt;&lt;img src=&quot;http://latex.codecogs.com/png.latex?x_t = L (1 - e^{-t})\inline&quot;/&gt;&lt;/span&gt;, so setting &lt;span class=&quot;math&quot;&gt;&lt;img src=&quot;http://latex.codecogs.com/png.latex?x_t = \sigma_t\inline&quot;/&gt;&lt;/span&gt; and solving for &lt;span class=&quot;math&quot;&gt;&lt;img src=&quot;http://latex.codecogs.com/png.latex?t\inline&quot;/&gt;&lt;/span&gt;, we find that &lt;span class=&quot;math&quot;&gt;&lt;img src=&quot;http://latex.codecogs.com/png.latex?x_t\inline&quot;/&gt;&lt;/span&gt; is within &lt;span class=&quot;math&quot;&gt;&lt;img src=&quot;http://latex.codecogs.com/png.latex?\sigma\inline&quot;/&gt;&lt;/span&gt; of &lt;span class=&quot;math&quot;&gt;&lt;img src=&quot;http://latex.codecogs.com/png.latex?t\inline&quot;/&gt;&lt;/span&gt; in time &lt;span class=&quot;math&quot;&gt;&lt;img src=&quot;http://latex.codecogs.com/png.latex?\log{L} -\inline&quot;/&gt;&lt;/span&gt;&lt;span class=&quot;math&quot;&gt;&lt;img src=&quot;http://latex.codecogs.com/png.latex?, or\inline&quot;/&gt;&lt;/span&gt;$, as claimed.&lt;/p&gt;
+&lt;h2 id=&quot;waiting-time&quot;&gt;Waiting time&lt;/h2&gt;
+&lt;p&gt;The time we must wait before any trajectory can reach a given boundary is a classic hitting-time problem for the OU process that can be solved in several ways. Any of these basically start from PDE that must be satisfied for the hitting time (e.g. see Crispin Gardner, Stochastic Methods) for the OU process at stationary state (&lt;span class=&quot;math&quot;&gt;&lt;img src=&quot;http://latex.codecogs.com/png.latex?T_t = 0\inline&quot;/&gt;&lt;/span&gt;),&lt;/p&gt;
+&lt;p&gt;&lt;span class=&quot;math&quot;&gt;&lt;div style=&quot;text-align:center;&quot;&gt;&lt;img src=&quot;http://latex.codecogs.com/png.latex?\tfrac{\sigma^2}{2} T_{xx} - x T_x = -1&quot; alt=&quot;\tfrac{\sigma^2}{2} T_{xx} - x T_x = -1&quot; /&gt;&lt;/div&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;With the appropriate boundary conditions &lt;span class=&quot;math&quot;&gt;&lt;img src=&quot;http://latex.codecogs.com/png.latex?T(L) = T(-L) = 0\inline&quot;/&gt;&lt;/span&gt;. A little integration (see Dynkin’s formula) shows this scales as &lt;span class=&quot;math&quot;&gt;&lt;img src=&quot;http://latex.codecogs.com/png.latex?\exp(L^2/\simga^2)\inline&quot;/&gt;&lt;/span&gt; (Compare to the Brownian walk that doesn’t have to escape any pull, which escapes at rate &lt;span class=&quot;math&quot;&gt;&lt;img src=&quot;http://latex.codecogs.com/png.latex?L^2/\sigma^2\inline&quot;/&gt;&lt;/span&gt;.&lt;/p&gt;
+&lt;h2 id=&quot;exit-time&quot;&gt;Exit time&lt;/h2&gt;
+&lt;p&gt;Most trajectories will thus return many times to the origin (stable point) before finally escaping. But if we focus just on the part of the trajectory from some value near the origin, that eventually escapes without ever crossing the origin again,&lt;/p&gt;
+&lt;p&gt;&lt;span class=&quot;math&quot;&gt;&lt;div style=&quot;text-align:center;&quot;&gt;&lt;img src=&quot;http://latex.codecogs.com/png.latex?u_t(x,t) dt = Pr\left(\textrm{exit from }(0; L]\textrm{in the interval } (t, t + dt) \textrm{without having crossed} 0 | X(0) = x&quot; alt=&quot;u_t(x,t) dt = Pr\left(\textrm{exit from }(0; L]\textrm{in the interval } (t, t + dt) \textrm{without having crossed} 0 | X(0) = x&quot; /&gt;&lt;/div&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;We are interested in comparing the average time taken by trajectories exiting by time &lt;span class=&quot;math&quot;&gt;&lt;img src=&quot;http://latex.codecogs.com/png.latex?t\inline&quot;/&gt;&lt;/span&gt; relative to the probability of exiting at all (i.e. as &lt;span class=&quot;math&quot;&gt;&lt;img src=&quot;http://latex.codecogs.com/png.latex?t \to \infty\inline&quot;/&gt;&lt;/span&gt;),&lt;/p&gt;
+&lt;p&gt;&lt;span class=&quot;math&quot;&gt;&lt;div style=&quot;text-align:center;&quot;&gt;&lt;img src=&quot;http://latex.codecogs.com/png.latex?T_c(x) = \frac{\int^{\infty}_0 t u_t(x,t) dt }{lim_{t \to \infty} u(x,t) }&quot; alt=&quot;T_c(x) = \frac{\int^{\infty}_0 t u_t(x,t) dt }{lim_{t \to \infty} u(x,t) }&quot; /&gt;&lt;/div&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;From here we set up the classic hitting time solution for the OU for the &lt;em&gt;time-dependent&lt;/em&gt; PDE,&lt;/p&gt;
+&lt;p&gt;&lt;span class=&quot;math&quot;&gt;&lt;div style=&quot;text-align:center;&quot;&gt;&lt;img src=&quot;http://latex.codecogs.com/png.latex?u_t = \tfrac{\sigma^2}{2} u_xx = x u_x&quot; alt=&quot;u_t = \tfrac{\sigma^2}{2} u_xx = x u_x&quot; /&gt;&lt;/div&gt;&lt;/span&gt;,&lt;/p&gt;
+&lt;p&gt;and with initial condition &lt;span class=&quot;math&quot;&gt;&lt;img src=&quot;http://latex.codecogs.com/png.latex?u(x,t=0) = 0\inline&quot;/&gt;&lt;/span&gt;, &lt;span class=&quot;math&quot;&gt;&lt;img src=&quot;http://latex.codecogs.com/png.latex?u(0,t) = 0\inline&quot;/&gt;&lt;/span&gt;, and &lt;span class=&quot;math&quot;&gt;&lt;img src=&quot;http://latex.codecogs.com/png.latex?u(L, t) = 1\inline&quot;/&gt;&lt;/span&gt;. A bit of effort and an approximation to Dawson’s integral for &lt;span class=&quot;math&quot;&gt;&lt;img src=&quot;http://latex.codecogs.com/png.latex?L \gg x\inline&quot;/&gt;&lt;/span&gt; leads Don to bound the mean time to exit,&lt;/p&gt;
+&lt;p&gt;&lt;span class=&quot;math&quot;&gt;&lt;div style=&quot;text-align:center;&quot;&gt;&lt;img src=&quot;http://latex.codecogs.com/png.latex?T_c(x) &amp;lt; \tfrac{1}{\sigma} \log\left(\tfrac{L}{\sigma})&quot; alt=&quot;T_c(x) &amp;lt; \tfrac{1}{\sigma} \log\left(\tfrac{L}{\sigma})&quot; /&gt;&lt;/div&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;as claimed.&lt;/p&gt;
+&lt;h2 id=&quot;results-from-marcs-other-suggestion&quot;&gt;Results from Marc’s other suggestion&lt;/h2&gt;
+&lt;p&gt;Marc also suggested exploring this by directly comparing steps left and right. A related way to measure the relative number of steps in the positive direction relative to the negative direction is Kendall’s tau rank correlation coefficient, which also looks at the number of increases relative to the number of decreases.&lt;/p&gt;
+&lt;p&gt;I’ve computed this statistic for my sample trajectories and plotted as a histogram here. The negative skew shows the tendancy to decrease (which is the direction of the deviation I selected – smaller population sizes)&lt;/p&gt;
+&lt;div class=&quot;figure&quot;&gt;
+&lt;img src=&quot;http://farm9.staticflickr.com/8263/8621413072_3597b335fe_o.png&quot; /&gt;
+&lt;/div&gt;
+&lt;p&gt;I’ve also computed the ratio of steps up to steps down and histogrammed that: like the above, it shows more steps down than up, though not as dramatic as I might think by any means. Have to think about the role of the step size between observations in formulating this perhaps.&lt;/p&gt;
+&lt;div class=&quot;figure&quot;&gt;
+&lt;img src=&quot;http://farm9.staticflickr.com/8113/8621413020_5d779e8b1f_o.png&quot; /&gt;
+&lt;/div&gt;
+&lt;p&gt;For the sake of completeness:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/cboettig/earlywarning/blob/8418a20cabf24786b54acc51eb508e9dbf3d1b37/inst/examples/trajectories.csv&quot;&gt;data for the trajectories is here&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/cboettig/earlywarning/blob/8418a20cabf24786b54acc51eb508e9dbf3d1b37/inst/examples/beer.md&quot;&gt;code for the analysis is here&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I may try and add a demonstration of Ludwig’s result above when I get some more free time to fiddle; will just need to add some additional simulations of return trajectories.&lt;/p&gt;
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;C. Boettiger, A. Hastings, (2012) Early Warning Signals And The Prosecutor’S Fallacy. &lt;em&gt;Proceedings of The Royal Society B: Biological Sciences&lt;/em&gt; &lt;strong&gt;279&lt;/strong&gt; 4734-4739 &lt;a href=&quot;http://dx.doi.org/10.1098/rspb.2012.2085&quot;&gt;10.1098/rspb.2012.2085&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;R Lande, (1985) Expected time for random genetic drift of a population between stable phenotypic states. &lt;em&gt;Proceedings of the National Academy of Sciences&lt;/em&gt; &lt;a href=&quot;http://www.pnas.org/content/82/22/7641.abstract&quot;&gt;http://www.pnas.org/content/82/22/7641.abstract&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;unknown unknown, (unknown) Unknown. &lt;em&gt;Unknown&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;</content>
+ </entry>
+ 
+ <entry>
+   <title>Notebook Features: parsing linked data in the semantic notebook</title>
+   <link href="/2013/04/04/notebook-parsing.html"/>
+   <updated>2013-04-04T00:00:00-07:00</updated>
+   <id>h/2013/04/04/notebook-parsing</id>
+   <content type="html">&lt;p&gt;In a &lt;a href=&quot;/2011/05/08/building-a-semantic-notebook.html&quot;&gt;post a while back&lt;/a&gt; I originally put forward the idea of a semantic lab notebook. Semantics, or linked data, are among the most powerful concepts to emerge in online science for scholarly data organization and communication. I have slowly been adding and exploring new ways to introduce semantic concepts into the notebook, which I have documented along the way under my &lt;a href=&quot;http://www.carlboettiger.info/tags.html#semantics&quot;&gt;#semantics&lt;/a&gt; tag. In this post, rather than discuss how to generate the semantic data, I try to focus on some of the things we can &lt;em&gt;do&lt;/em&gt; with it. This really just scratches the surface of possibilities, but should at least illustrate the general idea.&lt;/p&gt;
+&lt;p&gt;We will start with some very simple examples exploiting the semantics inherent in HTML5. We can then work up to richer examples that rely on XML-based parsing. The richest potential of the semantic notebook lies in leveraging the RDFa content, whose terms are defined as ontologies over which a machine can apply reasoning and formal logic against other web content (see, e.g. &lt;span class=&quot;showtooltip&quot; title=&quot;Shadbolt N, Berners-Lee T and Hall W (2006). The Semantic Web
+Revisited. _Ieee Intelligent Systems_, *21*, pp. 96-101. ISSN
+1541-1672,  http://dx.doi.org/10.1109/MIS.2006.62.&quot;&gt;&lt;a href=&quot;http://dx.doi.org/10.1109/MIS.2006.62&quot; rel=&quot;http://purl.org/spar/cito/obtainsBackgroundFrom&quot; &gt;Shadbolt &lt;em&gt;et. al.&lt;/em&gt; (2006)&lt;/a&gt;&lt;/span&gt; for further unformation). Though we show how to extract the and parse the RDF here, exploiting the RDF in the last example must wait to a later post.&lt;/p&gt;
+&lt;h2 id=&quot;parsing-semantic-html&quot;&gt;Parsing semantic HTML&lt;/h2&gt;
+&lt;p&gt;Our first set of examples will address parsing the semantic HTML directly. For background on how these elements are added to the notebook, see &lt;a href=&quot;/2012/10/14/semantic-lab-notebook.html&quot;&gt;this entry&lt;/a&gt;. We will use R with it’s excellent collection of web, XML parsing, and text-mining tools to take advantage of the semantic structure. First we load the required packages,&lt;/p&gt;
+&lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;&lt;span class=&quot;kw&quot;&gt;library&lt;/span&gt;(RCurl)
+&lt;span class=&quot;kw&quot;&gt;library&lt;/span&gt;(XML)
+&lt;span class=&quot;kw&quot;&gt;library&lt;/span&gt;(tm)
+&lt;span class=&quot;kw&quot;&gt;library&lt;/span&gt;(wordcloud)
+&lt;span class=&quot;kw&quot;&gt;library&lt;/span&gt;(RColorBrewer)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;We can get a list of pages to download from the sitemap&lt;/p&gt;
+&lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;pagelist &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;readLines&lt;/span&gt;(&lt;span class=&quot;st&quot;&gt;&amp;quot;http://carlboettiger.info/sitemap.txt&amp;quot;&lt;/span&gt;)
+pagelist &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;pagelist[&lt;span class=&quot;kw&quot;&gt;grep&lt;/span&gt;(&lt;span class=&quot;st&quot;&gt;&amp;quot;/201&lt;/span&gt;&lt;span class=&quot;ch&quot;&gt;\\&lt;/span&gt;&lt;span class=&quot;st&quot;&gt;d/&amp;quot;&lt;/span&gt;, pagelist)]  &lt;span class=&quot;co&quot;&gt;# drop non-posts)&lt;/span&gt;
+pages &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;lapply&lt;/span&gt;(pagelist, getURLContent, &lt;span class=&quot;dt&quot;&gt;followlocation =&lt;/span&gt; &lt;span class=&quot;ot&quot;&gt;TRUE&lt;/span&gt;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Or, if an archive is available locally, (e.g. from figshare cache), we can read the files in directly.&lt;/p&gt;
+&lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;pages &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;system&lt;/span&gt;(&lt;span class=&quot;st&quot;&gt;&amp;quot;ls ~/Documents/labnotebook/_site/2***/*/*/*.html&amp;quot;&lt;/span&gt;, 
+    &lt;span class=&quot;dt&quot;&gt;intern =&lt;/span&gt; &lt;span class=&quot;ot&quot;&gt;TRUE&lt;/span&gt;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;We parse each of the pages as HTML so that we can manipulate them with XML tools&lt;/p&gt;
+&lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;html &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;lapply&lt;/span&gt;(pages, htmlParse)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;For instance, we can easily get the content of all entries:&lt;/p&gt;
+&lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;text &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;sapply&lt;/span&gt;(html, xpathSApply, &lt;span class=&quot;st&quot;&gt;&amp;quot;//article&amp;quot;&lt;/span&gt;, xmlValue)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;We can also extract metadata based on the semantic markup.&lt;/p&gt;
+&lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;titles &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;sapply&lt;/span&gt;(html, xpathSApply, &lt;span class=&quot;st&quot;&gt;&amp;quot;//title&amp;quot;&lt;/span&gt;, xmlValue)
+categories &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;sapply&lt;/span&gt;(html, xpathSApply, &lt;span class=&quot;st&quot;&gt;&amp;quot;//node()[@class=&amp;#39;category&amp;#39;]&amp;quot;&lt;/span&gt;, 
+    xmlValue)
+tags &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;sapply&lt;/span&gt;(html, xpathSApply, &lt;span class=&quot;st&quot;&gt;&amp;quot;//node()[@class=&amp;#39;tag&amp;#39;]&amp;quot;&lt;/span&gt;, xmlValue)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;R makes it easy to summarize this data, e.g. by generating a table of the number of entries in each category, or a wordcloud of the tags.&lt;/p&gt;
+&lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;&lt;span class=&quot;kw&quot;&gt;table&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;unlist&lt;/span&gt;(categories))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;
+ computation      ecology    evolution open-science     teaching 
+          40          376          287           85           17 &lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;&lt;span class=&quot;kw&quot;&gt;wordcloud&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;Corpus&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;VectorSource&lt;/span&gt;(tags)))&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&quot;figure&quot;&gt;
+&lt;img src=&quot;http://farm9.staticflickr.com/8258/8620398951_0c2fd56e26_o.png&quot; /&gt;
+&lt;/div&gt;
+&lt;h3 id=&quot;extracting-citations&quot;&gt;Extracting citations&lt;/h3&gt;
+&lt;p&gt;Citation information can be encoded&lt;/p&gt;
+&lt;p&gt;We can perform more direct text mining as well. For instance, we extract all DOIs found in the text:&lt;/p&gt;
+&lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;doi_pattern =&lt;span class=&quot;st&quot;&gt; &amp;quot;&lt;/span&gt;&lt;span class=&quot;ch&quot;&gt;\\&lt;/span&gt;&lt;span class=&quot;st&quot;&gt;b(10[.][0-9]{4,}(?:[.][0-9]+)*/(?:(?![&lt;/span&gt;&lt;span class=&quot;ch&quot;&gt;\&amp;quot;&lt;/span&gt;&lt;span class=&quot;st&quot;&gt;&amp;amp;&amp;#39;&amp;lt;&amp;gt;])&lt;/span&gt;&lt;span class=&quot;ch&quot;&gt;\\&lt;/span&gt;&lt;span class=&quot;st&quot;&gt;S)+)&lt;/span&gt;&lt;span class=&quot;ch&quot;&gt;\\&lt;/span&gt;&lt;span class=&quot;st&quot;&gt;b&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;kw&quot;&gt;require&lt;/span&gt;(gsubfn)
+dois &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;strapply&lt;/span&gt;(text, doi_pattern, &lt;span class=&quot;dt&quot;&gt;perl =&lt;/span&gt; &lt;span class=&quot;ot&quot;&gt;TRUE&lt;/span&gt;)  &lt;span class=&quot;co&quot;&gt;#text[-462]&lt;/span&gt;
+&lt;span class=&quot;kw&quot;&gt;head&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;sort&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;table&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;unlist&lt;/span&gt;(dois))))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;
+10.1002/(SICI)1520-6602(1998)1:1                 10.1002/bjs.6880 
+                               1                                1 
+                10.1002/etc.2140           10.1006/jtbi.1998.0660 
+                               1                                1 
+          10.1006/jtbi.2000.1080           10.1006/jtbi.2001.2299 
+                               1                                1 &lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Or generate a wordcloud of the full text&lt;/p&gt;
+&lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;
+carl &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;Corpus&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;VectorSource&lt;/span&gt;(text))
+carl &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;tm_map&lt;/span&gt;(carl, removePunctuation)
+carl &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;tm_map&lt;/span&gt;(carl, tolower)
+carl &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;tm_map&lt;/span&gt;(carl, function(x) &lt;span class=&quot;kw&quot;&gt;removeWords&lt;/span&gt;(x, &lt;span class=&quot;kw&quot;&gt;stopwords&lt;/span&gt;()))
+
+carl.tdm &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;TermDocumentMatrix&lt;/span&gt;(carl)
+carl.m &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;as.matrix&lt;/span&gt;(carl.tdm)
+carl.v &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;sort&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;rowSums&lt;/span&gt;(carl.m), &lt;span class=&quot;dt&quot;&gt;decreasing =&lt;/span&gt; &lt;span class=&quot;ot&quot;&gt;TRUE&lt;/span&gt;)
+carl.d &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;data.frame&lt;/span&gt;(&lt;span class=&quot;dt&quot;&gt;word =&lt;/span&gt; &lt;span class=&quot;kw&quot;&gt;names&lt;/span&gt;(carl.v), &lt;span class=&quot;dt&quot;&gt;freq =&lt;/span&gt; carl.v)
+
+
+&lt;span class=&quot;kw&quot;&gt;wordcloud&lt;/span&gt;(carl.d$word, carl.d$freq, &lt;span class=&quot;dt&quot;&gt;scale =&lt;/span&gt; &lt;span class=&quot;kw&quot;&gt;c&lt;/span&gt;(&lt;span class=&quot;dv&quot;&gt;8&lt;/span&gt;, &lt;span class=&quot;fl&quot;&gt;0.4&lt;/span&gt;), &lt;span class=&quot;dt&quot;&gt;min.freq =&lt;/span&gt; &lt;span class=&quot;dv&quot;&gt;3&lt;/span&gt;, 
+    &lt;span class=&quot;dt&quot;&gt;max.words =&lt;/span&gt; &lt;span class=&quot;dv&quot;&gt;100&lt;/span&gt;, &lt;span class=&quot;dt&quot;&gt;random.order =&lt;/span&gt; &lt;span class=&quot;ot&quot;&gt;FALSE&lt;/span&gt;, &lt;span class=&quot;dt&quot;&gt;rot.per =&lt;/span&gt; &lt;span class=&quot;fl&quot;&gt;0.15&lt;/span&gt;, &lt;span class=&quot;dt&quot;&gt;colors =&lt;/span&gt; &lt;span class=&quot;kw&quot;&gt;brewer.pal&lt;/span&gt;(&lt;span class=&quot;dv&quot;&gt;8&lt;/span&gt;, 
+        &lt;span class=&quot;st&quot;&gt;&amp;quot;Dark2&amp;quot;&lt;/span&gt;))&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&quot;figure&quot;&gt;
+&lt;img src=&quot;http://farm9.staticflickr.com/8385/8621498714_2fe3e04226_o.png&quot; /&gt;
+&lt;/div&gt;
+&lt;h2 id=&quot;rdfa-parsing&quot;&gt;RDFa parsing&lt;/h2&gt;
+&lt;p&gt;RDF triples are the mainstay of semantic, linked data. Unlike the more text-mining oriented examples above, data in this format follows a strict and universal standard which allows a machine to identify meaning rather precisely. Critically, this allows one to automatically link data appearing in the notebook to data elsewhere on the web without the ambiguities of natural language that for instance, might confuse the animal jaguar with the car.&lt;/p&gt;
+&lt;p&gt;RDFa is a way of adding these precise statements to HTML, again see the &lt;a href=&quot;/2012/10/14/semantic-lab-notebook.html&quot;&gt;earlier entry&lt;/a&gt; on how this is done. The technically inclined will note that the namespaces of the RDFa itself are not accessible in the XML parsing we used above, since they do not correspond to nodes or attributes, but appear only in the values of attributes. Fortunately, there are many excellent tools to extract this RDFa data, turning it into the XML formatted RDF triples we need. e can perform this using the &lt;a href=&quot;http://any23.org&quot;&gt;Any23&lt;/a&gt; API&lt;/p&gt;
+&lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;&lt;span class=&quot;kw&quot;&gt;download.file&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;paste&lt;/span&gt;(&lt;span class=&quot;st&quot;&gt;&amp;quot;http://any23.org/rdfxml&amp;quot;&lt;/span&gt;, &lt;span class=&quot;st&quot;&gt;&amp;quot;http://carlboettiger.info&amp;quot;&lt;/span&gt;, 
+    &lt;span class=&quot;dt&quot;&gt;sep =&lt;/span&gt; &lt;span class=&quot;st&quot;&gt;&amp;quot;/&amp;quot;&lt;/span&gt;), &lt;span class=&quot;st&quot;&gt;&amp;quot;temp.xml&amp;quot;&lt;/span&gt;)
+doc &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;xmlParse&lt;/span&gt;(&lt;span class=&quot;st&quot;&gt;&amp;quot;temp.xml&amp;quot;&lt;/span&gt;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Which creates a beautiful RDF XML file of all linked data found in the entry.&lt;/p&gt;
+&lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;doc&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt;
+&amp;lt;rdf:RDF xmlns:xhtml=&amp;quot;http://www.w3.org/1999/xhtml/vocab#&amp;quot; xmlns:dcterms=&amp;quot;http://purl.org/dc/terms/&amp;quot; xmlns:rdf=&amp;quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#&amp;quot;&amp;gt;
+  &amp;lt;rdf:Description rdf:about=&amp;quot;http://www.carlboettiger.info/&amp;quot;&amp;gt;
+    &amp;lt;dcterms:title xml:lang=&amp;quot;en&amp;quot;&amp;gt;Carl Boettiger&amp;lt;/dcterms:title&amp;gt;
+    &amp;lt;xhtml:license rdf:resource=&amp;quot;http://creativecommons.org/publicdomain/zero/1.0/&amp;quot;/&amp;gt;
+    &amp;lt;dcterms:title xml:lang=&amp;quot;en&amp;quot;&amp;gt;Carl Boettiger&amp;lt;/dcterms:title&amp;gt;
+    &amp;lt;dcterms:creator xml:lang=&amp;quot;en&amp;quot;&amp;gt;Carl Boettiger&amp;lt;/dcterms:creator&amp;gt;
+    &amp;lt;dcterms:date xml:lang=&amp;quot;en&amp;quot;&amp;gt;2013-04-04T11:07:14-07:00&amp;lt;/dcterms:date&amp;gt;
+    &amp;lt;dcterms:format xml:lang=&amp;quot;en&amp;quot;&amp;gt;text/html&amp;lt;/dcterms:format&amp;gt;
+    &amp;lt;dcterms:language xml:lang=&amp;quot;en&amp;quot;&amp;gt;en&amp;lt;/dcterms:language&amp;gt;
+    &amp;lt;dcterms:identifier xml:lang=&amp;quot;en&amp;quot;&amp;gt;/index.html&amp;lt;/dcterms:identifier&amp;gt;
+    &amp;lt;dcterms:rights xml:lang=&amp;quot;en&amp;quot;&amp;gt;CC0&amp;lt;/dcterms:rights&amp;gt;
+    &amp;lt;dcterms:source xml:lang=&amp;quot;en&amp;quot;&amp;gt;Lab Notebook&amp;lt;/dcterms:source&amp;gt;
+    &amp;lt;dcterms:subject xml:lang=&amp;quot;en&amp;quot;&amp;gt;Ecology&amp;lt;/dcterms:subject&amp;gt;
+    &amp;lt;dcterms:type xml:lang=&amp;quot;en&amp;quot;&amp;gt;website&amp;lt;/dcterms:type&amp;gt;
+    &amp;lt;title xmlns=&amp;quot;http://ogp.me/ns#&amp;quot; xml:lang=&amp;quot;en&amp;quot;&amp;gt;Carl Boettiger&amp;lt;/title&amp;gt;
+    &amp;lt;author xmlns=&amp;quot;http://ogp.me/ns#&amp;quot; xml:lang=&amp;quot;en&amp;quot;&amp;gt;http://www.carlboettiger.info/index.html#me&amp;lt;/author&amp;gt;
+    &amp;lt;first_name xmlns=&amp;quot;http://ogp.me/ns/profile#&amp;quot; xml:lang=&amp;quot;en&amp;quot;&amp;gt;Carl&amp;lt;/first_name&amp;gt;
+    &amp;lt;last_name xmlns=&amp;quot;http://ogp.me/ns/profile#&amp;quot; xml:lang=&amp;quot;en&amp;quot;&amp;gt;Boettiger&amp;lt;/last_name&amp;gt;
+    &amp;lt;published_time xmlns=&amp;quot;http://ogp.me/ns/article#&amp;quot; xml:lang=&amp;quot;en&amp;quot;&amp;gt;2013-04-04T11:07:14-07:00&amp;lt;/published_time&amp;gt;
+    &amp;lt;site_name xmlns=&amp;quot;http://ogp.me/ns#&amp;quot; xml:lang=&amp;quot;en&amp;quot;&amp;gt;Lab Notebook&amp;lt;/site_name&amp;gt;
+    &amp;lt;url xmlns=&amp;quot;http://ogp.me/ns#&amp;quot; xml:lang=&amp;quot;en&amp;quot;&amp;gt;http://www.carlboettiger.info/index.html&amp;lt;/url&amp;gt;
+    &amp;lt;type xmlns=&amp;quot;http://ogp.me/ns#&amp;quot; xml:lang=&amp;quot;en&amp;quot;&amp;gt;website&amp;lt;/type&amp;gt;
+  &amp;lt;/rdf:Description&amp;gt;
+  &amp;lt;rdf:Description rdf:about=&amp;quot;http://carlboettiger.info#me&amp;quot;&amp;gt;
+    &amp;lt;rdf:type rdf:resource=&amp;quot;http://xmlns.com/foaf/0.1/Person&amp;quot;/&amp;gt;
+    &amp;lt;rdf:type rdf:resource=&amp;quot;http://schema.org/Person#Person&amp;quot;/&amp;gt;
+  &amp;lt;/rdf:Description&amp;gt;
+  &amp;lt;rdf:Description rdf:about=&amp;quot;http://www.carlboettiger.info/assets/img/carlboettiger.png&amp;quot;&amp;gt;
+    &amp;lt;depiction xmlns=&amp;quot;http://xmlns.com/foaf/0.1/&amp;quot; xml:lang=&amp;quot;en&amp;quot;/&amp;gt;
+  &amp;lt;/rdf:Description&amp;gt;
+  &amp;lt;rdf:Description rdf:about=&amp;quot;http://carlboettiger.info&amp;quot;&amp;gt;
+    &amp;lt;homepage xmlns=&amp;quot;http://xmlns.com/foaf/0.1/&amp;quot; rdf:resource=&amp;quot;http://carlboettiger.info&amp;quot;/&amp;gt;
+    &amp;lt;url xmlns=&amp;quot;http://schema.org/Person#&amp;quot; rdf:resource=&amp;quot;http://carlboettiger.info&amp;quot;/&amp;gt;
+    &amp;lt;name xmlns=&amp;quot;http://xmlns.com/foaf/0.1/&amp;quot; xml:lang=&amp;quot;en&amp;quot;&amp;gt;Carl Boettiger&amp;lt;/name&amp;gt;
+  &amp;lt;/rdf:Description&amp;gt;
+  &amp;lt;rdf:Description rdf:about=&amp;quot;http://carlboettiger.info#me&amp;quot;&amp;gt;
+    &amp;lt;jobTitle xmlns=&amp;quot;http://schema.org/Person#&amp;quot; xml:lang=&amp;quot;en&amp;quot;&amp;gt;a post-doctoral researcher&amp;lt;/jobTitle&amp;gt;
+  &amp;lt;/rdf:Description&amp;gt;
+  &amp;lt;rdf:Description rdf:nodeID=&amp;quot;node17eprp1n4x899515&amp;quot;&amp;gt;
+    &amp;lt;rdf:type rdf:resource=&amp;quot;http://xmlns.com/foaf/0.1/Person&amp;quot;/&amp;gt;
+  &amp;lt;/rdf:Description&amp;gt;
+  &amp;lt;rdf:Description rdf:about=&amp;quot;http://carlboettiger.info#me&amp;quot;&amp;gt;
+    &amp;lt;knows xmlns=&amp;quot;http://xmlns.com/foaf/0.1/&amp;quot; rdf:nodeID=&amp;quot;node17eprp1n4x899515&amp;quot;/&amp;gt;
+  &amp;lt;/rdf:Description&amp;gt;
+  &amp;lt;rdf:Description rdf:nodeID=&amp;quot;node17eprp1n4x899515&amp;quot;&amp;gt;
+    &amp;lt;homepage xmlns=&amp;quot;http://xmlns.com/foaf/0.1/&amp;quot; rdf:resource=&amp;quot;http://users.soe.ucsc.edu/~msmangel/&amp;quot;/&amp;gt;
+  &amp;lt;/rdf:Description&amp;gt;
+  &amp;lt;rdf:Description rdf:about=&amp;quot;http://carlboettiger.info#me&amp;quot;&amp;gt;
+    &amp;lt;knows xmlns=&amp;quot;http://xmlns.com/foaf/0.1/&amp;quot; rdf:nodeID=&amp;quot;node17eprp1n4x899515&amp;quot;/&amp;gt;
+  &amp;lt;/rdf:Description&amp;gt;
+  &amp;lt;rdf:Description rdf:about=&amp;quot;http://users.soe.ucsc.edu/~msmangel/&amp;quot;&amp;gt;
+    &amp;lt;name xmlns=&amp;quot;http://xmlns.com/foaf/0.1/&amp;quot; xml:lang=&amp;quot;en&amp;quot;&amp;gt;Marc Mangel&amp;lt;/name&amp;gt;
+  &amp;lt;/rdf:Description&amp;gt;
+  &amp;lt;rdf:Description rdf:nodeID=&amp;quot;node17eprp1n4x899516&amp;quot;&amp;gt;
+    &amp;lt;rdf:type rdf:resource=&amp;quot;http://xmlns.com/foaf/0.1/Person&amp;quot;/&amp;gt;
+    &amp;lt;homepage xmlns=&amp;quot;http://xmlns.com/foaf/0.1/&amp;quot; rdf:resource=&amp;quot;http://swfsc.noaa.gov/staff.aspx?&amp;amp;amp;id=17294&amp;quot;/&amp;gt;
+  &amp;lt;/rdf:Description&amp;gt;
+  &amp;lt;rdf:Description rdf:about=&amp;quot;http://swfsc.noaa.gov/staff.aspx?&amp;amp;amp;id=17294&amp;quot;&amp;gt;
+    &amp;lt;name xmlns=&amp;quot;http://xmlns.com/foaf/0.1/&amp;quot; xml:lang=&amp;quot;en&amp;quot;&amp;gt;Steve Munch&amp;lt;/name&amp;gt;
+  &amp;lt;/rdf:Description&amp;gt;
+  &amp;lt;rdf:Description rdf:about=&amp;quot;http://carlboettiger.info#me&amp;quot;&amp;gt;
+    &amp;lt;affiliation xmlns=&amp;quot;http://schema.org/Person#&amp;quot; rdf:resource=&amp;quot;http://boe.ucsc.edu/~msmangel/CSTAR.html&amp;quot;/&amp;gt;
+    &amp;lt;workplaceHomepage xmlns=&amp;quot;http://xmlns.com/foaf/0.1/&amp;quot; rdf:resource=&amp;quot;http://www.ucsc.edu/&amp;quot;/&amp;gt;
+    &amp;lt;weblog xmlns=&amp;quot;http://xmlns.com/foaf/0.1/&amp;quot; rdf:resource=&amp;quot;http://www.carlboettiger.info/lab-notebook.html&amp;quot;/&amp;gt;
+  &amp;lt;/rdf:Description&amp;gt;
+  &amp;lt;rdf:Description rdf:nodeID=&amp;quot;node17eprp1n4x899517&amp;quot;&amp;gt;
+    &amp;lt;rdf:type rdf:resource=&amp;quot;http://schema.org/PostalAddress&amp;quot;/&amp;gt;
+    &amp;lt;address xmlns=&amp;quot;http://schema.org/Person#&amp;quot; xml:lang=&amp;quot;en&amp;quot;&amp;gt;Center for Stock Assessment Research, 110 Shaffer Rd, Santa Cruz, CA 95050, USA&amp;lt;/address&amp;gt;
+    &amp;lt;streetAddress xmlns=&amp;quot;http://schema.org/PostalAddress/&amp;quot; xml:lang=&amp;quot;en&amp;quot;&amp;gt;Center for Stock Assessment Research, 110 Shaffer Rd&amp;lt;/streetAddress&amp;gt;
+    &amp;lt;addressLocality xmlns=&amp;quot;http://schema.org/PostalAddress/&amp;quot; xml:lang=&amp;quot;en&amp;quot;&amp;gt;Santa Cruz&amp;lt;/addressLocality&amp;gt;
+    &amp;lt;addressRegion xmlns=&amp;quot;http://schema.org/PostalAddress/&amp;quot; xml:lang=&amp;quot;en&amp;quot;&amp;gt;CA&amp;lt;/addressRegion&amp;gt;
+    &amp;lt;postalCode xmlns=&amp;quot;http://schema.org/PostalAddress/&amp;quot; xml:lang=&amp;quot;en&amp;quot;&amp;gt;95050&amp;lt;/postalCode&amp;gt;
+    &amp;lt;addressCountry xmlns=&amp;quot;http://schema.org/PostalAddress/&amp;quot; xml:lang=&amp;quot;en&amp;quot;&amp;gt;USA&amp;lt;/addressCountry&amp;gt;
+  &amp;lt;/rdf:Description&amp;gt;
+  &amp;lt;rdf:Description rdf:about=&amp;quot;https://orcid.org/0000-0002-1642-628X&amp;quot;&amp;gt;
+    &amp;lt;orcid xmlns=&amp;quot;http://purl.org/spar/datacite/&amp;quot; rdf:resource=&amp;quot;https://orcid.org/0000-0002-1642-628X&amp;quot;/&amp;gt;
+  &amp;lt;/rdf:Description&amp;gt;
+  &amp;lt;rdf:Description rdf:about=&amp;quot;http://www.carlboettiger.info#me&amp;quot;&amp;gt;
+    &amp;lt;rdf:type rdf:resource=&amp;quot;http://xmlns.com/foaf/0.1/Person&amp;quot;/&amp;gt;
+    &amp;lt;account xmlns=&amp;quot;http://xmlns.com/foaf/0.1/&amp;quot; rdf:resource=&amp;quot;http://www.cloudflare.com/email-protection#f497969b9180809d93b49399959d98da979b99&amp;quot;/&amp;gt;
+    &amp;lt;account xmlns=&amp;quot;http://xmlns.com/foaf/0.1/&amp;quot; rdf:resource=&amp;quot;https://twitter.com/cboettig&amp;quot;/&amp;gt;
+    &amp;lt;account xmlns=&amp;quot;http://xmlns.com/foaf/0.1/&amp;quot; rdf:resource=&amp;quot;https://github.com/cboettig&amp;quot;/&amp;gt;
+  &amp;lt;/rdf:Description&amp;gt;
+  &amp;lt;rdf:Description rdf:about=&amp;quot;http://www.carlboettiger.info/&amp;quot;&amp;gt;
+    &amp;lt;license xmlns=&amp;quot;http://www.carlboettiger.info/&amp;quot; rdf:resource=&amp;quot;http://creativecommons.org/publicdomain/zero/1.0/&amp;quot;/&amp;gt;
+    &amp;lt;license xmlns=&amp;quot;http://creativecommons.org/ns#&amp;quot; rdf:resource=&amp;quot;http://creativecommons.org/publicdomain/zero/1.0/&amp;quot;/&amp;gt;
+  &amp;lt;/rdf:Description&amp;gt;
+&amp;lt;/rdf:RDF&amp;gt;
+ &lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;We can now explore this data using the XML tools illustrated above. The rigidity of the XML rather than HTML parsing and the use of namespaces gives us greater precision.&lt;/p&gt;</content>
+ </entry>
  
  <entry>
    <title>Further Examples Managing Tipping Points With Gp</title>
@@ -3771,6 +4004,8 @@ fig2c&lt;/code&gt;&lt;/pre&gt;
 &lt;h2 id=&quot;results&quot;&gt;Results&lt;/h2&gt;
 &lt;p&gt;Linked in the automatically generated commit log:&lt;/p&gt;
 &lt;ul&gt;&lt;li&gt;
+add value iteration termination to package functions, example shown in Reed.md &lt;a href=&quot;https://github.com/cboettig/pdg_control/commit/d2bd1d25fb2cec5b55cc6eedb8bb6f50320139fe&quot;&gt;08:15 pm 2013/04/08&lt;/a&gt;
+&lt;/li&gt;&lt;li&gt;
 documentation &lt;a href=&quot;https://github.com/cboettig/pdg_control/commit/96681a7a7cea35437f0d65929648208200e8ec9d&quot;&gt;02:54 pm 2013/03/13&lt;/a&gt;
 &lt;/li&gt;&lt;li&gt;
 multiple uncertainty maintained as separate package now &lt;a href=&quot;https://github.com/cboettig/pdg_control/commit/7392816bcf499d37639e332a760e7ac838f4a53e&quot;&gt;02:51 pm 2013/03/13&lt;/a&gt;
@@ -3784,8 +4019,6 @@ multi-dimensional population dynamics examples &lt;a href=&quot;https://github.c
 As in writeup.md, but example with c0 = c1 = 0 &lt;a href=&quot;https://github.com/cboettig/pdg_control/commit/cccec55a8ac2ef47dea99d45fdb732e5028aec98&quot;&gt;01:26 am 2012/12/06&lt;/a&gt;
 &lt;/li&gt;&lt;li&gt;
 include images &lt;a href=&quot;https://github.com/cboettig/pdg_control/commit/25e6f1c1a599440be790a7ec047b8b63540255c5&quot;&gt;05:27 pm 2012/12/05&lt;/a&gt;
-&lt;/li&gt;&lt;li&gt;
-added fishstock plots to example &lt;a href=&quot;https://github.com/cboettig/pdg_control/commit/72dc8741fb9aa939e61d66ff0cbc34bcc3b29b78&quot;&gt;05:21 pm 2012/12/05&lt;/a&gt;
 &lt;/li&gt;&lt;/ul&gt;</content>
  </entry>
  
@@ -4237,21 +4470,21 @@ linear &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;dt[, &lt;span cla
 &lt;p&gt;vim set sytnax language, useful for getting R highlighting in &lt;code&gt;.Rmd&lt;/code&gt; files: &lt;code&gt;setf r&lt;/code&gt;, or equivalently, &lt;code&gt;set filetype=r&lt;/code&gt; (must be lowercase r). &lt;code&gt;set filetype&lt;/code&gt; with no argument gives the current filetype.&lt;/p&gt;
 &lt;h3 id=&quot;coding&quot;&gt;Coding&lt;/h3&gt;
 &lt;ul&gt;&lt;li&gt;
-cboettig pushed to master at cboettig/labnotebook: &lt;em&gt;failed to implement authentication for mendeley api.. grr…&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/labnotebook/compare/b9ee309114...35e6c0825d&quot;&gt;01:17 2013/04/04&lt;/a&gt;
+cboettig pushed to master at cboettig/labnotebook: &lt;em&gt;script to localize images, closes #75&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/labnotebook/compare/44166afb49...a3e60f1057&quot;&gt;08:33 2013/04/08&lt;/a&gt;
 &lt;/li&gt;&lt;li&gt;
-cboettig commented on issue cboettig/nonparametric-bayes#34: &lt;em&gt;Reasonable constraints: condition on (0, 0) condition on single zero in first derivative …&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/nonparametric-bayes/issues/34#issuecomment-15874914&quot;&gt;01:05 2013/04/04&lt;/a&gt;
+cboettig closed issue cboettig/labnotebook#75: &lt;em&gt;Add script to localize all images in notebook&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/labnotebook/issues/75&quot;&gt;08:33 2013/04/08&lt;/a&gt;
 &lt;/li&gt;&lt;li&gt;
-cboettig deleted branch plottofilename at ropensci/rfigshare: &lt;em&gt;&lt;/em&gt; &lt;a href=&quot;https://github.com/&quot;&gt;09:40 2013/04/03&lt;/a&gt;
+cboettig pushed to master at cboettig/labnotebook: &lt;em&gt;mention additional repos in comments of warning-signals feeds&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/labnotebook/compare/dbde6dfcba...44166afb49&quot;&gt;08:32 2013/04/08&lt;/a&gt;
 &lt;/li&gt;&lt;li&gt;
-cboettig pushed to master at ropensci/rfigshare: &lt;em&gt;Merge pull request #45 from ropensci/plottofilename added convenience function to allow saving ggplot2 plot and getting f…&lt;/em&gt; &lt;a href=&quot;https://github.com/ropensci/rfigshare/compare/ddc9be1f3c...2b67417cd6&quot;&gt;09:39 2013/04/03&lt;/a&gt;
+cboettig pushed to master at cboettig/labnotebook: &lt;em&gt;responsive bootstrap includes responsive-print.less now #69 a few updates on notes can’t do base names for pages, so can’t use git modified date for pa&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/labnotebook/compare/35e6c0825d...dbde6dfcba&quot;&gt;08:27 2013/04/08&lt;/a&gt;
 &lt;/li&gt;&lt;li&gt;
-cboettig merged pull request ropensci/rfigshare#45: &lt;em&gt;added convenience function&lt;/em&gt; &lt;a href=&quot;https://github.com/ropensci/rfigshare/pull/45&quot;&gt;09:39 2013/04/03&lt;/a&gt;
+cboettig pushed to master at cboettig/pdg_control: &lt;em&gt;add value iteration termination to package functions, example shown i…&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/pdg_control/compare/96681a7a7c...d2bd1d25fb&quot;&gt;08:15 2013/04/08&lt;/a&gt;
 &lt;/li&gt;&lt;li&gt;
-cboettig starred willpearse/phyloGenerator: &lt;em&gt;&lt;/em&gt; &lt;a href=&quot;https://github.com/willpearse/phyloGenerator&quot;&gt;08:03 2013/04/03&lt;/a&gt;
+cboettig commented on issue cboettig/labnotebook#83: &lt;em&gt;Alternative route: https://github.com/mpalmer/jekyll-static-comments Would need some adapting. SImplest thing would be to replace comments button w…&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/labnotebook/issues/83#issuecomment-16075210&quot;&gt;08:10 2013/04/08&lt;/a&gt;
 &lt;/li&gt;&lt;li&gt;
-cboettig pushed to master at cboettig/labnotebook: &lt;em&gt;draft post new post&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/labnotebook/compare/3f9a444fbb...b9ee309114&quot;&gt;06:33 2013/04/03&lt;/a&gt;
+cboettig commented on issue cboettig/labnotebook#79: &lt;em&gt;Okay, tried two different approaches, including the one above, and I’m stuck. See my SO question for details. http://stackoverflow.com/questions/15…&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/labnotebook/issues/79#issuecomment-16073480&quot;&gt;07:39 2013/04/08&lt;/a&gt;
 &lt;/li&gt;&lt;li&gt;
-cboettig pushed to master at cboettig/labnotebook: &lt;em&gt;display the code toggle button when page has code: true in yaml&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/labnotebook/compare/024972af36...3f9a444fbb&quot;&gt;06:02 2013/04/03&lt;/a&gt;
+cboettig opened issue cboettig/labnotebook#85: &lt;em&gt;Link grant applications on vita.html to pdfs (on figshare, with dois)&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/labnotebook/issues/85&quot;&gt;11:09 2013/04/05&lt;/a&gt;
 &lt;/li&gt;&lt;/ul&gt;
 
 

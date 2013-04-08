@@ -7,9 +7,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
 
-<!-- Some liquid code so that pages get the site.time creation date -->
+<!-- Some liquid code so that pages get the site.time creation date 
+      Would be nice to use github modified times, but doesn't handle 
+      the path for pages -->
 
-  
+
+
+
 
 
 
@@ -20,7 +24,7 @@
 <!-- RDFa Metadata (in DublinCore) -->
 <meta property="dc:title" content="Matt Helmus visit" />
 <meta property="dc:creator" content="Carl Boettiger" />
-<meta property="dc:date" content="2013-04-04T11:07:14-07:00" />
+<meta property="dc:date" content="2013-04-08T13:26:36-07:00" />
 <meta property="dc:format" content="text/html" />
 <meta property="dc:language" content="en" />
 <meta property="dc:identifier" content="/2011/10/07/matt-helmus-visit.html" />
@@ -33,13 +37,13 @@
 <meta property="og:author" content="http://www.carlboettiger.info/index.html#me" />  <!-- Should be Liquid? URI? -->
 <meta property="http://ogp.me/ns/profile#first_name" content="Carl"/>
 <meta property="http://ogp.me/ns/profile#last_name" content="Boettiger"/>
-<meta property="http://ogp.me/ns/article#published_time" content="2013-04-04T11:07:14-07:00" />
+<meta property="http://ogp.me/ns/article#published_time" content="2013-04-08T13:26:36-07:00" />
 <meta property="og:site_name" content="Lab Notebook" /> <!-- Same as dc:source? -->
 <meta property="og:url" content="http://www.carlboettiger.info/2011/10/07/matt-helmus-visit.html" />
 <meta property="og:type" content="website" /> 
 <!-- Google Scholar Metadata -->
 <meta name="citation_author" content="Carl Boettiger"/>
-<meta name="citation_date" content="04 Apr 2013"/>
+<meta name="citation_date" content="2013-04-08T13:26:36-07:00"/>
 <meta name="citation_title" content="Matt Helmus visit"/>
 <meta name="citation_journal_title" content="Lab Notebook"/>
 
@@ -386,7 +390,6 @@
       $("#toggle_code").click(function(){
         $(".highlight").toggle();
         $(".sourceCode").toggle();
-        location.reload();
       });
     });
     </script>

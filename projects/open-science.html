@@ -7,9 +7,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
 
-<!-- Some liquid code so that pages get the site.time creation date -->
+<!-- Some liquid code so that pages get the site.time creation date 
+      Would be nice to use github modified times, but doesn't handle 
+      the path for pages -->
 
-  
+
+
+
 
 
 
@@ -20,7 +24,7 @@
 <!-- RDFa Metadata (in DublinCore) -->
 <meta property="dc:title" content="My experiments with open science" />
 <meta property="dc:creator" content="Carl Boettiger" />
-<meta property="dc:date" content="2013-04-04T11:07:14-07:00" />
+<meta property="dc:date" content="2013-04-08T13:26:36-07:00" />
 <meta property="dc:format" content="text/html" />
 <meta property="dc:language" content="en" />
 <meta property="dc:identifier" content="/projects/open-science.html" />
@@ -33,13 +37,13 @@
 <meta property="og:author" content="http://www.carlboettiger.info/index.html#me" />  <!-- Should be Liquid? URI? -->
 <meta property="http://ogp.me/ns/profile#first_name" content="Carl"/>
 <meta property="http://ogp.me/ns/profile#last_name" content="Boettiger"/>
-<meta property="http://ogp.me/ns/article#published_time" content="2013-04-04T11:07:14-07:00" />
+<meta property="http://ogp.me/ns/article#published_time" content="2013-04-08T13:26:36-07:00" />
 <meta property="og:site_name" content="Lab Notebook" /> <!-- Same as dc:source? -->
 <meta property="og:url" content="http://www.carlboettiger.info/projects/open-science.html" />
 <meta property="og:type" content="website" /> 
 <!-- Google Scholar Metadata -->
 <meta name="citation_author" content="Carl Boettiger"/>
-<meta name="citation_date" content="04 Apr 2013"/>
+<meta name="citation_date" content="2013-04-08T13:26:36-07:00"/>
 <meta name="citation_title" content="My experiments with open science"/>
 <meta name="citation_journal_title" content="Lab Notebook"/>
 
@@ -182,6 +186,9 @@ I am greatful that my funding sources and affiliations so far at (UC Davis, CSGF
     <div class="span3">
      <h4> <a href="/tags.html#open-science" style="color:#b58900;"><i class="icon-tags" ></i>Tagged notebook entries</a> </h4>
         
+        <p> <a href="/2013/04/04/notebook-parsing.html">Notebook Features: parsing linked data in the semantic notebook</a> 
+    <span style="font-style:italic"> 04 Apr 2013</span></p>
+        
         <p> <a href="/2013/02/22/semantic-citations-for-the-notebook-and-knitr.html">Semantic Citations For The Notebook And Knitr</a> 
     <span style="font-style:italic"> 22 Feb 2013</span></p>
         
@@ -203,15 +210,12 @@ I am greatful that my funding sources and affiliations so far at (UC Davis, CSGF
         <p> <a href="/2012/09/05/ESA-changes-ArXiv-policy-following-community-comments.html">Esa Changes Arxiv Policy Following Community Comments</a> 
     <span style="font-style:italic"> 05 Sep 2012</span></p>
         
-        <p> <a href="/2012/03/21/knitr-github-and-a-new-phase-for-the-lab-notebook.html">knitr, github, and a new phase for the lab notebook</a> 
-    <span style="font-style:italic"> 21 Mar 2012</span></p>
-        
    </div>
     <div class="span3">
       <h4><a href="https://github.com/cboettig/labnotebook/issues" style="color:#d33682;"> <i class="icon-list"></i> Active Issues / Next Steps</a> </h4>
 
       <em>Features, tools and other modifications I'm working on for improving the open notebook</em>
-      <ul><li> <a href="https://github.com/cboettig/labnotebook/issues/81">Octokit API calls: error handling and toggles</a>  (<font color="#02d7e1">jekyll plugin</font>)</li><li> <a href="https://github.com/cboettig/labnotebook/issues/79">Mendeley feed using Mendeley API</a>  (<font color="#02d7e1">jekyll plugin</font>)</li><li> <a href="https://github.com/cboettig/labnotebook/issues/78">Notebook Introduction text</a>  (<font color="#444444">Content</font>)</li><li> <a href="https://github.com/cboettig/labnotebook/issues/77">Landing pages by project / tag</a>  (<font color="#444444">Content</font>)</li><li> <a href="https://github.com/cboettig/labnotebook/issues/76">More metadata in RSS / atom feed</a>  (<font color="#e102d8">Semantics</font>)</li><li> <a href="https://github.com/cboettig/labnotebook/issues/75">Add script to localize all images in notebook</a>  (<font color="#02e10c">performance</font>)</li><li> <a href="https://github.com/cboettig/labnotebook/issues/72">more analytics events on various buttons</a> </li><li> <a href="https://github.com/cboettig/labnotebook/issues/71">Tune bootstrap css for better performance at variable widths?</a>  (<font color="#d7e102">CSS / LESS</font>)</li></ul>
+      <ul><li> <a href="https://github.com/cboettig/labnotebook/issues/85">Link grant applications on vita.html to pdfs (on figshare, with dois)</a>  (<font color="#444444">Content</font>)</li><li> <a href="https://github.com/cboettig/labnotebook/issues/84">Get the branching time work into the notebook</a>  (<font color="#444444">Content</font>)</li><li> <a href="https://github.com/cboettig/labnotebook/issues/83">Replace Disqus with something open source and more robustly archival</a> </li><li> <a href="https://github.com/cboettig/labnotebook/issues/81">Octokit API calls: error handling and toggles</a>  (<font color="#02d7e1">jekyll plugin</font>)</li><li> <a href="https://github.com/cboettig/labnotebook/issues/79">Mendeley feed using Mendeley API</a>  (<font color="#02d7e1">jekyll plugin</font>)</li><li> <a href="https://github.com/cboettig/labnotebook/issues/78">Notebook Introduction text</a>  (<font color="#444444">Content</font>)</li><li> <a href="https://github.com/cboettig/labnotebook/issues/77">Landing pages by project / tag</a>  (<font color="#444444">Content</font>)</li><li> <a href="https://github.com/cboettig/labnotebook/issues/76">More metadata in RSS / atom feed</a>  (<font color="#e102d8">Semantics</font>)</li></ul>
     </div>
     <div class="span3">
       <h4><a href="" style="color:#dc322f;"> <i class="icon-bookmark" ></i> Reading</a> </h4>
@@ -239,7 +243,7 @@ I am greatful that my funding sources and affiliations so far at (UC Davis, CSGF
      </div>
      <div class="span3">
        <h4><a href="https://github.com/cboettig/labnotebook" style="color:#6c71c4;"><i class="icon-github"></i> Recent Commits</a> </h4>
-      <ul><li>failed to implement authentication for mendeley api.. grr... <a href="https://github.com/cboettig/labnotebook/commit/35e6c0825df36be87e56b126805789fd548b0871">01:16 am 2013/04/04</a></li><li>draft post <a href="https://github.com/cboettig/labnotebook/commit/b9ee309114583927d19ddea280f2524a85d7c847">06:33 pm 2013/04/03</a></li><li>new post <a href="https://github.com/cboettig/labnotebook/commit/231e7788af852543cf70f94585726d31e2ac5b63">06:11 pm 2013/04/03</a></li><li>display the code toggle button when page has code: true in yaml <a href="https://github.com/cboettig/labnotebook/commit/3f9a444fbb1ef10b50855230558e6d3adbb29db1">06:02 pm 2013/04/03</a></li><li>tune language a bit <a href="https://github.com/cboettig/labnotebook/commit/024972af360053f3d27bf4c734a88e131836e65e">04:07 pm 2013/04/03</a></li><li>pdg control project added <a href="https://github.com/cboettig/labnotebook/commit/dadd7e0956ca51d7a150a68147f6b51c21d9f933">04:05 pm 2013/04/03</a></li><li>minor fixes <a href="https://github.com/cboettig/labnotebook/commit/1c0b78a65ec3e234a1d822235bc3063c57504961">04:05 pm 2013/04/03</a></li><li>research page links to project landing pages <a href="https://github.com/cboettig/labnotebook/commit/5d5906df514e37b2b4a10cd636d929ab30125692">08:55 pm 2013/04/02</a></li></ul>
+      <ul><li>script to localize images, closes #75 <a href="https://github.com/cboettig/labnotebook/commit/a3e60f1057754d3359c87fe80cf2e2ae0795b372">08:33 pm 2013/04/08</a></li><li>mention additional repos in comments of warning-signals feeds <a href="https://github.com/cboettig/labnotebook/commit/44166afb49327c3130c5332d4839f84126a1e479">08:32 pm 2013/04/08</a></li><li>responsive bootstrap includes responsive-print.less now #69 <a href="https://github.com/cboettig/labnotebook/commit/dbde6dfcbade91e8cfabd637afa6be5689f0f550">08:27 pm 2013/04/08</a></li><li>a few updates on notes <a href="https://github.com/cboettig/labnotebook/commit/78501aac6ba70d20e893f0e906da7175e3c29cb6">07:00 pm 2013/04/08</a></li><li>can't do base names for pages, so can't use git modified date for pages <a href="https://github.com/cboettig/labnotebook/commit/4deebddda50fb3647994ca4a2e3ffa839f9cd85d">12:41 am 2013/04/06</a></li><li>new posts <a href="https://github.com/cboettig/labnotebook/commit/e41d28ac31df425df57e6f25aa52364361bd3e0b">11:55 pm 2013/04/05</a></li><li>added CNAME file for github-based hosting <a href="https://github.com/cboettig/labnotebook/commit/82c792944751d5e36b425dd56fbfaa73b2088c5c">11:49 pm 2013/04/04</a></li><li>updated posts <a href="https://github.com/cboettig/labnotebook/commit/4590cc13801eb3b254ea9f5c910c6ea68d532d2a">06:07 pm 2013/04/04</a></li></ul>
      </div>
     <div class="span3">
       <h4> News and Resources </h4>
@@ -382,7 +386,6 @@ I am greatful that my funding sources and affiliations so far at (UC Davis, CSGF
       $("#toggle_code").click(function(){
         $(".highlight").toggle();
         $(".sourceCode").toggle();
-        location.reload();
       });
     });
     </script>
