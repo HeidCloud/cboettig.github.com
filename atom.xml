@@ -4,7 +4,7 @@
  <title>Lab Notebook</title>
  <link href="/atom.xml" rel="self"/>
  <link href=""/>
- <updated>2013-04-08T16:08:59-07:00</updated>
+ <updated>2013-04-10T11:54:26-07:00</updated>
  <id></id>
  <author>
    <name>Carl Boettiger</name>
@@ -4004,6 +4004,8 @@ fig2c&lt;/code&gt;&lt;/pre&gt;
 &lt;h2 id=&quot;results&quot;&gt;Results&lt;/h2&gt;
 &lt;p&gt;Linked in the automatically generated commit log:&lt;/p&gt;
 &lt;ul&gt;&lt;li&gt;
+value iteration adaption for Forward Simulations &lt;a href=&quot;https://github.com/cboettig/pdg_control/commit/123a796cd3801928ffd275b441ef68d1feef9ecb&quot;&gt;11:22 pm 2013/04/08&lt;/a&gt;
+&lt;/li&gt;&lt;li&gt;
 add value iteration termination to package functions, example shown in Reed.md &lt;a href=&quot;https://github.com/cboettig/pdg_control/commit/d2bd1d25fb2cec5b55cc6eedb8bb6f50320139fe&quot;&gt;08:15 pm 2013/04/08&lt;/a&gt;
 &lt;/li&gt;&lt;li&gt;
 documentation &lt;a href=&quot;https://github.com/cboettig/pdg_control/commit/96681a7a7cea35437f0d65929648208200e8ec9d&quot;&gt;02:54 pm 2013/03/13&lt;/a&gt;
@@ -4017,8 +4019,6 @@ initialized multiple_uncertainty as separate project (branched from pdg_control 
 multi-dimensional population dynamics examples &lt;a href=&quot;https://github.com/cboettig/pdg_control/commit/ccb873c8caa934075fa568e68e6631dc3a95ced1&quot;&gt;06:22 pm 2012/12/27&lt;/a&gt;
 &lt;/li&gt;&lt;li&gt;
 As in writeup.md, but example with c0 = c1 = 0 &lt;a href=&quot;https://github.com/cboettig/pdg_control/commit/cccec55a8ac2ef47dea99d45fdb732e5028aec98&quot;&gt;01:26 am 2012/12/06&lt;/a&gt;
-&lt;/li&gt;&lt;li&gt;
-include images &lt;a href=&quot;https://github.com/cboettig/pdg_control/commit/25e6f1c1a599440be790a7ec047b8b63540255c5&quot;&gt;05:27 pm 2012/12/05&lt;/a&gt;
 &lt;/li&gt;&lt;/ul&gt;</content>
  </entry>
  
@@ -4470,29 +4470,29 @@ linear &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;dt[, &lt;span cla
 &lt;p&gt;vim set sytnax language, useful for getting R highlighting in &lt;code&gt;.Rmd&lt;/code&gt; files: &lt;code&gt;setf r&lt;/code&gt;, or equivalently, &lt;code&gt;set filetype=r&lt;/code&gt; (must be lowercase r). &lt;code&gt;set filetype&lt;/code&gt; with no argument gives the current filetype.&lt;/p&gt;
 &lt;h3 id=&quot;coding&quot;&gt;Coding&lt;/h3&gt;
 &lt;ul&gt;&lt;li&gt;
-cboettig pushed to master at cboettig/labnotebook: &lt;em&gt;fixed equations that weren’t rendering template and plugin for testing out static comments #83&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/labnotebook/compare/a3e60f1057...f65b347b7e&quot;&gt;11:10 2013/04/08&lt;/a&gt;
+cboettig forked earlywarningtoolbox/earlywarnings-R to cboettig/earlywarnings-R: &lt;em&gt;&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/earlywarnings-R&quot;&gt;06:53 2013/04/10&lt;/a&gt;
 &lt;/li&gt;&lt;li&gt;
-cboettig opened issue mpalmer/jekyll-static-comments#11: &lt;em&gt;Example YAML file in _comments?&lt;/em&gt; &lt;a href=&quot;https://github.com/mpalmer/jekyll-static-comments/issues/11&quot;&gt;11:04 2013/04/08&lt;/a&gt;
+cboettig starred earlywarningtoolbox/demo: &lt;em&gt;&lt;/em&gt; &lt;a href=&quot;https://github.com/earlywarningtoolbox/demo&quot;&gt;06:52 2013/04/10&lt;/a&gt;
 &lt;/li&gt;&lt;li&gt;
-cboettig commented on issue cboettig/labnotebook#48: &lt;em&gt;Top level domain just mapped as A Record to Github’s DNS: 204.232.175.78. May take some time to take effect. May have to wait until DNS change prop…&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/labnotebook/issues/48#issuecomment-16078931&quot;&gt;09:11 2013/04/08&lt;/a&gt;
+cboettig starred earlywarningtoolbox/development: &lt;em&gt;&lt;/em&gt; &lt;a href=&quot;https://github.com/earlywarningtoolbox/development&quot;&gt;06:52 2013/04/10&lt;/a&gt;
 &lt;/li&gt;&lt;li&gt;
-cboettig commented on issue cboettig/labnotebook#48: &lt;em&gt;CNAME file added 4 days ago. Redirects all github traffic to Dreamhost (until DNS is changed to Github). Notice the slow-down in response time and …&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/labnotebook/issues/48#issuecomment-16078597&quot;&gt;09:06 2013/04/08&lt;/a&gt;
+cboettig starred earlywarningtoolbox/datasets: &lt;em&gt;&lt;/em&gt; &lt;a href=&quot;https://github.com/earlywarningtoolbox/datasets&quot;&gt;06:51 2013/04/10&lt;/a&gt;
 &lt;/li&gt;&lt;li&gt;
-cboettig closed issue cboettig/labnotebook#69: &lt;em&gt;Fix print-css to generate a decent-looking pdf&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/labnotebook/issues/69&quot;&gt;08:58 2013/04/08&lt;/a&gt;
+cboettig starred earlywarningtoolbox/earlywarnings-R: &lt;em&gt;&lt;/em&gt; &lt;a href=&quot;https://github.com/earlywarningtoolbox/earlywarnings-R&quot;&gt;06:51 2013/04/10&lt;/a&gt;
 &lt;/li&gt;&lt;li&gt;
-cboettig opened issue cboettig/labnotebook#86: &lt;em&gt;Correct the dates in &lt;code&gt;dc:date&lt;/code&gt;&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/labnotebook/issues/86&quot;&gt;08:54 2013/04/08&lt;/a&gt;
+cboettig started following vdakos: &lt;em&gt;&lt;/em&gt; &lt;a href=&quot;https://github.com/vdakos&quot;&gt;06:51 2013/04/10&lt;/a&gt;
 &lt;/li&gt;&lt;li&gt;
-cboettig pushed to master at cboettig/cboettig.github.com: &lt;em&gt;updated&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/cboettig.github.com/compare/3e594ee1b3...0d400c9661&quot;&gt;08:51 2013/04/08&lt;/a&gt;
+cboettig pushed to master at cboettig/labnotebook: &lt;em&gt;doi parser added to all vita pubs #87 add analytics and local hosting of pubs #87&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/labnotebook/compare/f65b347b7e...0957deecb5&quot;&gt;10:18 2013/04/09&lt;/a&gt;
 &lt;/li&gt;&lt;li&gt;
-cboettig commented on issue cboettig/labnotebook#71: &lt;em&gt;Various changes in alignment, a missing row element, better abstraction of _layouts to always close tags they open, rather than allow another layou…&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/labnotebook/issues/71#issuecomment-16077273&quot;&gt;08:46 2013/04/08&lt;/a&gt;
+cboettig opened issue ottbot/crossref#1: &lt;em&gt;parsing appears to be broken?&lt;/em&gt; &lt;a href=&quot;https://github.com/ottbot/crossref/issues/1&quot;&gt;09:57 2013/04/09&lt;/a&gt;
 &lt;/li&gt;&lt;/ul&gt;
 
 
 &lt;h3 id=&quot;reading&quot;&gt;Reading&lt;/h3&gt;
 &lt;ul&gt;&lt;li&gt;
-Proceedings of the Environmental Information Management Conference 2011 (EIM 2011): Volume: 2011, Issue: Eim. M B Jones, C Gries et al. &lt;a href=&quot;http://www.mendeley.comhttp://www.mendeley.com/c/5683482024/g/634301/jones-2011-proceedings-of-the-environmental-information-management-conference-2011-eim-2011/&quot;&gt;01:33 2013/04/04&lt;/a&gt;
+Expected time for random genetic drift of a population between stable phenotypic states: Proceedings of the National Academy of … (1985). Volume: 82, Issue: November. Pages: 7641-7645. Russell Lande et al. &lt;a href=&quot;http://www.mendeley.com/catalog/expected-time-random-genetic-drift-population-between-stable-phenotypic-states-3/&quot;&gt;07:08 2013/04/08&lt;/a&gt;
 &lt;/li&gt;&lt;li&gt;
-Big data and the future of ecology: Frontiers in Ecology and the Environment (2013). Pages: 130312142848005. Stephanie E Hampton, Carly a Strasser, Joshua J Tewksbury, Wendy K Gram, Amber E Budden, Archer L Batcheller, Clifford S Duke, John H Porter et al. &lt;a href=&quot;http://www.mendeley.comhttp://www.mendeley.com/c/5683482014/g/634301/hampton-2013-big-data-and-the-future-of-ecology/&quot;&gt;01:33 2013/04/04&lt;/a&gt;
+Recovery of an Isolated Coral Reef System Following Severe Disturbance: Science (2013). Volume: 340, Issue: 6128. Pages: 69-71. J. P. Gilmour, L. D. Smith, a. J. Heyward, a. H. Baird, M. S. Pratchett et al. &lt;a href=&quot;http://www.mendeley.com/research/recovery-isolated-coral-reef-system-following-severe-disturbance/&quot;&gt;07:08 2013/04/08&lt;/a&gt;
 &lt;/li&gt;&lt;li&gt;
 Predicting climate effects on Pacific sardine: Proceedings of the National Academy of Sciences (2013). E. R. Deyle, M. Fogarty, C.-h. Hsieh, L. Kaufman, a. D. MacCall, S. B. Munch, C. T. Perretti, H. Ye, G. Sugihara et al. &lt;a href=&quot;http://www.mendeley.comhttp://www.mendeley.com/c/5683482074/g/634301/deyle-2013-predicting-climate-effects-on-pacific-sardine/&quot;&gt;01:33 2013/04/04&lt;/a&gt;
 &lt;/li&gt;&lt;/ul&gt;</content>
