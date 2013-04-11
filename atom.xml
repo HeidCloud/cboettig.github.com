@@ -4,7 +4,7 @@
  <title>Lab Notebook</title>
  <link href="/atom.xml" rel="self"/>
  <link href=""/>
- <updated>2013-04-10T11:54:26-07:00</updated>
+ <updated>2013-04-11T12:24:03-07:00</updated>
  <id></id>
  <author>
    <name>Carl Boettiger</name>
@@ -66,7 +66,6 @@ http://www.pnas.org/content/82/22/7641.abstract.&quot;&gt;&lt;a href=&quot;http:
 &lt;ul&gt;
 &lt;li&gt;C. Boettiger, A. Hastings, (2012) Early Warning Signals And The Prosecutor’S Fallacy. &lt;em&gt;Proceedings of The Royal Society B: Biological Sciences&lt;/em&gt; &lt;strong&gt;279&lt;/strong&gt; 4734-4739 &lt;a href=&quot;http://dx.doi.org/10.1098/rspb.2012.2085&quot;&gt;10.1098/rspb.2012.2085&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;R Lande, (1985) Expected time for random genetic drift of a population between stable phenotypic states. &lt;em&gt;Proceedings of the National Academy of Sciences&lt;/em&gt; &lt;a href=&quot;http://www.pnas.org/content/82/22/7641.abstract&quot;&gt;http://www.pnas.org/content/82/22/7641.abstract&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;unknown unknown, (unknown) Unknown. &lt;em&gt;Unknown&lt;/em&gt;&lt;/li&gt;
 &lt;/ul&gt;</content>
  </entry>
  
@@ -4469,25 +4468,6 @@ linear &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;dt[, &lt;span cla
 &lt;h2 id=&quot;code-tricks-for-today&quot;&gt;Code tricks for today&lt;/h2&gt;
 &lt;p&gt;vim set sytnax language, useful for getting R highlighting in &lt;code&gt;.Rmd&lt;/code&gt; files: &lt;code&gt;setf r&lt;/code&gt;, or equivalently, &lt;code&gt;set filetype=r&lt;/code&gt; (must be lowercase r). &lt;code&gt;set filetype&lt;/code&gt; with no argument gives the current filetype.&lt;/p&gt;
 &lt;h3 id=&quot;coding&quot;&gt;Coding&lt;/h3&gt;
-&lt;ul&gt;&lt;li&gt;
-cboettig forked earlywarningtoolbox/earlywarnings-R to cboettig/earlywarnings-R: &lt;em&gt;&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/earlywarnings-R&quot;&gt;06:53 2013/04/10&lt;/a&gt;
-&lt;/li&gt;&lt;li&gt;
-cboettig starred earlywarningtoolbox/demo: &lt;em&gt;&lt;/em&gt; &lt;a href=&quot;https://github.com/earlywarningtoolbox/demo&quot;&gt;06:52 2013/04/10&lt;/a&gt;
-&lt;/li&gt;&lt;li&gt;
-cboettig starred earlywarningtoolbox/development: &lt;em&gt;&lt;/em&gt; &lt;a href=&quot;https://github.com/earlywarningtoolbox/development&quot;&gt;06:52 2013/04/10&lt;/a&gt;
-&lt;/li&gt;&lt;li&gt;
-cboettig starred earlywarningtoolbox/datasets: &lt;em&gt;&lt;/em&gt; &lt;a href=&quot;https://github.com/earlywarningtoolbox/datasets&quot;&gt;06:51 2013/04/10&lt;/a&gt;
-&lt;/li&gt;&lt;li&gt;
-cboettig starred earlywarningtoolbox/earlywarnings-R: &lt;em&gt;&lt;/em&gt; &lt;a href=&quot;https://github.com/earlywarningtoolbox/earlywarnings-R&quot;&gt;06:51 2013/04/10&lt;/a&gt;
-&lt;/li&gt;&lt;li&gt;
-cboettig started following vdakos: &lt;em&gt;&lt;/em&gt; &lt;a href=&quot;https://github.com/vdakos&quot;&gt;06:51 2013/04/10&lt;/a&gt;
-&lt;/li&gt;&lt;li&gt;
-cboettig pushed to master at cboettig/labnotebook: &lt;em&gt;doi parser added to all vita pubs #87 add analytics and local hosting of pubs #87&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/labnotebook/compare/f65b347b7e...0957deecb5&quot;&gt;10:18 2013/04/09&lt;/a&gt;
-&lt;/li&gt;&lt;li&gt;
-cboettig opened issue ottbot/crossref#1: &lt;em&gt;parsing appears to be broken?&lt;/em&gt; &lt;a href=&quot;https://github.com/ottbot/crossref/issues/1&quot;&gt;09:57 2013/04/09&lt;/a&gt;
-&lt;/li&gt;&lt;/ul&gt;
-
-
 &lt;h3 id=&quot;reading&quot;&gt;Reading&lt;/h3&gt;
 &lt;ul&gt;&lt;li&gt;
 Expected time for random genetic drift of a population between stable phenotypic states: Proceedings of the National Academy of … (1985). Volume: 82, Issue: November. Pages: 7641-7645. Russell Lande et al. &lt;a href=&quot;http://www.mendeley.com/catalog/expected-time-random-genetic-drift-population-between-stable-phenotypic-states-3/&quot;&gt;07:08 2013/04/08&lt;/a&gt;
