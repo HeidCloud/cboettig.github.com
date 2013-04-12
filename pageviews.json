@@ -1,7 +1,7 @@
 {
   "/": [
-    "5242",
-    "13685"
+    "5253",
+    "13702"
   ],
   "/ Hastings student at UC Davis": [
     "0",
@@ -996,8 +996,8 @@
     "2"
   ],
   "/2010/12/29/adaptive-dynamics-simulations.html": [
-    "7",
-    "11"
+    "9",
+    "14"
   ],
   "/2010/12/30/open-notebook-science-abstract.html": [
     "0",
@@ -1356,8 +1356,8 @@
     "1"
   ],
   "/2011/05/08/building-a-semantic-notebook.html": [
-    "25",
-    "38"
+    "26",
+    "39"
   ],
   "/2011/05/08/sunday-a-few-treebase-r-package-updates.html": [
     "0",
@@ -1380,8 +1380,8 @@
     "11"
   ],
   "/2011/05/16/treebase-in-r-a-first-tutorial.html": [
-    "23",
-    "33"
+    "25",
+    "35"
   ],
   "/2011/05/17/tuesday-3.html": [
     "2",
@@ -1432,8 +1432,8 @@
     "3"
   ],
   "/2011/06/04/saturday-git-with-latexdiff-treebase-and-pmc-package-updates-bounds-on-lambda.html": [
-    "8",
-    "11"
+    "9",
+    "12"
   ],
   "/2011/06/08/wednesday-simulated-model-fit-analysis-on-wrightscape-parrotfish-tree.html": [
     "0",
@@ -1500,8 +1500,8 @@
     "1"
   ],
   "/2011/07/07/segue-easy-cloud-computing-in-r-now-with-custom-packages.html": [
-    "99",
-    "116"
+    "100",
+    "117"
   ],
   "/2011/07/07/thursday-8.html": [
     "0",
@@ -1628,8 +1628,8 @@
     "13"
   ],
   "/2011/08/26/fishbase-from-r-some-xml-parsing.html": [
-    "171",
-    "208"
+    "172",
+    "209"
   ],
   "/2011/08/26/rfishbase-and-some-taxonomy-in-r-with-taxize.html": [
     "35",
@@ -1761,7 +1761,7 @@
   ],
   "/2011/10/12/rfishbase-tutorial-updated-extended.html": [
     "51",
-    "82"
+    "83"
   ],
   "/2011/10/12/wednesday-10.html": [
     "0",
@@ -1805,7 +1805,7 @@
   ],
   "/2011/10/25/treebase-package-on-cran.html": [
     "8",
-    "19"
+    "20"
   ],
   "/2011/10/25/tuesday-notes-package-work-mostly.html": [
     "1",
@@ -1856,8 +1856,8 @@
     "1"
   ],
   "/2011/11/04/sparkleshare-configuration.html": [
-    "1803",
-    "2185"
+    "1805",
+    "2190"
   ],
   "/2011/11/06/sunday-5.html": [
     "0",
@@ -2008,8 +2008,8 @@
     "54"
   ],
   "/2012/02/06/some-collaborative-tools-for-science.html": [
-    "25",
-    "53"
+    "26",
+    "54"
   ],
   "/2012/02/06/stackoverflow.com": [
     "0",
@@ -2028,8 +2028,8 @@
     "27"
   ],
   "/2012/02/12/elegant-fast-data-manipulation-with-data-table.html": [
-    "363",
-    "409"
+    "364",
+    "410"
   ],
   "/2012/02/12/saturday-projects-reading-markdown-plugins.html": [
     "6",
@@ -2140,8 +2140,8 @@
     "8"
   ],
   "/2012/03/20/citing-r-packages.html": [
-    "802",
-    "876"
+    "808",
+    "882"
   ],
   "/2012/03/20/friday-some-random-notes.html": [
     "2",
@@ -2164,8 +2164,8 @@
     "14"
   ],
   "/2012/03/24/citations-in-markdown-using-knitr.html": [
-    "593",
-    "798"
+    "596",
+    "801"
   ],
   "/2012/03/24/citations-in-markdown-usingknitr.html": [
     "0",
@@ -2208,8 +2208,8 @@
     "3"
   ],
   "/2012/04/07/writing-reproducibly-in-the-open-with-knitr.html": [
-    "457",
-    "774"
+    "459",
+    "777"
   ],
   "/2012/04/10/monday-tuesday.html": [
     "1",
@@ -2240,8 +2240,8 @@
     "41"
   ],
   "/2012/05/01/Jekyll-vs-Wordpress.html": [
-    "1113",
-    "1481"
+    "1117",
+    "1487"
   ],
   "/2012/05/01/Jekyll-vs-Wordpress.html)": [
     "6",
@@ -2268,8 +2268,8 @@
     "15"
   ],
   "/2012/05/06/research-workflow.html": [
-    "336",
-    "638"
+    "338",
+    "643"
   ],
   "/2012/05/07/github.com/deads/bigrf": [
     "0",
@@ -2336,16 +2336,16 @@
     "163"
   ],
   "/2012/05/26/exploring-jekyll-layout.html": [
-    "654",
-    "841"
+    "655",
+    "842"
   ],
   "/2012/05/26/exploring-jekyll-layout.html?search-text=jekyll": [
     "0",
     "1"
   ],
   "/2012/05/30/knitcitations.html": [
-    "561",
-    "808"
+    "562",
+    "809"
   ],
   "/2012/05/30/knitcitations.html?search-text=": [
     "0",
@@ -2465,7 +2465,7 @@
   ],
   "/2012/09/14/analytic-solution-to-multiple-uncertainty.html": [
     "77",
-    "142"
+    "143"
   ],
   "/2012/09/14/analytic-solution-to-multiple-uncertainty.html?theme=light": [
     "1",
@@ -2481,15 +2481,15 @@
   ],
   "/2012/09/28/Welcome-to-my-lab-notebook.html": [
     "399",
-    "1449"
+    "1450"
   ],
   "/2012/10/01/multiple-uncertainty.html": [
     "9",
     "83"
   ],
   "/2012/10/02/solarized-colors.html": [
-    "711",
-    "995"
+    "712",
+    "997"
   ],
   "/2012/10/05/lab-notebook.html": [
     "0",
@@ -2501,7 +2501,7 @@
   ],
   "/2012/10/09/data-management-plan.htm": [
     "6",
-    "36"
+    "37"
   ],
   "/2012/10/09/data-management-plan.html": [
     "71",
@@ -2640,8 +2640,8 @@
     "42"
   ],
   "/2012/11/23/citing-lab-notebook-entries.html": [
-    "339",
-    "437"
+    "340",
+    "438"
   ],
   "/2012/11/23/citing-lab-notebook-entries.html)": [
     "1",
@@ -2736,8 +2736,8 @@
     "95"
   ],
   "/2012/12/30/learning-jekyll.html": [
-    "295",
-    "446"
+    "296",
+    "448"
   ],
   "/2013": [
     "0",
@@ -2857,7 +2857,7 @@
   ],
   "/2013/03/26/research.html": [
     "7",
-    "49"
+    "50"
   ],
   "/2013/04/02/Monday---Tuesday.html": [
     "2",
@@ -2865,15 +2865,15 @@
   ],
   "/2013/04/03/further-examples-managing-tipping-points-with-gp.html": [
     "3",
-    "20"
+    "21"
   ],
   "/2013/04/04/notebook-parsing.html": [
-    "24",
-    "39"
+    "25",
+    "42"
   ],
   "/2013/04/05/a-clever-derivation-on-realized-escape-times.html": [
     "12",
-    "32"
+    "34"
   ],
   "/211": [
     "0",

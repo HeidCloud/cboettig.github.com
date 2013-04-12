@@ -2,6 +2,7 @@
 http://carlboettiger.info/categories.html  
 http://carlboettiger.info/teaching.html  
 http://carlboettiger.info/vita.html  
+http://carlboettiger.info/networks.html  
 http://carlboettiger.info/software.html  
 http://carlboettiger.info/404.html  
 http://carlboettiger.info/tags.html  
@@ -810,7 +811,6 @@ http://carlboettiger.info/wordpress/archives/4482/index.html
 http://carlboettiger.info/archives/4482/index.html 
 
  
-http://carlboettiger.info/2013/04/11/tutorial-on-likelihood-and-roc-methods-for-early-warning-signals.html  
 http://carlboettiger.info/2013/04/05/a-clever-derivation-on-realized-escape-times.html  
 http://carlboettiger.info/2013/04/04/notebook-parsing.html  
 http://carlboettiger.info/2013/04/03/further-examples-managing-tipping-points-with-gp.html  
