@@ -4,13 +4,79 @@
  <title>Lab Notebook</title>
  <link href="/atom.xml" rel="self"/>
  <link href=""/>
- <updated>2013-04-11T12:24:03-07:00</updated>
+ <updated>2013-04-11T22:44:13-07:00</updated>
  <id></id>
  <author>
    <name>Carl Boettiger</name>
    <email>cboettig@gmail.com</email>
  </author>
 
+ 
+ <entry>
+   <title>Tutorial On Likelihood And Roc Methods For Early Warning Signals</title>
+   <link href="/2013/04/11/tutorial-on-likelihood-and-roc-methods-for-early-warning-signals.html"/>
+   <updated>2013-04-11T00:00:00-07:00</updated>
+   <id>h/2013/04/11/tutorial-on-likelihood-and-roc-methods-for-early-warning-signals</id>
+   <content type="html">&lt;p&gt;We will need the following libraries to run this example. If you don’t have them, they can be installed from CRAN using the &lt;code&gt;install.packages&lt;/code&gt; function.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;## Loading required package: bibtex&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;&lt;span class=&quot;kw&quot;&gt;library&lt;/span&gt;(ggplot2)
+&lt;span class=&quot;kw&quot;&gt;library&lt;/span&gt;(reshape2)
+&lt;span class=&quot;kw&quot;&gt;library&lt;/span&gt;(multicore)
+&lt;span class=&quot;kw&quot;&gt;library&lt;/span&gt;(devtools)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;We will be using custom functions provided in the R package Boettiger, (2012) that accompanies Boettiger &amp;amp; Hastings, (2012), which can be installed directly from the development repository on GitHub:&lt;/p&gt;
+&lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;&lt;span class=&quot;kw&quot;&gt;install_github&lt;/span&gt;(&lt;span class=&quot;st&quot;&gt;&amp;quot;earlywarning&amp;quot;&lt;/span&gt;, &lt;span class=&quot;st&quot;&gt;&amp;quot;cboettig&amp;quot;&lt;/span&gt;)
+&lt;span class=&quot;kw&quot;&gt;library&lt;/span&gt;(earlywarning)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;We begin by loading the ibm_critical data provided by Drake &amp;amp; Griffen, (2010). We plot the raw data to take a look at it.&lt;/p&gt;
+&lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;&lt;span class=&quot;kw&quot;&gt;data&lt;/span&gt;(&lt;span class=&quot;st&quot;&gt;&amp;quot;ibms&amp;quot;&lt;/span&gt;)
+&lt;span class=&quot;kw&quot;&gt;plot&lt;/span&gt;(ibm_critical, &lt;span class=&quot;dt&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;st&quot;&gt;&amp;quot;b&amp;quot;&lt;/span&gt;)&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&quot;figure&quot;&gt;
+&lt;img src=&quot;http://farm9.staticflickr.com/8261/8641108753_956f179a1d_o.png&quot; alt=&quot;plot of chunk unnamed-chunk-1&quot; /&gt;&lt;p class=&quot;caption&quot;&gt;plot of chunk unnamed-chunk-1&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;Fit both models to the original data, record the observed likelihood ratio of the original data&lt;/p&gt;
+&lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;A &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;stability_model&lt;/span&gt;(ibm_critical, &lt;span class=&quot;st&quot;&gt;&amp;quot;OU&amp;quot;&lt;/span&gt;)
+B &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;stability_model&lt;/span&gt;(ibm_critical, &lt;span class=&quot;st&quot;&gt;&amp;quot;LSN&amp;quot;&lt;/span&gt;)
+observed &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;-&lt;span class=&quot;dv&quot;&gt;2&lt;/span&gt; *&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;logLik&lt;/span&gt;(A) -&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;logLik&lt;/span&gt;(B))&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Perform the bootstrapped model comparison on the parallel cluster.&lt;/p&gt;
+&lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;runtime &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;system.time&lt;/span&gt;(
+reps &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;mclapply&lt;/span&gt;(&lt;span class=&quot;dv&quot;&gt;1&lt;/span&gt;:&lt;span class=&quot;dv&quot;&gt;200&lt;/span&gt;, function(i) &lt;span class=&quot;kw&quot;&gt;compare&lt;/span&gt;(A, B)))&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Which took 4176.78 seconds to run for the example shown here.&lt;/p&gt;
+&lt;p&gt;A helper function extracts the likelihood ratios under each of the pairwise comparisons (The null distribution: -2 times the log likelihood of data fit under A that had been simulated under A, minus the log likelihood of fits under A simulated under B; and the test distribution: fit under B when simulated under A, minus the loglikehood of being fit under B, simulated under B) as a data frame. we show the top of the data frame as output below.&lt;/p&gt;
+&lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;lr &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;lik_ratios&lt;/span&gt;(reps)
+&lt;span class=&quot;kw&quot;&gt;head&lt;/span&gt;(lr)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##   simulation rep     value
+## 1       null   1  0.001659
+## 2       test   1  2.255139
+## 3       null   2  1.892615
+## 4       test   2  9.804084
+## 5       null   3  4.795269
+## 6       test   3 22.696982&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;We use this data to generate the overlapping distributions shown in Boettiger &amp;amp; Hastings, (2012),&lt;/p&gt;
+&lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;&lt;span class=&quot;kw&quot;&gt;ggplot&lt;/span&gt;(lr) +&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;geom_density&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;aes&lt;/span&gt;(value, &lt;span class=&quot;dt&quot;&gt;fill=&lt;/span&gt;simulation), &lt;span class=&quot;dt&quot;&gt;alpha=&lt;/span&gt;&lt;span class=&quot;fl&quot;&gt;0.6&lt;/span&gt;) +&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;geom_vline&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;aes&lt;/span&gt;(&lt;span class=&quot;dt&quot;&gt;xintercept=&lt;/span&gt;observed))&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&quot;figure&quot;&gt;
+&lt;img src=&quot;http://farm9.staticflickr.com/8245/8642325058_d70eaee962_o.png&quot; alt=&quot;plot of chunk lr_ratio_plot&quot; /&gt;&lt;p class=&quot;caption&quot;&gt;plot of chunk lr_ratio_plot&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;A second helper function generates the ROC curve from the likelihood ratio data, providing an alternative way to visualize this overlap:&lt;/p&gt;
+&lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;roc &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;roc_data&lt;/span&gt;(lr)
+&lt;span class=&quot;kw&quot;&gt;ggplot&lt;/span&gt;(roc) +&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;geom_line&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;aes&lt;/span&gt;(False.positives, True.positives))&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&quot;figure&quot;&gt;
+&lt;img src=&quot;http://farm9.staticflickr.com/8402/8641224925_83a045afbb_o.png&quot; alt=&quot;plot of chunk roc&quot; /&gt;&lt;p class=&quot;caption&quot;&gt;plot of chunk roc&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;ROC curves are particularly useful in comparing the power of a variety of approaches. For instance, we can compare the performance of the likelihood-based signal shown above to the traditional approach of using a correlation coefficient to detect the increase in some summary statistic such as variance or autocorrelation. To obtain replicates, we will still simulate under the null (OU) and test (LSN) models estimated above, but instead of computing the likelihood of these data, we will estimate the commonly used rank correlation coefficient, Kendall’s tau, to quantify the increase in variance, autcorrelation, and skew observed in a moving window over the data.&lt;/p&gt;
+&lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;var &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;bootstrap_trend&lt;/span&gt;(ibm_critical, window_var, &lt;span class=&quot;dt&quot;&gt;method=&lt;/span&gt;&lt;span class=&quot;st&quot;&gt;&amp;quot;kendall&amp;quot;&lt;/span&gt;, &lt;span class=&quot;dt&quot;&gt;rep=&lt;/span&gt;&lt;span class=&quot;dv&quot;&gt;200&lt;/span&gt;)
+acor &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;bootstrap_trend&lt;/span&gt;(ibm_critical, window_autocorr, &lt;span class=&quot;dt&quot;&gt;method=&lt;/span&gt;&lt;span class=&quot;st&quot;&gt;&amp;quot;kendall&amp;quot;&lt;/span&gt;, &lt;span class=&quot;dt&quot;&gt;rep=&lt;/span&gt;&lt;span class=&quot;dv&quot;&gt;200&lt;/span&gt;)
+skew &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;bootstrap_trend&lt;/span&gt;(ibm_critical, window_skew, &lt;span class=&quot;dt&quot;&gt;method=&lt;/span&gt;&lt;span class=&quot;st&quot;&gt;&amp;quot;kendall&amp;quot;&lt;/span&gt;, &lt;span class=&quot;dt&quot;&gt;rep=&lt;/span&gt;&lt;span class=&quot;dv&quot;&gt;200&lt;/span&gt;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;These data are formatted like the likeihood ratio data above, only that the statistic is now Kendall’s tau.&lt;/p&gt;
+&lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;&lt;span class=&quot;kw&quot;&gt;ggplot&lt;/span&gt;(var) +&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;geom_density&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;aes&lt;/span&gt;(value, &lt;span class=&quot;dt&quot;&gt;fill=&lt;/span&gt;simulation), &lt;span class=&quot;dt&quot;&gt;alpha=&lt;/span&gt;&lt;span class=&quot;fl&quot;&gt;0.6&lt;/span&gt;) +&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;geom_vline&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;aes&lt;/span&gt;(&lt;span class=&quot;dt&quot;&gt;xintercept=&lt;/span&gt;observed))&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&quot;figure&quot;&gt;
+&lt;img src=&quot;http://farm9.staticflickr.com/8265/8642341382_1d87080d5c_o.png&quot; alt=&quot;plot of chunk var_ratio&quot; /&gt;&lt;p class=&quot;caption&quot;&gt;plot of chunk var_ratio&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;We can combine the data for the ROC curves of each indicator to compare:&lt;/p&gt;
+&lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;indicators &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;melt&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;list&lt;/span&gt;(&lt;span class=&quot;dt&quot;&gt;var =&lt;/span&gt; &lt;span class=&quot;kw&quot;&gt;roc_data&lt;/span&gt;(var), &lt;span class=&quot;dt&quot;&gt;acor =&lt;/span&gt; &lt;span class=&quot;kw&quot;&gt;roc_data&lt;/span&gt;(acor), &lt;span class=&quot;dt&quot;&gt;skew =&lt;/span&gt; &lt;span class=&quot;kw&quot;&gt;roc_data&lt;/span&gt;(skew), &lt;span class=&quot;dt&quot;&gt;lr =&lt;/span&gt; roc), &lt;span class=&quot;dt&quot;&gt;id =&lt;/span&gt; &lt;span class=&quot;kw&quot;&gt;c&lt;/span&gt;(&lt;span class=&quot;st&quot;&gt;&amp;quot;Threshold&amp;quot;&lt;/span&gt;, &lt;span class=&quot;st&quot;&gt;&amp;quot;False.positives&amp;quot;&lt;/span&gt;, &lt;span class=&quot;st&quot;&gt;&amp;quot;True.positives&amp;quot;&lt;/span&gt;))
+&lt;span class=&quot;kw&quot;&gt;ggplot&lt;/span&gt;(indicators) +&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;geom_line&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;aes&lt;/span&gt;(False.positives, True.positives, &lt;span class=&quot;dt&quot;&gt;color=&lt;/span&gt;L1)) &lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&quot;figure&quot;&gt;
+&lt;img src=&quot;http://farm9.staticflickr.com/8122/8641241253_4c3704523e_o.png&quot; alt=&quot;plot of chunk unnamed-chunk-3&quot; /&gt;&lt;p class=&quot;caption&quot;&gt;plot of chunk unnamed-chunk-3&lt;/p&gt;
+&lt;/div&gt;</content>
+ </entry>
  
  <entry>
    <title>A Clever Derivation On Realized Escape Times</title>
@@ -31,7 +97,7 @@ http://www.pnas.org/content/82/22/7641.abstract.&quot;&gt;&lt;a href=&quot;http:
 &lt;p&gt;&lt;span class=&quot;math&quot;&gt;&lt;div style=&quot;text-align:center;&quot;&gt;&lt;img src=&quot;http://latex.codecogs.com/png.latex?dX = - X dt + \sigma dB_t&quot; alt=&quot;dX = - X dt + \sigma dB_t&quot; /&gt;&lt;/div&gt;&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;We ask for the return time into a neighborhood &lt;span class=&quot;math&quot;&gt;&lt;img src=&quot;http://latex.codecogs.com/png.latex?\sigma\inline&quot;/&gt;&lt;/span&gt; of the origin, starting at &lt;span class=&quot;math&quot;&gt;&lt;img src=&quot;http://latex.codecogs.com/png.latex?X_0 = L\inline&quot;/&gt;&lt;/span&gt; distant from the origin. The deterministic solution&lt;/p&gt;
 &lt;p&gt;&lt;span class=&quot;math&quot;&gt;&lt;div style=&quot;text-align:center;&quot;&gt;&lt;img src=&quot;http://latex.codecogs.com/png.latex?\tfrac{dx}{dt} = - x&quot; alt=&quot;\tfrac{dx}{dt} = - x&quot; /&gt;&lt;/div&gt;&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;implies &lt;span class=&quot;math&quot;&gt;&lt;img src=&quot;http://latex.codecogs.com/png.latex?x_t = L (1 - e^{-t})\inline&quot;/&gt;&lt;/span&gt;, so setting &lt;span class=&quot;math&quot;&gt;&lt;img src=&quot;http://latex.codecogs.com/png.latex?x_t = \sigma_t\inline&quot;/&gt;&lt;/span&gt; and solving for &lt;span class=&quot;math&quot;&gt;&lt;img src=&quot;http://latex.codecogs.com/png.latex?t\inline&quot;/&gt;&lt;/span&gt;, we find that &lt;span class=&quot;math&quot;&gt;&lt;img src=&quot;http://latex.codecogs.com/png.latex?x_t\inline&quot;/&gt;&lt;/span&gt; is within &lt;span class=&quot;math&quot;&gt;&lt;img src=&quot;http://latex.codecogs.com/png.latex?\sigma\inline&quot;/&gt;&lt;/span&gt; of &lt;span class=&quot;math&quot;&gt;&lt;img src=&quot;http://latex.codecogs.com/png.latex?t\inline&quot;/&gt;&lt;/span&gt; in time &lt;span class=&quot;math&quot;&gt;&lt;img src=&quot;http://latex.codecogs.com/png.latex?\log{L} -\inline&quot;/&gt;&lt;/span&gt;&lt;span class=&quot;math&quot;&gt;&lt;img src=&quot;http://latex.codecogs.com/png.latex?, or\inline&quot;/&gt;&lt;/span&gt;$, as claimed.&lt;/p&gt;
+&lt;p&gt;implies &lt;span class=&quot;math&quot;&gt;&lt;img src=&quot;http://latex.codecogs.com/png.latex?x_t = L (1 - e^{-t})\inline&quot;/&gt;&lt;/span&gt;, so setting &lt;span class=&quot;math&quot;&gt;&lt;img src=&quot;http://latex.codecogs.com/png.latex?x_t = \sigma_t\inline&quot;/&gt;&lt;/span&gt; and solving for &lt;span class=&quot;math&quot;&gt;&lt;img src=&quot;http://latex.codecogs.com/png.latex?t\inline&quot;/&gt;&lt;/span&gt;, we find that &lt;span class=&quot;math&quot;&gt;&lt;img src=&quot;http://latex.codecogs.com/png.latex?x_t\inline&quot;/&gt;&lt;/span&gt; is within &lt;span class=&quot;math&quot;&gt;&lt;img src=&quot;http://latex.codecogs.com/png.latex?\sigma\inline&quot;/&gt;&lt;/span&gt; of &lt;span class=&quot;math&quot;&gt;&lt;img src=&quot;http://latex.codecogs.com/png.latex?t\inline&quot;/&gt;&lt;/span&gt; in time &lt;span class=&quot;math&quot;&gt;&lt;img src=&quot;http://latex.codecogs.com/png.latex?\log{L} - \log{\sigma}\inline&quot;/&gt;&lt;/span&gt;, or &lt;span class=&quot;math&quot;&gt;&lt;img src=&quot;http://latex.codecogs.com/png.latex?\log{L/\sigma}\inline&quot;/&gt;&lt;/span&gt;, as claimed.&lt;/p&gt;
 &lt;h2 id=&quot;waiting-time&quot;&gt;Waiting time&lt;/h2&gt;
 &lt;p&gt;The time we must wait before any trajectory can reach a given boundary is a classic hitting-time problem for the OU process that can be solved in several ways. Any of these basically start from PDE that must be satisfied for the hitting time (e.g. see Crispin Gardner, Stochastic Methods) for the OU process at stationary state (&lt;span class=&quot;math&quot;&gt;&lt;img src=&quot;http://latex.codecogs.com/png.latex?T_t = 0\inline&quot;/&gt;&lt;/span&gt;),&lt;/p&gt;
 &lt;p&gt;&lt;span class=&quot;math&quot;&gt;&lt;div style=&quot;text-align:center;&quot;&gt;&lt;img src=&quot;http://latex.codecogs.com/png.latex?\tfrac{\sigma^2}{2} T_{xx} - x T_x = -1&quot; alt=&quot;\tfrac{\sigma^2}{2} T_{xx} - x T_x = -1&quot; /&gt;&lt;/div&gt;&lt;/span&gt;&lt;/p&gt;
@@ -4468,6 +4534,25 @@ linear &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;dt[, &lt;span cla
 &lt;h2 id=&quot;code-tricks-for-today&quot;&gt;Code tricks for today&lt;/h2&gt;
 &lt;p&gt;vim set sytnax language, useful for getting R highlighting in &lt;code&gt;.Rmd&lt;/code&gt; files: &lt;code&gt;setf r&lt;/code&gt;, or equivalently, &lt;code&gt;set filetype=r&lt;/code&gt; (must be lowercase r). &lt;code&gt;set filetype&lt;/code&gt; with no argument gives the current filetype.&lt;/p&gt;
 &lt;h3 id=&quot;coding&quot;&gt;Coding&lt;/h3&gt;
+&lt;ul&gt;&lt;li&gt;
+cboettig pushed to master at cboettig/labnotebook: &lt;em&gt;draft based on simulated example (clearer)&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/labnotebook/compare/46ead83d39...6824aba260&quot;&gt;05:43 2013/04/12&lt;/a&gt;
+&lt;/li&gt;&lt;li&gt;
+cboettig pushed to master at cboettig/labnotebook: &lt;em&gt;outline / preamble for web chat with Marc (postponed) drafting post still drafting&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/labnotebook/compare/7715da57f0...46ead83d39&quot;&gt;05:41 2013/04/12&lt;/a&gt;
+&lt;/li&gt;&lt;li&gt;
+cboettig opened issue mdo/github-buttons#42: &lt;em&gt;Feature: button for “Star repo”?&lt;/em&gt; &lt;a href=&quot;https://github.com/mdo/github-buttons/issues/42&quot;&gt;04:57 2013/04/12&lt;/a&gt;
+&lt;/li&gt;&lt;li&gt;
+cboettig pushed to master at cboettig/earlywarning: &lt;em&gt;updated with simulated data example #8&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/earlywarning/compare/c03e5fe325...8bf907c21f&quot;&gt;04:54 2013/04/12&lt;/a&gt;
+&lt;/li&gt;&lt;li&gt;
+cboettig pushed to master at cboettig/earlywarning: &lt;em&gt;more replicates&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/earlywarning/compare/d55e98133e...c03e5fe325&quot;&gt;03:16 2013/04/12&lt;/a&gt;
+&lt;/li&gt;&lt;li&gt;
+cboettig starred bbolker/R2admb: &lt;em&gt;&lt;/em&gt; &lt;a href=&quot;https://github.com/bbolker/R2admb&quot;&gt;12:38 2013/04/12&lt;/a&gt;
+&lt;/li&gt;&lt;li&gt;
+cboettig pushed to master at cboettig/earlywarning: &lt;em&gt;fast cache example&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/earlywarning/compare/de55c1e353...d55e98133e&quot;&gt;10:48 2013/04/11&lt;/a&gt;
+&lt;/li&gt;&lt;li&gt;
+cboettig opened issue cboettig/nonparametric-bayes#39: &lt;em&gt;Estimate parameter uncertainty for the MLE case and integrate over it&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/nonparametric-bayes/issues/39&quot;&gt;09:48 2013/04/11&lt;/a&gt;
+&lt;/li&gt;&lt;/ul&gt;
+
+
 &lt;h3 id=&quot;reading&quot;&gt;Reading&lt;/h3&gt;
 &lt;ul&gt;&lt;li&gt;
 Expected time for random genetic drift of a population between stable phenotypic states: Proceedings of the National Academy of … (1985). Volume: 82, Issue: November. Pages: 7641-7645. Russell Lande et al. &lt;a href=&quot;http://www.mendeley.com/catalog/expected-time-random-genetic-drift-population-between-stable-phenotypic-states-3/&quot;&gt;07:08 2013/04/08&lt;/a&gt;
