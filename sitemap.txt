@@ -812,6 +812,7 @@ http://carlboettiger.info/archives/4482/index.html
 
  
 http://carlboettiger.info/2013/04/11/tutorial-on-likelihood-and-roc-methods-for-early-warning-signals.html  
+http://carlboettiger.info/2013/04/11/nonparametric-bayes-framing-the-issues.html  
 http://carlboettiger.info/2013/04/05/a-clever-derivation-on-realized-escape-times.html  
 http://carlboettiger.info/2013/04/04/notebook-parsing.html  
 http://carlboettiger.info/2013/04/03/further-examples-managing-tipping-points-with-gp.html  
