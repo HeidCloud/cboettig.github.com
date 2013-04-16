@@ -1,7 +1,7 @@
 {
   "/": [
-    "5305",
-    "13813"
+    "5306",
+    "13817"
   ],
   "/ Hastings student at UC Davis": [
     "0",
@@ -1188,8 +1188,8 @@
     "2"
   ],
   "/2011/03/15/models-in-phylogenetic-inference.html": [
-    "297",
-    "337"
+    "298",
+    "338"
   ],
   "/2011/03/15/tuesday-2.html": [
     "0",
@@ -1492,8 +1492,8 @@
     "6"
   ],
   "/2011/07/06/exact-simulation-by-the-gillespie-algorithm.html": [
-    "34",
-    "49"
+    "35",
+    "50"
   ],
   "/2011/07/07/early-warning-signals-presentation-notes.html": [
     "0",
@@ -1628,8 +1628,8 @@
     "13"
   ],
   "/2011/08/26/fishbase-from-r-some-xml-parsing.html": [
-    "188",
-    "226"
+    "189",
+    "227"
   ],
   "/2011/08/26/rfishbase-and-some-taxonomy-in-r-with-taxize.html": [
     "35",
@@ -1856,8 +1856,8 @@
     "1"
   ],
   "/2011/11/04/sparkleshare-configuration.html": [
-    "1817",
-    "2204"
+    "1819",
+    "2206"
   ],
   "/2011/11/06/sunday-5.html": [
     "0",
@@ -1896,8 +1896,8 @@
     "11"
   ],
   "/2011/11/22/some-configuration-notes-rstudio-setup-syntax-highlighting-in-sweave.html": [
-    "73",
-    "97"
+    "74",
+    "98"
   ],
   "/2011/11/23/getting-the-right-distributions.html": [
     "5",
@@ -2040,8 +2040,8 @@
     "34"
   ],
   "/2012/02/12/elegant-fast-data-manipulation-with-data-table.html": [
-    "370",
-    "421"
+    "371",
+    "423"
   ],
   "/2012/02/12/saturday-projects-reading-markdown-plugins.html": [
     "6",
@@ -2156,8 +2156,8 @@
     "8"
   ],
   "/2012/03/20/citing-r-packages.html": [
-    "822",
-    "898"
+    "823",
+    "899"
   ],
   "/2012/03/20/friday-some-random-notes.html": [
     "2",
@@ -2180,8 +2180,8 @@
     "14"
   ],
   "/2012/03/24/citations-in-markdown-using-knitr.html": [
-    "606",
-    "812"
+    "607",
+    "813"
   ],
   "/2012/03/24/citations-in-markdown-usingknitr.html": [
     "0",
@@ -2352,8 +2352,8 @@
     "163"
   ],
   "/2012/05/26/exploring-jekyll-layout.html": [
-    "661",
-    "854"
+    "663",
+    "856"
   ],
   "/2012/05/26/exploring-jekyll-layout.html?search-text=jekyll": [
     "0",
@@ -2421,7 +2421,7 @@
   ],
   "/2012/07/08/Evolution-Day1.html": [
     "38",
-    "106"
+    "107"
   ],
   "/2012/07/09/Evolution-Conf-Summary.html": [
     "31",
@@ -2504,8 +2504,8 @@
     "83"
   ],
   "/2012/10/02/solarized-colors.html": [
-    "717",
-    "1003"
+    "718",
+    "1005"
   ],
   "/2012/10/05/lab-notebook.html": [
     "0",
@@ -2877,19 +2877,27 @@
   ],
   "/2013/04/02/Monday---Tuesday.html": [
     "3",
-    "17"
+    "18"
   ],
   "/2013/04/03/further-examples-managing-tipping-points-with-gp.html": [
     "3",
-    "21"
+    "22"
   ],
   "/2013/04/04/notebook-parsing.html": [
     "26",
-    "45"
+    "46"
   ],
   "/2013/04/05/a-clever-derivation-on-realized-escape-times.html": [
     "14",
-    "39"
+    "40"
+  ],
+  "/2013/04/11/nonparametric-bayes-framing-the-issues.html": [
+    "3",
+    "8"
+  ],
+  "/2013/04/11/tutorial-on-likelihood-and-roc-methods-for-early-warning-signals.html": [
+    "2",
+    "8"
   ],
   "/211": [
     "0",
@@ -3990,13 +3998,5 @@
   "/?s=amazon": [
     "0",
     "4"
-  ],
-  "/?s=amazon+ec2": [
-    "0",
-    "2"
-  ],
-  "/?s=ami+ec2": [
-    "0",
-    "1"
   ]
 }

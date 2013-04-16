@@ -4,7 +4,7 @@
  <title>Lab Notebook</title>
  <link href="/atom.xml" rel="self"/>
  <link href=""/>
- <updated>2013-04-15T13:23:14-07:00</updated>
+ <updated>2013-04-15T18:21:36-07:00</updated>
  <id></id>
  <author>
    <name>Carl Boettiger</name>
@@ -84,7 +84,7 @@ skew &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quo
  </entry>
  
  <entry>
-   <title>Nonparametric Bayes Framing The Issues</title>
+   <title>nonparametric-bayes: framing the issues for the manuscript</title>
    <link href="/2013/04/11/nonparametric-bayes-framing-the-issues.html"/>
    <updated>2013-04-11T00:00:00-07:00</updated>
    <id>h/2013/04/11/nonparametric-bayes-framing-the-issues</id>
@@ -92,8 +92,10 @@ skew &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quo
 &lt;p&gt;Very good meeting today going over some big picture considerations in the presentation of the nonparametric-bayes manuscript with Marc. (Also see new entries in issues log on nonparametric-bayes.) Make it clear that we are making a point rather than providing a tool. Focus on the tipping point context rather than the general management context.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Comparison against a parametric Bayesian model (&lt;a href=&quot;https://github.com/cboettig/nonparametric-bayes/issues/40&quot;&gt;40&lt;/a&gt;)&lt;/li&gt;
-&lt;li&gt;Comparison against an active learning parametric model facing a tipping point (&lt;a href=&quot;https://github.com/cboettig/nonparametric-bayes/issues/41&quot;&gt;41&lt;/a&gt;) a708b44978610da7db3b49ebb4dce)&lt;/li&gt;
+&lt;li&gt;Comparison against an active learning parametric model facing a tipping point (&lt;a href=&quot;https://github.com/cboettig/nonparametric-bayes/issues/41&quot;&gt;41&lt;/a&gt;)&lt;/li&gt;
 &lt;/ul&gt;
+&lt;h2 id=&quot;parametric-bayesian-model&quot;&gt;Parametric Bayesian model&lt;/h2&gt;
+&lt;p&gt;Drafting parametric Bayesian case for comparison, following Marc’s suggestion. So far, &lt;a href=&quot;https://github.com/cboettig/nonparametric-bayes/commit/795bf96ed92a708b44978610da7db3b49ebb4dce&quot;&gt;code as implemented in BUGS&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&quot;more-on-the-exit-time-problem&quot;&gt;More on the exit time problem&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;Alan pointed me to earlier work of &lt;span class=&quot;showtooltip&quot; title=&quot;Schuss Z and Matkowsky B (1979). The Exit Problem: A New Approach
@@ -122,7 +124,7 @@ http://dx.doi.org/10.1007/s12080-011-0149-6.&quot;&gt;&lt;a href=&quot;http://dx
 &lt;li&gt;&lt;p&gt;Trying to get a hold of &lt;span class=&quot;showtooltip&quot; title=&quot;Ludwig D and Walters C (1981). Measurement Errors And Uncertainty
 in Parameter Estimates For Stock And Recruitment. _Canadian
 Journal of Fisheries And Aquatic Sciences_, *38*, pp. 711-720.
-ISSN 0706-652X,  http://dx.doi.org/10.1139/f81-094.&quot;&gt;&lt;a href=&quot;http://dx.doi.org/10.1139/f81-094&quot; rel=&quot;http://purl.org/spar/cito/discusses&quot; &gt;Ludwig &amp;amp; Walters (1981)&lt;/a&gt;&lt;/span&gt; as well. A tough day for reading with the UCSC subscription access down due to a “power outages”&lt;/p&gt;&lt;/li&gt;
+ISSN 0706-652X,  http://dx.doi.org/10.1139/f81-094.&quot;&gt;&lt;a href=&quot;http://dx.doi.org/10.1139/f81-094&quot; rel=&quot;http://purl.org/spar/cito/discusses&quot; &gt;Ludwig &amp;amp; Walters (1981)&lt;/a&gt;&lt;/span&gt; as well. A tough day for reading with the UCSC subscription access down due to “power outages”&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;Interesting preprint on advice for data reuse, &lt;span class=&quot;showtooltip&quot; title=&quot;White EP, Baldridge E, Brym ZT, Locey KJ, McGlinn DJ and Supp SR
 (2013). Nine simple ways to make it easier to (re)use your data.
  https://peerj.com/preprints/7 [Online. last-accessed:
@@ -4607,6 +4609,12 @@ linear &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;dt[, &lt;span cla
 &lt;p&gt;vim set sytnax language, useful for getting R highlighting in &lt;code&gt;.Rmd&lt;/code&gt; files: &lt;code&gt;setf r&lt;/code&gt;, or equivalently, &lt;code&gt;set filetype=r&lt;/code&gt; (must be lowercase r). &lt;code&gt;set filetype&lt;/code&gt; with no argument gives the current filetype.&lt;/p&gt;
 &lt;h3 id=&quot;coding&quot;&gt;Coding&lt;/h3&gt;
 &lt;ul&gt;&lt;li&gt;
+cboettig commented on issue mpalmer/jekyll-static-comments#11: &lt;em&gt;Thanks both for the outline of each workflow, this clarifies my confusion about storing YAML vs email contents in _comments/ directory. I think I h…&lt;/em&gt; &lt;a href=&quot;https://github.com/mpalmer/jekyll-static-comments/issues/11#issuecomment-16421561&quot;&gt;01:19 2013/04/16&lt;/a&gt;
+&lt;/li&gt;&lt;li&gt;
+cboettig pushed to master at cboettig/labnotebook: &lt;em&gt;interview added added missing link on BUGS code&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/labnotebook/compare/ee07673d13...1561fb933c&quot;&gt;10:02 2013/04/15&lt;/a&gt;
+&lt;/li&gt;&lt;li&gt;
+cboettig pushed to master at cboettig/cboettig.github.com: &lt;em&gt;update site&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/cboettig.github.com/compare/b1277de310...d93c286597&quot;&gt;08:36 2013/04/15&lt;/a&gt;
+&lt;/li&gt;&lt;li&gt;
 cboettig opened issue cboettig/knitcitations#36: &lt;em&gt;More rigorous parsing of crossref data&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/knitcitations/issues/36&quot;&gt;08:26 2013/04/15&lt;/a&gt;
 &lt;/li&gt;&lt;li&gt;
 cboettig opened issue cboettig/knitcitations#35: &lt;em&gt;bibtex fails to parse certain complex data strings from Greycite, switch to JSON&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/knitcitations/issues/35&quot;&gt;08:24 2013/04/15&lt;/a&gt;
@@ -4616,12 +4624,6 @@ cboettig pushed to master at cboettig/cboettig.github.com: &lt;em&gt;update site
 cboettig commented on issue mpalmer/jekyll-static-comments#11: &lt;em&gt;@pathawks Thanks, exactly what I was thinking about. I’ll give it a whirl. @IQAndreas thanks for the example. – I’m thinking something along the l…&lt;/em&gt; &lt;a href=&quot;https://github.com/mpalmer/jekyll-static-comments/issues/11#issuecomment-16360909&quot;&gt;10:28 2013/04/14&lt;/a&gt;
 &lt;/li&gt;&lt;li&gt;
 cboettig starred pathawks/jekyll-disqus-comments: &lt;em&gt;&lt;/em&gt; &lt;a href=&quot;https://github.com/pathawks/jekyll-disqus-comments&quot;&gt;10:05 2013/04/14&lt;/a&gt;
-&lt;/li&gt;&lt;li&gt;
-cboettig pushed to master at cboettig/labnotebook: &lt;em&gt;tutorial posted&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/labnotebook/compare/4358b8d35e...ee07673d13&quot;&gt;12:39 2013/04/13&lt;/a&gt;
-&lt;/li&gt;&lt;li&gt;
-cboettig pushed to master at cboettig/nonparametric-bayes: &lt;em&gt;Jags example added&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/nonparametric-bayes/compare/526de79ae3...795bf96ed9&quot;&gt;11:07 2013/04/12&lt;/a&gt;
-&lt;/li&gt;&lt;li&gt;
-cboettig commented on issue cboettig/pmc#3: &lt;em&gt;From @eastman: The source for updated geiger is on CRAN (binaries to soon follow). There are a couple methods (coef and logLik) that can be applied…&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/pmc/issues/3#issuecomment-16313788&quot;&gt;07:49 2013/04/12&lt;/a&gt;
 &lt;/li&gt;&lt;/ul&gt;
 
 
