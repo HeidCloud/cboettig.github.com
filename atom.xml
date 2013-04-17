@@ -4,13 +4,65 @@
  <title>Lab Notebook</title>
  <link href="/atom.xml" rel="self"/>
  <link href=""/>
- <updated>2013-04-15T18:21:36-07:00</updated>
+ <updated>2013-04-16T18:36:57-07:00</updated>
  <id></id>
  <author>
    <name>Carl Boettiger</name>
    <email>cboettig@gmail.com</email>
  </author>
 
+ 
+ <entry>
+   <title>a few notes on various projects</title>
+   <link href="/2013/04/16/notes.html"/>
+   <updated>2013-04-16T00:00:00-07:00</updated>
+   <id>h/2013/04/16/notes</id>
+   <content type="html">&lt;h2 id=&quot;warning-signals&quot;&gt;warning-signals&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Working on revisions for &lt;a href=&quot;https://github.com/cboettig/ews-review/&quot;&gt;ews-review&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Grr, the challenges of open science – can’t stick confidential reviews in ews-review repo where they belong, or track them on the issues tracker, without disclosing their contents. What are the terms of use for these things anyhow&amp;gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;phylogentics-pmc&quot;&gt;phylogentics / pmc&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Apparently pmc does have users – at least one recognized that my Vignette is broken following the latest Gieger update. Need to add simulate and update methods for the new fitContinuous, and then integrate these. &lt;a href=&quot;https://github.com/cboettig/pmc/issues/3&quot;&gt;pmc/#3&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Another pmc request. Sounds like I should also add support for OUwie fits. See if I can get Jeremy to add &lt;code&gt;simulate&lt;/code&gt; and &lt;code&gt;update&lt;/code&gt; methods. &lt;a href=&quot;https://github.com/cboettig/pmc/issues/4&quot;&gt;pmc/#4&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Dear phylogeneticists&lt;/strong&gt;: please define a methods API for your functions. Accessing coefficients using something like &lt;code&gt;output[[1]][[2]]$somevar$name[4]&lt;/code&gt; is not only cumbersome, but bound to break when you modify your function, so provide a &lt;code&gt;coef&lt;/code&gt; method. Likewise provide &lt;code&gt;simulate&lt;/code&gt; and &lt;code&gt;update&lt;/code&gt; methods so we can all raise the bar on our statistics a little bit.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Alternatively put the code on Github, where sensible folks can fork it, add some common-sense classes and give you a pull request.&lt;/p&gt;
+&lt;h2 id=&quot;code-tricks&quot;&gt;Code tricks&lt;/h2&gt;
+&lt;p&gt;Because I’m always wondering how to do this one: let’s see what methods are defined for Geiger’s new &lt;code&gt;gfit&lt;/code&gt; class:&lt;/p&gt;
+&lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;&lt;span class=&quot;kw&quot;&gt;methods&lt;/span&gt;(&lt;span class=&quot;dt&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;st&quot;&gt;&amp;quot;gfit&amp;quot;&lt;/span&gt;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Returns:&lt;/p&gt;
+&lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;[&lt;span class=&quot;dv&quot;&gt;1&lt;/span&gt;] coef.gfit*&lt;span class=&quot;st&quot;&gt;   &lt;/span&gt;logLik.gfit*
+
+&lt;span class=&quot;st&quot;&gt;   &lt;/span&gt;Non-visible functions are asterisked&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;ht Michael Hannon for that one, and a good way to confuse some folks on &lt;a href=&quot;http://stackoverflow.com/questions/16048949&quot;&gt;SO&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&quot;knitcitations&quot;&gt;knitcitations&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Fixed a minor issue in tooltip formatting, &lt;a href=&quot;https://github.com/cboettig/knitcitations/issues/37&quot;&gt;knitcitations/#37&lt;/a&gt;. Unfortunately not updated in earlier notebook entires, but should be fixed from here on).&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;Interesting ideas from some folks about adding CSL support, and thinking about being able to pull data into knitcitations from personal zotero libraries, &lt;a href=&quot;https://github.com/cboettig/knitcitations/issues/38&quot;&gt;knitcitations/#38&lt;/a&gt;. Zotero API seems to have some nice features for listing entries of a collection in a variety of file formats, including CSL styling for the returns.&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;Nearly a month since last push (0.4-4). Should update CRAN to current development version (0.4-6) sometime this week…&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;reading&quot;&gt;Reading&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;The debates continue: &lt;a href=&quot;http://dx.doi.org/10.1073/pnas.1301759110&quot; rel=&quot;http://purl.org/spar/cito/discusses&quot; &gt;Szuwalski (2013)&lt;/a&gt; , and the reply &lt;a href=&quot;http://dx.doi.org/10.1073/pnas.1302181110&quot; rel=&quot;http://purl.org/spar/cito/discusses&quot; &gt;Vert-pre &lt;em&gt;et. al.&lt;/em&gt; (2013)&lt;/a&gt; , reflecting confusion over the article earlier this year, &lt;a href=&quot;http://dx.doi.org/10.1073/pnas.1214879110&quot; rel=&quot;http://purl.org/spar/cito/discusses&quot; &gt;Vert-pre &lt;em&gt;et. al.&lt;/em&gt; (2013b)&lt;/a&gt; .&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Disupting the claim of &lt;a href=&quot;http://dx.doi.org/10.1029/2010GL044486&quot; rel=&quot;http://purl.org/spar/cito/discusses&quot; &gt;Ditlevsen &amp;amp; Johnsen (2010)&lt;/a&gt; and others, &lt;a href=&quot;http://dx.doi.org/10.5194/cp-9-323-2013&quot; rel=&quot;http://purl.org/spar/cito/citesAsEvidence&quot; &gt;Cimatoribus &lt;em&gt;et. al.&lt;/em&gt; (2013)&lt;/a&gt; argue that DO events do show warning signals. But are they chance transitions then?&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Looking over &lt;a href=&quot;http://dx.doi.org/10.1038/nclimate1143&quot; rel=&quot;http://purl.org/spar/cito/citesAsAuthority&quot; &gt;Lenton (2011)&lt;/a&gt; , which has a review of some of the evidence against warning signals for noise-induced transitions.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;An even earlier result from Ludwig, in &lt;a href=&quot;http://dx.doi.org/10.1137/1017070&quot; rel=&quot;http://purl.org/spar/cito/citesAsEvidence&quot; &gt;Ludwig (1975)&lt;/a&gt; .&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;A. A. Cimatoribus, S. S. Drijfhout, V. Livina, G. van der Schrier, (2013) Dansgaard–Oeschger Events: Bifurcation Points in The Climate System. &lt;em&gt;Climate of The Past&lt;/em&gt; &lt;strong&gt;9&lt;/strong&gt; 323-333 &lt;a href=&quot;http://dx.doi.org/10.5194/cp-9-323-2013&quot;&gt;10.5194/cp-9-323-2013&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Peter D. Ditlevsen, Sigfus J. Johnsen, (2010) Tipping Points: Early Warning And Wishful Thinking. &lt;em&gt;Geophysical Research Letters&lt;/em&gt; &lt;strong&gt;37&lt;/strong&gt; n/a-n/a &lt;a href=&quot;http://dx.doi.org/10.1029/2010GL044486&quot;&gt;10.1029/2010GL044486&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Timothy M. Lenton, (2011) Early Warning of Climate Tipping Points. &lt;em&gt;Nature Climate Change&lt;/em&gt; &lt;strong&gt;1&lt;/strong&gt; 201-209 &lt;a href=&quot;http://dx.doi.org/10.1038/nclimate1143&quot;&gt;10.1038/nclimate1143&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Donald Ludwig, (1975) Persistence of Dynamical Systems Under Random Perturbations. &lt;em&gt;Siam Review&lt;/em&gt; &lt;strong&gt;17&lt;/strong&gt; 605-640 &lt;a href=&quot;http://dx.doi.org/10.1137/1017070&quot;&gt;10.1137/1017070&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;C. Szuwalski, (2013) Production is A Poor Metric For Identifying Regime-Like Behavior in Marine Stocks. &lt;em&gt;Proceedings of The National Academy of Sciences&lt;/em&gt; &lt;strong&gt;110&lt;/strong&gt; E1436-E1436 &lt;a href=&quot;http://dx.doi.org/10.1073/pnas.1301759110&quot;&gt;10.1073/pnas.1301759110&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;K. A. Vert-pre, R. O. Amoroso, O. P. Jensen, R. Hilborn, (2013) Reply to Szuwalski: Policies Robust to Uncertainty in Causes of Productivity Changes Are Needed. &lt;em&gt;Proceedings of The National Academy of Sciences&lt;/em&gt; &lt;strong&gt;110&lt;/strong&gt; E1437-E1437 &lt;a href=&quot;http://dx.doi.org/10.1073/pnas.1302181110&quot;&gt;10.1073/pnas.1302181110&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;K. A. Vert-pre, R. O. Amoroso, O. P. Jensen, R. Hilborn, (2013) Frequency And Intensity of Productivity Regime Shifts in Marine Fish Stocks. &lt;em&gt;Proceedings of The National Academy of Sciences&lt;/em&gt; &lt;strong&gt;110&lt;/strong&gt; 1779-1784 &lt;a href=&quot;http://dx.doi.org/10.1073/pnas.1214879110&quot;&gt;10.1073/pnas.1214879110&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content>
+ </entry>
  
  <entry>
    <title>Tutorial On Likelihood And Roc Methods For Early Warning Signals</title>
@@ -4609,21 +4661,21 @@ linear &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;dt[, &lt;span cla
 &lt;p&gt;vim set sytnax language, useful for getting R highlighting in &lt;code&gt;.Rmd&lt;/code&gt; files: &lt;code&gt;setf r&lt;/code&gt;, or equivalently, &lt;code&gt;set filetype=r&lt;/code&gt; (must be lowercase r). &lt;code&gt;set filetype&lt;/code&gt; with no argument gives the current filetype.&lt;/p&gt;
 &lt;h3 id=&quot;coding&quot;&gt;Coding&lt;/h3&gt;
 &lt;ul&gt;&lt;li&gt;
-cboettig commented on issue mpalmer/jekyll-static-comments#11: &lt;em&gt;Thanks both for the outline of each workflow, this clarifies my confusion about storing YAML vs email contents in _comments/ directory. I think I h…&lt;/em&gt; &lt;a href=&quot;https://github.com/mpalmer/jekyll-static-comments/issues/11#issuecomment-16421561&quot;&gt;01:19 2013/04/16&lt;/a&gt;
+cboettig pushed to master at cboettig/labnotebook: &lt;em&gt;tried oauth direct approach, doesn’t work new entry draft notes&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/labnotebook/compare/1561fb933c...dcca35be2e&quot;&gt;01:12 2013/04/17&lt;/a&gt;
 &lt;/li&gt;&lt;li&gt;
-cboettig pushed to master at cboettig/labnotebook: &lt;em&gt;interview added added missing link on BUGS code&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/labnotebook/compare/ee07673d13...1561fb933c&quot;&gt;10:02 2013/04/15&lt;/a&gt;
+cboettig commented on issue cboettig/knitcitations#38: &lt;em&gt;I’m guessing that Regex-ing against the Zotero’s SQLite database doesn’t address the CSL formatting issue at all. Yes, I realize that python, ruby,…&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/knitcitations/issues/38#issuecomment-16480231&quot;&gt;12:28 2013/04/17&lt;/a&gt;
 &lt;/li&gt;&lt;li&gt;
-cboettig pushed to master at cboettig/cboettig.github.com: &lt;em&gt;update site&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/cboettig.github.com/compare/b1277de310...d93c286597&quot;&gt;08:36 2013/04/15&lt;/a&gt;
+cboettig opened issue cboettig/pmc#4: &lt;em&gt;Add methods for OUwie&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/pmc/issues/4&quot;&gt;11:47 2013/04/16&lt;/a&gt;
 &lt;/li&gt;&lt;li&gt;
-cboettig opened issue cboettig/knitcitations#36: &lt;em&gt;More rigorous parsing of crossref data&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/knitcitations/issues/36&quot;&gt;08:26 2013/04/15&lt;/a&gt;
+cboettig pushed to master at cboettig/ews-review: &lt;em&gt;working on edits suggested by editor, nearly all done&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/ews-review/compare/ea1cb4ab22...6cdd54fb53&quot;&gt;10:07 2013/04/16&lt;/a&gt;
 &lt;/li&gt;&lt;li&gt;
-cboettig opened issue cboettig/knitcitations#35: &lt;em&gt;bibtex fails to parse certain complex data strings from Greycite, switch to JSON&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/knitcitations/issues/35&quot;&gt;08:24 2013/04/15&lt;/a&gt;
+cboettig commented on issue cboettig/knitcitations#38: &lt;em&gt;Thanks for sharing these perspectives. It’s interesting to hear that managing bibtex keys and generating the bibtex file from Zotero is sub-optimal…&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/knitcitations/issues/38#issuecomment-16473912&quot;&gt;09:48 2013/04/16&lt;/a&gt;
 &lt;/li&gt;&lt;li&gt;
-cboettig pushed to master at cboettig/cboettig.github.com: &lt;em&gt;update site&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/cboettig.github.com/compare/0fbae42fac...b1277de310&quot;&gt;06:29 2013/04/15&lt;/a&gt;
+cboettig commented on issue cboettig/knitcitations#38: &lt;em&gt;From crosscite: Both CrossRef and DataCite support formatted citations via the text/bibliography content type. These are the output of the Citatio…&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/knitcitations/issues/38#issuecomment-16461268&quot;&gt;06:04 2013/04/16&lt;/a&gt;
 &lt;/li&gt;&lt;li&gt;
-cboettig commented on issue mpalmer/jekyll-static-comments#11: &lt;em&gt;@pathawks Thanks, exactly what I was thinking about. I’ll give it a whirl. @IQAndreas thanks for the example. – I’m thinking something along the l…&lt;/em&gt; &lt;a href=&quot;https://github.com/mpalmer/jekyll-static-comments/issues/11#issuecomment-16360909&quot;&gt;10:28 2013/04/14&lt;/a&gt;
+cboettig commented on issue cboettig/knitcitations#38: &lt;em&gt;It’s a good idea but not a high priority. Like you say, using an external parser would make the most sense. I know there are a few CSL parsers avai…&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/knitcitations/issues/38#issuecomment-16460940&quot;&gt;05:59 2013/04/16&lt;/a&gt;
 &lt;/li&gt;&lt;li&gt;
-cboettig starred pathawks/jekyll-disqus-comments: &lt;em&gt;&lt;/em&gt; &lt;a href=&quot;https://github.com/pathawks/jekyll-disqus-comments&quot;&gt;10:05 2013/04/14&lt;/a&gt;
+cboettig opened issue inukshuk/csl-ruby#1: &lt;em&gt;Example uses in README.md?&lt;/em&gt; &lt;a href=&quot;https://github.com/inukshuk/csl-ruby/issues/1&quot;&gt;05:40 2013/04/16&lt;/a&gt;
 &lt;/li&gt;&lt;/ul&gt;
 
 
