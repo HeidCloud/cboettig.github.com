@@ -1,7 +1,7 @@
 {
   "/": [
-    "5325",
-    "13867"
+    "5342",
+    "13908"
   ],
   "/ Hastings student at UC Davis": [
     "0",
@@ -541,7 +541,7 @@
   ],
   "/2010/05/10/Alan-Meeting.html": [
     "0",
-    "1"
+    "2"
   ],
   "/2010/05/10/Stochastic-Population-Dynamics-Notebook-(from-OWW).html": [
     "1",
@@ -920,8 +920,8 @@
     "4"
   ],
   "/2010/11/21/following-my-computer-simulations-on-twitter.html": [
-    "5",
-    "5"
+    "6",
+    "6"
   ],
   "/2010/11/24/tweets-from-an-ecology-field-class.html": [
     "2",
@@ -1352,8 +1352,8 @@
     "4"
   ],
   "/2011/05/06/mendeley-api-in-r.html": [
-    "42",
-    "58"
+    "43",
+    "60"
   ],
   "/2011/05/06/reproducible-research-large-data-sets-and-si2.html": [
     "1",
@@ -1396,8 +1396,8 @@
     "59"
   ],
   "/2011/05/19/algorithms-group-mcmcmc.html": [
-    "130",
-    "145"
+    "131",
+    "146"
   ],
   "/2011/05/19/thursday-5.html": [
     "0",
@@ -1496,8 +1496,8 @@
     "6"
   ],
   "/2011/07/06/exact-simulation-by-the-gillespie-algorithm.html": [
-    "35",
-    "50"
+    "36",
+    "51"
   ],
   "/2011/07/07/early-warning-signals-presentation-notes.html": [
     "0",
@@ -1600,8 +1600,8 @@
     "20"
   ],
   "/2011/08/17/wednesday-migrating-codes-into-mpi.html": [
-    "6",
-    "12"
+    "7",
+    "13"
   ],
   "/2011/08/17/wrightscape-a-brief-tutorial.html": [
     "3",
@@ -1632,8 +1632,8 @@
     "13"
   ],
   "/2011/08/26/fishbase-from-r-some-xml-parsing.html": [
-    "192",
-    "230"
+    "194",
+    "232"
   ],
   "/2011/08/26/rfishbase-and-some-taxonomy-in-r-with-taxize.html": [
     "35",
@@ -1860,8 +1860,8 @@
     "1"
   ],
   "/2011/11/04/sparkleshare-configuration.html": [
-    "1823",
-    "2210"
+    "1828",
+    "2215"
   ],
   "/2011/11/06/sunday-5.html": [
     "0",
@@ -2020,8 +2020,8 @@
     "5"
   ],
   "/2012/02/03/different-ways-of-visualizing-distribution-overlap.html": [
-    "53",
-    "61"
+    "54",
+    "62"
   ],
   "/2012/02/06/some-collaborative-tools-for-science.html": [
     "26",
@@ -2045,7 +2045,7 @@
   ],
   "/2012/02/12/elegant-fast-data-manipulation-with-data-table.html": [
     "373",
-    "425"
+    "426"
   ],
   "/2012/02/12/saturday-projects-reading-markdown-plugins.html": [
     "6",
@@ -2108,8 +2108,8 @@
     "4"
   ],
   "/2012/02/27/using-knitr-and-rwordpress-to-publish-results-directly-from-r-6.html": [
-    "249",
-    "376"
+    "252",
+    "382"
   ],
   "/2012/02/27/using-knitr-and-rwordpress-to-publish-results-directly-from-r.html": [
     "1",
@@ -2160,8 +2160,8 @@
     "8"
   ],
   "/2012/03/20/citing-r-packages.html": [
-    "828",
-    "904"
+    "829",
+    "905"
   ],
   "/2012/03/20/friday-some-random-notes.html": [
     "2",
@@ -2184,8 +2184,8 @@
     "14"
   ],
   "/2012/03/24/citations-in-markdown-using-knitr.html": [
-    "612",
-    "818"
+    "616",
+    "823"
   ],
   "/2012/03/24/citations-in-markdown-usingknitr.html": [
     "0",
@@ -2228,8 +2228,8 @@
     "3"
   ],
   "/2012/04/07/writing-reproducibly-in-the-open-with-knitr.html": [
-    "471",
-    "793"
+    "472",
+    "794"
   ],
   "/2012/04/10/monday-tuesday.html": [
     "1",
@@ -2260,8 +2260,8 @@
     "42"
   ],
   "/2012/05/01/Jekyll-vs-Wordpress.html": [
-    "1130",
-    "1502"
+    "1133",
+    "1505"
   ],
   "/2012/05/01/Jekyll-vs-Wordpress.html)": [
     "6",
@@ -2273,7 +2273,7 @@
   ],
   "/2012/05/03/notes.html": [
     "3",
-    "24"
+    "25"
   ],
   "/2012/05/03/testing-out-a-jekyll-based-notebook.html": [
     "2",
@@ -2288,8 +2288,8 @@
     "15"
   ],
   "/2012/05/06/research-workflow.html": [
-    "341",
-    "651"
+    "342",
+    "652"
   ],
   "/2012/05/07/github.com/deads/bigrf": [
     "0",
@@ -2356,16 +2356,16 @@
     "163"
   ],
   "/2012/05/26/exploring-jekyll-layout.html": [
-    "667",
-    "860"
+    "669",
+    "862"
   ],
   "/2012/05/26/exploring-jekyll-layout.html?search-text=jekyll": [
     "0",
     "1"
   ],
   "/2012/05/30/knitcitations.html": [
-    "573",
-    "831"
+    "578",
+    "836"
   ],
   "/2012/05/30/knitcitations.html?search-text=": [
     "0",
@@ -2492,24 +2492,24 @@
     "2"
   ],
   "/2012/09/19/migrating-from-wordpress-to-jekyll.html": [
-    "132",
-    "209"
+    "133",
+    "211"
   ],
   "/2012/09/27/Migrating-OWW-posts-to-Jekyll.html": [
-    "21",
-    "61"
+    "22",
+    "63"
   ],
   "/2012/09/28/Welcome-to-my-lab-notebook.html": [
-    "403",
-    "1472"
+    "405",
+    "1478"
   ],
   "/2012/10/01/multiple-uncertainty.html": [
     "9",
     "83"
   ],
   "/2012/10/02/solarized-colors.html": [
-    "720",
-    "1007"
+    "721",
+    "1008"
   ],
   "/2012/10/05/lab-notebook.html": [
     "0",
@@ -2608,8 +2608,8 @@
     "1"
   ],
   "/2012/11/01/multiple-uncertainty-corrections.html": [
-    "17",
-    "50"
+    "18",
+    "51"
   ],
   "/2012/11/03/://github.com/cboettig/knitcitations": [
     "1",
@@ -2708,8 +2708,8 @@
     "21"
   ],
   "/2012/12/06/github-issues-tracker:-the-perfect-research-todo-list.html": [
-    "88",
-    "127"
+    "90",
+    "133"
   ],
   "/2012/12/07/": [
     "0",
@@ -2741,7 +2741,7 @@
   ],
   "/2012/12/20/results-comparing-gp-to-parametric.html": [
     "24",
-    "82"
+    "83"
   ],
   "/2012/12/21/progress-summary.html": [
     "17",
@@ -2756,8 +2756,8 @@
     "95"
   ],
   "/2012/12/30/learning-jekyll.html": [
-    "322",
-    "497"
+    "326",
+    "505"
   ],
   "/2013": [
     "0",
@@ -2877,15 +2877,15 @@
   ],
   "/2013/03/26/research.html": [
     "7",
-    "55"
+    "56"
   ],
   "/2013/04/02/Monday---Tuesday.html": [
     "3",
     "18"
   ],
   "/2013/04/03/further-examples-managing-tipping-points-with-gp.html": [
-    "3",
-    "22"
+    "4",
+    "24"
   ],
   "/2013/04/04/notebook-parsing.html": [
     "26",
@@ -2893,15 +2893,19 @@
   ],
   "/2013/04/05/a-clever-derivation-on-realized-escape-times.html": [
     "15",
-    "42"
+    "43"
   ],
   "/2013/04/11/nonparametric-bayes-framing-the-issues.html": [
     "7",
-    "16"
+    "17"
   ],
   "/2013/04/11/tutorial-on-likelihood-and-roc-methods-for-early-warning-signals.html": [
-    "3",
-    "14"
+    "5",
+    "18"
+  ],
+  "/2013/04/16/notes.html": [
+    "0",
+    "3"
   ],
   "/211": [
     "0",
@@ -3992,10 +3996,6 @@
     "1"
   ],
   "/?s=all+content+delayed": [
-    "0",
-    "1"
-  ],
-  "/?s=all+content+delayed+": [
     "0",
     "1"
   ]

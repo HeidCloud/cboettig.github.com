@@ -4,7 +4,7 @@
  <title>Lab Notebook</title>
  <link href="/atom.xml" rel="self"/>
  <link href=""/>
- <updated>2013-04-16T18:36:57-07:00</updated>
+ <updated>2013-04-17T10:44:26-07:00</updated>
  <id></id>
  <author>
    <name>Carl Boettiger</name>
@@ -4661,6 +4661,12 @@ linear &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;dt[, &lt;span cla
 &lt;p&gt;vim set sytnax language, useful for getting R highlighting in &lt;code&gt;.Rmd&lt;/code&gt; files: &lt;code&gt;setf r&lt;/code&gt;, or equivalently, &lt;code&gt;set filetype=r&lt;/code&gt; (must be lowercase r). &lt;code&gt;set filetype&lt;/code&gt; with no argument gives the current filetype.&lt;/p&gt;
 &lt;h3 id=&quot;coding&quot;&gt;Coding&lt;/h3&gt;
 &lt;ul&gt;&lt;li&gt;
+cboettig opened issue ropensci/treeBASE#4: &lt;em&gt;crashes on gamma calculation&lt;/em&gt; &lt;a href=&quot;https://github.com/ropensci/treeBASE/issues/4&quot;&gt;05:49 2013/04/17&lt;/a&gt;
+&lt;/li&gt;&lt;li&gt;
+cboettig commented on issue waynegraham/rZotero#1: &lt;em&gt;Carl Boettigerhttp://carlboettiger.info sent from mobile device; my apologies for any terseness or typos On Apr 17, 2013 6:51 AM, “Wayne Graham” n…&lt;/em&gt; &lt;a href=&quot;https://github.com/waynegraham/rZotero/issues/1#issuecomment-16510237&quot;&gt;02:49 2013/04/17&lt;/a&gt;
+&lt;/li&gt;&lt;li&gt;
+cboettig pushed to master at cboettig/cboettig.github.com: &lt;em&gt;update site&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/cboettig.github.com/compare/d0401a593d...43e6801b04&quot;&gt;01:50 2013/04/17&lt;/a&gt;
+&lt;/li&gt;&lt;li&gt;
 cboettig pushed to master at cboettig/labnotebook: &lt;em&gt;tried oauth direct approach, doesn’t work new entry draft notes&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/labnotebook/compare/1561fb933c...dcca35be2e&quot;&gt;01:12 2013/04/17&lt;/a&gt;
 &lt;/li&gt;&lt;li&gt;
 cboettig commented on issue cboettig/knitcitations#38: &lt;em&gt;I’m guessing that Regex-ing against the Zotero’s SQLite database doesn’t address the CSL formatting issue at all. Yes, I realize that python, ruby,…&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/knitcitations/issues/38#issuecomment-16480231&quot;&gt;12:28 2013/04/17&lt;/a&gt;
@@ -4670,12 +4676,6 @@ cboettig opened issue cboettig/pmc#4: &lt;em&gt;Add methods for OUwie&lt;/em&gt;
 cboettig pushed to master at cboettig/ews-review: &lt;em&gt;working on edits suggested by editor, nearly all done&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/ews-review/compare/ea1cb4ab22...6cdd54fb53&quot;&gt;10:07 2013/04/16&lt;/a&gt;
 &lt;/li&gt;&lt;li&gt;
 cboettig commented on issue cboettig/knitcitations#38: &lt;em&gt;Thanks for sharing these perspectives. It’s interesting to hear that managing bibtex keys and generating the bibtex file from Zotero is sub-optimal…&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/knitcitations/issues/38#issuecomment-16473912&quot;&gt;09:48 2013/04/16&lt;/a&gt;
-&lt;/li&gt;&lt;li&gt;
-cboettig commented on issue cboettig/knitcitations#38: &lt;em&gt;From crosscite: Both CrossRef and DataCite support formatted citations via the text/bibliography content type. These are the output of the Citatio…&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/knitcitations/issues/38#issuecomment-16461268&quot;&gt;06:04 2013/04/16&lt;/a&gt;
-&lt;/li&gt;&lt;li&gt;
-cboettig commented on issue cboettig/knitcitations#38: &lt;em&gt;It’s a good idea but not a high priority. Like you say, using an external parser would make the most sense. I know there are a few CSL parsers avai…&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/knitcitations/issues/38#issuecomment-16460940&quot;&gt;05:59 2013/04/16&lt;/a&gt;
-&lt;/li&gt;&lt;li&gt;
-cboettig opened issue inukshuk/csl-ruby#1: &lt;em&gt;Example uses in README.md?&lt;/em&gt; &lt;a href=&quot;https://github.com/inukshuk/csl-ruby/issues/1&quot;&gt;05:40 2013/04/16&lt;/a&gt;
 &lt;/li&gt;&lt;/ul&gt;
 
 
