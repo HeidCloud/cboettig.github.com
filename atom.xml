@@ -4,13 +4,56 @@
  <title>Lab Notebook</title>
  <link href="/atom.xml" rel="self"/>
  <link href=""/>
- <updated>2013-04-17T10:44:26-07:00</updated>
+ <updated>2013-04-18T07:26:47-07:00</updated>
  <id></id>
  <author>
    <name>Carl Boettiger</name>
    <email>cboettig@gmail.com</email>
  </author>
 
+ 
+ <entry>
+   <title>Notes</title>
+   <link href="/2013/04/17/notes.html"/>
+   <updated>2013-04-17T00:00:00-07:00</updated>
+   <id>h/2013/04/17/notes</id>
+   <content type="html">&lt;h2 id=&quot;warning-signals&quot;&gt;warning-signals&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Finishing up edits.&lt;/li&gt;
+&lt;li&gt;Writing PRSB reply&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;logistics&quot;&gt;Logistics&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;In tomorrow’s Marc meeting, check in about what to include for the CSTAR report&lt;/li&gt;
+&lt;li&gt;manuscript / analysis updates&lt;/li&gt;
+&lt;li&gt;Comments on recent lit?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;ropensci&quot;&gt;ropensci&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/ropensci/treeBASE/issues/4&quot;&gt;treebase/#4&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;reading&quot;&gt;Reading&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;span class=&quot;showtooltip&quot; title=&quot;Dai L, Korolev K and Gore J (2013). &amp;ldquo;Slower Recovery in Space Before Collapse of Connected Populations.&amp;rdquo; Nature. ISSN 0028-0836, http://dx.doi.org/10.1038/nature12071.&quot;&gt;&lt;a href=&quot;http://dx.doi.org/10.1038/nature12071&quot; rel=&quot;http://purl.org/spar/cito/discusses&quot; &gt;Dai &lt;em&gt;et. al.&lt;/em&gt; (2013)&lt;/a&gt;&lt;/span&gt; , with introductory piece by &lt;span class=&quot;showtooltip&quot;  title=&quot;Carpenter S (2013).
+&amp;ldquo;Complex Systems: Spatial Signatures of Resilience.&amp;rdquo; Nature. ISSN 0028-0836&quot;&gt;&lt;a href=&quot;http://dx.doi.org/10.1038/nature12092&quot; rel=&quot;http://purl.org/spar/cito/discusses&quot; &gt;Carpenter (2013)&lt;/a&gt;&lt;/span&gt; . In this they look only at the spatial extent of a perturbation. Presumbably one might attempt to compare the spatial extent over time to establish a baseline, or otherwise identify a control system. Very difficult to see how this can be applied without appropriate references.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Also provides an elegant and clear, if rather intuitive, demonstration that spatially connected / mixing populations will dampen out the signal. Perhaps the interpretation of this misplaces the emphasis – for the connectedness is allowing the insult (dilution of nutrients) to diffuse among neighbors may be strengthening the resilience relative to an isolated population, and therefore it is only appropriate that the signal would weaken.&lt;/p&gt;
+&lt;p&gt;Hehe. Nice to see our Prosecutor’s Fallacy paper (&lt;span class=&quot;showtooltip&quot;  title=&quot;Boettiger C and Hastings A (2012).
+&amp;ldquo;Early Warning Signals And The Prosecutor'S Fallacy.&amp;rdquo;
+Proceedings of The Royal Society B: Biological Sciences, 279, pp. 4734&amp;ndash;4739.
+ISSN 0962-8452&quot;&gt;&lt;a href=&quot;http://dx.doi.org/10.1098/rspb.2012.2085&quot; rel=&quot;http://purl.org/spar/cito/citesAsEvidence&quot; &gt;Boettiger &amp;amp; Hastings, 2012&lt;/a&gt;&lt;/span&gt; ) being used as further evidence for the value of experimental confirmation: “tests of these indicators in replicated experiments, which avoid the bias intro- duced by selective sampling (23) are lacking.”&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;span class=&quot;showtooltip&quot;  title=&quot;Glaser S, Fogarty M, Liu H, Altman I, Hsieh C, Kaufman L, MacCall A, Rosenberg A, Ye H and Sugihara G (2013).
+&amp;ldquo;Complex Dynamics May Limit Prediction in Marine Fisheries.&amp;rdquo; Fish And Fisheries, pp. n/a&amp;ndash;n/a.&quot;&gt;&lt;a href=&quot;http://dx.doi.org/10.1111/faf.12037&quot; rel=&quot;http://purl.org/spar/cito/discusses&quot; &gt;Glaser &lt;em&gt;et. al.&lt;/em&gt; (2013)&lt;/a&gt;&lt;/span&gt; . Nonlinear forecasting doesn’t perform well across the board on these various fisheries data. Authors conclude that this suggests these systems are inherently unpredictable, though seems one could do more to rule out methodological weaknesses and make a more precise statement (perhaps a mutual information claim). Their approach having a large suite of data sets against which to test the performance of a method is nevertheless an interesting idea that’s had some popularity in the machine learning world. Hopefully more researchers will attempt a parallel analysis of these data.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;C. Boettiger, A. Hastings, (2012) Early Warning Signals And The Prosecutor’S Fallacy. &lt;em&gt;Proceedings of The Royal Society B: Biological Sciences&lt;/em&gt; &lt;strong&gt;279&lt;/strong&gt; 4734-4739 &lt;a href=&quot;http://dx.doi.org/10.1098/rspb.2012.2085&quot;&gt;10.1098/rspb.2012.2085&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Stephen R. Carpenter, (2013) Complex Systems: Spatial Signatures of Resilience. &lt;em&gt;Nature&lt;/em&gt; &lt;a href=&quot;http://dx.doi.org/10.1038/nature12092&quot;&gt;10.1038/nature12092&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Lei Dai, Kirill S. Korolev, Jeff Gore, (2013) Slower Recovery in Space Before Collapse of Connected Populations. &lt;em&gt;Nature&lt;/em&gt; &lt;a href=&quot;http://dx.doi.org/10.1038/nature12071&quot;&gt;10.1038/nature12071&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Sarah M Glaser, Michael J Fogarty, Hui Liu, Irit Altman, Chih-Hao Hsieh, Les Kaufman, Alec D MacCall, Andrew A Rosenberg, Hao Ye, George Sugihara, (2013) Complex Dynamics May Limit Prediction in Marine Fisheries. &lt;em&gt;Fish And Fisheries&lt;/em&gt; n/a-n/a &lt;a href=&quot;http://dx.doi.org/10.1111/faf.12037&quot;&gt;10.1111/faf.12037&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content>
+ </entry>
  
  <entry>
    <title>a few notes on various projects</title>
@@ -4661,21 +4704,21 @@ linear &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;dt[, &lt;span cla
 &lt;p&gt;vim set sytnax language, useful for getting R highlighting in &lt;code&gt;.Rmd&lt;/code&gt; files: &lt;code&gt;setf r&lt;/code&gt;, or equivalently, &lt;code&gt;set filetype=r&lt;/code&gt; (must be lowercase r). &lt;code&gt;set filetype&lt;/code&gt; with no argument gives the current filetype.&lt;/p&gt;
 &lt;h3 id=&quot;coding&quot;&gt;Coding&lt;/h3&gt;
 &lt;ul&gt;&lt;li&gt;
-cboettig opened issue ropensci/treeBASE#4: &lt;em&gt;crashes on gamma calculation&lt;/em&gt; &lt;a href=&quot;https://github.com/ropensci/treeBASE/issues/4&quot;&gt;05:49 2013/04/17&lt;/a&gt;
+cboettig pushed to master at cboettig/cboettig.github.com: &lt;em&gt;update site update site&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/cboettig.github.com/compare/c8e735c722...b584ea62eb&quot;&gt;02:25 2013/04/18&lt;/a&gt;
 &lt;/li&gt;&lt;li&gt;
-cboettig commented on issue waynegraham/rZotero#1: &lt;em&gt;Carl Boettigerhttp://carlboettiger.info sent from mobile device; my apologies for any terseness or typos On Apr 17, 2013 6:51 AM, “Wayne Graham” n…&lt;/em&gt; &lt;a href=&quot;https://github.com/waynegraham/rZotero/issues/1#issuecomment-16510237&quot;&gt;02:49 2013/04/17&lt;/a&gt;
+cboettig pushed to master at cboettig/labnotebook: &lt;em&gt;Gemfile lists dependencies, to be installed by bundler (still needs r… a few icons minor updates to project pages&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/labnotebook/compare/dcca35be2e...c6ce7af168&quot;&gt;02:25 2013/04/18&lt;/a&gt;
 &lt;/li&gt;&lt;li&gt;
-cboettig pushed to master at cboettig/cboettig.github.com: &lt;em&gt;update site&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/cboettig.github.com/compare/d0401a593d...43e6801b04&quot;&gt;01:50 2013/04/17&lt;/a&gt;
+cboettig pushed to master at cboettig/sandbox: &lt;em&gt;tweak example - pandoc parses inside spans correctly&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/sandbox/compare/69ef67837b...ccaa4e21b5&quot;&gt;02:17 2013/04/18&lt;/a&gt;
 &lt;/li&gt;&lt;li&gt;
-cboettig pushed to master at cboettig/labnotebook: &lt;em&gt;tried oauth direct approach, doesn’t work new entry draft notes&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/labnotebook/compare/1561fb933c...dcca35be2e&quot;&gt;01:12 2013/04/17&lt;/a&gt;
+cboettig pushed to master at cboettig/knitcitations: &lt;em&gt;html in tooltips removed, see NEWS #37&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/knitcitations/compare/6073e0cfda...0dd4cd5a23&quot;&gt;02:16 2013/04/18&lt;/a&gt;
 &lt;/li&gt;&lt;li&gt;
-cboettig commented on issue cboettig/knitcitations#38: &lt;em&gt;I’m guessing that Regex-ing against the Zotero’s SQLite database doesn’t address the CSL formatting issue at all. Yes, I realize that python, ruby,…&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/knitcitations/issues/38#issuecomment-16480231&quot;&gt;12:28 2013/04/17&lt;/a&gt;
+cboettig opened issue jgm/pandoc#831: &lt;em&gt;Pandoc clobbers span closing “&amp;gt;” when containing html&lt;/em&gt; &lt;a href=&quot;https://github.com/jgm/pandoc/issues/831&quot;&gt;02:04 2013/04/18&lt;/a&gt;
 &lt;/li&gt;&lt;li&gt;
-cboettig opened issue cboettig/pmc#4: &lt;em&gt;Add methods for OUwie&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/pmc/issues/4&quot;&gt;11:47 2013/04/16&lt;/a&gt;
+cboettig pushed to master at cboettig/sandbox: &lt;em&gt;bug in pandoc treatment of spans&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/sandbox/compare/b2351f4bb2...69ef67837b&quot;&gt;01:52 2013/04/18&lt;/a&gt;
 &lt;/li&gt;&lt;li&gt;
-cboettig pushed to master at cboettig/ews-review: &lt;em&gt;working on edits suggested by editor, nearly all done&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/ews-review/compare/ea1cb4ab22...6cdd54fb53&quot;&gt;10:07 2013/04/16&lt;/a&gt;
+cboettig opened issue pathawks/jekyll-disqus-comments#1: &lt;em&gt;Unable to download comments&lt;/em&gt; &lt;a href=&quot;https://github.com/pathawks/jekyll-disqus-comments/issues/1&quot;&gt;08:44 2013/04/17&lt;/a&gt;
 &lt;/li&gt;&lt;li&gt;
-cboettig commented on issue cboettig/knitcitations#38: &lt;em&gt;Thanks for sharing these perspectives. It’s interesting to hear that managing bibtex keys and generating the bibtex file from Zotero is sub-optimal…&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/knitcitations/issues/38#issuecomment-16473912&quot;&gt;09:48 2013/04/16&lt;/a&gt;
+cboettig commented on issue ropensci/treeBASE#4: &lt;em&gt;Seems to be a change in ape functions, causing the reorder.phylo in the chronoMPL function to attempt ridiculous memory allocations. Frustrating ho…&lt;/em&gt; &lt;a href=&quot;https://github.com/ropensci/treeBASE/issues/4#issuecomment-16524519&quot;&gt;06:32 2013/04/17&lt;/a&gt;
 &lt;/li&gt;&lt;/ul&gt;
 
 

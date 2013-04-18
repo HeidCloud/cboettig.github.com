@@ -24,7 +24,7 @@
 <!-- RDFa Metadata (in DublinCore) -->
 <meta property="dc:title" content="About this site" />
 <meta property="dc:creator" content="Carl Boettiger" />
-<meta property="dc:date" content="2013-04-17T10:44:26-07:00" />
+<meta property="dc:date" content="2013-04-18T07:26:47-07:00" />
 <meta property="dc:format" content="text/html" />
 <meta property="dc:language" content="en" />
 <meta property="dc:identifier" content="/README.html" />
@@ -37,13 +37,13 @@
 <meta property="og:author" content="http://www.carlboettiger.info/index.html#me" />  <!-- Should be Liquid? URI? -->
 <meta property="http://ogp.me/ns/profile#first_name" content="Carl"/>
 <meta property="http://ogp.me/ns/profile#last_name" content="Boettiger"/>
-<meta property="http://ogp.me/ns/article#published_time" content="2013-04-17T10:44:26-07:00" />
+<meta property="http://ogp.me/ns/article#published_time" content="2013-04-18T07:26:47-07:00" />
 <meta property="og:site_name" content="Lab Notebook" /> <!-- Same as dc:source? -->
 <meta property="og:url" content="http://www.carlboettiger.info/README.html" />
 <meta property="og:type" content="website" /> 
 <!-- Google Scholar Metadata -->
 <meta name="citation_author" content="Carl Boettiger"/>
-<meta name="citation_date" content="2013-04-17T10:44:26-07:00"/>
+<meta name="citation_date" content="2013-04-18T07:26:47-07:00"/>
 <meta name="citation_title" content="About this site"/>
 <meta name="citation_journal_title" content="Lab Notebook"/>
 
@@ -170,19 +170,24 @@
 <pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">sudo</span> update-alternatives --config ruby
 <span class="kw">sudo</span> update-alternatives --config gem</code></pre>
 <p>Install Jekyll and the dependencies needed for a few plugins.</p>
-<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">sudo</span> gem <span class="kw">install</span> jekyll feedzirra nokogiri twitter octokit pandoc-ruby</code></pre>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">sudo</span> gem <span class="kw">install</span> jekyll feedzirra nokogiri twitter octokit pandoc-ruby garb chronic json <span class="kw">time</span> </code></pre>
 <p>In the root directory of the project, run <code>jekyll --server</code>, if successfull, after a few seconds the site should be available by pointing your browser to <code>localhost:4000</code>. The additional gems are required for various plugins; see below for more information. Due to these additional requirements, this site cannot be automatically rendered on Github’s pages. Compile the site locally and copy the html files in <code>_site</code> to the <code>gh-pages</code> branch of a Github repository for Github-based hosting.</p>
 <h2 id="jekyll-dependencies">Jekyll Dependencies</h2>
 <p>The site relies on following additional ruby gems (not available on the Jekyll copy provided on Github’s gh-pages) to compile successfully.</p>
 <h4 id="required-gems">Required Gems</h4>
 <ul>
-<li><a href="https://github.com/pauldix/feedzirra">feedzirra</a> – Grab and format rss feed information<br /></li>
+<li><a href="https://github.com/pauldix/feedzirra">feedzirra</a> – Grab and format RSS feed information<br /></li>
 <li><a href="https://github.com/sparklemotion/nokogiri">nokogiri</a> – parse HTML and XML</li>
 <li><a href="https://github.com/sferik/twitter">twitter</a>– Ruby bindings to the Twitter API</li>
 <li><a href="https://github.com/pengwynn/octokit">octokit</a> – Ruby bindings to the Github API</li>
 <li><a href="https://github.com/alphabetum/pandoc-ruby">pandoc-ruby</a> – Ruby implementation of pandoc markdown interpreter (an alternative to redcarpet2)</li>
 <li><a href="https://github.com/vigetlabs/garb">garb</a> – Google API</li>
+<li><a href="https://github.com/mojombo/chronic">chronic</a> – parse timestamps</li>
+<li><a href="https://github.com/flori/json">json</a> – parse json</li>
 </ul>
+<!-- dependency of jekyll already * [redcarpet](https://github.com/vmg/redcarpet) -- markdown parsing, currently used by some custom plugins for formatting.  -->
+<!-- Potential gems, not needed yet: faraday, faraday_middleware, oauth, ruby-git -->
+
 <h3 id="custom-plugins">Custom Plugins</h3>
 <p>I have written a series of <a href="https://github.com/cboettig/labnotebook/tree/master/_plugins/jekyll-labnotebook-plugins">custom Jekyll plugins</a> using these gems. See the header comments of each plugin for more details on their configuration and use. Most are written explicitly for my notebook and may require tweaking for general use. Plugins are frequently under development, see the plugin page for most recent plugins and versions.</p>
 <table>
