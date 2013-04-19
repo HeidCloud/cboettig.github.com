@@ -811,8 +811,10 @@ http://carlboettiger.info/wordpress/archives/4482/index.html
 http://carlboettiger.info/archives/4482/index.html 
 
  
+http://carlboettiger.info/2013/04/18/notes.html  
 http://carlboettiger.info/2013/04/17/notes.html  
 http://carlboettiger.info/2013/04/16/notes.html  
+http://carlboettiger.info/2013/04/12/parametric-bayesian-example.html  
 http://carlboettiger.info/2013/04/11/tutorial-on-likelihood-and-roc-methods-for-early-warning-signals.html  
 http://carlboettiger.info/2013/04/11/nonparametric-bayes-framing-the-issues.html  
 http://carlboettiger.info/2013/04/05/a-clever-derivation-on-realized-escape-times.html  
