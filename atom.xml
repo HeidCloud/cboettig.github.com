@@ -4,13 +4,122 @@
  <title>Lab Notebook</title>
  <link href="/atom.xml" rel="self"/>
  <link href=""/>
- <updated>2013-04-19T15:41:48-07:00</updated>
+ <updated>2013-04-19T20:21:05-07:00</updated>
  <id></id>
  <author>
    <name>Carl Boettiger</name>
    <email>cboettig@gmail.com</email>
  </author>
 
+ 
+ <entry>
+   <title>SDP with parametric uncertainty from Bayesian inference</title>
+   <link href="/2013/04/19/bayesian-parametric-uncertainty-sdp.html"/>
+   <updated>2013-04-19T00:00:00-07:00</updated>
+   <id>h/2013/04/19/bayesian-parametric-uncertainty-sdp</id>
+   <content type="html">&lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;opts_chunk$&lt;span class=&quot;kw&quot;&gt;set&lt;/span&gt;(&lt;span class=&quot;dt&quot;&gt;tidy =&lt;/span&gt; &lt;span class=&quot;ot&quot;&gt;FALSE&lt;/span&gt;, &lt;span class=&quot;dt&quot;&gt;warning =&lt;/span&gt; &lt;span class=&quot;ot&quot;&gt;FALSE&lt;/span&gt;, &lt;span class=&quot;dt&quot;&gt;message =&lt;/span&gt; &lt;span class=&quot;ot&quot;&gt;FALSE&lt;/span&gt;)
+opts_knit$&lt;span class=&quot;kw&quot;&gt;set&lt;/span&gt;(&lt;span class=&quot;dt&quot;&gt;upload.fun =&lt;/span&gt; socialR::flickr.url)
+&lt;span class=&quot;kw&quot;&gt;theme_set&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;theme_bw&lt;/span&gt;(&lt;span class=&quot;dt&quot;&gt;base_size =&lt;/span&gt; &lt;span class=&quot;dv&quot;&gt;10&lt;/span&gt;))
+&lt;span class=&quot;kw&quot;&gt;theme_update&lt;/span&gt;(&lt;span class=&quot;dt&quot;&gt;panel.background =&lt;/span&gt; &lt;span class=&quot;kw&quot;&gt;element_rect&lt;/span&gt;(&lt;span class=&quot;dt&quot;&gt;fill =&lt;/span&gt; &lt;span class=&quot;st&quot;&gt;&amp;quot;transparent&amp;quot;&lt;/span&gt;, 
+    &lt;span class=&quot;dt&quot;&gt;colour =&lt;/span&gt; &lt;span class=&quot;ot&quot;&gt;NA&lt;/span&gt;), &lt;span class=&quot;dt&quot;&gt;plot.background =&lt;/span&gt; &lt;span class=&quot;kw&quot;&gt;element_rect&lt;/span&gt;(&lt;span class=&quot;dt&quot;&gt;fill =&lt;/span&gt; &lt;span class=&quot;st&quot;&gt;&amp;quot;transparent&amp;quot;&lt;/span&gt;, &lt;span class=&quot;dt&quot;&gt;colour =&lt;/span&gt; &lt;span class=&quot;ot&quot;&gt;NA&lt;/span&gt;))
+cbPalette &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;c&lt;/span&gt;(&lt;span class=&quot;st&quot;&gt;&amp;quot;#000000&amp;quot;&lt;/span&gt;, &lt;span class=&quot;st&quot;&gt;&amp;quot;#E69F00&amp;quot;&lt;/span&gt;, &lt;span class=&quot;st&quot;&gt;&amp;quot;#56B4E9&amp;quot;&lt;/span&gt;, &lt;span class=&quot;st&quot;&gt;&amp;quot;#009E73&amp;quot;&lt;/span&gt;, &lt;span class=&quot;st&quot;&gt;&amp;quot;#F0E442&amp;quot;&lt;/span&gt;, 
+    &lt;span class=&quot;st&quot;&gt;&amp;quot;#0072B2&amp;quot;&lt;/span&gt;, &lt;span class=&quot;st&quot;&gt;&amp;quot;#D55E00&amp;quot;&lt;/span&gt;, &lt;span class=&quot;st&quot;&gt;&amp;quot;#CC79A7&amp;quot;&lt;/span&gt;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Adapting the parametric uncertainty represented by the posterior distributions of the Bayesian estimate (see &lt;a href=&quot;http://carlboettiger.info/2013/04/12/parametric-bayesian-example.html&quot;&gt;earlier notes&lt;/a&gt;) to the stochastic dynamic programming solution for the optimal policy. Simply requires evaluating the expectation over the distribution, but is computationally intensive given the spread and the three parameters.&lt;/p&gt;
+&lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;f_transition_matrix &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;function(f, p, x_grid, h_grid, sigma_g, pardist){
+  &lt;span class=&quot;kw&quot;&gt;lapply&lt;/span&gt;(h_grid, par_F, f, p, x_grid, sigma_g, pardist)
+}
+
+
+par_F &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;function(h, f, p, x_grid, sigma_g, pardist, &lt;span class=&quot;dt&quot;&gt;n_mc =&lt;/span&gt; &lt;span class=&quot;dv&quot;&gt;100&lt;/span&gt;){
+  
+  &lt;span class=&quot;co&quot;&gt;# Set up monte carlo sampling &lt;/span&gt;
+  d &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;dim&lt;/span&gt;(pardist)
+  indices &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;round&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;runif&lt;/span&gt;(n_mc,&lt;span class=&quot;dv&quot;&gt;1&lt;/span&gt;, d[&lt;span class=&quot;dv&quot;&gt;1&lt;/span&gt;]))
+  
+  &lt;span class=&quot;co&quot;&gt;# Compute the matrix&lt;/span&gt;
+  F_true &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;
+&lt;span class=&quot;st&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;sapply&lt;/span&gt;(x_grid, function(x_t){           &lt;span class=&quot;co&quot;&gt;# For each x_t  &lt;/span&gt;
+
+      bypar &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;sapply&lt;/span&gt;(indices, function(i){ &lt;span class=&quot;co&quot;&gt;# For each parameter value&lt;/span&gt;
+        p &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;unname&lt;/span&gt;(pardist[i,&lt;span class=&quot;kw&quot;&gt;c&lt;/span&gt;(&lt;span class=&quot;dv&quot;&gt;4&lt;/span&gt;,&lt;span class=&quot;dv&quot;&gt;1&lt;/span&gt;,&lt;span class=&quot;dv&quot;&gt;5&lt;/span&gt;)])    &lt;span class=&quot;co&quot;&gt;# parameters for the mean, at current sample &lt;/span&gt;
+        mu &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;f&lt;/span&gt;(x_t,h,p)
+        est_sigma_g &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;pardist[i,&lt;span class=&quot;dv&quot;&gt;2&lt;/span&gt;]         &lt;span class=&quot;co&quot;&gt;# Variance parameter &lt;/span&gt;
+
+        if(&lt;span class=&quot;kw&quot;&gt;snap_to_grid&lt;/span&gt;(mu,x_grid) &amp;lt;&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;x_grid[&lt;span class=&quot;dv&quot;&gt;2&lt;/span&gt;]){ &lt;span class=&quot;co&quot;&gt;# handle the degenerate case &lt;/span&gt;
+          out &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;numeric&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;length&lt;/span&gt;(x_grid))
+          out[&lt;span class=&quot;dv&quot;&gt;1&lt;/span&gt;] &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;dv&quot;&gt;1&lt;/span&gt;
+          out
+        } else {
+          out &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;dlnorm&lt;/span&gt;(x_grid/mu, &lt;span class=&quot;dv&quot;&gt;0&lt;/span&gt;, est_sigma_g) 
+        }
+      })  
+      ave_over_pars &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;apply&lt;/span&gt;(bypar, &lt;span class=&quot;dv&quot;&gt;1&lt;/span&gt;, sum) &lt;span class=&quot;co&quot;&gt;# collapse by weighted average over possible parameters    &lt;/span&gt;
+      ave_over_pars /&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;sum&lt;/span&gt;(ave_over_pars)
+      })
+  F_true &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;t&lt;/span&gt;(F_true)
+        
+}
+
+
+snap_to_grid &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;function(x, grid) &lt;span class=&quot;kw&quot;&gt;sapply&lt;/span&gt;(x, function(x) grid[&lt;span class=&quot;kw&quot;&gt;which.min&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;abs&lt;/span&gt;(grid -&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;x))])   
+
+
+&lt;span class=&quot;co&quot;&gt;# internal helper function&lt;/span&gt;
+rownorm &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;function(M) 
+  &lt;span class=&quot;kw&quot;&gt;t&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;apply&lt;/span&gt;(M, &lt;span class=&quot;dv&quot;&gt;1&lt;/span&gt;, function(x){ 
+    if(&lt;span class=&quot;kw&quot;&gt;sum&lt;/span&gt;(x)&amp;gt;&lt;span class=&quot;dv&quot;&gt;0&lt;/span&gt;){
+      x/&lt;span class=&quot;kw&quot;&gt;sum&lt;/span&gt;(x)
+    } else {
+      out &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;numeric&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;length&lt;/span&gt;(x))
+      out[&lt;span class=&quot;dv&quot;&gt;1&lt;/span&gt;] &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;dv&quot;&gt;1&lt;/span&gt;
+      out
+    }
+  }))&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Run the Bayesian analysis to obtain posterior distributions for parameters.&lt;/p&gt;
+&lt;h2 id=&quot;test-case-using-perturbed-parameters&quot;&gt;Test case using perturbed parameters&lt;/h2&gt;
+&lt;p&gt;First, sanity test. Use the correct parameter values (slightly perturbed).&lt;/p&gt;
+&lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;pardist &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;mcmcall
+pardist[,&lt;span class=&quot;dv&quot;&gt;1&lt;/span&gt;] =&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;p[&lt;span class=&quot;dv&quot;&gt;2&lt;/span&gt;] +&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;rnorm&lt;/span&gt;(&lt;span class=&quot;dv&quot;&gt;100&lt;/span&gt;, &lt;span class=&quot;dv&quot;&gt;0&lt;/span&gt;, &lt;span class=&quot;fl&quot;&gt;0.000001&lt;/span&gt;)
+pardist[,&lt;span class=&quot;dv&quot;&gt;4&lt;/span&gt;] =&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;p[&lt;span class=&quot;dv&quot;&gt;1&lt;/span&gt;] +&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;rnorm&lt;/span&gt;(&lt;span class=&quot;dv&quot;&gt;100&lt;/span&gt;, &lt;span class=&quot;dv&quot;&gt;0&lt;/span&gt;, &lt;span class=&quot;fl&quot;&gt;0.000001&lt;/span&gt;)
+pardist[,&lt;span class=&quot;dv&quot;&gt;5&lt;/span&gt;] =&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;p[&lt;span class=&quot;dv&quot;&gt;3&lt;/span&gt;] +&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;rnorm&lt;/span&gt;(&lt;span class=&quot;dv&quot;&gt;100&lt;/span&gt;, &lt;span class=&quot;dv&quot;&gt;0&lt;/span&gt;, &lt;span class=&quot;fl&quot;&gt;0.000001&lt;/span&gt;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Compute optimal policy&lt;/p&gt;
+&lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;sdp =&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;f_transition_matrix&lt;/span&gt;(f, p, x_grid, h_grid, sigma_g, pardist)
+s_opt &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;value_iteration&lt;/span&gt;(sdp, x_grid, h_grid, &lt;span class=&quot;dt&quot;&gt;OptTime=&lt;/span&gt;&lt;span class=&quot;dv&quot;&gt;1000&lt;/span&gt;, xT, profit, delta)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Compare to the case without parameter uncertainty (growth noise only)&lt;/p&gt;
+&lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;SDP_Mat &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;determine_SDP_matrix&lt;/span&gt;(f, p, x_grid, h_grid, sigma_g)
+pars_fixed &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;value_iteration&lt;/span&gt;(SDP_Mat, x_grid, h_grid, &lt;span class=&quot;dt&quot;&gt;OptTime=&lt;/span&gt;&lt;span class=&quot;dv&quot;&gt;1000&lt;/span&gt;, xT, profit, delta)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Plot results&lt;/p&gt;
+&lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;&lt;span class=&quot;kw&quot;&gt;require&lt;/span&gt;(reshape2)
+policies &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;melt&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;data.frame&lt;/span&gt;(&lt;span class=&quot;dt&quot;&gt;stock=&lt;/span&gt;x_grid, &lt;span class=&quot;dt&quot;&gt;pars.uncert =&lt;/span&gt; x_grid[s_opt$D], &lt;span class=&quot;dt&quot;&gt;pars.fixed =&lt;/span&gt; x_grid[pars_fixed$D]), &lt;span class=&quot;dt&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;st&quot;&gt;&amp;quot;stock&amp;quot;&lt;/span&gt;)
+&lt;span class=&quot;kw&quot;&gt;ggplot&lt;/span&gt;(policies, &lt;span class=&quot;kw&quot;&gt;aes&lt;/span&gt;(stock, stock -&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;value, &lt;span class=&quot;dt&quot;&gt;color=&lt;/span&gt;variable)) +&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;geom_line&lt;/span&gt;(&lt;span class=&quot;dt&quot;&gt;alpha=&lt;/span&gt;&lt;span class=&quot;dv&quot;&gt;1&lt;/span&gt;) +&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;xlab&lt;/span&gt;(&lt;span class=&quot;st&quot;&gt;&amp;quot;stock size&amp;quot;&lt;/span&gt;) +&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;ylab&lt;/span&gt;(&lt;span class=&quot;st&quot;&gt;&amp;quot;escapement&amp;quot;&lt;/span&gt;) &lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&quot;figure&quot;&gt;
+&lt;img src=&quot;http://farm9.staticflickr.com/8239/8664751264_4673b8dc92_o.png&quot; /&gt;
+&lt;/div&gt;
+&lt;h2 id=&quot;using-actual-estimates&quot;&gt;Using actual estimates&lt;/h2&gt;
+&lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;pardist &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;mcmcall&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Transform parameters back&lt;/p&gt;
+&lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;pardist[,&lt;span class=&quot;dv&quot;&gt;4&lt;/span&gt;] =&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;exp&lt;/span&gt;(pardist[,&lt;span class=&quot;dv&quot;&gt;4&lt;/span&gt;])
+pardist[,&lt;span class=&quot;dv&quot;&gt;5&lt;/span&gt;] =&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;exp&lt;/span&gt;(pardist[,&lt;span class=&quot;dv&quot;&gt;5&lt;/span&gt;])&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Compute optimal policy&lt;/p&gt;
+&lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;sdp =&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;f_transition_matrix&lt;/span&gt;(f, p, x_grid, h_grid, sigma_g, pardist)
+s_opt &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;value_iteration&lt;/span&gt;(sdp, x_grid, h_grid, &lt;span class=&quot;dt&quot;&gt;OptTime=&lt;/span&gt;&lt;span class=&quot;dv&quot;&gt;1000&lt;/span&gt;, xT, profit, delta)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Compare to the case without parameter uncertainty (growth noise only)&lt;/p&gt;
+&lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;SDP_Mat &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;determine_SDP_matrix&lt;/span&gt;(f, p, x_grid, h_grid, sigma_g)
+pars_fixed &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;value_iteration&lt;/span&gt;(SDP_Mat, x_grid, h_grid, &lt;span class=&quot;dt&quot;&gt;OptTime=&lt;/span&gt;&lt;span class=&quot;dv&quot;&gt;1000&lt;/span&gt;, xT, profit, delta)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Plot results&lt;/p&gt;
+&lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;&lt;span class=&quot;kw&quot;&gt;require&lt;/span&gt;(reshape2)
+policies &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;melt&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;data.frame&lt;/span&gt;(&lt;span class=&quot;dt&quot;&gt;stock=&lt;/span&gt;x_grid, &lt;span class=&quot;dt&quot;&gt;pars.uncert =&lt;/span&gt; x_grid[s_opt$D], &lt;span class=&quot;dt&quot;&gt;pars.fixed =&lt;/span&gt; x_grid[pars_fixed$D]), &lt;span class=&quot;dt&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;st&quot;&gt;&amp;quot;stock&amp;quot;&lt;/span&gt;)
+&lt;span class=&quot;kw&quot;&gt;ggplot&lt;/span&gt;(policies, &lt;span class=&quot;kw&quot;&gt;aes&lt;/span&gt;(stock, stock -&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;value, &lt;span class=&quot;dt&quot;&gt;color=&lt;/span&gt;variable)) +&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;geom_line&lt;/span&gt;(&lt;span class=&quot;dt&quot;&gt;alpha=&lt;/span&gt;&lt;span class=&quot;dv&quot;&gt;1&lt;/span&gt;) +&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;xlab&lt;/span&gt;(&lt;span class=&quot;st&quot;&gt;&amp;quot;stock size&amp;quot;&lt;/span&gt;) +&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;ylab&lt;/span&gt;(&lt;span class=&quot;st&quot;&gt;&amp;quot;escapement&amp;quot;&lt;/span&gt;) &lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&quot;figure&quot;&gt;
+&lt;img src=&quot;http://farm9.staticflickr.com/8253/8664759708_d3be6550e9_o.png&quot; /&gt;
+&lt;/div&gt;
+&lt;h2 id=&quot;to-do&quot;&gt;To Do&lt;/h2&gt;
+&lt;p&gt;So far this is just a proof of principle example.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Needs to be adjusted to account for uncertainty in the estimates of the measurement noise process as well.&lt;/li&gt;
+&lt;li&gt;Needs to be written as generic and documented functions, add to nonparametric-bayes package routines.&lt;/li&gt;
+&lt;/ul&gt;</content>
+ </entry>
  
  <entry>
    <title>Notes</title>
@@ -4848,6 +4957,14 @@ linear &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;dt[, &lt;span cla
 &lt;p&gt;vim set sytnax language, useful for getting R highlighting in &lt;code&gt;.Rmd&lt;/code&gt; files: &lt;code&gt;setf r&lt;/code&gt;, or equivalently, &lt;code&gt;set filetype=r&lt;/code&gt; (must be lowercase r). &lt;code&gt;set filetype&lt;/code&gt; with no argument gives the current filetype.&lt;/p&gt;
 &lt;h3 id=&quot;coding&quot;&gt;Coding&lt;/h3&gt;
 &lt;ul&gt;&lt;li&gt;
+cboettig pushed to master at cboettig/labnotebook: &lt;em&gt;Notes/example on SDP for parametric bayes checklist notes Google pagespeed didn’t like my charset encoding&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/labnotebook/compare/6ed539832f...0461598034&quot;&gt;02:49 2013/04/20&lt;/a&gt;
+&lt;/li&gt;&lt;li&gt;
+cboettig opened issue michalboo/mendeley-oapi#1: &lt;em&gt;Convert repository into a ruby gem?&lt;/em&gt; &lt;a href=&quot;https://github.com/michalboo/mendeley-oapi/issues/1&quot;&gt;02:41 2013/04/20&lt;/a&gt;
+&lt;/li&gt;&lt;li&gt;
+cboettig pushed to master at cboettig/nonparametric-bayes: &lt;em&gt;example run without uncertainty invariance parameters&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/nonparametric-bayes/compare/34922e969e...5d19dedfc1&quot;&gt;12:35 2013/04/20&lt;/a&gt;
+&lt;/li&gt;&lt;li&gt;
+cboettig pushed to master at cboettig/cboettig.github.com: &lt;em&gt;update site&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/cboettig.github.com/compare/1629a5815b...40e89d8cef&quot;&gt;10:56 2013/04/19&lt;/a&gt;
+&lt;/li&gt;&lt;li&gt;
 cboettig pushed to master at cboettig/cboettig.github.com: &lt;em&gt;update site&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/cboettig.github.com/compare/f8081d9c88...1629a5815b&quot;&gt;10:32 2013/04/19&lt;/a&gt;
 &lt;/li&gt;&lt;li&gt;
 cboettig pushed to master at cboettig/nonparametric-bayes: &lt;em&gt;parametric bayes intial example&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/nonparametric-bayes/compare/795bf96ed9...34922e969e&quot;&gt;07:44 2013/04/19&lt;/a&gt;
@@ -4855,14 +4972,6 @@ cboettig pushed to master at cboettig/nonparametric-bayes: &lt;em&gt;parametric 
 cboettig reopened issue cboettig/knitcitations#37: &lt;em&gt;Tooltip should render HTML markup&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/knitcitations/issues/37&quot;&gt;07:27 2013/04/19&lt;/a&gt;
 &lt;/li&gt;&lt;li&gt;
 cboettig commented on issue cboettig/knitcitations#37: &lt;em&gt;Looks like this should work if the html tags are all escaped. Should be a CGI escape filter function call for that I can just swap in…&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/knitcitations/issues/37#issuecomment-16678529&quot;&gt;07:27 2013/04/19&lt;/a&gt;
-&lt;/li&gt;&lt;li&gt;
-cboettig created tag first-submission at cboettig/ews-review: &lt;em&gt;&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/ews-review/tree/first-submission&quot;&gt;06:39 2013/04/19&lt;/a&gt;
-&lt;/li&gt;&lt;li&gt;
-cboettig commented on issue cboettig/ews-review#24: &lt;em&gt;indeed. Alan also suggested considering a glossary of abbreviations as an added table / box On Fri, Apr 19, 2013 at 10:31 AM, Noam Ross notificatio…&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/ews-review/issues/24#issuecomment-16673556&quot;&gt;06:35 2013/04/19&lt;/a&gt;
-&lt;/li&gt;&lt;li&gt;
-cboettig opened issue cboettig/ews-review#19: &lt;em&gt;Revise section on critical transitions with unanticipated warning signs – it’s not just chaos&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/ews-review/issues/19&quot;&gt;04:32 2013/04/19&lt;/a&gt;
-&lt;/li&gt;&lt;li&gt;
-cboettig opened issue cboettig/ews-review#18: &lt;em&gt;Annotations for figure 1&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/ews-review/issues/18&quot;&gt;04:30 2013/04/19&lt;/a&gt;
 &lt;/li&gt;&lt;/ul&gt;
 
 
