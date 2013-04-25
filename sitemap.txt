@@ -810,6 +810,7 @@ http://carlboettiger.info/wordpress/archives/4482/index.html
 http://carlboettiger.info/archives/4482/index.html 
 
  
+http://carlboettiger.info/2013/04/23/we-need-more-object-oriented-design-in-comparative-methods.html  
 http://carlboettiger.info/2013/04/19/bayesian-parametric-uncertainty-sdp.html  
 http://carlboettiger.info/2013/04/18/notes.html  
 http://carlboettiger.info/2013/04/17/notes.html  
