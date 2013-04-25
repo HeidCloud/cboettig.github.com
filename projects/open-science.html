@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head prefix="dc: http://purl.org/dc/terms/ og: http://ogp.me/ns#">
+  <meta http-equiv='Content-Type' content='text/html; charset=utf-8'/>
+  <title>My experiments with open science</title>
+  <meta name="author" content="Carl Boettiger" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+
+<!-- Some liquid code so that pages get the site.time creation date 
+      Would be nice to use github modified times, but doesn't handle 
+      the path for pages -->
+
+
+
+
+
+
+
+<!-- HTML5 metadata -->
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<meta name="resource_type" content="website"/> 
+<!-- RDFa Metadata (in DublinCore) -->
+<meta property="dc:title" content="My experiments with open science" />
+<meta property="dc:creator" content="Carl Boettiger" />
+<meta property="dc:date" content="2013-04-24T10:29:54-07:00" />
+<meta property="dc:format" content="text/html" />
+<meta property="dc:language" content="en" />
+<meta property="dc:identifier" content="/projects/open-science.html" />
+<meta property="dc:rights" content="CC0" />
+<meta property="dc:source" content="Lab Notebook" />
+<meta property="dc:subject" content="Ecology" /> 
+<meta property="dc:type" content="website" /> 
+<!-- RDFa Metadata (in OpenGraph) -->
+<meta property="og:title" content="My experiments with open science" />
+<meta property="og:author" content="http://www.carlboettiger.info/index.html#me" />  <!-- Should be Liquid? URI? -->
+<meta property="http://ogp.me/ns/profile#first_name" content="Carl"/>
+<meta property="http://ogp.me/ns/profile#last_name" content="Boettiger"/>
+<meta property="http://ogp.me/ns/article#published_time" content="2013-04-24T10:29:54-07:00" />
+<meta property="og:site_name" content="Lab Notebook" /> <!-- Same as dc:source? -->
+<meta property="og:url" content="http://www.carlboettiger.info/projects/open-science.html" />
+<meta property="og:type" content="website" /> 
+<!-- Google Scholar Metadata -->
+<meta name="citation_author" content="Carl Boettiger"/>
+<meta name="citation_date" content="2013-04-24T10:29:54-07:00"/>
+<meta name="citation_title" content="My experiments with open science"/>
+<meta name="citation_journal_title" content="Lab Notebook"/>
+
+<!--NOTE: see also the COinS Metadata in span element in footer -->
+
+
+
+
+  <!-- CSS Stylesheets (toggled with javascript) -->
+  <link href="/assets/css/light.css" rel="stylesheet"
+        type="text/css" id="stl" title="light" />
+  <link href="/assets/css/dark.css" rel="alternate stylesheet" 
+        type="text/css" title="dark" />
+  <link href="/assets/css/bootstrap-responsive.css" rel="stylesheet" 
+        type="text/css"/>
+  <!-- Javascript needed for theme toggle, load immediately -->
+  <script type="text/javascript" src="/assets/js/switch-css.js"></script>
+  <script type="text/javascript">
+    set_style_from_cookie(); 
+  </script>
+</head>
+
+
+  <body prefix="dc: http://purl.org/dc/terms/ foaf: http://xmlns.com/foaf/0.1/"> 
+    
+<!-- Navbar  ================================================== -->
+<div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+      <a class="brand" href="/README.html"><span  class="showtooltip" 
+          title="Credits and technical information about this site" 
+          data-placement="bottom"><i style="float:right;" class="icon-info-sign" alt="info"></i></span></a>
+      <div class="nav-collapse">
+        <ul class="nav">
+          <li>
+          <a href="/index.html">Home</a></li>
+
+          <li>
+          <a href="/vita.html">Vita</a></li>
+
+          <li>
+          <a href="/research.html">Research</a></li>
+
+          <li>
+          <a href="/teaching.html">Teaching</a></li>
+
+          <li>
+          <a href="/community.html">Community</a></li>
+
+          <li>
+          <a href="/lab-notebook.html">Lab Notebook</a></li>
+
+        </ul>
+      </div><!--/.nav-collapse -->
+
+      <!-- Search site using Google's index --><!--
+      <form class="navbar-search pull-right" method="get" action="http://google.com/search">
+        <p>
+          <input type="hidden" name="q" value="site:carlboettiger.info" />
+          <input type="text" class="search-query" name="q" />
+          <button class="btn btn-mini" type="submit"><i class="icon-search"></i></button> 
+        </p>
+      </form>
+      -->
+      <div id="search">
+      <form method="get" class="navbar-search pull-right form-search">
+        <p>
+        <input type="text" name="search-text" id="search-text">
+         <button class="btn btn-mini" type="submit"><i class="icon-search"></i></button> 
+        </p>
+      </form>
+      </div>
+     </div> <!-- /container -->
+   </div> <!-- /navbar-inner -->
+ </div> <!-- /navbar -->
+
+
+
+    <div class="container"> <!-- Responsive grid layout --> 
+
+      <header class="jumbotron">
+  <h1 class="entry-title">My experiments with open science</h1>
+  <h3></h3>
+</header>
+
+
+
+<div class="row">
+  <div class="span2">
+<ul class="nav nav-list">
+<li class="nav-header">Active Projects</li>
+<li 
+   ><a href="/projects/nonparametric-bayes.html">Nonparametric Bayes</a></li>
+<li  ><a href="/projects/multiple-uncertainty.html">Multiple Uncertainty</a></li>
+<li  ><a href="/projects/warning-signals.html">Early Warning Signals</a></li>
+<li  ><a href="/projects/pdg-control.html">Pretty Darn Good Control</a></li>
+<li   
+    class="active" 
+  ><a href="/projects/open-science.html">Open Science</a></li>
+<li  ><a href="/projects/ropensci.html">ropensci</a></li>
+<li  class="nav-header">Earlier Projects</li> 
+<li  ><a href="/projects/adaptive-dynamics.html">Adaptive Dynamics</a></li>
+<li  ><a href="/projects/phylogenetics.html">Phylogenetics</a></li>
+</ul>
+  </div>
+  <div class="span10">
+    <div class="borderleft" style="font-size: 13px;">
+    
+
+<div class="row">
+  <div class="span6">
+    <h2> Abstract </h2>
+    <!-- Pull Readme and parse Abstract with Nokogiri? -->
+Okay, so this isn't really a research topic of mine properly speaking, but as it is something I occassionally write about in the notebook (in my <a href="/categories.html#open-science">open-science</a> category) I thought it might merit it's own landing page.  I have come to consider the open notebook an experiment in scientific communication as well as a platform for that purpose.  It has been great fun testing out different internet technologies that are not available for my more traditional publications -- from analytics and social media integration to website layout, design and performance (css, javascript, static vs dynamic hosting), to XML, RDFa and other tools of the semantic web.  
+
+Open Science posts appear under several different tags.  <a href="/tags.html#notebook-technology">#notebook-technology</a> describes various plugins and scripts I use or have explored for generating and sharing content more effectively as I have experimented with different platform (Mediawiki, Wordpress, and now Jekyll/Github).  <a href="/tags.html#Jekyll">#Jekyll</a> covers posts specific to using the Jekyll platform of course. One concept I've been particularly interested in exploring recently is how a web-based notebook can make use of Linked Data, ontologies, and other tools of the semantic web.  These posts are collected under the <a href="/tags.html#semantics">#semantics</a> tags.  Though many of these posts are documenting my experiments for my own reference, just as other notebook entries do for my real research topics, some are written for an audience larger than one and so tagged <a href="/tags.html#blog">#blog</a>  (albeit a rather scientific or tech-geek audience, aka my twitter followers).  Some of these reflect on open science policy and literature on the merits or risks open science involves.  
+
+These research landing pages are one example of notebook technology, where the feeds below are automatically generated by tools watching my various workflows that can then be rendered here.  
+
+<p><iframe src="http://ghbtns.com/github-btn.html?user=cboettig&repo=labnotebook&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="85px" height="20px"></iframe>
+<iframe src="http://ghbtns.com/github-btn.html?user=cboettig&repo=labnotebook&type=fork&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="85px" height="20px" class="pull-right"></iframe></p>
+
+    </div>
+
+    <div class="span3 borderleft">
+    <h3> Collaborators </h3>
+I am greatful for the support and interaction with so many people in the open science community; in particular the other members of the <a href="http://ropensci.org">ropensci</a> project, <a href="">Davis Open Science</a> and the <a href="http://science.okfn.org">OKFN Open Science</a> chapter, as well as the endorsement of my mentors past and present.   
+
+<h3> Funding and Support/Affiliations </h3>
+I am greatful that my funding sources and affiliations so far at (UC Davis, CSGF Fellow, and UC Santa Cruz, CSTAR postdoc) have permitted my open notebook.  While the regular practice saves me time, so far actual development has been left to the status of "hobby."  
+</div>
+</div>
+
+<hr>
+
+<div class="row">
+  <div calss="span10">
+    <div class="span3">
+     <h4> <a href="/tags.html#open-science" style="color:#b58900;"><i class="icon-tags" ></i>Tagged notebook entries</a> </h4>
+        
+        <p> <a href="/2013/04/04/notebook-parsing.html">Notebook Features: parsing linked data in the semantic notebook</a> 
+    <span style="font-style:italic"> 04 Apr 2013</span></p>
+        
+        <p> <a href="/2013/02/22/semantic-citations-for-the-notebook-and-knitr.html">Semantic Citations For The Notebook And Knitr</a> 
+    <span style="font-style:italic"> 22 Feb 2013</span></p>
+        
+        <p> <a href="/2012/12/06/github-issues-tracker%3A-the-perfect-research-todo-list.html">Github Issues Tracker: The Perfect Research Todo List</a> 
+    <span style="font-style:italic"> 06 Dec 2012</span></p>
+        
+        <p> <a href="/2012/11/23/citing-lab-notebook-entries.html">Citing Lab Notebook Entries</a> 
+    <span style="font-style:italic"> 23 Nov 2012</span></p>
+        
+        <p> <a href="/2012/10/14/semantic-lab-notebook.html">Semantic Lab Notebook</a> 
+    <span style="font-style:italic"> 14 Oct 2012</span></p>
+        
+        <p> <a href="/2012/09/28/Welcome-to-my-lab-notebook.html">Welcome to my Lab Notebook - Reloaded</a> 
+    <span style="font-style:italic"> 28 Sep 2012</span></p>
+        
+        <p> <a href="/2012/09/19/migrating-from-wordpress-to-jekyll.html">Migrating From Wordpress To Jekyll</a> 
+    <span style="font-style:italic"> 19 Sep 2012</span></p>
+        
+        <p> <a href="/2012/09/05/ESA-changes-ArXiv-policy-following-community-comments.html">Esa Changes Arxiv Policy Following Community Comments</a> 
+    <span style="font-style:italic"> 05 Sep 2012</span></p>
+        
+   </div>
+    <div class="span3">
+      <h4><a href="https://github.com/cboettig/labnotebook/issues" style="color:#d33682;"> <i class="icon-list"></i> Active Issues / Next Steps</a> </h4>
+
+      <em>Features, tools and other modifications I'm working on for improving the open notebook</em>
+      <ul><li> <a href="https://github.com/cboettig/labnotebook/issues/90">Citation tooltips not formatted, show markdown syntax</a> </li><li> <a href="https://github.com/cboettig/labnotebook/issues/88">Generate an atom / RSS feed for Vita (?)</a>  (<font color="#444444">Content</font>)</li><li> <a href="https://github.com/cboettig/labnotebook/issues/87">replace pub pdf links via mendeley download with download from local host</a> </li><li> <a href="https://github.com/cboettig/labnotebook/issues/86">Correct the dates in `dc:date`</a>  (<font color="#e102d8">Semantics</font>)</li><li> <a href="https://github.com/cboettig/labnotebook/issues/85">Link grant applications on vita.html to pdfs (on figshare, with dois)</a>  (<font color="#444444">Content</font>)</li><li> <a href="https://github.com/cboettig/labnotebook/issues/84">Get the branching time work into the notebook</a>  (<font color="#444444">Content</font>)</li><li> <a href="https://github.com/cboettig/labnotebook/issues/83">Replace Disqus with something open source and more robustly archival</a> </li><li> <a href="https://github.com/cboettig/labnotebook/issues/81">Octokit API calls: error handling and toggles</a>  (<font color="#02d7e1">jekyll plugin</font>)</li></ul>
+    </div>
+    <div class="span3">
+      <h4><a href="" style="color:#dc322f;"> <i class="icon-bookmark" ></i> Reading</a> </h4>
+      <ul><li>Bias in Peer Review: Volume: 64, Issue: 1. Pages: 2-17. Carole J Lee et al. <a href="http://www.mendeley.comhttp://www.mendeley.com/c/5727235114/g/530031/lee-2013-bias-in-peer-review/">08:54 2013/04/18</a></li><li>Reconceptualizing Stars: Scientist Helpfulness and Peer Performance: Management Science (2012). Volume: 58, Issue: 6. Pages: 1122-1140. A. Oettl et al. <a href="http://www.mendeley.comhttp://www.mendeley.com/c/5727235094/g/530031/oettl-2012-reconceptualizing-stars-scientist-helpfulness-and-peer-performance/">08:25 2013/04/18</a></li><li>Collegiality versus Competition: How Metrics Shape Scientific Communities: BioScience (2013). Volume: 63, Issue: 3. Pages: 155-156. SUJAY S. KAUSHAL;, JONATHAN M. JESCHKE et al. <a href="http://www.mendeley.comhttp://www.mendeley.com/c/5698464034/g/530031/kaushal-2013-collegiality-versus-competition-how-metrics-shape-scientific-communities/">07:08 2013/04/08</a></li><li>Open Access Survey : Exploring the views of Taylor & Francis and Routledge authors: Taylor & Francis et al.Published using Mendeley: The bibliography manager for researchers <a href="http://www.mendeley.com/research/open-access-survey-exploring-views-taylor-francis-routledge-authors/">06:37 2013/04/08</a></li></ul>
+    </div>
+  </div>
+</div>
+
+<hr>
+
+<div class="row">
+  <div calss="span10">
+    <div class="span3">
+      <h4> <a href="/vita.html" style="color:#2aa198;"><i class="icon-book"></i> Media coverage</a> </h4>
+      
+      <em>My lab notebook and open science practices have occassionally appeared in some traditional media outlets in interviews or other mentions.</em>    
+  <ul>
+  <li><strong>2013</strong> Gershwin, Virginia.  <strong>Turning Point: Carl Boettiger</strong> <em>Nature</em>, 493  doi: <a href="http://dx.doi.org/10.1038/nj7434-711a">10.1038/nj7434-711a</a></li>
+  <li><strong>2010</strong>  Wald Chelsea. "Scientists Embrace Openness." <em>Science</em>. doi: <a href="http://dx.doi.org/10.1126/science.caredit.a1000036">10.1126/science.caredit.a1000036</a></li>
+  <li>(2013). Jason Priem.  <strong>Scholarship: Beyond The Paper.</strong>  <em>Nature</em>, 495, pp. 437&ndash;440. <a href="http://dx.doi.org/10.1038/495437a">10.1038/495437a</a>.
+  </li>
+</ul>
+
+
+     </div>
+     <div class="span3">
+       <h4><a href="https://github.com/cboettig/labnotebook" style="color:#6c71c4;"><i class="icon-github"></i> Recent Commits</a> </h4>
+      <ul><li>Notes/example on SDP for parametric bayes <a href="https://github.com/cboettig/labnotebook/commit/04615980348741ba5657ac22d94bbe55fe53be05">02:48 am 2013/04/20</a></li><li>checklist notes <a href="https://github.com/cboettig/labnotebook/commit/679746362dbae12ecf4b4bb6d9a755aecb525e51">02:34 am 2013/04/20</a></li><li>Google pagespeed didn't like my charset encoding
+using the legacy encoding instead
+see https://developers.google.com/speed/pagespeed/insights <a href="https://github.com/cboettig/labnotebook/commit/d0c4542a5d4ecd5a890e18195d4502b23d480c20">11:57 pm 2013/04/19</a></li><li>adding notes from parametric bayesian example constructed last friday <a href="https://github.com/cboettig/labnotebook/commit/f2ee795aa13214fd00a5df642b6c7b401d940189">10:41 pm 2013/04/19</a></li><li>tweaking text a bit more <a href="https://github.com/cboettig/labnotebook/commit/347551bd9e7e00beddaf7394450f9630dfc28de0">08:14 pm 2013/04/19</a></li><li>drafting notes <a href="https://github.com/cboettig/labnotebook/commit/a27c6fb288f18f0468cce922c6745f66f19c867c">08:13 pm 2013/04/19</a></li><li>added quotes <a href="https://github.com/cboettig/labnotebook/commit/6b59f0c1448f1786648dc7d89d270cebbbd17fc0">08:13 pm 2013/04/19</a></li><li>tweaking text <a href="https://github.com/cboettig/labnotebook/commit/79c355bff495a60f028928dc322dea213656d111">08:12 pm 2013/04/19</a></li></ul>
+     </div>
+    <div class="span3">
+      <h4> News and Resources </h4>
+
+    </div>
+  </div>
+</div>
+
+
+
+
+    </div>
+  </div>
+</div>
+
+
+<footer class="footer">
+  <!-- ************* Buttons to toggle theme CSS ********************** -->
+    <div class="row">
+      <div class="span12">
+        <form style="font-size:10px" class="pull-right">
+          <a onclick="switch_style('dark'); 
+                      recordOutboundLink(this, 'Outbound Links', 'dark theme'); 
+                      return false;" 
+             name="theme" value="dark" id="dark" 
+             class="btn btn-mini"><span class="showtooltip" 
+                                        title="switch to dark theme"><i class="icon-adjust"></i>
+                                   </span></a>
+          
+          <a onclick="switch_style('light'); 
+                      recordOutboundLink(this, 'Outbound Links', 'light theme'); 
+                      return false;" 
+             name="theme" value="light" id="light" 
+             class="btn btn-mini"><span class="showtooltip" 
+                                        title="switch to light theme"><i class="icon-certificate"></i>
+                                  </span></a>
+        </form>
+      </div>
+    </div>
+
+<!--************** FOAF information to social networks ***************************** -->
+  <div class="row">
+    <div class="span3 socialicons" style="font-size:20px" typeof="foaf:Person" about="http://www.carlboettiger.info#me">
+      <p>
+          <a rel="foaf:account" alt="email" href="mailto:cboettig@gmail.com" 
+             onclick="recordOutboundLink(this, 'Outbound Links', 'email'); 
+             return false;"><span class="showtooltip" title="email me"><i class="icon-envelope-alt"></i></span></a>
+          <a rel="foaf:account" alt="twitter" href="https://twitter.com/cboettig" 
+             onclick="recordOutboundLink(this, 'Outbound Links', 'Twitter'); 
+             return false;"><span class="showtooltip" title="follow me on twitter (reading, discussing)"><i class="icon-twitter"></i></span></a> 
+          <a rel="foaf:account" alt="github" href="https://github.com/cboettig" 
+             onclick="recordOutboundLink(this, 'Outbound Links', 'Github'); 
+             return false;"><span class="showtooltip" title="follow me on Github (code, research)"><i class="icon-github"></i></span></a>
+      <!--
+          <a rel="foaf:account" href="https://plus.google.com/" 
+             onclick="recordOutboundLink(this, 'Outbound Links', 'GPlus'); 
+             return false;"><i class="icon-google-plus"></i></a>
+          <a rel="foaf:account" href="http://www.mendeley.com/profiles/carl-boettiger" 
+             onclick="recordOutboundLink(this, 'Outbound Links', 'Mendeley'); 
+             return false;"><img src="/assets/img/icon-mendeley.png" alt="mendeley" /></a> 
+           citations on google-scholar
+           stackoverflow
+      -->
+      <a alt="rss" type="application/atom+xml" href="/atom.xml"  
+         class="showtooltip" title="subscribe to RSS feeds for my open lab notebook" 
+         onclick="recordOutboundLink(this, 'Outbound Links', 'RSS'); 
+         return false;"><i class="icon-rss"></i></a>
+       </p>
+    </div>
+    <!--**************** End social links **************************** -->
+    <div class="span1">
+      <br />
+    </div>
+    <div class="span4">
+      <p>
+      <a onclick="recordOutboundLink(this, 'Outbound Links', 'ONS_claim'); return false;" href="http://onsclaims.wikispaces.com/"><img src="http://onsclaims.wikispaces.com/file/view/ons-aci2-icon.png" alt="ONS" class="showtooltip" title="An Open Notebook Science (ONS) project claim: Entry provides all content (AC) immediately (I) or without significant delay.  See link for details"/></a>
+
+      <a title="This site uses linked data semantics. Click to extract as RDF XML." class="btn btn-mini showtooltip" style="font-size: .8em" 
+       href="http://any23.org/?format=rdfxml&validate=validate&uri=http://www.carlboettiger.info/projects/open-science.html"><i 
+         class="icon-cloud-download"  onclick="recordOutboundLink(this, 'Outbound Links', 'RDF'); return false;"></i> RDF</a>
+      </p>
+    </div>
+    <div class="span1">
+      <br />
+    </div>
+    <div class="span3">
+      <p>
+      <a rel="license" property="http://creativecommons.org/ns#license" href="http://creativecommons.org/publicdomain/zero/1.0/" onclick="recordOutboundLink(this, 'Outbound Links', 'CC0'); return false;"><img src="http://i.creativecommons.org/l/zero/1.0/88x31.png" alt="CC0"/></a> 
+      </p>
+    </div>
+
+  </div>
+  
+<!-- COinS metadata (for citation managers like Zotero etc), goes in body text -->
+  <span
+      class="Z3988" 
+      title="ctx_ver=Z39.88-2004
+      &amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Adc
+      &amp;rfr_id=info%3Asid%2Focoins.info%3Agenerator
+      &amp;rft.title=My experiments with open science
+      &amp;rft.creator=Carl Boettiger
+      &amp;rft.date=
+      &amp;rft.language=EN
+      &amp;rft.rights=CC0
+      &amp;rft_id=http://www.carlboettiger.info/projects/open-science.html">
+  </span>
+
+
+
+</footer>
+
+
+
+
+    <!-- Le javascript
+    ================================================== -->
+
+    <!-- Placed at the end of the document so the pages load faster -->
+    <!-- JQuery, used on a few pages -->
+    <script type="text/javascript" src="/assets/js/jquery.js"></script>
+    <!-- Equations using MathJax -->
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config"> MathJax.Hub.Config({ TeX: { equationNumbers: {autoNumber: "all"} } });       </script>
+    <!-- Twitter Bootstrap Javascript -->
+    <script src="/assets/js/bootstrap.min.js"></script>
+    <!-- Tooltip javascript -->
+    <script type="text/javascript">
+      $(document).ready(function (){
+        $(".showtooltip").tooltip();
+      });
+    </script>
+
+    <!-- Marran's Search Javascript -->
+    <script type="text/javascript" src="/assets/js/porter-stemmer.js"></script>
+    <script type="text/javascript" src="/assets/js/site-search.js"></script>
+
+    <!-- Code collapse Javascript -->
+    <script type="text/javascript">
+    $(document).ready(function(){
+      $("#toggle_code").click(function(){
+        $(".highlight").toggle();
+        $(".sourceCode").toggle();
+      });
+    });
+    </script>
+
+
+  <script type="text/javascript">
+          var _gaq = _gaq || [];
+          _gaq.push(['_setAccount', 'UA-18401403-1']);
+          _gaq.push(['_trackPageview']);
+          (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+          })();
+  </script>
+
+
+
+<script type="text/javascript">
+function recordOutboundLink(link, category, action) {
+  try {
+    var pageTracker=_gat._getTracker("UA-18401403-1");
+    pageTracker._trackEvent(category, action);
+    setTimeout('document.location = "' + link.href + '"', 100)
+  }catch(err){}
+}
+</script>
+
+
+
+
+    
+
+
+    </div>
+  </body>
+</html>
+

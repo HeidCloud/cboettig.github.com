@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head prefix="dc: http://purl.org/dc/terms/ og: http://ogp.me/ns#">
+  <meta http-equiv='Content-Type' content='text/html; charset=utf-8'/>
+  <title>Comparative phylogenetic methods</title>
+  <meta name="author" content="Carl Boettiger" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+
+<!-- Some liquid code so that pages get the site.time creation date 
+      Would be nice to use github modified times, but doesn't handle 
+      the path for pages -->
+
+
+
+
+
+
+
+<!-- HTML5 metadata -->
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<meta name="resource_type" content="website"/> 
+<!-- RDFa Metadata (in DublinCore) -->
+<meta property="dc:title" content="Comparative phylogenetic methods" />
+<meta property="dc:creator" content="Carl Boettiger" />
+<meta property="dc:date" content="2013-04-24T10:29:54-07:00" />
+<meta property="dc:format" content="text/html" />
+<meta property="dc:language" content="en" />
+<meta property="dc:identifier" content="/projects/phylogenetics.html" />
+<meta property="dc:rights" content="CC0" />
+<meta property="dc:source" content="Lab Notebook" />
+<meta property="dc:subject" content="Ecology" /> 
+<meta property="dc:type" content="website" /> 
+<!-- RDFa Metadata (in OpenGraph) -->
+<meta property="og:title" content="Comparative phylogenetic methods" />
+<meta property="og:author" content="http://www.carlboettiger.info/index.html#me" />  <!-- Should be Liquid? URI? -->
+<meta property="http://ogp.me/ns/profile#first_name" content="Carl"/>
+<meta property="http://ogp.me/ns/profile#last_name" content="Boettiger"/>
+<meta property="http://ogp.me/ns/article#published_time" content="2013-04-24T10:29:54-07:00" />
+<meta property="og:site_name" content="Lab Notebook" /> <!-- Same as dc:source? -->
+<meta property="og:url" content="http://www.carlboettiger.info/projects/phylogenetics.html" />
+<meta property="og:type" content="website" /> 
+<!-- Google Scholar Metadata -->
+<meta name="citation_author" content="Carl Boettiger"/>
+<meta name="citation_date" content="2013-04-24T10:29:54-07:00"/>
+<meta name="citation_title" content="Comparative phylogenetic methods"/>
+<meta name="citation_journal_title" content="Lab Notebook"/>
+
+<!--NOTE: see also the COinS Metadata in span element in footer -->
+
+
+
+
+  <!-- CSS Stylesheets (toggled with javascript) -->
+  <link href="/assets/css/light.css" rel="stylesheet"
+        type="text/css" id="stl" title="light" />
+  <link href="/assets/css/dark.css" rel="alternate stylesheet" 
+        type="text/css" title="dark" />
+  <link href="/assets/css/bootstrap-responsive.css" rel="stylesheet" 
+        type="text/css"/>
+  <!-- Javascript needed for theme toggle, load immediately -->
+  <script type="text/javascript" src="/assets/js/switch-css.js"></script>
+  <script type="text/javascript">
+    set_style_from_cookie(); 
+  </script>
+</head>
+
+
+  <body prefix="dc: http://purl.org/dc/terms/ foaf: http://xmlns.com/foaf/0.1/"> 
+    
+<!-- Navbar  ================================================== -->
+<div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+      <a class="brand" href="/README.html"><span  class="showtooltip" 
+          title="Credits and technical information about this site" 
+          data-placement="bottom"><i style="float:right;" class="icon-info-sign" alt="info"></i></span></a>
+      <div class="nav-collapse">
+        <ul class="nav">
+          <li>
+          <a href="/index.html">Home</a></li>
+
+          <li>
+          <a href="/vita.html">Vita</a></li>
+
+          <li>
+          <a href="/research.html">Research</a></li>
+
+          <li>
+          <a href="/teaching.html">Teaching</a></li>
+
+          <li>
+          <a href="/community.html">Community</a></li>
+
+          <li>
+          <a href="/lab-notebook.html">Lab Notebook</a></li>
+
+        </ul>
+      </div><!--/.nav-collapse -->
+
+      <!-- Search site using Google's index --><!--
+      <form class="navbar-search pull-right" method="get" action="http://google.com/search">
+        <p>
+          <input type="hidden" name="q" value="site:carlboettiger.info" />
+          <input type="text" class="search-query" name="q" />
+          <button class="btn btn-mini" type="submit"><i class="icon-search"></i></button> 
+        </p>
+      </form>
+      -->
+      <div id="search">
+      <form method="get" class="navbar-search pull-right form-search">
+        <p>
+        <input type="text" name="search-text" id="search-text">
+         <button class="btn btn-mini" type="submit"><i class="icon-search"></i></button> 
+        </p>
+      </form>
+      </div>
+     </div> <!-- /container -->
+   </div> <!-- /navbar-inner -->
+ </div> <!-- /navbar -->
+
+
+
+    <div class="container"> <!-- Responsive grid layout --> 
+
+      <header class="jumbotron">
+  <h1 class="entry-title">Comparative phylogenetic methods</h1>
+  <h3></h3>
+</header>
+
+
+
+<div class="row">
+  <div class="span2">
+<ul class="nav nav-list">
+<li class="nav-header">Active Projects</li>
+<li 
+   ><a href="/projects/nonparametric-bayes.html">Nonparametric Bayes</a></li>
+<li  ><a href="/projects/multiple-uncertainty.html">Multiple Uncertainty</a></li>
+<li  ><a href="/projects/warning-signals.html">Early Warning Signals</a></li>
+<li  ><a href="/projects/pdg-control.html">Pretty Darn Good Control</a></li>
+<li  ><a href="/projects/open-science.html">Open Science</a></li>
+<li  ><a href="/projects/ropensci.html">ropensci</a></li>
+<li  class="nav-header">Earlier Projects</li> 
+<li  ><a href="/projects/adaptive-dynamics.html">Adaptive Dynamics</a></li>
+<li   
+    class="active" 
+  ><a href="/projects/phylogenetics.html">Phylogenetics</a></li>
+</ul>
+  </div>
+  <div class="span10">
+    <div class="borderleft" style="font-size: 13px;">
+    <!-- Must not involve indentation (of 4 or more spaces) if template is to be pulled into markdown files! -->
+<div class="row">
+<div class="span10">
+<div class="span6">
+<h2> 
+Abstract
+</h2>
+
+
+
+<p>Evolutionary transitions that allow biodiversity to expand to a new habitat or new feeding niche punctuate the history of life on this planet. Can we identify when such shifts occurred, and find hints of what mechanisms, events or functional trait innovations made them possible? I approach these questions through the framework of comparative phylogenetic methods, bringing together trait data from the field of functional morphology across present- day species with genetic data determining the phylogenetic tree to understand how important traits have evolved across the different species.</p>
+<p>Most existing models permit only a single evolutionary regime describing evolution across the entire tree. Identifying key innovations that change the pattern or tempo of evolution in a trait requires the development of more complicated models allowing for such regime shifts, and subsequently solving the likelihood equations that would allow us to estimate these models from data.</p>
+<p>Richer models require more data for reliable estimates, which is one reason why models involving regime shifts can be particularly demanding. It is often impractical to directly gather data across dozens to hundreds of species. While much of this data has already been collected, existing methods of access are tedious and error-prone. While facing such challenges working on these evolutionary models I developed the R packages rfishbase and rtreebase, (Boettiger et al. 2012; Boettiger &amp; Temple Lang 2012) which provide automated and interactive access, manipulation, and visualization for such large remote repositories.</p>
+<p>I also recently introduced a simulation-based approach to identify when the available data is sufficiently informative to select between potential mechanisms and when it does not contain enough information to make a choice (Boettiger, Coop &amp; Ralph 2012). This investigation into the limits of information balances my development of richer models, ensuring that the complexity of the models not out-pace the complexity of the data available.</p>
+<p><iframe src="http://ghbtns.com/github-btn.html?user=cboettig&repo=wrightscape&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="85px" height="20px"></iframe>
+<iframe src="http://ghbtns.com/github-btn.html?user=cboettig&repo=wrightscape&type=fork&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="85px" height="20px" class="pull-right"></iframe></p>
+
+</div>
+<div class="span3">
+<div class="borderleft">
+<h3> 
+Collaborators
+</h3>
+
+<ul>
+<li>Peter Wainwright</li>
+<li>Graham Coop</li>
+<li>Peter Ralph</li>
+<li>Brian O’Meara</li>
+<li>Jeremy Beaulieu</li>
+<li>Duncan Temple Lang</li>
+</ul>
+<h3> 
+Funding and Support/Affiliation
+</h3>
+
+
+<ul>
+<li>Department of Energy Computational Sciences Graduate Fellowship</li>
+<li>Center for Population Biology, UC Davis</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<hr>
+<div class="row">
+<div calss="span10">
+<div class="span3">
+<h4> 
+<a href="/vita.html" style="color:#2aa198;"><i class="icon-book"></i> Publications</a>
+</h4>
+
+<ul>
+
+<li >
+Carl Boettiger, Duncan Temple Lang (2012). <strong>Treebase: An R package for discovery, access and manipulation of online phylogenies</strong>, <em>Methods in Ecology and Evolution</em>. <a rel="datacite:doi" href="http://dx.doi.org/10.1111/j.2041-210X.2012.00247.x">doi</a>:10.1111/j.2041-210X.2012.00247.x (<a href="http://www.mendeley.com/download/public/98752/4976371531/463d3755b618c40e35dca223e27162c08fbc061a/dl.pdf">pdf</a>) (<a href="https://github.com/ropensci/treebase/blob/master/inst/doc/treebase/treebase_github.md">preprint</a>) (<a href="https://github.com/ropensci/treebase">code</a>) (<a href="http://cran.at.r-project.org/web/packages/treebase/">R package</a>)
+</li>
+
+
+<li >
+Jeremy M. Beaulieu, Dwueng-Chwuan Jhwueng, Carl Boettiger and Brian O’Meara, (2012). <strong>Modeling Stabilizing Selection: Expanding the Ornstein-Uhlenbeck Model of Adaptive Evolution</strong>, 2369-2383. <em>Evolution</em> 66 (8). <a rel="datacite:doi" href="http://dx.doi.org/10.1111/j.1558-5646.2012.01619.x">doi</a>:10.1111/j.1558-5646.2012.01619.x (<a href="http://www.mendeley.com/download/public/98752/4605481493/dfca8df9311b372425a204c1a6587ecee2b275dc/dl.pdf">pdf</a>) (<a href="http://cran.r-project.org/web/packages/OUwie/index.html">code</a>)
+</li>
+
+<li >
+Carl Boettiger, Graham Coop, Peter Ralph (2012) <strong>Is your phylogeny informative? Measuring the power of comparative methods</strong>, 2240-51. <em>Evolution</em> 66 (7). <a rel="datacite:doi" href="http://dx.doi.org/10.1111/j.1558-5646.2011.01574.x">doi</a>:10.1111/j.1558-5646.2011.01574.x (<a href="http://www.mendeley.com/download/public/98752/4485545653/566ffaffaf0fa6fb8f847096b742bc465aca3a8e/dl.pdf">pdf</a>) (<a href="http://arxiv.org/abs/1110.4944">arXiv</a>) (<a href="https://github.com/cboettig/pmc">code</a>) (<a href="http://datadryad.org/handle/10255/dryad.37645">data</a>)
+</li>
+
+</ul>
+
+
+
+</div>
+<div class="span3">
+<h4> 
+<a href="/tags.html#Labrids" style="color:#b58900;"><i class="icon-tags" ></i>Tagged notebook entries</a>
+</h4>
+
+
+<p> 
+<a href="/2013/04/16/notes.html">a few notes on various projects</a> <span style="font-style:italic"> 16 Apr 2013</span>
+</p>
+
+<p> 
+<a href="/2013/02/14/notes.html">Notes</a> <span style="font-style:italic"> 14 Feb 2013</span>
+</p>
+
+<p> 
+<a href="/2012/10/24/evolutionary-covariance.html">Evolutionary Covariance</a> <span style="font-style:italic"> 24 Oct 2012</span>
+</p>
+
+<p> 
+<a href="/2012/07/09/Evolution-Conf-Summary.html">Evolution and iEvobio conference notes</a> <span style="font-style:italic"> 09 Jul 2012</span>
+</p>
+
+<p> 
+<a href="/2012/07/08/Evolution-Day1.html">Evolution 2012 Conference, Day 1</a> <span style="font-style:italic"> 08 Jul 2012</span>
+</p>
+
+<p> 
+<a href="/2012/07/03/notes.html">wrightscape / release of constraint</a> <span style="font-style:italic"> 03 Jul 2012</span>
+</p>
+
+<p> 
+<a href="/2012/05/10/notes.html">Notes</a> <span style="font-style:italic"> 10 May 2012</span>
+</p>
+
+<p> 
+<a href="/2012/04/27/evolution-notes.html">Project tracking (Evolution)</a> <span style="font-style:italic"> 27 Apr 2012</span>
+</p>
+
+
+</div>
+<div class="span3">
+<h4>
+<a href="http://mendeley.com/groups/529971/phylogenetic-methods/papers " style="color:#dc322f;"> <i class="icon-bookmark" ></i> Reading</a>
+</h4>
+
+<ul><li>
+Taxonome: a software package for linking biological species data: Ecology and Evolution (2013). Pages: n/a-n/a. Thomas a. Kluyver, Colin P. Osborne et al. <a href="http://www.mendeley.comhttp://www.mendeley.com/c/5698464164/g/529971/kluyver-2013-taxonome-a-software-package-for-linking-biological-species-data/">07:09 2013/04/08</a>
+</li><li>
+PhyloGenerator: An automated phylogeny generation tool for ecologists: Methods in Ecology and Evolution (2013). Pages: n/a-n/a. William D. Pearse, Andy Purvis et al. <a href="http://www.mendeley.comhttp://www.mendeley.com/c/5683482084/g/529971/pearse-2013-phylogenerator-an-automated-phylogeny-generation-tool-for-ecologists/">01:35 2013/04/04</a>
+</li><li>
+SURFACE : detecting convergent evolution from comparative data by fitting Ornstein-Uhlenbeck models with stepwise AIC: Pages: 1-25. Travis Ingram, D Luke Mahler et al. <a href="http://www.mendeley.comhttp://www.mendeley.com/c/5516706534/g/529971/ingram-surface--detecting-convergent-evolution-from-comparative-data-by-fitting-ornstein-uhlenbeck-models-with-stepwise-aic/">10:08 2013/02/02</a>
+</li></ul>
+
+</div>
+</div>
+</div>
+<hr>
+<div class="row">
+<div calss="span10">
+<div class="span3">
+<h4>
+<a href="https://github.com/cboettig/wrightscape" style="color:#6c71c4;"><i class="icon-github"></i> Recent Commits</a>
+</h4>
+
+<ul><li>
+track intermediate files <a href="https://github.com/cboettig/wrightscape/commit/ecf13d0139bf746254971599fc1232a557942968">10:50 pm 2012/11/21</a>
+</li><li>
+track legacy files <a href="https://github.com/cboettig/wrightscape/commit/cdf3caa7ba9aa956d677265017318b8782f01063">10:46 pm 2012/11/21</a>
+</li><li>
+housekeeping – updating make/knit files <a href="https://github.com/cboettig/wrightscape/commit/f2965daef259170d25579006530684b1ad2ee151">09:55 pm 2012/11/21</a>
+</li><li>
+github copy updated <a href="https://github.com/cboettig/wrightscape/commit/ae9e8942c710a952fa0be13f6f7c2330b13b257e">07:51 pm 2012/06/01</a>
+</li><li>
+Merge branch ‘master’ of github.com:cboettig/wrightscape <a href="https://github.com/cboettig/wrightscape/commit/25264d9ab707ff2e4fb8efdbdb675b5f3eab24df">07:49 pm 2012/06/01</a>
+</li><li>
+added untracked output files <a href="https://github.com/cboettig/wrightscape/commit/2c35ac63ef1517916179246404d57043f6c364d2">07:48 pm 2012/06/01</a>
+</li><li>
+wrote draft of section on model choice <a href="https://github.com/cboettig/wrightscape/commit/274b3a662d670c75484da21b4c1baa0bf6814c05">12:16 am 2012/05/05</a>
+</li><li>
+updated manuscript examples <a href="https://github.com/cboettig/wrightscape/commit/533cff8eb1aab49a34cb67c51a7f1e5695ad9081">12:08 am 2012/05/05</a>
+</li></ul>
+
+</div>
+<div class="span3">
+<h4>
+<a href="https://github.com/cboettig/wrightscape/issues" style="color:#d33682;"> <i class="icon-list"></i> Active Issues / Next Steps</a>
+</h4>
+
+<ul><li> 
+<a href="https://github.com/cboettig/wrightscape/issues/3">finish methods section &amp; send to Peter</a> (<font color="#0b02e1">paper</font>)
+</li></ul>
+
+</div>
+<div class="span3">
+  <h4> 
+<a href="/vita.html" style="color:#cb4b16;"><i class="icon-bar-chart"></i> Slides, etc </a>
+</h4>
+
+
+<ul>
+<li>
+Invited speaker in SSB Symposium: Carl Boettiger (2012) Evolution Conference, Ottawa, CAN. (<a href="http://www.slideshare.net/cboettig/evolution-13576088">slides</a>)
+</li>
+<li>
+Carl Boettiger. (2011) Evolution Conference; Norman, OK. In <em>Nature Precedings</em>, (<a href="http://dx.doi.org/10.1038/npre.2011.6080.1">doi</a>) (<a href="http://www.slideshare.net/cboettig/a-general-model-of-continuous-character-evolution">slides</a>)
+</li>
+<li>
+Carl Boettiger. (2011) iEvoBio Conference; Norman, OK. <em>In Nature Precedings</em>, (<a href="http://dx.doi.org/10.1038/npre.2012.6851.1">doi</a>) (<a href="http://www.slideshare.net/cboettig/r-interface-to-treebase">slides</a>)
+</li>
+<li>
+Carl Boettiger, Graham Coop &amp; Peter Ralph. (2011) Society for Integrative and Comparative Biology. Salt Lake City, Utah. In <em>Nature Precedings</em>, (<a href="http://dx.doi.org/10.1038/npre.2011.6453.1">doi</a>) (<a href="http://www.slideshare.net/cboettig/is-your-phylogeny-informative">slides</a>)
+</li>
+<li>
+Carl Boettiger. (2010) iEvoBio Conference; Portland, OR. In <em>Nature Precedings</em> (<a href="http://dx.doi.org/10.1038/npre.2010.4602.1">doi</a>) (<a href="http://www.slideshare.net/cboettig/ievobio">slides</a>)
+</li>
+<li>
+Carl Boettiger. (2010) Evolution Conference; Portland OR. In <em>Nature Precedings</em> (<a href="10.1038/npre.2010.4615.1">doi</a>) (<a href="http://www.slideshare.net/cboettig/a-new-phylogenetic-comparative-method-detecting-niches-and-transitions-with-continuous-characters">slides</a>)
+</li>
+<li>
+Carl Boettiger. (2009) University of Tennessee, Knoxville, TN.
+</li>
+<li>
+Carl Boettiger. (2009) Center for Population Biology, Davis, CA. (<a href="http://www.slideshare.net/cboettig/cpb-pres">slides</a>)
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+    </div>
+  </div>
+</div>
+
+
+<footer class="footer">
+  <!-- ************* Buttons to toggle theme CSS ********************** -->
+    <div class="row">
+      <div class="span12">
+        <form style="font-size:10px" class="pull-right">
+          <a onclick="switch_style('dark'); 
+                      recordOutboundLink(this, 'Outbound Links', 'dark theme'); 
+                      return false;" 
+             name="theme" value="dark" id="dark" 
+             class="btn btn-mini"><span class="showtooltip" 
+                                        title="switch to dark theme"><i class="icon-adjust"></i>
+                                   </span></a>
+          
+          <a onclick="switch_style('light'); 
+                      recordOutboundLink(this, 'Outbound Links', 'light theme'); 
+                      return false;" 
+             name="theme" value="light" id="light" 
+             class="btn btn-mini"><span class="showtooltip" 
+                                        title="switch to light theme"><i class="icon-certificate"></i>
+                                  </span></a>
+        </form>
+      </div>
+    </div>
+
+<!--************** FOAF information to social networks ***************************** -->
+  <div class="row">
+    <div class="span3 socialicons" style="font-size:20px" typeof="foaf:Person" about="http://www.carlboettiger.info#me">
+      <p>
+          <a rel="foaf:account" alt="email" href="mailto:cboettig@gmail.com" 
+             onclick="recordOutboundLink(this, 'Outbound Links', 'email'); 
+             return false;"><span class="showtooltip" title="email me"><i class="icon-envelope-alt"></i></span></a>
+          <a rel="foaf:account" alt="twitter" href="https://twitter.com/cboettig" 
+             onclick="recordOutboundLink(this, 'Outbound Links', 'Twitter'); 
+             return false;"><span class="showtooltip" title="follow me on twitter (reading, discussing)"><i class="icon-twitter"></i></span></a> 
+          <a rel="foaf:account" alt="github" href="https://github.com/cboettig" 
+             onclick="recordOutboundLink(this, 'Outbound Links', 'Github'); 
+             return false;"><span class="showtooltip" title="follow me on Github (code, research)"><i class="icon-github"></i></span></a>
+      <!--
+          <a rel="foaf:account" href="https://plus.google.com/" 
+             onclick="recordOutboundLink(this, 'Outbound Links', 'GPlus'); 
+             return false;"><i class="icon-google-plus"></i></a>
+          <a rel="foaf:account" href="http://www.mendeley.com/profiles/carl-boettiger" 
+             onclick="recordOutboundLink(this, 'Outbound Links', 'Mendeley'); 
+             return false;"><img src="/assets/img/icon-mendeley.png" alt="mendeley" /></a> 
+           citations on google-scholar
+           stackoverflow
+      -->
+      <a alt="rss" type="application/atom+xml" href="/atom.xml"  
+         class="showtooltip" title="subscribe to RSS feeds for my open lab notebook" 
+         onclick="recordOutboundLink(this, 'Outbound Links', 'RSS'); 
+         return false;"><i class="icon-rss"></i></a>
+       </p>
+    </div>
+    <!--**************** End social links **************************** -->
+    <div class="span1">
+      <br />
+    </div>
+    <div class="span4">
+      <p>
+      <a onclick="recordOutboundLink(this, 'Outbound Links', 'ONS_claim'); return false;" href="http://onsclaims.wikispaces.com/"><img src="http://onsclaims.wikispaces.com/file/view/ons-aci2-icon.png" alt="ONS" class="showtooltip" title="An Open Notebook Science (ONS) project claim: Entry provides all content (AC) immediately (I) or without significant delay.  See link for details"/></a>
+
+      <a title="This site uses linked data semantics. Click to extract as RDF XML." class="btn btn-mini showtooltip" style="font-size: .8em" 
+       href="http://any23.org/?format=rdfxml&validate=validate&uri=http://www.carlboettiger.info/projects/phylogenetics.html"><i 
+         class="icon-cloud-download"  onclick="recordOutboundLink(this, 'Outbound Links', 'RDF'); return false;"></i> RDF</a>
+      </p>
+    </div>
+    <div class="span1">
+      <br />
+    </div>
+    <div class="span3">
+      <p>
+      <a rel="license" property="http://creativecommons.org/ns#license" href="http://creativecommons.org/publicdomain/zero/1.0/" onclick="recordOutboundLink(this, 'Outbound Links', 'CC0'); return false;"><img src="http://i.creativecommons.org/l/zero/1.0/88x31.png" alt="CC0"/></a> 
+      </p>
+    </div>
+
+  </div>
+  
+<!-- COinS metadata (for citation managers like Zotero etc), goes in body text -->
+  <span
+      class="Z3988" 
+      title="ctx_ver=Z39.88-2004
+      &amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Adc
+      &amp;rfr_id=info%3Asid%2Focoins.info%3Agenerator
+      &amp;rft.title=Comparative phylogenetic methods
+      &amp;rft.creator=Carl Boettiger
+      &amp;rft.date=
+      &amp;rft.language=EN
+      &amp;rft.rights=CC0
+      &amp;rft_id=http://www.carlboettiger.info/projects/phylogenetics.html">
+  </span>
+
+
+
+</footer>
+
+
+
+
+    <!-- Le javascript
+    ================================================== -->
+
+    <!-- Placed at the end of the document so the pages load faster -->
+    <!-- JQuery, used on a few pages -->
+    <script type="text/javascript" src="/assets/js/jquery.js"></script>
+    <!-- Equations using MathJax -->
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config"> MathJax.Hub.Config({ TeX: { equationNumbers: {autoNumber: "all"} } });       </script>
+    <!-- Twitter Bootstrap Javascript -->
+    <script src="/assets/js/bootstrap.min.js"></script>
+    <!-- Tooltip javascript -->
+    <script type="text/javascript">
+      $(document).ready(function (){
+        $(".showtooltip").tooltip();
+      });
+    </script>
+
+    <!-- Marran's Search Javascript -->
+    <script type="text/javascript" src="/assets/js/porter-stemmer.js"></script>
+    <script type="text/javascript" src="/assets/js/site-search.js"></script>
+
+    <!-- Code collapse Javascript -->
+    <script type="text/javascript">
+    $(document).ready(function(){
+      $("#toggle_code").click(function(){
+        $(".highlight").toggle();
+        $(".sourceCode").toggle();
+      });
+    });
+    </script>
+
+
+  <script type="text/javascript">
+          var _gaq = _gaq || [];
+          _gaq.push(['_setAccount', 'UA-18401403-1']);
+          _gaq.push(['_trackPageview']);
+          (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+          })();
+  </script>
+
+
+
+<script type="text/javascript">
+function recordOutboundLink(link, category, action) {
+  try {
+    var pageTracker=_gat._getTracker("UA-18401403-1");
+    pageTracker._trackEvent(category, action);
+    setTimeout('document.location = "' + link.href + '"', 100)
+  }catch(err){}
+}
+</script>
+
+
+
+
+    
+
+
+    </div>
+  </body>
+</html>
+
