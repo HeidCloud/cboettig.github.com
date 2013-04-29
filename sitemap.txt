@@ -810,6 +810,7 @@ http://carlboettiger.info/wordpress/archives/4482/index.html
 http://carlboettiger.info/archives/4482/index.html 
 
  
+http://carlboettiger.info/2013/04/27/comparison-of-nonparametric-and-parametric-approaches.html  
 http://carlboettiger.info/2013/04/26/notebook-features-reproducible-code.html  
 http://carlboettiger.info/2013/04/26/notebook-features-introduction.html  
 http://carlboettiger.info/2013/04/25/notes.html  
