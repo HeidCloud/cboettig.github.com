@@ -24,7 +24,7 @@
 <!-- RDFa Metadata (in DublinCore) -->
 <meta property="dc:title" content="Sat: evolution -- porting tree transformations to OUCH?" />
 <meta property="dc:creator" content="Carl Boettiger" />
-<meta property="dc:date" content="2013-04-29T09:10:41-07:00" />
+<meta property="dc:date" content="2013-05-01T14:41:54-07:00" />
 <meta property="dc:format" content="text/html" />
 <meta property="dc:language" content="en" />
 <meta property="dc:identifier" content="/2010/11/20/sat-phylogenetics-porting-tree-transformations-to-ouch.html" />
@@ -37,13 +37,13 @@
 <meta property="og:author" content="http://www.carlboettiger.info/index.html#me" />  <!-- Should be Liquid? URI? -->
 <meta property="http://ogp.me/ns/profile#first_name" content="Carl"/>
 <meta property="http://ogp.me/ns/profile#last_name" content="Boettiger"/>
-<meta property="http://ogp.me/ns/article#published_time" content="2013-04-29T09:10:41-07:00" />
+<meta property="http://ogp.me/ns/article#published_time" content="2013-05-01T14:41:54-07:00" />
 <meta property="og:site_name" content="Lab Notebook" /> <!-- Same as dc:source? -->
 <meta property="og:url" content="http://www.carlboettiger.info/2010/11/20/sat-phylogenetics-porting-tree-transformations-to-ouch.html" />
 <meta property="og:type" content="website" /> 
 <!-- Google Scholar Metadata -->
 <meta name="citation_author" content="Carl Boettiger"/>
-<meta name="citation_date" content="2013-04-29T09:10:41-07:00"/>
+<meta name="citation_date" content="2013-05-01T14:41:54-07:00"/>
 <meta name="citation_title" content="Sat: evolution -- porting tree transformations to OUCH?"/>
 <meta name="citation_journal_title" content="Lab Notebook"/>
 
@@ -164,6 +164,7 @@
 <p>Meanwhile still frustrated with the speed of Geiger for these applications.  In particular, solving the Brownian rate parameter problem is the solution to a linear equation, and shouldn’t need nonlinear optimization.  OUCH implements a linear solver for brown() function.  Would be possible to wrap a search for a tree transformation around this, optimizing the sigma for each trial version of the optimization, rather than treating this as a non-linear optimization of two parameters simultaneously.</p>
 <p>Note that this is already done for the mean of the Brownian model even in Geiger, where it is taken as the Phylogenetic mean from the tree, so only sigma (which geiger sometimes calls beta, or is beta equal sigma sqaured??) is fitted.</p>
 <p>Using the gsl library I’ve written my own likelihood calculations for BM and OU models, <a href="https://github.com/cboettig/wrightscape/blob/a3cebb06b8e0e28fe43fbb22e6bd9f0c499271e3/src/linearsoln.c">linearsoln.c</a>, should probably re-implement into wrightscape(?)</p>
+
     </article>
   </div>
   <div class="span4">
@@ -210,9 +211,7 @@
 
   <br/>
 
-  <p><small> <i class="icon-barcode"></i> SHA Hash: <a href="https://github.com/cboettig/labnotebook/commit/8c159703b2a376bd2c60f16e0e0d5cea04d20876
-/_posts/2010-11-20-sat-phylogenetics-porting-tree-transformations-to-ouch.md"> 8c159703b2a376bd2c60f16e0e0d5cea04d20876
-</a></small></p>
+  <p><small> <i class="icon-barcode"></i> SHA Hash: <a href="https://github.com/cboettig/labnotebook/commit/../_posts/2010-11-20-sat-phylogenetics-porting-tree-transformations-to-ouch.md/_posts/2010-11-20-sat-phylogenetics-porting-tree-transformations-to-ouch.md"> ../_posts/2010-11-20-sat-phylogenetics-porting-tree-transformations-to-ouch.md</a></small></p>
     
   <br/>
 

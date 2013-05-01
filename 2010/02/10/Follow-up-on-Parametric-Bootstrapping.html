@@ -24,7 +24,7 @@
 <!-- RDFa Metadata (in DublinCore) -->
 <meta property="dc:title" content="Follow-up on Parametric Bootstrapping" />
 <meta property="dc:creator" content="Carl Boettiger" />
-<meta property="dc:date" content="2013-04-29T09:10:41-07:00" />
+<meta property="dc:date" content="2013-05-01T14:41:54-07:00" />
 <meta property="dc:format" content="text/html" />
 <meta property="dc:language" content="en" />
 <meta property="dc:identifier" content="/2010/02/10/Follow-up-on-Parametric-Bootstrapping.html" />
@@ -37,13 +37,13 @@
 <meta property="og:author" content="http://www.carlboettiger.info/index.html#me" />  <!-- Should be Liquid? URI? -->
 <meta property="http://ogp.me/ns/profile#first_name" content="Carl"/>
 <meta property="http://ogp.me/ns/profile#last_name" content="Boettiger"/>
-<meta property="http://ogp.me/ns/article#published_time" content="2013-04-29T09:10:41-07:00" />
+<meta property="http://ogp.me/ns/article#published_time" content="2013-05-01T14:41:54-07:00" />
 <meta property="og:site_name" content="Lab Notebook" /> <!-- Same as dc:source? -->
 <meta property="og:url" content="http://www.carlboettiger.info/2010/02/10/Follow-up-on-Parametric-Bootstrapping.html" />
 <meta property="og:type" content="website" /> 
 <!-- Google Scholar Metadata -->
 <meta name="citation_author" content="Carl Boettiger"/>
-<meta name="citation_date" content="2013-04-29T09:10:41-07:00"/>
+<meta name="citation_date" content="2013-05-01T14:41:54-07:00"/>
 <meta name="citation_title" content="Follow-up on Parametric Bootstrapping"/>
 <meta name="citation_journal_title" content="Lab Notebook"/>
 
@@ -142,7 +142,7 @@
     <ul>
 <li>Continuing on yesterday’s discussion of parametric boostrapping implementation. Peter sent some very helpful comments and agreed to having them here for reference; I’ve added some links.</li>
 </ul>
-<p>&quot;I’ve read up a bit on the bootstrap just now. First off, although parametric and nonparametric bootstrapping has always seemed very different to me, they fit in the same natural framework. The general idea is that in reality, there’s some real parameters x and some probability distribution P that’s given us some data. We get an estimate x’ from that data. To estimate confidence (or what-have-you) in x’, we get some estimate P’ of *the probability distribution*, and use P’ to make a bunch more fake data, to which we apply the estimation procedures, etcetera. We could get P’ by assuming a parametric model and plugging in x’. Or, we could resample from the data, or permute it, etcetera.</p>
+<p>“I’ve read up a bit on the bootstrap just now. First off, although parametric and nonparametric bootstrapping has always seemed very different to me, they fit in the same natural framework. The general idea is that in reality, there’s some real parameters x and some probability distribution P that’s given us some data. We get an estimate x’ from that data. To estimate confidence (or what-have-you) in x’, we get some estimate P’ of *the probability distribution*, and use P’ to make a bunch more fake data, to which we apply the estimation procedures, etcetera. We could get P’ by assuming a parametric model and plugging in x’. Or, we could resample from the data, or permute it, etcetera.</p>
 <p>I suppose that you’ve seen the <a href="http://cran.r-project.org/web/packages/boot/index.html" title="http://cran.r-project.org/web/packages/boot/index.html">‘boot’</a> package in R? It does both parametric and nonparametric bootstrapping, and its function boot.ci() computes confidence intervals in some sophisticated ways. Sophisticated ways? Why do we need to be more sophisticated? Well, the simple, straightforward method that we were using in the discussion is fine, really, but there’s some corrections to it that make it better. Briefly, the bootstrap introduces (small) biases. Some references are:</p>
 <pre><code>&quot;Bootstrap confidence intervals&quot;, a review,
   http://www.jstor.org/stable/2246110
@@ -155,6 +155,7 @@
 <li>The boot() function from the R package looks like a straight-forward way to implement these methods, though I will probably rely mostly on the standard method discussed yesterday which is basically a direct implementation of the Confidence Interval definition and hence a more transparent statistic for the user than the fancy methods. If I implement it with the boot() function, it will be easy for the user to obtain which-so-ever they want and for me to explore how they differ in practice in any case.</li>
 </ul>
 <p><br /></p>
+
     </article>
   </div>
   <div class="span4">
@@ -205,9 +206,7 @@
 
   <br/>
 
-  <p><small> <i class="icon-barcode"></i> SHA Hash: <a href="https://github.com/cboettig/labnotebook/commit/376d7c9ade8a8c061c0ce0669dd2200a087b13ba
-/_posts/2010-02-10-Follow-up-on-Parametric-Bootstrapping.md"> 376d7c9ade8a8c061c0ce0669dd2200a087b13ba
-</a></small></p>
+  <p><small> <i class="icon-barcode"></i> SHA Hash: <a href="https://github.com/cboettig/labnotebook/commit/../_posts/2010-02-10-Follow-up-on-Parametric-Bootstrapping.md/_posts/2010-02-10-Follow-up-on-Parametric-Bootstrapping.md"> ../_posts/2010-02-10-Follow-up-on-Parametric-Bootstrapping.md</a></small></p>
     
   <br/>
 

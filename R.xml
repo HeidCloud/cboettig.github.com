@@ -4,7 +4,7 @@
  <title>Lab Notebook - R</title>
  <link href="/R.xml" rel="self"/>
  <link href="/"/>
- <updated>2013-04-29T09:10:41-07:00</updated>
+ <updated>2013-05-01T14:41:54-07:00</updated>
  <id>http://www.carlboettiger.info</id>
  <author>
    <name>Carl Boettiger</name>
@@ -98,7 +98,8 @@ http://yihui.name/knitr/&gt;.&lt;/p&gt;
 &lt;h3 id=&quot;comparing-lightweight-citation-alternatives&quot;&gt;Comparing lightweight citation alternatives&lt;/h3&gt;
 &lt;p&gt;Several citation alternatives are available for lightweight publishing outside of this option, each with its own advantages and limitations. John MacFarlane’s &lt;a href=&quot;http://johnmacfarlane.net/pandoc/&quot;&gt;Pandoc&lt;/a&gt; is probably the most widely used citation manager for markdown files, working with a bibtex source file but formatting the citation lists using citeproc. It has the advantage of a more concise citation syntax, consistent with the source-readable goals of markdown and citation formating. Of course it is a markdown extension and will not be read by other markdown interpreters. This would be less of an issue of Pandoc could run markdown -&amp;gt; markdown without garbling syntax of some other markdown interpreter, like Github-flavored markdown.&lt;/p&gt;
 &lt;p&gt;The only other tool I know of that provides dynamic citations by DOI look-up is Phil Lord’s excellent Wordpress plugin, &lt;a href=&quot;http://wordpress.org/extend/plugins/kcite/&quot;&gt;kcite&lt;/a&gt;. It now uses citeproc for formatting, automatically links the in-text citations to the bibliography, supports PubMed and ArXiv ids as well as DOIs and even web URLs (though not bibtex files). The major limitation for me is that it is limited to Wordpress with Wordpress specific shortcode. (Of course I introduce R-specific code here, but with the assumption of a knitr-based audience who probably uses github). A variety of other platform-specific plugins are available to convert bibtex files into citations for different blogging platforms, including Wordpress and Jekyll.&lt;/p&gt;
-&lt;p&gt;So why knitcitations? My goal is primarily to bring this functionality to knitr users who rely on the markdown format rather than the latex format and are interested in dynamic citations and web-based publishing. I hope it finds its niche.&lt;/p&gt;</content>
+&lt;p&gt;So why knitcitations? My goal is primarily to bring this functionality to knitr users who rely on the markdown format rather than the latex format and are interested in dynamic citations and web-based publishing. I hope it finds its niche.&lt;/p&gt;
+</content>
  </entry>
  
  <entry>
@@ -115,7 +116,8 @@ http://yihui.name/knitr/&gt;.&lt;/p&gt;
 &lt;/div&gt;
 &lt;p&gt;Pandoc allows me to transform these notes into a LaTeX file that can generate professional-looking pdfs with given journal &lt;code&gt;.cls&lt;/code&gt; files by using &lt;a href=&quot;https://github.com/ropensci/rfishbase/blob/master/inst/doc/rfishbase/elsarticle.latex&quot;&gt;a custom latex template&lt;/a&gt;. Pandoc can also generate the less pretty but often required word documents. &lt;a href=&quot;https://github.com/ropensci/rfishbase/blob/master/inst/doc/rfishbase/knit&quot;&gt;A separate Rscript&lt;/a&gt; combines with a &lt;a href=&quot;https://github.com/ropensci/rfishbase/blob/master/inst/doc/rfishbase/Makefile&quot;&gt;Makefile&lt;/a&gt; to control the relevant formatting – for LaTeX output I want high-quality &lt;code&gt;pdf&lt;/code&gt; graphics, for Word-doc output I want &lt;code&gt;eps&lt;/code&gt; graphics which are created but not pasted into the Word file, for the drafts I want &lt;code&gt;png&lt;/code&gt; graphics stored online for easy sharing. Pandoc allows citations to be extracted from my Mendeley library (via Bibtex files) and inserted into each of these output formats (doc, pdf, github markdown).&lt;/p&gt;
 &lt;p&gt;Getting the LaTeX template, Makefile, and knit script set up for this pipeline takes a little care – mostly to ensure figures and tables look appropriate in all outputs. Once these files are created though, they can be easily reused on other manuscripts. A simple &lt;code&gt;make pdf&lt;/code&gt; builds the pdf copy, &lt;code&gt;make docx&lt;/code&gt; builds a MS Word copy, ((though these binary files aren’t stored in the git repository)) and &lt;code&gt;make github&lt;/code&gt; the copy that displays with images on Github.&lt;/p&gt;
-&lt;p&gt;The links in this post point to what is an active draft of a little manuscript at the time of this writing. In addition to making the final result reproducible, Github captures the &lt;a href=&quot;http://en.wikipedia.org/wiki/Provenance#Data_provenance&quot;&gt;provenance&lt;/a&gt; or history of the research and writing process. It’s not a perfect system, but it’s a nice step.&lt;/p&gt;</content>
+&lt;p&gt;The links in this post point to what is an active draft of a little manuscript at the time of this writing. In addition to making the final result reproducible, Github captures the &lt;a href=&quot;http://en.wikipedia.org/wiki/Provenance#Data_provenance&quot;&gt;provenance&lt;/a&gt; or history of the research and writing process. It’s not a perfect system, but it’s a nice step.&lt;/p&gt;
+</content>
  </entry>
  
  <entry>
@@ -155,7 +157,8 @@ biblio[[&lt;span class=&quot;dv&quot;&gt;1&lt;/span&gt;]]&lt;/code&gt;&lt;/pre&g
 &lt;p&gt;Xie Y (2012). &lt;em&gt;knitr: A general-purpose package for dynamic report generation in R&lt;/em&gt;. R package version 0.4.1, .&lt;/p&gt;
 &lt;p&gt;Boettiger C (2012). &lt;em&gt;knitcitations: Citations for knitr markdown files&lt;/em&gt;. R package version 0.0-1.&lt;/p&gt;
 &lt;p&gt;I hope to add markup to format this a bit more nicely later. For instance, we want the links to appear as real links. Additionally, we may want to add markup around the citations, such as the reason for the citation into the link using the &lt;a href=&quot;http://speroni.web.cs.unibo.it/cgi-bin/lode/req.py?req=http:/purl.org/spar/cito&quot;&gt;Citation Typing Ontology&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;This entry was, of course, produced in knitr with my &lt;a href=&quot;https://github.com/cboettig/knitcitations&quot;&gt;knitcitations&lt;/a&gt; package. See the &lt;a href=&quot;https://raw.github.com/cboettig/knitcitations/master/inst/examples/citations_knit_.md&quot;&gt;original source&lt;/a&gt;.&lt;/p&gt;</content>
+&lt;p&gt;This entry was, of course, produced in knitr with my &lt;a href=&quot;https://github.com/cboettig/knitcitations&quot;&gt;knitcitations&lt;/a&gt; package. See the &lt;a href=&quot;https://raw.github.com/cboettig/knitcitations/master/inst/examples/citations_knit_.md&quot;&gt;original source&lt;/a&gt;.&lt;/p&gt;
+</content>
  </entry>
  
  <entry>
@@ -184,7 +187,8 @@ biblio[[&lt;span class=&quot;dv&quot;&gt;1&lt;/span&gt;]]&lt;/code&gt;&lt;/pre&g
 &lt;h5 id=&quot;heavy-computing&quot;&gt;Heavy computing&lt;/h5&gt;
 &lt;p&gt;I’ve found that the knitted markdown examples make the most sense for fast-running examples. Despite excellent caching support, I’ve found it best to run really long-running examples as external R scripts, and then save and import this data. Such scripts are often being run on a cluster that can’t push images to the internet anyway.&lt;/p&gt;
 &lt;h5 id=&quot;power-of-openness&quot;&gt;Power of openness?&lt;/h5&gt;
-&lt;p&gt;It occurs to me that this system would be harder but not impossible, in a closed environment. I could upload the figures to flickr with private status. The links are hashes, so cannot be guessed. If the output were then hosted on a secure site (running a markdown renderer, such as Jekyll), instead of github, these links would still work to display the images. Then one could give selected access to those pages. But the open solution works out of the box.&lt;/p&gt;</content>
+&lt;p&gt;It occurs to me that this system would be harder but not impossible, in a closed environment. I could upload the figures to flickr with private status. The links are hashes, so cannot be guessed. If the output were then hosted on a secure site (running a markdown renderer, such as Jekyll), instead of github, these links would still work to display the images. Then one could give selected access to those pages. But the open solution works out of the box.&lt;/p&gt;
+</content>
  </entry>
  
  <entry>
@@ -265,7 +269,8 @@ out &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot
 &lt;p&gt;I wrote an R function for the Crossref API in our rplos package. We should probably be formatting the output as an R bibentry, taking advantage of R’s understanding of citation structure. Then I could work automatic citation look-up into my posts using inline knitr calls, such as:&lt;/p&gt;
 &lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;
 &lt;span class=&quot;kw&quot;&gt;print&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;crossref&lt;/span&gt;(&lt;span class=&quot;st&quot;&gt;&amp;quot;10.1038/44766&amp;quot;&lt;/span&gt;), &lt;span class=&quot;dt&quot;&gt;style=&lt;/span&gt;&lt;span class=&quot;st&quot;&gt;&amp;quot;text&amp;quot;&lt;/span&gt;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;An alternate mechanism could read in a local bibtex file and drop in the correct entry in the desired format.&lt;/p&gt;</content>
+&lt;p&gt;An alternate mechanism could read in a local bibtex file and drop in the correct entry in the desired format.&lt;/p&gt;
+</content>
  </entry>
  
  <entry>
@@ -365,7 +370,8 @@ user  system elapsed
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;p&gt;The general form is : &lt;code&gt;DT[where,select|update,group by][having][order by][ ]...[ ]&lt;/code&gt;. A key advantage of column vectors in R is that they are ordered, unlike SQL.&lt;/p&gt;</content>
+&lt;p&gt;The general form is : &lt;code&gt;DT[where,select|update,group by][having][order by][ ]...[ ]&lt;/code&gt;. A key advantage of column vectors in R is that they are ordered, unlike SQL.&lt;/p&gt;
+</content>
  </entry>
  
  <entry>
@@ -419,7 +425,8 @@ user  system elapsed
 &lt;li&gt;&lt;p&gt;Losos J (2011). “Seeing The Forest For The Trees: The Limitations of Phylogenies in Comparative Biology.” &lt;em&gt;The American Naturalist&lt;/em&gt;, &lt;b&gt;177&lt;/b&gt;. ISSN 00030147, &lt;a href=&quot;http://dx.doi.org/10.1086/660020&quot;&gt;http://dx.doi.org/10.1086/660020&lt;/a&gt;.&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;Freckleton R and Harvey P (2006). “Detecting Non-Brownian Trait Evolution in Adaptive Radiations.” &lt;em&gt;Plos Biology&lt;/em&gt;, &lt;b&gt;4&lt;/b&gt;. ISSN 1544-9173, &lt;a href=&quot;http://dx.doi.org/10.1371/journal.pbio.0040373&quot;&gt;http://dx.doi.org/10.1371/journal.pbio.0040373&lt;/a&gt;.&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;Harmon L, Losos J, Jonathan Davies T, Gillespie R, Gittleman J, Bryan Jennings W, Kozak K, McPeek M, Moreno-Roark F, Near T, Purvis A, Ricklefs R, Schluter D, Schulte II J, Seehausen O, Sidlauskas B, Torres-Carvajal O, Weir J and Mooers A (2010). “Early Bursts of Body Size And Shape Evolution Are Rare in Comparative Data.” &lt;em&gt;Evolution&lt;/em&gt;. &lt;a href=&quot;http://dx.doi.org/10.1111/j.1558-5646.2010.01025.x&quot;&gt;http://dx.doi.org/10.1111/j.1558-5646.2010.01025.x&lt;/a&gt;.&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;</content>
+&lt;/ul&gt;
+</content>
  </entry>
  
  <entry>
@@ -532,7 +539,8 @@ is_yule &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&
 &lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;Derryberry E, Claramunt S, Derryberry G, Chesser R, Cracraft J, Aleixo A, Pérez-Emán J, Remsen Jr. J and Brumfield R (2011). “Lineage Diversification And Morphological Evolution in A Large-Scale Continental Radiation: The Neotropical Ovenbirds And Woodcreepers (Aves: Furnariidae).” &lt;em&gt;Evolution&lt;/em&gt;, &lt;strong&gt;65&lt;/strong&gt;. &lt;a href=&quot;http://dx.doi.org/10.1111/j.1558-5646.2011.01374.x&quot;&gt;http://dx.doi.org/10.1111/j.1558-5646.2011.01374.x&lt;/a&gt;.&lt;/li&gt;
-&lt;/ul&gt;</content>
+&lt;/ul&gt;
+</content>
  </entry>
  
  <entry>
@@ -634,7 +642,8 @@ phy &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;chelonia$phy
 &lt;p&gt;&lt;a href=&quot;http://www.R-bloggers.com&quot;&gt;&lt;img src=&quot;http://a1.twimg.com/profile_images/1344218056/RblogLogo_bigger.png&quot; alt=&quot;R-bloggers.com&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Thanks Jon and the rest of the Harmon Lab for a fantastic package. This is really just a tip of the iceberg, but should help get you started. See the paper for a good example of posterior analyses requisite after running any kind of MCMC, or stay tuned for a later post.&lt;/p&gt;
 &lt;p&gt;(cross-posted from &lt;a href=&quot;http://fishlab.ucdavis.edu/?p=303&quot;&gt;my entry on the Wainwright lab blog&lt;/a&gt;.)&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;http://www.researchblogging.org&quot;&gt;&lt;img src=&quot;http://www.researchblogging.org/public/citation_icons/rb2_large_gray.png&quot; alt=&quot;ResearchBlogging.org&quot; /&gt;&lt;/a&gt; Eastman, J., Alfaro, M., Joyce, P., Hipp, A., &amp;amp; Harmon, L. (2011). A NOVEL COMPARATIVE METHOD FOR IDENTIFYING SHIFTS IN THE RATE OF CHARACTER EVOLUTION ON TREES Evolution DOI: &lt;a href=&quot;http://dx.doi.org/10.1111/j.1558-5646.2011.01401.x&quot;&gt;10.1111/j.1558-5646.2011.01401.x&lt;/a&gt;&lt;/p&gt;</content>
+&lt;p&gt;&lt;a href=&quot;http://www.researchblogging.org&quot;&gt;&lt;img src=&quot;http://www.researchblogging.org/public/citation_icons/rb2_large_gray.png&quot; alt=&quot;ResearchBlogging.org&quot; /&gt;&lt;/a&gt; Eastman, J., Alfaro, M., Joyce, P., Hipp, A., &amp;amp; Harmon, L. (2011). A NOVEL COMPARATIVE METHOD FOR IDENTIFYING SHIFTS IN THE RATE OF CHARACTER EVOLUTION ON TREES Evolution DOI: &lt;a href=&quot;http://dx.doi.org/10.1111/j.1558-5646.2011.01401.x&quot;&gt;10.1111/j.1558-5646.2011.01401.x&lt;/a&gt;&lt;/p&gt;
+</content>
  </entry>
  
  <entry>
@@ -796,7 +805,8 @@ is_yule &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&
 &lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;Rowe K, Aplin K, Baverstock P and Moritz C (2011). “Recent And Rapid Speciation With Limited Morphological Disparity in The Genus Rattus.” &lt;em&gt;Systematic Biology&lt;/em&gt;, &lt;strong&gt;60&lt;/strong&gt;. ISSN 1063-5157, &lt;a href=&quot;http://dx.doi.org/10.1093/sysbio/syq092&quot;&gt;http://dx.doi.org/10.1093/sysbio/syq092&lt;/a&gt;.&lt;/li&gt;
-&lt;/ul&gt;</content>
+&lt;/ul&gt;
+</content>
  </entry>
  
  <entry>
@@ -847,7 +857,8 @@ is_yule &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&
 &lt;li&gt;&lt;p&gt;Documentation still needed&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;Should verify if the git version is current&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;Grab a DOI for the object (i.e. using EZID from UC3?)&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;</content>
+&lt;/ul&gt;
+</content>
  </entry>
  
  

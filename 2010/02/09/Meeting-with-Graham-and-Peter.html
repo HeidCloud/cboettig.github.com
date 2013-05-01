@@ -24,7 +24,7 @@
 <!-- RDFa Metadata (in DublinCore) -->
 <meta property="dc:title" content="Meeting with Graham and Peter" />
 <meta property="dc:creator" content="Carl Boettiger" />
-<meta property="dc:date" content="2013-04-29T09:10:41-07:00" />
+<meta property="dc:date" content="2013-05-01T14:41:54-07:00" />
 <meta property="dc:format" content="text/html" />
 <meta property="dc:language" content="en" />
 <meta property="dc:identifier" content="/2010/02/09/Meeting-with-Graham-and-Peter.html" />
@@ -37,13 +37,13 @@
 <meta property="og:author" content="http://www.carlboettiger.info/index.html#me" />  <!-- Should be Liquid? URI? -->
 <meta property="http://ogp.me/ns/profile#first_name" content="Carl"/>
 <meta property="http://ogp.me/ns/profile#last_name" content="Boettiger"/>
-<meta property="http://ogp.me/ns/article#published_time" content="2013-04-29T09:10:41-07:00" />
+<meta property="http://ogp.me/ns/article#published_time" content="2013-05-01T14:41:54-07:00" />
 <meta property="og:site_name" content="Lab Notebook" /> <!-- Same as dc:source? -->
 <meta property="og:url" content="http://www.carlboettiger.info/2010/02/09/Meeting-with-Graham-and-Peter.html" />
 <meta property="og:type" content="website" /> 
 <!-- Google Scholar Metadata -->
 <meta name="citation_author" content="Carl Boettiger"/>
-<meta name="citation_date" content="2013-04-29T09:10:41-07:00"/>
+<meta name="citation_date" content="2013-05-01T14:41:54-07:00"/>
 <meta name="citation_title" content="Meeting with Graham and Peter"/>
 <meta name="citation_journal_title" content="Lab Notebook"/>
 
@@ -147,7 +147,7 @@
 </ul>
 <p><img src="http://openwetware.org/images/thumb/4/43/Aic_panels.png/60px-Aic_panels.png" alt="image" /> (click for larger)</p>
 <ul>
-<li>The approach I am advocating for goes by the name <strong><a href="http://en.wikipedia.org/wiki/Bootstrapping_statistics#Parametric_bootstrap" title="http://en.wikipedia.org/wiki/Bootstrapping_(statistics)#Parametric_bootstrap">Parametric Bootstrapping</a></strong> (that link isn’t that helpful actually, could improve the wiki entry). I should implement this as above, comparing to the observed differences in the model scores of the real data, rather than the measure of slightly greater which I report.</li>
+<li>The approach I am advocating for goes by the name <strong><a href="http://en.wikipedia.org/wiki/Bootstrapping_(statistics)#Parametric_bootstrap" title="http://en.wikipedia.org/wiki/Bootstrapping_(statistics)#Parametric_bootstrap">Parametric Bootstrapping</a></strong> (that link isn’t that helpful actually, could improve the wiki entry). I should implement this as above, comparing to the observed differences in the model scores of the real data, rather than the measure of slightly greater which I report.</li>
 <li>Using this approach I can also <strong>evaluate the power</strong> to detect any OU model by overlap in distributions. For instance, if the tree is the starburst, even strong selection OU will have no power, while on another tree it might. This can be done by testing a variety of OU models, rather than the one that best fits the data, and will be a great way to start quantifying the <em>information contained in the tree</em> relative to the model choice question. This is a <em>crucial step</em> before I try more complicated models, giving some measure of whether a tree contains enough taxa with enough covariance to tease out temporal information accurately.</li>
 <li>Discussed my concern that the <strong>BM model and OU model aren’t really embedded,</strong> since the OU model likelihood cannot be computed accurately for small α. Of course it works in the limit, but is something to be cautious about. It has been suggested that model comparison should fit OU alone, and wait and see if α comes out small. There are two reasons to be skeptical of this</li>
 </ul>
@@ -174,6 +174,7 @@
 <li>Lookup tables – means that giant data structure I wrote for the regimes model will be useful, (yay and yikes). More memory and probably more time with valgrind debugging, but could be promising.</li>
 <li>After that I think I’ll try MCMC over regimes and possibly the generator approach. An effective regimes calculation is probably a ways off yet, but plenty of things to try!</li>
 </ul>
+
     </article>
   </div>
   <div class="span4">
@@ -224,9 +225,7 @@
 
   <br/>
 
-  <p><small> <i class="icon-barcode"></i> SHA Hash: <a href="https://github.com/cboettig/labnotebook/commit/376d7c9ade8a8c061c0ce0669dd2200a087b13ba
-/_posts/2010-02-09-Meeting-with-Graham-and-Peter.md"> 376d7c9ade8a8c061c0ce0669dd2200a087b13ba
-</a></small></p>
+  <p><small> <i class="icon-barcode"></i> SHA Hash: <a href="https://github.com/cboettig/labnotebook/commit/../_posts/2010-02-09-Meeting-with-Graham-and-Peter.md/_posts/2010-02-09-Meeting-with-Graham-and-Peter.md"> ../_posts/2010-02-09-Meeting-with-Graham-and-Peter.md</a></small></p>
     
   <br/>
 

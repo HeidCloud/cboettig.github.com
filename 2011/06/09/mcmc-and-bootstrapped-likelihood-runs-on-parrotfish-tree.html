@@ -24,7 +24,7 @@
 <!-- RDFa Metadata (in DublinCore) -->
 <meta property="dc:title" content="mcmc and bootstrapped likelihood runs on parrotfish tree" />
 <meta property="dc:creator" content="Carl Boettiger" />
-<meta property="dc:date" content="2013-04-29T09:10:41-07:00" />
+<meta property="dc:date" content="2013-05-01T14:41:54-07:00" />
 <meta property="dc:format" content="text/html" />
 <meta property="dc:language" content="en" />
 <meta property="dc:identifier" content="/2011/06/09/mcmc-and-bootstrapped-likelihood-runs-on-parrotfish-tree.html" />
@@ -37,13 +37,13 @@
 <meta property="og:author" content="http://www.carlboettiger.info/index.html#me" />  <!-- Should be Liquid? URI? -->
 <meta property="http://ogp.me/ns/profile#first_name" content="Carl"/>
 <meta property="http://ogp.me/ns/profile#last_name" content="Boettiger"/>
-<meta property="http://ogp.me/ns/article#published_time" content="2013-04-29T09:10:41-07:00" />
+<meta property="http://ogp.me/ns/article#published_time" content="2013-05-01T14:41:54-07:00" />
 <meta property="og:site_name" content="Lab Notebook" /> <!-- Same as dc:source? -->
 <meta property="og:url" content="http://www.carlboettiger.info/2011/06/09/mcmc-and-bootstrapped-likelihood-runs-on-parrotfish-tree.html" />
 <meta property="og:type" content="website" /> 
 <!-- Google Scholar Metadata -->
 <meta name="citation_author" content="Carl Boettiger"/>
-<meta name="citation_date" content="2013-04-29T09:10:41-07:00"/>
+<meta name="citation_date" content="2013-05-01T14:41:54-07:00"/>
 <meta name="citation_title" content="mcmc and bootstrapped likelihood runs on parrotfish tree"/>
 <meta name="citation_journal_title" content="Lab Notebook"/>
 
@@ -190,7 +190,7 @@
 <p>Would be nice to force me to write the comment about the script at runtime, rather than in the script itself (where I might forget to update it on a run). As long as any parameters are not written in by hand, the latter is okay. Tried adding prompt on batch mode, unsuccessfully:</p>
 <p>Read in command line arguments at batch mode: ((Adapted from <a href="http://yangfeng.wordpress.com/2009/09/03/including-arguments-in-r-cmd-batch-mode/">here</a>))</p>
 <pre class="sourceCode bash"><code class="sourceCode bash">
-$ R CMD BATCH --no-save --no-restore <span class="st">&#39;--args a=1 b=c(2,5,6)&#39;</span> test.R test.out <span class="kw">&amp;</span></code></pre>
+$ <span class="kw">R</span> CMD BATCH --no-save --no-restore <span class="st">&#39;--args a=1 b=c(2,5,6)&#39;</span> test.R test.out <span class="kw">&amp;</span></code></pre>
 <p>Each argument must have no spaces, doesn’t seem to be able to pass text strings.</p>
 <pre class="sourceCode r"><code class="sourceCode r">
 ##First read in the arguments listed at the command line
@@ -212,6 +212,7 @@ if(<span class="kw">length</span>(args)==<span class="dv">0</span>){
 <span class="kw">print</span>(a*<span class="dv">2</span>)
 <span class="kw">print</span>(b*<span class="dv">3</span>)</code></pre>
 <p>Always forget how to do block commenting in VIM: ((from <a href="http://hurley.wordpress.com/2007/06/13/vim-tip-comment-out-multiple-lines/">here</a>)) Easiest to just select in visual mode (v) and then do :s/<sup>/</sup>#/</p>
+
     </article>
   </div>
   <div class="span4">
@@ -258,9 +259,7 @@ if(<span class="kw">length</span>(args)==<span class="dv">0</span>){
 
   <br/>
 
-  <p><small> <i class="icon-barcode"></i> SHA Hash: <a href="https://github.com/cboettig/labnotebook/commit/8c159703b2a376bd2c60f16e0e0d5cea04d20876
-/_posts/2011-06-09-mcmc-and-bootstrapped-likelihood-runs-on-parrotfish-tree.md"> 8c159703b2a376bd2c60f16e0e0d5cea04d20876
-</a></small></p>
+  <p><small> <i class="icon-barcode"></i> SHA Hash: <a href="https://github.com/cboettig/labnotebook/commit/../_posts/2011-06-09-mcmc-and-bootstrapped-likelihood-runs-on-parrotfish-tree.md/_posts/2011-06-09-mcmc-and-bootstrapped-likelihood-runs-on-parrotfish-tree.md"> ../_posts/2011-06-09-mcmc-and-bootstrapped-likelihood-runs-on-parrotfish-tree.md</a></small></p>
     
   <br/>
 

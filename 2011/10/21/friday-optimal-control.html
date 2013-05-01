@@ -24,7 +24,7 @@
 <!-- RDFa Metadata (in DublinCore) -->
 <meta property="dc:title" content="Friday: Optimal Control" />
 <meta property="dc:creator" content="Carl Boettiger" />
-<meta property="dc:date" content="2013-04-29T09:10:41-07:00" />
+<meta property="dc:date" content="2013-05-01T14:41:54-07:00" />
 <meta property="dc:format" content="text/html" />
 <meta property="dc:language" content="en" />
 <meta property="dc:identifier" content="/2011/10/21/friday-optimal-control.html" />
@@ -37,13 +37,13 @@
 <meta property="og:author" content="http://www.carlboettiger.info/index.html#me" />  <!-- Should be Liquid? URI? -->
 <meta property="http://ogp.me/ns/profile#first_name" content="Carl"/>
 <meta property="http://ogp.me/ns/profile#last_name" content="Boettiger"/>
-<meta property="http://ogp.me/ns/article#published_time" content="2013-04-29T09:10:41-07:00" />
+<meta property="http://ogp.me/ns/article#published_time" content="2013-05-01T14:41:54-07:00" />
 <meta property="og:site_name" content="Lab Notebook" /> <!-- Same as dc:source? -->
 <meta property="og:url" content="http://www.carlboettiger.info/2011/10/21/friday-optimal-control.html" />
 <meta property="og:type" content="website" /> 
 <!-- Google Scholar Metadata -->
 <meta name="citation_author" content="Carl Boettiger"/>
-<meta name="citation_date" content="2013-04-29T09:10:41-07:00"/>
+<meta name="citation_date" content="2013-05-01T14:41:54-07:00"/>
 <meta name="citation_title" content="Friday: Optimal Control"/>
 <meta name="citation_journal_title" content="Lab Notebook"/>
 
@@ -147,7 +147,7 @@
 <p>compare to the Lagrangian minimizing <span class="math">\(F(x)\)</span> under the constraint <span class="math">\(c(\mathbf{x} ) = 0\)</span></p>
 <p><span class="math">\[ F(\mathbf{x}) - \mathbf{\lambda}^T \mathbf{c}(\mathbf{x}) = F(\mathbf{x}) - \sum_{i=1}^m \lambda_i c_i(\mathbf{x}) \]</span></p>
 <p>We can add the discrete boundary conditions in with classic Lagrange multiplier</p>
-<p><a href="http://en.wikipedia.org/wiki/Hamiltonian_control_theory">Differences</a> between Hamiltonian of Pontryagin and that in mechanics. Why didn’t anyone tell me about <a href="https://netfiles.uiuc.edu/liberzon/www/teaching/sussmann-willems.pdf">this paper</a>!</p>
+<p><a href="http://en.wikipedia.org/wiki/Hamiltonian_(control_theory)">Differences</a> between Hamiltonian of Pontryagin and that in mechanics. Why didn’t anyone tell me about <a href="https://netfiles.uiuc.edu/liberzon/www/teaching/sussmann-willems.pdf">this paper</a>!</p>
 <h3 id="sample-problem">Sample problem</h3>
 <p>from page 353 (10.6.10), Judd</p>
 <p>Maximize the objective function: <span class="math">\[ \max_c \int_0^T e^{-\rho t} u(c) dt \]</span> s.t. <span class="math">\[\dot A = f(A) + w(t) -c(t) \]</span> <span class="math">\[ A(0) = A(T) = 0 \]</span></p>
@@ -160,6 +160,7 @@
 <p>From the max principle of Hamiltonian, first order condition <span class="math">\[ 0 = \partial_c H \]</span>, so <span class="math">\[ u&#39;(c) -\lambda = c^{\gamma} -\lambda \]</span> <span class="math">\[ \lambda = c^{\gamma} \]</span> <span class="math">\[ \frac{d\lambda}{dt} = \frac{d\lambda}{dc}\frac{d c}{dt} \]</span> <span class="math">\[ \frac{d\lambda}{dc} = \gamma c^{\gamma} \]</span> which we sub into the costate equation to get <span class="math">\[ \frac{d\lambda}{dt} = c^{\gamma} (\rho - r) \]</span> <span class="math">\[ \gamma c^\gamma \frac{dc}{dt} = c^{\gamma} (\rho - r) \]</span> which simplfiies to: <span class="math">\[ \frac{dc}{dt} = \frac{c}{\gamma} (\rho - r) \]</span></p>
 <p>and our second equation is still: <span class="math">\[ \dot A = rA + w(t) - c(t) \]</span> And our boundary conditions: <span class="math">\[ A(0) = A(T) = 0 \]</span></p>
 <p>So a nice ODE BVP we’re ready to solve.</p>
+
     </article>
   </div>
   <div class="span4">
@@ -210,9 +211,7 @@
 
   <br/>
 
-  <p><small> <i class="icon-barcode"></i> SHA Hash: <a href="https://github.com/cboettig/labnotebook/commit/8c159703b2a376bd2c60f16e0e0d5cea04d20876
-/_posts/2011-10-21-friday-optimal-control.md"> 8c159703b2a376bd2c60f16e0e0d5cea04d20876
-</a></small></p>
+  <p><small> <i class="icon-barcode"></i> SHA Hash: <a href="https://github.com/cboettig/labnotebook/commit/../_posts/2011-10-21-friday-optimal-control.md/_posts/2011-10-21-friday-optimal-control.md"> ../_posts/2011-10-21-friday-optimal-control.md</a></small></p>
     
   <br/>
 

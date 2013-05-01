@@ -24,7 +24,7 @@
 <!-- RDFa Metadata (in DublinCore) -->
 <meta property="dc:title" content="Monday - Sweave workflow" />
 <meta property="dc:creator" content="Carl Boettiger" />
-<meta property="dc:date" content="2013-04-29T09:10:41-07:00" />
+<meta property="dc:date" content="2013-05-01T14:41:54-07:00" />
 <meta property="dc:format" content="text/html" />
 <meta property="dc:language" content="en" />
 <meta property="dc:identifier" content="/2012/01/09/monday-13.html" />
@@ -37,13 +37,13 @@
 <meta property="og:author" content="http://www.carlboettiger.info/index.html#me" />  <!-- Should be Liquid? URI? -->
 <meta property="http://ogp.me/ns/profile#first_name" content="Carl"/>
 <meta property="http://ogp.me/ns/profile#last_name" content="Boettiger"/>
-<meta property="http://ogp.me/ns/article#published_time" content="2013-04-29T09:10:41-07:00" />
+<meta property="http://ogp.me/ns/article#published_time" content="2013-05-01T14:41:54-07:00" />
 <meta property="og:site_name" content="Lab Notebook" /> <!-- Same as dc:source? -->
 <meta property="og:url" content="http://www.carlboettiger.info/2012/01/09/monday-13.html" />
 <meta property="og:type" content="website" /> 
 <!-- Google Scholar Metadata -->
 <meta name="citation_author" content="Carl Boettiger"/>
-<meta name="citation_date" content="2013-04-29T09:10:41-07:00"/>
+<meta name="citation_date" content="2013-05-01T14:41:54-07:00"/>
 <meta name="citation_title" content="Monday - Sweave workflow"/>
 <meta name="citation_journal_title" content="Lab Notebook"/>
 
@@ -144,7 +144,7 @@
 <p>Also, in writing the documentation I’d like to point the .Rnw file to my global library’s bibtex document, but then this means having the .Rnw/tex file generated to by the package pointing to a file that’s outside the package.</p>
 <p>To get around both of these issues, I’ve started using bibtool. Bibtool can generate a smaller bibfile of only the included citations, and remove the duplicates, which I can use in the package.</p>
 <pre class="sourceCode bash"><code class="sourceCode bash">
-bibtool -s -d -x paper.aux global.bib <span class="kw">&gt;</span> paper.bib</code></pre>
+<span class="kw">bibtool</span> -s -d -x paper.aux global.bib <span class="kw">&gt;</span> paper.bib</code></pre>
 <p>tex generates the aux file. bibtools generates a local bib file from the citations listed in the .aux using my global bib file, then bibtex can run on the aux and format these citations, which are inserted by re-running tex as usual. Note that this could combine different bibs instead of using a global.bib.</p>
 <ul>
 <li><p>The ubuntu version of bibtool (2.48 alpha) doesn’t handle large bibfiles well, the current version 2.53 seems to do fine. Inspiration for this from <a href="http://tex.stackexchange.com/questions/1380/how-to-avoid-bibtex-error-message-repeated-entry-for-an-entry-appearing-in-sev">tex Q&amp;A</a>.</p></li>
@@ -174,6 +174,7 @@ aic &lt;-<span class="st"> </span><span class="kw">sapply</span>(yule_4rate[[<sp
 <span class="kw">which.min</span>(aic)
 </code></pre>
 <p>and flushed out text. Sending to Peter and Duncan for a read over.</p>
+
     </article>
   </div>
   <div class="span4">
@@ -224,9 +225,7 @@ aic &lt;-<span class="st"> </span><span class="kw">sapply</span>(yule_4rate[[<sp
 
   <br/>
 
-  <p><small> <i class="icon-barcode"></i> SHA Hash: <a href="https://github.com/cboettig/labnotebook/commit/8c159703b2a376bd2c60f16e0e0d5cea04d20876
-/_posts/2012-01-09-monday-13.md"> 8c159703b2a376bd2c60f16e0e0d5cea04d20876
-</a></small></p>
+  <p><small> <i class="icon-barcode"></i> SHA Hash: <a href="https://github.com/cboettig/labnotebook/commit/../_posts/2012-01-09-monday-13.md/_posts/2012-01-09-monday-13.md"> ../_posts/2012-01-09-monday-13.md</a></small></p>
     
   <br/>
 
