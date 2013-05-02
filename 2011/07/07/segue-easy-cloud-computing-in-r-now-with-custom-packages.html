@@ -24,7 +24,7 @@
 <!-- RDFa Metadata (in DublinCore) -->
 <meta property="dc:title" content="Segue: Easy cloud hpc in R, now with custom packages" />
 <meta property="dc:creator" content="Carl Boettiger" />
-<meta property="dc:date" content="2013-05-01T14:41:54-07:00" />
+<meta property="dc:date" content="2013-04-29T09:10:41-07:00" />
 <meta property="dc:format" content="text/html" />
 <meta property="dc:language" content="en" />
 <meta property="dc:identifier" content="/2011/07/07/segue-easy-cloud-computing-in-r-now-with-custom-packages.html" />
@@ -37,13 +37,13 @@
 <meta property="og:author" content="http://www.carlboettiger.info/index.html#me" />  <!-- Should be Liquid? URI? -->
 <meta property="http://ogp.me/ns/profile#first_name" content="Carl"/>
 <meta property="http://ogp.me/ns/profile#last_name" content="Boettiger"/>
-<meta property="http://ogp.me/ns/article#published_time" content="2013-05-01T14:41:54-07:00" />
+<meta property="http://ogp.me/ns/article#published_time" content="2013-04-29T09:10:41-07:00" />
 <meta property="og:site_name" content="Lab Notebook" /> <!-- Same as dc:source? -->
 <meta property="og:url" content="http://www.carlboettiger.info/2011/07/07/segue-easy-cloud-computing-in-r-now-with-custom-packages.html" />
 <meta property="og:type" content="website" /> 
 <!-- Google Scholar Metadata -->
 <meta name="citation_author" content="Carl Boettiger"/>
-<meta name="citation_date" content="2013-05-01T14:41:54-07:00"/>
+<meta name="citation_date" content="2013-04-29T09:10:41-07:00"/>
 <meta name="citation_title" content="Segue: Easy cloud hpc in R, now with custom packages"/>
 <meta name="citation_journal_title" content="Lab Notebook"/>
 
@@ -141,12 +141,12 @@
     <article>
     <p>After a few helpful emails from package creator JD Long, I have the segue package running with custom R packages. The package is <a href="http://code.google.com/p/segue/source/checkout">available</a> on Google code. With two lines of code I can start submitting jobs to very large clusters of computers on the Amazon cloud. For a basic introduction to the package see Jeff Breen’s <a href="http://jeffreybreen.wordpress.com/2011/01/10/segue-r-to-amazon-elastic-mapreduce-hadoop/">post</a>.</p>
 <p>Quick notes on updating using <a href="http://mercurial.selenic.com/">mercurial</a>: Since I’ve already pulled the code using</p>
-<pre class="sourceCode bash"><code class="sourceCode bash"> <span class="kw">hg</span> clone https://segue.googlecode.com/hg/ segue </code></pre>
+<pre class="sourceCode bash"><code class="sourceCode bash"> hg clone https://segue.googlecode.com/hg/ segue </code></pre>
 <p>to clone the repo, I did</p>
 <pre class="sourceCode bash"><code class="sourceCode bash">
-<span class="kw">hg</span> pull https://segue.googlecode.com/hg/ 
-<span class="kw">hg</span> update
-<span class="kw">R</span> CMD INSTALL .</code></pre>
+hg pull https://segue.googlecode.com/hg/ 
+hg update
+R CMD INSTALL .</code></pre>
 <p>Okay, ready to test the segue package. We will load the CRAN package (sde) which automatically loads dependencies as well, and my little custom <a href="https://github.com/cboettig/mcmcTools">mcmcTools</a> package, which has no dependencies (these would have to be loaded manually).</p>
 <p>[gist id=1070581]</p>
 <h3 id="a-few-notes">a few notes</h3>
@@ -155,12 +155,11 @@
 <li><p>Note that on launch of the cluster instance we have to pass along all the rObjects we want to have access to on the cluster using the rObjectsOnNodes option in a named list. Failing to do so tripped me up earlier</p></li>
 <li><p>Note that emrlapply wants a list argument,</p></li>
 </ul>
-<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">as.list</span>(1:2)</code></pre>
+<pre class="sourceCode bash"><code class="sourceCode bash">as.list<span class="kw">(</span>1:2<span class="kw">)</span></code></pre>
 <p>not a numeric vector,</p>
-<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">1</span>:2</code></pre>
+<pre class="sourceCode bash"><code class="sourceCode bash">1:2</code></pre>
 <p>Earlier this morning, none of this was possible. JD Long is a genius, and a fast-working one at that. First he added the support for cran packages, and then for custom packages. A few notes: package dependencies must be loaded explicitly. Be patient with the instance start-up, mine took 11 minutes.</p>
 <p><strong>Note:</strong> post updated 2011-07-08 to reflect JD’s suggestion to use rObjectsOnNodes. now all is working well. Maybe also a thank-you to <a href="https://plus.google.com/">Google+</a> for facilitating the last bit o troubleshooting.</p>
-
     </article>
   </div>
   <div class="span4">
@@ -207,11 +206,13 @@
 
   <br/>
 
-   <p style="font-style:italic"> <i class="icon-signal"></i> pageviews: 126</p>
+   <p style="font-style:italic"> <i class="icon-signal"></i> pageviews: 125</p>
 
   <br/>
 
-  <p><small> <i class="icon-barcode"></i> SHA Hash: <a href="https://github.com/cboettig/labnotebook/commit/../_posts/2011-07-07-segue-easy-cloud-computing-in-r-now-with-custom-packages.md/_posts/2011-07-07-segue-easy-cloud-computing-in-r-now-with-custom-packages.md"> ../_posts/2011-07-07-segue-easy-cloud-computing-in-r-now-with-custom-packages.md</a></small></p>
+  <p><small> <i class="icon-barcode"></i> SHA Hash: <a href="https://github.com/cboettig/labnotebook/commit/8c159703b2a376bd2c60f16e0e0d5cea04d20876
+/_posts/2011-07-07-segue-easy-cloud-computing-in-r-now-with-custom-packages.md"> 8c159703b2a376bd2c60f16e0e0d5cea04d20876
+</a></small></p>
     
   <br/>
 

@@ -24,7 +24,7 @@
 <!-- RDFa Metadata (in DublinCore) -->
 <meta property="dc:title" content="Writing reproducibly in the open with knitr" />
 <meta property="dc:creator" content="Carl Boettiger" />
-<meta property="dc:date" content="2013-05-01T14:41:54-07:00" />
+<meta property="dc:date" content="2013-04-29T09:10:41-07:00" />
 <meta property="dc:format" content="text/html" />
 <meta property="dc:language" content="en" />
 <meta property="dc:identifier" content="/2012/04/07/writing-reproducibly-in-the-open-with-knitr.html" />
@@ -37,13 +37,13 @@
 <meta property="og:author" content="http://www.carlboettiger.info/index.html#me" />  <!-- Should be Liquid? URI? -->
 <meta property="http://ogp.me/ns/profile#first_name" content="Carl"/>
 <meta property="http://ogp.me/ns/profile#last_name" content="Boettiger"/>
-<meta property="http://ogp.me/ns/article#published_time" content="2013-05-01T14:41:54-07:00" />
+<meta property="http://ogp.me/ns/article#published_time" content="2013-04-29T09:10:41-07:00" />
 <meta property="og:site_name" content="Lab Notebook" /> <!-- Same as dc:source? -->
 <meta property="og:url" content="http://www.carlboettiger.info/2012/04/07/writing-reproducibly-in-the-open-with-knitr.html" />
 <meta property="og:type" content="website" /> 
 <!-- Google Scholar Metadata -->
 <meta name="citation_author" content="Carl Boettiger"/>
-<meta name="citation_date" content="2013-05-01T14:41:54-07:00"/>
+<meta name="citation_date" content="2013-04-29T09:10:41-07:00"/>
 <meta name="citation_title" content="Writing reproducibly in the open with knitr"/>
 <meta name="citation_journal_title" content="Lab Notebook"/>
 
@@ -149,7 +149,6 @@
 <p>Pandoc allows me to transform these notes into a LaTeX file that can generate professional-looking pdfs with given journal <code>.cls</code> files by using <a href="https://github.com/ropensci/rfishbase/blob/master/inst/doc/rfishbase/elsarticle.latex">a custom latex template</a>. Pandoc can also generate the less pretty but often required word documents. <a href="https://github.com/ropensci/rfishbase/blob/master/inst/doc/rfishbase/knit">A separate Rscript</a> combines with a <a href="https://github.com/ropensci/rfishbase/blob/master/inst/doc/rfishbase/Makefile">Makefile</a> to control the relevant formatting – for LaTeX output I want high-quality <code>pdf</code> graphics, for Word-doc output I want <code>eps</code> graphics which are created but not pasted into the Word file, for the drafts I want <code>png</code> graphics stored online for easy sharing. Pandoc allows citations to be extracted from my Mendeley library (via Bibtex files) and inserted into each of these output formats (doc, pdf, github markdown).</p>
 <p>Getting the LaTeX template, Makefile, and knit script set up for this pipeline takes a little care – mostly to ensure figures and tables look appropriate in all outputs. Once these files are created though, they can be easily reused on other manuscripts. A simple <code>make pdf</code> builds the pdf copy, <code>make docx</code> builds a MS Word copy, ((though these binary files aren’t stored in the git repository)) and <code>make github</code> the copy that displays with images on Github.</p>
 <p>The links in this post point to what is an active draft of a little manuscript at the time of this writing. In addition to making the final result reproducible, Github captures the <a href="http://en.wikipedia.org/wiki/Provenance#Data_provenance">provenance</a> or history of the research and writing process. It’s not a perfect system, but it’s a nice step.</p>
-
     </article>
   </div>
   <div class="span4">
@@ -196,11 +195,13 @@
 
   <br/>
 
-   <p style="font-style:italic"> <i class="icon-signal"></i> pageviews: 877</p>
+   <p style="font-style:italic"> <i class="icon-signal"></i> pageviews: 861</p>
 
   <br/>
 
-  <p><small> <i class="icon-barcode"></i> SHA Hash: <a href="https://github.com/cboettig/labnotebook/commit/../_posts/2012-04-07-writing-reproducibly-in-the-open-with-knitr.md/_posts/2012-04-07-writing-reproducibly-in-the-open-with-knitr.md"> ../_posts/2012-04-07-writing-reproducibly-in-the-open-with-knitr.md</a></small></p>
+  <p><small> <i class="icon-barcode"></i> SHA Hash: <a href="https://github.com/cboettig/labnotebook/commit/8c159703b2a376bd2c60f16e0e0d5cea04d20876
+/_posts/2012-04-07-writing-reproducibly-in-the-open-with-knitr.md"> 8c159703b2a376bd2c60f16e0e0d5cea04d20876
+</a></small></p>
     
   <br/>
 

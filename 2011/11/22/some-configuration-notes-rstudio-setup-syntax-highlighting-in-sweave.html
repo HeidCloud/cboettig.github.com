@@ -24,7 +24,7 @@
 <!-- RDFa Metadata (in DublinCore) -->
 <meta property="dc:title" content="some configuration notes: RStudio setup, syntax highlighting in sweave" />
 <meta property="dc:creator" content="Carl Boettiger" />
-<meta property="dc:date" content="2013-05-01T14:41:54-07:00" />
+<meta property="dc:date" content="2013-04-29T09:10:41-07:00" />
 <meta property="dc:format" content="text/html" />
 <meta property="dc:language" content="en" />
 <meta property="dc:identifier" content="/2011/11/22/some-configuration-notes-rstudio-setup-syntax-highlighting-in-sweave.html" />
@@ -37,13 +37,13 @@
 <meta property="og:author" content="http://www.carlboettiger.info/index.html#me" />  <!-- Should be Liquid? URI? -->
 <meta property="http://ogp.me/ns/profile#first_name" content="Carl"/>
 <meta property="http://ogp.me/ns/profile#last_name" content="Boettiger"/>
-<meta property="http://ogp.me/ns/article#published_time" content="2013-05-01T14:41:54-07:00" />
+<meta property="http://ogp.me/ns/article#published_time" content="2013-04-29T09:10:41-07:00" />
 <meta property="og:site_name" content="Lab Notebook" /> <!-- Same as dc:source? -->
 <meta property="og:url" content="http://www.carlboettiger.info/2011/11/22/some-configuration-notes-rstudio-setup-syntax-highlighting-in-sweave.html" />
 <meta property="og:type" content="website" /> 
 <!-- Google Scholar Metadata -->
 <meta name="citation_author" content="Carl Boettiger"/>
-<meta name="citation_date" content="2013-05-01T14:41:54-07:00"/>
+<meta name="citation_date" content="2013-04-29T09:10:41-07:00"/>
 <meta name="citation_title" content="some configuration notes: RStudio setup, syntax highlighting in sweave"/>
 <meta name="citation_journal_title" content="Lab Notebook"/>
 
@@ -142,24 +142,24 @@
     <p>Installing R-Studio on my dreamhost VPS server. Dreamhost runs debian lenny, which is a bit dated, making it necessary to install from source. (Would be easy on a modern ubuntu server). Here we go.</p>
 <p>First, we probably want to install R from source to begin with (Lenny comes with cutting-edge R 2.7.1…). This needs to be done with shared libs enabled. Also I needed to run it without recommended-packages to get the initial install working</p>
 <pre class="sourceCode bash"><code class="sourceCode bash">
-<span class="kw">./configure</span> --with-recommended-packages=no --enable-R-shlib 
+./configure --with-recommended-packages=no --enable-R-shlib 
 <span class="kw">make</span> 
-<span class="kw">sudo</span> make install
+<span class="kw">sudo</span> <span class="kw">make</span> <span class="kw">install</span>
 <span class="co"># now install the shared libs</span>
-<span class="kw">make</span> prefix=/path/to/here install-libR
+<span class="kw">make</span> <span class="ot">prefix=</span>/path/to/here install-libR
 <span class="co"># and install the recommended packages </span>
-<span class="kw">tools/./rsync-recommended</span></code></pre>
+tools/./rsync-recommended</code></pre>
 <p>Patience is required. Increasing memory available during this task by about 400MB (through the dreamhost panel) might be a good idea.</p>
 <p>Rstudio source install uses cmake and packages the dependencies itself, so installation isn’t necessarily intuitive. Note that we will compile dependencies from source included in RStudio, rather than just grabbing libboost-dev over apt-get.</p>
 <p>Download and extract the tarball, and cd into the base rstudio directory. Then install the dependencies – sit tight, this can take a while. Again, the extra 400MB memory helps.</p>
 <pre class="sourceCode bash"><code class="sourceCode bash">
 <span class="kw">cd</span> dependencies/linux/older
-<span class="kw">./install-boost</span></code></pre>
+./install-boost</code></pre>
 <pre class="sourceCode bash"><code class="sourceCode bash">
 <span class="kw">cd</span> ../../..
 <span class="kw">mkdir</span> build
 <span class="kw">cd</span> build
-<span class="kw">cmake</span> -DRSTUDIO_TARGET=Server -DCMAKE_BUILD_TYPE=Release ..</code></pre>
+cmake -DRSTUDIO_TARGET=Server -DCMAKE_BUILD_TYPE=Release ..</code></pre>
 <p>Still stuck at this stage. Filed <a href="http://support.rstudio.org/help/discussions/problems/1169-installing-server-edition-by-source-on-debian-lenny">help ticket</a>.</p>
 <p>Trying out the desktop IDE. Might take a bit to get me to edit code outside of vim though…</p>
 <h2 id="sweave-documents-with-pretty-formatting-flexible-graphic-layout-and-syntax-highlighting">Sweave documents with pretty formatting, flexible graphic layout and syntax highlighting</h2>
@@ -170,7 +170,6 @@
 <h2 id="misc">Misc</h2>
 <p>Google tasks in my system tray? Nope. Apparently this used to be <a href="http://namsisi.wordpress.com/2009/02/22/gmail-tasks-in-your-ubuntu-system-tray/">possible</a> with <a href="http://prism.mozillalabs.com/">prism</a>, a mozillalabs project to allow web applications to run natively in the desktop ((ironically the opposite direction from google’s chrome-os and the direction of mobile developers)). The project is no longer supported but <a href="http://mozillalabs.com/blog/2011/02/prism-is-now-chromeless/">will be replaced</a> by chromeless, a more ambitious version which is still pre-alpha.</p>
 <p>Eventually should learn to use google+. Looks like I need to spend some time organizing circles. seems like having separate accounts (e.g. facebook for friends/personal stuff, twitter for professional) is much easier. too lazy to use facebook already.</p>
-
     </article>
   </div>
   <div class="span4">
@@ -217,7 +216,9 @@
 
   <br/>
 
-  <p><small> <i class="icon-barcode"></i> SHA Hash: <a href="https://github.com/cboettig/labnotebook/commit/../_posts/2011-11-22-some-configuration-notes-rstudio-setup-syntax-highlighting-in-sweave.md/_posts/2011-11-22-some-configuration-notes-rstudio-setup-syntax-highlighting-in-sweave.md"> ../_posts/2011-11-22-some-configuration-notes-rstudio-setup-syntax-highlighting-in-sweave.md</a></small></p>
+  <p><small> <i class="icon-barcode"></i> SHA Hash: <a href="https://github.com/cboettig/labnotebook/commit/8c159703b2a376bd2c60f16e0e0d5cea04d20876
+/_posts/2011-11-22-some-configuration-notes-rstudio-setup-syntax-highlighting-in-sweave.md"> 8c159703b2a376bd2c60f16e0e0d5cea04d20876
+</a></small></p>
     
   <br/>
 
