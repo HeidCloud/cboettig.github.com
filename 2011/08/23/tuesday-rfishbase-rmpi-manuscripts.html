@@ -24,7 +24,7 @@
 <!-- RDFa Metadata (in DublinCore) -->
 <meta property="dc:title" content="Tuesday: rropensci, Rmpi, manuscripts, ..." />
 <meta property="dc:creator" content="Carl Boettiger" />
-<meta property="dc:date" content="2013-04-29T09:10:41-07:00" />
+<meta property="dc:date" content="2013-05-02T11:15:21-07:00" />
 <meta property="dc:format" content="text/html" />
 <meta property="dc:language" content="en" />
 <meta property="dc:identifier" content="/2011/08/23/tuesday-rfishbase-rmpi-manuscripts.html" />
@@ -37,13 +37,13 @@
 <meta property="og:author" content="http://www.carlboettiger.info/index.html#me" />  <!-- Should be Liquid? URI? -->
 <meta property="http://ogp.me/ns/profile#first_name" content="Carl"/>
 <meta property="http://ogp.me/ns/profile#last_name" content="Boettiger"/>
-<meta property="http://ogp.me/ns/article#published_time" content="2013-04-29T09:10:41-07:00" />
+<meta property="http://ogp.me/ns/article#published_time" content="2013-05-02T11:15:21-07:00" />
 <meta property="og:site_name" content="Lab Notebook" /> <!-- Same as dc:source? -->
 <meta property="og:url" content="http://www.carlboettiger.info/2011/08/23/tuesday-rfishbase-rmpi-manuscripts.html" />
 <meta property="og:type" content="website" /> 
 <!-- Google Scholar Metadata -->
 <meta name="citation_author" content="Carl Boettiger"/>
-<meta name="citation_date" content="2013-04-29T09:10:41-07:00"/>
+<meta name="citation_date" content="2013-05-02T11:15:21-07:00"/>
 <meta name="citation_title" content="Tuesday: rropensci, Rmpi, manuscripts, ..."/>
 <meta name="citation_journal_title" content="Lab Notebook"/>
 
@@ -150,18 +150,18 @@
 <span class="kw">&lt;/dataObject&gt;</span></code></pre>
 <p>Which I parsed in R as:</p>
 <pre class="sourceCode r"><code class="sourceCode r">
- size_node &lt;-<span class="st"> </span><span class="kw">getNodeSet</span>(doc, <span class="kw">paste</span>(<span class="st">&quot;//dc:identifier[string(.) =</span>
+ size_node &lt;- <span class="kw">getNodeSet</span>(doc, <span class="kw">paste</span>(<span class="st">&quot;//dc:identifier[string(.) =</span>
 <span class="st">                          &#39;FB-Size-&quot;</span>, fish.id, <span class="st">&quot;&#39;]/..&quot;</span>, <span class="dt">sep=</span><span class="st">&quot;&quot;</span>), namespaces)
-  size &lt;-<span class="st"> </span><span class="kw">xmlValue</span>( size_node[[<span class="dv">1</span>]][[<span class="st">&quot;description&quot;</span>]] )</code></pre>
+  size &lt;- <span class="kw">xmlValue</span>( size_node[[<span class="dv">1</span>]][[<span class="st">&quot;description&quot;</span>]] )</code></pre>
 <p>Note that because we specify the exact node, we get only one return item and we can call size_node[[1]]. Note that fish.id is part of the identifier, and the use of the string(.)= to get the content of the identifier. We use xmlValue to get the description element out, though other ways are possible (such as sapply xmlToList). See code for details.</p>
 <h3 id="regexp-notes">RegExp Notes</h3>
 <p>Also did some regular expressions parsing for size information, which isn’t intelligently coded in the XML. Found the <a href="http://regexlib.com/">regexplib website</a> particularly useful for looking up expressions, for instance, for handling numbers with commas and different units. This <a href="http://www.addedbytes.com/download/regular-expressions-cheat-sheet-v2/png/">cheat-sheet</a> also helps.</p>
 <p>In particular, getting weight units was a bit tricky:</p>
 <pre class="sourceCode r"><code class="sourceCode r">
-  weight &lt;-<span class="st"> </span><span class="kw">gsub</span>(<span class="st">&quot;.+published weight: ( (</span><span class="ch">\\</span><span class="st">d|,)*</span><span class="ch">\\</span><span class="st">.?</span><span class="ch">\\</span><span class="st">d*) (g|kg).+&quot;</span>, <span class="st">&quot;</span><span class="ch">\\</span><span class="st">1&quot;</span>, size)
-  weight &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">gsub</span>(<span class="st">&quot;,&quot;</span>, <span class="st">&quot;&quot;</span>, weight)) <span class="co"># remove commas</span>
+  weight &lt;- <span class="kw">gsub</span>(<span class="st">&quot;.+published weight: ( (</span><span class="ch">\\</span><span class="st">d|,)*</span><span class="ch">\\</span><span class="st">.?</span><span class="ch">\\</span><span class="st">d*) (g|kg).+&quot;</span>, <span class="st">&quot;</span><span class="ch">\\</span><span class="st">1&quot;</span>, size)
+  weight &lt;- <span class="kw">as.numeric</span>(<span class="kw">gsub</span>(<span class="st">&quot;,&quot;</span>, <span class="st">&quot;&quot;</span>, weight)) <span class="co"># remove commas</span>
   if(units==<span class="st">&quot;kg&quot;</span>)
-    weight &lt;-<span class="st"> </span>weight*<span class="dv">1000</span></code></pre>
+    weight &lt;- weight*<span class="dv">1000</span></code></pre>
 <h3 id="implementation-and-examples">Implementation and Examples</h3>
 <p>Error handling is quite necessary as there’s lots of missing data. Compute times are a bit slow, but able to create a few smart examples.</p>
 <p>Age distribution for ids 2-500, minus those missing. Image will link to code.</p>
@@ -184,10 +184,10 @@ R -f simple.R</code></pre>
 <pre class="sourceCode r"><code class="sourceCode r">
 <span class="kw">library</span>(<span class="st">&quot;Rmpi&quot;</span>)
 <span class="kw">mpi.spawn.Rslaves</span>(<span class="dt">nslaves=</span><span class="dv">15</span>)
-slavefn &lt;-<span class="st"> </span>function() { <span class="kw">print</span>(<span class="kw">paste</span>(<span class="st">&quot;Hello from&quot;</span>, foldNumber)) }
-<span class="kw">mpi.bcast.cmd</span>(foldNumber &lt;-<span class="st"> </span><span class="kw">mpi.comm.rank</span>())
+slavefn &lt;- function() { <span class="kw">print</span>(<span class="kw">paste</span>(<span class="st">&quot;Hello from&quot;</span>, foldNumber)) }
+<span class="kw">mpi.bcast.cmd</span>(foldNumber &lt;- <span class="kw">mpi.comm.rank</span>())
 <span class="kw">mpi.bcast.Robj2slave</span>(slavefn)
-result &lt;-<span class="st"> </span><span class="kw">mpi.remote.exec</span>(<span class="kw">slavefn</span>())
+result &lt;- <span class="kw">mpi.remote.exec</span>(<span class="kw">slavefn</span>())
 <span class="kw">print</span>(result)
 <span class="kw">mpi.close.Rslaves</span>()
 <span class="kw">mpi.quit</span>(<span class="dt">save =</span> <span class="st">&quot;no&quot;</span>)</code></pre>

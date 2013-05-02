@@ -24,7 +24,7 @@
 <!-- RDFa Metadata (in DublinCore) -->
 <meta property="dc:title" content="knitcitations" />
 <meta property="dc:creator" content="Carl Boettiger" />
-<meta property="dc:date" content="2013-04-29T09:10:41-07:00" />
+<meta property="dc:date" content="2013-05-02T11:15:21-07:00" />
 <meta property="dc:format" content="text/html" />
 <meta property="dc:language" content="en" />
 <meta property="dc:identifier" content="/2012/05/30/knitcitations.html" />
@@ -37,13 +37,13 @@
 <meta property="og:author" content="http://www.carlboettiger.info/index.html#me" />  <!-- Should be Liquid? URI? -->
 <meta property="http://ogp.me/ns/profile#first_name" content="Carl"/>
 <meta property="http://ogp.me/ns/profile#last_name" content="Boettiger"/>
-<meta property="http://ogp.me/ns/article#published_time" content="2013-04-29T09:10:41-07:00" />
+<meta property="http://ogp.me/ns/article#published_time" content="2013-05-02T11:15:21-07:00" />
 <meta property="og:site_name" content="Lab Notebook" /> <!-- Same as dc:source? -->
 <meta property="og:url" content="http://www.carlboettiger.info/2012/05/30/knitcitations.html" />
 <meta property="og:type" content="website" /> 
 <!-- Google Scholar Metadata -->
 <meta name="citation_author" content="Carl Boettiger"/>
-<meta name="citation_date" content="2013-04-29T09:10:41-07:00"/>
+<meta name="citation_date" content="2013-05-02T11:15:21-07:00"/>
 <meta name="citation_title" content="knitcitations"/>
 <meta name="citation_journal_title" content="Lab Notebook"/>
 
@@ -150,7 +150,7 @@
 <h2 id="generating-citations">Generating citations</h2>
 <h3 id="doi-approach">DOI Approach</h3>
 <p>Then we can generate a citation given a DOI with the <code>ref</code> function:</p>
-<pre class="sourceCode r"><code class="sourceCode r">r &lt;-<span class="st"> </span><span class="kw">ref</span>(<span class="st">&quot;10.1111/j.1461-0248.2005.00827.x&quot;</span>)
+<pre class="sourceCode r"><code class="sourceCode r">r &lt;- <span class="kw">ref</span>(<span class="st">&quot;10.1111/j.1461-0248.2005.00827.x&quot;</span>)
 <span class="kw">print</span>(r, <span class="st">&quot;html&quot;</span>)</code></pre>
 <p>Halpern BS, Regan HM, Possingham HP and Mccarthy MA (2006). “Accounting For Uncertainty in Marine Reserve Design.” <em>Ecology Letters</em>, 9. ISSN 1461-023X, <a href="http://dx.doi.org/10.1111/j.1461-0248.2005.00827.x">http://dx.doi.org/10.1111/j.1461-0248.2005.00827.x</a>.</p>
 <p>Note that R allows bibitems to print in a variety of formats, including html.</p>
@@ -186,11 +186,11 @@
 <p>If we have a bibtex file, we can use this for the citations as well. If you don’t have a bibtex file handy, you can make one containing the citation information for some of R’s packages:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">write.bibtex</span>(<span class="kw">c</span>(<span class="st">&quot;bibtex&quot;</span>, <span class="st">&quot;knitr&quot;</span>, <span class="st">&quot;knitcitations&quot;</span>), <span class="dt">file =</span> <span class="st">&quot;example.bib&quot;</span>)</code></pre>
 <p>We could also have used the <code>ref</code> function write a bibtex file for our list of DOIs</p>
-<pre class="sourceCode r"><code class="sourceCode r">refs &lt;-<span class="st"> </span><span class="kw">lapply</span>(<span class="kw">c</span>(<span class="st">&quot;10.1111/j.1461-0248.2005.00827.x&quot;</span>, <span class="st">&quot;10.1890/11-0011.1&quot;</span>), 
+<pre class="sourceCode r"><code class="sourceCode r">refs &lt;- <span class="kw">lapply</span>(<span class="kw">c</span>(<span class="st">&quot;10.1111/j.1461-0248.2005.00827.x&quot;</span>, <span class="st">&quot;10.1890/11-0011.1&quot;</span>), 
     ref)
 <span class="kw">write.bibtex</span>(refs, <span class="dt">file =</span> <span class="st">&quot;refs.bib&quot;</span>)</code></pre>
 <p>Once we have a bibtex file available, we must read it into R.</p>
-<pre class="sourceCode r"><code class="sourceCode r">bib &lt;-<span class="st"> </span><span class="kw">read.bibtex</span>(<span class="st">&quot;example.bib&quot;</span>)</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">bib &lt;- <span class="kw">read.bibtex</span>(<span class="st">&quot;example.bib&quot;</span>)</code></pre>
 <p>We can now create citations from <code>bib</code> using the bibtex key,</p>
 <pre class="sourceCode r"><code class="sourceCode r">bib[[<span class="st">&quot;knitr&quot;</span>]]</code></pre>
 <p>Xie Y (2012). <em>knitr: A general-purpose package for dynamic report generation in R</em>. R package version 0.5.4, <URL:
@@ -267,7 +267,7 @@ http://yihui.name/knitr/>.</p>
 
   <br/>
 
-   <p style="font-style:italic"> <i class="icon-signal"></i> pageviews: 859</p>
+   <p style="font-style:italic"> <i class="icon-signal"></i> pageviews: 866</p>
 
   <br/>
 

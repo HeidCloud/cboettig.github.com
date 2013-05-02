@@ -24,7 +24,7 @@
 <!-- RDFa Metadata (in DublinCore) -->
 <meta property="dc:title" content="Saturday: git with latexdiff, TreeBASE and PMC package updates, bounds on lambda" />
 <meta property="dc:creator" content="Carl Boettiger" />
-<meta property="dc:date" content="2013-04-29T09:10:41-07:00" />
+<meta property="dc:date" content="2013-05-02T11:15:21-07:00" />
 <meta property="dc:format" content="text/html" />
 <meta property="dc:language" content="en" />
 <meta property="dc:identifier" content="/2011/06/04/saturday-git-with-latexdiff-treebase-and-pmc-package-updates-bounds-on-lambda.html" />
@@ -37,13 +37,13 @@
 <meta property="og:author" content="http://www.carlboettiger.info/index.html#me" />  <!-- Should be Liquid? URI? -->
 <meta property="http://ogp.me/ns/profile#first_name" content="Carl"/>
 <meta property="http://ogp.me/ns/profile#last_name" content="Boettiger"/>
-<meta property="http://ogp.me/ns/article#published_time" content="2013-04-29T09:10:41-07:00" />
+<meta property="http://ogp.me/ns/article#published_time" content="2013-05-02T11:15:21-07:00" />
 <meta property="og:site_name" content="Lab Notebook" /> <!-- Same as dc:source? -->
 <meta property="og:url" content="http://www.carlboettiger.info/2011/06/04/saturday-git-with-latexdiff-treebase-and-pmc-package-updates-bounds-on-lambda.html" />
 <meta property="og:type" content="website" /> 
 <!-- Google Scholar Metadata -->
 <meta name="citation_author" content="Carl Boettiger"/>
-<meta name="citation_date" content="2013-04-29T09:10:41-07:00"/>
+<meta name="citation_date" content="2013-05-02T11:15:21-07:00"/>
 <meta name="citation_title" content="Saturday: git with latexdiff, TreeBASE and PMC package updates, bounds on lambda"/>
 <meta name="citation_journal_title" content="Lab Notebook"/>
 
@@ -145,7 +145,7 @@
 <p>Revised method for wrapping PMC capability around existing functions (given a fit method and a simulation method).  A bit cumbersome still, as requires a couple user-defined functions, but at least faster for me to write wrappers, if not likely simple enough for most users to write their own wrappers.  Construction is explained in the in-code documentation of pmc_model.R, but easily illustrated with some simple examples (also in pmc_ex.R)</p>
 <pre class="sourceCode R"><code class="sourceCode r">
 <span class="co"># use the pmc_model to define a function that fits under &quot;pureBirth&quot; and simulates under &quot;sim.bd.taxa&quot;</span>
-pureBirth_fit &lt;-<span class="st"> </span>function(fit_input){
+pureBirth_fit &lt;- function(fit_input){
  <span class="kw">pmc_model</span>(pureBirth, sim.bd.taxa,
  <span class="dt">fit_input =</span> fit_input,
  <span class="dt">data_name =</span> <span class="st">&quot;x&quot;</span>,
@@ -158,9 +158,9 @@ pureBirth_fit &lt;-<span class="st"> </span>function(fit_input){
 
 <span class="kw">require</span>(pmc)
 <span class="kw">data</span>(geospiza)
-fit_input =<span class="st"> </span><span class="kw">list</span>(<span class="dt">x=</span><span class="kw">branching.times</span>(geospiza$geospiza.tree))
-m &lt;-<span class="st"> </span><span class="kw">pureBirth_fit</span>(fit_input)
-x &lt;-<span class="st"> </span><span class="kw">simulate</span>(m)
+fit_input = <span class="kw">list</span>(<span class="dt">x=</span><span class="kw">branching.times</span>(geospiza$geospiza.tree))
+m &lt;- <span class="kw">pureBirth_fit</span>(fit_input)
+x &lt;- <span class="kw">simulate</span>(m)
 m2&lt;-<span class="kw">update</span>(m,x)
 <span class="kw">print</span>(<span class="kw">loglik</span>(m2))</code></pre>
 <p>Note that then simulate, update, and loglik methods and work.   getParameters() returns all results of the fit method, which should be fixed (will create way too many copies of the data).</p>
@@ -196,11 +196,11 @@ git push -u dreamhost master</code></pre>
 <p>Step one: See article in Google Reader reporting a beautiful phylogeny.</p>
 <p>Step two: grab tree into R and run analyses:</p>
 <pre class="sourceCode r"><code class="sourceCode r">
-&gt;<span class="st"> </span><span class="kw">require</span>(treebase)
-&gt;<span class="st"> </span><span class="kw">search_treebase</span>(<span class="st">&quot;Derryberry&quot;</span>, <span class="st">&quot;author&quot;</span>) -&gt;<span class="st"> </span>a
-&gt;<span class="st"> </span><span class="kw">metadata</span>(a[[<span class="dv">1</span>]]$S.id)
+&gt; <span class="kw">require</span>(treebase)
+&gt; <span class="kw">search_treebase</span>(<span class="st">&quot;Derryberry&quot;</span>, <span class="st">&quot;author&quot;</span>) -&gt; a
+&gt; <span class="kw">metadata</span>(a[[<span class="dv">1</span>]]$S.id)
 
-&gt;<span class="st"> </span><span class="kw">plot</span>(a[[<span class="dv">1</span>]])
+&gt; <span class="kw">plot</span>(a[[<span class="dv">1</span>]])
 </code></pre>
 <p>A beautiful time-calibrated tree of 297 taxa.</p>
 <p>Step 3: read paper, repeating all of the author’s analyses as we go.</p>

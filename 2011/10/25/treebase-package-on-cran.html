@@ -24,7 +24,7 @@
 <!-- RDFa Metadata (in DublinCore) -->
 <meta property="dc:title" content="Treebase Package On Cran" />
 <meta property="dc:creator" content="Carl Boettiger" />
-<meta property="dc:date" content="2013-04-29T09:10:41-07:00" />
+<meta property="dc:date" content="2013-05-02T11:15:21-07:00" />
 <meta property="dc:format" content="text/html" />
 <meta property="dc:language" content="en" />
 <meta property="dc:identifier" content="/2011/10/25/treebase-package-on-cran.html" />
@@ -37,13 +37,13 @@
 <meta property="og:author" content="http://www.carlboettiger.info/index.html#me" />  <!-- Should be Liquid? URI? -->
 <meta property="http://ogp.me/ns/profile#first_name" content="Carl"/>
 <meta property="http://ogp.me/ns/profile#last_name" content="Boettiger"/>
-<meta property="http://ogp.me/ns/article#published_time" content="2013-04-29T09:10:41-07:00" />
+<meta property="http://ogp.me/ns/article#published_time" content="2013-05-02T11:15:21-07:00" />
 <meta property="og:site_name" content="Lab Notebook" /> <!-- Same as dc:source? -->
 <meta property="og:url" content="http://www.carlboettiger.info/2011/10/25/treebase-package-on-cran.html" />
 <meta property="og:type" content="website" /> 
 <!-- Google Scholar Metadata -->
 <meta name="citation_author" content="Carl Boettiger"/>
-<meta name="citation_date" content="2013-04-29T09:10:41-07:00"/>
+<meta name="citation_date" content="2013-05-02T11:15:21-07:00"/>
 <meta name="citation_title" content="Treebase Package On Cran"/>
 <meta name="citation_journal_title" content="Lab Notebook"/>
 
@@ -143,14 +143,14 @@
 <h2 id="basic-tree-and-metadata-queries">Basic tree and metadata queries</h2>
 <p>Downloading trees by different queries: by author, taxa, &amp; study. More options are described in the help file.</p>
 <pre class="sourceCode R"><code class="sourceCode r">
-both &lt;-<span class="st"> </span><span class="kw">search_treebase</span>(<span class="st">&quot;Ronquist or Hulesenbeck&quot;</span>, <span class="dt">by=</span><span class="kw">c</span>(<span class="st">&quot;author&quot;</span>, <span class="st">&quot;author&quot;</span>))
-dolphins &lt;-<span class="st"> </span><span class="kw">search_treebase</span>(<span class="st">&#39;&quot;Delphinus&quot;&#39;</span>, <span class="dt">by=</span><span class="st">&quot;taxon&quot;</span>, <span class="dt">max_trees=</span><span class="dv">5</span>)
-studies &lt;-<span class="st"> </span><span class="kw">search_treebase</span>(<span class="st">&quot;2377&quot;</span>, <span class="dt">by=</span><span class="st">&quot;id.study&quot;</span>)
-Near &lt;-<span class="st"> </span><span class="kw">search_treebase</span>(<span class="st">&quot;Near&quot;</span>, <span class="st">&quot;author&quot;</span>, <span class="dt">branch_lengths=</span><span class="ot">TRUE</span>)</code></pre>
+both &lt;- <span class="kw">search_treebase</span>(<span class="st">&quot;Ronquist or Hulesenbeck&quot;</span>, <span class="dt">by=</span><span class="kw">c</span>(<span class="st">&quot;author&quot;</span>, <span class="st">&quot;author&quot;</span>))
+dolphins &lt;- <span class="kw">search_treebase</span>(<span class="st">&#39;&quot;Delphinus&quot;&#39;</span>, <span class="dt">by=</span><span class="st">&quot;taxon&quot;</span>, <span class="dt">max_trees=</span><span class="dv">5</span>)
+studies &lt;- <span class="kw">search_treebase</span>(<span class="st">&quot;2377&quot;</span>, <span class="dt">by=</span><span class="st">&quot;id.study&quot;</span>)
+Near &lt;- <span class="kw">search_treebase</span>(<span class="st">&quot;Near&quot;</span>, <span class="st">&quot;author&quot;</span>, <span class="dt">branch_lengths=</span><span class="ot">TRUE</span>)</code></pre>
 <p>We can query the metadata record directly. For instance, plot the growth of Treebase submissions by publication date</p>
 <pre class="sourceCode R"><code class="sourceCode r">
-all &lt;-<span class="st"> </span><span class="kw">search_metadata</span>(<span class="st">&quot;&quot;</span>, <span class="dt">by=</span><span class="st">&quot;all&quot;</span>)
-dates &lt;-<span class="st"> </span><span class="kw">sapply</span>(all, function(x) <span class="kw">as.numeric</span>(x$date))
+all &lt;- <span class="kw">search_metadata</span>(<span class="st">&quot;&quot;</span>, <span class="dt">by=</span><span class="st">&quot;all&quot;</span>)
+dates &lt;- <span class="kw">sapply</span>(all, function(x) <span class="kw">as.numeric</span>(x$date))
 <span class="kw">hist</span>(dates, <span class="dt">main=</span><span class="st">&quot;TreeBase growth&quot;</span>, <span class="dt">xlab=</span><span class="st">&quot;Year&quot;</span>)</code></pre>
 <p>(This query could also take a date range).</p>
 <div class="figure">
@@ -158,23 +158,23 @@ dates &lt;-<span class="st"> </span><span class="kw">sapply</span>(all, function
 </div>
 <p>How do the weekly’s do on submissions to Treebase? We construct this in a way that gives us back the indices of the matches, so we can then grab those trees directly. Run the scripts yourself to see if they’ve changed!</p>
 <pre class="sourceCode R"><code class="sourceCode r">
-nature &lt;-<span class="st"> </span><span class="kw">sapply</span>(all, function(x) <span class="kw">length</span>(<span class="kw">grep</span>(<span class="st">&quot;Nature&quot;</span>, x$publisher))&gt;<span class="dv">0</span>)
-science &lt;-<span class="st"> </span><span class="kw">sapply</span>(all, function(x) <span class="kw">length</span>(<span class="kw">grep</span>(<span class="st">&quot;^Science$&quot;</span>, x$publisher))&gt;<span class="dv">0</span>)
-&gt;<span class="st"> </span><span class="kw">sum</span>(nature)
+nature &lt;- <span class="kw">sapply</span>(all, function(x) <span class="kw">length</span>(<span class="kw">grep</span>(<span class="st">&quot;Nature&quot;</span>, x$publisher))&gt;<span class="dv">0</span>)
+science &lt;- <span class="kw">sapply</span>(all, function(x) <span class="kw">length</span>(<span class="kw">grep</span>(<span class="st">&quot;^Science$&quot;</span>, x$publisher))&gt;<span class="dv">0</span>)
+&gt; <span class="kw">sum</span>(nature)
 [<span class="dv">1</span>] <span class="dv">14</span>
-&gt;<span class="st"> </span><span class="kw">sum</span>(science)
+&gt; <span class="kw">sum</span>(science)
 [<span class="dv">1</span>] <span class="dv">14</span></code></pre>
 <p>Now get me all of those treebase trees that have appeared in Nature.</p>
 <pre class="sourceCode R"><code class="sourceCode r">
-s &lt;-<span class="st"> </span><span class="kw">get_study</span>( all[nature] )</code></pre>
+s &lt;- <span class="kw">get_study</span>( all[nature] )</code></pre>
 <p>Which authors have the most submissions?</p>
 <pre class="sourceCode R"><code class="sourceCode r">
-authors &lt;-<span class="st"> </span><span class="kw">sapply</span>(all, function(x){
-  index &lt;-<span class="st"> </span><span class="kw">grep</span>( <span class="st">&quot;creator&quot;</span>, <span class="kw">names</span>(x))
+authors &lt;- <span class="kw">sapply</span>(all, function(x){
+  index &lt;- <span class="kw">grep</span>( <span class="st">&quot;creator&quot;</span>, <span class="kw">names</span>(x))
   x[index]
   })
-a &lt;-<span class="st"> </span><span class="kw">as.factor</span>(<span class="kw">unlist</span>(authors))
-&gt;<span class="st"> </span><span class="kw">head</span>(<span class="kw">summary</span>(a))
+a &lt;- <span class="kw">as.factor</span>(<span class="kw">unlist</span>(authors))
+&gt; <span class="kw">head</span>(<span class="kw">summary</span>(a))
         Crous, Pedro W.   Wingfield, Michael J. Groenewald, Johannes Z.
                      <span class="dv">88</span>                      <span class="dv">68</span>                      <span class="dv">58</span>
    Donoghue, Michael J.       Takamatsu, Susumu    Wingfield, Brenda D.
@@ -184,7 +184,7 @@ a &lt;-<span class="st"> </span><span class="kw">as.factor</span>(<span class="k
 <p>Let’s grab the trees by that author and make sure we have the right one:</p>
 <pre class="sourceCode R"><code class="sourceCode r">
 <span class="kw">require</span>(treebase)
-<span class="kw">search_treebase</span>(<span class="st">&quot;Derryberry&quot;</span>, <span class="st">&quot;author&quot;</span>)[[<span class="dv">1</span>]] -&gt;<span class="st"> </span>tree
+<span class="kw">search_treebase</span>(<span class="st">&quot;Derryberry&quot;</span>, <span class="st">&quot;author&quot;</span>)[[<span class="dv">1</span>]] -&gt; tree
 <span class="kw">metadata</span>(tree$S.id)
 <span class="kw">plot</span>(tree)</code></pre>
 <div class="figure">
@@ -194,8 +194,8 @@ a &lt;-<span class="st"> </span><span class="kw">as.factor</span>(<span class="k
 <p>They fit a variety of diversification rate models avialable in the laser package, which they compare by aic.</p>
 <pre class="sourceCode R"><code class="sourceCode r">
 <span class="kw">require</span>(laser)
-tt &lt;-<span class="st"> </span><span class="kw">branching.times</span>(tree)
-models &lt;-<span class="st">  </span><span class="kw">list</span>(<span class="dt">pb =</span> <span class="kw">pureBirth</span>(tt),
+tt &lt;- <span class="kw">branching.times</span>(tree)
+models &lt;-  <span class="kw">list</span>(<span class="dt">pb =</span> <span class="kw">pureBirth</span>(tt),
                 <span class="dt">bdfit =</span> <span class="kw">bd</span>(tt),
                 <span class="dt">y2r =</span> <span class="kw">yule2rate</span>(tt), <span class="co"># yule model with single shift pt</span>
                 <span class="dt">ddl =</span> <span class="kw">DDL</span>(tt), <span class="co"># linear, diversity-dependent</span>
@@ -204,10 +204,10 @@ models &lt;-<span class="st">  </span><span class="kw">list</span>(<span class="
                 <span class="dt">ev =</span> <span class="kw">fitEXVAR</span>(tt), <span class="co"># vary extinction in time</span>
                 <span class="dt">bv =</span> <span class="kw">fitBOTHVAR</span>(tt)<span class="co"># vary both</span>
                 )
-aics &lt;-<span class="st"> </span><span class="kw">sapply</span>(models, function(x) x$aic)
+aics &lt;- <span class="kw">sapply</span>(models, function(x) x$aic)
 <span class="co"># show the winning model</span>
 models[<span class="kw">which.min</span>(aics)]
-&gt;<span class="st"> </span>models[<span class="kw">which.min</span>(aics)]
+&gt; models[<span class="kw">which.min</span>(aics)]
 $y2r
           LH      st1        r1         r2       aic
 <span class="dv">276</span> <span class="fl">505.0685</span> <span class="fl">1.171871</span> <span class="fl">0.1426537</span> <span class="fl">0.05372305</span> -<span class="fl">1004.137</span></code></pre>
@@ -216,30 +216,30 @@ $y2r
 <p>Of course one of the more interesting challenges of having an automated interface is the ability to perform meta-analyses across the set of available phylogenies in treebase. As a simple proof-of-principle, let’s check all the phylogenies in treebase to see if they fit a birth-death model or yule model better.</p>
 <p>We’ll create two simple functions to help with this analysis. While these can be provided by the treebase package, I’ve included them here to illustrate that the real flexibility comes from being able to create custom functions. ((These are primarily illustrative; I hope users and developers will create their own. In a proper analysis we would want a few additional checks.))</p>
 <pre class="sourceCode R"><code class="sourceCode r">
-timetree &lt;-<span class="st"> </span>function(tree){
-    check.na &lt;-<span class="st"> </span><span class="kw">try</span>(<span class="kw">sum</span>(<span class="kw">is.na</span>(tree$edge.length))&gt;<span class="dv">0</span>)
-    if(<span class="kw">is</span>(check.na, <span class="st">&quot;try-error&quot;</span>) |<span class="st"> </span>check.na)
+timetree &lt;- function(tree){
+    check.na &lt;- <span class="kw">try</span>(<span class="kw">sum</span>(<span class="kw">is.na</span>(tree$edge.length))&gt;<span class="dv">0</span>)
+    if(<span class="kw">is</span>(check.na, <span class="st">&quot;try-error&quot;</span>) | check.na)
       <span class="ot">NULL</span>
     else
     <span class="kw">try</span>( <span class="kw">chronoMPL</span>(<span class="kw">multi2di</span>(tree)) )
 }
-drop_errors &lt;-<span class="st"> </span>function(tr){
-  tt &lt;-<span class="st"> </span>tr[!<span class="kw">sapply</span>(tr, is.null)]
-  tt &lt;-<span class="st"> </span>tt[!<span class="kw">sapply</span>(tt, function(x) <span class="kw">is</span>(x, <span class="st">&quot;try-error&quot;</span>))]
+drop_errors &lt;- function(tr){
+  tt &lt;- tr[!<span class="kw">sapply</span>(tr, is.null)]
+  tt &lt;- tt[!<span class="kw">sapply</span>(tt, function(x) <span class="kw">is</span>(x, <span class="st">&quot;try-error&quot;</span>))]
   <span class="kw">print</span>(<span class="kw">paste</span>(<span class="st">&quot;dropped&quot;</span>, <span class="kw">length</span>(tr)-<span class="kw">length</span>(tt), <span class="st">&quot;trees&quot;</span>))
   tt
 }
 <span class="kw">require</span>(laser)
-pick_branching_model &lt;-<span class="st"> </span>function(tree){
-  m1 &lt;-<span class="st"> </span><span class="kw">try</span>(<span class="kw">pureBirth</span>(<span class="kw">branching.times</span>(tree)))
-  m2 &lt;-<span class="st"> </span><span class="kw">try</span>(<span class="kw">bd</span>(<span class="kw">branching.times</span>(tree)))
-  <span class="kw">as.logical</span>(<span class="kw">try</span>(m2$aic &lt;<span class="st"> </span>m1$aic))
+pick_branching_model &lt;- function(tree){
+  m1 &lt;- <span class="kw">try</span>(<span class="kw">pureBirth</span>(<span class="kw">branching.times</span>(tree)))
+  m2 &lt;- <span class="kw">try</span>(<span class="kw">bd</span>(<span class="kw">branching.times</span>(tree)))
+  <span class="kw">as.logical</span>(<span class="kw">try</span>(m2$aic &lt; m1$aic))
 }</code></pre>
 <p>Return only treebase trees that have branch lengths. This has to download every tree in treebase, so this will take a while. Good thing we don’t have to do that by hand.</p>
 <pre class="sourceCode R"><code class="sourceCode r">
-all &lt;-<span class="st"> </span><span class="kw">search_treebase</span>(<span class="st">&quot;Consensus&quot;</span>, <span class="st">&quot;type.tree&quot;</span>, <span class="dt">branch_lengths=</span><span class="ot">TRUE</span>)
-tt &lt;-<span class="st"> </span><span class="kw">drop_errors</span>(<span class="kw">sapply</span>(all, timetree))
-is_yule &lt;-<span class="st"> </span><span class="kw">sapply</span>(tt, pick_branching_model)
+all &lt;- <span class="kw">search_treebase</span>(<span class="st">&quot;Consensus&quot;</span>, <span class="st">&quot;type.tree&quot;</span>, <span class="dt">branch_lengths=</span><span class="ot">TRUE</span>)
+tt &lt;- <span class="kw">drop_errors</span>(<span class="kw">sapply</span>(all, timetree))
+is_yule &lt;- <span class="kw">sapply</span>(tt, pick_branching_model)
 <span class="kw">table</span>(is_yule)</code></pre>
 <h2 id="references">References</h2>
 <ul>

@@ -24,7 +24,7 @@
 <!-- RDFa Metadata (in DublinCore) -->
 <meta property="dc:title" content="Sequential Updating" />
 <meta property="dc:creator" content="Carl Boettiger" />
-<meta property="dc:date" content="2013-04-29T09:10:41-07:00" />
+<meta property="dc:date" content="2013-05-02T11:15:21-07:00" />
 <meta property="dc:format" content="text/html" />
 <meta property="dc:language" content="en" />
 <meta property="dc:identifier" content="/2012/11/19/sequential-updating.html" />
@@ -37,13 +37,13 @@
 <meta property="og:author" content="http://www.carlboettiger.info/index.html#me" />  <!-- Should be Liquid? URI? -->
 <meta property="http://ogp.me/ns/profile#first_name" content="Carl"/>
 <meta property="http://ogp.me/ns/profile#last_name" content="Boettiger"/>
-<meta property="http://ogp.me/ns/article#published_time" content="2013-04-29T09:10:41-07:00" />
+<meta property="http://ogp.me/ns/article#published_time" content="2013-05-02T11:15:21-07:00" />
 <meta property="og:site_name" content="Lab Notebook" /> <!-- Same as dc:source? -->
 <meta property="og:url" content="http://www.carlboettiger.info/2012/11/19/sequential-updating.html" />
 <meta property="og:type" content="website" /> 
 <!-- Google Scholar Metadata -->
 <meta name="citation_author" content="Carl Boettiger"/>
-<meta name="citation_date" content="2013-04-29T09:10:41-07:00"/>
+<meta name="citation_date" content="2013-05-02T11:15:21-07:00"/>
 <meta name="citation_title" content="Sequential Updating"/>
 <meta name="citation_journal_title" content="Lab Notebook"/>
 
@@ -141,29 +141,29 @@
     <article>
     <p>Fixed the sequential updating algorithm (avoids numerical instabilities associated with matrix inversion). Currently defined as the function recursion:</p>
 <p>for the covariance:</p>
-<pre class="sourceCode r"><code class="sourceCode r">C_seq &lt;-<span class="st"> </span>function(X, X_prime, i){
-    if(i &lt;=<span class="st"> </span><span class="dv">1</span>)
-          <span class="kw">cov</span>(X, X_prime) -<span class="st"> </span><span class="kw">mmult</span>(<span class="kw">cov</span>(X,x[i]), <span class="kw">cov</span>(x[i], X_prime)) /<span class="st"> </span><span class="kw">as.numeric</span>( <span class="kw">cov</span>(x[i], x[i]) +<span class="st"> </span>sigma_n^<span class="dv">2</span>)
+<pre class="sourceCode r"><code class="sourceCode r">C_seq &lt;- function(X, X_prime, i){
+    if(i &lt;= <span class="dv">1</span>)
+          <span class="kw">cov</span>(X, X_prime) - <span class="kw">mmult</span>(<span class="kw">cov</span>(X,x[i]), <span class="kw">cov</span>(x[i], X_prime)) / <span class="kw">as.numeric</span>( <span class="kw">cov</span>(x[i], x[i]) + sigma_n^<span class="dv">2</span>)
             else
-                  <span class="kw">C_seq</span>(X, X_prime,   i<span class="dv">-1</span>) -<span class="st"> </span><span class="kw">mmult</span>(<span class="kw">C_seq</span>(X,x[i],   i<span class="dv">-1</span>), <span class="kw">C_seq</span>(x[i], X_prime,   i<span class="dv">-1</span>)) /<span class="st"> </span><span class="kw">as.numeric</span>( <span class="kw">C_seq</span>(x[i], x[i],   i<span class="dv">-1</span>)  +<span class="st"> </span>sigma_n^<span class="dv">2</span>  )
+                  <span class="kw">C_seq</span>(X, X_prime,   i<span class="dv">-1</span>) - <span class="kw">mmult</span>(<span class="kw">C_seq</span>(X,x[i],   i<span class="dv">-1</span>), <span class="kw">C_seq</span>(x[i], X_prime,   i<span class="dv">-1</span>)) / <span class="kw">as.numeric</span>( <span class="kw">C_seq</span>(x[i], x[i],   i<span class="dv">-1</span>)  + sigma_n^<span class="dv">2</span>  )
 }</code></pre>
 <p>for the mean:</p>
-<pre class="sourceCode r"><code class="sourceCode r">mu_seq &lt;-<span class="st"> </span>function(X, i){
-    if(i &lt;=<span class="st"> </span><span class="dv">1</span>)
-          <span class="kw">cov</span>(x[i], X) *<span class="st"> </span>(y[i]-mu[i]) /<span class="st"> </span><span class="kw">as.numeric</span>( <span class="kw">cov</span>(x[i], x[i]) +<span class="st"> </span>sigma_n^<span class="dv">2</span>)
+<pre class="sourceCode r"><code class="sourceCode r">mu_seq &lt;- function(X, i){
+    if(i &lt;= <span class="dv">1</span>)
+          <span class="kw">cov</span>(x[i], X) * (y[i]-mu[i]) / <span class="kw">as.numeric</span>( <span class="kw">cov</span>(x[i], x[i]) + sigma_n^<span class="dv">2</span>)
             else
-                  <span class="kw">mu_seq</span>(X, i<span class="dv">-1</span>) +<span class="st"> </span><span class="kw">C_seq</span>(x[i], X,  i<span class="dv">-1</span>) *<span class="st"> </span>(y[i]-mu[i]) /<span class="st"> </span><span class="kw">as.numeric</span>( <span class="kw">C_seq</span>(x[i], x[i], i<span class="dv">-1</span>)  +<span class="st"> </span>sigma_n^<span class="dv">2</span> )
+                  <span class="kw">mu_seq</span>(X, i<span class="dv">-1</span>) + <span class="kw">C_seq</span>(x[i], X,  i<span class="dv">-1</span>) * (y[i]-mu[i]) / <span class="kw">as.numeric</span>( <span class="kw">C_seq</span>(x[i], x[i], i<span class="dv">-1</span>)  + sigma_n^<span class="dv">2</span> )
 }</code></pre>
 <p>Note that this needed a custom matrix multiplication to handle scalar by vector cases:</p>
-<pre class="sourceCode r"><code class="sourceCode r">mmult &lt;-<span class="st"> </span>function(x,y){
-  if(<span class="kw">length</span>(x) ==<span class="st"> </span><span class="dv">1</span>){
-    x &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(x) 
-    x *<span class="st"> </span>y
-  } else if(<span class="kw">length</span>(y) ==<span class="st"> </span><span class="dv">1</span>){ 
-    y &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(y)
-    x *<span class="st"> </span>y
+<pre class="sourceCode r"><code class="sourceCode r">mmult &lt;- function(x,y){
+  if(<span class="kw">length</span>(x) == <span class="dv">1</span>){
+    x &lt;- <span class="kw">as.numeric</span>(x) 
+    x * y
+  } else if(<span class="kw">length</span>(y) == <span class="dv">1</span>){ 
+    y &lt;- <span class="kw">as.numeric</span>(y)
+    x * y
   }  else 
-  x %*%<span class="st"> </span>y
+  x %*% y
 }</code></pre>
 <p>And probably needs to be written in C at least to have any hope of scaling. See implementation in <a href="https://github.com/cboettig/nonparametric-bayes/blob/e19802885c6ddf2a30807e6b3addf2b9fa3e2ff0/inst/examples/sequential-method.md">sequential-method</a></p>
 <p>Match is perfect (jittered to avoid overplotting the lazy way):</p>

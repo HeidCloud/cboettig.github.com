@@ -24,7 +24,7 @@
 <!-- RDFa Metadata (in DublinCore) -->
 <meta property="dc:title" content="Knitr with flickr and wordpress" />
 <meta property="dc:creator" content="Carl Boettiger" />
-<meta property="dc:date" content="2013-04-29T09:10:41-07:00" />
+<meta property="dc:date" content="2013-05-02T11:15:21-07:00" />
 <meta property="dc:format" content="text/html" />
 <meta property="dc:language" content="en" />
 <meta property="dc:identifier" content="/2012/02/28/knitr-with-flickr-and-wordpress.html" />
@@ -37,13 +37,13 @@
 <meta property="og:author" content="http://www.carlboettiger.info/index.html#me" />  <!-- Should be Liquid? URI? -->
 <meta property="http://ogp.me/ns/profile#first_name" content="Carl"/>
 <meta property="http://ogp.me/ns/profile#last_name" content="Boettiger"/>
-<meta property="http://ogp.me/ns/article#published_time" content="2013-04-29T09:10:41-07:00" />
+<meta property="http://ogp.me/ns/article#published_time" content="2013-05-02T11:15:21-07:00" />
 <meta property="og:site_name" content="Lab Notebook" /> <!-- Same as dc:source? -->
 <meta property="og:url" content="http://www.carlboettiger.info/2012/02/28/knitr-with-flickr-and-wordpress.html" />
 <meta property="og:type" content="website" /> 
 <!-- Google Scholar Metadata -->
 <meta name="citation_author" content="Carl Boettiger"/>
-<meta name="citation_date" content="2013-04-29T09:10:41-07:00"/>
+<meta name="citation_date" content="2013-05-02T11:15:21-07:00"/>
 <meta name="citation_title" content="Knitr with flickr and wordpress"/>
 <meta name="citation_journal_title" content="Lab Notebook"/>
 
@@ -142,10 +142,10 @@
     <p>It’s amazing how nice it is to work with well-developed software. It took me about 20 minutes to extend Yuhui’s interface to allow me to upload images through flickr instead of imgur, and embed them into a wordpress blog using the shortcode from the flickr gallery plugin.</p>
 <p>To do this, I just modified the hook used by the markdown format. First, I define a quick R function that uploads to flickr and returns the flickr identifier number. For the moment this is just calling<a href="http://search.cpan.org/~cpb/Flickr-Upload-1.32/flickr_upload">a command-line flickr uploader</a>, though it should be straight-forward to replace this with something like <a href="http://www.omegahat.org/Rflickr/">Rflickr</a>.</p>
 <pre class="sourceCode r"><code class="sourceCode r">
-flickr &lt;-<span class="st"> </span>function(file, 
+flickr &lt;- function(file, 
     <span class="dt">tags =</span> <span class="st">&quot;&quot;</span>, <span class="dt">description =</span> <span class="st">&quot;&quot;</span>, 
     <span class="dt">public =</span> <span class="ot">TRUE</span>) {
-    out &lt;-<span class="st"> </span><span class="kw">system</span>(<span class="kw">paste</span>(<span class="st">&quot;flickr_upload --tag=</span><span class="ch">\&quot;</span><span class="st">&quot;</span>, 
+    out &lt;- <span class="kw">system</span>(<span class="kw">paste</span>(<span class="st">&quot;flickr_upload --tag=</span><span class="ch">\&quot;</span><span class="st">&quot;</span>, 
         tags, <span class="st">&quot; </span><span class="ch">\&quot;</span><span class="st"> --description=</span><span class="ch">\&quot;</span><span class="st">&quot;</span>, 
         description, <span class="st">&quot;</span><span class="ch">\&quot;</span><span class="st">&quot;</span>, 
         <span class="st">&quot; --public &quot;</span>, <span class="kw">as.integer</span>(public), 
@@ -155,45 +155,45 @@ flickr &lt;-<span class="st"> </span>function(file,
 }</code></pre>
 <p>Once we have such an uploading function, it’s super simple to wrap into knitr. I let my function be triggered by the same “upload” option that Yuhui introduced for imgur, but instead call the flickr function above,</p>
 <pre class="sourceCode r"><code class="sourceCode r">
-.flickr.url =<span class="st"> </span>function(x) {
-    file =<span class="st"> </span><span class="kw">paste</span>(x, <span class="dt">collapse =</span> <span class="st">&quot;.&quot;</span>)
+.flickr.url = function(x) {
+    file = <span class="kw">paste</span>(x, <span class="dt">collapse =</span> <span class="st">&quot;.&quot;</span>)
     if (opts_knit$<span class="kw">get</span>(<span class="st">&quot;upload&quot;</span>)) {
         <span class="kw">flickr</span>(file)
     } else file
 }</code></pre>
 <p>Lastly I define the function hook to run the upload and return the shortcode:</p>
 <pre class="sourceCode r"><code class="sourceCode r">
-hook_plot_flickr =<span class="st"> </span>function(x, 
+hook_plot_flickr = function(x, 
     options) {
     <span class="kw">sprintf</span>(<span class="st">&quot;[flickr]%s[/flickr]&quot;</span>, 
         <span class="kw">.flickr.url</span>(x))
 }</code></pre>
 <p>I can then define a wordpress rendering environment by mapping the hooks to my choices.</p>
 <pre class="sourceCode r"><code class="sourceCode r">
-render_wordpress &lt;-<span class="st"> </span>function() {
+render_wordpress &lt;- function() {
     <span class="kw">render_gfm</span>()
     <span class="kw">options</span>(<span class="dt">width =</span> <span class="dv">30</span>)
     opts_knit$<span class="kw">set</span>(<span class="dt">upload =</span> <span class="ot">TRUE</span>)
-    output =<span class="st"> </span>function(x, 
+    output = function(x, 
         options) <span class="kw">paste</span>(<span class="st">&quot;[ code]</span><span class="ch">\n</span><span class="st">&quot;</span>, 
         x, <span class="st">&quot;[ /code]</span><span class="ch">\n</span><span class="st">&quot;</span>, 
         <span class="dt">sep =</span> <span class="st">&quot;&quot;</span>)
-    warning =<span class="st"> </span>function(x, 
+    warning = function(x, 
         options) <span class="kw">paste</span>(<span class="st">&quot;[ code]</span><span class="ch">\n</span><span class="st">&quot;</span>, 
         x, <span class="st">&quot;[ /code]</span><span class="ch">\n</span><span class="st">&quot;</span>, 
         <span class="dt">sep =</span> <span class="st">&quot;&quot;</span>)
-    message =<span class="st"> </span>function(x, 
+    message = function(x, 
         options) <span class="kw">paste</span>(<span class="st">&quot;[ code]</span><span class="ch">\n</span><span class="st">&quot;</span>, 
         x, <span class="st">&quot;[ /code]</span><span class="ch">\n</span><span class="st">&quot;</span>, 
         <span class="dt">sep =</span> <span class="st">&quot;&quot;</span>)
-    inline =<span class="st"> </span>function(x, 
+    inline = function(x, 
         options) <span class="kw">paste</span>(<span class="st">&quot;&lt;pre&gt;&quot;</span>, 
         x, <span class="st">&quot;&lt;/pre&gt;&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot;&quot;</span>)
-    error =<span class="st"> </span>function(x, 
+    error = function(x, 
         options) <span class="kw">paste</span>(<span class="st">&quot;[ code]</span><span class="ch">\n</span><span class="st">&quot;</span>, 
         x, <span class="st">&quot;[ /code]</span><span class="ch">\n</span><span class="st">&quot;</span>, 
         <span class="dt">sep =</span> <span class="st">&quot;&quot;</span>)
-    source =<span class="st"> </span>function(x, 
+    source = function(x, 
         options) <span class="kw">paste</span>(<span class="st">&quot;[ code lang=&#39;r&#39;]</span><span class="ch">\n</span><span class="st">&quot;</span>, 
         x, <span class="st">&quot;[ /code]</span><span class="ch">\n</span><span class="st">&quot;</span>, 
         <span class="dt">sep =</span> <span class="st">&quot;&quot;</span>)
@@ -209,7 +209,7 @@ render_wordpress &lt;-<span class="st"> </span>function() {
 <pre class="sourceCode r"><code class="sourceCode r">
 <span class="kw">library</span>(ggplot2)
 <span class="kw">qplot</span>(hp, mpg, 
-    <span class="dt">data =</span> mtcars) +<span class="st"> </span><span class="kw">geom_smooth</span>()</code></pre>
+    <span class="dt">data =</span> mtcars) + <span class="kw">geom_smooth</span>()</code></pre>
 <div class="figure">
 <img src="http://farm8.staticflickr.com/7184/6793394960_94c5a5b017_o.png" />
 </div>
@@ -217,9 +217,9 @@ render_wordpress &lt;-<span class="st"> </span>function() {
 <h3 id="addendum">Addendum</h3>
 <p>If we’d rather upload the images to wordpress itself (seems sensible), this is also straight forward thanks to Duncan’s RWordPress package on <a href="http://www.omegahat.org/">Omegahat</a>. Writing the hooks would look like this:</p>
 <pre class="sourceCode R"><code class="sourceCode r">
-.wordpress.url =<span class="st"> </span>function(x) {
+.wordpress.url = function(x) {
   <span class="kw">require</span>(RWordPress)
-  file =<span class="st"> </span><span class="kw">paste</span>(x, <span class="dt">collapse =</span> <span class="st">&#39;.&#39;</span>)
+  file = <span class="kw">paste</span>(x, <span class="dt">collapse =</span> <span class="st">&#39;.&#39;</span>)
   if (opts_knit$<span class="kw">get</span>(<span class="st">&#39;upload&#39;</span>)) {
             <span class="kw">fileUpload</span>(file)$url
       } else file
@@ -230,8 +230,8 @@ render_wordpress &lt;-<span class="st"> </span>function() {
     <span class="dt">WordPressURL =</span> <span class="st">&quot;http://www.yourdomain.com/xmlrpc.php&quot;</span>)</code></pre>
 <p>We then just define a hook based on the hook_plot_html that uses the Wordpress URL.</p>
 <pre class="sourceCode r"><code class="sourceCode r">
-.hook_plot_wordpress =<span class="st"> </span>function(x, options) {
-a =<span class="st"> </span>options$fig.align
+.hook_plot_wordpress = function(x, options) {
+a = options$fig.align
   <span class="kw">sprintf</span>(<span class="st">&#39;&lt;img src=&quot;%s&quot; class=&quot;plot&quot; %s/&gt;</span><span class="ch">\n</span><span class="st">&#39;</span>, <span class="kw">.wordpress.url</span>(x),
           switch(a,
                  <span class="dt">default =</span> <span class="st">&#39;&#39;</span>,
@@ -294,7 +294,7 @@ RWordPress::<span class="kw">uploadFile</span>(file)$url</code></pre>
 
   <br/>
 
-   <p style="font-style:italic"> <i class="icon-signal"></i> pageviews: 173</p>
+   <p style="font-style:italic"> <i class="icon-signal"></i> pageviews: 181</p>
 
   <br/>
 

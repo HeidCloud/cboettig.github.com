@@ -24,7 +24,7 @@
 <!-- RDFa Metadata (in DublinCore) -->
 <meta property="dc:title" content="Wainwright Retreat to Hastings Reserve" />
 <meta property="dc:creator" content="Carl Boettiger" />
-<meta property="dc:date" content="2013-04-29T09:10:41-07:00" />
+<meta property="dc:date" content="2013-05-02T11:15:21-07:00" />
 <meta property="dc:format" content="text/html" />
 <meta property="dc:language" content="en" />
 <meta property="dc:identifier" content="/2011/11/12/of-labrids-and-dubious-convergence.html" />
@@ -37,13 +37,13 @@
 <meta property="og:author" content="http://www.carlboettiger.info/index.html#me" />  <!-- Should be Liquid? URI? -->
 <meta property="http://ogp.me/ns/profile#first_name" content="Carl"/>
 <meta property="http://ogp.me/ns/profile#last_name" content="Boettiger"/>
-<meta property="http://ogp.me/ns/article#published_time" content="2013-04-29T09:10:41-07:00" />
+<meta property="http://ogp.me/ns/article#published_time" content="2013-05-02T11:15:21-07:00" />
 <meta property="og:site_name" content="Lab Notebook" /> <!-- Same as dc:source? -->
 <meta property="og:url" content="http://www.carlboettiger.info/2011/11/12/of-labrids-and-dubious-convergence.html" />
 <meta property="og:type" content="website" /> 
 <!-- Google Scholar Metadata -->
 <meta name="citation_author" content="Carl Boettiger"/>
-<meta name="citation_date" content="2013-04-29T09:10:41-07:00"/>
+<meta name="citation_date" content="2013-05-02T11:15:21-07:00"/>
 <meta name="citation_title" content="Wainwright Retreat to Hastings Reserve"/>
 <meta name="citation_journal_title" content="Lab Notebook"/>
 
@@ -151,22 +151,22 @@
 </div>
 <pre class="sourceCode R"><code class="sourceCode r">
 <span class="co"># create a colorcoded plot of how well each tip is fitting it&#39;s predicted value</span>
-tip_plot &lt;-<span class="st"> </span>function(modelfit, <span class="dt">n=</span><span class="dv">100</span>, ...){
-  dat &lt;-<span class="st"> </span>modelfit$data
-  tree &lt;-<span class="st"> </span>modelfit$tree
+tip_plot &lt;- function(modelfit, <span class="dt">n=</span><span class="dv">100</span>, ...){
+  dat &lt;- modelfit$data
+  tree &lt;- modelfit$tree
 
-  reps &lt;-<span class="st"> </span><span class="kw">sapply</span>(<span class="dv">1</span>:n, function(i) <span class="kw">t</span>(<span class="kw">simulate</span>(modelfit)))
+  reps &lt;- <span class="kw">sapply</span>(<span class="dv">1</span>:n, function(i) <span class="kw">t</span>(<span class="kw">simulate</span>(modelfit)))
 
-  m &lt;-<span class="st"> </span><span class="kw">rowMeans</span>(reps)
-  sder &lt;-<span class="st"> </span><span class="kw">sapply</span>(<span class="dv">1</span>:(<span class="kw">dim</span>(reps)[<span class="dv">1</span>]), function(i) <span class="kw">sd</span>(reps[i,]))
-  colorcode &lt;-<span class="st"> </span>dat[[<span class="dv">1</span>]]
-  colorcode[ <span class="kw">abs</span>(dat -<span class="st"> </span>m) &lt;<span class="st"> </span><span class="dv">3</span>*sder ] &lt;-<span class="st"> &quot;orange&quot;</span>
-  colorcode[ <span class="kw">abs</span>(dat -<span class="st"> </span>m) &lt;<span class="st"> </span><span class="dv">2</span>*sder ] &lt;-<span class="st"> &quot;green&quot;</span>
-  colorcode[ <span class="kw">abs</span>(dat -<span class="st"> </span>m) &lt;<span class="st"> </span>sder ] &lt;-<span class="st"> &quot;blue&quot;</span>
-  colorcode[ <span class="kw">abs</span>(dat -<span class="st"> </span>m) &gt;<span class="st"> </span><span class="dv">3</span>*sder ] &lt;-<span class="st"> &quot;red&quot;</span>
-  tr &lt;-<span class="st"> </span><span class="kw">convert</span>(tree, colorcode)
+  m &lt;- <span class="kw">rowMeans</span>(reps)
+  sder &lt;- <span class="kw">sapply</span>(<span class="dv">1</span>:(<span class="kw">dim</span>(reps)[<span class="dv">1</span>]), function(i) <span class="kw">sd</span>(reps[i,]))
+  colorcode &lt;- dat[[<span class="dv">1</span>]]
+  colorcode[ <span class="kw">abs</span>(dat - m) &lt; <span class="dv">3</span>*sder ] &lt;- <span class="st">&quot;orange&quot;</span>
+  colorcode[ <span class="kw">abs</span>(dat - m) &lt; <span class="dv">2</span>*sder ] &lt;- <span class="st">&quot;green&quot;</span>
+  colorcode[ <span class="kw">abs</span>(dat - m) &lt; sder ] &lt;- <span class="st">&quot;blue&quot;</span>
+  colorcode[ <span class="kw">abs</span>(dat - m) &gt; <span class="dv">3</span>*sder ] &lt;- <span class="st">&quot;red&quot;</span>
+  tr &lt;- <span class="kw">convert</span>(tree, colorcode)
 
-  col &lt;-<span class="st"> </span>tr$regimes[!<span class="kw">is.na</span>(tr$regimes)]
+  col &lt;- tr$regimes[!<span class="kw">is.na</span>(tr$regimes)]
   <span class="kw">plot</span>(tr, ...)
   <span class="kw">tiplabels</span>(<span class="dt">col=</span>col, <span class="dt">pch=</span><span class="dv">19</span>)
   <span class="kw">list</span>(<span class="dt">tree=</span>tr, <span class="dt">tipcolors=</span>col)

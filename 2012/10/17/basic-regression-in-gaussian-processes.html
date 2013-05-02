@@ -24,7 +24,7 @@
 <!-- RDFa Metadata (in DublinCore) -->
 <meta property="dc:title" content="Basic regression in Gaussian processes" />
 <meta property="dc:creator" content="Carl Boettiger" />
-<meta property="dc:date" content="2013-04-29T09:10:41-07:00" />
+<meta property="dc:date" content="2013-05-02T11:15:21-07:00" />
 <meta property="dc:format" content="text/html" />
 <meta property="dc:language" content="en" />
 <meta property="dc:identifier" content="/2012/10/17/basic-regression-in-gaussian-processes.html" />
@@ -37,13 +37,13 @@
 <meta property="og:author" content="http://www.carlboettiger.info/index.html#me" />  <!-- Should be Liquid? URI? -->
 <meta property="http://ogp.me/ns/profile#first_name" content="Carl"/>
 <meta property="http://ogp.me/ns/profile#last_name" content="Boettiger"/>
-<meta property="http://ogp.me/ns/article#published_time" content="2013-04-29T09:10:41-07:00" />
+<meta property="http://ogp.me/ns/article#published_time" content="2013-05-02T11:15:21-07:00" />
 <meta property="og:site_name" content="Lab Notebook" /> <!-- Same as dc:source? -->
 <meta property="og:url" content="http://www.carlboettiger.info/2012/10/17/basic-regression-in-gaussian-processes.html" />
 <meta property="og:type" content="website" /> 
 <!-- Google Scholar Metadata -->
 <meta name="citation_author" content="Carl Boettiger"/>
-<meta name="citation_date" content="2013-04-29T09:10:41-07:00"/>
+<meta name="citation_date" content="2013-05-02T11:15:21-07:00"/>
 <meta name="citation_title" content="Basic regression in Gaussian processes"/>
 <meta name="citation_journal_title" content="Lab Notebook"/>
 
@@ -149,17 +149,17 @@
 <p>Set a seed for repeatable plots</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">set.seed</span>(<span class="dv">12345</span>)</code></pre>
 <p>Define the points at which we want to compute the function values (x values of the prediction points or test points), and the scale parameter for the covariance function <span class="math">\(\ell=1\)</span></p>
-<pre class="sourceCode r"><code class="sourceCode r">x_predict &lt;-<span class="st"> </span><span class="kw">seq</span>(-<span class="dv">5</span>,<span class="dv">5</span>,<span class="dt">len=</span><span class="dv">50</span>)
-l &lt;-<span class="st"> </span><span class="dv">1</span></code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">x_predict &lt;- <span class="kw">seq</span>(-<span class="dv">5</span>,<span class="dv">5</span>,<span class="dt">len=</span><span class="dv">50</span>)
+l &lt;- <span class="dv">1</span></code></pre>
 <p>We will use the squared exponential (also called radial basis or Gaussian, though it is not this that gives Gaussian process it’s name; any covariance function would do) as the covariance function, <span class="math">\(\operatorname{cov}(X_i, X_j) = \exp\left(-\frac{(X_i - X_j)^2}{2 \ell ^ 2}\right)\)</span></p>
-<pre class="sourceCode r"><code class="sourceCode r">SE &lt;-<span class="st"> </span>function(Xi,Xj, l) <span class="kw">exp</span>(-<span class="fl">0.5</span> *<span class="st"> </span>(Xi -<span class="st"> </span>Xj) ^<span class="st"> </span><span class="dv">2</span> /<span class="st"> </span>l ^<span class="st"> </span><span class="dv">2</span>)
-cov &lt;-<span class="st"> </span>function(X, Y) <span class="kw">outer</span>(X, Y, SE, l)</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r">COV &lt;-<span class="st"> </span><span class="kw">cov</span>(x_predict, x_predict)</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">SE &lt;- function(Xi,Xj, l) <span class="kw">exp</span>(-<span class="fl">0.5</span> * (Xi - Xj) ^ <span class="dv">2</span> / l ^ <span class="dv">2</span>)
+cov &lt;- function(X, Y) <span class="kw">outer</span>(X, Y, SE, l)</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">COV &lt;- <span class="kw">cov</span>(x_predict, x_predict)</code></pre>
 <p>Generate a number of functions from the process</p>
-<pre class="sourceCode r"><code class="sourceCode r">values &lt;-<span class="st"> </span><span class="kw">mvrnorm</span>(<span class="dv">3</span>, <span class="kw">rep</span>(<span class="dv">0</span>, <span class="dt">length=</span><span class="kw">length</span>(x_predict)), COV)</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">values &lt;- <span class="kw">mvrnorm</span>(<span class="dv">3</span>, <span class="kw">rep</span>(<span class="dv">0</span>, <span class="dt">length=</span><span class="kw">length</span>(x_predict)), COV)</code></pre>
 <p>Reshape the data into long (tidy) form, listing x value, y value, and sample number</p>
-<pre class="sourceCode r"><code class="sourceCode r">dat &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">x=</span>x_predict, <span class="kw">t</span>(values))
-dat &lt;-<span class="st"> </span><span class="kw">melt</span>(dat, <span class="dt">id=</span><span class="st">&quot;x&quot;</span>)
+<pre class="sourceCode r"><code class="sourceCode r">dat &lt;- <span class="kw">data.frame</span>(<span class="dt">x=</span>x_predict, <span class="kw">t</span>(values))
+dat &lt;- <span class="kw">melt</span>(dat, <span class="dt">id=</span><span class="st">&quot;x&quot;</span>)
 <span class="kw">head</span>(dat)</code></pre>
 <pre><code>       x variable   value
 1 -5.000       X1 -0.6450
@@ -169,18 +169,18 @@ dat &lt;-<span class="st"> </span><span class="kw">melt</span>(dat, <span class=
 5 -4.184       X1 -1.4139
 6 -3.980       X1 -1.4103</code></pre>
 <p>Plot the result</p>
-<pre class="sourceCode r"><code class="sourceCode r">fig2a &lt;-<span class="st"> </span><span class="kw">ggplot</span>(dat,<span class="kw">aes</span>(<span class="dt">x=</span>x,<span class="dt">y=</span>value)) +
-<span class="st">  </span><span class="kw">geom_rect</span>(<span class="dt">xmin=</span>-<span class="ot">Inf</span>, <span class="dt">xmax=</span><span class="ot">Inf</span>, <span class="dt">ymin=</span>-<span class="dv">2</span>, <span class="dt">ymax=</span><span class="dv">2</span>, <span class="dt">fill=</span><span class="st">&quot;grey80&quot;</span>) +
-<span class="st">  </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">group=</span>variable)) +<span class="st">   </span><span class="kw">theme_bw</span>() +
-<span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">lim=</span><span class="kw">c</span>(-<span class="dv">3</span>,<span class="dv">3</span>), <span class="dt">name=</span><span class="st">&quot;output, f(x)&quot;</span>) +
-<span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;input, x&quot;</span>)
+<pre class="sourceCode r"><code class="sourceCode r">fig2a &lt;- <span class="kw">ggplot</span>(dat,<span class="kw">aes</span>(<span class="dt">x=</span>x,<span class="dt">y=</span>value)) +
+  <span class="kw">geom_rect</span>(<span class="dt">xmin=</span>-<span class="ot">Inf</span>, <span class="dt">xmax=</span><span class="ot">Inf</span>, <span class="dt">ymin=</span>-<span class="dv">2</span>, <span class="dt">ymax=</span><span class="dv">2</span>, <span class="dt">fill=</span><span class="st">&quot;grey80&quot;</span>) +
+  <span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">group=</span>variable)) +   <span class="kw">theme_bw</span>() +
+  <span class="kw">scale_y_continuous</span>(<span class="dt">lim=</span><span class="kw">c</span>(-<span class="dv">3</span>,<span class="dv">3</span>), <span class="dt">name=</span><span class="st">&quot;output, f(x)&quot;</span>) +
+  <span class="kw">xlab</span>(<span class="st">&quot;input, x&quot;</span>)
 fig2a</code></pre>
 <div class="figure">
 <img src="../../../assets/figures/2012-10-18-81840d8794-unnamed-chunk-9.png" alt="plot of chunk unnamed-chunk-9" /><p class="caption">plot of chunk unnamed-chunk-9</p>
 </div>
 <h3 id="posterior-distribution-given-the-data">Posterior distribution given the data</h3>
 <p>Imagine we have some data,</p>
-<pre class="sourceCode r"><code class="sourceCode r">obs &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">x =</span> <span class="kw">c</span>(-<span class="dv">4</span>, -<span class="dv">3</span>, -<span class="dv">1</span>,  <span class="dv">0</span>,  <span class="dv">2</span>),
+<pre class="sourceCode r"><code class="sourceCode r">obs &lt;- <span class="kw">data.frame</span>(<span class="dt">x =</span> <span class="kw">c</span>(-<span class="dv">4</span>, -<span class="dv">3</span>, -<span class="dv">1</span>,  <span class="dv">0</span>,  <span class="dv">2</span>),
                   <span class="dt">y =</span> <span class="kw">c</span>(-<span class="dv">2</span>,  <span class="dv">0</span>,  <span class="dv">1</span>,  <span class="dv">2</span>, -<span class="dv">1</span>))</code></pre>
 <p>In general we aren’t interested in drawing from the prior, but want to include information from the data as well. We want the joint distribution of the observed values and the prior is:</p>
 <p><span class="math">\[\begin{pmatrix} y_{\textrm{obs}} \\ y_{\textrm{pred}} \end{pmatrix} \sim \mathcal{N}\left( \mathbf{0}, \begin{bmatrix} cov(X_o,X_o) &amp; cov(X_o, X_p) \\ cov(X_p,X_o) &amp; cov(X_p, X_p) \end{bmatrix} \right)\]</span></p>
@@ -188,49 +188,49 @@ fig2a</code></pre>
 <p>Assuming the data are known without error and conditioning on the data, and given <span class="math">\(x \sim \mathcal{N}(0, cov(X_o, X_o))\)</span>, then the conditional probability of observing our data is easily solved by exploiting the nice properties of Gaussians,</p>
 <p><span class="math">\[x|y \sim \mathcal{N}\left(E,C\right)\]</span> <span class="math">\[E = cov(X_p, X_o) cov(X_o,X_o)^{-1} y\]</span> <span class="math">\[C= cov(X_p, X_p) - cov(X_p, X_o) cov(X_o,X_o)^{-1} cov(X_o, X_p) \]</span></p>
 <p>(We use <code>solve(M)</code> which with no second argument will simply invert the matrix <code>M</code>, but should use the Cholsky decomposition instead for better numerical stability)</p>
-<pre class="sourceCode r"><code class="sourceCode r">cov_xx_inv &lt;-<span class="st"> </span><span class="kw">solve</span>(<span class="kw">cov</span>(obs$x, obs$x))
-Ef &lt;-<span class="st"> </span><span class="kw">cov</span>(x_predict, obs$x) %*%<span class="st"> </span>cov_xx_inv %*%<span class="st"> </span>obs$y
-Cf &lt;-<span class="st"> </span><span class="kw">cov</span>(x_predict, x_predict) -<span class="st"> </span><span class="kw">cov</span>(x_predict, obs$x)  %*%<span class="st"> </span>cov_xx_inv %*%<span class="st"> </span><span class="kw">cov</span>(obs$x, x_predict)</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">cov_xx_inv &lt;- <span class="kw">solve</span>(<span class="kw">cov</span>(obs$x, obs$x))
+Ef &lt;- <span class="kw">cov</span>(x_predict, obs$x) %*% cov_xx_inv %*% obs$y
+Cf &lt;- <span class="kw">cov</span>(x_predict, x_predict) - <span class="kw">cov</span>(x_predict, obs$x)  %*% cov_xx_inv %*% <span class="kw">cov</span>(obs$x, x_predict)</code></pre>
 <p>Now lets take 3 random samples from the posterior distribution,</p>
-<pre class="sourceCode r"><code class="sourceCode r">values &lt;-<span class="st"> </span><span class="kw">mvrnorm</span>(<span class="dv">3</span>, Ef, Cf)</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">values &lt;- <span class="kw">mvrnorm</span>(<span class="dv">3</span>, Ef, Cf)</code></pre>
 <p>and plot our solution (mean, 2 standard deviations, and the ranom samples.)</p>
-<pre class="sourceCode r"><code class="sourceCode r">dat &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">x=</span>x_predict, <span class="kw">t</span>(values))
-dat &lt;-<span class="st"> </span><span class="kw">melt</span>(dat, <span class="dt">id=</span><span class="st">&quot;x&quot;</span>)
+<pre class="sourceCode r"><code class="sourceCode r">dat &lt;- <span class="kw">data.frame</span>(<span class="dt">x=</span>x_predict, <span class="kw">t</span>(values))
+dat &lt;- <span class="kw">melt</span>(dat, <span class="dt">id=</span><span class="st">&quot;x&quot;</span>)
 
-fig2b &lt;-<span class="st"> </span><span class="kw">ggplot</span>(dat,<span class="kw">aes</span>(<span class="dt">x=</span>x,<span class="dt">y=</span>value)) +
-<span class="st">  </span><span class="kw">geom_ribbon</span>(<span class="dt">data=</span><span class="ot">NULL</span>, 
+fig2b &lt;- <span class="kw">ggplot</span>(dat,<span class="kw">aes</span>(<span class="dt">x=</span>x,<span class="dt">y=</span>value)) +
+  <span class="kw">geom_ribbon</span>(<span class="dt">data=</span><span class="ot">NULL</span>, 
               <span class="kw">aes</span>(<span class="dt">x=</span>x_predict, <span class="dt">y=</span>Ef, <span class="dt">ymin=</span>(Ef<span class="dv">-2</span>*<span class="kw">sqrt</span>(<span class="kw">diag</span>(Cf))), <span class="dt">ymax=</span>(Ef<span class="dv">+2</span>*<span class="kw">sqrt</span>(<span class="kw">diag</span>(Cf)))),
               <span class="dt">fill=</span><span class="st">&quot;grey80&quot;</span>) +
-<span class="st">  </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">color=</span>variable)) +<span class="st"> </span><span class="co">#REPLICATES</span>
-<span class="st">  </span><span class="kw">geom_line</span>(<span class="dt">data=</span><span class="ot">NULL</span>,<span class="kw">aes</span>(<span class="dt">x=</span>x_predict,<span class="dt">y=</span>Ef), <span class="dt">size=</span><span class="dv">1</span>) +<span class="st"> </span><span class="co">#MEAN</span>
-<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">data=</span>obs,<span class="kw">aes</span>(<span class="dt">x=</span>x,<span class="dt">y=</span>y)) +<span class="st">  </span><span class="co">#OBSERVED DATA</span>
-<span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">lim=</span><span class="kw">c</span>(-<span class="dv">3</span>,<span class="dv">3</span>), <span class="dt">name=</span><span class="st">&quot;output, f(x)&quot;</span>) +
-<span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;input, x&quot;</span>)
+  <span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">color=</span>variable)) + <span class="co">#REPLICATES</span>
+  <span class="kw">geom_line</span>(<span class="dt">data=</span><span class="ot">NULL</span>,<span class="kw">aes</span>(<span class="dt">x=</span>x_predict,<span class="dt">y=</span>Ef), <span class="dt">size=</span><span class="dv">1</span>) + <span class="co">#MEAN</span>
+  <span class="kw">geom_point</span>(<span class="dt">data=</span>obs,<span class="kw">aes</span>(<span class="dt">x=</span>x,<span class="dt">y=</span>y)) +  <span class="co">#OBSERVED DATA</span>
+  <span class="kw">scale_y_continuous</span>(<span class="dt">lim=</span><span class="kw">c</span>(-<span class="dv">3</span>,<span class="dv">3</span>), <span class="dt">name=</span><span class="st">&quot;output, f(x)&quot;</span>) +
+  <span class="kw">xlab</span>(<span class="st">&quot;input, x&quot;</span>)
 fig2b</code></pre>
 <div class="figure">
 <img src="../../../assets/figures/2012-10-18-81840d8794-unnamed-chunk-13.png" alt="plot of chunk unnamed-chunk-13" /><p class="caption">plot of chunk unnamed-chunk-13</p>
 </div>
 <h2 id="additive-noise">Additive noise</h2>
 <p>In general the model may have process error, and rather than observe the deterministic map <span class="math">\(f(x)\)</span> we only observe <span class="math">\(y = f(x) + \varepsilon\)</span>. Let us assume for the moment that <span class="math">\(\varepsilon\)</span> are independent, normally distributed random variables with variance <span class="math">\(\sigma_n^2\)</span>.</p>
-<pre class="sourceCode r"><code class="sourceCode r">sigma.n &lt;-<span class="st"> </span><span class="fl">0.25</span>
-cov_xx_inv &lt;-<span class="st"> </span><span class="kw">solve</span>(<span class="kw">cov</span>(obs$x, obs$x) +<span class="st"> </span>sigma.n^<span class="dv">2</span> *<span class="st"> </span><span class="kw">diag</span>(<span class="dv">1</span>, <span class="kw">length</span>(obs$x)))
-Ef &lt;-<span class="st"> </span><span class="kw">cov</span>(x_predict, obs$x) %*%<span class="st"> </span>cov_xx_inv %*%<span class="st"> </span>obs$y
-Cf &lt;-<span class="st"> </span><span class="kw">cov</span>(x_predict, x_predict) -<span class="st"> </span><span class="kw">cov</span>(x_predict, obs$x)  %*%<span class="st"> </span>cov_xx_inv %*%<span class="st"> </span><span class="kw">cov</span>(obs$x, x_predict)</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">sigma.n &lt;- <span class="fl">0.25</span>
+cov_xx_inv &lt;- <span class="kw">solve</span>(<span class="kw">cov</span>(obs$x, obs$x) + sigma.n^<span class="dv">2</span> * <span class="kw">diag</span>(<span class="dv">1</span>, <span class="kw">length</span>(obs$x)))
+Ef &lt;- <span class="kw">cov</span>(x_predict, obs$x) %*% cov_xx_inv %*% obs$y
+Cf &lt;- <span class="kw">cov</span>(x_predict, x_predict) - <span class="kw">cov</span>(x_predict, obs$x)  %*% cov_xx_inv %*% <span class="kw">cov</span>(obs$x, x_predict)</code></pre>
 <p>Now lets take 3 random samples from the posterior distribution,</p>
-<pre class="sourceCode r"><code class="sourceCode r">values &lt;-<span class="st"> </span><span class="kw">mvrnorm</span>(<span class="dv">3</span>, Ef, Cf)</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">values &lt;- <span class="kw">mvrnorm</span>(<span class="dv">3</span>, Ef, Cf)</code></pre>
 <p>and plot</p>
-<pre class="sourceCode r"><code class="sourceCode r">dat &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">x=</span>x_predict, <span class="kw">t</span>(values))
-dat &lt;-<span class="st"> </span><span class="kw">melt</span>(dat, <span class="dt">id=</span><span class="st">&quot;x&quot;</span>)
+<pre class="sourceCode r"><code class="sourceCode r">dat &lt;- <span class="kw">data.frame</span>(<span class="dt">x=</span>x_predict, <span class="kw">t</span>(values))
+dat &lt;- <span class="kw">melt</span>(dat, <span class="dt">id=</span><span class="st">&quot;x&quot;</span>)
 
-fig2c &lt;-<span class="st"> </span><span class="kw">ggplot</span>(dat,<span class="kw">aes</span>(<span class="dt">x=</span>x,<span class="dt">y=</span>value)) +
-<span class="st">  </span><span class="kw">geom_ribbon</span>(<span class="dt">data=</span><span class="ot">NULL</span>, 
+fig2c &lt;- <span class="kw">ggplot</span>(dat,<span class="kw">aes</span>(<span class="dt">x=</span>x,<span class="dt">y=</span>value)) +
+  <span class="kw">geom_ribbon</span>(<span class="dt">data=</span><span class="ot">NULL</span>, 
               <span class="kw">aes</span>(<span class="dt">x=</span>x_predict, <span class="dt">y=</span>Ef, <span class="dt">ymin=</span>(Ef<span class="dv">-2</span>*<span class="kw">sqrt</span>(<span class="kw">diag</span>(Cf))), <span class="dt">ymax=</span>(Ef<span class="dv">+2</span>*<span class="kw">sqrt</span>(<span class="kw">diag</span>(Cf)))),
-              <span class="dt">fill=</span><span class="st">&quot;grey80&quot;</span>) +<span class="st"> </span><span class="co"># Var</span>
-<span class="st">  </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">color=</span>variable)) +<span class="st"> </span><span class="co">#REPLICATES</span>
-<span class="st">  </span><span class="kw">geom_line</span>(<span class="dt">data=</span><span class="ot">NULL</span>,<span class="kw">aes</span>(<span class="dt">x=</span>x_predict,<span class="dt">y=</span>Ef), <span class="dt">size=</span><span class="dv">1</span>) +<span class="st"> </span><span class="co">#MEAN</span>
-<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">data=</span>obs,<span class="kw">aes</span>(<span class="dt">x=</span>x,<span class="dt">y=</span>y)) +<span class="st">  </span><span class="co">#OBSERVED DATA</span>
-<span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">lim=</span><span class="kw">c</span>(-<span class="dv">3</span>,<span class="dv">3</span>), <span class="dt">name=</span><span class="st">&quot;output, f(x)&quot;</span>) +
-<span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;input, x&quot;</span>)
+              <span class="dt">fill=</span><span class="st">&quot;grey80&quot;</span>) + <span class="co"># Var</span>
+  <span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">color=</span>variable)) + <span class="co">#REPLICATES</span>
+  <span class="kw">geom_line</span>(<span class="dt">data=</span><span class="ot">NULL</span>,<span class="kw">aes</span>(<span class="dt">x=</span>x_predict,<span class="dt">y=</span>Ef), <span class="dt">size=</span><span class="dv">1</span>) + <span class="co">#MEAN</span>
+  <span class="kw">geom_point</span>(<span class="dt">data=</span>obs,<span class="kw">aes</span>(<span class="dt">x=</span>x,<span class="dt">y=</span>y)) +  <span class="co">#OBSERVED DATA</span>
+  <span class="kw">scale_y_continuous</span>(<span class="dt">lim=</span><span class="kw">c</span>(-<span class="dv">3</span>,<span class="dv">3</span>), <span class="dt">name=</span><span class="st">&quot;output, f(x)&quot;</span>) +
+  <span class="kw">xlab</span>(<span class="st">&quot;input, x&quot;</span>)
 fig2c</code></pre>
 <div class="figure">
 <img src="../../../assets/figures/2012-10-18-81840d8794-unnamed-chunk-16.png" alt="plot of chunk unnamed-chunk-16" /><p class="caption">plot of chunk unnamed-chunk-16</p>
@@ -283,7 +283,7 @@ fig2c</code></pre>
 
   <br/>
 
-   <p style="font-style:italic"> <i class="icon-signal"></i> pageviews: 109</p>
+   <p style="font-style:italic"> <i class="icon-signal"></i> pageviews: 110</p>
 
   <br/>
 

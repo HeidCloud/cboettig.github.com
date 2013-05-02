@@ -24,7 +24,7 @@
 <!-- RDFa Metadata (in DublinCore) -->
 <meta property="dc:title" content="Is your phylogeny informative?" />
 <meta property="dc:creator" content="Carl Boettiger" />
-<meta property="dc:date" content="2013-04-29T09:10:41-07:00" />
+<meta property="dc:date" content="2013-05-02T11:15:21-07:00" />
 <meta property="dc:format" content="text/html" />
 <meta property="dc:language" content="en" />
 <meta property="dc:identifier" content="/2012/01/19/is-your-phylogeny-informative.html" />
@@ -37,13 +37,13 @@
 <meta property="og:author" content="http://www.carlboettiger.info/index.html#me" />  <!-- Should be Liquid? URI? -->
 <meta property="http://ogp.me/ns/profile#first_name" content="Carl"/>
 <meta property="http://ogp.me/ns/profile#last_name" content="Boettiger"/>
-<meta property="http://ogp.me/ns/article#published_time" content="2013-04-29T09:10:41-07:00" />
+<meta property="http://ogp.me/ns/article#published_time" content="2013-05-02T11:15:21-07:00" />
 <meta property="og:site_name" content="Lab Notebook" /> <!-- Same as dc:source? -->
 <meta property="og:url" content="http://www.carlboettiger.info/2012/01/19/is-your-phylogeny-informative.html" />
 <meta property="og:type" content="website" /> 
 <!-- Google Scholar Metadata -->
 <meta name="citation_author" content="Carl Boettiger"/>
-<meta name="citation_date" content="2013-04-29T09:10:41-07:00"/>
+<meta name="citation_date" content="2013-05-02T11:15:21-07:00"/>
 <meta name="citation_title" content="Is your phylogeny informative?"/>
 <meta name="citation_journal_title" content="Lab Notebook"/>
 
@@ -156,11 +156,11 @@
 <img src="http://farm8.staticflickr.com/7014/6727029515_bcfe58aedb_o.png" />
 </div>
 <p>The package commands are explained in more detail in the <strong><a href="http://cran.r-project.org/web/packages/pmc/vignettes/pmc_tutorial.pdf">package vignette</a></strong>, but the idea is simple. Running the pmc comparison between two models (for the model-choice step) looks like this:</p>
-<pre class="sourceCode r"><code class="sourceCode r">bm_v_lambda &lt;-<span class="st"> </span><span class="kw">pmc</span>(geospiza.tree, geospiza.data[<span class="st">&quot;wingL&quot;</span>],
+<pre class="sourceCode r"><code class="sourceCode r">bm_v_lambda &lt;- <span class="kw">pmc</span>(geospiza.tree, geospiza.data[<span class="st">&quot;wingL&quot;</span>],
   <span class="st">&quot;BM&quot;</span>, <span class="st">&quot;lambda&quot;</span>, <span class="dt">nboot=</span><span class="dv">100</span>)</code></pre>
 <p>Extracting the distribution of estimates for the parameter lambda got from fitting the lambda model (B) to data made by simulating under lambda model (A):</p>
-<pre class="sourceCode r"><code class="sourceCode r">lambdas &lt;-<span class="st"> </span><span class="kw">subset</span>(bm_v_lambda[<span class="st">&quot;par_dists&quot;</span>],
-  comparison==<span class="st">&quot;BB&quot;</span> &amp;<span class="st"> </span>parameter==<span class="st">&quot;lambda&quot;</span>)</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">lambdas &lt;- <span class="kw">subset</span>(bm_v_lambda[<span class="st">&quot;par_dists&quot;</span>],
+  comparison==<span class="st">&quot;BB&quot;</span> &amp; parameter==<span class="st">&quot;lambda&quot;</span>)</code></pre>
 <p>To view the model comparison, just plot the pmc result:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(bm_v_lambda)</code></pre>
 <p>The substantial overlap in the likelihood ratios after simulating under either model indicate that we cannot choose between BM and lambda in this case.  I’ll leave the paper to explain this approach in more detail, but it’s just simulation and refitting.</p>

@@ -24,7 +24,7 @@
 <!-- RDFa Metadata (in DublinCore) -->
 <meta property="dc:title" content="Figures 3 And 4 For Policycosts" />
 <meta property="dc:creator" content="Carl Boettiger" />
-<meta property="dc:date" content="2013-04-29T09:10:41-07:00" />
+<meta property="dc:date" content="2013-05-02T11:15:21-07:00" />
 <meta property="dc:format" content="text/html" />
 <meta property="dc:language" content="en" />
 <meta property="dc:identifier" content="/2012/12/03/Figures-3-and-4-for-policycosts.html" />
@@ -37,13 +37,13 @@
 <meta property="og:author" content="http://www.carlboettiger.info/index.html#me" />  <!-- Should be Liquid? URI? -->
 <meta property="http://ogp.me/ns/profile#first_name" content="Carl"/>
 <meta property="http://ogp.me/ns/profile#last_name" content="Boettiger"/>
-<meta property="http://ogp.me/ns/article#published_time" content="2013-04-29T09:10:41-07:00" />
+<meta property="http://ogp.me/ns/article#published_time" content="2013-05-02T11:15:21-07:00" />
 <meta property="og:site_name" content="Lab Notebook" /> <!-- Same as dc:source? -->
 <meta property="og:url" content="http://www.carlboettiger.info/2012/12/03/Figures-3-and-4-for-policycosts.html" />
 <meta property="og:type" content="website" /> 
 <!-- Google Scholar Metadata -->
 <meta name="citation_author" content="Carl Boettiger"/>
-<meta name="citation_date" content="2013-04-29T09:10:41-07:00"/>
+<meta name="citation_date" content="2013-05-02T11:15:21-07:00"/>
 <meta name="citation_title" content="Figures 3 And 4 For Policycosts"/>
 <meta name="citation_journal_title" content="Lab Notebook"/>
 
@@ -177,8 +177,8 @@
 </div>
 <h3 id="misc-notes">Misc notes</h3>
 <p>Caching is pretty helpful in fiddling with these slow computations. Sometimes it helps to copy the cache of the intensive part of a run over from the supercomputer to the local machine, and load the whole cache into an interactive R session. Loading the whole cache can be done as such:</p>
-<pre class="sourceCode r"><code class="sourceCode r">e &lt;-<span class="st"> </span><span class="kw">environment</span>()
-files &lt;-<span class="st"> </span><span class="kw">gsub</span>(<span class="st">&quot;.rdb&quot;</span>, <span class="st">&quot;&quot;</span>, <span class="kw">system</span>(<span class="st">&#39;ls *.rdb&#39;</span>, <span class="dt">intern=</span><span class="ot">TRUE</span>))
+<pre class="sourceCode r"><code class="sourceCode r">e &lt;- <span class="kw">environment</span>()
+files &lt;- <span class="kw">gsub</span>(<span class="st">&quot;.rdb&quot;</span>, <span class="st">&quot;&quot;</span>, <span class="kw">system</span>(<span class="st">&#39;ls *.rdb&#39;</span>, <span class="dt">intern=</span><span class="ot">TRUE</span>))
 <span class="kw">sapply</span>(files, lazyLoad, <span class="dt">env=</span>e)</code></pre>
 <p>providied the target chache directory doesn’t have caches of different commits.</p>
     </article>

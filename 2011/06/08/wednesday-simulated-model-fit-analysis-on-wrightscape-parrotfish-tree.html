@@ -24,7 +24,7 @@
 <!-- RDFa Metadata (in DublinCore) -->
 <meta property="dc:title" content="Wednesday: Simulated model fit analysis on wrightscape, parrotfish tree" />
 <meta property="dc:creator" content="Carl Boettiger" />
-<meta property="dc:date" content="2013-04-29T09:10:41-07:00" />
+<meta property="dc:date" content="2013-05-02T11:15:21-07:00" />
 <meta property="dc:format" content="text/html" />
 <meta property="dc:language" content="en" />
 <meta property="dc:identifier" content="/2011/06/08/wednesday-simulated-model-fit-analysis-on-wrightscape-parrotfish-tree.html" />
@@ -37,13 +37,13 @@
 <meta property="og:author" content="http://www.carlboettiger.info/index.html#me" />  <!-- Should be Liquid? URI? -->
 <meta property="http://ogp.me/ns/profile#first_name" content="Carl"/>
 <meta property="http://ogp.me/ns/profile#last_name" content="Boettiger"/>
-<meta property="http://ogp.me/ns/article#published_time" content="2013-04-29T09:10:41-07:00" />
+<meta property="http://ogp.me/ns/article#published_time" content="2013-05-02T11:15:21-07:00" />
 <meta property="og:site_name" content="Lab Notebook" /> <!-- Same as dc:source? -->
 <meta property="og:url" content="http://www.carlboettiger.info/2011/06/08/wednesday-simulated-model-fit-analysis-on-wrightscape-parrotfish-tree.html" />
 <meta property="og:type" content="website" /> 
 <!-- Google Scholar Metadata -->
 <meta name="citation_author" content="Carl Boettiger"/>
-<meta name="citation_date" content="2013-04-29T09:10:41-07:00"/>
+<meta name="citation_date" content="2013-05-02T11:15:21-07:00"/>
 <meta name="citation_title" content="Wednesday: Simulated model fit analysis on wrightscape, parrotfish tree"/>
 <meta name="citation_journal_title" content="Lab Notebook"/>
 
@@ -174,21 +174,21 @@
 </ul>
 <pre class="sourceCode r"><code class="sourceCode r">
 
-&gt;<span class="st"> </span>gen_fit &lt;-<span class="st"> </span><span class="kw">smart_multiType</span>(<span class="dt">data=</span>sim_trait, <span class="dt">tree=</span>labrid$tree,
+&gt; gen_fit &lt;- <span class="kw">smart_multiType</span>(<span class="dt">data=</span>sim_trait, <span class="dt">tree=</span>labrid$tree,
 +                   <span class="dt">regimes=</span>intramandibular,<span class="dt">Xo=</span><span class="ot">NULL</span>, <span class="dt">alpha =</span> .<span class="dv">1</span>,
 +                   <span class="dt">sigma =</span> .<span class="dv">1</span>, <span class="dt">theta=</span><span class="ot">NULL</span>)
 [<span class="dv">1</span>] <span class="st">&quot;alpha:  3.02538925492894e-07&quot;</span> <span class="st">&quot;alpha:  0.0585819705289946&quot;</span>
 [<span class="dv">1</span>] <span class="st">&quot;sigma:  0.00166254126803767&quot;</span> <span class="st">&quot;sigma:  2.90960629757019&quot;</span>
 [<span class="dv">1</span>] <span class="st">&quot;theta:  1.23973641541187&quot;</span> <span class="st">&quot;theta:  1.84059077604827&quot;</span>
 &gt;
-<span class="er">&gt;</span><span class="st"> </span><span class="kw">print</span>(<span class="kw">getParameters.multiOU</span>(gen_fit))
+&gt; <span class="kw">print</span>(<span class="kw">getParameters.multiOU</span>(gen_fit))
  alpha1       alpha2       theta1       theta2       sigma1       sigma2
  <span class="fl">0.756620314</span>  <span class="fl">3.758072410</span> <span class="fl">13.732765801</span>  <span class="fl">4.853751270</span>  <span class="fl">0.006160961</span>  <span class="fl">3.913957909</span>
  Xo
  <span class="fl">4.667250491</span>
 &gt;
-<span class="er">&gt;</span>
-<span class="er">&gt;</span><span class="st"> </span>sann_fit &lt;-<span class="st"> </span><span class="kw">smart_multiType</span>(<span class="dt">data=</span>sim_trait, <span class="dt">tree=</span>labrid$tree,
+&gt;
+&gt; sann_fit &lt;- <span class="kw">smart_multiType</span>(<span class="dt">data=</span>sim_trait, <span class="dt">tree=</span>labrid$tree,
 +                   <span class="dt">regimes=</span>intramandibular,<span class="dt">Xo=</span><span class="ot">NULL</span>, <span class="dt">alpha =</span> .<span class="dv">1</span>,
 +                   <span class="dt">sigma =</span> .<span class="dv">1</span>, <span class="dt">theta=</span><span class="ot">NULL</span>,
 +                   <span class="dt">method =</span><span class="st">&quot;SANN&quot;</span>, <span class="dt">control=</span><span class="kw">list</span>(<span class="dt">maxit=</span><span class="dv">80000</span>,<span class="dt">temp=</span><span class="dv">25</span>,<span class="dt">tmax=</span><span class="dv">50</span>))
@@ -196,7 +196,7 @@
 [<span class="dv">1</span>] <span class="st">&quot;sigma:  0.0037342888296498&quot;</span> <span class="st">&quot;sigma:  5.5349835595542&quot;</span>
 [<span class="dv">1</span>] <span class="st">&quot;theta:  4.81905476727201&quot;</span> <span class="st">&quot;theta:  4.58842972148977&quot;</span>
 &gt;
-<span class="er">&gt;</span><span class="st"> </span><span class="kw">print</span>(<span class="kw">getParameters.multiOU</span>(sann_fit))
+&gt; <span class="kw">print</span>(<span class="kw">getParameters.multiOU</span>(sann_fit))
  alpha1     alpha2     theta1     theta2     sigma1     sigma2         Xo
  <span class="fl">0.2609878</span> <span class="fl">21.9790836</span> -<span class="fl">5.5837586</span>  <span class="fl">4.6213975</span> <span class="fl">17.9955025</span>  <span class="fl">9.6907227</span>  <span class="fl">7.3360959</span>
 &gt;

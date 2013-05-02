@@ -24,7 +24,7 @@
 <!-- RDFa Metadata (in DublinCore) -->
 <meta property="dc:title" content="Optimal Control examples continued: Bellman,  Dynamic Programming" />
 <meta property="dc:creator" content="Carl Boettiger" />
-<meta property="dc:date" content="2013-04-29T09:10:41-07:00" />
+<meta property="dc:date" content="2013-05-02T11:15:21-07:00" />
 <meta property="dc:format" content="text/html" />
 <meta property="dc:language" content="en" />
 <meta property="dc:identifier" content="/2011/10/28/optimal-control-examples-continued-bellman-dynamic-programming.html" />
@@ -37,13 +37,13 @@
 <meta property="og:author" content="http://www.carlboettiger.info/index.html#me" />  <!-- Should be Liquid? URI? -->
 <meta property="http://ogp.me/ns/profile#first_name" content="Carl"/>
 <meta property="http://ogp.me/ns/profile#last_name" content="Boettiger"/>
-<meta property="http://ogp.me/ns/article#published_time" content="2013-04-29T09:10:41-07:00" />
+<meta property="http://ogp.me/ns/article#published_time" content="2013-05-02T11:15:21-07:00" />
 <meta property="og:site_name" content="Lab Notebook" /> <!-- Same as dc:source? -->
 <meta property="og:url" content="http://www.carlboettiger.info/2011/10/28/optimal-control-examples-continued-bellman-dynamic-programming.html" />
 <meta property="og:type" content="website" /> 
 <!-- Google Scholar Metadata -->
 <meta name="citation_author" content="Carl Boettiger"/>
-<meta name="citation_date" content="2013-04-29T09:10:41-07:00"/>
+<meta name="citation_date" content="2013-05-02T11:15:21-07:00"/>
 <meta name="citation_title" content="Optimal Control examples continued: Bellman,  Dynamic Programming"/>
 <meta name="citation_journal_title" content="Lab Notebook"/>
 
@@ -160,22 +160,22 @@
 <p>Cost/profit of harvesting: Profit <span class="math">\(p(t)\)</span> per fish (possibly varies with year), but cost gets harder <span class="math">\(c h^2\)</span>, <span class="math">\(c &lt;&lt; p(t)\)</span>, <span class="math">\[ U(h) = p h - c h^2 \]</span></p>
 <p>The algorithm can be specified by recursion,</p>
 <pre class="sourceCode R"><code class="sourceCode r">
-phi &lt;-<span class="st"> </span>function(x) <span class="dv">300</span>
+phi &lt;- function(x) <span class="dv">300</span>
 
-J &lt;-<span class="st"> </span>function(t,x){
-  if(t &lt;<span class="st"> </span>T)
-    out &lt;-<span class="st"> </span><span class="kw">U</span>(t,x, <span class="kw">h_star</span>(t,x)) +<span class="st"> </span>beta*<span class="kw">J</span>(t<span class="dv">+1</span>, <span class="kw">f</span>(t,x, <span class="kw">h_star</span>(t,x)))
+J &lt;- function(t,x){
+  if(t &lt; T)
+    out &lt;- <span class="kw">U</span>(t,x, <span class="kw">h_star</span>(t,x)) + beta*<span class="kw">J</span>(t<span class="dv">+1</span>, <span class="kw">f</span>(t,x, <span class="kw">h_star</span>(t,x)))
   else 
-    out &lt;-<span class="st"> </span><span class="kw">phi</span>(x)
+    out &lt;- <span class="kw">phi</span>(x)
   out
 }
  
-h_star &lt;-<span class="st"> </span>function(t,x){
-    func &lt;-<span class="st"> </span>function(h) <span class="kw">U</span>(t, x, h) +<span class="st"> </span>beta*<span class="kw">J</span>(t<span class="dv">+1</span>, <span class="kw">f</span>(t,x,h))
+h_star &lt;- function(t,x){
+    func &lt;- function(h) <span class="kw">U</span>(t, x, h) + beta*<span class="kw">J</span>(t<span class="dv">+1</span>, <span class="kw">f</span>(t,x,h))
 <span class="co">#    optimize(f=func, interval=c(0,1))[[1]]</span>
-    h &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">0</span>,<span class="dv">1000</span>,<span class="dt">length=</span><span class="dv">500</span>)
-    cost &lt;-<span class="st"> </span><span class="kw">sapply</span>(h, func)
-    i &lt;-<span class="st"> </span><span class="kw">which.max</span>(cost)
+    h &lt;- <span class="kw">seq</span>(<span class="dv">0</span>,<span class="dv">1000</span>,<span class="dt">length=</span><span class="dv">500</span>)
+    cost &lt;- <span class="kw">sapply</span>(h, func)
+    i &lt;- <span class="kw">which.max</span>(cost)
     h[i]
 }</code></pre>
 <p>See <a href="https://github.com/cboettig/pdg_control/blob/2fedf60ae61dafb21badaf05f1a97c213d59b1d1/R/discrete_optimal_control.R">full code</a>.</p>

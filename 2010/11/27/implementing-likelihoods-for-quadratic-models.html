@@ -24,7 +24,7 @@
 <!-- RDFa Metadata (in DublinCore) -->
 <meta property="dc:title" content="Implementing Likelihoods for quadratic models" />
 <meta property="dc:creator" content="Carl Boettiger" />
-<meta property="dc:date" content="2013-04-29T09:10:41-07:00" />
+<meta property="dc:date" content="2013-05-02T11:15:21-07:00" />
 <meta property="dc:format" content="text/html" />
 <meta property="dc:language" content="en" />
 <meta property="dc:identifier" content="/2010/11/27/implementing-likelihoods-for-quadratic-models.html" />
@@ -37,13 +37,13 @@
 <meta property="og:author" content="http://www.carlboettiger.info/index.html#me" />  <!-- Should be Liquid? URI? -->
 <meta property="http://ogp.me/ns/profile#first_name" content="Carl"/>
 <meta property="http://ogp.me/ns/profile#last_name" content="Boettiger"/>
-<meta property="http://ogp.me/ns/article#published_time" content="2013-04-29T09:10:41-07:00" />
+<meta property="http://ogp.me/ns/article#published_time" content="2013-05-02T11:15:21-07:00" />
 <meta property="og:site_name" content="Lab Notebook" /> <!-- Same as dc:source? -->
 <meta property="og:url" content="http://www.carlboettiger.info/2010/11/27/implementing-likelihoods-for-quadratic-models.html" />
 <meta property="og:type" content="website" /> 
 <!-- Google Scholar Metadata -->
 <meta name="citation_author" content="Carl Boettiger"/>
-<meta name="citation_date" content="2013-04-29T09:10:41-07:00"/>
+<meta name="citation_date" content="2013-05-02T11:15:21-07:00"/>
 <meta name="citation_title" content="Implementing Likelihoods for quadratic models"/>
 <meta name="citation_journal_title" content="Lab Notebook"/>
 
@@ -146,12 +146,12 @@
 <p>So we can evaluate the probability density of being at $ x_t$ at time <em>t</em> given that we started at <em>x</em>0_ at time 0 by integrating the above equations (numerically, in this case, as we lack a closed form solution for the above).</p>
 <p>Being able to calculate this probability we can easily calculate likelihood of the timeseries under the model. We code this in R (<a href="https://github.com/cboettig/structured-populations/commit/59a712f2ca7527ccd33ecd272729d29df7cac3d7#diff-0">likelihood_bifur_models.R</a>) and write a quick example script (also in repo as <a href="https://github.com/cboettig/structured-populations/commit/59a712f2ca7527ccd33ecd272729d29df7cac3d7#diff-1">bifur_likelihood_ex.R</a>):</p>
 <pre class="sourceCode r"><code class="sourceCode r">
-pars =<span class="st"> </span><span class="kw">c</span>(<span class="dt">r=</span><span class="dv">10</span>, <span class="dt">theta=</span><span class="dv">3</span>, <span class="dt">beta=</span><span class="dv">1</span>)
-m &lt;-<span class="st"> </span><span class="kw">init_sdemodel</span>(<span class="dt">pars =</span>pars, <span class="dt">Xo =</span> <span class="fl">6.2</span>, <span class="dt">model=</span><span class="st">&quot;SN&quot;</span>, <span class="dt">N=</span><span class="dv">200</span>)
-X &lt;-<span class="st"> </span><span class="kw">simulate.SN</span>(m)
+pars = <span class="kw">c</span>(<span class="dt">r=</span><span class="dv">10</span>, <span class="dt">theta=</span><span class="dv">3</span>, <span class="dt">beta=</span><span class="dv">1</span>)
+m &lt;- <span class="kw">init_sdemodel</span>(<span class="dt">pars =</span>pars, <span class="dt">Xo =</span> <span class="fl">6.2</span>, <span class="dt">model=</span><span class="st">&quot;SN&quot;</span>, <span class="dt">N=</span><span class="dv">200</span>)
+X &lt;- <span class="kw">simulate.SN</span>(m)
 <span class="co"># Set initial guess</span>
-m$pars &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dt">r=</span><span class="dv">11</span>,<span class="dt">theta=</span><span class="dv">4</span>,<span class="dt">beta=</span><span class="dv">1</span>)
-out &lt;-<span class="st"> </span><span class="kw">update.SN</span>(m, X, <span class="dt">method=</span><span class="st">&quot;SANN&quot;</span>)</code></pre>
+m$pars &lt;- <span class="kw">c</span>(<span class="dt">r=</span><span class="dv">11</span>,<span class="dt">theta=</span><span class="dv">4</span>,<span class="dt">beta=</span><span class="dv">1</span>)
+out &lt;- <span class="kw">update.SN</span>(m, X, <span class="dt">method=</span><span class="st">&quot;SANN&quot;</span>)</code></pre>
 <p>Exploring different fitting, seems to be a challenge. For instance, finds wrong optimum sometimes – perhaps due to a bug somewhere (see more examples in flickr stream): <img src="http://farm5.staticflickr.com/4083/5213027405_7927655f38_o.png" /></p>
 <p>As likelihood surface (shown here for theta) appears challenging:</p>
 <div class="figure">
@@ -170,7 +170,7 @@ out &lt;-<span class="st"> </span><span class="kw">update.SN</span>(m, X, <span 
 <h3 id="improving-automated-recording-in-figures">Improving automated recording in figures</h3>
 <p>Have added a git commit message to the reporting, so that flickr images are automatically tagged with a commit stamp referring to the script which produced them:</p>
 <pre class="sourceCode r"><code class="sourceCode r">
-gitcom &lt;-<span class="st"> </span><span class="kw">system</span>(<span class="st">&#39;git commit -a -m &quot;autocommit&quot;&#39;</span>, <span class="dt">intern=</span><span class="ot">TRUE</span>)
+gitcom &lt;- <span class="kw">system</span>(<span class="st">&#39;git commit -a -m &quot;autocommit&quot;&#39;</span>, <span class="dt">intern=</span><span class="ot">TRUE</span>)
 <span class="co"># only first line of git commit commandline return will be printed in flickr discription</span>
 <span class="kw">system</span>(<span class="kw">paste</span>(<span class="st">&#39;flickr_upload --tag=&quot;stochpop bifurcation&quot;&#39;</span>, <span class="st">&#39;--description=&quot;&#39;</span>, gitcom, <span class="st">&#39;&quot;&#39;</span>,  <span class="st">&#39; saddle_node_fit.png&#39;</span>))
 <span class="kw">system</span>(<span class="kw">paste</span>(<span class="st">&#39;hpc-autotweets &quot;&#39;</span>, gitcom, <span class="st">&#39; done&quot;&#39;</span>))</code></pre>

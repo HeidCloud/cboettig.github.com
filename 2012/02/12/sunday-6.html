@@ -24,7 +24,7 @@
 <!-- RDFa Metadata (in DublinCore) -->
 <meta property="dc:title" content="Sunday " />
 <meta property="dc:creator" content="Carl Boettiger" />
-<meta property="dc:date" content="2013-04-29T09:10:41-07:00" />
+<meta property="dc:date" content="2013-05-02T11:15:21-07:00" />
 <meta property="dc:format" content="text/html" />
 <meta property="dc:language" content="en" />
 <meta property="dc:identifier" content="/2012/02/12/sunday-6.html" />
@@ -37,13 +37,13 @@
 <meta property="og:author" content="http://www.carlboettiger.info/index.html#me" />  <!-- Should be Liquid? URI? -->
 <meta property="http://ogp.me/ns/profile#first_name" content="Carl"/>
 <meta property="http://ogp.me/ns/profile#last_name" content="Boettiger"/>
-<meta property="http://ogp.me/ns/article#published_time" content="2013-04-29T09:10:41-07:00" />
+<meta property="http://ogp.me/ns/article#published_time" content="2013-05-02T11:15:21-07:00" />
 <meta property="og:site_name" content="Lab Notebook" /> <!-- Same as dc:source? -->
 <meta property="og:url" content="http://www.carlboettiger.info/2012/02/12/sunday-6.html" />
 <meta property="og:type" content="website" /> 
 <!-- Google Scholar Metadata -->
 <meta name="citation_author" content="Carl Boettiger"/>
-<meta name="citation_date" content="2013-04-29T09:10:41-07:00"/>
+<meta name="citation_date" content="2013-05-02T11:15:21-07:00"/>
 <meta name="citation_title" content="Sunday "/>
 <meta name="citation_journal_title" content="Lab Notebook"/>
 
@@ -155,11 +155,11 @@
 <li><a href="https://github.com/cboettig/wrightscape/blob/fb0dc3bf9eacc4c99118b9d06e7a658bb383f666/R/OUwietools.R">ape-based phylogenies</a></li>
 <li>ouch-based phylogenies use some legacy maticce functions</li>
 </ul>
-<pre class="sourceCode r"><code class="sourceCode r">intra_ancestor &lt;-<span class="st"> </span><span class="kw">mrcaOUCH</span>(<span class="kw">c</span>(<span class="st">&quot;Chlorurus_sordidus&quot;</span>, <span class="st">&quot;Hipposcarus_longiceps&quot;</span>), labrid$tree)
-intramandibular &lt;-<span class="st"> </span><span class="kw">paintBranches</span>(intra_ancestor, labrid$tree, <span class="kw">c</span>(<span class="st">&quot;other&quot;</span>,<span class="st">&quot;intramandibular&quot;</span>))
+<pre class="sourceCode r"><code class="sourceCode r">intra_ancestor &lt;- <span class="kw">mrcaOUCH</span>(<span class="kw">c</span>(<span class="st">&quot;Chlorurus_sordidus&quot;</span>, <span class="st">&quot;Hipposcarus_longiceps&quot;</span>), labrid$tree)
+intramandibular &lt;- <span class="kw">paintBranches</span>(intra_ancestor, labrid$tree, <span class="kw">c</span>(<span class="st">&quot;other&quot;</span>,<span class="st">&quot;intramandibular&quot;</span>))
 pharyngeal_ancestor&lt;-<span class="kw">mrcaOUCH</span>(<span class="kw">c</span>(<span class="st">&quot;Bolbometopon_muricatum&quot;</span>, <span class="st">&quot;Sparisoma_radians&quot;</span>), labrid$tree)
-pharyngeal &lt;-<span class="st"> </span><span class="kw">paintBranches</span>(pharyngeal_ancestor, labrid$tree, <span class="kw">c</span>(<span class="st">&quot;other&quot;</span>,<span class="st">&quot;pharyngeal&quot;</span>))
-two_shifts &lt;-<span class="st"> </span><span class="kw">paintBranches</span>(<span class="kw">c</span>(pharyngeal_ancestor, intra_ancestor), labrid$tree, 
+pharyngeal &lt;- <span class="kw">paintBranches</span>(pharyngeal_ancestor, labrid$tree, <span class="kw">c</span>(<span class="st">&quot;other&quot;</span>,<span class="st">&quot;pharyngeal&quot;</span>))
+two_shifts &lt;- <span class="kw">paintBranches</span>(<span class="kw">c</span>(pharyngeal_ancestor, intra_ancestor), labrid$tree, 
 <span class="kw">c</span>(<span class="st">&quot;wrasses&quot;</span>, <span class="st">&quot;pharyngeal&quot;</span>, intramandibular<span class="st">&quot;) )</span></code></pre>
 <p>The ouch-trees can be converted back to ape trees in a way that can plot them, but for some reason break the fan-plot mode but not the standard phylogram plot mode. Writing to a nexus file and reading back in solves the backwards convert problem, but does not write the branch labels (at least not currently, which are stored in <code>$regimes</code>).</p>
 <h2 id="warning-signals">Warning signals</h2>

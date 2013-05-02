@@ -24,7 +24,7 @@
 <!-- RDFa Metadata (in DublinCore) -->
 <meta property="dc:title" content="Monday: submodels for full traits" />
 <meta property="dc:creator" content="Carl Boettiger" />
-<meta property="dc:date" content="2013-04-29T09:10:41-07:00" />
+<meta property="dc:date" content="2013-05-02T11:15:21-07:00" />
 <meta property="dc:format" content="text/html" />
 <meta property="dc:language" content="en" />
 <meta property="dc:identifier" content="/2011/11/28/monday-11.html" />
@@ -37,13 +37,13 @@
 <meta property="og:author" content="http://www.carlboettiger.info/index.html#me" />  <!-- Should be Liquid? URI? -->
 <meta property="http://ogp.me/ns/profile#first_name" content="Carl"/>
 <meta property="http://ogp.me/ns/profile#last_name" content="Boettiger"/>
-<meta property="http://ogp.me/ns/article#published_time" content="2013-04-29T09:10:41-07:00" />
+<meta property="http://ogp.me/ns/article#published_time" content="2013-05-02T11:15:21-07:00" />
 <meta property="og:site_name" content="Lab Notebook" /> <!-- Same as dc:source? -->
 <meta property="og:url" content="http://www.carlboettiger.info/2011/11/28/monday-11.html" />
 <meta property="og:type" content="website" /> 
 <!-- Google Scholar Metadata -->
 <meta name="citation_author" content="Carl Boettiger"/>
-<meta name="citation_date" content="2013-04-29T09:10:41-07:00"/>
+<meta name="citation_date" content="2013-05-02T11:15:21-07:00"/>
 <meta name="citation_title" content="Monday: submodels for full traits"/>
 <meta name="citation_journal_title" content="Lab Notebook"/>
 
@@ -198,58 +198,58 @@
 <pre class="sourceCode R"><code class="sourceCode r">
 <span class="kw">require</span>(wrightscape)
 <span class="kw">data</span>(labrids)
-s1_spec  &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">alpha =</span> <span class="st">&quot;global&quot;</span>, <span class="dt">sigma =</span> <span class="st">&quot;indep&quot;</span>, <span class="dt">theta =</span> <span class="st">&quot;global&quot;</span>)
-s1 &lt;-<span class="st"> </span><span class="kw">multiTypeOU</span>(<span class="dt">data =</span> dat[<span class="st">&quot;close&quot;</span>], <span class="dt">tree =</span> tree, <span class="dt">regimes =</span> pharyngeal,
+s1_spec  &lt;- <span class="kw">list</span>(<span class="dt">alpha =</span> <span class="st">&quot;global&quot;</span>, <span class="dt">sigma =</span> <span class="st">&quot;indep&quot;</span>, <span class="dt">theta =</span> <span class="st">&quot;global&quot;</span>)
+s1 &lt;- <span class="kw">multiTypeOU</span>(<span class="dt">data =</span> dat[<span class="st">&quot;close&quot;</span>], <span class="dt">tree =</span> tree, <span class="dt">regimes =</span> pharyngeal,
              <span class="dt">model_spec =</span> s1_spec,  <span class="dt">control =</span> <span class="kw">list</span>(<span class="dt">maxit=</span><span class="dv">5000</span>))
 <span class="co"># Order of entries in sigma is the order regime names are given by levels (alphabetical)</span>
-<span class="kw">names</span>(s1$sigma) &lt;-<span class="st"> </span><span class="kw">levels</span>(pharyngeal)
-s1$sigma[<span class="st">&quot;other&quot;</span>] &lt;-<span class="st"> </span>.<span class="dv">01</span>
-s1$sigma[<span class="st">&quot;pharyngeal&quot;</span>] &lt;-<span class="st"> </span><span class="dv">10</span>
-testcase &lt;-<span class="st"> </span><span class="kw">simulate</span>(s1)[[<span class="dv">1</span>]]
-testcase[pharyngeal==<span class="st">&quot;other&quot;</span> &amp;<span class="st"> </span>!<span class="kw">is.na</span>(testcase) &amp;<span class="st"> </span>testcase !=<span class="st"> </span><span class="dv">0</span> ] -&gt;<span class="st"> </span>lowvar
-testcase[pharyngeal!=<span class="st">&quot;other&quot;</span> &amp;<span class="st"> </span>!<span class="kw">is.na</span>(testcase) &amp;<span class="st"> </span>testcase !=<span class="st"> </span><span class="dv">0</span> ] -&gt;<span class="st"> </span>highvar</code></pre>
+<span class="kw">names</span>(s1$sigma) &lt;- <span class="kw">levels</span>(pharyngeal)
+s1$sigma[<span class="st">&quot;other&quot;</span>] &lt;- .<span class="dv">01</span>
+s1$sigma[<span class="st">&quot;pharyngeal&quot;</span>] &lt;- <span class="dv">10</span>
+testcase &lt;- <span class="kw">simulate</span>(s1)[[<span class="dv">1</span>]]
+testcase[pharyngeal==<span class="st">&quot;other&quot;</span> &amp; !<span class="kw">is.na</span>(testcase) &amp; testcase != <span class="dv">0</span> ] -&gt; lowvar
+testcase[pharyngeal!=<span class="st">&quot;other&quot;</span> &amp; !<span class="kw">is.na</span>(testcase) &amp; testcase != <span class="dv">0</span> ] -&gt; highvar</code></pre>
 <p>Results check out.</p>
 <pre class="sourceCode R"><code class="sourceCode r">
-&gt;<span class="st"> </span><span class="kw">var</span>(lowvar)
+&gt; <span class="kw">var</span>(lowvar)
 [<span class="dv">1</span>] <span class="fl">0.009888678</span>
-&gt;<span class="st"> </span><span class="kw">var</span>(highvar)
+&gt; <span class="kw">var</span>(highvar)
 [<span class="dv">1</span>] <span class="fl">12.22513</span>
-&gt;<span class="st"> </span><span class="co"># and the recovered estimates are pretty close to the underlying simulation parameters</span>
-<span class="er">&gt;</span><span class="st"> </span>dummy &lt;-<span class="st"> </span><span class="kw">update</span>(s1, testcase)
-&gt;<span class="st"> </span>dummy$sigma
+&gt; <span class="co"># and the recovered estimates are pretty close to the underlying simulation parameters</span>
+&gt; dummy &lt;- <span class="kw">update</span>(s1, testcase)
+&gt; dummy$sigma
 [<span class="dv">1</span>] <span class="fl">0.1015016</span> <span class="fl">7.6793429</span>
-&gt;<span class="st"> </span><span class="kw">levels</span>(pharyngeal)
+&gt; <span class="kw">levels</span>(pharyngeal)
 [<span class="dv">1</span>] <span class="st">&quot;other&quot;</span>      <span class="st">&quot;pharyngeal&quot;</span></code></pre>
 <p>lowvar indeed has the lower variance (the regime with smaller sigma). And the higher sigma is estimated for the pharyngeal regime (with some expected error: 7.7 instead of 10, and 0.1 instead of 0.01).</p>
 <p>BUT repeat with alpha:</p>
 <pre class="sourceCode R"><code class="sourceCode r">
 <span class="kw">data</span>(labrids)
-a1_spec  &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">alpha =</span> <span class="st">&quot;indep&quot;</span>, <span class="dt">sigma =</span> <span class="st">&quot;global&quot;</span>, <span class="dt">theta =</span> <span class="st">&quot;global&quot;</span>)
-a1 &lt;-<span class="st"> </span><span class="kw">multiTypeOU</span>(<span class="dt">data =</span> dat[<span class="st">&quot;close&quot;</span>], <span class="dt">tree =</span> tree, <span class="dt">regimes =</span> pharyngeal,
+a1_spec  &lt;- <span class="kw">list</span>(<span class="dt">alpha =</span> <span class="st">&quot;indep&quot;</span>, <span class="dt">sigma =</span> <span class="st">&quot;global&quot;</span>, <span class="dt">theta =</span> <span class="st">&quot;global&quot;</span>)
+a1 &lt;- <span class="kw">multiTypeOU</span>(<span class="dt">data =</span> dat[<span class="st">&quot;close&quot;</span>], <span class="dt">tree =</span> tree, <span class="dt">regimes =</span> pharyngeal,
              <span class="dt">model_spec =</span> a1_spec,  <span class="dt">control =</span> <span class="kw">list</span>(<span class="dt">maxit=</span><span class="dv">5000</span>))
-<span class="kw">names</span>(a1$alpha) &lt;-<span class="st"> </span><span class="kw">levels</span>(pharyngeal)
+<span class="kw">names</span>(a1$alpha) &lt;- <span class="kw">levels</span>(pharyngeal)
 
 <span class="kw">data</span>(labrids)
-a1_spec  &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">alpha =</span> <span class="st">&quot;indep&quot;</span>, <span class="dt">sigma =</span> <span class="st">&quot;global&quot;</span>, <span class="dt">theta =</span> <span class="st">&quot;global&quot;</span>)
-a1 &lt;-<span class="st"> </span><span class="kw">multiTypeOU</span>(<span class="dt">data =</span> dat[<span class="st">&quot;close&quot;</span>], <span class="dt">tree =</span> tree, <span class="dt">regimes =</span> pharyngeal,
+a1_spec  &lt;- <span class="kw">list</span>(<span class="dt">alpha =</span> <span class="st">&quot;indep&quot;</span>, <span class="dt">sigma =</span> <span class="st">&quot;global&quot;</span>, <span class="dt">theta =</span> <span class="st">&quot;global&quot;</span>)
+a1 &lt;- <span class="kw">multiTypeOU</span>(<span class="dt">data =</span> dat[<span class="st">&quot;close&quot;</span>], <span class="dt">tree =</span> tree, <span class="dt">regimes =</span> pharyngeal,
              <span class="dt">model_spec =</span> a1_spec,  <span class="dt">control =</span> <span class="kw">list</span>(<span class="dt">maxit=</span><span class="dv">5000</span>))
-<span class="kw">names</span>(a1$alpha) &lt;-<span class="st"> </span><span class="kw">levels</span>(pharyngeal)
-a1$alpha[<span class="st">&quot;other&quot;</span>] &lt;-<span class="st"> </span><span class="dv">10</span>
-a1$alpha[<span class="st">&quot;pharyngeal&quot;</span>] &lt;-<span class="st"> </span><span class="fl">1e-12</span>
-a1$sigma &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">5</span>,<span class="dv">5</span>)
+<span class="kw">names</span>(a1$alpha) &lt;- <span class="kw">levels</span>(pharyngeal)
+a1$alpha[<span class="st">&quot;other&quot;</span>] &lt;- <span class="dv">10</span>
+a1$alpha[<span class="st">&quot;pharyngeal&quot;</span>] &lt;- <span class="fl">1e-12</span>
+a1$sigma &lt;- <span class="kw">c</span>(<span class="dv">5</span>,<span class="dv">5</span>)
 dat[[<span class="st">&quot;simulated_a1&quot;</span>]] &lt;-<span class="kw">simulate</span>(a1)[[<span class="dv">1</span>]]
-dummy &lt;-<span class="st"> </span><span class="kw">update</span>(a1, dat[[<span class="st">&quot;simulated_a1&quot;</span>]])
+dummy &lt;- <span class="kw">update</span>(a1, dat[[<span class="st">&quot;simulated_a1&quot;</span>]])
 
-testcase &lt;-<span class="st"> </span>dat[[<span class="st">&quot;simulated_a1&quot;</span>]]
-testcase[pharyngeal==<span class="st">&quot;other&quot;</span> &amp;<span class="st"> </span>!<span class="kw">is.na</span>(testcase) &amp;<span class="st"> </span>testcase !=<span class="st"> </span><span class="dv">0</span> ] -&gt;<span class="st"> </span>lowvar
-testcase[pharyngeal!=<span class="st">&quot;other&quot;</span> &amp;<span class="st"> </span>!<span class="kw">is.na</span>(testcase) &amp;<span class="st"> </span>testcase !=<span class="st"> </span><span class="dv">0</span> ] -&gt;<span class="st"> </span>highvar</code></pre>
+testcase &lt;- dat[[<span class="st">&quot;simulated_a1&quot;</span>]]
+testcase[pharyngeal==<span class="st">&quot;other&quot;</span> &amp; !<span class="kw">is.na</span>(testcase) &amp; testcase != <span class="dv">0</span> ] -&gt; lowvar
+testcase[pharyngeal!=<span class="st">&quot;other&quot;</span> &amp; !<span class="kw">is.na</span>(testcase) &amp; testcase != <span class="dv">0</span> ] -&gt; highvar</code></pre>
 <p>and we get</p>
 <pre class="sourceCode R"><code class="sourceCode r">
-&gt;<span class="st"> </span><span class="kw">var</span>(lowvar)
+&gt; <span class="kw">var</span>(lowvar)
 [<span class="dv">1</span>] <span class="fl">1.187643</span>
-&gt;<span class="st"> </span><span class="kw">var</span>(highvar)
+&gt; <span class="kw">var</span>(highvar)
 [<span class="dv">1</span>] <span class="fl">0.000385144</span>
-&gt;<span class="st"> </span>dummy$alpha
+&gt; dummy$alpha
 [<span class="dv">1</span>] <span class="fl">10.0551960</span>  <span class="fl">0.2670818</span></code></pre>
 <p>And the variances are backwards. Note that the parameter estimates reasonably reflect the simulated regimes (other = 10.1, vs 10, intramandibular = 0.27 vs 1e-12).</p>
 <p>How is this possible? The indexing routine is handling the sigma case correctly, and the same code is used to handle the indexing of each.</p>
@@ -257,22 +257,22 @@ testcase[pharyngeal!=<span class="st">&quot;other&quot;</span> &amp;<span class=
 <pre class="sourceCode R"><code class="sourceCode r">
 <span class="kw">require</span>(wrightscape)
 <span class="kw">data</span>(labrids)
-spec =<span class="st"> </span><span class="kw">list</span>(<span class="dt">alpha=</span><span class="st">&quot;indep&quot;</span>, <span class="dt">sigma=</span><span class="st">&quot;global&quot;</span>, <span class="dt">theta=</span><span class="st">&quot;global&quot;</span>)
+spec = <span class="kw">list</span>(<span class="dt">alpha=</span><span class="st">&quot;indep&quot;</span>, <span class="dt">sigma=</span><span class="st">&quot;global&quot;</span>, <span class="dt">theta=</span><span class="st">&quot;global&quot;</span>)
 <span class="co">#spec = list(alpha=&quot;global&quot;, sigma=&quot;indep&quot;, theta=&quot;global&quot;)</span>
-testcase &lt;-<span class="st"> </span>dat[[<span class="st">&quot;prot.y&quot;</span>]]
-other.prot.data &lt;-<span class="st"> </span>testcase[intramandibular==<span class="st">&quot;other&quot;</span> &amp;<span class="st"> </span>!<span class="kw">is.na</span>(testcase)]
-intra.prot.data &lt;-<span class="st"> </span>testcase[intramandibular!=<span class="st">&quot;other&quot;</span> &amp;<span class="st"> </span>!<span class="kw">is.na</span>(testcase)] 
+testcase &lt;- dat[[<span class="st">&quot;prot.y&quot;</span>]]
+other.prot.data &lt;- testcase[intramandibular==<span class="st">&quot;other&quot;</span> &amp; !<span class="kw">is.na</span>(testcase)]
+intra.prot.data &lt;- testcase[intramandibular!=<span class="st">&quot;other&quot;</span> &amp; !<span class="kw">is.na</span>(testcase)] 
 ## Set the distribution of &quot;other&quot;
-testcase[intramandibular==<span class="st">&quot;other&quot;</span> &amp;<span class="st"> </span>!<span class="kw">is.na</span>(testcase)] &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="kw">length</span>(other.prot.data), <span class="dt">sd=</span>.<span class="dv">1</span>)
+testcase[intramandibular==<span class="st">&quot;other&quot;</span> &amp; !<span class="kw">is.na</span>(testcase)] &lt;- <span class="kw">rnorm</span>(<span class="kw">length</span>(other.prot.data), <span class="dt">sd=</span>.<span class="dv">1</span>)
 <span class="co">#Set the distribution of the focal trait</span>
-testcase[intramandibular!=<span class="st">&quot;other&quot;</span> &amp;<span class="st"> </span>!<span class="kw">is.na</span>(testcase)] &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="kw">length</span>(intra.prot.data), <span class="dt">sd=</span><span class="dv">10</span>)
+testcase[intramandibular!=<span class="st">&quot;other&quot;</span> &amp; !<span class="kw">is.na</span>(testcase)] &lt;- <span class="kw">rnorm</span>(<span class="kw">length</span>(intra.prot.data), <span class="dt">sd=</span><span class="dv">10</span>)
 
-m &lt;-<span class="st"> </span><span class="kw">multiTypeOU</span>(<span class="dt">data=</span>testcase, <span class="dt">tree=</span>tree, <span class="dt">regimes=</span>intramandibular, <span class="dt">model_spec=</span>spec)
-<span class="kw">names</span>(m$sigma) &lt;-<span class="st"> </span><span class="kw">levels</span>(intramandibular)
-<span class="kw">names</span>(m$alpha) &lt;-<span class="st"> </span><span class="kw">levels</span>(intramandibular)</code></pre>
+m &lt;- <span class="kw">multiTypeOU</span>(<span class="dt">data=</span>testcase, <span class="dt">tree=</span>tree, <span class="dt">regimes=</span>intramandibular, <span class="dt">model_spec=</span>spec)
+<span class="kw">names</span>(m$sigma) &lt;- <span class="kw">levels</span>(intramandibular)
+<span class="kw">names</span>(m$alpha) &lt;- <span class="kw">levels</span>(intramandibular)</code></pre>
 <p>The higher alpha is estimated on the regime that has higher variance</p>
 <pre class="sourceCode R"><code class="sourceCode r">
-&gt;<span class="st"> </span><span class="kw">print</span>(m$alpha)
+&gt; <span class="kw">print</span>(m$alpha)
 intramandibular           other 
       <span class="fl">13.121679</span>        <span class="fl">5.981398</span> </code></pre>
 <p>The data has higher variance among the intramandibular traits. (same is true for pharyngeal). This problem does not face the sigmas model, hence appears to do with the indexing of alphas somehow.</p>
@@ -280,58 +280,58 @@ intramandibular           other
 <pre class="sourceCode R"><code class="sourceCode r">
 <span class="kw">require</span>(wrightscape)
 <span class="kw">data</span>(labrids)
-spec =<span class="st"> </span><span class="kw">list</span>(<span class="dt">alpha=</span><span class="st">&quot;indep&quot;</span>, <span class="dt">sigma=</span><span class="st">&quot;global&quot;</span>, <span class="dt">theta=</span><span class="st">&quot;global&quot;</span>)
-testcase &lt;-<span class="st"> </span>dat[[<span class="st">&quot;prot.y&quot;</span>]]
-other.prot.data &lt;-<span class="st"> </span>testcase[intramandibular==<span class="st">&quot;other&quot;</span> &amp;<span class="st"> </span>!<span class="kw">is.na</span>(testcase)]
-intra.prot.data &lt;-<span class="st"> </span>testcase[intramandibular!=<span class="st">&quot;other&quot;</span> &amp;<span class="st"> </span>!<span class="kw">is.na</span>(testcase)] 
-testcase[intramandibular==<span class="st">&quot;other&quot;</span> &amp;<span class="st"> </span>!<span class="kw">is.na</span>(testcase)] &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="kw">length</span>(other.prot.data), <span class="dt">sd=</span>.<span class="dv">1</span>)
-testcase[intramandibular!=<span class="st">&quot;other&quot;</span> &amp;<span class="st"> </span>!<span class="kw">is.na</span>(testcase)] &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="kw">length</span>(intra.prot.data), <span class="dt">sd=</span><span class="dv">10</span>)
+spec = <span class="kw">list</span>(<span class="dt">alpha=</span><span class="st">&quot;indep&quot;</span>, <span class="dt">sigma=</span><span class="st">&quot;global&quot;</span>, <span class="dt">theta=</span><span class="st">&quot;global&quot;</span>)
+testcase &lt;- dat[[<span class="st">&quot;prot.y&quot;</span>]]
+other.prot.data &lt;- testcase[intramandibular==<span class="st">&quot;other&quot;</span> &amp; !<span class="kw">is.na</span>(testcase)]
+intra.prot.data &lt;- testcase[intramandibular!=<span class="st">&quot;other&quot;</span> &amp; !<span class="kw">is.na</span>(testcase)] 
+testcase[intramandibular==<span class="st">&quot;other&quot;</span> &amp; !<span class="kw">is.na</span>(testcase)] &lt;- <span class="kw">rnorm</span>(<span class="kw">length</span>(other.prot.data), <span class="dt">sd=</span>.<span class="dv">1</span>)
+testcase[intramandibular!=<span class="st">&quot;other&quot;</span> &amp; !<span class="kw">is.na</span>(testcase)] &lt;- <span class="kw">rnorm</span>(<span class="kw">length</span>(intra.prot.data), <span class="dt">sd=</span><span class="dv">10</span>)
 
 <span class="co"># Load internal functions</span>
 <span class="kw">require</span>(devtools)
 <span class="kw">load_all</span>(<span class="st">&quot;..&quot;</span>)
-data &lt;-<span class="st"> </span>testcase
-lca &lt;-<span class="st"> </span><span class="kw">lca_calc</span>(tree)
+data &lt;- testcase
+lca &lt;- <span class="kw">lca_calc</span>(tree)
 <span class="kw">multiOU_lik_lca</span>(data, tree, intramandibular, <span class="dt">alpha=</span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">7</span>), <span class="dt">sigma=</span><span class="kw">c</span>(<span class="dv">16</span>,<span class="dv">5</span>), <span class="dt">theta=</span><span class="kw">c</span>(<span class="fl">0.5</span>, <span class="fl">0.5</span>), <span class="dt">Xo=</span><span class="fl">0.5</span>, lca)</code></pre>
 <p>Looks to be keeping the alpha with sigma at least.</p>
 <p>Check that in global ou mode, smaller alphas fit high variance better: (yup)</p>
 <pre class="sourceCode R"><code class="sourceCode r">
 <span class="co"># Test of single OU</span>
-test &lt;-<span class="st"> </span>dat[[<span class="st">&quot;prot.y&quot;</span>]]
-test[!<span class="kw">is.na</span>(test)] &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="kw">sum</span>(!<span class="kw">is.na</span>(test)), <span class="dt">sd=</span><span class="dv">10</span>)
-ou  &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">alpha =</span> <span class="st">&quot;global&quot;</span>, <span class="dt">sigma =</span> <span class="st">&quot;global&quot;</span>, <span class="dt">theta =</span> <span class="st">&quot;global&quot;</span>)
-m1 &lt;-<span class="st"> </span><span class="kw">multiTypeOU</span>(<span class="dt">data=</span>test, <span class="dt">tree=</span>tree, <span class="dt">regimes=</span>intramandibular, <span class="dt">model_spec=</span>ou)
-test[!<span class="kw">is.na</span>(test)] &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="kw">sum</span>(!<span class="kw">is.na</span>(test)), <span class="dt">sd=</span>.<span class="dv">1</span>)
-m2 &lt;-<span class="st"> </span><span class="kw">multiTypeOU</span>(<span class="dt">data=</span>test, <span class="dt">tree=</span>tree, <span class="dt">regimes=</span>intramandibular, <span class="dt">model_spec=</span>ou)
+test &lt;- dat[[<span class="st">&quot;prot.y&quot;</span>]]
+test[!<span class="kw">is.na</span>(test)] &lt;- <span class="kw">rnorm</span>(<span class="kw">sum</span>(!<span class="kw">is.na</span>(test)), <span class="dt">sd=</span><span class="dv">10</span>)
+ou  &lt;- <span class="kw">list</span>(<span class="dt">alpha =</span> <span class="st">&quot;global&quot;</span>, <span class="dt">sigma =</span> <span class="st">&quot;global&quot;</span>, <span class="dt">theta =</span> <span class="st">&quot;global&quot;</span>)
+m1 &lt;- <span class="kw">multiTypeOU</span>(<span class="dt">data=</span>test, <span class="dt">tree=</span>tree, <span class="dt">regimes=</span>intramandibular, <span class="dt">model_spec=</span>ou)
+test[!<span class="kw">is.na</span>(test)] &lt;- <span class="kw">rnorm</span>(<span class="kw">sum</span>(!<span class="kw">is.na</span>(test)), <span class="dt">sd=</span>.<span class="dv">1</span>)
+m2 &lt;- <span class="kw">multiTypeOU</span>(<span class="dt">data=</span>test, <span class="dt">tree=</span>tree, <span class="dt">regimes=</span>intramandibular, <span class="dt">model_spec=</span>ou)
 m1$alpha <span class="co"># larger variance has smaller alpha</span>
 m2$alpha</code></pre>
 <p>All okay. But compare fits</p>
 <pre class="sourceCode R"><code class="sourceCode r">
-testcase &lt;-<span class="st"> </span>dat[[<span class="st">&quot;prot.y&quot;</span>]]
-other.prot.data &lt;-<span class="st"> </span>testcase[intramandibular==<span class="st">&quot;other&quot;</span> &amp;<span class="st"> </span>!<span class="kw">is.na</span>(testcase)]
-intra.prot.data &lt;-<span class="st"> </span>testcase[intramandibular!=<span class="st">&quot;other&quot;</span> &amp;<span class="st"> </span>!<span class="kw">is.na</span>(testcase)] 
-testcase[intramandibular==<span class="st">&quot;other&quot;</span> &amp;<span class="st"> </span>!<span class="kw">is.na</span>(testcase)] &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="kw">length</span>(other.prot.data), <span class="dt">sd=</span>.<span class="dv">1</span>)
-testcase[intramandibular!=<span class="st">&quot;other&quot;</span> &amp;<span class="st"> </span>!<span class="kw">is.na</span>(testcase)] &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="kw">length</span>(intra.prot.data), <span class="dt">sd=</span><span class="dv">10</span>)
+testcase &lt;- dat[[<span class="st">&quot;prot.y&quot;</span>]]
+other.prot.data &lt;- testcase[intramandibular==<span class="st">&quot;other&quot;</span> &amp; !<span class="kw">is.na</span>(testcase)]
+intra.prot.data &lt;- testcase[intramandibular!=<span class="st">&quot;other&quot;</span> &amp; !<span class="kw">is.na</span>(testcase)] 
+testcase[intramandibular==<span class="st">&quot;other&quot;</span> &amp; !<span class="kw">is.na</span>(testcase)] &lt;- <span class="kw">rnorm</span>(<span class="kw">length</span>(other.prot.data), <span class="dt">sd=</span>.<span class="dv">1</span>)
+testcase[intramandibular!=<span class="st">&quot;other&quot;</span> &amp; !<span class="kw">is.na</span>(testcase)] &lt;- <span class="kw">rnorm</span>(<span class="kw">length</span>(intra.prot.data), <span class="dt">sd=</span><span class="dv">10</span>)
 <span class="co"># Load internal functions</span>
 <span class="kw">require</span>(devtools)
 <span class="kw">load_all</span>(<span class="st">&quot;..&quot;</span>)
-data &lt;-<span class="st"> </span>testcase
-lca &lt;-<span class="st"> </span><span class="kw">lca_calc</span>(tree)
+data &lt;- testcase
+lca &lt;- <span class="kw">lca_calc</span>(tree)
 
 <span class="co"># expect higher alpha on &quot;other&quot; (alpha2) to be best, higher on alpha1 is worst</span>
 <span class="co"># BUT NO!</span>
-&gt;<span class="st"> </span><span class="kw">multiOU_lik_lca</span>(testcase, tree, intramandibular, <span class="dt">alpha=</span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">2</span>), <span class="dt">sigma=</span><span class="kw">c</span>(<span class="dv">5</span>,<span class="dv">5</span>), <span class="dt">theta=</span><span class="kw">c</span>(<span class="fl">0.5</span>, <span class="fl">0.5</span>), <span class="dt">Xo=</span><span class="fl">0.5</span>, lca)
+&gt; <span class="kw">multiOU_lik_lca</span>(testcase, tree, intramandibular, <span class="dt">alpha=</span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">2</span>), <span class="dt">sigma=</span><span class="kw">c</span>(<span class="dv">5</span>,<span class="dv">5</span>), <span class="dt">theta=</span><span class="kw">c</span>(<span class="fl">0.5</span>, <span class="fl">0.5</span>), <span class="dt">Xo=</span><span class="fl">0.5</span>, lca)
 [<span class="dv">1</span>] -<span class="fl">1802.169</span>
-&gt;<span class="st"> </span><span class="kw">multiOU_lik_lca</span>(testcase, tree, intramandibular, <span class="dt">alpha=</span><span class="kw">c</span>(<span class="dv">5</span>,<span class="dv">2</span>), <span class="dt">sigma=</span><span class="kw">c</span>(<span class="dv">5</span>,<span class="dv">5</span>), <span class="dt">theta=</span><span class="kw">c</span>(<span class="fl">0.5</span>, <span class="fl">0.5</span>), <span class="dt">Xo=</span><span class="fl">0.5</span>, lca)
+&gt; <span class="kw">multiOU_lik_lca</span>(testcase, tree, intramandibular, <span class="dt">alpha=</span><span class="kw">c</span>(<span class="dv">5</span>,<span class="dv">2</span>), <span class="dt">sigma=</span><span class="kw">c</span>(<span class="dv">5</span>,<span class="dv">5</span>), <span class="dt">theta=</span><span class="kw">c</span>(<span class="fl">0.5</span>, <span class="fl">0.5</span>), <span class="dt">Xo=</span><span class="fl">0.5</span>, lca)
 [<span class="dv">1</span>] -<span class="fl">248.6667</span>
-&gt;<span class="st"> </span><span class="kw">multiOU_lik_lca</span>(testcase, tree, intramandibular, <span class="dt">alpha=</span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">5</span>), <span class="dt">sigma=</span><span class="kw">c</span>(<span class="dv">5</span>,<span class="dv">5</span>), <span class="dt">theta=</span><span class="kw">c</span>(<span class="fl">0.5</span>, <span class="fl">0.5</span>), <span class="dt">Xo=</span><span class="fl">0.5</span>, lca)
+&gt; <span class="kw">multiOU_lik_lca</span>(testcase, tree, intramandibular, <span class="dt">alpha=</span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">5</span>), <span class="dt">sigma=</span><span class="kw">c</span>(<span class="dv">5</span>,<span class="dv">5</span>), <span class="dt">theta=</span><span class="kw">c</span>(<span class="fl">0.5</span>, <span class="fl">0.5</span>), <span class="dt">Xo=</span><span class="fl">0.5</span>, lca)
 [<span class="dv">1</span>] -<span class="fl">110821.8</span>
 
 
 
-&gt;<span class="st"> </span>a1_spec  &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">alpha =</span> <span class="st">&quot;indep&quot;</span>, <span class="dt">sigma =</span> <span class="st">&quot;global&quot;</span>, <span class="dt">theta =</span> <span class="st">&quot;global&quot;</span>)
-&gt;<span class="st"> </span>a1 &lt;-<span class="st"> </span><span class="kw">multiTypeOU</span>(<span class="dt">data=</span>testcase, <span class="dt">tree=</span>tree, <span class="dt">regimes=</span>intramandibular, <span class="dt">model_spec=</span>a1_spec)
-&gt;<span class="st"> </span>a1$alpha
+&gt; a1_spec  &lt;- <span class="kw">list</span>(<span class="dt">alpha =</span> <span class="st">&quot;indep&quot;</span>, <span class="dt">sigma =</span> <span class="st">&quot;global&quot;</span>, <span class="dt">theta =</span> <span class="st">&quot;global&quot;</span>)
+&gt; a1 &lt;- <span class="kw">multiTypeOU</span>(<span class="dt">data=</span>testcase, <span class="dt">tree=</span>tree, <span class="dt">regimes=</span>intramandibular, <span class="dt">model_spec=</span>a1_spec)
+&gt; a1$alpha
 [<span class="dv">1</span>] <span class="fl">14.165247</span>  <span class="fl">6.579535</span></code></pre>
 <p>[flickr-gallery mode=“search” tags=“phylogenetics” min_upload_date=“2011-11-28 10:15:00” max_upload_date=“2011-11-28 10:30:20”]</p>
     </article>

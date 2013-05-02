@@ -24,7 +24,7 @@
 <!-- RDFa Metadata (in DublinCore) -->
 <meta property="dc:title" content="Notes" />
 <meta property="dc:creator" content="Carl Boettiger" />
-<meta property="dc:date" content="2013-04-29T09:10:41-07:00" />
+<meta property="dc:date" content="2013-05-02T11:15:21-07:00" />
 <meta property="dc:format" content="text/html" />
 <meta property="dc:language" content="en" />
 <meta property="dc:identifier" content="/2013/04/25/notes.html" />
@@ -37,13 +37,13 @@
 <meta property="og:author" content="http://www.carlboettiger.info/index.html#me" />  <!-- Should be Liquid? URI? -->
 <meta property="http://ogp.me/ns/profile#first_name" content="Carl"/>
 <meta property="http://ogp.me/ns/profile#last_name" content="Boettiger"/>
-<meta property="http://ogp.me/ns/article#published_time" content="2013-04-29T09:10:41-07:00" />
+<meta property="http://ogp.me/ns/article#published_time" content="2013-05-02T11:15:21-07:00" />
 <meta property="og:site_name" content="Lab Notebook" /> <!-- Same as dc:source? -->
 <meta property="og:url" content="http://www.carlboettiger.info/2013/04/25/notes.html" />
 <meta property="og:type" content="website" /> 
 <!-- Google Scholar Metadata -->
 <meta name="citation_author" content="Carl Boettiger"/>
-<meta name="citation_date" content="2013-04-29T09:10:41-07:00"/>
+<meta name="citation_date" content="2013-05-02T11:15:21-07:00"/>
 <meta name="citation_title" content="Notes"/>
 <meta name="citation_journal_title" content="Lab Notebook"/>
 
@@ -157,15 +157,15 @@
 <ul>
 <li>Selecting the order in the simulation legend requires declaring the model types as an ordered factor instead of a character,</li>
 </ul>
-<pre class="sourceCode r"><code class="sourceCode r">dt$method =<span class="st"> </span><span class="kw">factor</span>(dt$method, <span class="dt">ordered=</span><span class="ot">TRUE</span>, <span class="dt">levels=</span><span class="kw">names</span>(OPT))</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">dt$method = <span class="kw">factor</span>(dt$method, <span class="dt">ordered=</span><span class="ot">TRUE</span>, <span class="dt">levels=</span><span class="kw">names</span>(OPT))</code></pre>
 <p>and then set custom colors and match colors to the desired factor labels with <code>scale_colour_manual</code>, and override <code>alpha</code> for legends,</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(dt) +<span class="st"> </span>
-<span class="st">  </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(time, fishstock, <span class="dt">group=</span><span class="kw">interaction</span>(reps,method), <span class="dt">color=</span>method), <span class="dt">alpha=</span>.<span class="dv">1</span>) +
-<span class="st">    </span><span class="kw">scale_colour_manual</span>(<span class="dt">values=</span>colorkey, <span class="dt">guide =</span> <span class="kw">guide_legend</span>(<span class="dt">override.aes =</span> <span class="kw">list</span>(<span class="dt">alpha =</span> <span class="dv">1</span>)))</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(dt) + 
+  <span class="kw">geom_line</span>(<span class="kw">aes</span>(time, fishstock, <span class="dt">group=</span><span class="kw">interaction</span>(reps,method), <span class="dt">color=</span>method), <span class="dt">alpha=</span>.<span class="dv">1</span>) +
+    <span class="kw">scale_colour_manual</span>(<span class="dt">values=</span>colorkey, <span class="dt">guide =</span> <span class="kw">guide_legend</span>(<span class="dt">override.aes =</span> <span class="kw">list</span>(<span class="dt">alpha =</span> <span class="dv">1</span>)))</code></pre>
 <ul>
 <li>Avoid having density plots appear as crude polygons using <code>stat_density</code> instead of <code>geom_density</code> and set <code>geom</code> to path. Need a ymax (not clear why?) or set <code>position=&quot;identity&quot;</code> as shown,:</li>
 </ul>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(posteriors, <span class="kw">aes</span>(value)) +<span class="st"> </span><span class="kw">stat_density</span>(<span class="dt">geom=</span><span class="st">&quot;path&quot;</span>, <span class="dt">position=</span><span class="st">&quot;identity&quot;</span>, <span class="dt">alpha=</span><span class="fl">0.7</span>)</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(posteriors, <span class="kw">aes</span>(value)) + <span class="kw">stat_density</span>(<span class="dt">geom=</span><span class="st">&quot;path&quot;</span>, <span class="dt">position=</span><span class="st">&quot;identity&quot;</span>, <span class="dt">alpha=</span><span class="fl">0.7</span>)</code></pre>
 <ul>
 <li><a href="https://gist.github.com/bluegraybox/1998129">initialize ssh-agent in .bashrc</a></li>
 <li>Or for single session: <code>ssh-agent bash</code>, <code>ssh-add ~/.ssh/id_rda</code></li>
@@ -221,7 +221,7 @@
 
   <br/>
 
-   <p style="font-style:italic"> <i class="icon-signal"></i> pageviews: 4</p>
+   <p style="font-style:italic"> <i class="icon-signal"></i> pageviews: 7</p>
 
   <br/>
 

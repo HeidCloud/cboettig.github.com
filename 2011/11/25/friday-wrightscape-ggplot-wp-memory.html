@@ -24,7 +24,7 @@
 <!-- RDFa Metadata (in DublinCore) -->
 <meta property="dc:title" content="Friday: wrightscape, ggplot, wp memory" />
 <meta property="dc:creator" content="Carl Boettiger" />
-<meta property="dc:date" content="2013-04-29T09:10:41-07:00" />
+<meta property="dc:date" content="2013-05-02T11:15:21-07:00" />
 <meta property="dc:format" content="text/html" />
 <meta property="dc:language" content="en" />
 <meta property="dc:identifier" content="/2011/11/25/friday-wrightscape-ggplot-wp-memory.html" />
@@ -37,13 +37,13 @@
 <meta property="og:author" content="http://www.carlboettiger.info/index.html#me" />  <!-- Should be Liquid? URI? -->
 <meta property="http://ogp.me/ns/profile#first_name" content="Carl"/>
 <meta property="http://ogp.me/ns/profile#last_name" content="Boettiger"/>
-<meta property="http://ogp.me/ns/article#published_time" content="2013-04-29T09:10:41-07:00" />
+<meta property="http://ogp.me/ns/article#published_time" content="2013-05-02T11:15:21-07:00" />
 <meta property="og:site_name" content="Lab Notebook" /> <!-- Same as dc:source? -->
 <meta property="og:url" content="http://www.carlboettiger.info/2011/11/25/friday-wrightscape-ggplot-wp-memory.html" />
 <meta property="og:type" content="website" /> 
 <!-- Google Scholar Metadata -->
 <meta name="citation_author" content="Carl Boettiger"/>
-<meta name="citation_date" content="2013-04-29T09:10:41-07:00"/>
+<meta name="citation_date" content="2013-05-02T11:15:21-07:00"/>
 <meta name="citation_title" content="Friday: wrightscape, ggplot, wp memory"/>
 <meta name="citation_journal_title" content="Lab Notebook"/>
 
@@ -164,17 +164,17 @@
 <h2 id="plotting-with-stats_summary">Plotting with stats_summary()</h2>
 <p>Using stats_summary instead of melt and cast computations and line and ribbon geometries for adding statistical layers to plots.  For instance, from plots.R in SDP code:</p>
 <pre class="sourceCode R"><code class="sourceCode r">
-<span class="kw">ggplot</span>(<span class="dt">data =</span> <span class="kw">subset</span>(dat, variable ==<span class="st"> &quot;unharvested&quot;</span>),
-           <span class="kw">aes</span>(time, value, <span class="dt">group =</span> L1)) +<span class="st"> </span><span class="kw">geom_line</span>(<span class="dt">alpha=</span>.<span class="dv">2</span>) +
-<span class="st">  </span><span class="co"># shows the mean +/i mult * sd , requires Hmisc</span>
-<span class="st">  </span><span class="kw">stat_summary</span>(<span class="dt">fun.data =</span> mean_sdl, <span class="dt">geom=</span><span class="st">&quot;smooth&quot;</span>, <span class="dt">mapping=</span><span class="kw">aes</span>(<span class="dt">group =</span> <span class="dv">1</span>), <span class="dt">mult=</span><span class="dv">1</span>)</code></pre>
+<span class="kw">ggplot</span>(<span class="dt">data =</span> <span class="kw">subset</span>(dat, variable == <span class="st">&quot;unharvested&quot;</span>),
+           <span class="kw">aes</span>(time, value, <span class="dt">group =</span> L1)) + <span class="kw">geom_line</span>(<span class="dt">alpha=</span>.<span class="dv">2</span>) +
+  <span class="co"># shows the mean +/i mult * sd , requires Hmisc</span>
+  <span class="kw">stat_summary</span>(<span class="dt">fun.data =</span> mean_sdl, <span class="dt">geom=</span><span class="st">&quot;smooth&quot;</span>, <span class="dt">mapping=</span><span class="kw">aes</span>(<span class="dt">group =</span> <span class="dv">1</span>), <span class="dt">mult=</span><span class="dv">1</span>)</code></pre>
 <p>Note that this needs thee aesthetic mapping (group=1) to know what to do. I’m not clear exactly why.</p>
 <p>Note also that “mult” is an additional option, and is passed to the function, mean_sdl, specifying the multiplier in front of the standard deviation.</p>
 <p>The documentation of possible function definitions in stat_summary aren’t entirely clear. This can take fun.y to apply the function across y values, for instance, to calculate just the mean:</p>
 <pre class="sourceCode R"><code class="sourceCode r">
-<span class="kw">ggplot</span>(<span class="dt">data =</span> <span class="kw">subset</span>(dat, variable ==<span class="st"> &quot;unharvested&quot;</span>),
-       <span class="kw">aes</span>(time, value, <span class="dt">group =</span> L1)) +<span class="st"> </span><span class="kw">geom_line</span>(<span class="dt">alpha=</span>.<span class="dv">2</span>) +
-<span class="st">    </span><span class="kw">stat_summary</span>(<span class="dt">fun.y =</span> mean, <span class="dt">geom=</span><span class="st">&quot;line&quot;</span>, <span class="dt">mapping=</span><span class="kw">aes</span>(<span class="dt">group =</span> <span class="dv">1</span>))</code></pre>
+<span class="kw">ggplot</span>(<span class="dt">data =</span> <span class="kw">subset</span>(dat, variable == <span class="st">&quot;unharvested&quot;</span>),
+       <span class="kw">aes</span>(time, value, <span class="dt">group =</span> L1)) + <span class="kw">geom_line</span>(<span class="dt">alpha=</span>.<span class="dv">2</span>) +
+    <span class="kw">stat_summary</span>(<span class="dt">fun.y =</span> mean, <span class="dt">geom=</span><span class="st">&quot;line&quot;</span>, <span class="dt">mapping=</span><span class="kw">aes</span>(<span class="dt">group =</span> <span class="dv">1</span>))</code></pre>
 <p>Note that we’ve also changed the geometry to line, since we’re not returning ymin/ymax information.</p>
 <p>We could add separate functions for the lower and upper bounds, fun.ymin and fun.ymax instead. Again we’d need a geometry that knew what to do with these – for instance, “smooth” or “errorbar”.</p>
 <p>There’s quite a collection of convenient functions whose wrappers are provided through the package Hmisc, such as the mean_sdl choice shown here, which are illustrated well in the stat_summary examples.</p>
@@ -230,7 +230,7 @@
 
   <br/>
 
-   <p style="font-style:italic"> <i class="icon-signal"></i> pageviews: 23</p>
+   <p style="font-style:italic"> <i class="icon-signal"></i> pageviews: 24</p>
 
   <br/>
 

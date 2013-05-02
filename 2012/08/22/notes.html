@@ -24,7 +24,7 @@
 <!-- RDFa Metadata (in DublinCore) -->
 <meta property="dc:title" content="Revisions on Prosecutors Fallacy" />
 <meta property="dc:creator" content="Carl Boettiger" />
-<meta property="dc:date" content="2013-04-29T09:10:41-07:00" />
+<meta property="dc:date" content="2013-05-02T11:15:21-07:00" />
 <meta property="dc:format" content="text/html" />
 <meta property="dc:language" content="en" />
 <meta property="dc:identifier" content="/2012/08/22/notes.html" />
@@ -37,13 +37,13 @@
 <meta property="og:author" content="http://www.carlboettiger.info/index.html#me" />  <!-- Should be Liquid? URI? -->
 <meta property="http://ogp.me/ns/profile#first_name" content="Carl"/>
 <meta property="http://ogp.me/ns/profile#last_name" content="Boettiger"/>
-<meta property="http://ogp.me/ns/article#published_time" content="2013-04-29T09:10:41-07:00" />
+<meta property="http://ogp.me/ns/article#published_time" content="2013-05-02T11:15:21-07:00" />
 <meta property="og:site_name" content="Lab Notebook" /> <!-- Same as dc:source? -->
 <meta property="og:url" content="http://www.carlboettiger.info/2012/08/22/notes.html" />
 <meta property="og:type" content="website" /> 
 <!-- Google Scholar Metadata -->
 <meta name="citation_author" content="Carl Boettiger"/>
-<meta name="citation_date" content="2013-04-29T09:10:41-07:00"/>
+<meta name="citation_date" content="2013-05-02T11:15:21-07:00"/>
 <meta name="citation_title" content="Revisions on Prosecutors Fallacy"/>
 <meta name="citation_journal_title" content="Lab Notebook"/>
 
@@ -145,22 +145,22 @@
 <li><p>Fallacy simulations: calibration range for May model: expect small fraction of runs to transition by chance from stable state.</p></li>
 </ul>
 <p>Here we’re getting a bit less than 2% chance transitions in 5000 steps.</p>
-<pre class="sourceCode r"><code class="sourceCode r">&gt;<span class="st">   </span>sn &lt;-<span class="st"> </span>
-+<span class="st">   </span><span class="kw">sapply</span>(<span class="dv">1</span>:<span class="dv">1000</span>, function(rep){
-  +<span class="st">     </span>x &lt;-<span class="st"> </span><span class="kw">vector</span>(<span class="dt">mode=</span><span class="st">&quot;double&quot;</span>, <span class="dt">length=</span>n)
-  +<span class="st">     </span>x[<span class="dv">1</span>] &lt;-<span class="st"> </span><span class="dv">8</span> <span class="co"># positive equilibrium</span>
-  +<span class="st">     </span>z &lt;-<span class="st"> </span><span class="kw">rlnorm</span>(n, <span class="dv">0</span>, .<span class="dv">1</span>)
-  +<span class="st">     </span>r =<span class="st"> </span>.<span class="dv">75</span>; k =<span class="st"> </span><span class="dv">10</span>; a=<span class="fl">1.55</span>; H=<span class="dv">1</span>; Q =<span class="st"> </span><span class="dv">3</span>
-  +<span class="st">     </span>for(t in <span class="dv">1</span>:n){
-    +<span class="st">       </span>x[t<span class="dv">+1</span>] =<span class="st"> </span>z[t] *<span class="st">  </span>x[t] *<span class="st"> </span><span class="kw">exp</span>(r *<span class="st"> </span>(<span class="dv">1</span> -<span class="st"> </span>x[t] /<span class="st"> </span>k) -<span class="st"> </span>a *<span class="st"> </span>x[t] ^<span class="st"> </span>(Q -<span class="st"> </span><span class="dv">1</span>) /<span class="st"> </span>(x[t] ^<span class="st"> </span>Q +<span class="st"> </span>H ^<span class="st"> </span>Q)) 
-    +<span class="st">     </span>}
-    +<span class="st">     </span>x
-    +<span class="st">   </span>})
-&gt;<span class="st"> </span>crashed &lt;-<span class="st"> </span><span class="kw">which</span>(sn[n,] &lt;<span class="st"> </span><span class="dv">2</span>)
-&gt;<span class="st">   </span><span class="kw">length</span>(crashed)/<span class="dv">1000</span>
+<pre class="sourceCode r"><code class="sourceCode r">&gt;   sn &lt;- 
++   <span class="kw">sapply</span>(<span class="dv">1</span>:<span class="dv">1000</span>, function(rep){
+  +     x &lt;- <span class="kw">vector</span>(<span class="dt">mode=</span><span class="st">&quot;double&quot;</span>, <span class="dt">length=</span>n)
+  +     x[<span class="dv">1</span>] &lt;- <span class="dv">8</span> <span class="co"># positive equilibrium</span>
+  +     z &lt;- <span class="kw">rlnorm</span>(n, <span class="dv">0</span>, .<span class="dv">1</span>)
+  +     r = .<span class="dv">75</span>; k = <span class="dv">10</span>; a=<span class="fl">1.55</span>; H=<span class="dv">1</span>; Q = <span class="dv">3</span>
+  +     for(t in <span class="dv">1</span>:n){
+    +       x[t<span class="dv">+1</span>] = z[t] *  x[t] * <span class="kw">exp</span>(r * (<span class="dv">1</span> - x[t] / k) - a * x[t] ^ (Q - <span class="dv">1</span>) / (x[t] ^ Q + H ^ Q)) 
+    +     }
+    +     x
+    +   })
+&gt; crashed &lt;- <span class="kw">which</span>(sn[n,] &lt; <span class="dv">2</span>)
+&gt;   <span class="kw">length</span>(crashed)/<span class="dv">1000</span>
 [<span class="dv">1</span>] <span class="fl">0.017</span>
-&gt;<span class="st"> </span>
-<span class="er">&gt;</span><span class="st"> </span>n
+&gt; 
+&gt; n
 [<span class="dv">1</span>] <span class="dv">5000</span></code></pre>
 <ul>
 <li>Fallacy simulation analysis running on farm using May model. <a href="https://github.com/cboettig/earlywarning/blob/prosecutor/inst/examples/fallacy.Rmd">See fallacy.Rmd, prosecutor branch</a><br /></li>

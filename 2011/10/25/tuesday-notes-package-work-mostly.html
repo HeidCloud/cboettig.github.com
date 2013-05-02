@@ -24,7 +24,7 @@
 <!-- RDFa Metadata (in DublinCore) -->
 <meta property="dc:title" content="Tuesday notes: package work mostly." />
 <meta property="dc:creator" content="Carl Boettiger" />
-<meta property="dc:date" content="2013-04-29T09:10:41-07:00" />
+<meta property="dc:date" content="2013-05-02T11:15:21-07:00" />
 <meta property="dc:format" content="text/html" />
 <meta property="dc:language" content="en" />
 <meta property="dc:identifier" content="/2011/10/25/tuesday-notes-package-work-mostly.html" />
@@ -37,13 +37,13 @@
 <meta property="og:author" content="http://www.carlboettiger.info/index.html#me" />  <!-- Should be Liquid? URI? -->
 <meta property="http://ogp.me/ns/profile#first_name" content="Carl"/>
 <meta property="http://ogp.me/ns/profile#last_name" content="Boettiger"/>
-<meta property="http://ogp.me/ns/article#published_time" content="2013-04-29T09:10:41-07:00" />
+<meta property="http://ogp.me/ns/article#published_time" content="2013-05-02T11:15:21-07:00" />
 <meta property="og:site_name" content="Lab Notebook" /> <!-- Same as dc:source? -->
 <meta property="og:url" content="http://www.carlboettiger.info/2011/10/25/tuesday-notes-package-work-mostly.html" />
 <meta property="og:type" content="website" /> 
 <!-- Google Scholar Metadata -->
 <meta name="citation_author" content="Carl Boettiger"/>
-<meta name="citation_date" content="2013-04-29T09:10:41-07:00"/>
+<meta name="citation_date" content="2013-05-02T11:15:21-07:00"/>
 <meta name="citation_title" content="Tuesday notes: package work mostly."/>
 <meta name="citation_journal_title" content="Lab Notebook"/>
 
@@ -154,14 +154,14 @@
 <p>and which R CMD check would then complain about, giving the error in byte encoding (just to confuse me): “Cape Bojador (26<c2><b0>N)”</p>
 <p>inconv() function provided my crude work-around:</p>
 <pre class="sourceCode R"><code class="sourceCode r">
-string &lt;-<span class="st"> &quot;Cape Bojador (26\302\260N)&quot;</span>
-<span class="kw">Encoding</span>(string) &lt;-<span class="st"> &quot;UTF-8&quot;</span>
+string &lt;- <span class="st">&quot;Cape Bojador (26\302\260N)&quot;</span>
+<span class="kw">Encoding</span>(string) &lt;- <span class="st">&quot;UTF-8&quot;</span>
 <span class="kw">iconv</span>(string, <span class="st">&quot;UTF-8&quot;</span>, <span class="st">&quot;ASCII&quot;</span>, <span class="st">&quot;byte&quot;</span>) <span class="co"># return hex code used by R CMD check</span>
-string &lt;-<span class="st"> </span><span class="kw">iconv</span>(string, <span class="st">&quot;UTF-8&quot;</span>, <span class="st">&quot;ASCII&quot;</span>, <span class="st">&quot;&quot;</span>) <span class="co"># just drop those chars</span></code></pre>
+string &lt;- <span class="kw">iconv</span>(string, <span class="st">&quot;UTF-8&quot;</span>, <span class="st">&quot;ASCII&quot;</span>, <span class="st">&quot;&quot;</span>) <span class="co"># just drop those chars</span></code></pre>
 <p>I could translate the hex errors by hand into octal, and then hand-code a better literal translation:</p>
 <pre class="sourceCode R"><code class="sourceCode r">
-string &lt;-<span class="st"> &quot;Cape Bojador (26\302\260N)&quot;</span>
-string &lt;-<span class="st"> </span><span class="kw">gsub</span>(<span class="st">&quot;\302\260&quot;</span>, <span class="st">&quot; degrees &quot;</span>, string)</code></pre>
+string &lt;- <span class="st">&quot;Cape Bojador (26\302\260N)&quot;</span>
+string &lt;- <span class="kw">gsub</span>(<span class="st">&quot;\302\260&quot;</span>, <span class="st">&quot; degrees &quot;</span>, string)</code></pre>
 <p>but that’s too tedious and slow, I’ll cope without the degree symbol for the moment.   Tedious, because I’d have to recode most UTF-8 symbols, starting by decoding their byte strings, by looking up the <a href="http://stuffofinterest.com/misc/utf8.php?s=128">hex string here</a>, then pasting the symbol into an<a href="http://encodertool.com/octal">octal encoder</a>.    A partial list of the offenders includes:</p>
 <pre><code>&lt;c2&gt;&lt;96&gt;, &lt;c2&gt;&lt;b0&gt;,  &lt;c3&gt;&lt;a9&gt;, &lt;c3&gt;&lt;ad&gt;, &lt;c2&gt;&lt;bd&gt;, &lt;c3&gt;&lt;b3&gt;</code></pre>
 <p>A solution, if not an ideal one.  At least no ASCII errors.  I’d be happy for any better suggestions.  Oh well, done.  Package submitted to CRAN via devtools</p>
