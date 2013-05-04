@@ -1,7 +1,7 @@
 {
   "/": [
-    "5564",
-    "14411"
+    "5568",
+    "14418"
   ],
   "/ Hastings student at UC Davis": [
     "0",
@@ -847,6 +847,10 @@
     "1",
     "2"
   ],
+  "/2010/10/21/spatial-warning-signals-power-etc.html": [
+    "0",
+    "1"
+  ],
   "/2010/10/25/wrong-picture-wrong-model-why-warning-signals-dont-look-like-rare-events.html": [
     "1",
     "1"
@@ -904,8 +908,8 @@
     "1"
   ],
   "/2010/11/07/welcome-to-my-lab-notebook.html": [
-    "281",
-    "641"
+    "282",
+    "643"
   ],
   "/2010/11/08/monday-and-some-phylogenetics.html": [
     "2",
@@ -996,8 +1000,8 @@
     "4"
   ],
   "/2010/12/03/nsf-and-journal-data-archiving.html": [
-    "8",
-    "15"
+    "9",
+    "16"
   ],
   "/2010/12/04/identifying-warning-signals.html": [
     "0",
@@ -1020,8 +1024,8 @@
     "1"
   ],
   "/2010/12/10/citations.html": [
-    "15",
-    "18"
+    "16",
+    "19"
   ],
   "/2010/12/10/socialr-an-r-package-to-track-the-status-of-computations-with-social-network-tools.html": [
     "12",
@@ -1319,9 +1323,13 @@
     "0",
     "2"
   ],
+  "/2011/04/11/monday-warning-signals-updated-graphs.html": [
+    "0",
+    "1"
+  ],
   "/2011/04/12/a-bit-of-work-on-my-socialr-package-for-reproducible-research.html": [
-    "29",
-    "35"
+    "31",
+    "37"
   ],
   "/2011/04/12/tuesday-manuscript-and-appendix-edits.html": [
     "3",
@@ -1896,8 +1904,8 @@
     "134"
   ],
   "/2011/10/31/monday-openfisheries-ggplot.html": [
-    "14",
-    "24"
+    "15",
+    "25"
   ],
   "/2011/11/01/labrids-parrotfish-method1.html": [
     "1",
@@ -1964,8 +1972,8 @@
     "11"
   ],
   "/2011/11/22/some-configuration-notes-rstudio-setup-syntax-highlighting-in-sweave.html": [
-    "82",
-    "107"
+    "83",
+    "108"
   ],
   "/2011/11/23/getting-the-right-distributions.html": [
     "5",
@@ -2104,12 +2112,12 @@
     "12"
   ],
   "/2012/02/10/thursday-writing-some-latexdiff-notes.html": [
-    "23",
-    "34"
+    "24",
+    "35"
   ],
   "/2012/02/12/elegant-fast-data-manipulation-with-data-table.html": [
-    "405",
-    "459"
+    "406",
+    "460"
   ],
   "/2012/02/12/saturday-projects-reading-markdown-plugins.html": [
     "6",
@@ -2161,7 +2169,7 @@
   ],
   "/2012/02/24/visuals-for-communicating-uncertainty.html": [
     "7",
-    "14"
+    "15"
   ],
   "/2012/02/27/ex-out-md-cars1.png": [
     "0",
@@ -2236,8 +2244,8 @@
     "5"
   ],
   "/2012/03/21/knitr-github-and-a-new-phase-for-the-lab-notebook.html": [
-    "218",
-    "364"
+    "219",
+    "365"
   ],
   "/2012/03/21/policy-costs-to-changing-mangement-tp-1b-apples-to-apples.html": [
     "0",
@@ -2352,8 +2360,8 @@
     "15"
   ],
   "/2012/05/06/research-workflow.html": [
-    "357",
-    "687"
+    "359",
+    "690"
   ],
   "/2012/05/07/github.com/deads/bigrf": [
     "0",
@@ -2565,15 +2573,15 @@
   ],
   "/2012/09/28/Welcome-to-my-lab-notebook.html": [
     "443",
-    "1637"
+    "1639"
   ],
   "/2012/10/01/multiple-uncertainty.html": [
     "10",
     "91"
   ],
   "/2012/10/02/solarized-colors.html": [
-    "751",
-    "1056"
+    "753",
+    "1060"
   ],
   "/2012/10/05/lab-notebook.html": [
     "0",
@@ -2581,7 +2589,7 @@
   ],
   "/2012/10/05/notes.html": [
     "20",
-    "59"
+    "60"
   ],
   "/2012/10/09/data-management-plan.htm": [
     "6",
@@ -2824,8 +2832,8 @@
     "6"
   ],
   "/2012/12/30/learning-jekyll.html": [
-    "437",
-    "664"
+    "443",
+    "671"
   ],
   "/2013": [
     "0",
@@ -2861,7 +2869,7 @@
   ],
   "/2013/02/11/ews-review-paper-chat.html": [
     "6",
-    "36"
+    "37"
   ],
   "/2013/02/12/notes.html": [
     "16",
@@ -2901,7 +2909,7 @@
   ],
   "/2013/02/27/notes.html": [
     "7",
-    "24"
+    "25"
   ],
   "/2013/02/28/notes.html": [
     "10",
@@ -2945,7 +2953,7 @@
   ],
   "/2013/03/26/research.html": [
     "7",
-    "58"
+    "59"
   ],
   "/2013/04/02/Monday---Tuesday.html": [
     "3",
@@ -2957,7 +2965,7 @@
   ],
   "/2013/04/04/notebook-parsing.html": [
     "35",
-    "68"
+    "70"
   ],
   "/2013/04/05/a-clever-derivation-on-realized-escape-times.html": [
     "17",
@@ -2965,7 +2973,7 @@
   ],
   "/2013/04/11/nonparametric-bayes-framing-the-issues.html": [
     "14",
-    "37"
+    "38"
   ],
   "/2013/04/11/nonparametric-bayes-framing-the-issues.html?search-text=": [
     "0",
@@ -3000,8 +3008,8 @@
     "22"
   ],
   "/2013/04/23/we-need-more-object-oriented-design-in-comparative-methods.html": [
-    "138",
-    "191"
+    "139",
+    "192"
   ],
   "/2013/04/24/empirical-demonstration-of-that-clever-derivation.html": [
     "5",
@@ -3012,24 +3020,28 @@
     "7"
   ],
   "/2013/04/26/notebook-features-introduction.html": [
-    "3",
-    "35"
+    "4",
+    "48"
   ],
   "/2013/04/26/notebook-features-reproducible-code.html": [
     "8",
-    "22"
+    "24"
   ],
   "/2013/04/27/comparison-of-nonparametric-and-parametric-approaches.html": [
-    "9",
-    "23"
+    "10",
+    "24"
   ],
   "/2013/04/29/finishing-comparison-parametric-and-nonparametric.html": [
     "0",
     "18"
   ],
   "/2013/04/30/tgp-difficulties-and-custom-mcmc-for-gp.html": [
-    "1",
-    "5"
+    "2",
+    "6"
+  ],
+  "/2013/05/03/notebook-features-hashes-providing-an-immutable-and-verifiable-research-record.html": [
+    "38",
+    "50"
   ],
   "/211": [
     "0",
@@ -3986,17 +3998,5 @@
   "/?s=NSF+proposal": [
     "0",
     "1"
-  ],
-  "/?s=No+Science": [
-    "0",
-    "2"
-  ],
-  "/?s=No+Science,+PNAS": [
-    "0",
-    "1"
-  ],
-  "/?s=Nominations": [
-    "0",
-    "2"
   ]
 }

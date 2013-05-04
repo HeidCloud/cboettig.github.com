@@ -4,7 +4,7 @@
  <title>Lab Notebook</title>
  <link href="/atom.xml" rel="self"/>
  <link href=""/>
- <updated>2013-05-03T11:37:56-07:00</updated>
+ <updated>2013-05-03T17:56:56-07:00</updated>
  <id>http://www.carlboettiger.info</id>
  <author>
    <name>Carl Boettiger</name>
@@ -516,7 +516,7 @@ dt$method = &lt;span class=&quot;kw&quot;&gt;factor&lt;/span&gt;(dt$method, &lt;
 &lt;p&gt;Below is an index of posts in this theme that I will continue to update as I have a chance to finish them. If there’s anything about the notebook that you’d like to hear more about, feel free to suggest it in the comments.&lt;/p&gt;
 &lt;h3 id=&quot;written&quot;&gt;Written&lt;/h3&gt;
 &lt;ol style=&quot;list-style-type: decimal&quot;&gt;
-&lt;li&gt;&lt;a href=&quot;http://carlboettiger.info/2013/04/25/notebook-features-reproducible-code.html&quot;&gt;Reproducible code: embedding code and dynamic documents&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://carlboettiger.info/2013/04/26/notebook-features-reproducible-code.html&quot;&gt;Reproducible code: embedding code and dynamic documents&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;http://carlboettiger.info/2013/04/04/notebook-parsing.html&quot;&gt;Parsing linked data in the semantic notebook&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;http://carlboettiger.info/2013/05/03/notebook-features-hashes-providing-an-immutable-and-verifiable-research-record.html&quot;&gt;Hashes: An immutable and verifiable record of research&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
@@ -5857,6 +5857,10 @@ linear &amp;lt;- dt[, &lt;span class=&quot;kw&quot;&gt;approx&lt;/span&gt;(stock
 &lt;p&gt;vim set sytnax language, useful for getting R highlighting in &lt;code&gt;.Rmd&lt;/code&gt; files: &lt;code&gt;setf r&lt;/code&gt;, or equivalently, &lt;code&gt;set filetype=r&lt;/code&gt; (must be lowercase r). &lt;code&gt;set filetype&lt;/code&gt; with no argument gives the current filetype.&lt;/p&gt;
 &lt;h3 id=&quot;coding&quot;&gt;Coding&lt;/h3&gt;
 &lt;ul&gt;&lt;li&gt;
+cboettig started following hubgit: &lt;em&gt;&lt;/em&gt; &lt;a href=&quot;https://github.com/hubgit&quot;&gt;08:22 2013/05/03&lt;/a&gt;
+&lt;/li&gt;&lt;li&gt;
+cboettig pushed to master at cboettig/cboettig.github.com: &lt;em&gt;update site&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/cboettig.github.com/compare/e7fb6aa902...00ec5905e8&quot;&gt;06:53 2013/05/03&lt;/a&gt;
+&lt;/li&gt;&lt;li&gt;
 cboettig pushed to master at cboettig/labnotebook: &lt;em&gt;add code toggle draft hashes post released&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/labnotebook/compare/d8e88266c8...d4d5dd7d28&quot;&gt;06:37 2013/05/03&lt;/a&gt;
 &lt;/li&gt;&lt;li&gt;
 cboettig pushed to master at cboettig/cboettig.github.com: &lt;em&gt;update site&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/cboettig.github.com/compare/0eef0b7789...e7fb6aa902&quot;&gt;06:32 2013/05/03&lt;/a&gt;
@@ -5868,10 +5872,6 @@ cboettig commented on issue ropensci/rfigshare#36: &lt;em&gt;I think you should 
 cboettig pushed to master at cboettig/nonparametric-bayes: &lt;em&gt;Merge branch ‘master’ of github.com:cboettig/nonparametric-bayes draft for ERE&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/nonparametric-bayes/compare/98a8f7f852...5b5d03ede7&quot;&gt;12:34 2013/05/03&lt;/a&gt;
 &lt;/li&gt;&lt;li&gt;
 cboettig pushed to master at cboettig/nonparametric-bayes: &lt;em&gt;ricker bugs model&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/nonparametric-bayes/compare/4474fefcfd...98a8f7f852&quot;&gt;10:19 2013/05/02&lt;/a&gt;
-&lt;/li&gt;&lt;li&gt;
-cboettig pushed to master at cboettig/nonparametric-bayes: &lt;em&gt;replicate run add bayesian version of Ricker loop over all 1e5 samples of the posterior&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/nonparametric-bayes/compare/eecb2c12c3...4474fefcfd&quot;&gt;10:19 2013/05/02&lt;/a&gt;
-&lt;/li&gt;&lt;li&gt;
-cboettig pushed to master at cboettig/cboettig.github.com: &lt;em&gt;new post&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/cboettig.github.com/compare/cbd6a536dd...0eef0b7789&quot;&gt;06:33 2013/05/02&lt;/a&gt;
 &lt;/li&gt;&lt;/ul&gt;
 
 
