@@ -24,7 +24,7 @@
 <!-- RDFa Metadata (in DublinCore) -->
 <meta property="dc:title" content="FishBASE from R: some XML parsing" />
 <meta property="dc:creator" content="Carl Boettiger" />
-<meta property="dc:date" content="2013-05-03T17:56:56-07:00" />
+<meta property="dc:date" content="2013-05-07T12:11:08-07:00" />
 <meta property="dc:format" content="text/html" />
 <meta property="dc:language" content="en" />
 <meta property="dc:identifier" content="/2011/08/26/fishbase-from-r-some-xml-parsing.html" />
@@ -37,13 +37,13 @@
 <meta property="og:author" content="http://www.carlboettiger.info/index.html#me" />  <!-- Should be Liquid? URI? -->
 <meta property="http://ogp.me/ns/profile#first_name" content="Carl"/>
 <meta property="http://ogp.me/ns/profile#last_name" content="Boettiger"/>
-<meta property="http://ogp.me/ns/article#published_time" content="2013-05-03T17:56:56-07:00" />
+<meta property="http://ogp.me/ns/article#published_time" content="2013-05-07T12:11:08-07:00" />
 <meta property="og:site_name" content="Lab Notebook" /> <!-- Same as dc:source? -->
 <meta property="og:url" content="http://www.carlboettiger.info/2011/08/26/fishbase-from-r-some-xml-parsing.html" />
 <meta property="og:type" content="website" /> 
 <!-- Google Scholar Metadata -->
 <meta name="citation_author" content="Carl Boettiger"/>
-<meta name="citation_date" content="2013-05-03T17:56:56-07:00"/>
+<meta name="citation_date" content="2013-05-07T12:11:08-07:00"/>
 <meta name="citation_title" content="FishBASE from R: some XML parsing"/>
 <meta name="citation_journal_title" content="Lab Notebook"/>
 
@@ -142,17 +142,17 @@
     <p><a href="http://fishlab.ucdavis.edu/?p=395">cross-posted</a> from Wainwright Lab blog, archiving in the notebook here. This early tutorial includes some background on XML parsing from R using XPath. See the later rfishbase <a href="http://www.carlboettiger.info/archives/2529">tutorial</a> for more functionality.</p>
 <p>In lab known for its quality data collection, high-speed video style, writing the weekly blog post can be a bit of a challenge for the local code monkey. That’s right, no videos today. But lucky for me, even this group can still make good use of publicly available data. Like the other day, when one of our newer graduate students wanted to do a certain degree of data-mining from information available from <a href="http://fishbase.org">FishBASE</a>. Now I’m sure there are plenty of reasons to grumble about it, but there’s quite an impressive bit of information available on FishBASE, most of it decently referenced if by no means comprehensive. And getting that kind of information quickly and easily is rapidly becoming a skill every researcher needs. So here’s a quick tutorial of the tools to do this.</p>
 <p>Okay, so what are we talking about? Let’s start with an example fishbase page on Nile tilapia:</p>
-<div class="figure">
+<figure>
 <img src="http://farm7.static.flickr.com/6076/6074984408_1692760c9c.jpg" />
-</div>
+</figure>
 <p>Okay, so there’s a bunch of information we could start copying down, then go onto the next fish. Sounds pretty tedious for 30,000 species… Now we can get an html copy of this page, but that’s got all this messy formatting we’ll have to dispense with. Luckily, we scroll down a little farther and we see the magic words:</p>
 <blockquote>
 <p>Download XML</p>
 </blockquote>
 <p>The summary page takes us to just what we were looking for:</p>
-<div class="figure">
+<figure>
 <img src="http://farm7.static.flickr.com/6086/6074984352_6f1f9075d5.jpg" />
-</div>
+</figure>
 <p>To the human eye this might not look very useful, but to a computer, it’s just what we wanted. ((Well, not acutally. A RESTful interface to this data would be better, where we could query by the different categories, finding all fish of a certain family or diet, but we’ll manage just fine from here, just might be a bit slower)) It’s XML - eXtensible Mark-up Language: meaning it’s all the stuff on the previous page, marked up with all these helpful tags so that a computer can make sense of the document. ((Actually, not everything on the html page. Between the broken links, there’s tons of information like the life history tool, diet data references, etc that somehow haven’t made it into the XML summary sheet.))</p>
 <p>To process this, we’ll fire up our <a href="http://www.r-project.org">favorite language</a> and start scripting. To access the internet from R we’ll use a the command-line url browser, curl, available in the RCurl package. We’ll process XML with the XML package, so let’s load that too. Install these from CRAN if you don’t have them:</p>
 <pre class="sourceCode r"><code class="sourceCode r">
@@ -227,17 +227,18 @@ yr &lt;- <span class="kw">get.ages</span>(fish.data)
 <p>Note we take a bit of care to avoid the missing values using try() function. Here’s the results:</p>
 <p><a href="http://farm7.static.flickr.com/6090/6074128436_9d3137acd7.jpg"><img src="http://farm7.static.flickr.com/6090/6074128436_9d3137acd7.jpg" /></a></p>
 <p>Kinda cool, isn’t it?</p>
+
     </article>
   </div>
   <div class="span4">
     <div class="sidebar">
       <aside prefix="og:http://ogp.me/ns/article#">
   <p> <i class="icon-calendar"></i>
-    <time datetime="2011-08-26T03:51:29-07:00" 
+    <time datetime="2011-08-26T10:51:29Z" 
     property="dc:created">26 Aug 2011</time></p>
   <p><small> modified: <time 
-            datetime="2013-02-24T17:00:43-08:00" 
-            property="dc:modified">24 Feb 2013</time></small></p>
+            datetime="2013-05-07T06:35:55-07:00" 
+            property="dc:modified">07 May 2013</time></small></p>
 
  <br />
 
@@ -260,7 +261,7 @@ yr &lt;- <span class="kw">get.ages</span>(fish.data)
   <p><i class="icon-list"></i> Posted in 
      
       <a rel="dc:subject" class="category" 
-         href="/categories.html#computation">computation</a>
+         href="//categories.html#computation">computation</a>
     
     </p>
 
@@ -268,18 +269,16 @@ yr &lt;- <span class="kw">get.ages</span>(fish.data)
     
     <!-- http://schema.org/BlogPosting/keywords -->
     <a rel="og:tag" class="tag" 
-       href="/tags.html#ropensci">#ropensci</a>
+       href="//tags.html#ropensci">#ropensci</a>
     </p>
 
   <br/>
 
-   <p style="font-style:italic"> <i class="icon-signal"></i> pageviews: 277</p>
+   <p style="font-style:italic"> <i class="icon-signal"></i> pageviews: 279</p>
 
   <br/>
 
-  <p><small> <i class="icon-barcode"></i> SHA Hash: <a href="https://github.com/cboettig/labnotebook/commit/ed993b3d8431989017b240f87519702670a541b1
-/_posts/2011-08-26-fishbase-from-r-some-xml-parsing.md"> ed993b3d8431989017b240f87519702670a541b1
-</a></small></p>
+  <p><small> <i class="icon-barcode"></i> SHA Hash: <a href="https://github.com/cboettig/labnotebook/commit/cc2e94b67be5274aeb134604bc317b134bac4a95/_posts/2011-08-26-fishbase-from-r-some-xml-parsing.md"> cc2e94b67be5274aeb134604bc317b134bac4a95</a></small></p>
     
   <br/>
 

@@ -24,7 +24,7 @@
 <!-- RDFa Metadata (in DublinCore) -->
 <meta property="dc:title" content="Tuesday: Warning Signals Data Wrangling" />
 <meta property="dc:creator" content="Carl Boettiger" />
-<meta property="dc:date" content="2013-05-03T17:56:56-07:00" />
+<meta property="dc:date" content="2013-05-07T12:11:08-07:00" />
 <meta property="dc:format" content="text/html" />
 <meta property="dc:language" content="en" />
 <meta property="dc:identifier" content="/2011/07/05/tuesday-6.html" />
@@ -37,13 +37,13 @@
 <meta property="og:author" content="http://www.carlboettiger.info/index.html#me" />  <!-- Should be Liquid? URI? -->
 <meta property="http://ogp.me/ns/profile#first_name" content="Carl"/>
 <meta property="http://ogp.me/ns/profile#last_name" content="Boettiger"/>
-<meta property="http://ogp.me/ns/article#published_time" content="2013-05-03T17:56:56-07:00" />
+<meta property="http://ogp.me/ns/article#published_time" content="2013-05-07T12:11:08-07:00" />
 <meta property="og:site_name" content="Lab Notebook" /> <!-- Same as dc:source? -->
 <meta property="og:url" content="http://www.carlboettiger.info/2011/07/05/tuesday-6.html" />
 <meta property="og:type" content="website" /> 
 <!-- Google Scholar Metadata -->
 <meta name="citation_author" content="Carl Boettiger"/>
-<meta name="citation_date" content="2013-05-03T17:56:56-07:00"/>
+<meta name="citation_date" content="2013-05-07T12:11:08-07:00"/>
 <meta name="citation_title" content="Tuesday: Warning Signals Data Wrangling"/>
 <meta name="citation_journal_title" content="Lab Notebook"/>
 
@@ -148,9 +148,9 @@
 <li>wrote a file to fix flickr data file names that are occasionally mangled by parallel loop printing.</li>
 <li>wrote a file to plot <span class="math">\(m T\)</span> values on each dataset to get a sense of which have the most dramatic warning signals. running on one.</li>
 </ul>
-<div class="figure">
+<figure>
 <img src="http://farm7.staticflickr.com/6047/5906246040_f65e971841_o.png" />
-</div>
+</figure>
 <ul>
 <li>locale troubles on install lead to errors in data read</li>
 </ul>
@@ -169,24 +169,24 @@ ERROR: installing package indices failed</code></pre>
 <ul>
 <li>Ind. based model, deteriorating stability.</li>
 </ul>
-<div class="figure">
+<figure>
 <img src="http://farm6.staticflickr.com/5232/5895991499_bd8fd0375d_o.png" />
-</div>
+</figure>
 <ul>
 <li>Data simulated with demo/ibm_sims.R, datafile stored in data/ibms.rda. Not handling seeds at the moment so individual simulations will differ. Instead, storing consistent data files from the simulations</li>
 <li>Complete runs at original sampling and resampled at 25, 50, 100, 200, 500 datapoints for all summary statistics and likelihood.</li>
 </ul>
 <h4 id="daphnia-h6">Daphnia H6</h4>
 <p>H6 Daphnia dataset from data/drake.rda, drake_deterior$H6 dataset.</p>
-<div class="figure">
+<figure>
 <img src="http://farm6.staticflickr.com/5035/5890668068_d596f2ffc9_o.png" />
-</div>
+</figure>
 <p>Complete runs at original sampling and resampled at 25, 50, 100, 200, 500 datapoints for all summary statistics and likelihood.</p>
 <p>Run using LSN model, should be rerun using LTC model. Now running on c0-8.</p>
 <p>Strongest signal is from the I9 dataset:</p>
-<div class="figure">
+<figure>
 <img src="http://farm6.staticflickr.com/5280/5906008839_0b57cd2edb_o.png" />
-</div>
+</figure>
 <pre class="sourceCode r"><code class="sourceCode r">      G10.m         G6.m         G7.m         G8.m         G9.m        H10.m 
   -<span class="fl">1.1013887</span>    <span class="fl">0.9141734</span>   -<span class="fl">0.8813874</span>    <span class="fl">0.3885321</span>    <span class="fl">1.0958326</span>   -<span class="fl">1.5147485</span> 
         H6.m         H8.m        I10.m         I6.m         I7.m         I8.m 
@@ -200,27 +200,27 @@ ERROR: installing package indices failed</code></pre>
 <p>trying the I9 dataset on c0-23</p>
 <h4 id="deut3">Deut3</h4>
 <p>Deterium levels from Glaciation III Original data run on all indicators:</p>
-<div class="figure">
+<figure>
 <img src="http://farm7.staticflickr.com/6013/5904550426_4477bc6ab6_o.png" />
-</div>
+</figure>
 <p>Sampling at 25,50,100,200,500 run for the likelihood approach (in same datafile as original runs). Need to debug runs on the indicator statistics.</p>
 <p>Sampling at fractional percentages for likelihood also available: <img src="http://farm7.staticflickr.com/6033/5882379649_27b6c9f59f_o.png" /></p>
 <h4 id="ibm-stable">ibm stable</h4>
 <p>Not run yet. Consider estimating with bounded <span class="math">\(m&lt;0\)</span> for destabilizing test only.</p>
 <h4 id="deut1">Deut1</h4>
 <p>Deuterium levels from Glaciation I, data/deuterium.rda, deuterium[[1]] dataset. Original dataset on all indicators:</p>
-<div class="figure">
+<figure>
 <img src="http://farm6.staticflickr.com/5279/5888212714_dcd7575fec_o.png" />
-</div>
+</figure>
 <p>nearby also some sampling at different efforts for likelihood method.</p>
 <p>Potential alternate datasets:</p>
 <h4 id="caco3">CaCO3</h4>
 <ul>
 <li>very preliminary analysis:</li>
 </ul>
-<div class="figure">
+<figure>
 <img src="http://farm4.staticflickr.com/3113/5864510263_5c1cb8c1ed_o.png" />
-</div>
+</figure>
 <ul>
 <li>Running at sampling levels 25,50,100,200,500 on c0-2.farm</li>
 </ul>
@@ -236,17 +236,18 @@ ERROR: installing package indices failed</code></pre>
 <p>post pending drafts.</p>
 <h2 id="code-vignette-and-cleanup">Code vignette and cleanup</h2>
 <p>Postponed till later</p>
+
     </article>
   </div>
   <div class="span4">
     <div class="sidebar">
       <aside prefix="og:http://ogp.me/ns/article#">
   <p> <i class="icon-calendar"></i>
-    <time datetime="2011-07-05T10:45:53-07:00" 
+    <time datetime="2011-07-05T17:45:53Z" 
     property="dc:created">05 Jul 2011</time></p>
   <p><small> modified: <time 
-            datetime="2013-03-02T18:14:38-08:00" 
-            property="dc:modified">02 Mar 2013</time></small></p>
+            datetime="2013-05-07T06:35:55-07:00" 
+            property="dc:modified">07 May 2013</time></small></p>
 
  <br />
 
@@ -269,7 +270,7 @@ ERROR: installing package indices failed</code></pre>
   <p><i class="icon-list"></i> Posted in 
      
       <a rel="dc:subject" class="category" 
-         href="/categories.html#ecology">ecology</a>
+         href="//categories.html#ecology">ecology</a>
     
     </p>
 
@@ -277,11 +278,11 @@ ERROR: installing package indices failed</code></pre>
     
     <!-- http://schema.org/BlogPosting/keywords -->
     <a rel="og:tag" class="tag" 
-       href="/tags.html#warning-signals">#warning-signals</a>, 
+       href="//tags.html#warning-signals">#warning-signals</a>, 
     
     <!-- http://schema.org/BlogPosting/keywords -->
     <a rel="og:tag" class="tag" 
-       href="/tags.html#delayed-release">#delayed-release</a>
+       href="//tags.html#delayed-release">#delayed-release</a>
     </p>
 
   <br/>
@@ -290,9 +291,7 @@ ERROR: installing package indices failed</code></pre>
 
   <br/>
 
-  <p><small> <i class="icon-barcode"></i> SHA Hash: <a href="https://github.com/cboettig/labnotebook/commit/01fcc4f3da419562496b18150b305fd9a4afe57f
-/_posts/2011-07-05-tuesday-6.md"> 01fcc4f3da419562496b18150b305fd9a4afe57f
-</a></small></p>
+  <p><small> <i class="icon-barcode"></i> SHA Hash: <a href="https://github.com/cboettig/labnotebook/commit/cc2e94b67be5274aeb134604bc317b134bac4a95/_posts/2011-07-05-tuesday-6.md"> cc2e94b67be5274aeb134604bc317b134bac4a95</a></small></p>
     
   <br/>
 

@@ -24,7 +24,7 @@
 <!-- RDFa Metadata (in DublinCore) -->
 <meta property="dc:title" content="Primates" />
 <meta property="dc:creator" content="Carl Boettiger" />
-<meta property="dc:date" content="2013-05-03T17:56:56-07:00" />
+<meta property="dc:date" content="2013-05-07T12:11:08-07:00" />
 <meta property="dc:format" content="text/html" />
 <meta property="dc:language" content="en" />
 <meta property="dc:identifier" content="/2010/05/05/Primates.html" />
@@ -37,13 +37,13 @@
 <meta property="og:author" content="http://www.carlboettiger.info/index.html#me" />  <!-- Should be Liquid? URI? -->
 <meta property="http://ogp.me/ns/profile#first_name" content="Carl"/>
 <meta property="http://ogp.me/ns/profile#last_name" content="Boettiger"/>
-<meta property="http://ogp.me/ns/article#published_time" content="2013-05-03T17:56:56-07:00" />
+<meta property="http://ogp.me/ns/article#published_time" content="2013-05-07T12:11:08-07:00" />
 <meta property="og:site_name" content="Lab Notebook" /> <!-- Same as dc:source? -->
 <meta property="og:url" content="http://www.carlboettiger.info/2010/05/05/Primates.html" />
 <meta property="og:type" content="website" /> 
 <!-- Google Scholar Metadata -->
 <meta name="citation_author" content="Carl Boettiger"/>
-<meta name="citation_date" content="2013-05-03T17:56:56-07:00"/>
+<meta name="citation_date" content="2013-05-07T12:11:08-07:00"/>
 <meta name="citation_title" content="Primates"/>
 <meta name="citation_journal_title" content="Lab Notebook"/>
 
@@ -143,7 +143,7 @@
 <li><p>Primates project now has a <a href="http://github.com/cboettig/sandbox" title="http://github.com/cboettig/sandbox">Github repository</a>. Updates are embedded from here.</p></li>
 <li><p>Experimenting with distributing code and data effectively. Pluses and minuses of three options:</p></li>
 </ul>
-<ol style="list-style-type: decimal">
+<ol type="1">
 <li>zipped file with R code and data. Requires setting working directory, harder to update. Subsequent uploads must include all the data, rather than incremental.</li>
 <li>Directly grab repository over github. Simple to update and access, stores only incremental changes. Requires knowledge of git</li>
 <li>R package: Nicely integrates data, code, and documentation. Requires installing R packages.</li>
@@ -159,7 +159,7 @@ bird.orders &lt;- read.tree(&quot;bird.orders.tre&quot;)</code></pre>
 <ul>
 <li>Simon sent me the tree data from their paper:</li>
 </ul>
-<ol style="list-style-type: decimal">
+<ol type="1">
 <li><a href="http://eutils.ncbi.nlm.nih.gov/entrez/eutils/elink.fcgi?cmd=prlinks&amp;dbfrom=pubmed&amp;retmode=ref&amp;id=19860891" title="View or buy article from publisher (if available)">Chatterjee HJ, Ho SY, Barnes I, and Groves C. .</a> pmid:19860891. <a href="http://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&amp;rettype=abstract&amp;id=19860891" title="PMID 19860891">PubMed</a> <a href="http://www.hubmed.org/display.cgi?uids=19860891" title="PMID 19860891">HubMed</a> [primates]</li>
 </ol>
 <ul>
@@ -203,7 +203,7 @@ plot_cts_ancestor(compare$phy, compare$data, out)</code></pre>
 <ul>
 <li>This is essentially just at the proof of concept level. A couple obvious steps:</li>
 </ul>
-<ol style="list-style-type: decimal">
+<ol type="1">
 <li>This uses a single tree from the posterior distribution of trees, which we’ll eventually want to average over in the parameter estimation. Meanwhile should use a consensus MLE tree instead.</li>
 <li>Trees are resolved to genus level, so traits should be genus averages (instead of subsamples).</li>
 <li>Ancestral state reconstruction under the Brownian Motion model is the most preliminary treatment, will certainly be interesting to consider the various multi-peak OU models and identify potential transitions between peaks, as well as power analysis for the model fits.</li>
@@ -235,6 +235,7 @@ plot_cts_ancestor(compare$phy, compare$data, out)</code></pre>
 
 <pre><code> git checkout b1a90ad97b90d9cbeaa7</code></pre>
 <p><br /></p>
+
     </article>
   </div>
   <div class="span4">
@@ -244,8 +245,8 @@ plot_cts_ancestor(compare$phy, compare$data, out)</code></pre>
     <time datetime="2010-05-05T00:00:00-07:00" 
     property="dc:created">05 May 2010</time></p>
   <p><small> modified: <time 
-            datetime="2013-02-19T10:27:50-08:00" 
-            property="dc:modified">19 Feb 2013</time></small></p>
+            datetime="2013-05-07T06:35:55-07:00" 
+            property="dc:modified">07 May 2013</time></small></p>
 
  <br />
 
@@ -268,7 +269,7 @@ plot_cts_ancestor(compare$phy, compare$data, out)</code></pre>
   <p><i class="icon-list"></i> Posted in 
      
       <a rel="dc:subject" class="category" 
-         href="/categories.html#evolution">evolution</a>
+         href="//categories.html#evolution">evolution</a>
     
     </p>
 
@@ -276,11 +277,11 @@ plot_cts_ancestor(compare$phy, compare$data, out)</code></pre>
     
     <!-- http://schema.org/BlogPosting/keywords -->
     <a rel="og:tag" class="tag" 
-       href="/tags.html#code-tricks">#code-tricks</a>, 
+       href="//tags.html#code-tricks">#code-tricks</a>, 
     
     <!-- http://schema.org/BlogPosting/keywords -->
     <a rel="og:tag" class="tag" 
-       href="/tags.html#Primates">#Primates</a>
+       href="//tags.html#Primates">#Primates</a>
     </p>
 
   <br/>
@@ -289,9 +290,7 @@ plot_cts_ancestor(compare$phy, compare$data, out)</code></pre>
 
   <br/>
 
-  <p><small> <i class="icon-barcode"></i> SHA Hash: <a href="https://github.com/cboettig/labnotebook/commit/8c159703b2a376bd2c60f16e0e0d5cea04d20876
-/_posts/2010-05-05-Primates.md"> 8c159703b2a376bd2c60f16e0e0d5cea04d20876
-</a></small></p>
+  <p><small> <i class="icon-barcode"></i> SHA Hash: <a href="https://github.com/cboettig/labnotebook/commit/cc2e94b67be5274aeb134604bc317b134bac4a95/_posts/2010-05-05-Primates.md"> cc2e94b67be5274aeb134604bc317b134bac4a95</a></small></p>
     
   <br/>
 

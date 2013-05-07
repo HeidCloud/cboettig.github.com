@@ -24,7 +24,7 @@
 <!-- RDFa Metadata (in DublinCore) -->
 <meta property="dc:title" content="Notebook Features: parsing linked data in the semantic notebook" />
 <meta property="dc:creator" content="Carl Boettiger" />
-<meta property="dc:date" content="2013-05-03T17:56:56-07:00" />
+<meta property="dc:date" content="2013-05-07T12:11:08-07:00" />
 <meta property="dc:format" content="text/html" />
 <meta property="dc:language" content="en" />
 <meta property="dc:identifier" content="/2013/04/04/notebook-parsing.html" />
@@ -37,13 +37,13 @@
 <meta property="og:author" content="http://www.carlboettiger.info/index.html#me" />  <!-- Should be Liquid? URI? -->
 <meta property="http://ogp.me/ns/profile#first_name" content="Carl"/>
 <meta property="http://ogp.me/ns/profile#last_name" content="Boettiger"/>
-<meta property="http://ogp.me/ns/article#published_time" content="2013-05-03T17:56:56-07:00" />
+<meta property="http://ogp.me/ns/article#published_time" content="2013-05-07T12:11:08-07:00" />
 <meta property="og:site_name" content="Lab Notebook" /> <!-- Same as dc:source? -->
 <meta property="og:url" content="http://www.carlboettiger.info/2013/04/04/notebook-parsing.html" />
 <meta property="og:type" content="website" /> 
 <!-- Google Scholar Metadata -->
 <meta name="citation_author" content="Carl Boettiger"/>
-<meta name="citation_date" content="2013-05-03T17:56:56-07:00"/>
+<meta name="citation_date" content="2013-05-07T12:11:08-07:00"/>
 <meta name="citation_title" content="Notebook Features: parsing linked data in the semantic notebook"/>
 <meta name="citation_journal_title" content="Lab Notebook"/>
 
@@ -172,9 +172,9 @@ tags &lt;- <span class="kw">sapply</span>(html, xpathSApply, <span class="st">&q
  computation      ecology    evolution open-science     teaching 
           40          376          287           85           17 </code></pre>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">wordcloud</span>(<span class="kw">Corpus</span>(<span class="kw">VectorSource</span>(tags)))</code></pre>
-<div class="figure">
+<figure>
 <img src="http://farm9.staticflickr.com/8258/8620398951_0c2fd56e26_o.png" />
-</div>
+</figure>
 <h3 id="extracting-citations">Extracting citations</h3>
 <p>Citation information can be encoded</p>
 <p>We can perform more direct text mining as well. For instance, we extract all DOIs found in the text:</p>
@@ -205,9 +205,9 @@ carl.d &lt;- <span class="kw">data.frame</span>(<span class="dt">word =</span> <
 <span class="kw">wordcloud</span>(carl.d$word, carl.d$freq, <span class="dt">scale =</span> <span class="kw">c</span>(<span class="dv">8</span>, <span class="fl">0.4</span>), <span class="dt">min.freq =</span> <span class="dv">3</span>, 
     <span class="dt">max.words =</span> <span class="dv">100</span>, <span class="dt">random.order =</span> <span class="ot">FALSE</span>, <span class="dt">rot.per =</span> <span class="fl">0.15</span>, <span class="dt">colors =</span> <span class="kw">brewer.pal</span>(<span class="dv">8</span>, 
         <span class="st">&quot;Dark2&quot;</span>))</code></pre>
-<div class="figure">
+<figure>
 <img src="http://farm9.staticflickr.com/8385/8621498714_2fe3e04226_o.png" />
-</div>
+</figure>
 <h2 id="rdfa-parsing">RDFa parsing</h2>
 <p>RDF triples are the mainstay of semantic, linked data. Unlike the more text-mining oriented examples above, data in this format follows a strict and universal standard which allows a machine to identify meaning rather precisely. Critically, this allows one to automatically link data appearing in the notebook to data elsewhere on the web without the ambiguities of natural language that for instance, might confuse the animal jaguar with the car.</p>
 <p>RDFa is a way of adding these precise statements to HTML, again see the <a href="/2012/10/14/semantic-lab-notebook.html">earlier entry</a> on how this is done. The technically inclined will note that the namespaces of the RDFa itself are not accessible in the XML parsing we used above, since they do not correspond to nodes or attributes, but appear only in the values of attributes. Fortunately, there are many excellent tools to extract this RDFa data, turning it into the XML formatted RDF triples we need. e can perform this using the <a href="http://any23.org">Any23</a> API</p>
@@ -307,6 +307,7 @@ doc &lt;- <span class="kw">xmlParse</span>(<span class="st">&quot;temp.xml&quot;
 &lt;/rdf:RDF&gt;
  </code></pre>
 <p>We can now explore this data using the XML tools illustrated above. The rigidity of the XML rather than HTML parsing and the use of namespaces gives us greater precision.</p>
+
     </article>
   </div>
   <div class="span4">
@@ -316,8 +317,8 @@ doc &lt;- <span class="kw">xmlParse</span>(<span class="st">&quot;temp.xml&quot;
     <time datetime="2013-04-04T00:00:00-07:00" 
     property="dc:created">04 Apr 2013</time></p>
   <p><small> modified: <time 
-            datetime="2013-04-08T13:27:43-07:00" 
-            property="dc:modified">08 Apr 2013</time></small></p>
+            datetime="2013-05-07T06:35:55-07:00" 
+            property="dc:modified">07 May 2013</time></small></p>
 
  <br />
 
@@ -340,7 +341,7 @@ doc &lt;- <span class="kw">xmlParse</span>(<span class="st">&quot;temp.xml&quot;
   <p><i class="icon-list"></i> Posted in 
      
       <a rel="dc:subject" class="category" 
-         href="/categories.html#open-science">open-science</a>
+         href="//categories.html#open-science">open-science</a>
     
     </p>
 
@@ -348,26 +349,24 @@ doc &lt;- <span class="kw">xmlParse</span>(<span class="st">&quot;temp.xml&quot;
     
     <!-- http://schema.org/BlogPosting/keywords -->
     <a rel="og:tag" class="tag" 
-       href="/tags.html#notebook-technology">#notebook-technology</a>, 
+       href="//tags.html#notebook-technology">#notebook-technology</a>, 
     
     <!-- http://schema.org/BlogPosting/keywords -->
     <a rel="og:tag" class="tag" 
-       href="/tags.html#semantics">#semantics</a>, 
+       href="//tags.html#semantics">#semantics</a>, 
     
     <!-- http://schema.org/BlogPosting/keywords -->
     <a rel="og:tag" class="tag" 
-       href="/tags.html#blog">#blog</a>
+       href="//tags.html#blog">#blog</a>
     </p>
 
   <br/>
 
-   <p style="font-style:italic"> <i class="icon-signal"></i> pageviews: 70</p>
+   <p style="font-style:italic"> <i class="icon-signal"></i> pageviews: 72</p>
 
   <br/>
 
-  <p><small> <i class="icon-barcode"></i> SHA Hash: <a href="https://github.com/cboettig/labnotebook/commit/dbde6dfcbade91e8cfabd637afa6be5689f0f550
-/_posts/2013-04-04-notebook-parsing.md"> dbde6dfcbade91e8cfabd637afa6be5689f0f550
-</a></small></p>
+  <p><small> <i class="icon-barcode"></i> SHA Hash: <a href="https://github.com/cboettig/labnotebook/commit/cc2e94b67be5274aeb134604bc317b134bac4a95/_posts/2013-04-04-notebook-parsing.md"> cc2e94b67be5274aeb134604bc317b134bac4a95</a></small></p>
     
   <br/>
 

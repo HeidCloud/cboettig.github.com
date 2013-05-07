@@ -24,7 +24,7 @@
 <!-- RDFa Metadata (in DublinCore) -->
 <meta property="dc:title" content="Warning signals: summary statistic performance at varying sampling effort" />
 <meta property="dc:creator" content="Carl Boettiger" />
-<meta property="dc:date" content="2013-05-03T17:56:56-07:00" />
+<meta property="dc:date" content="2013-05-07T12:11:08-07:00" />
 <meta property="dc:format" content="text/html" />
 <meta property="dc:language" content="en" />
 <meta property="dc:identifier" content="/2011/06/29/warning-signals-summary-statistic-performance-at-varying-sampling-effort.html" />
@@ -37,13 +37,13 @@
 <meta property="og:author" content="http://www.carlboettiger.info/index.html#me" />  <!-- Should be Liquid? URI? -->
 <meta property="http://ogp.me/ns/profile#first_name" content="Carl"/>
 <meta property="http://ogp.me/ns/profile#last_name" content="Boettiger"/>
-<meta property="http://ogp.me/ns/article#published_time" content="2013-05-03T17:56:56-07:00" />
+<meta property="http://ogp.me/ns/article#published_time" content="2013-05-07T12:11:08-07:00" />
 <meta property="og:site_name" content="Lab Notebook" /> <!-- Same as dc:source? -->
 <meta property="og:url" content="http://www.carlboettiger.info/2011/06/29/warning-signals-summary-statistic-performance-at-varying-sampling-effort.html" />
 <meta property="og:type" content="website" /> 
 <!-- Google Scholar Metadata -->
 <meta name="citation_author" content="Carl Boettiger"/>
-<meta name="citation_date" content="2013-05-03T17:56:56-07:00"/>
+<meta name="citation_date" content="2013-05-07T12:11:08-07:00"/>
 <meta name="citation_title" content="Warning signals: summary statistic performance at varying sampling effort"/>
 <meta name="citation_journal_title" content="Lab Notebook"/>
 
@@ -148,40 +148,41 @@
 <p>Using data from the individual-based model simulation of a system approaching a saddle-node.</p>
 <h3 id="variance">Variance</h3>
 <p>While the initial example with variance shows almost no signal, increasing the sampling effort substantially improves the performance.  This can be seen in the ROC curves and as a tightening and spreading out of the null and test distributions as the sampling effort is increased.</p>
-<div class="figure">
+<figure>
 <img src="http://farm6.staticflickr.com/5061/5886269969_d9fecfa77b_o.png" />
-</div>
-<div class="figure">
+</figure>
+<figure>
 <img src="http://farm6.staticflickr.com/5158/5886270151_ddf0fd6c45_o.png" />
-</div>
+</figure>
 <p>The distributions corresponding to each of the ROC curves above, in order of increasing sampling effort.  The original simulation had 40 data points. The coefficient of variation essentially matches the variance pattern.</p>
 <h3 id="autocorrelation">autocorrelation</h3>
 <p>Autocorrelation requires substantially higher sampling before it becomes very effective at discriminating between the critical and stable cases.</p>
-<div class="figure">
+<figure>
 <img src="http://farm6.staticflickr.com/5312/5886270427_c95b6dd420_o.png" />
-</div>
-<div class="figure">
+</figure>
+<figure>
 <img src="http://farm6.staticflickr.com/5263/5886270603_ac9dc593b3_o.png" />
-</div>
+</figure>
 <h3 id="skew">Skew</h3>
 <p>Skew does not appear to be a useful indicator. This is probably a consequence of the low-order models on which the inference is actually based, since accurately estimating a higher-order model in the first place would be problematic.</p>
-<div class="figure">
+<figure>
 <img src="http://farm6.staticflickr.com/5304/5886270909_3d145b3522_o.png" />
-</div>
-<div class="figure">
+</figure>
+<figure>
 <img src="http://farm6.staticflickr.com/5080/5886837244_69fb0de8b7_o.png" />
-</div>
+</figure>
+
     </article>
   </div>
   <div class="span4">
     <div class="sidebar">
       <aside prefix="og:http://ogp.me/ns/article#">
   <p> <i class="icon-calendar"></i>
-    <time datetime="2011-06-29T15:08:01-07:00" 
+    <time datetime="2011-06-29T22:08:01Z" 
     property="dc:created">29 Jun 2011</time></p>
   <p><small> modified: <time 
-            datetime="2013-03-02T18:14:38-08:00" 
-            property="dc:modified">02 Mar 2013</time></small></p>
+            datetime="2013-05-07T06:35:55-07:00" 
+            property="dc:modified">07 May 2013</time></small></p>
 
  <br />
 
@@ -204,7 +205,7 @@
   <p><i class="icon-list"></i> Posted in 
      
       <a rel="dc:subject" class="category" 
-         href="/categories.html#ecology">ecology</a>
+         href="//categories.html#ecology">ecology</a>
     
     </p>
 
@@ -212,11 +213,11 @@
     
     <!-- http://schema.org/BlogPosting/keywords -->
     <a rel="og:tag" class="tag" 
-       href="/tags.html#warning-signals">#warning-signals</a>, 
+       href="//tags.html#warning-signals">#warning-signals</a>, 
     
     <!-- http://schema.org/BlogPosting/keywords -->
     <a rel="og:tag" class="tag" 
-       href="/tags.html#delayed-release">#delayed-release</a>
+       href="//tags.html#delayed-release">#delayed-release</a>
     </p>
 
   <br/>
@@ -225,9 +226,7 @@
 
   <br/>
 
-  <p><small> <i class="icon-barcode"></i> SHA Hash: <a href="https://github.com/cboettig/labnotebook/commit/01fcc4f3da419562496b18150b305fd9a4afe57f
-/_posts/2011-06-29-warning-signals-summary-statistic-performance-at-varying-sampling-effort.md"> 01fcc4f3da419562496b18150b305fd9a4afe57f
-</a></small></p>
+  <p><small> <i class="icon-barcode"></i> SHA Hash: <a href="https://github.com/cboettig/labnotebook/commit/cc2e94b67be5274aeb134604bc317b134bac4a95/_posts/2011-06-29-warning-signals-summary-statistic-performance-at-varying-sampling-effort.md"> cc2e94b67be5274aeb134604bc317b134bac4a95</a></small></p>
     
   <br/>
 

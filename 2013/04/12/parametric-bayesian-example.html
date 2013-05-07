@@ -24,7 +24,7 @@
 <!-- RDFa Metadata (in DublinCore) -->
 <meta property="dc:title" content="Parametric Bayesian Example" />
 <meta property="dc:creator" content="Carl Boettiger" />
-<meta property="dc:date" content="2013-05-03T17:56:56-07:00" />
+<meta property="dc:date" content="2013-05-07T12:11:08-07:00" />
 <meta property="dc:format" content="text/html" />
 <meta property="dc:language" content="en" />
 <meta property="dc:identifier" content="/2013/04/12/parametric-bayesian-example.html" />
@@ -37,13 +37,13 @@
 <meta property="og:author" content="http://www.carlboettiger.info/index.html#me" />  <!-- Should be Liquid? URI? -->
 <meta property="http://ogp.me/ns/profile#first_name" content="Carl"/>
 <meta property="http://ogp.me/ns/profile#last_name" content="Boettiger"/>
-<meta property="http://ogp.me/ns/article#published_time" content="2013-05-03T17:56:56-07:00" />
+<meta property="http://ogp.me/ns/article#published_time" content="2013-05-07T12:11:08-07:00" />
 <meta property="og:site_name" content="Lab Notebook" /> <!-- Same as dc:source? -->
 <meta property="og:url" content="http://www.carlboettiger.info/2013/04/12/parametric-bayesian-example.html" />
 <meta property="og:type" content="website" /> 
 <!-- Google Scholar Metadata -->
 <meta name="citation_author" content="Carl Boettiger"/>
-<meta name="citation_date" content="2013-05-03T17:56:56-07:00"/>
+<meta name="citation_date" content="2013-05-07T12:11:08-07:00"/>
 <meta name="citation_title" content="Parametric Bayesian Example"/>
 <meta name="citation_journal_title" content="Lab Notebook"/>
 
@@ -198,13 +198,13 @@ time&lt;-<span class="kw">system.time</span>(
 <span class="kw">library</span>(coda)
 tfit_jags_m &lt;- <span class="kw">as.mcmc.bugs</span>(jagsfit$BUGSoutput)
 <span class="kw">print</span>(<span class="kw">xyplot</span>(tfit_jags_m))</code></pre>
-<div class="figure">
-<img src="http://farm9.staticflickr.com/8258/8662939943_0e5faa9dc0_o.png" alt="Parameter traces provide a visual tool to assess performance and convergence of the MCMC routine" /><p class="caption">Parameter traces provide a visual tool to assess performance and convergence of the MCMC routine</p>
-</div>
+<figure>
+<img src="http://farm9.staticflickr.com/8258/8662939943_0e5faa9dc0_o.png" alt="Parameter traces provide a visual tool to assess performance and convergence of the MCMC routine" /><figcaption>Parameter traces provide a visual tool to assess performance and convergence of the MCMC routine</figcaption>
+</figure>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">print</span>(<span class="kw">densityplot</span>(tfit_jags_m))</code></pre>
-<div class="figure">
-<img src="http://farm9.staticflickr.com/8261/8662940039_3f5dbeee9d_o.png" alt="The resulting posterior distributions for the model parameters inferred" /><p class="caption">The resulting posterior distributions for the model parameters inferred</p>
-</div>
+<figure>
+<img src="http://farm9.staticflickr.com/8261/8662940039_3f5dbeee9d_o.png" alt="The resulting posterior distributions for the model parameters inferred" /><figcaption>The resulting posterior distributions for the model parameters inferred</figcaption>
+</figure>
 <p>We collect model parameters over the replicate runs,</p>
 <pre class="sourceCode r"><code class="sourceCode r">mcmc &lt;- <span class="kw">as.mcmc</span>(jagsfit)
 mcmcall &lt;- mcmc[, -<span class="dv">2</span>]
@@ -216,9 +216,9 @@ mcmcall &lt;- <span class="kw">cbind</span>(mcmcall[, <span class="dv">1</span>]
 <p>We will need to integrate over parameter uncertainty. Can consider the discritized binning</p>
 <pre class="sourceCode r"><code class="sourceCode r">theta &lt;- <span class="kw">exp</span>(mcmcall[, <span class="st">&quot;logtheta&quot;</span>])
 theta_dist &lt;- <span class="kw">hist</span>(theta, <span class="dt">freq =</span> <span class="ot">FALSE</span>)</code></pre>
-<div class="figure">
+<figure>
 <img src="http://farm9.staticflickr.com/8255/8662940161_6cfebf6a91_o.png" />
-</div>
+</figure>
 <pre class="sourceCode r"><code class="sourceCode r">theta_dist$mids</code></pre>
 <pre><code>##  [1] 0.25 0.75 1.25 1.75 2.25 2.75 3.25 3.75 4.25 4.75 5.25 5.75 6.25 6.75
 ## [15] 7.25</code></pre>
@@ -232,6 +232,7 @@ theta_dist &lt;- <span class="kw">hist</span>(theta, <span class="dt">freq =</sp
 <li>Benjamin M. Bolker, Beth Gardner, Mark Maunder, Casper W. Berg, Mollie Brooks, Liza Comita, Elizabeth Crone, Sarah Cubaynes, Trevor Davies, Perry de Valpine, Jessica Ford, Olivier Gimenez, Marc Kery, Eun Jung Kim, Cleridy Lennert-Cody, Arni Magnusson, Steve Martell, John Nash, Anders Nielsen, Jim Regetz, Hans Skaug, Elise Zipkin, (2013) Strategies For Fitting Nonlinear Ecological Models in R, ad Model Builder, And Bugs. <em>Methods in Ecology And Evolution</em> n/a-n/a <a href="http://dx.doi.org/10.1111/2041-210X.12044">10.1111/2041-210X.12044</a></li>
 <li>M.W. Pedersen, C.W. Berg, U.H. Thygesen, A. Nielsen, H. Madsen, (2011) Estimation Methods For Nonlinear State-Space Models in Ecology. <em>Ecological Modelling</em> <strong>222</strong> 1394-1400 <a href="http://dx.doi.org/10.1016/j.ecolmodel.2011.01.007">10.1016/j.ecolmodel.2011.01.007</a></li>
 </ul>
+
     </article>
   </div>
   <div class="span4">
@@ -241,8 +242,8 @@ theta_dist &lt;- <span class="kw">hist</span>(theta, <span class="dt">freq =</sp
     <time datetime="2013-04-12T00:00:00-07:00" 
     property="dc:created">12 Apr 2013</time></p>
   <p><small> modified: <time 
-            datetime="2013-04-19T15:41:16-07:00" 
-            property="dc:modified">19 Apr 2013</time></small></p>
+            datetime="2013-05-07T06:35:55-07:00" 
+            property="dc:modified">07 May 2013</time></small></p>
 
  <br />
 
@@ -265,7 +266,7 @@ theta_dist &lt;- <span class="kw">hist</span>(theta, <span class="dt">freq =</sp
   <p><i class="icon-list"></i> Posted in 
      
       <a rel="dc:subject" class="category" 
-         href="/categories.html#ecology">ecology</a>
+         href="//categories.html#ecology">ecology</a>
     
     </p>
 
@@ -273,7 +274,7 @@ theta_dist &lt;- <span class="kw">hist</span>(theta, <span class="dt">freq =</sp
     
     <!-- http://schema.org/BlogPosting/keywords -->
     <a rel="og:tag" class="tag" 
-       href="/tags.html#nonparametric-bayes">#nonparametric-bayes</a>
+       href="//tags.html#nonparametric-bayes">#nonparametric-bayes</a>
     </p>
 
   <br/>
@@ -282,9 +283,7 @@ theta_dist &lt;- <span class="kw">hist</span>(theta, <span class="dt">freq =</sp
 
   <br/>
 
-  <p><small> <i class="icon-barcode"></i> SHA Hash: <a href="https://github.com/cboettig/labnotebook/commit/f2ee795aa13214fd00a5df642b6c7b401d940189
-/_posts/2013-04-12-parametric-bayesian-example.md"> f2ee795aa13214fd00a5df642b6c7b401d940189
-</a></small></p>
+  <p><small> <i class="icon-barcode"></i> SHA Hash: <a href="https://github.com/cboettig/labnotebook/commit/cc2e94b67be5274aeb134604bc317b134bac4a95/_posts/2013-04-12-parametric-bayesian-example.md"> cc2e94b67be5274aeb134604bc317b134bac4a95</a></small></p>
     
   <br/>
 

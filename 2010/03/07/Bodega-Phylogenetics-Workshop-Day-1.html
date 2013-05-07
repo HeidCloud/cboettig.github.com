@@ -24,7 +24,7 @@
 <!-- RDFa Metadata (in DublinCore) -->
 <meta property="dc:title" content="Bodega Phylogenetics Workshop Day 1" />
 <meta property="dc:creator" content="Carl Boettiger" />
-<meta property="dc:date" content="2013-05-03T17:56:56-07:00" />
+<meta property="dc:date" content="2013-05-07T12:11:08-07:00" />
 <meta property="dc:format" content="text/html" />
 <meta property="dc:language" content="en" />
 <meta property="dc:identifier" content="/2010/03/07/Bodega-Phylogenetics-Workshop-Day-1.html" />
@@ -37,13 +37,13 @@
 <meta property="og:author" content="http://www.carlboettiger.info/index.html#me" />  <!-- Should be Liquid? URI? -->
 <meta property="http://ogp.me/ns/profile#first_name" content="Carl"/>
 <meta property="http://ogp.me/ns/profile#last_name" content="Boettiger"/>
-<meta property="http://ogp.me/ns/article#published_time" content="2013-05-03T17:56:56-07:00" />
+<meta property="http://ogp.me/ns/article#published_time" content="2013-05-07T12:11:08-07:00" />
 <meta property="og:site_name" content="Lab Notebook" /> <!-- Same as dc:source? -->
 <meta property="og:url" content="http://www.carlboettiger.info/2010/03/07/Bodega-Phylogenetics-Workshop-Day-1.html" />
 <meta property="og:type" content="website" /> 
 <!-- Google Scholar Metadata -->
 <meta name="citation_author" content="Carl Boettiger"/>
-<meta name="citation_date" content="2013-05-03T17:56:56-07:00"/>
+<meta name="citation_date" content="2013-05-07T12:11:08-07:00"/>
 <meta name="citation_title" content="Bodega Phylogenetics Workshop Day 1"/>
 <meta name="citation_journal_title" content="Lab Notebook"/>
 
@@ -149,16 +149,16 @@
 <li>Coin toss example</li>
 </ul>
 <p>θ = prob of heads on a single toss of a coin, <em>X</em> is # of heads observed on <em>n</em> tosses. Choose a model: binomial:</p>
-<div class="figure">
-<img src="http://openwetware.org/images/math/0/8/8/08814f7faf92d830f210e2d233344ecd.png" alt="p(x|\theta) = {n \choose{x}} \theta^x ( 1-\theta)^{n-x}" /><p class="caption">p(x|\theta) = {n \choose{x}} \theta^x ( 1-\theta)^{n-x}</p>
-</div>
+<figure>
+<img src="http://openwetware.org/images/math/0/8/8/08814f7faf92d830f210e2d233344ecd.png" alt="p(x|\theta) = {n \choose{x}} \theta^x ( 1-\theta)^{n-x}" /><figcaption>p(x|\theta) = {n \choose{x}} \theta^x ( 1-\theta)^{n-x}</figcaption>
+</figure>
 <ul>
 <li>Maximize likelihood, find <img src="http://openwetware.org/images/math/d/9/3/d93b13daa45e31c971a3b81deedcbc22.png" alt="\hat \theta = \frac{x}{n}" /></li>
 <li>Bayesian</li>
 </ul>
-<div class="figure">
-<img src="http://openwetware.org/images/math/8/1/0/810d3eb56ca4c96ecbe28c931a57bdc0.png" alt="p(\theta | x) = \frac{p(x|\theta)p(\theta)}{p(x)}" /><p class="caption">p(\theta | x) = \frac{p(x|\theta)p(\theta)}{p(x)}</p>
-</div>
+<figure>
+<img src="http://openwetware.org/images/math/8/1/0/810d3eb56ca4c96ecbe28c931a57bdc0.png" alt="p(\theta | x) = \frac{p(x|\theta)p(\theta)}{p(x)}" /><figcaption>p(\theta | x) = \frac{p(x|\theta)p(\theta)}{p(x)}</figcaption>
+</figure>
 <p>likelihood times prior over marginal equals the posterior. The prior is the source of controversy, though mathematically required if you want a posterior probability.</p>
 <p>The marginal can be hard to solve. <img src="http://openwetware.org/images/math/c/2/e/c2ec8ba5b21c63d5aa3063012cd7ea2b.png" alt="\int_0^1 p(x|\theta) p(\theta) d\theta" /></p>
 <p>So Bayesians solved trivial problems or just estimated moments (mean, etc), until along came MCMC and they could do these integrals…</p>
@@ -198,14 +198,14 @@
 <table>
 <tbody>
 <tr class="odd">
-<td align="left"><em>l</em><sub><em>i</em></sub> =</td>
-<td align="left">∑</td>
-<td align="left"><em>p</em>(<em>x</em><sub><em>i</em></sub> | <em>x</em>) / <em>k</em></td>
+<td style="text-align: left;"><em>l</em><sub><em>i</em></sub> =</td>
+<td style="text-align: left;">∑</td>
+<td style="text-align: left;"><em>p</em>(<em>x</em><sub><em>i</em></sub> | <em>x</em>) / <em>k</em></td>
 </tr>
 <tr class="even">
-<td align="left"></td>
-<td align="left"><em>k</em></td>
-<td align="left"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"><em>k</em></td>
+<td style="text-align: left;"></td>
 </tr>
 </tbody>
 </table>
@@ -227,9 +227,9 @@
 <li>branch lengths as estimates</li>
 <li>Bayesian approaches to contain this uncertainty, given sequences times and fossil calibrations:</li>
 </ul>
-<div class="figure">
-<img src="http://openwetware.org/images/math/e/2/d/e2df7c8faa415cdefa1b5bab5e8f7472.png" alt="f(\theta, t, u | X) = \frac{f(X|t,u,\theta)f(u|\theta) f(t| \theta) f(\theta) }{f(X)}" /><p class="caption">f(\theta, t, u | X) = \frac{f(X|t,u,\theta)f(u|\theta) f(t| \theta) f(\theta) }{f(X)}</p>
-</div>
+<figure>
+<img src="http://openwetware.org/images/math/e/2/d/e2df7c8faa415cdefa1b5bab5e8f7472.png" alt="f(\theta, t, u | X) = \frac{f(X|t,u,\theta)f(u|\theta) f(t| \theta) f(\theta) }{f(X)}" /><figcaption>f(\theta, t, u | X) = \frac{f(X|t,u,\theta)f(u|\theta) f(t| \theta) f(\theta) }{f(X)}</figcaption>
+</figure>
 <p>substitution rate (clock) <em>u</em>, branch length <em>v</em>, age <em>t</em>.</p>
 <p>Prior for the divergence times. Priors from fossils. Dangers of hard bounds (will confidently predict the wrong answer).</p>
 <p>When do you have enough DNA sequence that your divergence estimate becomes limited only by fossil age uncertainty? Regress width of posterior distribution for divergence times against the mean. Once that regression is sufficiently tight, more DNA data won’t help.</p>
@@ -261,6 +261,7 @@
 <li>When, if ever, can you actually fit a model with trending rate changes over time. i.e. can we really detect accelerating BM in character evolution?</li>
 <li>Common intuitive mechanisms that generate the familiar distributions. Exponential, Poisson, Gamma, Normal, Log Normal, Binomial, Uniform, Dirchlet.</li>
 </ul>
+
     </article>
   </div>
   <div class="span4">
@@ -270,8 +271,8 @@
     <time datetime="2010-03-07T00:00:00-08:00" 
     property="dc:created">07 Mar 2010</time></p>
   <p><small> modified: <time 
-            datetime="2013-02-19T10:27:50-08:00" 
-            property="dc:modified">19 Feb 2013</time></small></p>
+            datetime="2013-05-07T06:35:55-07:00" 
+            property="dc:modified">07 May 2013</time></small></p>
 
  <br />
 
@@ -294,7 +295,7 @@
   <p><i class="icon-list"></i> Posted in 
      
       <a rel="dc:subject" class="category" 
-         href="/categories.html#evolution">evolution</a>
+         href="//categories.html#evolution">evolution</a>
     
     </p>
 
@@ -307,9 +308,7 @@
 
   <br/>
 
-  <p><small> <i class="icon-barcode"></i> SHA Hash: <a href="https://github.com/cboettig/labnotebook/commit/8c159703b2a376bd2c60f16e0e0d5cea04d20876
-/_posts/2010-03-07-Bodega-Phylogenetics-Workshop-Day-1.md"> 8c159703b2a376bd2c60f16e0e0d5cea04d20876
-</a></small></p>
+  <p><small> <i class="icon-barcode"></i> SHA Hash: <a href="https://github.com/cboettig/labnotebook/commit/cc2e94b67be5274aeb134604bc317b134bac4a95/_posts/2010-03-07-Bodega-Phylogenetics-Workshop-Day-1.md"> cc2e94b67be5274aeb134604bc317b134bac4a95</a></small></p>
     
   <br/>
 

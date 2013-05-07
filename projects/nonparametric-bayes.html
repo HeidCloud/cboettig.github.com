@@ -24,7 +24,7 @@
 <!-- RDFa Metadata (in DublinCore) -->
 <meta property="dc:title" content="Non-parametric Bayesian Inference for Conservation Decisions" />
 <meta property="dc:creator" content="Carl Boettiger" />
-<meta property="dc:date" content="2013-05-03T17:56:56-07:00" />
+<meta property="dc:date" content="2013-05-07T12:11:08-07:00" />
 <meta property="dc:format" content="text/html" />
 <meta property="dc:language" content="en" />
 <meta property="dc:identifier" content="/projects/nonparametric-bayes.html" />
@@ -37,13 +37,13 @@
 <meta property="og:author" content="http://www.carlboettiger.info/index.html#me" />  <!-- Should be Liquid? URI? -->
 <meta property="http://ogp.me/ns/profile#first_name" content="Carl"/>
 <meta property="http://ogp.me/ns/profile#last_name" content="Boettiger"/>
-<meta property="http://ogp.me/ns/article#published_time" content="2013-05-03T17:56:56-07:00" />
+<meta property="http://ogp.me/ns/article#published_time" content="2013-05-07T12:11:08-07:00" />
 <meta property="og:site_name" content="Lab Notebook" /> <!-- Same as dc:source? -->
 <meta property="og:url" content="http://www.carlboettiger.info/projects/nonparametric-bayes.html" />
 <meta property="og:type" content="website" /> 
 <!-- Google Scholar Metadata -->
 <meta name="citation_author" content="Carl Boettiger"/>
-<meta name="citation_date" content="2013-05-03T17:56:56-07:00"/>
+<meta name="citation_date" content="2013-05-07T12:11:08-07:00"/>
 <meta name="citation_title" content="Non-parametric Bayesian Inference for Conservation Decisions"/>
 <meta name="citation_journal_title" content="Lab Notebook"/>
 
@@ -269,21 +269,21 @@ Distinguishing random environmental fluctuations from ecological catastrophes fo
 </h4>
 
 <ul><li>
+added parametric bayesian myers and ricker for comparison <a href="https://github.com/cboettig/nonparametric-bayes/commit/5b2aced2b1b9f8e1247e2f80fe76a89c16b57993">03:55 pm 2013/05/07</a>
+</li><li>
+test script for ricker (good for template for extending BUGS) <a href="https://github.com/cboettig/nonparametric-bayes/commit/5de66333e0cc0d4d896ab832b727eb7447602339">03:48 am 2013/05/06</a>
+</li><li>
+bugs file for meyers model <a href="https://github.com/cboettig/nonparametric-bayes/commit/c17bb2fb13a9f51fb14d476959300396d4126f03">01:24 am 2013/05/06</a>
+</li><li>
+replicate runs <a href="https://github.com/cboettig/nonparametric-bayes/commit/cfb0a46acfb47c0241912e44db2568f2e46cd3bf">01:24 am 2013/05/06</a>
+</li><li>
+Merge branch ‘master’ of github.com:cboettig/nonparametric-bayes <a href="https://github.com/cboettig/nonparametric-bayes/commit/042fd87c26f1fb47091c4b9f39ca7507ff26e668">01:24 am 2013/05/06</a>
+</li><li>
+replicates <a href="https://github.com/cboettig/nonparametric-bayes/commit/ac6290c9dd39b2bf71bd20c891b805f77e2f115d">12:33 am 2013/05/03</a>
+</li><li>
 Merge branch ‘master’ of github.com:cboettig/nonparametric-bayes <a href="https://github.com/cboettig/nonparametric-bayes/commit/5b5d03ede752ca1205a6dab0f80b393a1e80e932">12:32 am 2013/05/03</a>
 </li><li>
 draft for ERE <a href="https://github.com/cboettig/nonparametric-bayes/commit/fcda3f66f069b9da74daba1ec93a27bb0bc9f644">12:32 am 2013/05/03</a>
-</li><li>
-ricker bugs model <a href="https://github.com/cboettig/nonparametric-bayes/commit/98a8f7f852d28138f8b9e6ae8bbbef5ec9507ec5">10:21 pm 2013/05/02</a>
-</li><li>
-replicate run <a href="https://github.com/cboettig/nonparametric-bayes/commit/4474fefcfdadedad873fd50c1ff2bbe42b264ea9">10:21 pm 2013/05/02</a>
-</li><li>
-add bayesian version of Ricker <a href="https://github.com/cboettig/nonparametric-bayes/commit/cbfcdb86c068162db57f23c5d10d9f569a9dcb14">09:26 pm 2013/05/02</a>
-</li><li>
-loop over all 1e5 samples of the posterior <a href="https://github.com/cboettig/nonparametric-bayes/commit/d218fbc3c7a532cb9620cc5133a37fcc7042f81a">05:49 pm 2013/05/02</a>
-</li><li>
-varying parameters <a href="https://github.com/cboettig/nonparametric-bayes/commit/eecb2c12c33a522fb8dcbe588d7cf4fcbb0269eb">01:07 am 2013/05/02</a>
-</li><li>
-example based on gp means <a href="https://github.com/cboettig/nonparametric-bayes/commit/68004b28ab15e89c6f6e05cd2953a4844385dca2">10:44 pm 2013/05/01</a>
 </li></ul>
 
 </div>
@@ -293,6 +293,10 @@ example based on gp means <a href="https://github.com/cboettig/nonparametric-bay
 </h4>
 
 <ul><li> 
+<a href="https://github.com/cboettig/nonparametric-bayes/issues/43">add parametric Bayesian version of Ricker</a> (<font color="#e10c02">high priority</font>)
+</li><li> 
+<a href="https://github.com/cboettig/nonparametric-bayes/issues/42">add Parametric Bayesian version of Myers model </a> (<font color="#e10c02">high priority</font>)
+</li><li> 
 <a href="https://github.com/cboettig/nonparametric-bayes/issues/41">Comparison against an active learning parametric model (facing a tipping point)</a> (<font color="#d7e102">med priority</font>)
 </li><li> 
 <a href="https://github.com/cboettig/nonparametric-bayes/issues/38">Abstract</a> (<font color="#0b02e1">manuscript</font>)
@@ -304,10 +308,6 @@ example based on gp means <a href="https://github.com/cboettig/nonparametric-bay
 <a href="https://github.com/cboettig/nonparametric-bayes/issues/35">Simulate example in which noise has structure, allows GP to capture that structure</a> (<font color="#d7e102">med priority</font>)
 </li><li> 
 <a href="https://github.com/cboettig/nonparametric-bayes/issues/34">Example of how we can add broad-brush constraints to the nonparametric bayesian model</a> (<font color="#d7e102">med priority</font>)
-</li><li> 
-<a href="https://github.com/cboettig/nonparametric-bayes/issues/32">Figure 5: sensitivity analysis</a> (<font color="#0b02e1">manuscript</font>)
-</li><li> 
-<a href="https://github.com/cboettig/nonparametric-bayes/issues/31">Add code explicitly rather than rely on custom but non-generic functions</a> (<font color="#0b02e1">manuscript</font>)
 </li></ul>
 
 </div>
@@ -321,6 +321,15 @@ example based on gp means <a href="https://github.com/cboettig/nonparametric-bay
 </div>
 </div>
 </div>
+
+
+
+
+
+
+
+
+
     </div>
   </div>
 </div>

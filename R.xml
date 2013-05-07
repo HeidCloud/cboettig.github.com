@@ -4,7 +4,7 @@
  <title>Lab Notebook - R</title>
  <link href="/R.xml" rel="self"/>
  <link href="/"/>
- <updated>2013-05-03T17:56:56-07:00</updated>
+ <updated>2013-05-07T12:11:08-07:00</updated>
  <id>http://www.carlboettiger.info</id>
  <author>
    <name>Carl Boettiger</name>
@@ -98,30 +98,32 @@ http://yihui.name/knitr/&gt;.&lt;/p&gt;
 &lt;h3 id=&quot;comparing-lightweight-citation-alternatives&quot;&gt;Comparing lightweight citation alternatives&lt;/h3&gt;
 &lt;p&gt;Several citation alternatives are available for lightweight publishing outside of this option, each with its own advantages and limitations. John MacFarlane’s &lt;a href=&quot;http://johnmacfarlane.net/pandoc/&quot;&gt;Pandoc&lt;/a&gt; is probably the most widely used citation manager for markdown files, working with a bibtex source file but formatting the citation lists using citeproc. It has the advantage of a more concise citation syntax, consistent with the source-readable goals of markdown and citation formating. Of course it is a markdown extension and will not be read by other markdown interpreters. This would be less of an issue of Pandoc could run markdown -&amp;gt; markdown without garbling syntax of some other markdown interpreter, like Github-flavored markdown.&lt;/p&gt;
 &lt;p&gt;The only other tool I know of that provides dynamic citations by DOI look-up is Phil Lord’s excellent Wordpress plugin, &lt;a href=&quot;http://wordpress.org/extend/plugins/kcite/&quot;&gt;kcite&lt;/a&gt;. It now uses citeproc for formatting, automatically links the in-text citations to the bibliography, supports PubMed and ArXiv ids as well as DOIs and even web URLs (though not bibtex files). The major limitation for me is that it is limited to Wordpress with Wordpress specific shortcode. (Of course I introduce R-specific code here, but with the assumption of a knitr-based audience who probably uses github). A variety of other platform-specific plugins are available to convert bibtex files into citations for different blogging platforms, including Wordpress and Jekyll.&lt;/p&gt;
-&lt;p&gt;So why knitcitations? My goal is primarily to bring this functionality to knitr users who rely on the markdown format rather than the latex format and are interested in dynamic citations and web-based publishing. I hope it finds its niche.&lt;/p&gt;</content>
+&lt;p&gt;So why knitcitations? My goal is primarily to bring this functionality to knitr users who rely on the markdown format rather than the latex format and are interested in dynamic citations and web-based publishing. I hope it finds its niche.&lt;/p&gt;
+</content>
  </entry>
  
  <entry>
    <title>Writing reproducibly in the open with knitr</title>
    <link href="/2012/04/07/writing-reproducibly-in-the-open-with-knitr.html"/>
-   <updated>2012-04-07T07:58:36-07:00</updated>
+   <updated>2012-04-07T14:58:36Z</updated>
    <id>/2012/04/07/writing-reproducibly-in-the-open-with-knitr</id>
    <content type="html">&lt;p&gt;&lt;a href=&quot;http://en.wikipedia.org/wiki/Sweave&quot;&gt;Sweave&lt;/a&gt; is something of a gold standard in reproducible research. It creates a &lt;em&gt;dynamic document&lt;/em&gt;, written in a mix of LaTeX and R code where the results of the analysis (numbers, figures, tables) are automatically generated from the code and inserted into the resulting pdf document, making them easy to update if the data or methods change. It’s a nice idea, in principle.&lt;/p&gt;
 &lt;p&gt;However, the practical troubles are many. Coauthors don’t know LaTeX, publishers who don’t accept LaTeX or pdfs. The LaTeX myth that you are freed from thinking about formatting, when in fact you have to fill your document with LaTeX specific markup that makes it a burden both to type and to read the source-code. Compiling and debugging your text. And then the reproducibility comes from sharing that Sweave file – a mix of LaTeX and R that almost no one can read easily. Where’s the elegance in that? ((I’m glossing over the additional challenges of highlighting, caching, and formating on the R code side, which have been largely addressed by additional packages and are elegantly solved in knitr.)) Sure, none of these are show-stoppers – I’ve been content with LaTeX for years – but suddenly there’s a better way.&lt;/p&gt;
 &lt;p&gt;Thanks to &lt;a href=&quot;http://yihui.name/knitr/&quot;&gt;knitr&lt;/a&gt;, a successor of Sweave, I can write my publications in &lt;a href=&quot;http://en.wikipedia.org/wiki/Markdown&quot;&gt;markdown&lt;/a&gt;. Unlike LaTeX, HTML, or other markup languages, markdown is designed to be easily read as plain text, but can also be interpreted into pretty HTML, and now into almost any other format thanks to &lt;a href=&quot;http://johnmacfarlane.net/pandoc/&quot;&gt;pandoc&lt;/a&gt;. All of which is to say that writing and sharing just got &lt;em&gt;a lot easier.&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;http://www.carlboettiger.info/archives/4325&quot;&gt;As I have written previously&lt;/a&gt;, I already use this markdown format for my notes and code, so there’s no re-typing required. When working on the paper, I can just write. I can edit the code without flipping back and forth between files. Knitr can run the code blocks, caching parts that have already run for efficiency, and upload the resulting figures in &lt;code&gt;png&lt;/code&gt; format automatically to the Internet. Github displays the &lt;a href=&quot;https://github.com/ropensci/rfishbase/blob/master/inst/doc/rfishbase/rfishbase_github.md&quot;&gt;resulting document&lt;/a&gt; and the &lt;code&gt;file&lt;/code&gt; (https://github.com/ropensci/rfishbase/blob/master/inst/doc/rfishbase/source/rfishbase.md), while also &lt;a href=&quot;https://github.com/ropensci/rfishbase/commits/master/inst/doc/rfishbase/source&quot;&gt;tracking the versions&lt;/a&gt; as my writing progresses.&lt;/p&gt;
-&lt;div class=&quot;figure&quot;&gt;
-&lt;img src=&quot;http://farm8.staticflickr.com/7241/7054829647_ac9dcc4bd3_z.jpg&quot; alt=&quot;Different output formats for the manuscript&quot; /&gt;&lt;p class=&quot;caption&quot;&gt;Different output formats for the manuscript&lt;/p&gt;
-&lt;/div&gt;
+&lt;figure&gt;
+&lt;img src=&quot;http://farm8.staticflickr.com/7241/7054829647_ac9dcc4bd3_z.jpg&quot; alt=&quot;Different output formats for the manuscript&quot; /&gt;&lt;figcaption&gt;Different output formats for the manuscript&lt;/figcaption&gt;
+&lt;/figure&gt;
 &lt;p&gt;Pandoc allows me to transform these notes into a LaTeX file that can generate professional-looking pdfs with given journal &lt;code&gt;.cls&lt;/code&gt; files by using &lt;a href=&quot;https://github.com/ropensci/rfishbase/blob/master/inst/doc/rfishbase/elsarticle.latex&quot;&gt;a custom latex template&lt;/a&gt;. Pandoc can also generate the less pretty but often required word documents. &lt;a href=&quot;https://github.com/ropensci/rfishbase/blob/master/inst/doc/rfishbase/knit&quot;&gt;A separate Rscript&lt;/a&gt; combines with a &lt;a href=&quot;https://github.com/ropensci/rfishbase/blob/master/inst/doc/rfishbase/Makefile&quot;&gt;Makefile&lt;/a&gt; to control the relevant formatting – for LaTeX output I want high-quality &lt;code&gt;pdf&lt;/code&gt; graphics, for Word-doc output I want &lt;code&gt;eps&lt;/code&gt; graphics which are created but not pasted into the Word file, for the drafts I want &lt;code&gt;png&lt;/code&gt; graphics stored online for easy sharing. Pandoc allows citations to be extracted from my Mendeley library (via Bibtex files) and inserted into each of these output formats (doc, pdf, github markdown).&lt;/p&gt;
 &lt;p&gt;Getting the LaTeX template, Makefile, and knit script set up for this pipeline takes a little care – mostly to ensure figures and tables look appropriate in all outputs. Once these files are created though, they can be easily reused on other manuscripts. A simple &lt;code&gt;make pdf&lt;/code&gt; builds the pdf copy, &lt;code&gt;make docx&lt;/code&gt; builds a MS Word copy, ((though these binary files aren’t stored in the git repository)) and &lt;code&gt;make github&lt;/code&gt; the copy that displays with images on Github.&lt;/p&gt;
-&lt;p&gt;The links in this post point to what is an active draft of a little manuscript at the time of this writing. In addition to making the final result reproducible, Github captures the &lt;a href=&quot;http://en.wikipedia.org/wiki/Provenance#Data_provenance&quot;&gt;provenance&lt;/a&gt; or history of the research and writing process. It’s not a perfect system, but it’s a nice step.&lt;/p&gt;</content>
+&lt;p&gt;The links in this post point to what is an active draft of a little manuscript at the time of this writing. In addition to making the final result reproducible, Github captures the &lt;a href=&quot;http://en.wikipedia.org/wiki/Provenance#Data_provenance&quot;&gt;provenance&lt;/a&gt; or history of the research and writing process. It’s not a perfect system, but it’s a nice step.&lt;/p&gt;
+</content>
  </entry>
  
  <entry>
    <title>Citations in markdown using knitr</title>
    <link href="/2012/03/24/citations-in-markdown-using-knitr.html"/>
-   <updated>2012-03-24T14:33:27-07:00</updated>
+   <updated>2012-03-24T21:33:27Z</updated>
    <id>/2012/03/24/citations-in-markdown-using-knitr</id>
    <content type="html">&lt;p&gt;I am finding myself more and more drawn to markdown rather then tex/Rnw as my standard format (not least of which is the ease of displaying the files on github, particularly now that we have automatic image uploading). One thing I miss from latex is the citation commands. (I understand these can be provided to markdown via Pandoc, but I’d like to simply have to knit the document, and not then run it through pandoc, latex, or another interpreter). I’ve taken a little whack at generating in-text citations using knitr and other R tools.&lt;/p&gt;
 &lt;h3 id=&quot;doi-approach&quot;&gt;DOI Approach&lt;/h3&gt;
@@ -155,13 +157,14 @@ biblio[[&lt;span class=&quot;dv&quot;&gt;1&lt;/span&gt;]]&lt;/code&gt;&lt;/pre&g
 &lt;p&gt;Xie Y (2012). &lt;em&gt;knitr: A general-purpose package for dynamic report generation in R&lt;/em&gt;. R package version 0.4.1, .&lt;/p&gt;
 &lt;p&gt;Boettiger C (2012). &lt;em&gt;knitcitations: Citations for knitr markdown files&lt;/em&gt;. R package version 0.0-1.&lt;/p&gt;
 &lt;p&gt;I hope to add markup to format this a bit more nicely later. For instance, we want the links to appear as real links. Additionally, we may want to add markup around the citations, such as the reason for the citation into the link using the &lt;a href=&quot;http://speroni.web.cs.unibo.it/cgi-bin/lode/req.py?req=http:/purl.org/spar/cito&quot;&gt;Citation Typing Ontology&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;This entry was, of course, produced in knitr with my &lt;a href=&quot;https://github.com/cboettig/knitcitations&quot;&gt;knitcitations&lt;/a&gt; package. See the &lt;a href=&quot;https://raw.github.com/cboettig/knitcitations/master/inst/examples/citations_knit_.md&quot;&gt;original source&lt;/a&gt;.&lt;/p&gt;</content>
+&lt;p&gt;This entry was, of course, produced in knitr with my &lt;a href=&quot;https://github.com/cboettig/knitcitations&quot;&gt;knitcitations&lt;/a&gt; package. See the &lt;a href=&quot;https://raw.github.com/cboettig/knitcitations/master/inst/examples/citations_knit_.md&quot;&gt;original source&lt;/a&gt;.&lt;/p&gt;
+</content>
  </entry>
  
  <entry>
    <title>knitr, github, and a new phase for the lab notebook</title>
    <link href="/2012/03/21/knitr-github-and-a-new-phase-for-the-lab-notebook.html"/>
-   <updated>2012-03-21T05:13:42-07:00</updated>
+   <updated>2012-03-21T12:13:42Z</updated>
    <id>/2012/03/21/knitr-github-and-a-new-phase-for-the-lab-notebook</id>
    <content type="html">&lt;p&gt;I have recently modified the basic workflow of my lab notebook since discovering &lt;a href=&quot;http://yihui.name/knitr/&quot;&gt;knitr&lt;/a&gt;. Before, I would write code files which I could track on &lt;a href=&quot;https://github.com&quot;&gt;github&lt;/a&gt;, push figures created by the code to flickr, and then write a notebook entry on wordpress describing what I was doing. I’d embed each figure I wanted into the entry, and each figure got an automatic link to github for the script that created it (which usually worked, though it didn’t say where in the script the command came from, and it required manually specifying the script name).&lt;/p&gt;
 &lt;p&gt;Because knitr allows me to write a single file containing code and formatted text, and will automatically display the code and embed the images, I can avoid that more convoluted workflow and just write.&lt;/p&gt;
@@ -184,13 +187,14 @@ biblio[[&lt;span class=&quot;dv&quot;&gt;1&lt;/span&gt;]]&lt;/code&gt;&lt;/pre&g
 &lt;h5 id=&quot;heavy-computing&quot;&gt;Heavy computing&lt;/h5&gt;
 &lt;p&gt;I’ve found that the knitted markdown examples make the most sense for fast-running examples. Despite excellent caching support, I’ve found it best to run really long-running examples as external R scripts, and then save and import this data. Such scripts are often being run on a cluster that can’t push images to the internet anyway.&lt;/p&gt;
 &lt;h5 id=&quot;power-of-openness&quot;&gt;Power of openness?&lt;/h5&gt;
-&lt;p&gt;It occurs to me that this system would be harder but not impossible, in a closed environment. I could upload the figures to flickr with private status. The links are hashes, so cannot be guessed. If the output were then hosted on a secure site (running a markdown renderer, such as Jekyll), instead of github, these links would still work to display the images. Then one could give selected access to those pages. But the open solution works out of the box.&lt;/p&gt;</content>
+&lt;p&gt;It occurs to me that this system would be harder but not impossible, in a closed environment. I could upload the figures to flickr with private status. The links are hashes, so cannot be guessed. If the output were then hosted on a secure site (running a markdown renderer, such as Jekyll), instead of github, these links would still work to display the images. Then one could give selected access to those pages. But the open solution works out of the box.&lt;/p&gt;
+</content>
  </entry>
  
  <entry>
    <title>Citing R packages</title>
    <link href="/2012/03/20/citing-r-packages.html"/>
-   <updated>2012-03-20T03:02:09-07:00</updated>
+   <updated>2012-03-20T10:02:09Z</updated>
    <id>/2012/03/20/citing-r-packages</id>
    <content type="html">&lt;p&gt;I’m not always careful in citing all the R packages I use. R actually has some rather nice built-in mechanisms to support this, so I really have no excuse. Here’s some quick examples:&lt;/p&gt;
 &lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;
@@ -265,13 +269,14 @@ out &amp;lt;- &lt;span class=&quot;kw&quot;&gt;sapply&lt;/span&gt;(&lt;span clas
 &lt;p&gt;I wrote an R function for the Crossref API in our rplos package. We should probably be formatting the output as an R bibentry, taking advantage of R’s understanding of citation structure. Then I could work automatic citation look-up into my posts using inline knitr calls, such as:&lt;/p&gt;
 &lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;
 &lt;span class=&quot;kw&quot;&gt;print&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;crossref&lt;/span&gt;(&lt;span class=&quot;st&quot;&gt;&amp;quot;10.1038/44766&amp;quot;&lt;/span&gt;), &lt;span class=&quot;dt&quot;&gt;style=&lt;/span&gt;&lt;span class=&quot;st&quot;&gt;&amp;quot;text&amp;quot;&lt;/span&gt;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;An alternate mechanism could read in a local bibtex file and drop in the correct entry in the desired format.&lt;/p&gt;</content>
+&lt;p&gt;An alternate mechanism could read in a local bibtex file and drop in the correct entry in the desired format.&lt;/p&gt;
+</content>
  </entry>
  
  <entry>
    <title>Elegant & fast data manipulation with data.table</title>
    <link href="/2012/02/12/elegant-fast-data-manipulation-with-data-table.html"/>
-   <updated>2012-02-12T05:39:03-08:00</updated>
+   <updated>2012-02-12T13:39:03Z</updated>
    <id>/2012/02/12/elegant-fast-data-manipulation-with-data-table</id>
    <content type="html">&lt;p&gt;Just learned about the R &lt;a href=&quot;http://cran.r-project.org/web/packages/data.table/index.html&quot;&gt;data.table package&lt;/a&gt; (ht @recology_) makes R data frames into ultra-fast, SQL-like objects.&lt;/p&gt;
 &lt;p&gt;One thing we get is some very nice and powerful syntax. Consider some simple data of replicate time series:&lt;/p&gt;
@@ -318,66 +323,67 @@ user  system elapsed
 &lt;table&gt;
 &lt;thead&gt;
 &lt;tr class=&quot;header&quot;&gt;
-&lt;th align=&quot;left&quot;&gt;data.table&lt;/th&gt;
-&lt;th align=&quot;left&quot;&gt;SQL&lt;/th&gt;
+&lt;th style=&quot;text-align: left;&quot;&gt;data.table&lt;/th&gt;
+&lt;th style=&quot;text-align: left;&quot;&gt;SQL&lt;/th&gt;
 &lt;/tr&gt;
 &lt;/thead&gt;
 &lt;tbody&gt;
 &lt;tr class=&quot;odd&quot;&gt;
-&lt;td align=&quot;left&quot;&gt;&lt;code&gt;i&lt;/code&gt;&lt;/td&gt;
-&lt;td align=&quot;left&quot;&gt;where&lt;/td&gt;
+&lt;td style=&quot;text-align: left;&quot;&gt;&lt;code&gt;i&lt;/code&gt;&lt;/td&gt;
+&lt;td style=&quot;text-align: left;&quot;&gt;where&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr class=&quot;even&quot;&gt;
-&lt;td align=&quot;left&quot;&gt;&lt;code&gt;j&lt;/code&gt;&lt;/td&gt;
-&lt;td align=&quot;left&quot;&gt;select&lt;/td&gt;
+&lt;td style=&quot;text-align: left;&quot;&gt;&lt;code&gt;j&lt;/code&gt;&lt;/td&gt;
+&lt;td style=&quot;text-align: left;&quot;&gt;select&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr class=&quot;odd&quot;&gt;
-&lt;td align=&quot;left&quot;&gt;&lt;code&gt;:=&lt;/code&gt;&lt;/td&gt;
-&lt;td align=&quot;left&quot;&gt;update&lt;/td&gt;
+&lt;td style=&quot;text-align: left;&quot;&gt;&lt;code&gt;:=&lt;/code&gt;&lt;/td&gt;
+&lt;td style=&quot;text-align: left;&quot;&gt;update&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr class=&quot;even&quot;&gt;
-&lt;td align=&quot;left&quot;&gt;&lt;code&gt;by&lt;/code&gt;&lt;/td&gt;
-&lt;td align=&quot;left&quot;&gt;group by&lt;/td&gt;
+&lt;td style=&quot;text-align: left;&quot;&gt;&lt;code&gt;by&lt;/code&gt;&lt;/td&gt;
+&lt;td style=&quot;text-align: left;&quot;&gt;group by&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr class=&quot;odd&quot;&gt;
-&lt;td align=&quot;left&quot;&gt;&lt;code&gt;i&lt;/code&gt;&lt;/td&gt;
-&lt;td align=&quot;left&quot;&gt;order by (in compound syntax)&lt;/td&gt;
+&lt;td style=&quot;text-align: left;&quot;&gt;&lt;code&gt;i&lt;/code&gt;&lt;/td&gt;
+&lt;td style=&quot;text-align: left;&quot;&gt;order by (in compound syntax)&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr class=&quot;even&quot;&gt;
-&lt;td align=&quot;left&quot;&gt;&lt;code&gt;i&lt;/code&gt;&lt;/td&gt;
-&lt;td align=&quot;left&quot;&gt;having (in compound syntax)&lt;/td&gt;
+&lt;td style=&quot;text-align: left;&quot;&gt;&lt;code&gt;i&lt;/code&gt;&lt;/td&gt;
+&lt;td style=&quot;text-align: left;&quot;&gt;having (in compound syntax)&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr class=&quot;odd&quot;&gt;
-&lt;td align=&quot;left&quot;&gt;&lt;code&gt;nomatch=NA&lt;/code&gt;&lt;/td&gt;
-&lt;td align=&quot;left&quot;&gt;outer join&lt;/td&gt;
+&lt;td style=&quot;text-align: left;&quot;&gt;&lt;code&gt;nomatch=NA&lt;/code&gt;&lt;/td&gt;
+&lt;td style=&quot;text-align: left;&quot;&gt;outer join&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr class=&quot;even&quot;&gt;
-&lt;td align=&quot;left&quot;&gt;&lt;code&gt;nomatch=0&lt;/code&gt;&lt;/td&gt;
-&lt;td align=&quot;left&quot;&gt;inner join&lt;/td&gt;
+&lt;td style=&quot;text-align: left;&quot;&gt;&lt;code&gt;nomatch=0&lt;/code&gt;&lt;/td&gt;
+&lt;td style=&quot;text-align: left;&quot;&gt;inner join&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr class=&quot;odd&quot;&gt;
-&lt;td align=&quot;left&quot;&gt;&lt;code&gt;mult=&amp;quot;first&amp;quot;&lt;/code&gt;&lt;/td&gt;
-&lt;td align=&quot;left&quot;&gt;N/A because SQL is inherently unordered&lt;/td&gt;
+&lt;td style=&quot;text-align: left;&quot;&gt;&lt;code&gt;mult=&amp;quot;first&amp;quot;&lt;/code&gt;&lt;/td&gt;
+&lt;td style=&quot;text-align: left;&quot;&gt;N/A because SQL is inherently unordered&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr class=&quot;even&quot;&gt;
-&lt;td align=&quot;left&quot;&gt;&lt;code&gt;roll=TRUE&lt;/code&gt;&lt;/td&gt;
-&lt;td align=&quot;left&quot;&gt;N/A because SQL is inherently unordered&lt;/td&gt;
+&lt;td style=&quot;text-align: left;&quot;&gt;&lt;code&gt;roll=TRUE&lt;/code&gt;&lt;/td&gt;
+&lt;td style=&quot;text-align: left;&quot;&gt;N/A because SQL is inherently unordered&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;p&gt;The general form is : &lt;code&gt;DT[where,select|update,group by][having][order by][ ]...[ ]&lt;/code&gt;. A key advantage of column vectors in R is that they are ordered, unlike SQL.&lt;/p&gt;</content>
+&lt;p&gt;The general form is : &lt;code&gt;DT[where,select|update,group by][having][order by][ ]...[ ]&lt;/code&gt;. A key advantage of column vectors in R is that they are ordered, unlike SQL.&lt;/p&gt;
+</content>
  </entry>
  
  <entry>
    <title>Is your phylogeny informative?</title>
    <link href="/2012/01/19/is-your-phylogeny-informative.html"/>
-   <updated>2012-01-19T06:10:49-08:00</updated>
+   <updated>2012-01-19T14:10:49Z</updated>
    <id>/2012/01/19/is-your-phylogeny-informative</id>
    <content type="html">&lt;p&gt;Yesterday my paper (Boettiger &lt;em&gt;et. al.&lt;/em&gt; 2012)  appeared in early view in Evolution (&lt;a href=&quot;http://www.mendeley.com/download/public/98752/4485545655/9a209c7dd29980fd2e47c06eb8b2d1d7dd6f70d4/dl.pdf&quot;&gt;author’s preprint&lt;/a&gt;),As the open access copy doesn’t appear on pubmed for a while, you can access my author’s copy &lt;a href=&quot;http://www.mendeley.com/download/public/98752/4485545655/9a209c7dd29980fd2e47c06eb8b2d1d7dd6f70d4/dl.pdf&quot;&gt;here&lt;/a&gt;. so I’d like to take this chance to share the back-story and highlight my own view on some of our findings, and the associated &lt;a href=&quot;http://cran.r-project.org/web/packages/pmc/index.html&quot;&gt;package on CRAN&lt;/a&gt;.Just submitted, meanwhile, the code is always on &lt;a href=&quot;https://github.com/cboettig/pmc&quot;&gt;github&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;I didn’t set out to write this paper.  I set out to write a very different paper, introducing a new phylogenetic method for continuous traits that estimates changes in evolutionary constraint.  This adds _even more _parameters than already present in rich models multi-peak OU process, and I wanted to know if it could be justified – if there really was enough information to play the game we already had, before I went and made the situation even worse. Trying to find something rigorous enough to hang my hat on, I ended up writing this paper.&lt;/p&gt;
 &lt;h3 id=&quot;the-short-of-it&quot;&gt;The short of it&lt;/h3&gt;
 &lt;p&gt;There’s essentially three conclusions I draw from the paper.&lt;/p&gt;
-&lt;ol style=&quot;list-style-type: decimal&quot;&gt;
+&lt;ol type=&quot;1&quot;&gt;
 &lt;li&gt;&lt;p&gt;AIC is not a reliable way to select models.&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;Certain parameters, such as &lt;span class=&quot;math&quot;&gt;\(\lambda\)&lt;/span&gt;, a measure of “phylogenetic signal,” (Pagel, 1999) are going to be really hard to estimate.&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;BUT as long as we &lt;em&gt;simulate extensively&lt;/em&gt; to test model choice and parameter uncertainty, we won’t be misled by either of these.  So it’s okay to drink the koolaid (Losos, 2011), but &lt;strong&gt;drink responsibly.&lt;/strong&gt;&lt;/p&gt;&lt;/li&gt;
@@ -386,9 +392,9 @@ user  system elapsed
 &lt;p&gt;I really have two problems with AIC and other information criteria when it comes to phylogenetic methods.  One is that it’s too easy to simulate data from one model, and have the information criteria choose a ridiculously over-parameterized model instead.  In one example, the wrong model has a &lt;span class=&quot;math&quot;&gt;\(\Delta\)&lt;/span&gt;AIC of 10 points over the correct model.&lt;/p&gt;
 &lt;p&gt;But a more basic problem is that it’s just not designed for hypothesis testing – it doesn’t care how much data you have, it doesn’t give a notion of significance.  If we’re ascribing biological meaning to different models as different hypotheses, we need want a measure of uncertainty.&lt;/p&gt;
 &lt;p&gt;When estimating parameters that scale branch length, I think we must be cautious because these are really data-hungry, and don’t work well on small trees. Check out how few of these estimates of lambda on 100 replicate datasets hit near the correct value shown by vertical line:&lt;/p&gt;
-&lt;div class=&quot;figure&quot;&gt;
+&lt;figure&gt;
 &lt;img src=&quot;http://farm8.staticflickr.com/7014/6727029515_bcfe58aedb_o.png&quot; /&gt;
-&lt;/div&gt;
+&lt;/figure&gt;
 &lt;p&gt;The package commands are explained in more detail in the &lt;strong&gt;&lt;a href=&quot;http://cran.r-project.org/web/packages/pmc/vignettes/pmc_tutorial.pdf&quot;&gt;package vignette&lt;/a&gt;&lt;/strong&gt;, but the idea is simple. Running the pmc comparison between two models (for the model-choice step) looks like this:&lt;/p&gt;
 &lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;bm_v_lambda &amp;lt;- &lt;span class=&quot;kw&quot;&gt;pmc&lt;/span&gt;(geospiza.tree, geospiza.data[&lt;span class=&quot;st&quot;&gt;&amp;quot;wingL&amp;quot;&lt;/span&gt;],
   &lt;span class=&quot;st&quot;&gt;&amp;quot;BM&amp;quot;&lt;/span&gt;, &lt;span class=&quot;st&quot;&gt;&amp;quot;lambda&amp;quot;&lt;/span&gt;, &lt;span class=&quot;dt&quot;&gt;nboot=&lt;/span&gt;&lt;span class=&quot;dv&quot;&gt;100&lt;/span&gt;)&lt;/code&gt;&lt;/pre&gt;
@@ -398,9 +404,9 @@ user  system elapsed
 &lt;p&gt;To view the model comparison, just plot the pmc result:&lt;/p&gt;
 &lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;&lt;span class=&quot;kw&quot;&gt;plot&lt;/span&gt;(bm_v_lambda)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;The substantial overlap in the likelihood ratios after simulating under either model indicate that we cannot choose between BM and lambda in this case.  I’ll leave the paper to explain this approach in more detail, but it’s just simulation and refitting.&lt;/p&gt;
-&lt;div class=&quot;figure&quot;&gt;
+&lt;figure&gt;
 &lt;img src=&quot;http://farm8.staticflickr.com/7026/6727293465_4a2a545fdf_o.png&quot; /&gt;
-&lt;/div&gt;
+&lt;/figure&gt;
 &lt;p&gt;You could just bootstrap the likelihoods or for nested models, look at the parameter distributions, but you get the maximum &lt;em&gt;statistical power&lt;/em&gt; from the ratio (says Neyman-Pearson Lemma).&lt;/p&gt;
 &lt;h3 id=&quot;a-technical-note-mix-and-match-formats&quot;&gt;A technical note: mix and match formats&lt;/h3&gt;
 &lt;p&gt;Many users don’t like going between ouch format and ape/phylo formats. The pmc package doesn’t care what you use, feel free to mix and match. In case the conversion tools are useful, I’ve provided functions to move your data and trees back and forth between those formats too.  See &lt;em&gt;format&lt;/em&gt;data()_ to data-frames and &lt;em&gt;convert()&lt;/em&gt; to toggle between tree formats.&lt;/p&gt;
@@ -419,13 +425,14 @@ user  system elapsed
 &lt;li&gt;&lt;p&gt;Losos J (2011). “Seeing The Forest For The Trees: The Limitations of Phylogenies in Comparative Biology.” &lt;em&gt;The American Naturalist&lt;/em&gt;, &lt;b&gt;177&lt;/b&gt;. ISSN 00030147, &lt;a href=&quot;http://dx.doi.org/10.1086/660020&quot;&gt;http://dx.doi.org/10.1086/660020&lt;/a&gt;.&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;Freckleton R and Harvey P (2006). “Detecting Non-Brownian Trait Evolution in Adaptive Radiations.” &lt;em&gt;Plos Biology&lt;/em&gt;, &lt;b&gt;4&lt;/b&gt;. ISSN 1544-9173, &lt;a href=&quot;http://dx.doi.org/10.1371/journal.pbio.0040373&quot;&gt;http://dx.doi.org/10.1371/journal.pbio.0040373&lt;/a&gt;.&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;Harmon L, Losos J, Jonathan Davies T, Gillespie R, Gittleman J, Bryan Jennings W, Kozak K, McPeek M, Moreno-Roark F, Near T, Purvis A, Ricklefs R, Schluter D, Schulte II J, Seehausen O, Sidlauskas B, Torres-Carvajal O, Weir J and Mooers A (2010). “Early Bursts of Body Size And Shape Evolution Are Rare in Comparative Data.” &lt;em&gt;Evolution&lt;/em&gt;. &lt;a href=&quot;http://dx.doi.org/10.1111/j.1558-5646.2010.01025.x&quot;&gt;http://dx.doi.org/10.1111/j.1558-5646.2010.01025.x&lt;/a&gt;.&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;</content>
+&lt;/ul&gt;
+</content>
  </entry>
  
  <entry>
    <title>Treebase Package On Cran</title>
    <link href="/2011/10/25/treebase-package-on-cran.html"/>
-   <updated>2011-10-25T12:06:38-07:00</updated>
+   <updated>2011-10-25T19:06:38Z</updated>
    <id>/2011/10/25/treebase-package-on-cran</id>
    <content type="html">&lt;p&gt;My treebase package is now up on the &lt;a href=&quot;http://cran.r-project.org/web/packages/treebase/&quot;&gt;CRAN repository&lt;/a&gt;. (Source code is up, the binaries should appear soon). Here’s a few introductory examples to illustrate some of the functionality of the package. Thanks in part to new data deposition requirements at journals such as Evolution, Am Nat, and Sys Bio, and data management plan requirements from NSF, I hope the package will become increasingly useful for teaching by replicating results and for meta-analyses that can be automatically updated as the repository grows. Please contact me with any bugs or requests (or post in the &lt;a href=&quot;https://github.com/cboettig/treeBASE/issues?sort=created&amp;amp;direction=desc&amp;amp;state=open&quot;&gt;issue tracker&lt;/a&gt;).&lt;/p&gt;
 &lt;h2 id=&quot;basic-tree-and-metadata-queries&quot;&gt;Basic tree and metadata queries&lt;/h2&gt;
@@ -441,9 +448,9 @@ all &amp;lt;- &lt;span class=&quot;kw&quot;&gt;search_metadata&lt;/span&gt;(&lt;
 dates &amp;lt;- &lt;span class=&quot;kw&quot;&gt;sapply&lt;/span&gt;(all, function(x) &lt;span class=&quot;kw&quot;&gt;as.numeric&lt;/span&gt;(x$date))
 &lt;span class=&quot;kw&quot;&gt;hist&lt;/span&gt;(dates, &lt;span class=&quot;dt&quot;&gt;main=&lt;/span&gt;&lt;span class=&quot;st&quot;&gt;&amp;quot;TreeBase growth&amp;quot;&lt;/span&gt;, &lt;span class=&quot;dt&quot;&gt;xlab=&lt;/span&gt;&lt;span class=&quot;st&quot;&gt;&amp;quot;Year&amp;quot;&lt;/span&gt;)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;(This query could also take a date range).&lt;/p&gt;
-&lt;div class=&quot;figure&quot;&gt;
+&lt;figure&gt;
 &lt;img src=&quot;http://farm7.staticflickr.com/6221/6280258573_0c01c06c91_o.png&quot; /&gt;
-&lt;/div&gt;
+&lt;/figure&gt;
 &lt;p&gt;How do the weekly’s do on submissions to Treebase? We construct this in a way that gives us back the indices of the matches, so we can then grab those trees directly. Run the scripts yourself to see if they’ve changed!&lt;/p&gt;
 &lt;pre class=&quot;sourceCode R&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;
 nature &amp;lt;- &lt;span class=&quot;kw&quot;&gt;sapply&lt;/span&gt;(all, function(x) &lt;span class=&quot;kw&quot;&gt;length&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;grep&lt;/span&gt;(&lt;span class=&quot;st&quot;&gt;&amp;quot;Nature&amp;quot;&lt;/span&gt;, x$publisher))&amp;gt;&lt;span class=&quot;dv&quot;&gt;0&lt;/span&gt;)
@@ -475,9 +482,9 @@ a &amp;lt;- &lt;span class=&quot;kw&quot;&gt;as.factor&lt;/span&gt;(&lt;span cla
 &lt;span class=&quot;kw&quot;&gt;search_treebase&lt;/span&gt;(&lt;span class=&quot;st&quot;&gt;&amp;quot;Derryberry&amp;quot;&lt;/span&gt;, &lt;span class=&quot;st&quot;&gt;&amp;quot;author&amp;quot;&lt;/span&gt;)[[&lt;span class=&quot;dv&quot;&gt;1&lt;/span&gt;]] -&amp;gt; tree
 &lt;span class=&quot;kw&quot;&gt;metadata&lt;/span&gt;(tree$S.id)
 &lt;span class=&quot;kw&quot;&gt;plot&lt;/span&gt;(tree)&lt;/code&gt;&lt;/pre&gt;
-&lt;div class=&quot;figure&quot;&gt;
+&lt;figure&gt;
 &lt;img src=&quot;http://farm7.staticflickr.com/6117/6280770968_483816528a_o.png&quot; /&gt;
-&lt;/div&gt;
+&lt;/figure&gt;
 &lt;p&gt;(click to zoom - go to all sizes-&amp;gt;original size)&lt;/p&gt;
 &lt;p&gt;They fit a variety of diversification rate models avialable in the laser package, which they compare by aic.&lt;/p&gt;
 &lt;pre class=&quot;sourceCode R&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;
@@ -532,13 +539,14 @@ is_yule &amp;lt;- &lt;span class=&quot;kw&quot;&gt;sapply&lt;/span&gt;(tt, pick_
 &lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;Derryberry E, Claramunt S, Derryberry G, Chesser R, Cracraft J, Aleixo A, Pérez-Emán J, Remsen Jr. J and Brumfield R (2011). “Lineage Diversification And Morphological Evolution in A Large-Scale Continental Radiation: The Neotropical Ovenbirds And Woodcreepers (Aves: Furnariidae).” &lt;em&gt;Evolution&lt;/em&gt;, &lt;strong&gt;65&lt;/strong&gt;. &lt;a href=&quot;http://dx.doi.org/10.1111/j.1558-5646.2011.01374.x&quot;&gt;http://dx.doi.org/10.1111/j.1558-5646.2011.01374.x&lt;/a&gt;.&lt;/li&gt;
-&lt;/ul&gt;</content>
+&lt;/ul&gt;
+</content>
  </entry>
  
  <entry>
    <title>Showcasing the latest phylogenetic methods: AUTEUR</title>
    <link href="/2011/07/20/showcasing-the-latest-phylogenetic-methods-auteur.html"/>
-   <updated>2011-07-20T08:07:14-07:00</updated>
+   <updated>2011-07-20T15:07:14Z</updated>
    <id>/2011/07/20/showcasing-the-latest-phylogenetic-methods-auteur</id>
    <content type="html">&lt;p&gt;While high-speed fish feeding videos may be the signature of the lab, dig a bit deeper and you’ll find a wealth of comparative phylogenetic methods sneaking in.  It’s a natural union – expert functional morphology is the key to good comparative methods, just as phylogenies hold the key to untangling the evolutionary origins of that morphology.  The lab’s own former graduate, &lt;a href=&quot;http://www.brianomeara.info/&quot;&gt;Brian O’Meara&lt;/a&gt;, made a revolutionary step forward in the land of phylogenetic methods when he unveiled &lt;em&gt;Brownie&lt;/em&gt; in 2006, allowing researchers to identify major shifts in trait diversification rates across the tree.  This work spurred not only a flood of empirical applications but also methodological innovations, such as Liam’s &lt;a href=&quot;http://phytools.blogspot.com/2011/07/more-robust-version-of-brownielite.html&quot;&gt;brownie-lite&lt;/a&gt;, and today’s focus: &lt;a href=&quot;http://public.wsu.edu/~storfer/eastman/pages/index.html&quot;&gt;Jon Eastman&lt;/a&gt; &lt;em&gt;et al.&lt;/em&gt;’s auteur package.&lt;/p&gt;
 &lt;p&gt;Auteur, short for “Accommodating uncertainty in trait evolution using R,” is the grown-up Bayesian RJMCMC version of that original idea in &lt;em&gt;Brownie&lt;/em&gt;.  Diversification rates can change along the phylogenetic tree – only this time, you don’t have to specify where those changes could have occurred, or how many there may have been – auteur simply tries them all.&lt;/p&gt;
@@ -605,9 +613,9 @@ dirs=&lt;span class=&quot;kw&quot;&gt;dir&lt;/span&gt;(&lt;span class=&quot;st&q
 
 &lt;span class=&quot;co&quot;&gt;# clean-up: unlink those directories&lt;/span&gt;
  &lt;span class=&quot;kw&quot;&gt;unlink&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;dir&lt;/span&gt;(&lt;span class=&quot;dt&quot;&gt;pattern=&lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;paste&lt;/span&gt;(r)),&lt;span class=&quot;dt&quot;&gt;recursive=&lt;/span&gt;&lt;span class=&quot;ot&quot;&gt;TRUE&lt;/span&gt;)&lt;/code&gt;&lt;/pre&gt;
-&lt;div class=&quot;figure&quot;&gt;
+&lt;figure&gt;
 &lt;img src=&quot;http://farm7.static.flickr.com/6001/5952112488_91867e7f3a.jpg&quot; /&gt;
-&lt;/div&gt;
+&lt;/figure&gt;
 &lt;p&gt;Not only is that a beautiful plot, but it’s nailed the shift in species 12-16.  How’d your example do?&lt;/p&gt;
 &lt;p&gt;Auteur comes with three beautiful large data sets described in the paper.  Check them out, but expect longer run times than our simple example!&lt;/p&gt;
 &lt;pre class=&quot;sourceCode R&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;
@@ -634,17 +642,18 @@ phy &amp;lt;- chelonia$phy
 &lt;p&gt;&lt;a href=&quot;http://www.R-bloggers.com&quot;&gt;&lt;img src=&quot;http://a1.twimg.com/profile_images/1344218056/RblogLogo_bigger.png&quot; alt=&quot;R-bloggers.com&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Thanks Jon and the rest of the Harmon Lab for a fantastic package. This is really just a tip of the iceberg, but should help get you started. See the paper for a good example of posterior analyses requisite after running any kind of MCMC, or stay tuned for a later post.&lt;/p&gt;
 &lt;p&gt;(cross-posted from &lt;a href=&quot;http://fishlab.ucdavis.edu/?p=303&quot;&gt;my entry on the Wainwright lab blog&lt;/a&gt;.)&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;http://www.researchblogging.org&quot;&gt;&lt;img src=&quot;http://www.researchblogging.org/public/citation_icons/rb2_large_gray.png&quot; alt=&quot;ResearchBlogging.org&quot; /&gt;&lt;/a&gt; Eastman, J., Alfaro, M., Joyce, P., Hipp, A., &amp;amp; Harmon, L. (2011). A NOVEL COMPARATIVE METHOD FOR IDENTIFYING SHIFTS IN THE RATE OF CHARACTER EVOLUTION ON TREES Evolution DOI: &lt;a href=&quot;http://dx.doi.org/10.1111/j.1558-5646.2011.01401.x&quot;&gt;10.1111/j.1558-5646.2011.01401.x&lt;/a&gt;&lt;/p&gt;</content>
+&lt;p&gt;&lt;a href=&quot;http://www.researchblogging.org&quot;&gt;&lt;img src=&quot;http://www.researchblogging.org/public/citation_icons/rb2_large_gray.png&quot; alt=&quot;ResearchBlogging.org&quot; /&gt;&lt;/a&gt; Eastman, J., Alfaro, M., Joyce, P., Hipp, A., &amp;amp; Harmon, L. (2011). A NOVEL COMPARATIVE METHOD FOR IDENTIFYING SHIFTS IN THE RATE OF CHARACTER EVOLUTION ON TREES Evolution DOI: &lt;a href=&quot;http://dx.doi.org/10.1111/j.1558-5646.2011.01401.x&quot;&gt;10.1111/j.1558-5646.2011.01401.x&lt;/a&gt;&lt;/p&gt;
+</content>
  </entry>
  
  <entry>
    <title>TreeBASE in R: a first tutorial</title>
    <link href="/2011/05/16/treebase-in-r-a-first-tutorial.html"/>
-   <updated>2011-05-16T12:46:54-07:00</updated>
+   <updated>2011-05-16T19:46:54Z</updated>
    <id>/2011/05/16/treebase-in-r-a-first-tutorial</id>
    <content type="html">&lt;p&gt;My TreeBASE R package is essentially functional now.  Here’s a quick tutorial on the kinds of things it can do.  Grab the &lt;a href=&quot;https://github.com/cboettig/treeBASE/archives/master&quot;&gt;treebase package here&lt;/a&gt;, install and load the library into R.&lt;/p&gt;
 &lt;p&gt;TreeBASE provides two APIs to query the database, one which searches by the metadata associated with different publications (called &lt;a href=&quot;http://sourceforge.net/apps/mediawiki/treebase/index.php?title=OAI-PMH&quot;&gt;OAI-PMH&lt;/a&gt;), and another which queries the phylogenies directly (called &lt;a href=&quot;http://sourceforge.net/apps/mediawiki/treebase/index.php?title=API&quot;&gt;Phylo-ws&lt;/a&gt;).  They have somewhat redundant functions, but for our purposes the second one returns the actual data, while the first returns metadata.  A few examples will best illustrate how this all works.  We start with some queries of the metadata directly without downloading any trees.&lt;/p&gt;
-&lt;ol style=&quot;list-style-type: decimal&quot;&gt;
+&lt;ol type=&quot;1&quot;&gt;
 &lt;li&gt;&lt;p&gt;Trees can be downloaded with search_treebase(), using a variety of search conditions provided by Phylo-ws API.&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;Metadata can be searched by date using search_metadata.  Just Download all metadata for finer queries.&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;Metadata for a study can be grabbed using the study id.&lt;/p&gt;&lt;/li&gt;
@@ -658,9 +667,9 @@ all &amp;lt;- &lt;span class=&quot;kw&quot;&gt;search_metadata&lt;/span&gt;(&lt;
 dates &amp;lt;- &lt;span class=&quot;kw&quot;&gt;sapply&lt;/span&gt;(all, function(x) &lt;span class=&quot;kw&quot;&gt;as.numeric&lt;/span&gt;(x$date))
 &lt;span class=&quot;kw&quot;&gt;hist&lt;/span&gt;(dates, &lt;span class=&quot;dt&quot;&gt;main=&lt;/span&gt;&lt;span class=&quot;st&quot;&gt;&amp;quot;TreeBase growth&amp;quot;&lt;/span&gt;, &lt;span class=&quot;dt&quot;&gt;xlab=&lt;/span&gt;&lt;span class=&quot;st&quot;&gt;&amp;quot;Year&amp;quot;&lt;/span&gt;)
 &lt;/code&gt;&lt;/pre&gt;
-&lt;div class=&quot;figure&quot;&gt;
+&lt;figure&gt;
 &lt;img src=&quot;http://farm3.staticflickr.com/2676/5711820192_95ab0fc731_o.png&quot; /&gt;
-&lt;/div&gt;
+&lt;/figure&gt;
 &lt;p&gt;What journals have submitted the most studies to treebase?&lt;/p&gt;
 &lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;
 
@@ -669,9 +678,9 @@ J &amp;lt;- &lt;span class=&quot;kw&quot;&gt;tail&lt;/span&gt;(&lt;span class=&q
 b &amp;lt;- &lt;span class=&quot;kw&quot;&gt;barplot&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;as.numeric&lt;/span&gt;(J))
 &lt;span class=&quot;kw&quot;&gt;text&lt;/span&gt;(b, &lt;span class=&quot;kw&quot;&gt;names&lt;/span&gt;(J), &lt;span class=&quot;dt&quot;&gt;srt=&lt;/span&gt;&lt;span class=&quot;dv&quot;&gt;70&lt;/span&gt;, &lt;span class=&quot;dt&quot;&gt;pos=&lt;/span&gt;&lt;span class=&quot;dv&quot;&gt;4&lt;/span&gt;, &lt;span class=&quot;dt&quot;&gt;xpd=&lt;/span&gt;T)
 &lt;/code&gt;&lt;/pre&gt;
-&lt;div class=&quot;figure&quot;&gt;
+&lt;figure&gt;
 &lt;img src=&quot;http://farm6.staticflickr.com/5125/5728023288_1737290073_o.png&quot; /&gt;
-&lt;/div&gt;
+&lt;/figure&gt;
 &lt;p&gt;How many have been submitted from &lt;em&gt;Nature&lt;/em&gt;? &lt;em&gt;Science&lt;/em&gt;?&lt;/p&gt;
 &lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;
 
@@ -796,22 +805,23 @@ is_yule &amp;lt;- &lt;span class=&quot;kw&quot;&gt;sapply&lt;/span&gt;(tt, pick_
 &lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;Rowe K, Aplin K, Baverstock P and Moritz C (2011). “Recent And Rapid Speciation With Limited Morphological Disparity in The Genus Rattus.” &lt;em&gt;Systematic Biology&lt;/em&gt;, &lt;strong&gt;60&lt;/strong&gt;. ISSN 1063-5157, &lt;a href=&quot;http://dx.doi.org/10.1093/sysbio/syq092&quot;&gt;http://dx.doi.org/10.1093/sysbio/syq092&lt;/a&gt;.&lt;/li&gt;
-&lt;/ul&gt;</content>
+&lt;/ul&gt;
+</content>
  </entry>
  
  <entry>
    <title>socialR: Reproducible Research & Notebook integration with R</title>
-   <link href="/2010/12/10/socialr-an-r-package-to-track-the-status-of-computations-with-social-network-tools.html"/>
-   <updated>2010-12-10T19:44:54-08:00</updated>
-   <id>/2010/12/10/socialr-an-r-package-to-track-the-status-of-computations-with-social-network-tools</id>
+   <link href="/2010/12/11/socialr-an-r-package-to-track-the-status-of-computations-with-social-network-tools.html"/>
+   <updated>2010-12-11T03:44:54Z</updated>
+   <id>/2010/12/11/socialr-an-r-package-to-track-the-status-of-computations-with-social-network-tools</id>
    <content type="html">&lt;p&gt;I’ve created an R package that uses social media tools for reproducible research.  The goal of the package is this: whenever I run a code, output figures are automatically added to my figure repository (Flickr), linked to the timestamped version of the code that produced them in the code repository.  Figures should be tagged by project and be embedded selectively or automatically into this lab notebook.  The basic workflow of the notebook looks like this:[ref]Diagram of my notebook as presented at Science Online, 2011, see other slides in my &lt;a href=&quot;http://www.carlboettiger.info/archives/792&quot;&gt;entry on this&lt;/a&gt;.[/ref]&lt;/p&gt;
-&lt;div class=&quot;figure&quot;&gt;
+&lt;figure&gt;
 &lt;img src=&quot;http://farm6.staticflickr.com/5259/5471680767_34c350314e_o.png&quot; /&gt;
-&lt;/div&gt;
+&lt;/figure&gt;
 &lt;p&gt;To do this, I use a few simple R functions that I wrap around  the system command-line programs git, flickr_upload, and hpc-autotweets to enable monitoring of my simulations through social media. The package has it’s own &lt;a href=&quot;https://github.com/cboettig/socialR&quot;&gt;git repository here&lt;/a&gt;.  This is a rather custom development to make for rapid deployment on my own machines, and depends largely on Linux tools external to R, so it may not be easily deployed by others.  See my earlier post, &lt;a href=&quot;http://www.carlboettiger.info/archives/375&quot;&gt;Making R Twitter&lt;/a&gt;, for examples and back story.&lt;/p&gt;
-&lt;div class=&quot;figure&quot;&gt;
+&lt;figure&gt;
 &lt;img src=&quot;http://farm5.staticflickr.com/4112/5196584707_663796eb6e_o.png&quot; /&gt;
-&lt;/div&gt;
+&lt;/figure&gt;
 &lt;h2 id=&quot;basic-features&quot;&gt;Basic Features&lt;/h2&gt;
 &lt;p&gt;All of these tasks are run by wrapping any plot command with my command “social_plot()”&lt;/p&gt;
 &lt;ul&gt;
@@ -822,7 +832,7 @@ is_yule &amp;lt;- &lt;span class=&quot;kw&quot;&gt;sapply&lt;/span&gt;(tt, pick_
 &lt;li&gt;&lt;p&gt;Tweet when an error occurs.&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&quot;setup-install&quot;&gt;Setup / Install&lt;/h2&gt;
-&lt;ol style=&quot;list-style-type: decimal&quot;&gt;
+&lt;ol type=&quot;1&quot;&gt;
 &lt;li&gt;&lt;p&gt;Create a flickr account (need not be unique for the computer).&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;Create a twitter account (preferably separate one for the machine).&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;Install &lt;a href=&quot;http://search.cpan.org/~cpb/Flickr-Upload/flickr_upload&quot;&gt;flickr_upload&lt;/a&gt;:&lt;/p&gt;
@@ -831,7 +841,7 @@ is_yule &amp;lt;- &lt;span class=&quot;kw&quot;&gt;sapply&lt;/span&gt;(tt, pick_
 &lt;p&gt;easy_install tweepy&lt;/p&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;(See link for more detailed instructions)&lt;/p&gt;
-&lt;ol start=&quot;5&quot; style=&quot;list-style-type: decimal&quot;&gt;
+&lt;ol start=&quot;5&quot; type=&quot;1&quot;&gt;
 &lt;li&gt;&lt;p&gt;&lt;a href=&quot;http://search.cpan.org/~cpb/Flickr-Upload/flickr_upload#___top&quot;&gt;Configure flickr_upload credentials&lt;/a&gt;.&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;&lt;a href=&quot;http://jeffmiller.github.com/2010/05/31/twitter-from-the-command-line-in-python-using-oauth&quot;&gt;Configure OAuth for tweepy&lt;/a&gt;.&lt;/p&gt;&lt;/li&gt;
 &lt;/ol&gt;
@@ -847,7 +857,8 @@ is_yule &amp;lt;- &lt;span class=&quot;kw&quot;&gt;sapply&lt;/span&gt;(tt, pick_
 &lt;li&gt;&lt;p&gt;Documentation still needed&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;Should verify if the git version is current&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;Grab a DOI for the object (i.e. using EZID from UC3?)&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;</content>
+&lt;/ul&gt;
+</content>
  </entry>
  
  

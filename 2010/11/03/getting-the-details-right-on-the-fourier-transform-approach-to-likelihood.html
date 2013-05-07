@@ -24,7 +24,7 @@
 <!-- RDFa Metadata (in DublinCore) -->
 <meta property="dc:title" content="Getting the details right on the Fourier Transform approach to likelihood" />
 <meta property="dc:creator" content="Carl Boettiger" />
-<meta property="dc:date" content="2013-05-03T17:56:56-07:00" />
+<meta property="dc:date" content="2013-05-07T12:11:08-07:00" />
 <meta property="dc:format" content="text/html" />
 <meta property="dc:language" content="en" />
 <meta property="dc:identifier" content="/2010/11/03/getting-the-details-right-on-the-fourier-transform-approach-to-likelihood.html" />
@@ -37,13 +37,13 @@
 <meta property="og:author" content="http://www.carlboettiger.info/index.html#me" />  <!-- Should be Liquid? URI? -->
 <meta property="http://ogp.me/ns/profile#first_name" content="Carl"/>
 <meta property="http://ogp.me/ns/profile#last_name" content="Boettiger"/>
-<meta property="http://ogp.me/ns/article#published_time" content="2013-05-03T17:56:56-07:00" />
+<meta property="http://ogp.me/ns/article#published_time" content="2013-05-07T12:11:08-07:00" />
 <meta property="og:site_name" content="Lab Notebook" /> <!-- Same as dc:source? -->
 <meta property="og:url" content="http://www.carlboettiger.info/2010/11/03/getting-the-details-right-on-the-fourier-transform-approach-to-likelihood.html" />
 <meta property="og:type" content="website" /> 
 <!-- Google Scholar Metadata -->
 <meta name="citation_author" content="Carl Boettiger"/>
-<meta name="citation_date" content="2013-05-03T17:56:56-07:00"/>
+<meta name="citation_date" content="2013-05-07T12:11:08-07:00"/>
 <meta name="citation_title" content="Getting the details right on the Fourier Transform approach to likelihood"/>
 <meta name="citation_journal_title" content="Lab Notebook"/>
 
@@ -159,9 +159,9 @@
 <p><span class="math">\[ S(\omega) = \frac{\sigma^2}{\alpha^2 +\omega^2} \]</span></p>
 <h3 id="troubles">Troubles</h3>
 <p>I seem to be having difficulty demonstrating this in the simulation.:</p>
-<div class="figure">
+<figure>
 <img src="http://farm2.staticflickr.com/1217/5147048292_e0ae6277f8_o.png" />
-</div>
+</figure>
 <p>Several practical concerns and options:</p>
 <ul>
 <li><p>Accurate simulation of the OU process.  As we know the solution, this can be simulated exactly.  I’ve explored simulating it through simple Euler, the exact simulation, the analagous discrete time AR(1) process, and the general Milstein regime from the SDE R package.  Some differences, particularly visible in Euler vs exact, in the power spectrum, but neither lining up perfectly with the theoretical curve above.</p></li>
@@ -170,9 +170,9 @@
 <li><p>Fourier definition concerns.   The definition can differ by a factor of 2 pi between physics and engineers.  Further, getting the units of the x-axis correct to line up frequencies with the correct components of the transform is crucial.  As a quick check I confirm that the fft of a sine function gives me the peak at the angular frequency I expect:</p>
 <p>n&lt;- 2^10 dt&lt;-1/8 t &lt;- seq(0,dt<em>(n-1), by=dt) X &lt;- sin(5</em>t) + rnorm(n, .01) pwr &lt;- abs(fft(dt<em>X))^2/(2</em>pi<em>dt</em>n) nyquist&lt;-1/(2<em>dt) # half the sampling frequency w &lt;- nyquist</em>seq(0, 2*pi, length=n/2) plot(w, pwr[1:(n/2)], type=“l”) abline(v=5, col=“red”, lty=3)</p></li>
 </ul>
-<div class="figure">
+<figure>
 <img src="http://farm2.staticflickr.com/1087/5145846483_e6f06c73f4_o.png" />
-</div>
+</figure>
 <p>Anyway, still in the troubleshooting process, trying to keep exploration documented in the version commits of power_spec.R, so s<a href="https://github.com/cboettig/structured-populations/blob/6d8ce276363419a06b824ad984c6f78f5c4cfc2d/demos/power_spec.R">ee code and commit log.</a></p>
 <h3 id="some-other-notes">Some other notes</h3>
 <p>If we define the Power spectrum as the transform of $ C()$, then the inverse transform gives us (in Physics convention for Fourier)</p>
@@ -180,22 +180,23 @@
 <p>and setting $ t = t’$ we have</p>
 <p><span class="math">\[ \langle [x(t) ]^2 \rangle = \int_{-\infty}^{\infty}  \frac{d \omega}{2 \pi} S(\omega) \]</span></p>
 <p>Now if x(t) is Gaussian process, we can look at the transform of the errors. We note the transform of the Gaussian is Gaussian, taking the function that is normally distributed in x with variance $ ^2$ to one normally distributed in $ $ with variance $  /^3 $.</p>
+
     </article>
   </div>
   <div class="span4">
     <div class="sidebar">
       <aside prefix="og:http://ogp.me/ns/article#">
   <p> <i class="icon-calendar"></i>
-    <time datetime="2010-11-03T09:28:39-07:00" 
+    <time datetime="2010-11-03T16:28:39Z" 
     property="dc:created">03 Nov 2010</time></p>
   <p><small> modified: <time 
-            datetime="2013-02-19T10:27:50-08:00" 
-            property="dc:modified">19 Feb 2013</time></small></p>
+            datetime="2013-05-07T06:35:55-07:00" 
+            property="dc:modified">07 May 2013</time></small></p>
 
  <br />
 
   
-    <p><a class="btn btn-mini" rel="prev" href='/2010/11/02/reviews-organization-rewrites.html'><i class="icon-chevron-left"></i> prev</a>
+    <p><a class="btn btn-mini" rel="prev" href='/2010/11/03/reviews-organization-rewrites.html'><i class="icon-chevron-left"></i> prev</a>
   
   
   <a class="btn btn-mini" rel="next" href='/2010/11/05/thursday.html'>next <i class="icon-chevron-right"></i></a></p>
@@ -213,7 +214,7 @@
   <p><i class="icon-list"></i> Posted in 
      
       <a rel="dc:subject" class="category" 
-         href="/categories.html#ecology">ecology</a>
+         href="//categories.html#ecology">ecology</a>
     
     </p>
 
@@ -221,7 +222,7 @@
     
     <!-- http://schema.org/BlogPosting/keywords -->
     <a rel="og:tag" class="tag" 
-       href="/tags.html#warning-signals">#warning-signals</a>
+       href="//tags.html#warning-signals">#warning-signals</a>
     </p>
 
   <br/>
@@ -230,9 +231,7 @@
 
   <br/>
 
-  <p><small> <i class="icon-barcode"></i> SHA Hash: <a href="https://github.com/cboettig/labnotebook/commit/8c159703b2a376bd2c60f16e0e0d5cea04d20876
-/_posts/2010-11-03-getting-the-details-right-on-the-fourier-transform-approach-to-likelihood.md"> 8c159703b2a376bd2c60f16e0e0d5cea04d20876
-</a></small></p>
+  <p><small> <i class="icon-barcode"></i> SHA Hash: <a href="https://github.com/cboettig/labnotebook/commit/cc2e94b67be5274aeb134604bc317b134bac4a95/_posts/2010-11-03-getting-the-details-right-on-the-fourier-transform-approach-to-likelihood.md"> cc2e94b67be5274aeb134604bc317b134bac4a95</a></small></p>
     
   <br/>
 

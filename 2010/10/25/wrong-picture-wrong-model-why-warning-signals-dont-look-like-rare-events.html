@@ -24,7 +24,7 @@
 <!-- RDFa Metadata (in DublinCore) -->
 <meta property="dc:title" content="Wrong picture, wrong model: why warning signals don't look like rare events" />
 <meta property="dc:creator" content="Carl Boettiger" />
-<meta property="dc:date" content="2013-05-03T17:56:56-07:00" />
+<meta property="dc:date" content="2013-05-07T12:11:08-07:00" />
 <meta property="dc:format" content="text/html" />
 <meta property="dc:language" content="en" />
 <meta property="dc:identifier" content="/2010/10/25/wrong-picture-wrong-model-why-warning-signals-dont-look-like-rare-events.html" />
@@ -37,13 +37,13 @@
 <meta property="og:author" content="http://www.carlboettiger.info/index.html#me" />  <!-- Should be Liquid? URI? -->
 <meta property="http://ogp.me/ns/profile#first_name" content="Carl"/>
 <meta property="http://ogp.me/ns/profile#last_name" content="Boettiger"/>
-<meta property="http://ogp.me/ns/article#published_time" content="2013-05-03T17:56:56-07:00" />
+<meta property="http://ogp.me/ns/article#published_time" content="2013-05-07T12:11:08-07:00" />
 <meta property="og:site_name" content="Lab Notebook" /> <!-- Same as dc:source? -->
 <meta property="og:url" content="http://www.carlboettiger.info/2010/10/25/wrong-picture-wrong-model-why-warning-signals-dont-look-like-rare-events.html" />
 <meta property="og:type" content="website" /> 
 <!-- Google Scholar Metadata -->
 <meta name="citation_author" content="Carl Boettiger"/>
-<meta name="citation_date" content="2013-05-03T17:56:56-07:00"/>
+<meta name="citation_date" content="2013-05-07T12:11:08-07:00"/>
 <meta name="citation_title" content="Wrong picture, wrong model: why warning signals don't look like rare events"/>
 <meta name="citation_journal_title" content="Lab Notebook"/>
 
@@ -140,22 +140,22 @@
   <div class="span7 offset1">
     <article>
     <p>Detecting a warning signal of collapse isn’t about detecting that a system is non-stationary, but more specifically, that the system is about to do something sudden.  The classic saddle-node bifurcation example results in a picture like this:</p>
-<div class="figure">
+<figure>
 <img src="http://farm2.staticflickr.com/1184/5103819890_b5a04908ae_o.png" />
-</div>
+</figure>
 <p>A visible steady decrease interrupted by a sudden jump.  The goal is to distinguish this from the case of a steady decrease that involves no loss of stability – such as would be created by continually lowering the carrying capacity of logistic-model system at a linear rate.  As one involves a loss of stability and the other does not, the warning signal that attempts to measure the eigenvalue (equivalent to r in the standard logistic formulation) may enable one to distinguish between these two possibilities.  The picture that seems so often described is one of no change in mean, followed by a sudden jump.  Such a pattern can be produced in a bistable system simply by waiting long enough – as addressed through the theory of large deviations.  Such a case may instead result from loss of stability, even without the mean changing.  To explore this, I’ve constructed an example explicitly to avoid the mean changing but still show a change in stability before the bifurcation:</p>
 <p><span class="math">\[ d(x) = a \left( \hat x - K \right) + e K \]</span></p>
 <p>and</p>
 <p><span class="math">\[ b(x) = \frac{e K x^p}{x^p+h^p} \]</span></p>
 <p>with $ a $ as the bifurcation parameter:</p>
-<div class="figure">
+<figure>
 <img src="http://farm2.static.flickr.com/1432/5115931711_c9c1142a7e_o.gif" />
-</div>
+</figure>
 <p>The red line is the death rate, blue the birth rate, and black the difference.  (Code is the first figure in this <a href="http://github.com/cboettig/structured-populations/blob/54dbdb578f5a91e2796ce2c097f4abeca8719d30/demos/saddle_analytics.R">version of saddle_analytics .R</a>).  Such cases may have a rather simpler analysis, since changes in the equilibrium size can be ignored, but are less general and hence less common than the cases that may include changes in expected value of the state.</p>
 <p>Of course one can also imagine examples where most of the change will occur pretty much without warning, i.e. if the growth rate function looks like:</p>
-<div class="figure">
+<figure>
 <img src="http://farm2.staticflickr.com/1327/5116083962_6c1334dd21_o.jpg" />
-</div>
+</figure>
 <p>Then the unstable point moves a great deal closer but no stability is lost until right before the bifurcation, hence there is very little warning.  In either case, there is a tendency to attempt to correct for any trend.  The general idea of this is quite valid – the loss of stability should appear in the variance, while the trend could have other causes (so could an increase in variance, but leaving that aside), so we do need to handle this correctly.  However, this overlooks the crucial second observation:</p>
 <h3 id="noise-dependence-on-mean">Noise dependence on mean</h3>
 <p>In general, the noise magnitude scales with the system state, as either $  d W_t$ (in our demographic examples) or linearly. (environmental noise)   The decreasing state can obscure the increasing variance due to loss of stability.  Methods which simply subtract out a trend will fail to reflect this phenomenon.  At least for ecological systems where the state is a population abundance driven by a birth-death process, the assumption of no dependence,</p>
@@ -163,25 +163,26 @@
 <p>is unjustified.  This should not impact the actual estimate of the correlation time (autocorrelation rate or width of the Lorentzian from the power transform), but does impact the variance.</p>
 <h3 id="reflections-in-an-example">Reflections in an example</h3>
 <p>Example coming: consider the isotope data in the climate change shifts, showing several jumps and among the examples considered in Dakos et al.  2008:</p>
-<div class="figure">
-<img src="http://openwetware.org/images/e/ec/DeuteriumCore.png" alt="http://openwetware.org/images/e/ec/DeuteriumCore.png" /><p class="caption">http://openwetware.org/images/e/ec/DeuteriumCore.png</p>
-</div>
+<figure>
+<img src="http://openwetware.org/images/e/ec/DeuteriumCore.png" alt="http://openwetware.org/images/e/ec/DeuteriumCore.png" /><figcaption>http://openwetware.org/images/e/ec/DeuteriumCore.png</figcaption>
+</figure>
 <p>See other data sets, listed in<a href="http://openwetware.org/wiki/User:Carl_Boettiger/Notebook/Stochastic_Population_Dynamics/2010/04/02">earlier lab notebook entry (still on OWW</a>).</p>
 <p>http://www.flickr.com/photos/cboettig/5115516967/in/photostream/</p>
 <h3 id="comments-on-ons">Comments on ONS</h3>
 <p>Images today are all included from flickr stream, embedded with Flickr Gallery plugin with the exception of the gif. As viewing animated gifs requires access to the original image, this prompted me to upgrade to Flickr Pro. Will be interesting to explore what can be done without limits, meanwhile the animated gif is a bit annoying. Today’s live feed reflects some of explorations on R animations in gifs and otherwise, see <a href="http://www.delicious.com/cboettig/animation">my bookmarks in delicious</a>.</p>
 <p>Recent posts have adopted the WP LaTeX plugin for equations.  Seems to work better than a few other plug-ins I tried (strange positioning etc), but open to suggestions on quick load times, machine readable equations, proper appearance.</p>
+
     </article>
   </div>
   <div class="span4">
     <div class="sidebar">
       <aside prefix="og:http://ogp.me/ns/article#">
   <p> <i class="icon-calendar"></i>
-    <time datetime="2010-10-25T16:24:45-07:00" 
+    <time datetime="2010-10-25T23:24:45Z" 
     property="dc:created">25 Oct 2010</time></p>
   <p><small> modified: <time 
-            datetime="2013-02-19T10:27:50-08:00" 
-            property="dc:modified">19 Feb 2013</time></small></p>
+            datetime="2013-05-07T06:35:55-07:00" 
+            property="dc:modified">07 May 2013</time></small></p>
 
  <br />
 
@@ -204,11 +205,11 @@
   <p><i class="icon-list"></i> Posted in 
      
       <a rel="dc:subject" class="category" 
-         href="/categories.html#open-science">open-science</a>
+         href="//categories.html#open-science">open-science</a>
     , 
      
       <a rel="dc:subject" class="category" 
-         href="/categories.html#ecology">ecology</a>
+         href="//categories.html#ecology">ecology</a>
     
     </p>
 
@@ -216,7 +217,7 @@
     
     <!-- http://schema.org/BlogPosting/keywords -->
     <a rel="og:tag" class="tag" 
-       href="/tags.html#warning-signals">#warning-signals</a>
+       href="//tags.html#warning-signals">#warning-signals</a>
     </p>
 
   <br/>
@@ -225,9 +226,7 @@
 
   <br/>
 
-  <p><small> <i class="icon-barcode"></i> SHA Hash: <a href="https://github.com/cboettig/labnotebook/commit/8c159703b2a376bd2c60f16e0e0d5cea04d20876
-/_posts/2010-10-25-wrong-picture-wrong-model-why-warning-signals-dont-look-like-rare-events.md"> 8c159703b2a376bd2c60f16e0e0d5cea04d20876
-</a></small></p>
+  <p><small> <i class="icon-barcode"></i> SHA Hash: <a href="https://github.com/cboettig/labnotebook/commit/cc2e94b67be5274aeb134604bc317b134bac4a95/_posts/2010-10-25-wrong-picture-wrong-model-why-warning-signals-dont-look-like-rare-events.md"> cc2e94b67be5274aeb134604bc317b134bac4a95</a></small></p>
     
   <br/>
 

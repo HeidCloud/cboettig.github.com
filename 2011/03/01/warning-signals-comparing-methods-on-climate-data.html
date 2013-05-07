@@ -24,7 +24,7 @@
 <!-- RDFa Metadata (in DublinCore) -->
 <meta property="dc:title" content="Warning Signals: Comparing Methods on Climate Data" />
 <meta property="dc:creator" content="Carl Boettiger" />
-<meta property="dc:date" content="2013-05-03T17:56:56-07:00" />
+<meta property="dc:date" content="2013-05-07T12:11:08-07:00" />
 <meta property="dc:format" content="text/html" />
 <meta property="dc:language" content="en" />
 <meta property="dc:identifier" content="/2011/03/01/warning-signals-comparing-methods-on-climate-data.html" />
@@ -37,13 +37,13 @@
 <meta property="og:author" content="http://www.carlboettiger.info/index.html#me" />  <!-- Should be Liquid? URI? -->
 <meta property="http://ogp.me/ns/profile#first_name" content="Carl"/>
 <meta property="http://ogp.me/ns/profile#last_name" content="Boettiger"/>
-<meta property="http://ogp.me/ns/article#published_time" content="2013-05-03T17:56:56-07:00" />
+<meta property="http://ogp.me/ns/article#published_time" content="2013-05-07T12:11:08-07:00" />
 <meta property="og:site_name" content="Lab Notebook" /> <!-- Same as dc:source? -->
 <meta property="og:url" content="http://www.carlboettiger.info/2011/03/01/warning-signals-comparing-methods-on-climate-data.html" />
 <meta property="og:type" content="website" /> 
 <!-- Google Scholar Metadata -->
 <meta name="citation_author" content="Carl Boettiger"/>
-<meta name="citation_date" content="2013-05-03T17:56:56-07:00"/>
+<meta name="citation_date" content="2013-05-07T12:11:08-07:00"/>
 <meta name="citation_title" content="Warning Signals: Comparing Methods on Climate Data"/>
 <meta name="citation_journal_title" content="Lab Notebook"/>
 
@@ -141,56 +141,57 @@
     <article>
     <p>Continuing my exploration in applying these techniques to real climate data.  Applying the Kendall’s Tau based approach on real data.</p>
 <p>Greenhouse Earth, CaCO3 data:</p>
-<div class="figure">
+<figure>
 <img src="http://farm6.staticflickr.com/5295/5489514762_f8c9a6fa42_o.png" />
-</div>
+</figure>
 <p>Glaciation I-IV (deuterium data)</p>
-<div class="figure">
+<figure>
 <img src="http://farm6.staticflickr.com/5257/5489563736_33a34fa14e_o.png" />
-</div>
-<div class="figure">
+</figure>
+<figure>
 <img src="http://farm6.staticflickr.com/5259/5488967119_ae49dc1dfa_o.png" />
-</div>
-<div class="figure">
+</figure>
+<figure>
 <img src="http://farm6.staticflickr.com/5015/5489564102_61f857cb7d_o.png" />
-</div>
-<div class="figure">
+</figure>
+<figure>
 <img src="http://farm6.staticflickr.com/5056/5489564230_eeeb03e8f2_o.png" />
-</div>
+</figure>
 <p>These use the unadjusted timeseries, and hence don’t reproduce the values of Kendall’s tau statistic reported in (Dakos <em>et. al.</em> 2008).  In fact they don’t even agree on the sign – visually many of the datasets are certainly decreasing in variance. I ran the Monte-Carlo distributions for  tau on models estimated from these data-sets with and without warning, for variance (left) and autocorrelation (right), in the CaCO3 data:</p>
-<div class="figure">
+<figure>
 <img src="http://farm6.staticflickr.com/5095/5487867329_6f2f9f9b60_o.png" />
-</div>
-<div class="figure">
+</figure>
+<figure>
 <img src="http://farm6.staticflickr.com/5014/5488464534_d6733a5707_o.png" />
-</div>
+</figure>
 <p>and again the models with a trend show an actual decrease in the variance and autocorrelation, (just as the real data does), as well as rather low power to distinguish.  The opposite trend is observed by (Dakos <em>et. al.</em> 2008) after detrending and interpolating the data.</p>
 <h2 id="detrending-and-interpolating">Detrending and Interpolating</h2>
 <p>We can try both interpolating and detrending the data to compare more directly (R functions make this easy.  We follow the original work using <em>ksmooth</em> for kernel smoothing mean which is subtracted out, and <em>approx</em> for linear interpolation).</p>
-<div class="figure">
+<figure>
 <img src="http://farm6.staticflickr.com/5173/5490180354_b16fe6a469_o.png" />
-</div>
+</figure>
 <p>Top plot shows the raw data (blue), interpolated data (red) and trend subtracted from the data (gray).  Lower curve shows the autocorrelation, AR1 coefficient over the moving window and it’s score in Kendall’s tau test.[ref] Note some effort required to produce these nicer plots.  Particularly, R makes it rather unintuitive how to specify that a greek letter is equal to a variable.  <em>expression</em> is typically used to display math/greek, but doesn’t work for including values of a variable.  After wasting some time, posted to our statcompsci lsit and got the answer in about 30 seconds from Duncan: the key is the <em>substitute</em> command.  See the c<a href="https://github.com/cboettig/structured-populations/blob/738265dad8c57abd9bda26234e66c9d510511c51/warningsignals/R/tau_dist_montecarlo.R">ode in show_stats function in the tau_dist_montecarlo.R file</a>.[/ref]</p>
-<div class="figure">
+<figure>
 <img src="http://farm6.staticflickr.com/5095/5489563269_c027c1deb3_o.png" />
-</div>
+</figure>
 <p>Supplement describes the functions used by (Dakos <em>et. al.</em> 2008), many of which are from R (some, like linear interpolation, is done in matlab).  They use autocorrelation calculated with <em>“ar.ols”</em>, while I have been using the <em>acf</em> function. I compare the differences with warning_ar.ols with warning_autocorr (acf) (right; <a href="https://github.com/cboettig/structured-populations/blob/d7b49ec24bbcc9c02f36e7688c2f1d8bac80d3ff/warningsignals/demos/compare_ar1_examples.R">code)</a> The ar.ols is substantially slower to evaluate (seconds per call on this data).  I also migrated to the built in cor.test(method=“kendall”) in “stats” package rather than the “Kendall” function in the extension package “Kendall” for consistency.</p>
 <p>Now set to rerun the above results on the detrended, interpolated data…</p>
 <h2 id="references">References</h2>
 <ul>
 <li>Dakos V, Scheffer M, van Nes E, Brovkin V, Petoukhov V and Held H (2008). “Slowing Down as an Early Warning Signal For Abrupt Climate Change.” <em>Proceedings of The National Academy of Sciences</em>, <strong>105</strong>. ISSN 0027-8424, <a href="http://dx.doi.org/10.1073/pnas.0802430105">http://dx.doi.org/10.1073/pnas.0802430105</a>.</li>
 </ul>
+
     </article>
   </div>
   <div class="span4">
     <div class="sidebar">
       <aside prefix="og:http://ogp.me/ns/article#">
   <p> <i class="icon-calendar"></i>
-    <time datetime="2011-03-01T08:51:54-08:00" 
+    <time datetime="2011-03-01T16:51:54Z" 
     property="dc:created">01 Mar 2011</time></p>
   <p><small> modified: <time 
-            datetime="2013-02-19T10:27:50-08:00" 
-            property="dc:modified">19 Feb 2013</time></small></p>
+            datetime="2013-05-07T06:35:55-07:00" 
+            property="dc:modified">07 May 2013</time></small></p>
 
  <br />
 
@@ -213,7 +214,7 @@
   <p><i class="icon-list"></i> Posted in 
      
       <a rel="dc:subject" class="category" 
-         href="/categories.html#ecology">ecology</a>
+         href="//categories.html#ecology">ecology</a>
     
     </p>
 
@@ -221,7 +222,7 @@
     
     <!-- http://schema.org/BlogPosting/keywords -->
     <a rel="og:tag" class="tag" 
-       href="/tags.html#warning-signals">#warning-signals</a>
+       href="//tags.html#warning-signals">#warning-signals</a>
     </p>
 
   <br/>
@@ -230,9 +231,7 @@
 
   <br/>
 
-  <p><small> <i class="icon-barcode"></i> SHA Hash: <a href="https://github.com/cboettig/labnotebook/commit/8c159703b2a376bd2c60f16e0e0d5cea04d20876
-/_posts/2011-03-01-warning-signals-comparing-methods-on-climate-data.md"> 8c159703b2a376bd2c60f16e0e0d5cea04d20876
-</a></small></p>
+  <p><small> <i class="icon-barcode"></i> SHA Hash: <a href="https://github.com/cboettig/labnotebook/commit/cc2e94b67be5274aeb134604bc317b134bac4a95/_posts/2011-03-01-warning-signals-comparing-methods-on-climate-data.md"> cc2e94b67be5274aeb134604bc317b134bac4a95</a></small></p>
     
   <br/>
 

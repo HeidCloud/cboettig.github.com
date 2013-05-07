@@ -24,7 +24,7 @@
 <!-- RDFa Metadata (in DublinCore) -->
 <meta property="dc:title" content="mcmc and bootstrapped likelihood runs on parrotfish tree" />
 <meta property="dc:creator" content="Carl Boettiger" />
-<meta property="dc:date" content="2013-05-03T17:56:56-07:00" />
+<meta property="dc:date" content="2013-05-07T12:11:08-07:00" />
 <meta property="dc:format" content="text/html" />
 <meta property="dc:language" content="en" />
 <meta property="dc:identifier" content="/2011/06/09/mcmc-and-bootstrapped-likelihood-runs-on-parrotfish-tree.html" />
@@ -37,13 +37,13 @@
 <meta property="og:author" content="http://www.carlboettiger.info/index.html#me" />  <!-- Should be Liquid? URI? -->
 <meta property="http://ogp.me/ns/profile#first_name" content="Carl"/>
 <meta property="http://ogp.me/ns/profile#last_name" content="Boettiger"/>
-<meta property="http://ogp.me/ns/article#published_time" content="2013-05-03T17:56:56-07:00" />
+<meta property="http://ogp.me/ns/article#published_time" content="2013-05-07T12:11:08-07:00" />
 <meta property="og:site_name" content="Lab Notebook" /> <!-- Same as dc:source? -->
 <meta property="og:url" content="http://www.carlboettiger.info/2011/06/09/mcmc-and-bootstrapped-likelihood-runs-on-parrotfish-tree.html" />
 <meta property="og:type" content="website" /> 
 <!-- Google Scholar Metadata -->
 <meta name="citation_author" content="Carl Boettiger"/>
-<meta name="citation_date" content="2013-05-03T17:56:56-07:00"/>
+<meta name="citation_date" content="2013-05-07T12:11:08-07:00"/>
 <meta name="citation_title" content="mcmc and bootstrapped likelihood runs on parrotfish tree"/>
 <meta name="citation_journal_title" content="Lab Notebook"/>
 
@@ -159,26 +159,26 @@
 <li><p>n 18: parrotfish_gape.R: alpha,theta indep, vs sigma, theta indep on lever closing ratio (not gape, actually) data.  whoops, ran alpha twice instead.  DEAD</p></li>
 <li><p>n18 Rerun with 800 boot reps.  on “close” lever ratio: SUCCESS</p></li>
 </ul>
-<div class="figure">
+<figure>
 <img src="http://farm6.staticflickr.com/5222/5815759965_0cd67baa47_o.png" />
-</div>
-<div class="figure">
+</figure>
+<figure>
 <img src="http://farm3.staticflickr.com/2012/5815760235_9a712a2713_o.png" />
-</div>
-<div class="figure">
+</figure>
+<figure>
 <img src="http://farm3.staticflickr.com/2173/5816327756_4742c4c72c_o.png" />
-</div>
+</figure>
 <ul>
 <li><p>n16 simulated release: as above on sim (alpha,theta indep, vs sigma, theta global on sim data).  Parallel Error.  DEAD</p></li>
 <li><p>n16 Retry. SUCCESS</p></li>
 </ul>
 <p>Note that this is actually less clear fit to (underlying) alpha model than in the true data. Also, theta is global (differing theta runs faced difficulties, not sure why). <img src="http://farm6.staticflickr.com/5231/5815700214_a606a42554_o.png" /></p>
-<div class="figure">
+<figure>
 <img src="http://farm4.staticflickr.com/3033/5815132713_821c101d0c_o.png" />
-</div>
-<div class="figure">
+</figure>
+<figure>
 <img src="http://farm3.staticflickr.com/2752/5815700830_60c588749b_o.png" />
-</div>
+</figure>
 <p>The two sigma peaks aren’t visible due to y-axis scaling, which will have to be fixed (one is around 0, the other around 5).</p>
 <ul>
 <li><p>n17 gape.y mcmc_demo.R with sigma, theta indep, 1e6 x 8 DEAD (hits bad hastings ratio)</p></li>
@@ -212,17 +212,18 @@ if(<span class="kw">length</span>(args)==<span class="dv">0</span>){
 <span class="kw">print</span>(a*<span class="dv">2</span>)
 <span class="kw">print</span>(b*<span class="dv">3</span>)</code></pre>
 <p>Always forget how to do block commenting in VIM: ((from <a href="http://hurley.wordpress.com/2007/06/13/vim-tip-comment-out-multiple-lines/">here</a>)) Easiest to just select in visual mode (v) and then do :s/<sup>/</sup>#/</p>
+
     </article>
   </div>
   <div class="span4">
     <div class="sidebar">
       <aside prefix="og:http://ogp.me/ns/article#">
   <p> <i class="icon-calendar"></i>
-    <time datetime="2011-06-09T09:48:42-07:00" 
+    <time datetime="2011-06-09T16:48:42Z" 
     property="dc:created">09 Jun 2011</time></p>
   <p><small> modified: <time 
-            datetime="2013-02-19T10:27:50-08:00" 
-            property="dc:modified">19 Feb 2013</time></small></p>
+            datetime="2013-05-07T06:35:55-07:00" 
+            property="dc:modified">07 May 2013</time></small></p>
 
  <br />
 
@@ -245,7 +246,7 @@ if(<span class="kw">length</span>(args)==<span class="dv">0</span>){
   <p><i class="icon-list"></i> Posted in 
      
       <a rel="dc:subject" class="category" 
-         href="/categories.html#evolution">evolution</a>
+         href="//categories.html#evolution">evolution</a>
     
     </p>
 
@@ -258,9 +259,7 @@ if(<span class="kw">length</span>(args)==<span class="dv">0</span>){
 
   <br/>
 
-  <p><small> <i class="icon-barcode"></i> SHA Hash: <a href="https://github.com/cboettig/labnotebook/commit/8c159703b2a376bd2c60f16e0e0d5cea04d20876
-/_posts/2011-06-09-mcmc-and-bootstrapped-likelihood-runs-on-parrotfish-tree.md"> 8c159703b2a376bd2c60f16e0e0d5cea04d20876
-</a></small></p>
+  <p><small> <i class="icon-barcode"></i> SHA Hash: <a href="https://github.com/cboettig/labnotebook/commit/cc2e94b67be5274aeb134604bc317b134bac4a95/_posts/2011-06-09-mcmc-and-bootstrapped-likelihood-runs-on-parrotfish-tree.md"> cc2e94b67be5274aeb134604bc317b134bac4a95</a></small></p>
     
   <br/>
 

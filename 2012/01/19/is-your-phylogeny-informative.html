@@ -24,7 +24,7 @@
 <!-- RDFa Metadata (in DublinCore) -->
 <meta property="dc:title" content="Is your phylogeny informative?" />
 <meta property="dc:creator" content="Carl Boettiger" />
-<meta property="dc:date" content="2013-05-03T17:56:56-07:00" />
+<meta property="dc:date" content="2013-05-07T12:11:08-07:00" />
 <meta property="dc:format" content="text/html" />
 <meta property="dc:language" content="en" />
 <meta property="dc:identifier" content="/2012/01/19/is-your-phylogeny-informative.html" />
@@ -37,13 +37,13 @@
 <meta property="og:author" content="http://www.carlboettiger.info/index.html#me" />  <!-- Should be Liquid? URI? -->
 <meta property="http://ogp.me/ns/profile#first_name" content="Carl"/>
 <meta property="http://ogp.me/ns/profile#last_name" content="Boettiger"/>
-<meta property="http://ogp.me/ns/article#published_time" content="2013-05-03T17:56:56-07:00" />
+<meta property="http://ogp.me/ns/article#published_time" content="2013-05-07T12:11:08-07:00" />
 <meta property="og:site_name" content="Lab Notebook" /> <!-- Same as dc:source? -->
 <meta property="og:url" content="http://www.carlboettiger.info/2012/01/19/is-your-phylogeny-informative.html" />
 <meta property="og:type" content="website" /> 
 <!-- Google Scholar Metadata -->
 <meta name="citation_author" content="Carl Boettiger"/>
-<meta name="citation_date" content="2013-05-03T17:56:56-07:00"/>
+<meta name="citation_date" content="2013-05-07T12:11:08-07:00"/>
 <meta name="citation_title" content="Is your phylogeny informative?"/>
 <meta name="citation_journal_title" content="Lab Notebook"/>
 
@@ -143,7 +143,7 @@
 <p>I didn’t set out to write this paper.  I set out to write a very different paper, introducing a new phylogenetic method for continuous traits that estimates changes in evolutionary constraint.  This adds _even more _parameters than already present in rich models multi-peak OU process, and I wanted to know if it could be justified – if there really was enough information to play the game we already had, before I went and made the situation even worse. Trying to find something rigorous enough to hang my hat on, I ended up writing this paper.</p>
 <h3 id="the-short-of-it">The short of it</h3>
 <p>There’s essentially three conclusions I draw from the paper.</p>
-<ol style="list-style-type: decimal">
+<ol type="1">
 <li><p>AIC is not a reliable way to select models.</p></li>
 <li><p>Certain parameters, such as <span class="math">\(\lambda\)</span>, a measure of “phylogenetic signal,” (Pagel, 1999) are going to be really hard to estimate.</p></li>
 <li><p>BUT as long as we <em>simulate extensively</em> to test model choice and parameter uncertainty, we won’t be misled by either of these.  So it’s okay to drink the koolaid (Losos, 2011), but <strong>drink responsibly.</strong></p></li>
@@ -152,9 +152,9 @@
 <p>I really have two problems with AIC and other information criteria when it comes to phylogenetic methods.  One is that it’s too easy to simulate data from one model, and have the information criteria choose a ridiculously over-parameterized model instead.  In one example, the wrong model has a <span class="math">\(\Delta\)</span>AIC of 10 points over the correct model.</p>
 <p>But a more basic problem is that it’s just not designed for hypothesis testing – it doesn’t care how much data you have, it doesn’t give a notion of significance.  If we’re ascribing biological meaning to different models as different hypotheses, we need want a measure of uncertainty.</p>
 <p>When estimating parameters that scale branch length, I think we must be cautious because these are really data-hungry, and don’t work well on small trees. Check out how few of these estimates of lambda on 100 replicate datasets hit near the correct value shown by vertical line:</p>
-<div class="figure">
+<figure>
 <img src="http://farm8.staticflickr.com/7014/6727029515_bcfe58aedb_o.png" />
-</div>
+</figure>
 <p>The package commands are explained in more detail in the <strong><a href="http://cran.r-project.org/web/packages/pmc/vignettes/pmc_tutorial.pdf">package vignette</a></strong>, but the idea is simple. Running the pmc comparison between two models (for the model-choice step) looks like this:</p>
 <pre class="sourceCode r"><code class="sourceCode r">bm_v_lambda &lt;- <span class="kw">pmc</span>(geospiza.tree, geospiza.data[<span class="st">&quot;wingL&quot;</span>],
   <span class="st">&quot;BM&quot;</span>, <span class="st">&quot;lambda&quot;</span>, <span class="dt">nboot=</span><span class="dv">100</span>)</code></pre>
@@ -164,9 +164,9 @@
 <p>To view the model comparison, just plot the pmc result:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(bm_v_lambda)</code></pre>
 <p>The substantial overlap in the likelihood ratios after simulating under either model indicate that we cannot choose between BM and lambda in this case.  I’ll leave the paper to explain this approach in more detail, but it’s just simulation and refitting.</p>
-<div class="figure">
+<figure>
 <img src="http://farm8.staticflickr.com/7026/6727293465_4a2a545fdf_o.png" />
-</div>
+</figure>
 <p>You could just bootstrap the likelihoods or for nested models, look at the parameter distributions, but you get the maximum <em>statistical power</em> from the ratio (says Neyman-Pearson Lemma).</p>
 <h3 id="a-technical-note-mix-and-match-formats">A technical note: mix and match formats</h3>
 <p>Many users don’t like going between ouch format and ape/phylo formats. The pmc package doesn’t care what you use, feel free to mix and match. In case the conversion tools are useful, I’ve provided functions to move your data and trees back and forth between those formats too.  See <em>format</em>data()_ to data-frames and <em>convert()</em> to toggle between tree formats.</p>
@@ -186,17 +186,18 @@
 <li><p>Freckleton R and Harvey P (2006). “Detecting Non-Brownian Trait Evolution in Adaptive Radiations.” <em>Plos Biology</em>, <b>4</b>. ISSN 1544-9173, <a href="http://dx.doi.org/10.1371/journal.pbio.0040373">http://dx.doi.org/10.1371/journal.pbio.0040373</a>.</p></li>
 <li><p>Harmon L, Losos J, Jonathan Davies T, Gillespie R, Gittleman J, Bryan Jennings W, Kozak K, McPeek M, Moreno-Roark F, Near T, Purvis A, Ricklefs R, Schluter D, Schulte II J, Seehausen O, Sidlauskas B, Torres-Carvajal O, Weir J and Mooers A (2010). “Early Bursts of Body Size And Shape Evolution Are Rare in Comparative Data.” <em>Evolution</em>. <a href="http://dx.doi.org/10.1111/j.1558-5646.2010.01025.x">http://dx.doi.org/10.1111/j.1558-5646.2010.01025.x</a>.</p></li>
 </ul>
+
     </article>
   </div>
   <div class="span4">
     <div class="sidebar">
       <aside prefix="og:http://ogp.me/ns/article#">
   <p> <i class="icon-calendar"></i>
-    <time datetime="2012-01-19T06:10:49-08:00" 
+    <time datetime="2012-01-19T14:10:49Z" 
     property="dc:created">19 Jan 2012</time></p>
   <p><small> modified: <time 
-            datetime="2013-02-19T10:27:50-08:00" 
-            property="dc:modified">19 Feb 2013</time></small></p>
+            datetime="2013-05-07T06:35:55-07:00" 
+            property="dc:modified">07 May 2013</time></small></p>
 
  <br />
 
@@ -219,7 +220,7 @@
   <p><i class="icon-list"></i> Posted in 
      
       <a rel="dc:subject" class="category" 
-         href="/categories.html#evolution">evolution</a>
+         href="//categories.html#evolution">evolution</a>
     
     </p>
 
@@ -227,26 +228,24 @@
     
     <!-- http://schema.org/BlogPosting/keywords -->
     <a rel="og:tag" class="tag" 
-       href="/tags.html#my-publications">#my-publications</a>, 
+       href="//tags.html#my-publications">#my-publications</a>, 
     
     <!-- http://schema.org/BlogPosting/keywords -->
     <a rel="og:tag" class="tag" 
-       href="/tags.html#R">#R</a>, 
+       href="//tags.html#R">#R</a>, 
     
     <!-- http://schema.org/BlogPosting/keywords -->
     <a rel="og:tag" class="tag" 
-       href="/tags.html#research-blogging">#research-blogging</a>
+       href="//tags.html#research-blogging">#research-blogging</a>
     </p>
 
   <br/>
 
-   <p style="font-style:italic"> <i class="icon-signal"></i> pageviews: 136</p>
+   <p style="font-style:italic"> <i class="icon-signal"></i> pageviews: 137</p>
 
   <br/>
 
-  <p><small> <i class="icon-barcode"></i> SHA Hash: <a href="https://github.com/cboettig/labnotebook/commit/8c159703b2a376bd2c60f16e0e0d5cea04d20876
-/_posts/2012-01-19-is-your-phylogeny-informative.md"> 8c159703b2a376bd2c60f16e0e0d5cea04d20876
-</a></small></p>
+  <p><small> <i class="icon-barcode"></i> SHA Hash: <a href="https://github.com/cboettig/labnotebook/commit/cc2e94b67be5274aeb134604bc317b134bac4a95/_posts/2012-01-19-is-your-phylogeny-informative.md"> cc2e94b67be5274aeb134604bc317b134bac4a95</a></small></p>
     
   <br/>
 

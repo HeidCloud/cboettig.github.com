@@ -24,7 +24,7 @@
 <!-- RDFa Metadata (in DublinCore) -->
 <meta property="dc:title" content="Algorithms Discussion Group: algorithms Continued" />
 <meta property="dc:creator" content="Carl Boettiger" />
-<meta property="dc:date" content="2013-05-03T17:56:56-07:00" />
+<meta property="dc:date" content="2013-05-07T12:11:08-07:00" />
 <meta property="dc:format" content="text/html" />
 <meta property="dc:language" content="en" />
 <meta property="dc:identifier" content="/2011/04/18/algorithms-discussion-group-abc-continued.html" />
@@ -37,13 +37,13 @@
 <meta property="og:author" content="http://www.carlboettiger.info/index.html#me" />  <!-- Should be Liquid? URI? -->
 <meta property="http://ogp.me/ns/profile#first_name" content="Carl"/>
 <meta property="http://ogp.me/ns/profile#last_name" content="Boettiger"/>
-<meta property="http://ogp.me/ns/article#published_time" content="2013-05-03T17:56:56-07:00" />
+<meta property="http://ogp.me/ns/article#published_time" content="2013-05-07T12:11:08-07:00" />
 <meta property="og:site_name" content="Lab Notebook" /> <!-- Same as dc:source? -->
 <meta property="og:url" content="http://www.carlboettiger.info/2011/04/18/algorithms-discussion-group-abc-continued.html" />
 <meta property="og:type" content="website" /> 
 <!-- Google Scholar Metadata -->
 <meta name="citation_author" content="Carl Boettiger"/>
-<meta name="citation_date" content="2013-05-03T17:56:56-07:00"/>
+<meta name="citation_date" content="2013-05-07T12:11:08-07:00"/>
 <meta name="citation_title" content="Algorithms Discussion Group: algorithms Continued"/>
 <meta name="citation_journal_title" content="Lab Notebook"/>
 
@@ -145,9 +145,9 @@
 <p><span class="math">\[\theta_i^* = \theta_i - b(S(X_i) - S(X_0)) \]</span></p>
 <p>where <em>b</em> is the slope of the regression, <em>S(X</em>i)_ is the summary stat on each of the simulated data in the regression, and $ S(X_0) $ is the summary statistic of the observed data. The distribution of these $ _i^* $ is the posterior distribution of theta. (see Figure 1 of (Csilléry <em>et. al.</em> 2010)).</p>
 <p>[gist id=914487]</p>
-<div class="figure">
+<figure>
 <img src="http://farm6.staticflickr.com/5070/5632508759_0e1c988444_o.png" />
-</div>
+</figure>
 <h2 id="comparing-models">Comparing models</h2>
 <p>We consider the alternative model that the data comes from the gamma distribution, rather than the normal distribution, in the example above. We’d like to compare the models by Bayes factors. ((We are just using the single summary statistic, the mean, in both cases. This should be a sufficient statistic to estimate the mean of the normal, the mean of the gamma model is the product of the rate parameter and the shape parameter.))</p>
 <p>The Bayes Factor is the ratio of the probability of the data under model 1 vs the probability of the data under model 2, which we get by integrating out (marginalizing over) the possible parameter values of the model:</p>
@@ -174,17 +174,18 @@
 <li><p>Wegmann D, Leuenberger C and Excoffier L (2009). “Efficient Approximate Bayesian Computation Coupled With Markov Chain Monte Carlo Without Likelihood.” <em>Genetics</em>, <strong>182</strong>. ISSN 0016-6731, <a href="http://dx.doi.org/10.1534/genetics.109.102509">http://dx.doi.org/10.1534/genetics.109.102509</a>.</p></li>
 <li><p>Marjoram P (2003). “Markov Chain Monte Carlo Without Likelihoods.” <em>Proceedings of The National Academy of Sciences</em>, <strong>100</strong>. ISSN 0027-8424, <a href="http://dx.doi.org/10.1073/pnas.0306899100">http://dx.doi.org/10.1073/pnas.0306899100</a>.</p></li>
 </ul>
+
     </article>
   </div>
   <div class="span4">
     <div class="sidebar">
       <aside prefix="og:http://ogp.me/ns/article#">
   <p> <i class="icon-calendar"></i>
-    <time datetime="2011-04-18T07:11:24-07:00" 
+    <time datetime="2011-04-18T14:11:24Z" 
     property="dc:created">18 Apr 2011</time></p>
   <p><small> modified: <time 
-            datetime="2013-02-24T13:48:50-08:00" 
-            property="dc:modified">24 Feb 2013</time></small></p>
+            datetime="2013-05-07T06:35:55-07:00" 
+            property="dc:modified">07 May 2013</time></small></p>
 
  <br />
 
@@ -207,7 +208,7 @@
   <p><i class="icon-list"></i> Posted in 
      
       <a rel="dc:subject" class="category" 
-         href="/categories.html#computation">computation</a>
+         href="//categories.html#computation">computation</a>
     
     </p>
 
@@ -215,7 +216,7 @@
     
     <!-- http://schema.org/BlogPosting/keywords -->
     <a rel="og:tag" class="tag" 
-       href="/tags.html#algorithms">#algorithms</a>
+       href="//tags.html#algorithms">#algorithms</a>
     </p>
 
   <br/>
@@ -224,9 +225,7 @@
 
   <br/>
 
-  <p><small> <i class="icon-barcode"></i> SHA Hash: <a href="https://github.com/cboettig/labnotebook/commit/9648b79c81423f32d5d537fe45d5046907383da3
-/_posts/2011-04-18-algorithms-discussion-group-abc-continued.md"> 9648b79c81423f32d5d537fe45d5046907383da3
-</a></small></p>
+  <p><small> <i class="icon-barcode"></i> SHA Hash: <a href="https://github.com/cboettig/labnotebook/commit/cc2e94b67be5274aeb134604bc317b134bac4a95/_posts/2011-04-18-algorithms-discussion-group-abc-continued.md"> cc2e94b67be5274aeb134604bc317b134bac4a95</a></small></p>
     
   <br/>
 

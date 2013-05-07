@@ -24,7 +24,7 @@
 <!-- RDFa Metadata (in DublinCore) -->
 <meta property="dc:title" content="Crashing stocks and optimal harvesting effort on Allee effects" />
 <meta property="dc:creator" content="Carl Boettiger" />
-<meta property="dc:date" content="2013-05-03T17:56:56-07:00" />
+<meta property="dc:date" content="2013-05-07T12:11:08-07:00" />
 <meta property="dc:format" content="text/html" />
 <meta property="dc:language" content="en" />
 <meta property="dc:identifier" content="/2011/11/09/crashing-stocks-and-optimal-harvesting-effort-on-allee-effects.html" />
@@ -37,13 +37,13 @@
 <meta property="og:author" content="http://www.carlboettiger.info/index.html#me" />  <!-- Should be Liquid? URI? -->
 <meta property="http://ogp.me/ns/profile#first_name" content="Carl"/>
 <meta property="http://ogp.me/ns/profile#last_name" content="Boettiger"/>
-<meta property="http://ogp.me/ns/article#published_time" content="2013-05-03T17:56:56-07:00" />
+<meta property="http://ogp.me/ns/article#published_time" content="2013-05-07T12:11:08-07:00" />
 <meta property="og:site_name" content="Lab Notebook" /> <!-- Same as dc:source? -->
 <meta property="og:url" content="http://www.carlboettiger.info/2011/11/09/crashing-stocks-and-optimal-harvesting-effort-on-allee-effects.html" />
 <meta property="og:type" content="website" /> 
 <!-- Google Scholar Metadata -->
 <meta name="citation_author" content="Carl Boettiger"/>
-<meta name="citation_date" content="2013-05-03T17:56:56-07:00"/>
+<meta name="citation_date" content="2013-05-07T12:11:08-07:00"/>
 <meta name="citation_title" content="Crashing stocks and optimal harvesting effort on Allee effects"/>
 <meta name="citation_journal_title" content="Lab Notebook"/>
 
@@ -146,13 +146,13 @@
 <p>As written this differs from our earlier solutions a couple respects – the growth function applies to the unharvested population, which then experiences harvesting mortality, and the control variable is fishing effort, not harvest.</p>
 <p>We have a bifurcation point induced by increasing effort when <span class="math">\[  \left(\frac{ab}{1+e}\right)^2-4b  = 0 \]</span> <span class="math">\[  e^* = \frac{a\sqrt{b}-2}{2}   \]</span></p>
 <p>Implementing this (see <a href="http://www.carlboettiger.info/archives/3176">earlier notes</a> for implementation) in stochastic optimal control, we see that we now harvest continuously, not just when population exceeds Reed’s S escapement level (black line, defined in this context as the highest value of the population size at which we do not harvest). More to the point, note that we often but not always apply an effort (green path) that exceeds $ e^* $, (dotted green line).</p>
-<div class="figure">
+<figure>
 <img src="http://farm7.staticflickr.com/6060/6329889835_0e813113d7_o.png" />
-</div>
+</figure>
 <p>Despite this, crashes are not that common. We observe 18/100 populations that crash:</p>
-<div class="figure">
+<figure>
 <img src="http://farm7.staticflickr.com/6050/6331684019_8ec10867dc_o.png" />
-</div>
+</figure>
 <p>The population dynamics under optimal harvesting for the 100 replicates are shown as black lines, with the overall average trend (light blue line) and standard deviation (blue ribbon) overlaid. A few population crashes can be seen. The black dotted line indicates the allee threshold - note that we see a few populations that are stochastically rescued from below this threshold.</p>
 <p>The green lines shows the harvesting effort (mean and sd shown in the ribbon as before). Note the occasional spikes in harvest effort matching populations that dip below the (unharvested) Allee threshold - with the current profit/cost model it’s worth fishing these out as fast as possible.</p>
 <p>The most interesting observation is the dashed green line – the tipping point at which effort destroys the stable point. Harvesting at that level, the only stable point in the system is extinction - but because it is the control variable, it can simply be relaxed next year, allowing the population to recover (as long as the current population isn’t below the allee threshold). Note that on average the effort stays below this level.</p>
@@ -183,17 +183,18 @@
 <li><p>Dulvy N, Sadovy Y and Reynolds J (2003). “Extinction Vulnerability in Marine Populations.” <em>Fish And Fisheries</em>, <strong>4</strong>. ISSN 1467-2960, <a href="http://dx.doi.org/10.1046/j.1467-2979.2003.00105.x">http://dx.doi.org/10.1046/j.1467-2979.2003.00105.x</a>.</p></li>
 <li><p>Graham N, Chabanet P, Evans R, Jennings S, Letourneur Y, Aaron MacNeil M, McClanahan T, Öhman M, Polunin N and Wilson S (2011). “Extinction Vulnerability of Coral Reef Fishes.” <em>Ecology Letters</em>, <strong>14</strong>. <a href="http://dx.doi.org/10.1111/j.1461-0248.2011.01592.x">http://dx.doi.org/10.1111/j.1461-0248.2011.01592.x</a>.</p></li>
 </ul>
+
     </article>
   </div>
   <div class="span4">
     <div class="sidebar">
       <aside prefix="og:http://ogp.me/ns/article#">
   <p> <i class="icon-calendar"></i>
-    <time datetime="2011-11-09T15:34:48-08:00" 
+    <time datetime="2011-11-09T23:34:48Z" 
     property="dc:created">09 Nov 2011</time></p>
   <p><small> modified: <time 
-            datetime="2013-02-19T10:27:50-08:00" 
-            property="dc:modified">19 Feb 2013</time></small></p>
+            datetime="2013-05-07T06:35:55-07:00" 
+            property="dc:modified">07 May 2013</time></small></p>
 
  <br />
 
@@ -216,7 +217,7 @@
   <p><i class="icon-list"></i> Posted in 
      
       <a rel="dc:subject" class="category" 
-         href="/categories.html#ecology">ecology</a>
+         href="//categories.html#ecology">ecology</a>
     
     </p>
 
@@ -224,7 +225,7 @@
     
     <!-- http://schema.org/BlogPosting/keywords -->
     <a rel="og:tag" class="tag" 
-       href="/tags.html#warning-signals">#warning-signals</a>
+       href="//tags.html#warning-signals">#warning-signals</a>
     </p>
 
   <br/>
@@ -233,9 +234,7 @@
 
   <br/>
 
-  <p><small> <i class="icon-barcode"></i> SHA Hash: <a href="https://github.com/cboettig/labnotebook/commit/8c159703b2a376bd2c60f16e0e0d5cea04d20876
-/_posts/2011-11-09-crashing-stocks-and-optimal-harvesting-effort-on-allee-effects.md"> 8c159703b2a376bd2c60f16e0e0d5cea04d20876
-</a></small></p>
+  <p><small> <i class="icon-barcode"></i> SHA Hash: <a href="https://github.com/cboettig/labnotebook/commit/cc2e94b67be5274aeb134604bc317b134bac4a95/_posts/2011-11-09-crashing-stocks-and-optimal-harvesting-effort-on-allee-effects.md"> cc2e94b67be5274aeb134604bc317b134bac4a95</a></small></p>
     
   <br/>
 

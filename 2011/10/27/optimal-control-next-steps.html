@@ -24,7 +24,7 @@
 <!-- RDFa Metadata (in DublinCore) -->
 <meta property="dc:title" content="Optimal control sample problems (Mostly continuous time by Pontryagin principle)" />
 <meta property="dc:creator" content="Carl Boettiger" />
-<meta property="dc:date" content="2013-05-03T17:56:56-07:00" />
+<meta property="dc:date" content="2013-05-07T12:11:08-07:00" />
 <meta property="dc:format" content="text/html" />
 <meta property="dc:language" content="en" />
 <meta property="dc:identifier" content="/2011/10/27/optimal-control-next-steps.html" />
@@ -37,13 +37,13 @@
 <meta property="og:author" content="http://www.carlboettiger.info/index.html#me" />  <!-- Should be Liquid? URI? -->
 <meta property="http://ogp.me/ns/profile#first_name" content="Carl"/>
 <meta property="http://ogp.me/ns/profile#last_name" content="Boettiger"/>
-<meta property="http://ogp.me/ns/article#published_time" content="2013-05-03T17:56:56-07:00" />
+<meta property="http://ogp.me/ns/article#published_time" content="2013-05-07T12:11:08-07:00" />
 <meta property="og:site_name" content="Lab Notebook" /> <!-- Same as dc:source? -->
 <meta property="og:url" content="http://www.carlboettiger.info/2011/10/27/optimal-control-next-steps.html" />
 <meta property="og:type" content="website" /> 
 <!-- Google Scholar Metadata -->
 <meta name="citation_author" content="Carl Boettiger"/>
-<meta name="citation_date" content="2013-05-03T17:56:56-07:00"/>
+<meta name="citation_date" content="2013-05-07T12:11:08-07:00"/>
 <meta name="citation_title" content="Optimal control sample problems (Mostly continuous time by Pontryagin principle)"/>
 <meta name="citation_journal_title" content="Lab Notebook"/>
 
@@ -147,22 +147,22 @@
 <li><p>Boundary constraints: <span class="math">\(x(0) = X_0 \qquad x(T) = X_T\)</span></p></li>
 </ul>
 <p>See problem statement and analytic BVP formulation details in <a href="http://www.carlboettiger.info/archives/3001">this post</a>. Additionally we scale the variables appropriately. Then we can begin with some basic parameter exploration in the original model formulation. We solve by collocation:</p>
-<div class="figure">
+<figure>
 <img src="http://farm7.staticflickr.com/6232/6286772118_872b47a7f7_o.png" />
-</div>
+</figure>
 <p>Decreasing the ecological dynamics timescale (growth rate <span class="math">\(\alpha\)</span> ) leads to less fishing eventually but also slower decrease in fishing rate:</p>
-<div class="figure">
+<figure>
 <img src="http://farm7.staticflickr.com/6046/6286772066_b37c2e7588_o.png" />
-</div>
+</figure>
 <p>Increased discounting means fish faster now and….</p>
-<div class="figure">
+<figure>
 <img src="http://farm7.staticflickr.com/6223/6286391925_da5987dce6_o.png" />
-</div>
+</figure>
 <p>…whoops, put fish back in the sea later (negative harvest).</p>
 <p>Control on harvest directly rather than harvest effort gives ill-behaved solution:</p>
-<div class="figure">
+<figure>
 <img src="http://farm7.staticflickr.com/6094/6287043786_05e270fa1d_o.png" />
-</div>
+</figure>
 <ul>
 <li><p><strong>Code <a href="https://github.com/cboettig/pdg_control/blob/1fb870e5a22a54fdb44f8e25ad65a74822c60188/training_prob2_collocation.R">defining the system</a></strong>.</p></li>
 <li><p><strong>Code for <a href="https://github.com/cboettig/pdg_control/blob/1fb870e5a22a54fdb44f8e25ad65a74822c60188/run_collocation.R">running the examples</a></strong>.</p></li>
@@ -177,7 +177,7 @@
 <p>Looks like this needs a dynamic programming approach.</p>
 <h3 id="higher-dimensional-state-equations">Higher-dimensional state equations</h3>
 <h3 id="steps-check-list">Steps check list</h3>
-<ol style="list-style-type: decimal">
+<ol type="1">
 <li><p>Simple boundary-value problem solution by collocation. <a href="http://www.carlboettiger.info/archives/3001">Example</a>.</p></li>
 <li><p>Chebychev polynomial collocation</p></li>
 <li><p>Jim’s additional examples. Matlab examples.</p></li>
@@ -187,17 +187,18 @@
 <li><p>Stochastic Control</p></li>
 <li><p>Horan 2 dimensional system</p></li>
 </ol>
+
     </article>
   </div>
   <div class="span4">
     <div class="sidebar">
       <aside prefix="og:http://ogp.me/ns/article#">
   <p> <i class="icon-calendar"></i>
-    <time datetime="2011-10-27T06:53:50-07:00" 
+    <time datetime="2011-10-27T13:53:50Z" 
     property="dc:created">27 Oct 2011</time></p>
   <p><small> modified: <time 
-            datetime="2013-02-19T10:27:50-08:00" 
-            property="dc:modified">19 Feb 2013</time></small></p>
+            datetime="2013-05-07T06:35:55-07:00" 
+            property="dc:modified">07 May 2013</time></small></p>
 
  <br />
 
@@ -220,7 +221,7 @@
   <p><i class="icon-list"></i> Posted in 
      
       <a rel="dc:subject" class="category" 
-         href="/categories.html#ecology">ecology</a>
+         href="//categories.html#ecology">ecology</a>
     
     </p>
 
@@ -228,18 +229,16 @@
     
     <!-- http://schema.org/BlogPosting/keywords -->
     <a rel="og:tag" class="tag" 
-       href="/tags.html#pdg-control">#pdg-control</a>
+       href="//tags.html#pdg-control">#pdg-control</a>
     </p>
 
   <br/>
 
-   <p style="font-style:italic"> <i class="icon-signal"></i> pageviews: 178</p>
+   <p style="font-style:italic"> <i class="icon-signal"></i> pageviews: 179</p>
 
   <br/>
 
-  <p><small> <i class="icon-barcode"></i> SHA Hash: <a href="https://github.com/cboettig/labnotebook/commit/8c159703b2a376bd2c60f16e0e0d5cea04d20876
-/_posts/2011-10-27-optimal-control-next-steps.md"> 8c159703b2a376bd2c60f16e0e0d5cea04d20876
-</a></small></p>
+  <p><small> <i class="icon-barcode"></i> SHA Hash: <a href="https://github.com/cboettig/labnotebook/commit/cc2e94b67be5274aeb134604bc317b134bac4a95/_posts/2011-10-27-optimal-control-next-steps.md"> cc2e94b67be5274aeb134604bc317b134bac4a95</a></small></p>
     
   <br/>
 

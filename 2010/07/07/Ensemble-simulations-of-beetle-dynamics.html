@@ -24,7 +24,7 @@
 <!-- RDFa Metadata (in DublinCore) -->
 <meta property="dc:title" content="Ensemble simulations of beetle dynamics" />
 <meta property="dc:creator" content="Carl Boettiger" />
-<meta property="dc:date" content="2013-05-03T17:56:56-07:00" />
+<meta property="dc:date" content="2013-05-07T12:11:08-07:00" />
 <meta property="dc:format" content="text/html" />
 <meta property="dc:language" content="en" />
 <meta property="dc:identifier" content="/2010/07/07/Ensemble-simulations-of-beetle-dynamics.html" />
@@ -37,13 +37,13 @@
 <meta property="og:author" content="http://www.carlboettiger.info/index.html#me" />  <!-- Should be Liquid? URI? -->
 <meta property="http://ogp.me/ns/profile#first_name" content="Carl"/>
 <meta property="http://ogp.me/ns/profile#last_name" content="Boettiger"/>
-<meta property="http://ogp.me/ns/article#published_time" content="2013-05-03T17:56:56-07:00" />
+<meta property="http://ogp.me/ns/article#published_time" content="2013-05-07T12:11:08-07:00" />
 <meta property="og:site_name" content="Lab Notebook" /> <!-- Same as dc:source? -->
 <meta property="og:url" content="http://www.carlboettiger.info/2010/07/07/Ensemble-simulations-of-beetle-dynamics.html" />
 <meta property="og:type" content="website" /> 
 <!-- Google Scholar Metadata -->
 <meta name="citation_author" content="Carl Boettiger"/>
-<meta name="citation_date" content="2013-05-03T17:56:56-07:00"/>
+<meta name="citation_date" content="2013-05-07T12:11:08-07:00"/>
 <meta name="citation_title" content="Ensemble simulations of beetle dynamics"/>
 <meta name="citation_journal_title" content="Lab Notebook"/>
 
@@ -139,32 +139,33 @@
 <div class="row">
   <div class="span7 offset1">
     <article>
-    <div class="figure">
-<img src="http://openwetware.org/images/thumb/1/15/Gamma_beetle_ensemble_ibm.png/300px-Gamma_beetle_ensemble_ibm.png" alt="code Fig 1" /><p class="caption">code Fig 1</p>
-</div>
-<div class="figure">
-<img src="/skins/common/images/magnify-clip.png" alt="image" /><p class="caption">image</p>
-</div>
+    <figure>
+<img src="http://openwetware.org/images/thumb/1/15/Gamma_beetle_ensemble_ibm.png/300px-Gamma_beetle_ensemble_ibm.png" alt="code Fig 1" /><figcaption>code Fig 1</figcaption>
+</figure>
+<figure>
+<img src="/skins/common/images/magnify-clip.png" alt="image" /><figcaption>image</figcaption>
+</figure>
 <p><a href="http://github.com/cboettig/structured-populations/commit/efdfa0a033b7597824797af8659397a7bf7b4f3b" title="http://github.com/cboettig/structured-populations/commit/efdfa0a033b7597824797af8659397a7bf7b4f3b">code</a> <strong>Fig 1</strong></p>
-<div class="figure">
-<img src="http://openwetware.org/images/thumb/d/da/Ibm_compare.png/300px-Ibm_compare.png" alt="code Fig 2" /><p class="caption">code Fig 2</p>
-</div>
-<div class="figure">
-<img src="/skins/common/images/magnify-clip.png" alt="image" /><p class="caption">image</p>
-</div>
+<figure>
+<img src="http://openwetware.org/images/thumb/d/da/Ibm_compare.png/300px-Ibm_compare.png" alt="code Fig 2" /><figcaption>code Fig 2</figcaption>
+</figure>
+<figure>
+<img src="/skins/common/images/magnify-clip.png" alt="image" /><figcaption>image</figcaption>
+</figure>
 <p><a href="http://github.com/cboettig/structured-populations/commit/efdfa0a033b7597824797af8659397a7bf7b4f3b" title="http://github.com/cboettig/structured-populations/commit/efdfa0a033b7597824797af8659397a7bf7b4f3b">code</a> <strong>Fig 2</strong></p>
-<div class="figure">
-<img src="http://openwetware.org/images/thumb/3/30/Stable_nodes.png/300px-Stable_nodes.png" alt="code Fig 3" /><p class="caption">code Fig 3</p>
-</div>
-<div class="figure">
-<img src="/skins/common/images/magnify-clip.png" alt="image" /><p class="caption">image</p>
-</div>
+<figure>
+<img src="http://openwetware.org/images/thumb/3/30/Stable_nodes.png/300px-Stable_nodes.png" alt="code Fig 3" /><figcaption>code Fig 3</figcaption>
+</figure>
+<figure>
+<img src="/skins/common/images/magnify-clip.png" alt="image" /><figcaption>image</figcaption>
+</figure>
 <p><a href="http://github.com/cboettig/structured-populations/commit/4f2d9ec4a0adf5170436f5ade875da92f39593c1" title="http://github.com/cboettig/structured-populations/commit/4f2d9ec4a0adf5170436f5ade875da92f39593c1">code</a> <strong>Fig 3</strong></p>
 <p>Exploring full ensemble simulations of beetle dynamics. Linear noise approximations (<strong>Fig 2</strong>) show divergent noise under oscillating conditions (<strong>Fig 2</strong> lower panel), though this may be an artifact of the approximation, which applies only for finite time calculations.</p>
 <p><br /> Note that mean dynamics agree, and oscillations damp out, <strong>Fig 1</strong> simulation means (circles) fall exactly on predicted lines. Variance dynamics do not agree. <strong>Fig 1:</strong> plot shows variances from individual based simulation (invisible in fig 1), which seem to reach stable values.</p>
 <p><br /> <strong>Fig 3</strong> Unfortunately the variance dynamics do not seem to match between individual simulation and analytic approx for the stable node solution either, even though the mean dynamics agree. (yellow circles hard to see, click on image for larger) but fall directly on mean line but well above variance prediction…) Reason for the disagreement is unclear, bears further investigation before the Fig 1 conclusion can be certain.</p>
 <h3 id="computing-implementation">Computing implementation</h3>
 <p>Disabled compiled support of openMP in the simulation. For some reason when called from R, the code runs the code on each processor with the same replicate index, in addition to performing all the replicates. Because I need += to add up all the members in a given class, the second time through using the same index it continues to increment the value, getting the wrong number in the process. Disabling openMP from R for the moment by removing the flags from the Makevars file as a work-around.</p>
+
     </article>
   </div>
   <div class="span4">
@@ -174,8 +175,8 @@
     <time datetime="2010-07-07T00:00:00-07:00" 
     property="dc:created">07 Jul 2010</time></p>
   <p><small> modified: <time 
-            datetime="2013-02-19T10:27:50-08:00" 
-            property="dc:modified">19 Feb 2013</time></small></p>
+            datetime="2013-05-07T06:35:55-07:00" 
+            property="dc:modified">07 May 2013</time></small></p>
 
  <br />
 
@@ -198,7 +199,7 @@
   <p><i class="icon-list"></i> Posted in 
      
       <a rel="dc:subject" class="category" 
-         href="/categories.html#ecology">ecology</a>
+         href="//categories.html#ecology">ecology</a>
     
     </p>
 
@@ -206,18 +207,16 @@
     
     <!-- http://schema.org/BlogPosting/keywords -->
     <a rel="og:tag" class="tag" 
-       href="/tags.html#tribolium">#tribolium</a>
+       href="//tags.html#tribolium">#tribolium</a>
     </p>
 
   <br/>
 
-   <p style="font-style:italic"> <i class="icon-signal"></i> pageviews: 13</p>
+   <p style="font-style:italic"> <i class="icon-signal"></i> pageviews: 14</p>
 
   <br/>
 
-  <p><small> <i class="icon-barcode"></i> SHA Hash: <a href="https://github.com/cboettig/labnotebook/commit/8c159703b2a376bd2c60f16e0e0d5cea04d20876
-/_posts/2010-07-07-Ensemble-simulations-of-beetle-dynamics.md"> 8c159703b2a376bd2c60f16e0e0d5cea04d20876
-</a></small></p>
+  <p><small> <i class="icon-barcode"></i> SHA Hash: <a href="https://github.com/cboettig/labnotebook/commit/cc2e94b67be5274aeb134604bc317b134bac4a95/_posts/2010-07-07-Ensemble-simulations-of-beetle-dynamics.md"> cc2e94b67be5274aeb134604bc317b134bac4a95</a></small></p>
     
   <br/>
 

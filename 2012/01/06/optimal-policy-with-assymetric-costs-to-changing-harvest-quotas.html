@@ -24,7 +24,7 @@
 <!-- RDFa Metadata (in DublinCore) -->
 <meta property="dc:title" content="Optimal policy with assymetric costs to changing harvest quotas" />
 <meta property="dc:creator" content="Carl Boettiger" />
-<meta property="dc:date" content="2013-05-03T17:56:56-07:00" />
+<meta property="dc:date" content="2013-05-07T12:11:08-07:00" />
 <meta property="dc:format" content="text/html" />
 <meta property="dc:language" content="en" />
 <meta property="dc:identifier" content="/2012/01/06/optimal-policy-with-assymetric-costs-to-changing-harvest-quotas.html" />
@@ -37,13 +37,13 @@
 <meta property="og:author" content="http://www.carlboettiger.info/index.html#me" />  <!-- Should be Liquid? URI? -->
 <meta property="http://ogp.me/ns/profile#first_name" content="Carl"/>
 <meta property="http://ogp.me/ns/profile#last_name" content="Boettiger"/>
-<meta property="http://ogp.me/ns/article#published_time" content="2013-05-03T17:56:56-07:00" />
+<meta property="http://ogp.me/ns/article#published_time" content="2013-05-07T12:11:08-07:00" />
 <meta property="og:site_name" content="Lab Notebook" /> <!-- Same as dc:source? -->
 <meta property="og:url" content="http://www.carlboettiger.info/2012/01/06/optimal-policy-with-assymetric-costs-to-changing-harvest-quotas.html" />
 <meta property="og:type" content="website" /> 
 <!-- Google Scholar Metadata -->
 <meta name="citation_author" content="Carl Boettiger"/>
-<meta name="citation_date" content="2013-05-03T17:56:56-07:00"/>
+<meta name="citation_date" content="2013-05-07T12:11:08-07:00"/>
 <meta name="citation_title" content="Optimal policy with assymetric costs to changing harvest quotas"/>
 <meta name="citation_journal_title" content="Lab Notebook"/>
 
@@ -141,52 +141,53 @@
     <article>
     <p>The optimal policy with symmetric L1 costs to changing the quotas results in the solutions that stop changing, sometimes at no harvest (if there’s scrap value), or at some fixed high harvest if no scrap value. (See earlier <a href="http://www.carlboettiger.info/archives/3492">notes</a>). Asymmetric costs of comparable magnitude result in more crashes.</p>
 <p>When we apply an L1 norm cost of the same magnitude as before for decreasing quotas, but allow increasing quotas to be free (no cost to environmental lobby), the solution follows the Reed optimum is in purple (harvest_alt) (cost-free adjustment), while the blue is the harvest level being implemented with a cost:</p>
-<div class="figure">
+<figure>
 <img src="http://farm8.staticflickr.com/7141/6649003123_6798886656_o.png" />
-</div>
+</figure>
 <p>This is for a single replicate, but we can verify this holds across an ensemble of 100 runs:</p>
-<div class="figure">
+<figure>
 <img src="http://farm8.staticflickr.com/7024/6649003241_59870df8e2_o.png" />
-</div>
+</figure>
 <p>This is the same as the symmetric case when cost is relatively small. Since this case has the same cost to decrease quotas but no cost to increase quotas, it is overall a less expensive world in which to do business.</p>
 <h3 id="asymmetric-policy-costs-lead-to-more-population-crashes">Asymmetric Policy costs lead to more population crashes</h3>
 <p>Just tried this and we do indeed see policies that deviate from the Reed optimum (harvest_alt), with the blue harvest line changing far less often, but decreasing by amounts that seem about the same as the increases.</p>
-<div class="figure">
+<figure>
 <img src="http://farm8.staticflickr.com/7152/6649121277_e1a0b8cb61_o.png" />
-</div>
+</figure>
 <p>The ensemble shows the tossing in the towel result of the symmetric case, where several of the replicates cease any changes at all and just send the population to 0 after a certain point.</p>
-<div class="figure">
+<figure>
 <img src="http://farm8.staticflickr.com/7148/6649121371_245e58870a_o.png" />
-</div>
+</figure>
 <p>This is indeed worse than the optimum solution with symmetric costs at a matching penalty, where the solution is not to harvest</p>
-<div class="figure">
+<figure>
 <img src="http://farm8.staticflickr.com/7147/6649161593_4201893d64_o.png" />
-</div>
+</figure>
 <p>In these cases there is a fixed reward / scrap value for not crashing the population.</p>
 <h2 id="no-scrap-value">No scrap value</h2>
 <p>Symmetric costs with no scrap value result in this “tossing in the towel” pattern of following the Reed policy for a while, and then leaving a constant harvest high rate that crashes the stock.</p>
-<div class="figure">
+<figure>
 <img src="http://farm8.staticflickr.com/7023/6472332667_f75a3ccda6_o.png" />
-</div>
+</figure>
 <p>Running the asymmetric costs with no scrap value, we find everything crashes immediately:</p>
-<div class="figure">
+<figure>
 <img src="http://farm8.staticflickr.com/7166/6649145241_7cf02e839d_o.png" />
-</div>
+</figure>
 <p>Replicating this with costs 1/10th as high does this more gradually.</p>
-<div class="figure">
+<figure>
 <img src="http://farm8.staticflickr.com/7023/6649233637_33fdb45a53_o.png" />
-</div>
+</figure>
+
     </article>
   </div>
   <div class="span4">
     <div class="sidebar">
       <aside prefix="og:http://ogp.me/ns/article#">
   <p> <i class="icon-calendar"></i>
-    <time datetime="2012-01-06T05:52:22-08:00" 
+    <time datetime="2012-01-06T13:52:22Z" 
     property="dc:created">06 Jan 2012</time></p>
   <p><small> modified: <time 
-            datetime="2013-02-19T10:27:50-08:00" 
-            property="dc:modified">19 Feb 2013</time></small></p>
+            datetime="2013-05-07T06:35:55-07:00" 
+            property="dc:modified">07 May 2013</time></small></p>
 
  <br />
 
@@ -209,7 +210,7 @@
   <p><i class="icon-list"></i> Posted in 
      
       <a rel="dc:subject" class="category" 
-         href="/categories.html#ecology">ecology</a>
+         href="//categories.html#ecology">ecology</a>
     
     </p>
 
@@ -217,11 +218,11 @@
     
     <!-- http://schema.org/BlogPosting/keywords -->
     <a rel="og:tag" class="tag" 
-       href="/tags.html#pdg-control">#pdg-control</a>, 
+       href="//tags.html#pdg-control">#pdg-control</a>, 
     
     <!-- http://schema.org/BlogPosting/keywords -->
     <a rel="og:tag" class="tag" 
-       href="/tags.html#warning-signals">#warning-signals</a>
+       href="//tags.html#warning-signals">#warning-signals</a>
     </p>
 
   <br/>
@@ -230,9 +231,7 @@
 
   <br/>
 
-  <p><small> <i class="icon-barcode"></i> SHA Hash: <a href="https://github.com/cboettig/labnotebook/commit/8c159703b2a376bd2c60f16e0e0d5cea04d20876
-/_posts/2012-01-06-optimal-policy-with-assymetric-costs-to-changing-harvest-quotas.md"> 8c159703b2a376bd2c60f16e0e0d5cea04d20876
-</a></small></p>
+  <p><small> <i class="icon-barcode"></i> SHA Hash: <a href="https://github.com/cboettig/labnotebook/commit/cc2e94b67be5274aeb134604bc317b134bac4a95/_posts/2012-01-06-optimal-policy-with-assymetric-costs-to-changing-harvest-quotas.md"> cc2e94b67be5274aeb134604bc317b134bac4a95</a></small></p>
     
   <br/>
 

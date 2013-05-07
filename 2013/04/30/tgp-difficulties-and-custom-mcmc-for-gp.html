@@ -24,7 +24,7 @@
 <!-- RDFa Metadata (in DublinCore) -->
 <meta property="dc:title" content="Difficulties with tgp; taking custom mcmc approach for GPs" />
 <meta property="dc:creator" content="Carl Boettiger" />
-<meta property="dc:date" content="2013-05-03T17:56:56-07:00" />
+<meta property="dc:date" content="2013-05-07T12:11:08-07:00" />
 <meta property="dc:format" content="text/html" />
 <meta property="dc:language" content="en" />
 <meta property="dc:identifier" content="/2013/04/30/tgp-difficulties-and-custom-mcmc-for-gp.html" />
@@ -37,13 +37,13 @@
 <meta property="og:author" content="http://www.carlboettiger.info/index.html#me" />  <!-- Should be Liquid? URI? -->
 <meta property="http://ogp.me/ns/profile#first_name" content="Carl"/>
 <meta property="http://ogp.me/ns/profile#last_name" content="Boettiger"/>
-<meta property="http://ogp.me/ns/article#published_time" content="2013-05-03T17:56:56-07:00" />
+<meta property="http://ogp.me/ns/article#published_time" content="2013-05-07T12:11:08-07:00" />
 <meta property="og:site_name" content="Lab Notebook" /> <!-- Same as dc:source? -->
 <meta property="og:url" content="http://www.carlboettiger.info/2013/04/30/tgp-difficulties-and-custom-mcmc-for-gp.html" />
 <meta property="og:type" content="website" /> 
 <!-- Google Scholar Metadata -->
 <meta name="citation_author" content="Carl Boettiger"/>
-<meta name="citation_date" content="2013-05-03T17:56:56-07:00"/>
+<meta name="citation_date" content="2013-05-07T12:11:08-07:00"/>
 <meta name="citation_title" content="Difficulties with tgp; taking custom mcmc approach for GPs"/>
 <meta name="citation_journal_title" content="Lab Notebook"/>
 
@@ -185,14 +185,14 @@ out$accept</code></pre>
 df &lt;- <span class="kw">melt</span>(postdist, <span class="dt">id=</span><span class="st">&quot;index&quot;</span>)
 <span class="co"># TRACES</span>
 <span class="kw">ggplot</span>(df) + <span class="kw">geom_line</span>(<span class="kw">aes</span>(index, value)) + <span class="kw">facet_wrap</span>(~ variable, <span class="dt">scale=</span><span class="st">&quot;free&quot;</span>, <span class="dt">ncol=</span><span class="dv">1</span>)</code></pre>
-<div class="figure">
+<figure>
 <img src="http://farm9.staticflickr.com/8395/8699032953_76e91621c7_o.png" />
-</div>
+</figure>
 <pre class="sourceCode r"><code class="sourceCode r">
 <span class="kw">ggplot</span>(df) + <span class="kw">geom_line</span>(<span class="kw">aes</span>(index, <span class="kw">log</span>(value))) + <span class="kw">facet_wrap</span>(~ variable, <span class="dt">scale=</span><span class="st">&quot;free&quot;</span>, <span class="dt">ncol=</span><span class="dv">1</span>)</code></pre>
-<div class="figure">
+<figure>
 <img src="http://farm9.staticflickr.com/8265/8699033067_631d27e6f7_o.png" />
-</div>
+</figure>
 <p>Generate a plot to compare priors and posteriors</p>
 <pre class="sourceCode r"><code class="sourceCode r">d.p &lt;- <span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">5</span>)
 s2.p &lt;- <span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">5</span>)  
@@ -213,24 +213,24 @@ prior_curves &lt;- <span class="kw">ddply</span>(df, <span class="st">&quot;vari
   <span class="kw">stat_density</span>(<span class="dt">geom=</span><span class="st">&quot;path&quot;</span>, <span class="dt">position=</span><span class="st">&quot;identity&quot;</span>, <span class="dt">alpha=</span><span class="fl">0.7</span>) +
   <span class="kw">geom_line</span>(<span class="dt">data=</span>prior_curves, <span class="kw">aes</span>(<span class="dt">x=</span>value, <span class="dt">y=</span>density), <span class="dt">col=</span><span class="st">&quot;red&quot;</span>) + 
   <span class="kw">facet_wrap</span>(~ variable, <span class="dt">scale=</span><span class="st">&quot;free&quot;</span>, <span class="dt">ncol=</span><span class="dv">2</span>)</code></pre>
-<div class="figure">
-<img src="http://farm9.staticflickr.com/8405/8700155554_67aa26e564_o.png" alt="Note that posteriors closely match our priors, as we have only 4 data points in this toy example and our priors are reasonably informative." /><p class="caption">Note that posteriors closely match our priors, as we have only 4 data points in this toy example and our priors are reasonably informative.</p>
-</div>
+<figure>
+<img src="http://farm9.staticflickr.com/8405/8700155554_67aa26e564_o.png" alt="Note that posteriors closely match our priors, as we have only 4 data points in this toy example and our priors are reasonably informative." /><figcaption>Note that posteriors closely match our priors, as we have only 4 data points in this toy example and our priors are reasonably informative.</figcaption>
+</figure>
 <h2 id="steve-chat">Steve chat</h2>
-<ol style="list-style-type: decimal">
+<ol type="1">
 <li>integrate over posteriors in GP case</li>
 <li>Ignore measurement uncertainty for the moment</li>
 <li>General status updates, etc.</li>
 </ol>
 <h2 id="marc-meeting">Marc meeting</h2>
-<ol style="list-style-type: decimal">
+<ol type="1">
 <li>Ricker case, but with constraint (e.g. maintain above n%)<br /></li>
 <li>Consider Ricker model with external management constraint $ (Y / Y_opt) + (1 - ) Pr(  )$</li>
 <li>Consider time horizon of learning vs implementing; see diagram</li>
 </ol>
-<div class="figure">
+<figure>
 <img src="https://lh3.googleusercontent.com/-56MSu3YuJsI/UYFrPQmvR3I/AAAAAAAADYg/_fSPs0czpCA/w548-h731/IMG_20130501_122021.jpg" />
-</div>
+</figure>
 <h2 id="simone-talk">Simone talk</h2>
 <ul>
 <li><p>General interests: adaptive potential of small pops, demography of small pops, extinction processes in communities, evol life histories &amp; enviroment, ML for species distribution models.</p></li>
@@ -241,6 +241,7 @@ prior_curves &lt;- <span class="kw">ddply</span>(df, <span class="st">&quot;vari
 <li>6 hours on trains, 2 hours on buses, 1.25 hours on bicycle, 6 hours in lab.<br /></li>
 <li>Interesting reading in <a href="www.wired.com/wiredenterprise/2012/04/openstack/">The Secret History of OpenStack, the Free Cloud Software That’s Changing Everything</a>. Sounds just like the unlikely collaboration we need to emerge for a more robust and sustainable underlying scientific infrastructure.</li>
 </ul>
+
     </article>
   </div>
   <div class="span4">
@@ -250,8 +251,8 @@ prior_curves &lt;- <span class="kw">ddply</span>(df, <span class="st">&quot;vari
     <time datetime="2013-04-30T00:00:00-07:00" 
     property="dc:created">30 Apr 2013</time></p>
   <p><small> modified: <time 
-            datetime="2013-05-03T11:37:17-07:00" 
-            property="dc:modified">03 May 2013</time></small></p>
+            datetime="2013-05-07T06:35:55-07:00" 
+            property="dc:modified">07 May 2013</time></small></p>
 
  <br />
 
@@ -274,7 +275,7 @@ prior_curves &lt;- <span class="kw">ddply</span>(df, <span class="st">&quot;vari
   <p><i class="icon-list"></i> Posted in 
      
       <a rel="dc:subject" class="category" 
-         href="/categories.html#ecology">ecology</a>
+         href="//categories.html#ecology">ecology</a>
     
     </p>
 
@@ -282,18 +283,16 @@ prior_curves &lt;- <span class="kw">ddply</span>(df, <span class="st">&quot;vari
     
     <!-- http://schema.org/BlogPosting/keywords -->
     <a rel="og:tag" class="tag" 
-       href="/tags.html#nonparametric-bayes">#nonparametric-bayes</a>
+       href="//tags.html#nonparametric-bayes">#nonparametric-bayes</a>
     </p>
 
   <br/>
 
-   <p style="font-style:italic"> <i class="icon-signal"></i> pageviews: 6</p>
+   <p style="font-style:italic"> <i class="icon-signal"></i> pageviews: 13</p>
 
   <br/>
 
-  <p><small> <i class="icon-barcode"></i> SHA Hash: <a href="https://github.com/cboettig/labnotebook/commit/d4d5dd7d28deb7fd06aee88410617058be33b793
-/_posts/2013-04-30-tgp-difficulties-and-custom-mcmc-for-gp.md"> d4d5dd7d28deb7fd06aee88410617058be33b793
-</a></small></p>
+  <p><small> <i class="icon-barcode"></i> SHA Hash: <a href="https://github.com/cboettig/labnotebook/commit/cc2e94b67be5274aeb134604bc317b134bac4a95/_posts/2013-04-30-tgp-difficulties-and-custom-mcmc-for-gp.md"> cc2e94b67be5274aeb134604bc317b134bac4a95</a></small></p>
     
   <br/>
 

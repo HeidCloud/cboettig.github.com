@@ -24,7 +24,7 @@
 <!-- RDFa Metadata (in DublinCore) -->
 <meta property="dc:title" content="Warning Signals" />
 <meta property="dc:creator" content="Carl Boettiger" />
-<meta property="dc:date" content="2013-05-03T17:56:56-07:00" />
+<meta property="dc:date" content="2013-05-07T12:11:08-07:00" />
 <meta property="dc:format" content="text/html" />
 <meta property="dc:language" content="en" />
 <meta property="dc:identifier" content="/2010/08/12/Warning-Signals.html" />
@@ -37,13 +37,13 @@
 <meta property="og:author" content="http://www.carlboettiger.info/index.html#me" />  <!-- Should be Liquid? URI? -->
 <meta property="http://ogp.me/ns/profile#first_name" content="Carl"/>
 <meta property="http://ogp.me/ns/profile#last_name" content="Boettiger"/>
-<meta property="http://ogp.me/ns/article#published_time" content="2013-05-03T17:56:56-07:00" />
+<meta property="http://ogp.me/ns/article#published_time" content="2013-05-07T12:11:08-07:00" />
 <meta property="og:site_name" content="Lab Notebook" /> <!-- Same as dc:source? -->
 <meta property="og:url" content="http://www.carlboettiger.info/2010/08/12/Warning-Signals.html" />
 <meta property="og:type" content="website" /> 
 <!-- Google Scholar Metadata -->
 <meta name="citation_author" content="Carl Boettiger"/>
-<meta name="citation_date" content="2013-05-03T17:56:56-07:00"/>
+<meta name="citation_date" content="2013-05-07T12:11:08-07:00"/>
 <meta name="citation_title" content="Warning Signals"/>
 <meta name="citation_journal_title" content="Lab Notebook"/>
 
@@ -142,7 +142,7 @@
     <ul>
 <li>Reworking code to allow standard format for:</li>
 </ul>
-<ol style="list-style-type: decimal">
+<ol type="1">
 <li>evaluating likelihood, – <strong>Done</strong></li>
 <li>fitting by maximum-likelihood, – <strong>Done</strong></li>
 <li>simulating, – <strong>Done</strong></li>
@@ -158,13 +158,13 @@
 <p><br /> - <em>Note:</em> Considered allowing for a generalized change-point function, taking two separate models and splitting them over a changepoint. No obvious way to handle which parameters are global and which are local when the models can differ in their parameter structure though, so not simply generalizable and abstract.</p>
 <h3 id="logic-for-model-analysis">Logic for model analysis</h3>
 <p>Collection of different models, each with a suite of associated methods. Current models are:</p>
-<ol style="list-style-type: decimal">
+<ol type="1">
 <li>OU</li>
 <li>Warning, a linear change in alpha</li>
 <li>ChangePt, a discrete jump in alpha</li>
 </ol>
 <p>Methods</p>
-<ol style="list-style-type: decimal">
+<ol type="1">
 <li>simulate</li>
 <li>evaluate likelihood</li>
 <li>fit by likelihood</li>
@@ -175,6 +175,7 @@
 <h4 id="challenges">Challenges</h4>
 <p>Trouble getting convergence for maximum likelihood fits to simulation results. By throwing inf log likelihood with out-of-bounds parameters (should really set a limit epsilon rather than zero on alpha/sigma values using “L-BFGS-B” method) can avoid hard errors in optim, but mle throws hard errors and optim complains about convergence: “ERROR: ABNORMAL_TERMINATION_IN_LNSRCH”, a convergence error of 52 in “L-BFGS-B” method.</p>
 <p><br /><br /></p>
+
     </article>
   </div>
   <div class="span4">
@@ -184,8 +185,8 @@
     <time datetime="2010-08-12T00:00:00-07:00" 
     property="dc:created">12 Aug 2010</time></p>
   <p><small> modified: <time 
-            datetime="2013-02-19T10:27:50-08:00" 
-            property="dc:modified">19 Feb 2013</time></small></p>
+            datetime="2013-05-07T06:35:55-07:00" 
+            property="dc:modified">07 May 2013</time></small></p>
 
  <br />
 
@@ -208,7 +209,7 @@
   <p><i class="icon-list"></i> Posted in 
      
       <a rel="dc:subject" class="category" 
-         href="/categories.html#ecology">ecology</a>
+         href="//categories.html#ecology">ecology</a>
     
     </p>
 
@@ -216,7 +217,7 @@
     
     <!-- http://schema.org/BlogPosting/keywords -->
     <a rel="og:tag" class="tag" 
-       href="/tags.html#warning-signals">#warning-signals</a>
+       href="//tags.html#warning-signals">#warning-signals</a>
     </p>
 
   <br/>
@@ -225,9 +226,7 @@
 
   <br/>
 
-  <p><small> <i class="icon-barcode"></i> SHA Hash: <a href="https://github.com/cboettig/labnotebook/commit/8c159703b2a376bd2c60f16e0e0d5cea04d20876
-/_posts/2010-08-12-Warning-Signals.md"> 8c159703b2a376bd2c60f16e0e0d5cea04d20876
-</a></small></p>
+  <p><small> <i class="icon-barcode"></i> SHA Hash: <a href="https://github.com/cboettig/labnotebook/commit/cc2e94b67be5274aeb134604bc317b134bac4a95/_posts/2010-08-12-Warning-Signals.md"> cc2e94b67be5274aeb134604bc317b134bac4a95</a></small></p>
     
   <br/>
 

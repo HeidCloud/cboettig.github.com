@@ -24,7 +24,7 @@
 <!-- RDFa Metadata (in DublinCore) -->
 <meta property="dc:title" content="pdg-control PDG group, Tasks" />
 <meta property="dc:creator" content="Carl Boettiger" />
-<meta property="dc:date" content="2013-05-03T17:56:56-07:00" />
+<meta property="dc:date" content="2013-05-07T12:11:08-07:00" />
 <meta property="dc:format" content="text/html" />
 <meta property="dc:language" content="en" />
 <meta property="dc:identifier" content="/2011/09/15/nimbios-pdg-group-tasks.html" />
@@ -37,13 +37,13 @@
 <meta property="og:author" content="http://www.carlboettiger.info/index.html#me" />  <!-- Should be Liquid? URI? -->
 <meta property="http://ogp.me/ns/profile#first_name" content="Carl"/>
 <meta property="http://ogp.me/ns/profile#last_name" content="Boettiger"/>
-<meta property="http://ogp.me/ns/article#published_time" content="2013-05-03T17:56:56-07:00" />
+<meta property="http://ogp.me/ns/article#published_time" content="2013-05-07T12:11:08-07:00" />
 <meta property="og:site_name" content="Lab Notebook" /> <!-- Same as dc:source? -->
 <meta property="og:url" content="http://www.carlboettiger.info/2011/09/15/nimbios-pdg-group-tasks.html" />
 <meta property="og:type" content="website" /> 
 <!-- Google Scholar Metadata -->
 <meta name="citation_author" content="Carl Boettiger"/>
-<meta name="citation_date" content="2013-05-03T17:56:56-07:00"/>
+<meta name="citation_date" content="2013-05-07T12:11:08-07:00"/>
 <meta name="citation_title" content="pdg-control PDG group, Tasks"/>
 <meta name="citation_journal_title" content="Lab Notebook"/>
 
@@ -150,32 +150,32 @@
 <h3 id="a-state-vars-control-vars">1a) State vars &gt; Control vars:</h3>
 <p>Can give solutions with chattering (periodic, possibly jumping between boundaries.)</p>
 <p>Short-term priorities:</p>
-<ol style="list-style-type: decimal">
+<ol type="1">
 <li>shared numerics.  <strong>Jim</strong> looks at collocation problem: how do they perform on periodic controls on the infinite time?  (If they can’t work, we go to finite time.)</li>
 </ol>
 <p>Need a way to be able to run each-other’s numerics and get same result.</p>
-<ol start="2" style="list-style-type: decimal">
+<ol start="2" type="1">
 <li>Literature exercise: Gather cases of chattering.  When it occurs is the objective linear or nonlinear? interior periodic or on boundary?  discrete or cts time?  Where are constraints relative to interior solution (i.e. are they outside the domain?)  Do they check second order sufficiency conditions for optimality? Theorem-like results?  <strong>Paul with stick</strong>, anyone who has seen this.</li>
 </ol>
 <p><strong>Deadline: Oct 31st Conference call.  Drop box. </strong></p>
-<ol start="3" style="list-style-type: decimal">
+<ol start="3" type="1">
 <li>Select an example in which to explore this.  Have simple form:</li>
 </ol>
 <p><span class="math">\[ \dot x = F(x,y, h) \]</span></p>
 <p><span class="math">\[ \dot y = G(x,y) \]</span></p>
 <p>(could be discrete time instead.)  Predator-prey?  Age-structure?</p>
-<ol start="4" style="list-style-type: decimal">
+<ol start="4" type="1">
 <li>Domain where controllability issues arise:</li>
 </ol>
-<ol style="list-style-type: lower-alpha">
+<ol type="a">
 <li>Put y on fast time scale (see Kellner et al. Kellner <em>et. al.</em> 2011)</li>
 </ol>
 <p>slow down y (numerically.  Perturbation theory)</p>
-<ol start="2" style="list-style-type: lower-alpha">
+<ol start="2" type="a">
 <li>Introduce a second control $ x = G(x,y, h_2) $</li>
 </ol>
 <p>Constraint $ || h_2 || &lt; $</p>
-<ol start="5" style="list-style-type: decimal">
+<ol start="5" type="1">
 <li>Convexity statement by subbing in equilibrium solns and periodic.</li>
 </ol>
 <p><strong>Dan, Carl, Alan, Paul.</strong></p>
@@ -185,7 +185,7 @@
 <p><span class="math">\[ x_t = f(x_t -h_t) \epsilon_t \]</span></p>
 <p><span class="math">\[ J = \mathbb{E} \left( \sum h_t -c(h_t, h_{t-1} ) \right)\]</span></p>
 <p>Where the velocity penalties/Regularization take one of these forms:</p>
-<ol style="list-style-type: decimal">
+<ol type="1">
 <li><p>$ c(h)^2 $  Smoothing</p></li>
 <li><p>$ c(h) $ Smoothing</p></li>
 <li><p>$ c(<em>{h</em>t h_t-1} ) $  Transaction fee (i.e. Dan’s toy version)</p></li>
@@ -210,7 +210,7 @@
 <p>2.0.2 Commercial fishery sampling problem</p>
 <p><strong>Alan wields stick.</strong></p>
 <h2 id="training-problem-iii">Training Problem III</h2>
-<ol style="list-style-type: decimal">
+<ol type="1">
 <li><p>Run the spawning model on NIMBioS cluster. <strong>Claire</strong></p></li>
 <li><p>Spawning time as a single point optimization</p></li>
 <li><p>Larval behavior during path.</p></li>
@@ -257,17 +257,18 @@
 <li><p>Sethi G, Costello C, Fisher A, Hanemann M and Karp L (2005). “Fishery Management Under Multiple Uncertainty.” <em>Journal of Environmental Economics And Management</em>, <strong>50</strong>. ISSN 00950696, <a href="http://dx.doi.org/10.1016/j.jeem.2004.11.005">http://dx.doi.org/10.1016/j.jeem.2004.11.005</a>.</p></li>
 <li><p>Optimizing For Multiple Species And Multiple Values: Tradeoffs Inherent in Ecosystem-Based Fisheries Management, Julie B. Kellner, James N. Sanchirico, Alan Hastings, Peter J. Mumby, (2011) <em>Conservation Letters</em>, <strong>4</strong> <a href="http://dx.doi.org/10.1111/j.1755-263X.2010.00132.x">10.1111/j.1755-263X.2010.00132.x</a></p></li>
 </ul>
+
     </article>
   </div>
   <div class="span4">
     <div class="sidebar">
       <aside prefix="og:http://ogp.me/ns/article#">
   <p> <i class="icon-calendar"></i>
-    <time datetime="2011-09-15T01:59:36-07:00" 
+    <time datetime="2011-09-15T08:59:36Z" 
     property="dc:created">15 Sep 2011</time></p>
   <p><small> modified: <time 
-            datetime="2013-02-24T11:40:25-08:00" 
-            property="dc:modified">24 Feb 2013</time></small></p>
+            datetime="2013-05-07T06:35:55-07:00" 
+            property="dc:modified">07 May 2013</time></small></p>
 
  <br />
 
@@ -290,7 +291,7 @@
   <p><i class="icon-list"></i> Posted in 
      
       <a rel="dc:subject" class="category" 
-         href="/categories.html#ecology">ecology</a>
+         href="//categories.html#ecology">ecology</a>
     
     </p>
 
@@ -298,11 +299,11 @@
     
     <!-- http://schema.org/BlogPosting/keywords -->
     <a rel="og:tag" class="tag" 
-       href="/tags.html#pdg-control">#pdg-control</a>
+       href="//tags.html#pdg-control">#pdg-control</a>
     
     <!-- http://schema.org/BlogPosting/keywords -->
     <a rel="og:tag" class="tag" 
-       href="/tags.html#pdg-control">#pdg-control</a>
+       href="//tags.html#pdg-control">#pdg-control</a>
     </p>
 
   <br/>
@@ -311,9 +312,7 @@
 
   <br/>
 
-  <p><small> <i class="icon-barcode"></i> SHA Hash: <a href="https://github.com/cboettig/labnotebook/commit/376d7c9ade8a8c061c0ce0669dd2200a087b13ba
-/_posts/2011-09-15-nimbios-pdg-group-tasks.md"> 376d7c9ade8a8c061c0ce0669dd2200a087b13ba
-</a></small></p>
+  <p><small> <i class="icon-barcode"></i> SHA Hash: <a href="https://github.com/cboettig/labnotebook/commit/cc2e94b67be5274aeb134604bc317b134bac4a95/_posts/2011-09-15-nimbios-pdg-group-tasks.md"> cc2e94b67be5274aeb134604bc317b134bac4a95</a></small></p>
     
   <br/>
 

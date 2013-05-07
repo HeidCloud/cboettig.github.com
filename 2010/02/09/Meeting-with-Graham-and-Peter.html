@@ -24,7 +24,7 @@
 <!-- RDFa Metadata (in DublinCore) -->
 <meta property="dc:title" content="Meeting with Graham and Peter" />
 <meta property="dc:creator" content="Carl Boettiger" />
-<meta property="dc:date" content="2013-05-03T17:56:56-07:00" />
+<meta property="dc:date" content="2013-05-07T12:11:08-07:00" />
 <meta property="dc:format" content="text/html" />
 <meta property="dc:language" content="en" />
 <meta property="dc:identifier" content="/2010/02/09/Meeting-with-Graham-and-Peter.html" />
@@ -37,13 +37,13 @@
 <meta property="og:author" content="http://www.carlboettiger.info/index.html#me" />  <!-- Should be Liquid? URI? -->
 <meta property="http://ogp.me/ns/profile#first_name" content="Carl"/>
 <meta property="http://ogp.me/ns/profile#last_name" content="Boettiger"/>
-<meta property="http://ogp.me/ns/article#published_time" content="2013-05-03T17:56:56-07:00" />
+<meta property="http://ogp.me/ns/article#published_time" content="2013-05-07T12:11:08-07:00" />
 <meta property="og:site_name" content="Lab Notebook" /> <!-- Same as dc:source? -->
 <meta property="og:url" content="http://www.carlboettiger.info/2010/02/09/Meeting-with-Graham-and-Peter.html" />
 <meta property="og:type" content="website" /> 
 <!-- Google Scholar Metadata -->
 <meta name="citation_author" content="Carl Boettiger"/>
-<meta name="citation_date" content="2013-05-03T17:56:56-07:00"/>
+<meta name="citation_date" content="2013-05-07T12:11:08-07:00"/>
 <meta name="citation_title" content="Meeting with Graham and Peter"/>
 <meta name="citation_journal_title" content="Lab Notebook"/>
 
@@ -151,7 +151,7 @@
 <li>Using this approach I can also <strong>evaluate the power</strong> to detect any OU model by overlap in distributions. For instance, if the tree is the starburst, even strong selection OU will have no power, while on another tree it might. This can be done by testing a variety of OU models, rather than the one that best fits the data, and will be a great way to start quantifying the <em>information contained in the tree</em> relative to the model choice question. This is a <em>crucial step</em> before I try more complicated models, giving some measure of whether a tree contains enough taxa with enough covariance to tease out temporal information accurately.</li>
 <li>Discussed my concern that the <strong>BM model and OU model aren’t really embedded,</strong> since the OU model likelihood cannot be computed accurately for small α. Of course it works in the limit, but is something to be cautious about. It has been suggested that model comparison should fit OU alone, and wait and see if α comes out small. There are two reasons to be skeptical of this</li>
 </ul>
-<ol style="list-style-type: decimal">
+<ol type="1">
 <li>the star burst tree demonstrates that α and σ aren’t independent; then the tip variance is <img src="http://openwetware.org/images/math/0/8/e/08e417731492414f9f1c6aaf090ad471.png" alt="\frac{\sigma^2}{2\alpha}(1-e^{-2\alpha t})" /></li>
 <li>The likelihood calculation may be numerically inaccurate for small α</li>
 </ol>
@@ -159,7 +159,7 @@
 <ul>
 <li>So I can compute the joint probability for an arbitrary model rather quickly using my discretized matrix approach; if I’m given the transition matrices along each branch. Unfortunately, I spend all the computational time computing these matrices in the first place. We discussed several strategies to speed this up.</li>
 </ul>
-<ol style="list-style-type: decimal">
+<ol type="1">
 <li><strong>Look-up tables.</strong> For instance, rather than calculating <img src="http://openwetware.org/images/math/d/a/e/daead000f739dd5aa84fd9f58b511b67.png" alt="e^{-(x_1-x_2)^2/2\sigma^2t}" /> I could use the look-up of <img src="http://openwetware.org/images/math/4/3/7/437ccc3edf32ee596e40ed14de1e3259.png" alt="e^{-\beta^2}" /> There’s a variety of places this kind of trick can help with. Also, judicious use of logs – never exponentiate when I can multiply, or multiply when I can add.</li>
 <li><strong>MCMC approaches.</strong> The general version of this just does MCMC over all the internal nodes. The key here is that if I know the values of all the internal nodes, the joint probability is just a product of all the transitions – no non-independence. Alternately, I could rely on the fact that I can solve this analytically if I were only told the regimes of the internal nodes, so I just have to MCMC over the handful of possible regimes at each node, and not the traits as well. This seems quite promising.</li>
 <li>Going from <strong>the generator</strong> – this could be done for the truly nonlinear models, as it completely ignores the ability to get analytic solutions. The generator could be raised to the power of the branch length. Doing so for the largest branch would allow all other branches to be calculated in the process. This will probably be slow but easy to implement.</li>
@@ -174,6 +174,7 @@
 <li>Lookup tables – means that giant data structure I wrote for the regimes model will be useful, (yay and yikes). More memory and probably more time with valgrind debugging, but could be promising.</li>
 <li>After that I think I’ll try MCMC over regimes and possibly the generator approach. An effective regimes calculation is probably a ways off yet, but plenty of things to try!</li>
 </ul>
+
     </article>
   </div>
   <div class="span4">
@@ -183,8 +184,8 @@
     <time datetime="2010-02-09T00:00:00-08:00" 
     property="dc:created">09 Feb 2010</time></p>
   <p><small> modified: <time 
-            datetime="2013-02-24T11:40:25-08:00" 
-            property="dc:modified">24 Feb 2013</time></small></p>
+            datetime="2013-05-07T06:35:55-07:00" 
+            property="dc:modified">07 May 2013</time></small></p>
 
  <br />
 
@@ -207,7 +208,7 @@
   <p><i class="icon-list"></i> Posted in 
      
       <a rel="dc:subject" class="category" 
-         href="/categories.html#evolution">evolution</a>
+         href="//categories.html#evolution">evolution</a>
     
     </p>
 
@@ -215,7 +216,7 @@
     
     <!-- http://schema.org/BlogPosting/keywords -->
     <a rel="og:tag" class="tag" 
-       href="/tags.html#pmc">#pmc</a>
+       href="//tags.html#pmc">#pmc</a>
     </p>
 
   <br/>
@@ -224,9 +225,7 @@
 
   <br/>
 
-  <p><small> <i class="icon-barcode"></i> SHA Hash: <a href="https://github.com/cboettig/labnotebook/commit/376d7c9ade8a8c061c0ce0669dd2200a087b13ba
-/_posts/2010-02-09-Meeting-with-Graham-and-Peter.md"> 376d7c9ade8a8c061c0ce0669dd2200a087b13ba
-</a></small></p>
+  <p><small> <i class="icon-barcode"></i> SHA Hash: <a href="https://github.com/cboettig/labnotebook/commit/cc2e94b67be5274aeb134604bc317b134bac4a95/_posts/2010-02-09-Meeting-with-Graham-and-Peter.md"> cc2e94b67be5274aeb134604bc317b134bac4a95</a></small></p>
     
   <br/>
 

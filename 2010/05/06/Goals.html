@@ -24,7 +24,7 @@
 <!-- RDFa Metadata (in DublinCore) -->
 <meta property="dc:title" content="Goals" />
 <meta property="dc:creator" content="Carl Boettiger" />
-<meta property="dc:date" content="2013-05-03T17:56:56-07:00" />
+<meta property="dc:date" content="2013-05-07T12:11:08-07:00" />
 <meta property="dc:format" content="text/html" />
 <meta property="dc:language" content="en" />
 <meta property="dc:identifier" content="/2010/05/06/Goals.html" />
@@ -37,13 +37,13 @@
 <meta property="og:author" content="http://www.carlboettiger.info/index.html#me" />  <!-- Should be Liquid? URI? -->
 <meta property="http://ogp.me/ns/profile#first_name" content="Carl"/>
 <meta property="http://ogp.me/ns/profile#last_name" content="Boettiger"/>
-<meta property="http://ogp.me/ns/article#published_time" content="2013-05-03T17:56:56-07:00" />
+<meta property="http://ogp.me/ns/article#published_time" content="2013-05-07T12:11:08-07:00" />
 <meta property="og:site_name" content="Lab Notebook" /> <!-- Same as dc:source? -->
 <meta property="og:url" content="http://www.carlboettiger.info/2010/05/06/Goals.html" />
 <meta property="og:type" content="website" /> 
 <!-- Google Scholar Metadata -->
 <meta name="citation_author" content="Carl Boettiger"/>
-<meta name="citation_date" content="2013-05-03T17:56:56-07:00"/>
+<meta name="citation_date" content="2013-05-07T12:11:08-07:00"/>
 <meta name="citation_title" content="Goals"/>
 <meta name="citation_journal_title" content="Lab Notebook"/>
 
@@ -154,20 +154,20 @@
 <h2 id="conditional-probability">Conditional probability</h2>
 <p>Solution to the time dependent OU process, see Gardiner 4th ed. pg 111, eq. (4.5.109).</p>
 <p>Solve using <img src="http://openwetware.org/images/math/2/6/1/261158506a921c58c07cce2014f09198.png" alt="f(X_t) = X_t \exp\left( - \int_0^t \alpha(s) ds \right)" /> and apply <a href="http://en.wikipedia.org/wiki/It%C5%8D%E2%80%93Doeblin%27s_formula" title="http://en.wikipedia.org/wiki/It%C5%8D%E2%80%93Doeblin%27s_formula">Ito formula</a>, giving</p>
-<div class="figure">
-<img src="http://openwetware.org/images/math/8/b/2/8b2d9515dd6a89360e9c97a122103193.png" alt="X_t = X_0 \exp\left( - \int_0^t \alpha(s) ds \right) +\theta\left( 1- \exp\left( - \int_0^t \alpha(s) ds \right) \right) + \int_0^t \sigma \exp\left( - \int_0^t \alpha(s) ds \right) dW_t" /><p class="caption">X_t = X_0 \exp\left( - \int_0^t \alpha(s) ds \right) +\theta\left( 1- \exp\left( - \int_0^t \alpha(s) ds \right) \right) + \int_0^t \sigma \exp\left( - \int_0^t \alpha(s) ds \right) dW_t</p>
-</div>
+<figure>
+<img src="http://openwetware.org/images/math/8/b/2/8b2d9515dd6a89360e9c97a122103193.png" alt="X_t = X_0 \exp\left( - \int_0^t \alpha(s) ds \right) +\theta\left( 1- \exp\left( - \int_0^t \alpha(s) ds \right) \right) + \int_0^t \sigma \exp\left( - \int_0^t \alpha(s) ds \right) dW_t" /><figcaption>X_t = X_0 \exp\left( - \int_0^t \alpha(s) ds \right) +\theta\left( 1- \exp\left( - \int_0^t \alpha(s) ds \right) \right) + \int_0^t \sigma \exp\left( - \int_0^t \alpha(s) ds \right) dW_t</figcaption>
+</figure>
 <p>And the moments are:</p>
 <p><br /> <img src="http://openwetware.org/images/math/e/5/a/e5ab85ca602fb12998c2eb985474c7e6.png" alt="\begin{align} E(X_T) &amp;= X_0 \exp\left( - \int_0^T \alpha(s) ds \right) +\theta\left( 1- \exp\left( - \int_0^T \alpha(s) ds \right) \right) \\ \operatorname{Var}(X_T) &amp;= \sigma^2 \int_0^T \exp\left( -2 \int_0^t \alpha(s) ds \right) d t \end{align}" /></p>
 <ul>
 <li>Using the exact solution I can write down the conditional density function. We can evaluate both integrals for this linear increase model:</li>
 </ul>
-<div class="figure">
-<img src="http://openwetware.org/images/math/e/8/f/e8f494fb0fc3fffba3ebbf121a70100a.png" alt="\int_0^t (\beta t +\alpha_0 ) dt = \beta t^2/2 + \alpha_0 t" /><p class="caption">\int_0^t (\beta t +\alpha_0 ) dt = \beta t^2/2 + \alpha_0 t</p>
-</div>
-<div class="figure">
-<img src="http://openwetware.org/images/math/7/a/2/7a2b755c9174107368e4480c60e685b4.png" alt="\int_0^t e^{ - \beta s^2 - 2\alpha_0 s} ds = \frac{\sqrt{\pi}e^{\alpha_0^2/\beta} }{2\sqrt{\beta}} \left( \operatorname{erf} \left( \frac{ \alpha_0+\beta t }{ \sqrt{\beta} } \right) - \operatorname{erf} \left( \frac{ \alpha_0 }{ \sqrt{\beta} } \right) \right)" /><p class="caption">\int_0^t e^{ - \beta s^2 - 2\alpha_0 s} ds = \frac{\sqrt{\pi}e^{\alpha_0^2/\beta} }{2\sqrt{\beta}} \left( \operatorname{erf} \left( \frac{ \alpha_0+\beta t }{ \sqrt{\beta} } \right) - \operatorname{erf} \left( \frac{ \alpha_0 }{ \sqrt{\beta} } \right) \right)</p>
-</div>
+<figure>
+<img src="http://openwetware.org/images/math/e/8/f/e8f494fb0fc3fffba3ebbf121a70100a.png" alt="\int_0^t (\beta t +\alpha_0 ) dt = \beta t^2/2 + \alpha_0 t" /><figcaption>\int_0^t (\beta t +\alpha_0 ) dt = \beta t^2/2 + \alpha_0 t</figcaption>
+</figure>
+<figure>
+<img src="http://openwetware.org/images/math/7/a/2/7a2b755c9174107368e4480c60e685b4.png" alt="\int_0^t e^{ - \beta s^2 - 2\alpha_0 s} ds = \frac{\sqrt{\pi}e^{\alpha_0^2/\beta} }{2\sqrt{\beta}} \left( \operatorname{erf} \left( \frac{ \alpha_0+\beta t }{ \sqrt{\beta} } \right) - \operatorname{erf} \left( \frac{ \alpha_0 }{ \sqrt{\beta} } \right) \right)" /><figcaption>\int_0^t e^{ - \beta s^2 - 2\alpha_0 s} ds = \frac{\sqrt{\pi}e^{\alpha_0^2/\beta} }{2\sqrt{\beta}} \left( \operatorname{erf} \left( \frac{ \alpha_0+\beta t }{ \sqrt{\beta} } \right) - \operatorname{erf} \left( \frac{ \alpha_0 }{ \sqrt{\beta} } \right) \right)</figcaption>
+</figure>
 <p><br /> - Next, implement the conditional probability density in R:</p>
 <pre class="de1"><code>numeric_V &lt;- function(Dt, pars){
     vint &lt;- function(x){
@@ -235,7 +235,7 @@ analytic_V(Dt, pars)</code></pre>
 <ul>
 <li><p>Unfortunately the analytic solution does not have nice numerical properties for small β, which is the interesting limiting case (no/very slow change in stability). The error functions both approach unity, making the difference tiny, while the exponential term diverges. The result is that variances for too small beta suddenly become zero, instead of the appropriate limit. The numerical integration is more robust to this. Analytic implementation is modified to just provide the limit case when erf functions both evaluate at exactly 1.</p></li>
 <li>This linear test case model is quite restrictive. If the eigenvalue is decreasing, doing so in a linear way need not out perform a model in which it is not decreasing at all. It would be interesting to test if this is more sensitive than change point estimation. Iacus
-<ol start="2008" style="list-style-type: decimal">
+<ol start="2008" type="1">
 <li>implements a least-squares based change point estimation in the R sde package.</li>
 </ol></li>
 </ul>
@@ -251,6 +251,7 @@ analytic_V(Dt, pars)</code></pre>
  xrandr --addmode VGA1 1280x1040_60.00</code></pre>
 <p><br /> - vim-full is deprecated, vim-latexsuite needs additional installation, read: /usr/share/doc/vim-latexsuite/README.Debian after installing. Also vim’s &quot;+y copy to clipboard doesn’t work with pure vim, so installing xclip vim-common and vim-gnome to fixed this.</p>
 <p><br /></p>
+
     </article>
   </div>
   <div class="span4">
@@ -260,8 +261,8 @@ analytic_V(Dt, pars)</code></pre>
     <time datetime="2010-05-06T00:00:00-07:00" 
     property="dc:created">06 May 2010</time></p>
   <p><small> modified: <time 
-            datetime="2013-02-19T10:27:50-08:00" 
-            property="dc:modified">19 Feb 2013</time></small></p>
+            datetime="2013-05-07T06:35:55-07:00" 
+            property="dc:modified">07 May 2013</time></small></p>
 
  <br />
 
@@ -284,7 +285,7 @@ analytic_V(Dt, pars)</code></pre>
   <p><i class="icon-list"></i> Posted in 
      
       <a rel="dc:subject" class="category" 
-         href="/categories.html#ecology">ecology</a>
+         href="//categories.html#ecology">ecology</a>
     
     </p>
 
@@ -292,11 +293,11 @@ analytic_V(Dt, pars)</code></pre>
     
     <!-- http://schema.org/BlogPosting/keywords -->
     <a rel="og:tag" class="tag" 
-       href="/tags.html#warning-signals">#warning-signals</a>, 
+       href="//tags.html#warning-signals">#warning-signals</a>, 
     
     <!-- http://schema.org/BlogPosting/keywords -->
     <a rel="og:tag" class="tag" 
-       href="/tags.html#code-tricks">#code-tricks</a>
+       href="//tags.html#code-tricks">#code-tricks</a>
     </p>
 
   <br/>
@@ -305,9 +306,7 @@ analytic_V(Dt, pars)</code></pre>
 
   <br/>
 
-  <p><small> <i class="icon-barcode"></i> SHA Hash: <a href="https://github.com/cboettig/labnotebook/commit/8c159703b2a376bd2c60f16e0e0d5cea04d20876
-/_posts/2010-05-06-Goals.md"> 8c159703b2a376bd2c60f16e0e0d5cea04d20876
-</a></small></p>
+  <p><small> <i class="icon-barcode"></i> SHA Hash: <a href="https://github.com/cboettig/labnotebook/commit/cc2e94b67be5274aeb134604bc317b134bac4a95/_posts/2010-05-06-Goals.md"> cc2e94b67be5274aeb134604bc317b134bac4a95</a></small></p>
     
   <br/>
 

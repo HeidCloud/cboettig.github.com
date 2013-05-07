@@ -24,7 +24,7 @@
 <!-- RDFa Metadata (in DublinCore) -->
 <meta property="dc:title" content="Research" />
 <meta property="dc:creator" content="Carl Boettiger" />
-<meta property="dc:date" content="2013-05-03T17:56:56-07:00" />
+<meta property="dc:date" content="2013-05-07T12:11:08-07:00" />
 <meta property="dc:format" content="text/html" />
 <meta property="dc:language" content="en" />
 <meta property="dc:identifier" content="/2010/03/25/Research.html" />
@@ -37,13 +37,13 @@
 <meta property="og:author" content="http://www.carlboettiger.info/index.html#me" />  <!-- Should be Liquid? URI? -->
 <meta property="http://ogp.me/ns/profile#first_name" content="Carl"/>
 <meta property="http://ogp.me/ns/profile#last_name" content="Boettiger"/>
-<meta property="http://ogp.me/ns/article#published_time" content="2013-05-03T17:56:56-07:00" />
+<meta property="http://ogp.me/ns/article#published_time" content="2013-05-07T12:11:08-07:00" />
 <meta property="og:site_name" content="Lab Notebook" /> <!-- Same as dc:source? -->
 <meta property="og:url" content="http://www.carlboettiger.info/2010/03/25/Research.html" />
 <meta property="og:type" content="website" /> 
 <!-- Google Scholar Metadata -->
 <meta name="citation_author" content="Carl Boettiger"/>
-<meta name="citation_date" content="2013-05-03T17:56:56-07:00"/>
+<meta name="citation_date" content="2013-05-07T12:11:08-07:00"/>
 <meta name="citation_title" content="Research"/>
 <meta name="citation_journal_title" content="Lab Notebook"/>
 
@@ -143,15 +143,15 @@
 <ul>
 <li>Now have code to run partitioned models on the Anoles dataset, compare partitioned models to the paintings chosen by Butler and King. Preliminary figures below. Models with _s are partitioned by my algorithm, others are the the original ones from earlier.</li>
 </ul>
-<div class="figure">
-<img src="http://openwetware.org/images/thumb/c/cb/Anoles_partition.png/300px-Anoles_partition.png" alt="image" /><p class="caption">image</p>
-</div>
+<figure>
+<img src="http://openwetware.org/images/thumb/c/cb/Anoles_partition.png/300px-Anoles_partition.png" alt="image" /><figcaption>image</figcaption>
+</figure>
 <ul>
 <li>Also have examples with simulated data with a known number of partitions, to check the method. Tested with data produced at two peaks on the Labrid tree, the pattern seems similar to that of the Labrids – comparisons involving any model with more than 2 peaks produce LR ratios that become very unlikely in either pairwise comparison. Still needs further exploration. Preliminary figures:</li>
 </ul>
-<div class="figure">
-<img src="http://openwetware.org/images/thumb/2/22/Simulated_LR.png/300px-Simulated_LR.png" alt="image" /><p class="caption">image</p>
-</div>
+<figure>
+<img src="http://openwetware.org/images/thumb/2/22/Simulated_LR.png/300px-Simulated_LR.png" alt="image" /><figcaption>image</figcaption>
+</figure>
 <p><br /> ### Interpreting Results</p>
 <ul>
 <li><p>Pattern: In the bootstrapping, the model generating the data always scores substantially higher than the test model, making all distributions fall in the positive range. Note that parameters are fixed, hence the more complicated model does not have an advantage in this bootstrapping. Meanwhile, the more complicated model does substantially better at the real data than the simpler model, since in this case both have there parameters fit to the data. Consequently the red line falls deep in the negative for the bootstraps simulated under the simple model and makes it appear as though the more complicated model is always correct. Perhaps comparing models in which the parameters are allowed to vary may indeed be more meaningful.</p></li>
@@ -183,12 +183,13 @@
 <li>I was contacted by Mary Ann 3 days ago on doing another survey of CSGF fellows. <a href="http://www.surveymonkey.com/s/VMTTFXS" title="http://www.surveymonkey.com/s/VMTTFXS">Last year’s survey</a> was pretty basic (<a href="http://www.surveymonkey.com/MySurvey_Responses.aspx?sm=SXNbpnWs3a%2blQnEwe%2bfNiKvBGCZEs/jdQhlVfunE9YI%3d" title="http://www.surveymonkey.com/MySurvey_Responses.aspx?sm=SXNbpnWs3a%2blQnEwe%2bfNiKvBGCZEs/jdQhlVfunE9YI%3d">results</a>). Also interested to explore alternatives to surveymonkey, though it did make things quite easy and Krell can probably get the subscription. Possibly Google forms?</li>
 </ul>
 <p>Some goals I have for the survey:</p>
-<ol style="list-style-type: decimal">
+<ol type="1">
 <li><strong>Who knows/uses what.</strong> Be able to see what languages, parallelization, and scale of computation fellows are computing on. The crucial goal for this year is to be able to break this down by subject area and by year in the fellowship.</li>
 <li><strong>Effective practices in computing.</strong> Hugely important but too rarely taught (in sciences anyway). Version control, debugging, visualization, etc. A great example of this stuff is to see the quiz on <a href="http://software-carpentry.org/intro.html" title="http://software-carpentry.org/intro.html">Software Carpentry</a>(scroll down to #5)</li>
 <li><a href="http://openwetware.org/wiki/Science_2.0/Brainstorming" title="http://openwetware.org/wiki/Science_2.0/Brainstorming"><strong>Science 2.0</strong></a> This goes a little further afield and might deserve its own session. Computers and the internet continue to change many aspects in the way we do science and it makes sense that CSGFs should be at the forefront. Large-scale online collaborations. The benefits and risks of science blogging. Standardized and publicly accessible data, source code, publications, and notebooks. Social networking for scientists. There’s a wealth of rapidly emerging tools in this area that I think we should all know about. Two quick examples: Mendeley for organizing our collections of scientific papers and stackoverflow.com for solving programming problems collaboratively.</li>
 </ol>
 <p><br /></p>
+
     </article>
   </div>
   <div class="span4">
@@ -198,8 +199,8 @@
     <time datetime="2010-03-25T00:00:00-07:00" 
     property="dc:created">25 Mar 2010</time></p>
   <p><small> modified: <time 
-            datetime="2013-02-24T11:40:25-08:00" 
-            property="dc:modified">24 Feb 2013</time></small></p>
+            datetime="2013-05-07T06:35:55-07:00" 
+            property="dc:modified">07 May 2013</time></small></p>
 
  <br />
 
@@ -222,7 +223,7 @@
   <p><i class="icon-list"></i> Posted in 
      
       <a rel="dc:subject" class="category" 
-         href="/categories.html#evolution">evolution</a>
+         href="//categories.html#evolution">evolution</a>
     
     </p>
 
@@ -230,11 +231,11 @@
     
     <!-- http://schema.org/BlogPosting/keywords -->
     <a rel="og:tag" class="tag" 
-       href="/tags.html#code-tricks">#code-tricks</a>, 
+       href="//tags.html#code-tricks">#code-tricks</a>, 
     
     <!-- http://schema.org/BlogPosting/keywords -->
     <a rel="og:tag" class="tag" 
-       href="/tags.html#pmc">#pmc</a>
+       href="//tags.html#pmc">#pmc</a>
     </p>
 
   <br/>
@@ -243,9 +244,7 @@
 
   <br/>
 
-  <p><small> <i class="icon-barcode"></i> SHA Hash: <a href="https://github.com/cboettig/labnotebook/commit/376d7c9ade8a8c061c0ce0669dd2200a087b13ba
-/_posts/2010-03-25-Research.md"> 376d7c9ade8a8c061c0ce0669dd2200a087b13ba
-</a></small></p>
+  <p><small> <i class="icon-barcode"></i> SHA Hash: <a href="https://github.com/cboettig/labnotebook/commit/cc2e94b67be5274aeb134604bc317b134bac4a95/_posts/2010-03-25-Research.md"> cc2e94b67be5274aeb134604bc317b134bac4a95</a></small></p>
     
   <br/>
 

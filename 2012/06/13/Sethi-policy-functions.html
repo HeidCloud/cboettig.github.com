@@ -24,7 +24,7 @@
 <!-- RDFa Metadata (in DublinCore) -->
 <meta property="dc:title" content="Policy functions and value functions under multiple uncertainty" />
 <meta property="dc:creator" content="Carl Boettiger" />
-<meta property="dc:date" content="2013-05-03T17:56:56-07:00" />
+<meta property="dc:date" content="2013-05-07T12:11:08-07:00" />
 <meta property="dc:format" content="text/html" />
 <meta property="dc:language" content="en" />
 <meta property="dc:identifier" content="/2012/06/13/Sethi-policy-functions.html" />
@@ -37,13 +37,13 @@
 <meta property="og:author" content="http://www.carlboettiger.info/index.html#me" />  <!-- Should be Liquid? URI? -->
 <meta property="http://ogp.me/ns/profile#first_name" content="Carl"/>
 <meta property="http://ogp.me/ns/profile#last_name" content="Boettiger"/>
-<meta property="http://ogp.me/ns/article#published_time" content="2013-05-03T17:56:56-07:00" />
+<meta property="http://ogp.me/ns/article#published_time" content="2013-05-07T12:11:08-07:00" />
 <meta property="og:site_name" content="Lab Notebook" /> <!-- Same as dc:source? -->
 <meta property="og:url" content="http://www.carlboettiger.info/2012/06/13/Sethi-policy-functions.html" />
 <meta property="og:type" content="website" /> 
 <!-- Google Scholar Metadata -->
 <meta name="citation_author" content="Carl Boettiger"/>
-<meta name="citation_date" content="2013-05-03T17:56:56-07:00"/>
+<meta name="citation_date" content="2013-05-07T12:11:08-07:00"/>
 <meta name="citation_title" content="Policy functions and value functions under multiple uncertainty"/>
 <meta name="citation_journal_title" content="Lab Notebook"/>
 
@@ -209,21 +209,21 @@ z_i &lt;- function() <span class="kw">rlnorm</span>(<span class="dv">1</span>,  
 policy &lt;- <span class="kw">melt</span>( <span class="kw">data.frame</span>(<span class="dt">stock=</span>x_grid, <span class="dt">implementation =</span> x_grid[imp$D[,<span class="dv">1</span>]], <span class="dt">measurement =</span> x_grid[measure$D[,<span class="dv">1</span>]], <span class="dt">growth =</span> x_grid[growth$D[,<span class="dv">1</span>]]), <span class="dt">id=</span><span class="st">&quot;stock&quot;</span>)
 value &lt;-  <span class="kw">melt</span>(<span class="kw">data.frame</span>(<span class="dt">stock=</span>x_grid, <span class="dt">implementation =</span> imp$V, <span class="dt">measurement =</span> measure$V, <span class="dt">growth =</span> growth$V), <span class="dt">id=</span><span class="st">&quot;stock&quot;</span>)
 <span class="kw">ggplot</span>(policy) + <span class="kw">geom_point</span>(<span class="kw">aes</span>(stock, stock-value, <span class="dt">color=</span>variable)) + <span class="kw">ylab</span>(<span class="st">&quot;escapement&quot;</span>) </code></pre>
-<div class="figure">
-<img src="http://farm9.staticflickr.com/8151/7372557232_fe14154278_o.png" alt="plot of chunk plots" /><p class="caption">plot of chunk plots</p>
-</div>
+<figure>
+<img src="http://farm9.staticflickr.com/8151/7372557232_fe14154278_o.png" alt="plot of chunk plots" /><figcaption>plot of chunk plots</figcaption>
+</figure>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(value) + <span class="kw">geom_point</span>(<span class="kw">aes</span>(stock, value, <span class="dt">color=</span>variable)) + <span class="kw">ylab</span>(<span class="st">&quot;Net Present Value&quot;</span>)</code></pre>
-<div class="figure">
-<img src="http://farm8.staticflickr.com/7239/7187327439_cf08db1492_o.png" alt="plot of chunk plots" /><p class="caption">plot of chunk plots</p>
-</div>
+<figure>
+<img src="http://farm8.staticflickr.com/7239/7187327439_cf08db1492_o.png" alt="plot of chunk plots" /><figcaption>plot of chunk plots</figcaption>
+</figure>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(policy) + <span class="kw">geom_smooth</span>(<span class="kw">aes</span>(stock, stock-value, <span class="dt">color=</span>variable))+ <span class="kw">ylab</span>(<span class="st">&quot;escapement&quot;</span>) </code></pre>
-<div class="figure">
-<img src="http://farm8.staticflickr.com/7089/7372557594_d689df38d1_o.png" alt="plot of chunk plots" /><p class="caption">plot of chunk plots</p>
-</div>
+<figure>
+<img src="http://farm8.staticflickr.com/7089/7372557594_d689df38d1_o.png" alt="plot of chunk plots" /><figcaption>plot of chunk plots</figcaption>
+</figure>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(value) + <span class="kw">geom_smooth</span>(<span class="kw">aes</span>(stock, value, <span class="dt">color=</span>variable)) + <span class="kw">ylab</span>(<span class="st">&quot;Net Present Value&quot;</span>)</code></pre>
-<div class="figure">
-<img src="http://farm9.staticflickr.com/8014/7187327805_62635271fa_o.png" alt="plot of chunk plots" /><p class="caption">plot of chunk plots</p>
-</div>
+<figure>
+<img src="http://farm9.staticflickr.com/8014/7187327805_62635271fa_o.png" alt="plot of chunk plots" /><figcaption>plot of chunk plots</figcaption>
+</figure>
 <p>Note that growth noise gives the constant escapement solution, as expected, but large measurement noise results in raising the maximum escapement, particularly at large stock sizes. If the measured population was unusually high you might assume it was a measurement error and not increase your target harvest immediately, so this makes some intuitive sense.</p>
 <ul>
 <li>author Carl Boettiger, <script type="text/javascript">
@@ -237,6 +237,7 @@ document.write('<a h'+'ref'+'="ma'+'ilto'+':'+e+'">'+e+'<\/'+'a'+'>');
 </ul>
 <h1 id="references">References</h1>
 <p>Sethi G, Costello C, Fisher A, Hanemann M and Karp L (2005). “Fishery Management Under Multiple Uncertainty.” <em>Journal of Environmental Economics And Management</em>, <em>50</em>. ISSN 00950696, <a href="http://dx.doi.org/10.1016/j.jeem.2004.11.005">doi:10.1016/j.jeem.2004.11.005</a></p>
+
     </article>
   </div>
   <div class="span4">
@@ -246,8 +247,8 @@ document.write('<a h'+'ref'+'="ma'+'ilto'+':'+e+'">'+e+'<\/'+'a'+'>');
     <time datetime="2012-06-13T00:00:00-07:00" 
     property="dc:created">13 Jun 2012</time></p>
   <p><small> modified: <time 
-            datetime="2013-04-03T11:02:31-07:00" 
-            property="dc:modified">03 Apr 2013</time></small></p>
+            datetime="2013-05-07T06:35:55-07:00" 
+            property="dc:modified">07 May 2013</time></small></p>
 
  <br />
 
@@ -270,7 +271,7 @@ document.write('<a h'+'ref'+'="ma'+'ilto'+':'+e+'">'+e+'<\/'+'a'+'>');
   <p><i class="icon-list"></i> Posted in 
      
       <a rel="dc:subject" class="category" 
-         href="/categories.html#ecology">ecology</a>
+         href="//categories.html#ecology">ecology</a>
     
     </p>
 
@@ -278,22 +279,20 @@ document.write('<a h'+'ref'+'="ma'+'ilto'+':'+e+'">'+e+'<\/'+'a'+'>');
     
     <!-- http://schema.org/BlogPosting/keywords -->
     <a rel="og:tag" class="tag" 
-       href="/tags.html#decision-theory">#decision-theory</a>, 
+       href="//tags.html#decision-theory">#decision-theory</a>, 
     
     <!-- http://schema.org/BlogPosting/keywords -->
     <a rel="og:tag" class="tag" 
-       href="/tags.html#multiple-uncertainty">#multiple-uncertainty</a>
+       href="//tags.html#multiple-uncertainty">#multiple-uncertainty</a>
     </p>
 
   <br/>
 
-   <p style="font-style:italic"> <i class="icon-signal"></i> pageviews: 278</p>
+   <p style="font-style:italic"> <i class="icon-signal"></i> pageviews: 281</p>
 
   <br/>
 
-  <p><small> <i class="icon-barcode"></i> SHA Hash: <a href="https://github.com/cboettig/labnotebook/commit/3f9a444fbb1ef10b50855230558e6d3adbb29db1
-/_posts/2012-06-13-Sethi-policy-functions.md"> 3f9a444fbb1ef10b50855230558e6d3adbb29db1
-</a></small></p>
+  <p><small> <i class="icon-barcode"></i> SHA Hash: <a href="https://github.com/cboettig/labnotebook/commit/cc2e94b67be5274aeb134604bc317b134bac4a95/_posts/2012-06-13-Sethi-policy-functions.md"> cc2e94b67be5274aeb134604bc317b134bac4a95</a></small></p>
     
   <br/>
 

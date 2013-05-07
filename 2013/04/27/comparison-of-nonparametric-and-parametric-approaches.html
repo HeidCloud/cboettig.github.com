@@ -24,7 +24,7 @@
 <!-- RDFa Metadata (in DublinCore) -->
 <meta property="dc:title" content="A comparison of nonparametric Bayesian Gaussian process estimates to standard the parametric Bayesian approach" />
 <meta property="dc:creator" content="Carl Boettiger" />
-<meta property="dc:date" content="2013-05-03T17:56:56-07:00" />
+<meta property="dc:date" content="2013-05-07T12:11:08-07:00" />
 <meta property="dc:format" content="text/html" />
 <meta property="dc:language" content="en" />
 <meta property="dc:identifier" content="/2013/04/27/comparison-of-nonparametric-and-parametric-approaches.html" />
@@ -37,13 +37,13 @@
 <meta property="og:author" content="http://www.carlboettiger.info/index.html#me" />  <!-- Should be Liquid? URI? -->
 <meta property="http://ogp.me/ns/profile#first_name" content="Carl"/>
 <meta property="http://ogp.me/ns/profile#last_name" content="Boettiger"/>
-<meta property="http://ogp.me/ns/article#published_time" content="2013-05-03T17:56:56-07:00" />
+<meta property="http://ogp.me/ns/article#published_time" content="2013-05-07T12:11:08-07:00" />
 <meta property="og:site_name" content="Lab Notebook" /> <!-- Same as dc:source? -->
 <meta property="og:url" content="http://www.carlboettiger.info/2013/04/27/comparison-of-nonparametric-and-parametric-approaches.html" />
 <meta property="og:type" content="website" /> 
 <!-- Google Scholar Metadata -->
 <meta name="citation_author" content="Carl Boettiger"/>
-<meta name="citation_date" content="2013-05-03T17:56:56-07:00"/>
+<meta name="citation_date" content="2013-05-07T12:11:08-07:00"/>
 <meta name="citation_title" content="A comparison of nonparametric Bayesian Gaussian process estimates to standard the parametric Bayesian approach"/>
 <meta name="citation_journal_title" content="Lab Notebook"/>
 
@@ -217,9 +217,9 @@ posteriors &lt;- <span class="kw">melt</span>(gp$trace$XX[[<span class="dv">1</s
 
 <span class="co"># Traces </span>
 <span class="kw">ggplot</span>(posteriors) + <span class="kw">geom_line</span>(<span class="kw">aes</span>(index, value)) + <span class="kw">facet_wrap</span>(~ variable, <span class="dt">scale=</span><span class="st">&quot;free&quot;</span>, <span class="dt">ncol=</span><span class="dv">1</span>)</code></pre>
-<div class="figure">
-<img src="http://farm9.staticflickr.com/8261/8685360238_353dbc5894_o.png" alt="plot of chunk unnamed-chunk-3" /><p class="caption">plot of chunk unnamed-chunk-3</p>
-</div>
+<figure>
+<img src="http://farm9.staticflickr.com/8261/8685360238_353dbc5894_o.png" alt="plot of chunk unnamed-chunk-3" /><figcaption>plot of chunk unnamed-chunk-3</figcaption>
+</figure>
 <pre class="sourceCode r"><code class="sourceCode r">
 
 prior_curves &lt;- <span class="kw">ddply</span>(posteriors, <span class="st">&quot;variable&quot;</span>, function(dd){
@@ -231,16 +231,16 @@ prior_curves &lt;- <span class="kw">ddply</span>(posteriors, <span class="st">&q
 <span class="kw">ggplot</span>(posteriors) + <span class="kw">geom_histogram</span>(<span class="kw">aes</span>(<span class="dt">x=</span>value, <span class="dt">y=</span>..density..), <span class="dt">alpha=</span><span class="fl">0.7</span>) +
     <span class="kw">geom_line</span>(<span class="dt">data=</span>prior_curves, <span class="kw">aes</span>(<span class="dt">x=</span>value, <span class="dt">y=</span>density), <span class="dt">col=</span><span class="st">&quot;red&quot;</span>, <span class="dt">lwd=</span><span class="dv">2</span>) +
     <span class="kw">facet_wrap</span>(~ variable, <span class="dt">scale=</span><span class="st">&quot;free&quot;</span>)</code></pre>
-<div class="figure">
-<img src="http://farm9.staticflickr.com/8521/8685360484_e2ce943ebd_o.png" alt="plot of chunk unnamed-chunk-3" /><p class="caption">plot of chunk unnamed-chunk-3</p>
-</div>
+<figure>
+<img src="http://farm9.staticflickr.com/8521/8685360484_e2ce943ebd_o.png" alt="plot of chunk unnamed-chunk-3" /><figcaption>plot of chunk unnamed-chunk-3</figcaption>
+</figure>
 <pre class="sourceCode r"><code class="sourceCode r">
 <span class="kw">ggplot</span>(posteriors, <span class="kw">aes</span>(value)) + <span class="kw">stat_density</span>(<span class="dt">geom=</span><span class="st">&quot;path&quot;</span>, <span class="dt">position=</span><span class="st">&quot;identity&quot;</span>, <span class="dt">alpha=</span><span class="fl">0.7</span>) +
   <span class="kw">geom_line</span>(<span class="dt">data=</span>prior_curves, <span class="kw">aes</span>(<span class="dt">x=</span>value, <span class="dt">y=</span>density), <span class="dt">col=</span><span class="st">&quot;red&quot;</span>) + 
   <span class="kw">facet_wrap</span>(~ variable, <span class="dt">scale=</span><span class="st">&quot;free&quot;</span>, <span class="dt">ncol=</span><span class="dv">2</span>)</code></pre>
-<div class="figure">
-<img src="http://farm9.staticflickr.com/8398/8685360552_d9ba680ff7_o.png" alt="plot of chunk unnamed-chunk-3" /><p class="caption">plot of chunk unnamed-chunk-3</p>
-</div>
+<figure>
+<img src="http://farm9.staticflickr.com/8398/8685360552_d9ba680ff7_o.png" alt="plot of chunk unnamed-chunk-3" /><figcaption>plot of chunk unnamed-chunk-3</figcaption>
+</figure>
 <h4 id="parametric-bayes">Parametric Bayes</h4>
 <p>We initiate the MCMC chain (<code>init_p</code>) using the true values of the parameters <code>p</code> from the simulation. While impossible in real data, this gives the parametric Bayesian approach the best chance at succeeding. <code>y</code> is the timeseries (recall <code>obs</code> has the <span class="math">\(x_t\)</span>, <span class="math">\(x_{t+1}\)</span> pairs)</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="co"># a bit unfair to start with the correct values, but anyhow...</span>
@@ -309,16 +309,16 @@ par_posteriors &lt;- <span class="kw">melt</span>(<span class="kw">cbind</span>(
 
 <span class="co"># Traces</span>
 <span class="kw">ggplot</span>(par_posteriors) + <span class="kw">geom_line</span>(<span class="kw">aes</span>(index, value)) + <span class="kw">facet_wrap</span>(~ variable, <span class="dt">scale=</span><span class="st">&quot;free&quot;</span>, <span class="dt">ncol=</span><span class="dv">1</span>)</code></pre>
-<div class="figure">
-<img src="http://farm9.staticflickr.com/8401/8684242957_c1958f5a03_o.png" alt="plot of chunk unnamed-chunk-8" /><p class="caption">plot of chunk unnamed-chunk-8</p>
-</div>
+<figure>
+<img src="http://farm9.staticflickr.com/8401/8684242957_c1958f5a03_o.png" alt="plot of chunk unnamed-chunk-8" /><figcaption>plot of chunk unnamed-chunk-8</figcaption>
+</figure>
 <pre class="sourceCode r"><code class="sourceCode r">
 <span class="co"># posterior distributiosn</span>
 <span class="kw">ggplot</span>(par_posteriors, <span class="kw">aes</span>(value)) + <span class="kw">stat_density</span>(<span class="dt">geom=</span><span class="st">&quot;path&quot;</span>, <span class="dt">position=</span><span class="st">&quot;identity&quot;</span>, <span class="dt">alpha=</span><span class="fl">0.7</span>) +
   <span class="kw">facet_wrap</span>(~ variable, <span class="dt">scale=</span><span class="st">&quot;free&quot;</span>, <span class="dt">ncol=</span><span class="dv">2</span>)</code></pre>
-<div class="figure">
-<img src="http://farm9.staticflickr.com/8255/8684243073_7a0daf0466_o.png" alt="plot of chunk unnamed-chunk-8" /><p class="caption">plot of chunk unnamed-chunk-8</p>
-</div>
+<figure>
+<img src="http://farm9.staticflickr.com/8255/8684243073_7a0daf0466_o.png" alt="plot of chunk unnamed-chunk-8" /><figcaption>plot of chunk unnamed-chunk-8</figcaption>
+</figure>
 <pre class="sourceCode r"><code class="sourceCode r">mcmc &lt;- <span class="kw">as.mcmc</span>(jagsfit)
 mcmcall &lt;- mcmc[,-<span class="dv">2</span>]
 who &lt;- <span class="kw">colnames</span>(mcmcall)
@@ -328,9 +328,9 @@ who </code></pre>
 <span class="kw">colnames</span>(mcmcall) &lt;- who</code></pre>
 <h4 id="phase-space-diagram-of-the-expected-dynamics">Phase-space diagram of the expected dynamics</h4>
 <pre class="sourceCode r"><code class="sourceCode r">  <span class="kw">gp_plot</span>(gp, f, p, est$f, est$p, alt$f, alt$p, x_grid, obs, seed_i)</code></pre>
-<div class="figure">
-<img src="http://farm9.staticflickr.com/8535/8684243227_41391fdd48_o.png" alt="plot of chunk unnamed-chunk-10" /><p class="caption">plot of chunk unnamed-chunk-10</p>
-</div>
+<figure>
+<img src="http://farm9.staticflickr.com/8535/8684243227_41391fdd48_o.png" alt="plot of chunk unnamed-chunk-10" /><figcaption>plot of chunk unnamed-chunk-10</figcaption>
+</figure>
 <h2 id="optimal-policies-by-value-iteration">Optimal policies by value iteration</h2>
 <p>Compute the optimal policy under each model using stochastic dynamic programming.</p>
 <pre class="sourceCode r"><code class="sourceCode r">MaxT = <span class="dv">1000</span>
@@ -365,9 +365,9 @@ colorkey=cbPalette
 <span class="kw">ggplot</span>(policies, <span class="kw">aes</span>(stock, stock - value, <span class="dt">color=</span>method)) +
   <span class="kw">geom_line</span>(<span class="dt">lwd=</span><span class="fl">1.2</span>, <span class="dt">alpha=</span><span class="fl">0.8</span>) + <span class="kw">xlab</span>(<span class="st">&quot;stock size&quot;</span>) + <span class="kw">ylab</span>(<span class="st">&quot;escapement&quot;</span>)  +
   <span class="kw">scale_colour_manual</span>(<span class="dt">values=</span>colorkey)</code></pre>
-<div class="figure">
-<img src="http://farm9.staticflickr.com/8542/8685372902_e8719a0c51_o.png" alt="plot of chunk unnamed-chunk-12" /><p class="caption">plot of chunk unnamed-chunk-12</p>
-</div>
+<figure>
+<img src="http://farm9.staticflickr.com/8542/8685372902_e8719a0c51_o.png" alt="plot of chunk unnamed-chunk-12" /><figcaption>plot of chunk unnamed-chunk-12</figcaption>
+</figure>
 <h2 id="simulate-100-realizations-managed-under-each-of-the-policies">Simulate 100 realizations managed under each of the policies</h2>
 <pre class="sourceCode r"><code class="sourceCode r">
 
@@ -388,17 +388,18 @@ dt$method = <span class="kw">factor</span>(dt$method, <span class="dt">ordered=<
 <span class="kw">ggplot</span>(dt) + 
   <span class="kw">geom_line</span>(<span class="kw">aes</span>(time, fishstock, <span class="dt">group=</span><span class="kw">interaction</span>(reps,method), <span class="dt">color=</span>method), <span class="dt">alpha=</span>.<span class="dv">1</span>) +
   <span class="kw">scale_colour_manual</span>(<span class="dt">values=</span>colorkey, <span class="dt">guide =</span> <span class="kw">guide_legend</span>(<span class="dt">override.aes =</span> <span class="kw">list</span>(<span class="dt">alpha =</span> <span class="dv">1</span>)))</code></pre>
-<div class="figure">
-<img src="http://farm9.staticflickr.com/8400/8685373300_18931d5055_o.png" alt="plot of chunk unnamed-chunk-13" /><p class="caption">plot of chunk unnamed-chunk-13</p>
-</div>
+<figure>
+<img src="http://farm9.staticflickr.com/8400/8685373300_18931d5055_o.png" alt="plot of chunk unnamed-chunk-13" /><figcaption>plot of chunk unnamed-chunk-13</figcaption>
+</figure>
 <pre class="sourceCode r"><code class="sourceCode r">
 <span class="kw">ggplot</span>(dt) + 
   <span class="kw">geom_line</span>(<span class="kw">aes</span>(time, harvest, <span class="dt">group=</span><span class="kw">interaction</span>(reps,method), <span class="dt">color=</span>method), <span class="dt">alpha=</span>.<span class="dv">1</span>) +
   <span class="kw">scale_colour_manual</span>(<span class="dt">values=</span>colorkey, <span class="dt">guide =</span> <span class="kw">guide_legend</span>(<span class="dt">override.aes =</span> <span class="kw">list</span>(<span class="dt">alpha =</span> <span class="dv">1</span>)))</code></pre>
-<div class="figure">
-<img src="http://farm9.staticflickr.com/8535/8685373378_da45da3cbd_o.png" alt="plot of chunk unnamed-chunk-13" /><p class="caption">plot of chunk unnamed-chunk-13</p>
-</div>
+<figure>
+<img src="http://farm9.staticflickr.com/8535/8685373378_da45da3cbd_o.png" alt="plot of chunk unnamed-chunk-13" /><figcaption>plot of chunk unnamed-chunk-13</figcaption>
+</figure>
 <pre class="sourceCode r"><code class="sourceCode r">  </code></pre>
+
     </article>
   </div>
   <div class="span4">
@@ -408,8 +409,8 @@ dt$method = <span class="kw">factor</span>(dt$method, <span class="dt">ordered=<
     <time datetime="2013-04-27T00:00:00-07:00" 
     property="dc:created">27 Apr 2013</time></p>
   <p><small> modified: <time 
-            datetime="2013-04-26T21:22:17-07:00" 
-            property="dc:modified">26 Apr 2013</time></small></p>
+            datetime="2013-05-07T06:35:55-07:00" 
+            property="dc:modified">07 May 2013</time></small></p>
 
  <br />
 
@@ -432,7 +433,7 @@ dt$method = <span class="kw">factor</span>(dt$method, <span class="dt">ordered=<
   <p><i class="icon-list"></i> Posted in 
      
       <a rel="dc:subject" class="category" 
-         href="/categories.html#ecology">ecology</a>
+         href="//categories.html#ecology">ecology</a>
     
     </p>
 
@@ -440,18 +441,16 @@ dt$method = <span class="kw">factor</span>(dt$method, <span class="dt">ordered=<
     
     <!-- http://schema.org/BlogPosting/keywords -->
     <a rel="og:tag" class="tag" 
-       href="/tags.html#nonparametric-bayes">#nonparametric-bayes</a>
+       href="//tags.html#nonparametric-bayes">#nonparametric-bayes</a>
     </p>
 
   <br/>
 
-   <p style="font-style:italic"> <i class="icon-signal"></i> pageviews: 24</p>
+   <p style="font-style:italic"> <i class="icon-signal"></i> pageviews: 31</p>
 
   <br/>
 
-  <p><small> <i class="icon-barcode"></i> SHA Hash: <a href="https://github.com/cboettig/labnotebook/commit/5388987feeede41826d87b2dce7aa45be4bcb867
-/_posts/2013-04-27-comparison-of-nonparametric-and-parametric-approaches.md"> 5388987feeede41826d87b2dce7aa45be4bcb867
-</a></small></p>
+  <p><small> <i class="icon-barcode"></i> SHA Hash: <a href="https://github.com/cboettig/labnotebook/commit/cc2e94b67be5274aeb134604bc317b134bac4a95/_posts/2013-04-27-comparison-of-nonparametric-and-parametric-approaches.md"> cc2e94b67be5274aeb134604bc317b134bac4a95</a></small></p>
     
   <br/>
 

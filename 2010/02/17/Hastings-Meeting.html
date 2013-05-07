@@ -24,7 +24,7 @@
 <!-- RDFa Metadata (in DublinCore) -->
 <meta property="dc:title" content="Hastings Meeting" />
 <meta property="dc:creator" content="Carl Boettiger" />
-<meta property="dc:date" content="2013-05-03T17:56:56-07:00" />
+<meta property="dc:date" content="2013-05-07T12:11:08-07:00" />
 <meta property="dc:format" content="text/html" />
 <meta property="dc:language" content="en" />
 <meta property="dc:identifier" content="/2010/02/17/Hastings-Meeting.html" />
@@ -37,13 +37,13 @@
 <meta property="og:author" content="http://www.carlboettiger.info/index.html#me" />  <!-- Should be Liquid? URI? -->
 <meta property="http://ogp.me/ns/profile#first_name" content="Carl"/>
 <meta property="http://ogp.me/ns/profile#last_name" content="Boettiger"/>
-<meta property="http://ogp.me/ns/article#published_time" content="2013-05-03T17:56:56-07:00" />
+<meta property="http://ogp.me/ns/article#published_time" content="2013-05-07T12:11:08-07:00" />
 <meta property="og:site_name" content="Lab Notebook" /> <!-- Same as dc:source? -->
 <meta property="og:url" content="http://www.carlboettiger.info/2010/02/17/Hastings-Meeting.html" />
 <meta property="og:type" content="website" /> 
 <!-- Google Scholar Metadata -->
 <meta name="citation_author" content="Carl Boettiger"/>
-<meta name="citation_date" content="2013-05-03T17:56:56-07:00"/>
+<meta name="citation_date" content="2013-05-07T12:11:08-07:00"/>
 <meta name="citation_title" content="Hastings Meeting"/>
 <meta name="citation_journal_title" content="Lab Notebook"/>
 
@@ -145,31 +145,31 @@
 <li>Follow up with Darren</li>
 </ul>
 <h3 id="reasons-warning-signals-fail">Reasons Warning Signals fail</h3>
-<ol style="list-style-type: decimal">
+<ol type="1">
 <li>Present (saddle-node model) but insufficient sensitivity to detect (lack ensembles, lack sampling frequency)</li>
 <li>dissipative but warning signals are backwards (other higher dimensional bifurcations, limit cycles –&gt; no potential)</li>
 <li>Hamiltonian instead of dissipative (centers, stochastically become random walks)</li>
 </ol>
 <h2 id="code-updates">Code Updates</h2>
 <p>Early warning signals code now does ensemble averaging, which works! The next step is to compute variance around the ensemble average to determine significance of a signal.</p>
-<div class="figure">
-<img src="http://openwetware.org/images/thumb/e/ef/Ensemble_warning.png/600px-Ensemble_warning.png" alt="image" /><p class="caption">image</p>
-</div>
+<figure>
+<img src="http://openwetware.org/images/thumb/e/ef/Ensemble_warning.png/600px-Ensemble_warning.png" alt="image" /><figcaption>image</figcaption>
+</figure>
 <p>The red line shows the environmental change, which begins around t = 200. The black line shows when the environmental variable hits the bifurcation point. Hence a reliable warning signal should occur between these two points. Looks like these work! Note that expected variance appears the least noisy. Dynamics of the model are <img src="http://openwetware.org/images/math/1/1/d/11dec717f8992ae05dde012fe7cd0aee.png" alt="\dot N = \frac{eKN^2}{h^2+N^2} - e N - a" /></p>
 <p>With</p>
 <table>
 <tbody>
 <tr class="odd">
-<td align="left">e</td>
-<td align="left">0.5</td>
+<td style="text-align: left;">e</td>
+<td style="text-align: left;">0.5</td>
 </tr>
 <tr class="even">
-<td align="left">K</td>
-<td align="left">1000</td>
+<td style="text-align: left;">K</td>
+<td style="text-align: left;">1000</td>
 </tr>
 <tr class="odd">
-<td align="left">h</td>
-<td align="left">200</td>
+<td style="text-align: left;">h</td>
+<td style="text-align: left;">200</td>
 </tr>
 </tbody>
 </table>
@@ -189,6 +189,7 @@
 <p>src directory uncessary, moved code up</p>
 <hr />
 <p><br /></p>
+
     </article>
   </div>
   <div class="span4">
@@ -198,8 +199,8 @@
     <time datetime="2010-02-17T00:00:00-08:00" 
     property="dc:created">17 Feb 2010</time></p>
   <p><small> modified: <time 
-            datetime="2013-02-19T10:27:50-08:00" 
-            property="dc:modified">19 Feb 2013</time></small></p>
+            datetime="2013-05-07T06:35:55-07:00" 
+            property="dc:modified">07 May 2013</time></small></p>
 
  <br />
 
@@ -222,7 +223,7 @@
   <p><i class="icon-list"></i> Posted in 
      
       <a rel="dc:subject" class="category" 
-         href="/categories.html#ecology">ecology</a>
+         href="//categories.html#ecology">ecology</a>
     
     </p>
 
@@ -230,7 +231,7 @@
     
     <!-- http://schema.org/BlogPosting/keywords -->
     <a rel="og:tag" class="tag" 
-       href="/tags.html#warning-signals">#warning-signals</a>
+       href="//tags.html#warning-signals">#warning-signals</a>
     </p>
 
   <br/>
@@ -239,9 +240,7 @@
 
   <br/>
 
-  <p><small> <i class="icon-barcode"></i> SHA Hash: <a href="https://github.com/cboettig/labnotebook/commit/8c159703b2a376bd2c60f16e0e0d5cea04d20876
-/_posts/2010-02-17-Hastings-Meeting.md"> 8c159703b2a376bd2c60f16e0e0d5cea04d20876
-</a></small></p>
+  <p><small> <i class="icon-barcode"></i> SHA Hash: <a href="https://github.com/cboettig/labnotebook/commit/cc2e94b67be5274aeb134604bc317b134bac4a95/_posts/2010-02-17-Hastings-Meeting.md"> cc2e94b67be5274aeb134604bc317b134bac4a95</a></small></p>
     
   <br/>
 

@@ -24,7 +24,7 @@
 <!-- RDFa Metadata (in DublinCore) -->
 <meta property="dc:title" content="evolution statistics " />
 <meta property="dc:creator" content="Carl Boettiger" />
-<meta property="dc:date" content="2013-05-03T17:56:56-07:00" />
+<meta property="dc:date" content="2013-05-07T12:11:08-07:00" />
 <meta property="dc:format" content="text/html" />
 <meta property="dc:language" content="en" />
 <meta property="dc:identifier" content="/2010/11/11/phylogenetics-statistics.html" />
@@ -37,13 +37,13 @@
 <meta property="og:author" content="http://www.carlboettiger.info/index.html#me" />  <!-- Should be Liquid? URI? -->
 <meta property="http://ogp.me/ns/profile#first_name" content="Carl"/>
 <meta property="http://ogp.me/ns/profile#last_name" content="Boettiger"/>
-<meta property="http://ogp.me/ns/article#published_time" content="2013-05-03T17:56:56-07:00" />
+<meta property="http://ogp.me/ns/article#published_time" content="2013-05-07T12:11:08-07:00" />
 <meta property="og:site_name" content="Lab Notebook" /> <!-- Same as dc:source? -->
 <meta property="og:url" content="http://www.carlboettiger.info/2010/11/11/phylogenetics-statistics.html" />
 <meta property="og:type" content="website" /> 
 <!-- Google Scholar Metadata -->
 <meta name="citation_author" content="Carl Boettiger"/>
-<meta name="citation_date" content="2013-05-03T17:56:56-07:00"/>
+<meta name="citation_date" content="2013-05-07T12:11:08-07:00"/>
 <meta name="citation_title" content="evolution statistics "/>
 <meta name="citation_journal_title" content="Lab Notebook"/>
 
@@ -140,40 +140,41 @@
   <div class="span7 offset1">
     <article>
     <p>Exploring the best way for representing the Monte Carlo Likelihood approach visually, including comparison power and comparison to AIC.</p>
-<div class="figure">
+<figure>
 <img src="http://farm5.staticflickr.com/4008/5165037082_109b409aa4_o.png" />
-</div>
+</figure>
 <p>Blue line is AIC, dotted red line is real data.  Red line to the right of blue line indicates test model is rejecting the null model by AIC score.  Solid distribution are likelihood ratios simulated under null, dotted are simulated under test.</p>
 <p>The p-value is the integral of the null distribution lying right of the observed likelihood ratio in the real data:</p>
 <pre><code>plot(pow, main=&quot;&quot;, legend=FALSE, type=&quot;density&quot;, test_dist=F, shade_power=F, shade_p=T, show_aic=FALSE, show_data=T)</code></pre>
-<div class="figure">
+<figure>
 <img src="http://farm5.staticflickr.com/4106/5166322930_27f6448297_o.png" />
-</div>
+</figure>
 <p>As the dotted red line (real data) falls to the right of the solid blue line of difference in AIC penalties, the AIC score prefers the test model.  The fraction of the null distribution falling to the right of the AIC line indicates how often the AIC score will be wrong when comparing these two models.</p>
 <pre><code>plot(pow, main=&quot;&quot;, legend=FALSE, type=&quot;density&quot;, test_dist=F, shade_power=F, shade_p=F, show_aic=T, show_data=T, shade=F, shade_aic=T)</code></pre>
-<div class="figure">
+<figure>
 <img src="http://farm5.staticflickr.com/4065/5165720991_cbc3a64df6_o.png" />
-</div>
+</figure>
 <p>The power to distinguish between models is represented as the area under the test curve that falls to the right of a point that is in the (say) 5%  tail of the null distribution, indicated by the shading:</p>
 <pre><code> plot(pow, main=&quot;&quot;, legend=FALSE, type=&quot;density&quot;, test_dist=T, shade_power=T, shade_p=F, show_aic=FALSE, show_data=F)</code></pre>
-<div class="figure">
+<figure>
 <img src="http://farm2.staticflickr.com/1326/5165721021_f410c57b24_o.png" />
-</div>
+</figure>
 <p>(Reproduce figures by setting <a href="https://github.com/cboettig/Comparative-Phylogenetics/commit/7f1cdf9db9e2a8980ae55f06213e9b31c74bcc45">code to match this commit</a>.)</p>
 <h3 id="reading-seminar">Reading Seminar</h3>
 <p>Rannala Monte Carlo today, discussing: Ané, C. et al. Bayesian estimation of concordance among gene trees. Molecular biology and evolution 24, 412-26(2007). http://www.ncbi.nlm.nih.gov/pubmed/17095535</p>
 <p>Estimate concordance in gene trees by organizing under Dirchlet process.   Interesting more flexible but less mechanistic interpretation than the species tree coalescent approaches we’ve been reading.  Started off with a great tangential discussion on yesterday’s seminar.</p>
+
     </article>
   </div>
   <div class="span4">
     <div class="sidebar">
       <aside prefix="og:http://ogp.me/ns/article#">
   <p> <i class="icon-calendar"></i>
-    <time datetime="2010-11-11T00:13:49-08:00" 
+    <time datetime="2010-11-11T08:13:49Z" 
     property="dc:created">11 Nov 2010</time></p>
   <p><small> modified: <time 
-            datetime="2013-02-19T10:27:50-08:00" 
-            property="dc:modified">19 Feb 2013</time></small></p>
+            datetime="2013-05-07T06:35:55-07:00" 
+            property="dc:modified">07 May 2013</time></small></p>
 
  <br />
 
@@ -196,7 +197,7 @@
   <p><i class="icon-list"></i> Posted in 
      
       <a rel="dc:subject" class="category" 
-         href="/categories.html#evolution">evolution</a>
+         href="//categories.html#evolution">evolution</a>
     
     </p>
 
@@ -209,9 +210,7 @@
 
   <br/>
 
-  <p><small> <i class="icon-barcode"></i> SHA Hash: <a href="https://github.com/cboettig/labnotebook/commit/8c159703b2a376bd2c60f16e0e0d5cea04d20876
-/_posts/2010-11-11-phylogenetics-statistics.md"> 8c159703b2a376bd2c60f16e0e0d5cea04d20876
-</a></small></p>
+  <p><small> <i class="icon-barcode"></i> SHA Hash: <a href="https://github.com/cboettig/labnotebook/commit/cc2e94b67be5274aeb134604bc317b134bac4a95/_posts/2010-11-11-phylogenetics-statistics.md"> cc2e94b67be5274aeb134604bc317b134bac4a95</a></small></p>
     
   <br/>
 

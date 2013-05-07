@@ -24,7 +24,7 @@
 <!-- RDFa Metadata (in DublinCore) -->
 <meta property="dc:title" content="Graham & Peter Meeting" />
 <meta property="dc:creator" content="Carl Boettiger" />
-<meta property="dc:date" content="2013-05-03T17:56:56-07:00" />
+<meta property="dc:date" content="2013-05-07T12:11:08-07:00" />
 <meta property="dc:format" content="text/html" />
 <meta property="dc:language" content="en" />
 <meta property="dc:identifier" content="/2010/06/09/Graham-and-Peter-Meeting.html" />
@@ -37,13 +37,13 @@
 <meta property="og:author" content="http://www.carlboettiger.info/index.html#me" />  <!-- Should be Liquid? URI? -->
 <meta property="http://ogp.me/ns/profile#first_name" content="Carl"/>
 <meta property="http://ogp.me/ns/profile#last_name" content="Boettiger"/>
-<meta property="http://ogp.me/ns/article#published_time" content="2013-05-03T17:56:56-07:00" />
+<meta property="http://ogp.me/ns/article#published_time" content="2013-05-07T12:11:08-07:00" />
 <meta property="og:site_name" content="Lab Notebook" /> <!-- Same as dc:source? -->
 <meta property="og:url" content="http://www.carlboettiger.info/2010/06/09/Graham-and-Peter-Meeting.html" />
 <meta property="og:type" content="website" /> 
 <!-- Google Scholar Metadata -->
 <meta name="citation_author" content="Carl Boettiger"/>
-<meta name="citation_date" content="2013-05-03T17:56:56-07:00"/>
+<meta name="citation_date" content="2013-05-07T12:11:08-07:00"/>
 <meta name="citation_title" content="Graham & Peter Meeting"/>
 <meta name="citation_journal_title" content="Lab Notebook"/>
 
@@ -142,29 +142,29 @@
     <p>Fantastic meeting with Graham and Peter today, covered a lot of ground.</p>
 <h4 id="mnv">MNV</h4>
 <p>I briefly sketched the multivariate normal solution for joint probability across the tree under the regimes model. The original regimes approach did not take advantage of the fact that the solution to the joint probability across the tree is multivariate normal given the painting. This allows the calculation to be partitioned as outlined in Saturday’s entry:</p>
-<div class="figure">
-<img src="http://openwetware.org/images/math/b/7/d/b7d74172c4b6e8084dc7907ec3dd6300.png" alt="P(X | \vec \theta, \mathbb{Q} ) = P(X | C) P(C | \mathbb{Q} )" /><p class="caption">P(X | \vec \theta, \mathbb{Q} ) = P(X | C) P(C | \mathbb{Q} )</p>
-</div>
+<figure>
+<img src="http://openwetware.org/images/math/b/7/d/b7d74172c4b6e8084dc7907ec3dd6300.png" alt="P(X | \vec \theta, \mathbb{Q} ) = P(X | C) P(C | \mathbb{Q} )" /><figcaption>P(X | \vec \theta, \mathbb{Q} ) = P(X | C) P(C | \mathbb{Q} )</figcaption>
+</figure>
 <p><br /> #### Importance Sampling</p>
 <ul>
 <li>The method I had outlined by reusing the tree library and weighting by the probability that the Q matrix generated that tree goes by the name <em>Importance Sampling</em>, though it ought to have been re-weighted by the probability it was produced from the original Q matrix used to generate it (Q’), and then averaged. (In my examples (github) I generate from the same distribution as a weight from and these agree). A brief summary excerpted from Wikipedia:</li>
 </ul>
 <p><br /> <img src="http://openwetware.org/images/math/3/7/3/373dde81b17f8f8f1d2b77732bbd9ada.png" alt="\begin{align} p_t &amp; {} = {E} [1(X \ge t)] \\ &amp; {} = \int 1(x \ge t) \frac{f(x)}{f_*(x)} f_*(x) \,dx \\ &amp; {} = {E_*} [1(X \ge t) W(X)] \end{align}" /></p>
 <p>where</p>
-<div class="figure">
-<img src="http://openwetware.org/images/math/2/4/0/2406dfcf6682ef40f4c5142f0fceb5b6.png" alt="W(\cdot) \equiv \frac{f(\cdot)}{f_*(\cdot)}" /><p class="caption">W(\cdot) \equiv \frac{f(\cdot)}{f_*(\cdot)}</p>
-</div>
+<figure>
+<img src="http://openwetware.org/images/math/2/4/0/2406dfcf6682ef40f4c5142f0fceb5b6.png" alt="W(\cdot) \equiv \frac{f(\cdot)}{f_*(\cdot)}" /><figcaption>W(\cdot) \equiv \frac{f(\cdot)}{f_*(\cdot)}</figcaption>
+</figure>
 <p>is a likelihood ratio and is referred to as the weighting function. The last equality in the above equation motivates the estimator</p>
-<div class="figure">
-<img src="http://openwetware.org/images/math/a/9/d/a9d937b80a14419bcbcd9e73159727ea.png" alt="\hat p_t = \frac{1}{K}\,\sum_{i=1}^K 1(X_i \ge t) W(X_i),\,\quad \quad X_i \sim f_*" /><p class="caption">\hat p_t = \frac{1}{K}\,\sum_{i=1}^K 1(X_i \ge t) W(X_i),\,\quad \quad X_i \sim f_*</p>
-</div>
+<figure>
+<img src="http://openwetware.org/images/math/a/9/d/a9d937b80a14419bcbcd9e73159727ea.png" alt="\hat p_t = \frac{1}{K}\,\sum_{i=1}^K 1(X_i \ge t) W(X_i),\,\quad \quad X_i \sim f_*" /><figcaption>\hat p_t = \frac{1}{K}\,\sum_{i=1}^K 1(X_i \ge t) W(X_i),\,\quad \quad X_i \sim f_*</figcaption>
+</figure>
 <p>This is the importance sampling estimator of <img src="http://openwetware.org/images/math/1/e/4/1e48d42b7f9d92edeb2212f749b47b4a.png" alt="p_t\," /> and is unbiased. That is, the estimation procedure is to generate i.i.d. samples from <img src="http://openwetware.org/images/math/4/e/9/4e91b5d2c89ec590d25607953484706c.png" alt="f_*\," /> and for each sample which exceeds <img src="http://openwetware.org/images/math/0/c/6/0c68620ee2ea4f1286fcd672a47ea080.png" alt="t\," />, the estimate is incremented by the weight <img src="http://openwetware.org/images/math/2/f/1/2f1e8d5af98f2c9643b0334c73ccc25b.png" alt="W\," /> evaluated at the sample value. The results are averaged over <img src="http://openwetware.org/images/math/d/0/e/d0e1b8571128845c03a4cfac00d43b66.png" alt="K\," /> trials.</p>
 <p><br /> - Unfortunately having to know the <img src="http://openwetware.org/images/math/d/5/d/d5dd2924b7a98d52bb15c85b966071e6.png" alt="f_*(\cdot)" /> term means that I cannot produce the painting library arbitrarily, but will be stuck finding the right painting only with the probability that I can simulate it from the prior.</p>
 <h4 id="mcmc">MCMC</h4>
 <p>Partitioning the problem</p>
-<div class="figure">
-<img src="http://openwetware.org/images/math/f/d/6/fd6dcd9d7346f612450994c84b39a7f5.png" alt="P(X | \vec \theta, \mathbb{Q} ) = P(X | C) P(C | \mathbb{Q} ) P( \mathbb{Q} ) P( \vec \theta)" /><p class="caption">P(X | \vec \theta, \mathbb{Q} ) = P(X | C) P(C | \mathbb{Q} ) P( \mathbb{Q} ) P( \vec \theta)</p>
-</div>
+<figure>
+<img src="http://openwetware.org/images/math/f/d/6/fd6dcd9d7346f612450994c84b39a7f5.png" alt="P(X | \vec \theta, \mathbb{Q} ) = P(X | C) P(C | \mathbb{Q} ) P( \mathbb{Q} ) P( \vec \theta)" /><figcaption>P(X | \vec \theta, \mathbb{Q} ) = P(X | C) P(C | \mathbb{Q} ) P( \mathbb{Q} ) P( \vec \theta)</figcaption>
+</figure>
 <p>and proposing paintings directly, we can MCMC over the space of possible paintings <em>C</em>, OU parameters <img src="http://openwetware.org/images/math/1/c/8/1c876a2b07f33c4f32b5f73a9d790a18.png" alt="\vec \theta" /> and transition matrices <img src="http://openwetware.org/images/math/d/4/5/d45a4aa156a8ac07ab80e7d9cf5fa79f.png" alt="\mathbb{Q}" />. Still, as this problem is hard in the discrete case over <img src="http://openwetware.org/images/math/d/4/5/d45a4aa156a8ac07ab80e7d9cf5fa79f.png" alt="\mathbb{Q}" /> (BayesTraits), optimizing the MCMC will still be interesting…</p>
 <ul>
 <li>Discussion of Hastings ratio</li>
@@ -172,13 +172,14 @@
 </ul>
 <h2 id="wainwright-lab-meeting-4-6pm">Wainwright Lab Meeting, 4-6pm</h2>
 <p>Presented three potential questions to focus on for the Evolution talk:</p>
-<ol style="list-style-type: decimal">
+<ol type="1">
 <li>Defining clusters from raw data, with example in Labrids</li>
 <li>Inferring paintings and transition rates directly from data via MCMC</li>
 <li>Risks in AIC-based model choice</li>
 </ol>
 <p>The group clearly indicated that I should focus on the third, AIC topic, as it is the furthest along and the most immediate impact to the audience. Surprising to me as it is also the least biologically driven. Back to the drawing board now to figure out how to tell this story clearly and succinctly.</p>
 <p><br /></p>
+
     </article>
   </div>
   <div class="span4">
@@ -188,8 +189,8 @@
     <time datetime="2010-06-09T00:00:00-07:00" 
     property="dc:created">09 Jun 2010</time></p>
   <p><small> modified: <time 
-            datetime="2013-03-25T11:15:04-07:00" 
-            property="dc:modified">25 Mar 2013</time></small></p>
+            datetime="2013-05-07T06:35:55-07:00" 
+            property="dc:modified">07 May 2013</time></small></p>
 
  <br />
 
@@ -212,7 +213,7 @@
   <p><i class="icon-list"></i> Posted in 
      
       <a rel="dc:subject" class="category" 
-         href="/categories.html#evolution">evolution</a>
+         href="//categories.html#evolution">evolution</a>
     
     </p>
 
@@ -220,7 +221,7 @@
     
     <!-- http://schema.org/BlogPosting/keywords -->
     <a rel="og:tag" class="tag" 
-       href="/tags.html#conference">#conference</a>
+       href="//tags.html#conference">#conference</a>
     </p>
 
   <br/>
@@ -229,9 +230,7 @@
 
   <br/>
 
-  <p><small> <i class="icon-barcode"></i> SHA Hash: <a href="https://github.com/cboettig/labnotebook/commit/5f618a79db88dbc1205a47adfb1fe4e3d62429a7
-/_posts/2010-06-09-Graham-and-Peter-Meeting.md"> 5f618a79db88dbc1205a47adfb1fe4e3d62429a7
-</a></small></p>
+  <p><small> <i class="icon-barcode"></i> SHA Hash: <a href="https://github.com/cboettig/labnotebook/commit/cc2e94b67be5274aeb134604bc317b134bac4a95/_posts/2010-06-09-Graham-and-Peter-Meeting.md"> cc2e94b67be5274aeb134604bc317b134bac4a95</a></small></p>
     
   <br/>
 

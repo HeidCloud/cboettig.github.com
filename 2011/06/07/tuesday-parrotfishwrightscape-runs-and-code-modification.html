@@ -24,7 +24,7 @@
 <!-- RDFa Metadata (in DublinCore) -->
 <meta property="dc:title" content="Tuesday: Parrotfish/wrightscape runs and code modification" />
 <meta property="dc:creator" content="Carl Boettiger" />
-<meta property="dc:date" content="2013-05-03T17:56:56-07:00" />
+<meta property="dc:date" content="2013-05-07T12:11:08-07:00" />
 <meta property="dc:format" content="text/html" />
 <meta property="dc:language" content="en" />
 <meta property="dc:identifier" content="/2011/06/07/tuesday-parrotfishwrightscape-runs-and-code-modification.html" />
@@ -37,13 +37,13 @@
 <meta property="og:author" content="http://www.carlboettiger.info/index.html#me" />  <!-- Should be Liquid? URI? -->
 <meta property="http://ogp.me/ns/profile#first_name" content="Carl"/>
 <meta property="http://ogp.me/ns/profile#last_name" content="Boettiger"/>
-<meta property="http://ogp.me/ns/article#published_time" content="2013-05-03T17:56:56-07:00" />
+<meta property="http://ogp.me/ns/article#published_time" content="2013-05-07T12:11:08-07:00" />
 <meta property="og:site_name" content="Lab Notebook" /> <!-- Same as dc:source? -->
 <meta property="og:url" content="http://www.carlboettiger.info/2011/06/07/tuesday-parrotfishwrightscape-runs-and-code-modification.html" />
 <meta property="og:type" content="website" /> 
 <!-- Google Scholar Metadata -->
 <meta name="citation_author" content="Carl Boettiger"/>
-<meta name="citation_date" content="2013-05-03T17:56:56-07:00"/>
+<meta name="citation_date" content="2013-05-07T12:11:08-07:00"/>
 <meta name="citation_title" content="Tuesday: Parrotfish/wrightscape runs and code modification"/>
 <meta name="citation_journal_title" content="Lab Notebook"/>
 
@@ -155,26 +155,26 @@
 <h2 id="summary-results">Summary Results</h2>
 <p>(Click on image for parameter details, hashtag to code in git).</p>
 <h4 id="open-lever-arm-1e6-gens">Open Lever arm, 1e6 gens</h4>
-<div class="figure">
+<figure>
 <img src="http://farm3.staticflickr.com/2129/5811887743_ca8d58b5eb_o.png" />
-</div>
+</figure>
 <pre class="sourceCode r"><code class="sourceCode r">
 <span class="kw">general_mcmc</span>(<span class="dt">data =</span> labrid[open], <span class="dt">tree =</span> labrid, <span class="dt">regimes =</span> intramandibular, <span class="dt">alpha =</span> <span class="fl">0.1</span>, <span class="dt">sigma =</span> <span class="fl">0.1</span>, <span class="dt">MaxTime =</span> <span class="fl">1e+06</span>, <span class="dt">indep =</span> <span class="dv">100</span>)</code></pre>
 <p>Despite the 1e6 gen probably far from stationary still: <img src="http://farm3.staticflickr.com/2243/5811889155_0100789cc7_o.png" /></p>
 <p>Compare to:</p>
 <h4 id="opening-lever-arm-1e5-gen">Opening lever arm, 1e5 gen</h4>
-<div class="figure">
+<figure>
 <img src="http://farm3.staticflickr.com/2006/5808419551_b08a514672_o.png" />
-</div>
+</figure>
 <p>general_mcmc(data = labrid[open], tree = labrid, regimes = intramandibular, alpha = 0.1, sigma = 0.1, MaxTime = 1e+05, indep = 100)</p>
 <h4 id="size-corrected-gape-5e5-gen">Size-corrected gape, 5e5 gen</h4>
-<div class="figure">
+<figure>
 <img src="http://farm3.staticflickr.com/2134/5810610763_90a42c7db7_o.png" />
-</div>
+</figure>
 <h4 id="closing-lever-ratio-1e5-gen">Closing lever ratio, 1e5 gen</h4>
-<div class="figure">
+<figure>
 <img src="http://farm3.staticflickr.com/2274/5809256418_7fff175e7d_o.png" />
-</div>
+</figure>
 <p>All runs today: [flickr-gallery mode=“search” tags=“phylogenetics” min_upload_date=“2011-06-07 00:00:00” max_upload_date=“2011-06-08 9:59:59”]</p>
 <h2 id="afternoon-code-updates">Afternoon: Code Updates</h2>
 <p>Rewrote the model with closures and generics.  Allows model to be specified by identifying which parameters are global, which are local (and if alpha is fixed).  Other combinations (global sigma, indep alpha and theta) may also be interesting. Keeps code completely functionalized, with single model (multiTypeOU) for maximum likelihood fit of any model, and single type to MCMCMC any model (phylo_mcmc, probably needs a better name).</p>
@@ -195,17 +195,18 @@
 <li><p>See details on the project <a href="https://github.com/SChamberlain/plosjournals/issues">issues tracker page</a></p></li>
 </ul>
 <p>*</p>
+
     </article>
   </div>
   <div class="span4">
     <div class="sidebar">
       <aside prefix="og:http://ogp.me/ns/article#">
   <p> <i class="icon-calendar"></i>
-    <time datetime="2011-06-07T16:47:09-07:00" 
+    <time datetime="2011-06-07T23:47:09Z" 
     property="dc:created">07 Jun 2011</time></p>
   <p><small> modified: <time 
-            datetime="2013-02-19T10:27:50-08:00" 
-            property="dc:modified">19 Feb 2013</time></small></p>
+            datetime="2013-05-07T06:35:55-07:00" 
+            property="dc:modified">07 May 2013</time></small></p>
 
  <br />
 
@@ -228,7 +229,7 @@
   <p><i class="icon-list"></i> Posted in 
      
       <a rel="dc:subject" class="category" 
-         href="/categories.html#evolution">evolution</a>
+         href="//categories.html#evolution">evolution</a>
     
     </p>
 
@@ -241,9 +242,7 @@
 
   <br/>
 
-  <p><small> <i class="icon-barcode"></i> SHA Hash: <a href="https://github.com/cboettig/labnotebook/commit/8c159703b2a376bd2c60f16e0e0d5cea04d20876
-/_posts/2011-06-07-tuesday-parrotfishwrightscape-runs-and-code-modification.md"> 8c159703b2a376bd2c60f16e0e0d5cea04d20876
-</a></small></p>
+  <p><small> <i class="icon-barcode"></i> SHA Hash: <a href="https://github.com/cboettig/labnotebook/commit/cc2e94b67be5274aeb134604bc317b134bac4a95/_posts/2011-06-07-tuesday-parrotfishwrightscape-runs-and-code-modification.md"> cc2e94b67be5274aeb134604bc317b134bac4a95</a></small></p>
     
   <br/>
 

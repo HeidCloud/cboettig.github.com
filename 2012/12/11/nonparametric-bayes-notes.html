@@ -24,7 +24,7 @@
 <!-- RDFa Metadata (in DublinCore) -->
 <meta property="dc:title" content="Nonparametric Bayes Notes" />
 <meta property="dc:creator" content="Carl Boettiger" />
-<meta property="dc:date" content="2013-05-03T17:56:56-07:00" />
+<meta property="dc:date" content="2013-05-07T12:11:08-07:00" />
 <meta property="dc:format" content="text/html" />
 <meta property="dc:language" content="en" />
 <meta property="dc:identifier" content="/2012/12/11/nonparametric-bayes-notes.html" />
@@ -37,13 +37,13 @@
 <meta property="og:author" content="http://www.carlboettiger.info/index.html#me" />  <!-- Should be Liquid? URI? -->
 <meta property="http://ogp.me/ns/profile#first_name" content="Carl"/>
 <meta property="http://ogp.me/ns/profile#last_name" content="Boettiger"/>
-<meta property="http://ogp.me/ns/article#published_time" content="2013-05-03T17:56:56-07:00" />
+<meta property="http://ogp.me/ns/article#published_time" content="2013-05-07T12:11:08-07:00" />
 <meta property="og:site_name" content="Lab Notebook" /> <!-- Same as dc:source? -->
 <meta property="og:url" content="http://www.carlboettiger.info/2012/12/11/nonparametric-bayes-notes.html" />
 <meta property="og:type" content="website" /> 
 <!-- Google Scholar Metadata -->
 <meta name="citation_author" content="Carl Boettiger"/>
-<meta name="citation_date" content="2013-05-03T17:56:56-07:00"/>
+<meta name="citation_date" content="2013-05-07T12:11:08-07:00"/>
 <meta name="citation_title" content="Nonparametric Bayes Notes"/>
 <meta name="citation_journal_title" content="Lab Notebook"/>
 
@@ -146,14 +146,14 @@
 <p>If the estimated recruitment dynamics correspond to population dynamics that are non-persistent (might call this non self-sustaining, but in a rather stricter sense than when Reed (1979) introduced that term), and if no reward is offered at the terminal time point for a standing stock (zero scrap value), the GP dictates the rather counter-intuitive practice of simply removing the stock entirely.</p>
 <p>Exploring this by comparing evolution of the probability density for the population size under the transition function. Consider this example from a May1979 model (full run in <a href="">may1979-example.md</a>): The Gaussian process infers a rather pessemistic evolution of the probabilty density (grey distribution becomes black distribution when unharvested, 20 years (OptTime)):</p>
 <h4 id="gp-transition-function">GP transition function</h4>
-<div class="figure">
-<img src="/assets/figures/2012-12-15-a3aad15b15-gp-F-sim.png" alt="plot of chunk gp-F-sim" /><p class="caption">plot of chunk gp-F-sim</p>
-</div>
+<figure>
+<img src="/assets/figures/2012-12-15-a3aad15b15-gp-F-sim.png" alt="plot of chunk gp-F-sim" /><figcaption>plot of chunk gp-F-sim</figcaption>
+</figure>
 <p>Whereas the actual transition function moves the stock to a tight window around the high carrying capacity:</p>
 <h4 id="true-transition-function">true transition function</h4>
-<div class="figure">
-<img src="/assets/figures/2012-12-15-a3aad15b15-par-F-sim.png" alt="plot of chunk par-F-sim" /><p class="caption">plot of chunk par-F-sim</p>
-</div>
+<figure>
+<img src="/assets/figures/2012-12-15-a3aad15b15-par-F-sim.png" alt="plot of chunk par-F-sim" /><figcaption>plot of chunk par-F-sim</figcaption>
+</figure>
 <p>Often this results in a policy function that harvests all the fish, since they won’t persist. Exploring approaches to avoid such solutions, such as adding a reward for leaving some standing stock at the boundary time (issue <a href="https://github.com/cboettig/nonparametric-bayes/issues/10">#10</a>).</p>
 <h2 id="multi-species-examples-issue-7">Multi-species examples (issue <a href="https://github.com/cboettig/nonparametric-bayes/issues/7">#7</a>)</h2>
 <p><a href="https://github.com/cboettig/nonparametric-bayes/blob/b5b1d3300497399fb364a40c9f4523203944702d/inst/examples/multidimensional.md">multidimensional.md</a></p>
@@ -183,6 +183,7 @@
 <li>transition matrix method for GP takes Ef, Cf explicitly now. <a href="https://github.com/cboettig/nonparametric-bayes/commit/49cea150618907f48b058e45bbbc01a43c44f8c5">03:50 pm 2012/12/11</a></li>
 <li>GP that results in scorched earth fishing strategy <a href="https://github.com/cboettig/nonparametric-bayes/commit/6fc937211b6c5381b46dc0e8ffff6092545d7519">02:19 pm 2012/12/11</a></li>
 </ul>
+
     </article>
   </div>
   <div class="span4">
@@ -192,8 +193,8 @@
     <time datetime="2012-12-11T00:00:00-08:00" 
     property="dc:created">11 Dec 2012</time></p>
   <p><small> modified: <time 
-            datetime="2013-03-26T11:09:33-07:00" 
-            property="dc:modified">26 Mar 2013</time></small></p>
+            datetime="2013-05-07T06:35:55-07:00" 
+            property="dc:modified">07 May 2013</time></small></p>
 
  <br />
 
@@ -216,7 +217,7 @@
   <p><i class="icon-list"></i> Posted in 
      
       <a rel="dc:subject" class="category" 
-         href="/categories.html#ecology">ecology</a>
+         href="//categories.html#ecology">ecology</a>
     
     </p>
 
@@ -224,7 +225,7 @@
     
     <!-- http://schema.org/BlogPosting/keywords -->
     <a rel="og:tag" class="tag" 
-       href="/tags.html#nonparametric-bayes">#nonparametric-bayes</a>
+       href="//tags.html#nonparametric-bayes">#nonparametric-bayes</a>
     </p>
 
   <br/>
@@ -233,9 +234,7 @@
 
   <br/>
 
-  <p><small> <i class="icon-barcode"></i> SHA Hash: <a href="https://github.com/cboettig/labnotebook/commit/8e61ee22861046a0fbe10f298def50b55dda4e8d
-/_posts/2012-12-11-nonparametric-bayes-notes.md"> 8e61ee22861046a0fbe10f298def50b55dda4e8d
-</a></small></p>
+  <p><small> <i class="icon-barcode"></i> SHA Hash: <a href="https://github.com/cboettig/labnotebook/commit/cc2e94b67be5274aeb134604bc317b134bac4a95/_posts/2012-12-11-nonparametric-bayes-notes.md"> cc2e94b67be5274aeb134604bc317b134bac4a95</a></small></p>
     
   <br/>
 
