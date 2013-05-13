@@ -810,7 +810,13 @@ http://carlboettiger.info/wordpress/archives/4482/index.html
 http://carlboettiger.info/archives/4482/index.html 
 
  
+http://carlboettiger.info/2013/05/09/notes.html  
+http://carlboettiger.info/2013/05/07/notes.html  
+http://carlboettiger.info/2013/05/03/notes.html  
 http://carlboettiger.info/2013/05/03/notebook-features-hashes-providing-an-immutable-and-verifiable-research-record.html  
+http://carlboettiger.info/2013/05/02/scholarly-infrastructure-thoughts.html  
+http://carlboettiger.info/2013/05/02/musings-on-conservation-literature.html  
+http://carlboettiger.info/2013/05/01/integrating-over-posterior-gp.html  
 http://carlboettiger.info/2013/04/30/tgp-difficulties-and-custom-mcmc-for-gp.html  
 http://carlboettiger.info/2013/04/29/finishing-comparison-parametric-and-nonparametric.html  
 http://carlboettiger.info/2013/04/27/comparison-of-nonparametric-and-parametric-approaches.html  

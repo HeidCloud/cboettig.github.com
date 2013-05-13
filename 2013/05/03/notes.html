@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head prefix="dc: http://purl.org/dc/terms/ og: http://ogp.me/ns#">
+  <meta http-equiv='Content-Type' content='text/html; charset=utf-8'/>
+  <title>Reading and potential examples for talk to ERE next week</title>
+  <meta name="author" content="Carl Boettiger" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+
+<!-- Some liquid code so that pages get the site.time creation date 
+      Would be nice to use github modified times, but doesn't handle 
+      the path for pages -->
+
+
+
+
+
+
+
+<!-- HTML5 metadata -->
+<meta name="keywords" content="nonparametric-bayes" />
+<meta name="description" content="" />
+<meta name="resource_type" content="website"/> 
+<!-- RDFa Metadata (in DublinCore) -->
+<meta property="dc:title" content="Reading and potential examples for talk to ERE next week" />
+<meta property="dc:creator" content="Carl Boettiger" />
+<meta property="dc:date" content="2013-05-13T12:26:23-07:00" />
+<meta property="dc:format" content="text/html" />
+<meta property="dc:language" content="en" />
+<meta property="dc:identifier" content="/2013/05/03/notes.html" />
+<meta property="dc:rights" content="CC0" />
+<meta property="dc:source" content="Lab Notebook" />
+<meta property="dc:subject" content="Ecology" /> 
+<meta property="dc:type" content="website" /> 
+<!-- RDFa Metadata (in OpenGraph) -->
+<meta property="og:title" content="Reading and potential examples for talk to ERE next week" />
+<meta property="og:author" content="http://www.carlboettiger.info/index.html#me" />  <!-- Should be Liquid? URI? -->
+<meta property="http://ogp.me/ns/profile#first_name" content="Carl"/>
+<meta property="http://ogp.me/ns/profile#last_name" content="Boettiger"/>
+<meta property="http://ogp.me/ns/article#published_time" content="2013-05-13T12:26:23-07:00" />
+<meta property="og:site_name" content="Lab Notebook" /> <!-- Same as dc:source? -->
+<meta property="og:url" content="http://www.carlboettiger.info/2013/05/03/notes.html" />
+<meta property="og:type" content="website" /> 
+<!-- Google Scholar Metadata -->
+<meta name="citation_author" content="Carl Boettiger"/>
+<meta name="citation_date" content="2013-05-13T12:26:23-07:00"/>
+<meta name="citation_title" content="Reading and potential examples for talk to ERE next week"/>
+<meta name="citation_journal_title" content="Lab Notebook"/>
+
+<!--NOTE: see also the COinS Metadata in span element in footer -->
+
+
+
+
+  <!-- CSS Stylesheets (toggled with javascript) -->
+  <link href="/assets/css/light.css" rel="stylesheet"
+        type="text/css" id="stl" title="light" />
+  <link href="/assets/css/dark.css" rel="alternate stylesheet" 
+        type="text/css" title="dark" />
+  <link href="/assets/css/bootstrap-responsive.css" rel="stylesheet" 
+        type="text/css"/>
+  <!-- Javascript needed for theme toggle, load immediately -->
+  <script type="text/javascript" src="/assets/js/switch-css.js"></script>
+  <script type="text/javascript">
+    set_style_from_cookie(); 
+  </script>
+</head>
+
+
+  <body prefix="dc: http://purl.org/dc/terms/ foaf: http://xmlns.com/foaf/0.1/"> 
+    
+<!-- Navbar  ================================================== -->
+<div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+      <a class="brand" href="/README.html"><span  class="showtooltip" 
+          title="Credits and technical information about this site" 
+          data-placement="bottom"><i style="float:right;" class="icon-info-sign" alt="info"></i></span></a>
+      <div class="nav-collapse">
+        <ul class="nav">
+          <li>
+          <a href="/index.html">Home</a></li>
+
+          <li>
+          <a href="/vita.html">Vita</a></li>
+
+          <li>
+          <a href="/research.html">Research</a></li>
+
+          <li>
+          <a href="/teaching.html">Teaching</a></li>
+
+          <li>
+          <a href="/community.html">Community</a></li>
+
+          <li>
+          <a href="/lab-notebook.html">Lab Notebook</a></li>
+
+        </ul>
+      </div><!--/.nav-collapse -->
+
+      <!-- Search site using Google's index --><!--
+      <form class="navbar-search pull-right" method="get" action="http://google.com/search">
+        <p>
+          <input type="hidden" name="q" value="site:carlboettiger.info" />
+          <input type="text" class="search-query" name="q" />
+          <button class="btn btn-mini" type="submit"><i class="icon-search"></i></button> 
+        </p>
+      </form>
+      -->
+      <div id="search">
+      <form method="get" class="navbar-search pull-right form-search">
+        <p>
+        <input type="text" name="search-text" id="search-text">
+         <button class="btn btn-mini" type="submit"><i class="icon-search"></i></button> 
+        </p>
+      </form>
+      </div>
+     </div> <!-- /container -->
+   </div> <!-- /navbar-inner -->
+ </div> <!-- /navbar -->
+
+
+
+    <div class="container"> <!-- Responsive grid layout --> 
+
+      <header class="jumbotron">
+  <h1 class="entry-title">Reading and potential examples for talk to ERE next week</h1>
+  <h3></h3>
+</header>
+
+
+
+<div class="row">
+  <div class="span7 offset1">
+    <article>
+    <h2 id="parametric-bayesian-comparisons">Parametric Bayesian comparisons</h2>
+<ul>
+<li>Added parameteric Bayesian version of Ricker to the set of comparisons, see <a href="https://github.com/cboettig/nonparametric-bayes/blob/ee4467c8defe81a27aadfbc4359cd0695339de6b/inst/examples/BUGS/allen.md">allen.Rmd</a></li>
+<li>Adjusted thinning of posterior sample before determining optimum of GP</li>
+</ul>
+<h2 id="reading-examples">Reading / Examples</h2>
+<p>Need a nice set of basic fisheries examples involving potential tipping points for ERE talk. hmm.</p>
+<ul>
+<li>As mentioned in <span class="showtooltip" title="Worm B, Hilborn R, Baum J, Branch T, Collie J, Costello C, Fogarty M, Fulton E, Hutchings J, Jennings S, Jensen O, Lotze H, Mace P, McClanahan T, Minto C, Palumbi S, Parma A, Ricard D, Rosenberg A, Watson R and Zeller D (2009). 'Rebuilding Global Fisheries.' Science, 325, pp. 578-585. ISSN 0036-8075."><a href="http://dx.doi.org/10.1126/science.1173146" rel="http://purl.org/spar/cito/citesAsEvidence" >Worm et al. (2009)</a></span> .</li>
+<li>Algal-reef example from <span class="showtooltip" title="Aronson R and Precht W (2000). 'Herbivory And Algal Dynamics on The Coral Reef at Discovery Bay, Jamaica.' Limnology And Oceanography, 45, pp. 251-255. ."><a href="http://dx.doi.org/10.4319/lo.2000.45.1.0251" rel="http://purl.org/spar/cito/citesAsEvidence" >Aronson &amp; Precht (2000)</a></span></li>
+<li>Fish collapse following reef distruction <span class="showtooltip" title="Paddack M, Reynolds J, Aguilar C, Appeldoorn R, Beets J, Burkett E, Chittaro P, Clarke K, Esteves R, Fonseca A, Forrester G, Friedlander A, García-Sais J, González-Sansón G, Jordan L, McClellan D, Miller M, Molloy P, Mumby P, Nagelkerken I, Nemeth M, Navas-Camacho R, Pitt J, Polunin N, Reyes-Nivia M, Robertson D, Rodríguez-Ramírez A, Salas E, Smith S, Spieler R, Steele M, Williams I, Wormald C, Watkinson A and Côté I (2009). 'Recent Region-Wide Declines in Caribbean Reef Fish Abundance.' Current Biology, 19, pp. 590-595. ISSN 09609822."><a href="http://dx.doi.org/10.1016/j.cub.2009.02.041" rel="http://purl.org/spar/cito/citesAsEvidence" >Paddack et al. (2009)</a></span></li>
+<li>Alt stable states in marine systems <span class="showtooltip" title="Petraitis P and Dudgeon S (2004). 'Detection of Alternative Stable States in Marine Communities.' Journal of Experimental Marine Biology And Ecology, 300, pp. 343-371. ISSN 00220981."><a href="http://dx.doi.org/10.1016/j.jembe.2003.12.026" rel="http://purl.org/spar/cito/citesAsEvidence" >Petraitis &amp; Dudgeon (2004)</a></span> , <span class="showtooltip" title="Osman R, Munguia P and Zajac R (2010). 'Ecological Thresholds in Marine Communities: Theory, Experiments And Management.' Marine Ecology Progress Series, 413, pp. 185-187. ISSN 0171-8630."><a href="http://dx.doi.org/10.3354/meps08765" rel="http://purl.org/spar/cito/citesAsEvidence" >Osman et al. (2010)</a></span></li>
+<li><p>Cod examples? Forage fish? Peruvian Anchovy. Overfishing vs climate variability.</p></li>
+<li><p>And more examples from marine systems in <span class="showtooltip" title="Oguz T and Velikova V (2010). 'Abrupt Transition of The Northwestern Black Sea Shelf Ecosystem From A Eutrophic to an Alternative Pristine State.' Marine Ecology Progress Series, 405, pp. 231-242. ISSN 0171-8630."><a href="http://dx.doi.org/10.3354/meps08538" rel="http://purl.org/spar/cito/discusses" >Oguz &amp; Velikova (2010)</a></span> , <span class="showtooltip" title="Lindegren M, Diekmann R and Möllmann C (2010). 'Regime Shifts, Resilience And Recovery of A Cod Stock.' Marine Ecology Progress Series, 402, pp. 239-253. ISSN 0171-8630."><a href="http://dx.doi.org/10.3354/meps08454" rel="http://purl.org/spar/cito/discusses" >Lindegren et al. (2010)</a></span> , <span class="showtooltip" title="deYoung B, Barange M, Beaugrand G, Harris R, Perry R, Scheffer M and Werner F (2008). 'Regime Shifts in Marine Ecosystems: Detection, Prediction And Management.' Trends in Ecology &amp; Evolution, 23, pp. 402-409. ISSN 01695347."><a href="http://dx.doi.org/10.1016/j.tree.2008.03.008" rel="http://purl.org/spar/cito/discusses" >deYoung et al. (2008)</a></span></p></li>
+<li><p>Beyond tipping points: avoiding policy-based thresholds. <span class="showtooltip" title="Pikitch E (2012). 'The Risks of Overfishing.' Science, 338, pp. 474-475. ISSN 0036-8075."><a href="http://dx.doi.org/10.1126/science.1229965" rel="http://purl.org/spar/cito/citesAsEvidence" >Pikitch (2012)</a></span></p></li>
+<li>http://www.ecotippingpoints.org/our-stories/indepth/usa-hawaii-hanauma-environmental-management.html ?</li>
+<li><p>http://www.ecotippingpoints.org/our-stories/indepth/philippines-apo-marine-sanctuary-coral-reef-fishery.html</p></li>
+</ul>
+<h2 id="references">References</h2>
+<ul>
+<li>Richard B. Aronson, William F. Precht, (2000) Herbivory And Algal Dynamics on The Coral Reef at Discovery Bay, Jamaica. <em>Limnology And Oceanography</em> <strong>45</strong> 251-255 <a href="http://dx.doi.org/10.4319/lo.2000.45.1.0251">10.4319/lo.2000.45.1.0251</a></li>
+<li>M Lindegren, R Diekmann, C Möllmann, (2010) Regime Shifts, Resilience And Recovery of A Cod Stock. <em>Marine Ecology Progress Series</em> <strong>402</strong> 239-253 <a href="http://dx.doi.org/10.3354/meps08454">10.3354/meps08454</a></li>
+<li>T Oguz, V Velikova, (2010) Abrupt Transition of The Northwestern Black Sea Shelf Ecosystem From A Eutrophic to an Alternative Pristine State. <em>Marine Ecology Progress Series</em> <strong>405</strong> 231-242 <a href="http://dx.doi.org/10.3354/meps08538">10.3354/meps08538</a></li>
+<li>RW Osman, P Munguia, RN Zajac, (2010) Ecological Thresholds in Marine Communities: Theory, Experiments And Management. <em>Marine Ecology Progress Series</em> <strong>413</strong> 185-187 <a href="http://dx.doi.org/10.3354/meps08765">10.3354/meps08765</a></li>
+<li>Michelle J. Paddack, John D. Reynolds, Consuelo Aguilar, Richard S. Appeldoorn, Jim Beets, Edward W. Burkett, Paul M. Chittaro, Kristen Clarke, Rene Esteves, Ana C. Fonseca, Graham E. Forrester, Alan M. Friedlander, Jorge García-Sais, Gaspar González-Sansón, Lance K.B. Jordan, David B. McClellan, Margaret W. Miller, Philip P. Molloy, Peter J. Mumby, Ivan Nagelkerken, Michael Nemeth, Raúl Navas-Camacho, Joanna Pitt, Nicholas V.C. Polunin, Maria Catalina Reyes-Nivia, D. Ross Robertson, Alberto Rodríguez-Ramírez, Eva Salas, Struan R. Smith, Richard E. Spieler, Mark A. Steele, Ivor D. Williams, Clare L. Wormald, Andrew R. Watkinson, Isabelle M. Côté, (2009) Recent Region-Wide Declines in Caribbean Reef Fish Abundance. <em>Current Biology</em> <strong>19</strong> 590-595 <a href="http://dx.doi.org/10.1016/j.cub.2009.02.041">10.1016/j.cub.2009.02.041</a></li>
+<li>Peter S. Petraitis, Steve R. Dudgeon, (2004) Detection of Alternative Stable States in Marine Communities. <em>Journal of Experimental Marine Biology And Ecology</em> <strong>300</strong> 343-371 <a href="http://dx.doi.org/10.1016/j.jembe.2003.12.026">10.1016/j.jembe.2003.12.026</a></li>
+<li>E. K. Pikitch, (2012) The Risks of Overfishing. <em>Science</em> <strong>338</strong> 474-475 <a href="http://dx.doi.org/10.1126/science.1229965">10.1126/science.1229965</a></li>
+<li>B. Worm, R. Hilborn, J. K. Baum, T. A. Branch, J. S. Collie, C. Costello, M. J. Fogarty, E. A. Fulton, J. A. Hutchings, S. Jennings, O. P. Jensen, H. K. Lotze, P. M. Mace, T. R. McClanahan, C. Minto, S. R. Palumbi, A. M. Parma, D. Ricard, A. A. Rosenberg, R. Watson, D. Zeller, (2009) Rebuilding Global Fisheries. <em>Science</em> <strong>325</strong> 578-585 <a href="http://dx.doi.org/10.1126/science.1173146">10.1126/science.1173146</a></li>
+<li>Brad deYoung, Manuel Barange, Gregory Beaugrand, Roger Harris, R. Ian Perry, Marten Scheffer, Francisco Werner, (2008) Regime Shifts in Marine Ecosystems: Detection, Prediction And Management. <em>Trends in Ecology &amp; Evolution</em> <strong>23</strong> 402-409 <a href="http://dx.doi.org/10.1016/j.tree.2008.03.008">10.1016/j.tree.2008.03.008</a></li>
+</ul>
+
+    </article>
+  </div>
+  <div class="span4">
+    <div class="sidebar">
+      <aside prefix="og:http://ogp.me/ns/article#">
+  <p> <i class="icon-calendar"></i>
+    <time datetime="2013-05-03T00:00:00-07:00" 
+    property="dc:created">03 May 2013</time></p>
+  <p><small> modified: <time 
+            datetime="2013-05-07T06:35:55-07:00" 
+            property="dc:modified">07 May 2013</time></small></p>
+
+ <br />
+
+  
+    <p><a class="btn btn-mini" rel="prev" href='/2013/05/03/notebook-features-hashes-providing-an-immutable-and-verifiable-research-record.html'><i class="icon-chevron-left"></i> prev</a>
+  
+  
+  <a class="btn btn-mini" rel="next" href='/2013/05/07/notes.html'>next <i class="icon-chevron-right"></i></a></p>
+  
+
+  <br />
+
+  <p> <a  onclick="recordOutboundLink(this, 'Outbound Links', 'history'); 
+            return false;" 
+          class="btn btn-mini" 
+          href="https://github.com/cboettig/labnotebook/commits/master/_posts/2013-05-03-notes.md"><i class="icon-time"></i> history</a></p>
+
+  <br />
+
+  <p><i class="icon-list"></i> Posted in 
+     
+      <a rel="dc:subject" class="category" 
+         href="//categories.html#ecology">ecology</a>
+    
+    </p>
+
+  <p> <i class="icon-tag"></i> tags: 
+    
+    <!-- http://schema.org/BlogPosting/keywords -->
+    <a rel="og:tag" class="tag" 
+       href="//tags.html#nonparametric-bayes">#nonparametric-bayes</a>
+    </p>
+
+  <br/>
+
+   <p style="font-style:italic"> <i class="icon-signal"></i> pageviews: (not calculated)</p>
+
+  <br/>
+
+  <p><small> <i class="icon-barcode"></i> SHA Hash: <a href="https://github.com/cboettig/labnotebook/commit/cc2e94b67be5274aeb134604bc317b134bac4a95/_posts/2013-05-03-notes.md"> cc2e94b67be5274aeb134604bc317b134bac4a95</a></small></p>
+    
+  <br/>
+
+  
+
+
+</aside>
+
+    </div>
+  </div>
+</div>
+
+      <!-- Disqus Comments -->
+      <div class="row disqus">
+        <div class="span8">          
+            <div id="disqus_thread"></div>
+            <script type="text/javascript">
+                var disqus_shortname = 'cboettig'; // required: replace example with your forum shortname
+                /* * * DON'T EDIT BELOW THIS LINE * * */
+                (function() {
+                    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                    dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        </div>
+      </div>
+
+
+
+
+
+
+<footer class="footer">
+  <!-- ************* Buttons to toggle theme CSS ********************** -->
+    <div class="row">
+      <div class="span12">
+        <form style="font-size:10px" class="pull-right">
+          <a onclick="switch_style('dark'); 
+                      recordOutboundLink(this, 'Outbound Links', 'dark theme'); 
+                      return false;" 
+             name="theme" value="dark" id="dark" 
+             class="btn btn-mini"><span class="showtooltip" 
+                                        title="switch to dark theme"><i class="icon-adjust"></i>
+                                   </span></a>
+          
+          <a onclick="switch_style('light'); 
+                      recordOutboundLink(this, 'Outbound Links', 'light theme'); 
+                      return false;" 
+             name="theme" value="light" id="light" 
+             class="btn btn-mini"><span class="showtooltip" 
+                                        title="switch to light theme"><i class="icon-certificate"></i>
+                                  </span></a>
+        </form>
+      </div>
+    </div>
+
+<!--************** FOAF information to social networks ***************************** -->
+  <div class="row">
+    <div class="span3 socialicons" style="font-size:20px" typeof="foaf:Person" about="http://www.carlboettiger.info#me">
+      <p>
+          <a rel="foaf:account" alt="email" href="mailto:cboettig@gmail.com" 
+             onclick="recordOutboundLink(this, 'Outbound Links', 'email'); 
+             return false;"><span class="showtooltip" title="email me"><i class="icon-envelope-alt"></i></span></a>
+          <a rel="foaf:account" alt="twitter" href="https://twitter.com/cboettig" 
+             onclick="recordOutboundLink(this, 'Outbound Links', 'Twitter'); 
+             return false;"><span class="showtooltip" title="follow me on twitter (reading, discussing)"><i class="icon-twitter"></i></span></a> 
+          <a rel="foaf:account" alt="github" href="https://github.com/cboettig" 
+             onclick="recordOutboundLink(this, 'Outbound Links', 'Github'); 
+             return false;"><span class="showtooltip" title="follow me on Github (code, research)"><i class="icon-github"></i></span></a>
+      <!--
+          <a rel="foaf:account" href="https://plus.google.com/" 
+             onclick="recordOutboundLink(this, 'Outbound Links', 'GPlus'); 
+             return false;"><i class="icon-google-plus"></i></a>
+          <a rel="foaf:account" href="http://www.mendeley.com/profiles/carl-boettiger" 
+             onclick="recordOutboundLink(this, 'Outbound Links', 'Mendeley'); 
+             return false;"><img src="/assets/img/icon-mendeley.png" alt="mendeley" /></a> 
+           citations on google-scholar
+           stackoverflow
+      -->
+      <a alt="rss" type="application/atom+xml" href="/atom.xml"  
+         class="showtooltip" title="subscribe to RSS feeds for my open lab notebook" 
+         onclick="recordOutboundLink(this, 'Outbound Links', 'RSS'); 
+         return false;"><i class="icon-rss"></i></a>
+       </p>
+    </div>
+    <!--**************** End social links **************************** -->
+    <div class="span1">
+      <br />
+    </div>
+    <div class="span4">
+      <p>
+      <a onclick="recordOutboundLink(this, 'Outbound Links', 'ONS_claim'); return false;" href="http://onsclaims.wikispaces.com/"><img src="http://onsclaims.wikispaces.com/file/view/ons-aci2-icon.png" alt="ONS" class="showtooltip" title="An Open Notebook Science (ONS) project claim: Entry provides all content (AC) immediately (I) or without significant delay.  See link for details"/></a>
+
+      <a title="This site uses linked data semantics. Click to extract as RDF XML." class="btn btn-mini showtooltip" style="font-size: .8em" 
+       href="http://any23.org/?format=rdfxml&validate=validate&uri=http://www.carlboettiger.info/2013/05/03/notes.html"><i 
+         class="icon-cloud-download"  onclick="recordOutboundLink(this, 'Outbound Links', 'RDF'); return false;"></i> RDF</a>
+      </p>
+    </div>
+    <div class="span1">
+      <br />
+    </div>
+    <div class="span3">
+      <p>
+      <a rel="license" property="http://creativecommons.org/ns#license" href="http://creativecommons.org/publicdomain/zero/1.0/" onclick="recordOutboundLink(this, 'Outbound Links', 'CC0'); return false;"><img src="http://i.creativecommons.org/l/zero/1.0/88x31.png" alt="CC0"/></a> 
+      </p>
+    </div>
+
+  </div>
+  
+<!-- COinS metadata (for citation managers like Zotero etc), goes in body text -->
+  <span
+      class="Z3988" 
+      title="ctx_ver=Z39.88-2004
+      &amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Adc
+      &amp;rfr_id=info%3Asid%2Focoins.info%3Agenerator
+      &amp;rft.title=Reading and potential examples for talk to ERE next week
+      &amp;rft.creator=Carl Boettiger
+      &amp;rft.date=2013-05-03
+      &amp;rft.language=EN
+      &amp;rft.rights=CC0
+      &amp;rft_id=http://www.carlboettiger.info/2013/05/03/notes.html">
+  </span>
+
+
+
+</footer>
+
+
+
+
+    <!-- Le javascript
+    ================================================== -->
+
+    <!-- Placed at the end of the document so the pages load faster -->
+    <!-- JQuery, used on a few pages -->
+    <script type="text/javascript" src="/assets/js/jquery.js"></script>
+    <!-- Equations using MathJax -->
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config"> MathJax.Hub.Config({ TeX: { equationNumbers: {autoNumber: "all"} } });       </script>
+    <!-- Twitter Bootstrap Javascript -->
+    <script src="/assets/js/bootstrap.min.js"></script>
+    <!-- Tooltip javascript -->
+    <script type="text/javascript">
+      $(document).ready(function (){
+        $(".showtooltip").tooltip();
+      });
+    </script>
+
+    <!-- Marran's Search Javascript -->
+    <script type="text/javascript" src="/assets/js/porter-stemmer.js"></script>
+    <script type="text/javascript" src="/assets/js/site-search.js"></script>
+
+    <!-- Code collapse Javascript -->
+    <script type="text/javascript">
+    $(document).ready(function(){
+      $("#toggle_code").click(function(){
+        $(".highlight").toggle();
+        $(".sourceCode").toggle();
+      });
+    });
+    </script>
+
+
+  <script type="text/javascript">
+          var _gaq = _gaq || [];
+          _gaq.push(['_setAccount', 'UA-18401403-1']);
+          _gaq.push(['_trackPageview']);
+          (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+          })();
+  </script>
+
+
+
+<script type="text/javascript">
+function recordOutboundLink(link, category, action) {
+  try {
+    var pageTracker=_gat._getTracker("UA-18401403-1");
+    pageTracker._trackEvent(category, action);
+    setTimeout('document.location = "' + link.href + '"', 100)
+  }catch(err){}
+}
+</script>
+
+
+
+
+    
+
+
+    </div>
+  </body>
+</html>
+

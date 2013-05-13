@@ -4,13 +4,144 @@
  <title>Lab Notebook</title>
  <link href="/atom.xml" rel="self"/>
  <link href=""/>
- <updated>2013-05-07T12:11:08-07:00</updated>
+ <updated>2013-05-13T12:26:23-07:00</updated>
  <id>http://www.carlboettiger.info</id>
  <author>
    <name>Carl Boettiger</name>
    <email>cboettig@gmail.com</email>
  </author>
  <rights>CC0</rights>
+ 
+ <entry>
+   <title>Prep for ERE talk</title>
+   <link href="/2013/05/09/notes.html"/>
+   <updated>2013-05-09T00:00:00-07:00</updated>
+   <id>http://www.carlboettiger.info/2013/05/09/notes</id>
+    
+   <category term="//categories.html#ecology" label="ecology"/>
+   
+   <content type="html">&lt;h2 id=&quot;talk-prep&quot;&gt;Talk prep&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Finished preparing slides for Environmental Resources Economics talk&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Toying around with animations for final plots. Building up plot by subsetting progressively more of the data each time is a bit of a nuciance (both in coding and efficiency). Can convert replicates to characters and assign as a data.table &lt;code&gt;key&lt;/code&gt; for fast join subsetting, but straight-forward subsetting seems best (e.g. once we want reps 1:5 from both “True” and “Ricker” models, &lt;code&gt;dt[J(c(&amp;quot;True&amp;quot;, &amp;quot;Ricker&amp;quot;), as.character(1:5)]&lt;/code&gt; doesn’t quite do this. (Can you guess what it gives? Actually alternates “True”+rep1, “Ricker”+rep2, “True”+rep3, …)&lt;/p&gt;
+&lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;&lt;span class=&quot;kw&quot;&gt;require&lt;/span&gt;(animation)
+&lt;span class=&quot;kw&quot;&gt;ani.options&lt;/span&gt;(&lt;span class=&quot;dt&quot;&gt;loop=&lt;/span&gt;&lt;span class=&quot;ot&quot;&gt;TRUE&lt;/span&gt;)
+&lt;span class=&quot;kw&quot;&gt;saveMovie&lt;/span&gt;({    
+    for (i in &lt;span class=&quot;kw&quot;&gt;seq&lt;/span&gt;(&lt;span class=&quot;dv&quot;&gt;1&lt;/span&gt;, OptTime, &lt;span class=&quot;dt&quot;&gt;by=&lt;/span&gt;&lt;span class=&quot;dv&quot;&gt;2&lt;/span&gt;)) {
+      &lt;span class=&quot;kw&quot;&gt;print&lt;/span&gt;(
+        &lt;span class=&quot;kw&quot;&gt;ggplot&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;subset&lt;/span&gt;(dt, method %in% &lt;span class=&quot;kw&quot;&gt;c&lt;/span&gt;(&lt;span class=&quot;st&quot;&gt;&amp;quot;True&amp;quot;&lt;/span&gt;, &lt;span class=&quot;st&quot;&gt;&amp;quot;Ricker&amp;quot;&lt;/span&gt;) &amp;amp; reps &amp;lt; &lt;span class=&quot;dv&quot;&gt;5&lt;/span&gt; &amp;amp; time &amp;lt;= i), 
+               &lt;span class=&quot;kw&quot;&gt;aes&lt;/span&gt;(time, fishstock, &lt;span class=&quot;dt&quot;&gt;group=&lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;interaction&lt;/span&gt;(reps,method), &lt;span class=&quot;dt&quot;&gt;color =&lt;/span&gt; method), &lt;span class=&quot;dt&quot;&gt;alpha=&lt;/span&gt;.&lt;span class=&quot;dv&quot;&gt;9&lt;/span&gt;) + 
+          &lt;span class=&quot;kw&quot;&gt;geom_line&lt;/span&gt;() + &lt;span class=&quot;kw&quot;&gt;xlim&lt;/span&gt;(&lt;span class=&quot;dv&quot;&gt;0&lt;/span&gt;, OptTime)
+        )
+    }
+}, &lt;span class=&quot;dt&quot;&gt;interval =&lt;/span&gt; &lt;span class=&quot;fl&quot;&gt;0.1&lt;/span&gt;, &lt;span class=&quot;dt&quot;&gt;movie.name =&lt;/span&gt; &lt;span class=&quot;st&quot;&gt;&amp;quot;wrong-model.gif&amp;quot;&lt;/span&gt;, &lt;span class=&quot;dt&quot;&gt;ani.width =&lt;/span&gt; &lt;span class=&quot;dv&quot;&gt;600&lt;/span&gt;, &lt;span class=&quot;dt&quot;&gt;ani.height =&lt;/span&gt; &lt;span class=&quot;dv&quot;&gt;600&lt;/span&gt;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Added plots of one-step-ahead predictors, e.g.&lt;/p&gt;
+&lt;figure&gt;
+&lt;img src=&quot;http://farm8.staticflickr.com/7317/8736417226_03129480a9_c.jpg&quot; alt=&quot;One-step ahead predictions on orginal (training) data by each model&quot; /&gt;&lt;figcaption&gt;One-step ahead predictions on orginal (training) data by each model&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;All plots for slides also archived in &lt;a href=&quot;http://www.flickr.com/photos/cboettig/tags/ere2013&quot;&gt;flickr/ere2013&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Which were quickly converted from vector pdfs into decent resolution pngs with a few commands:&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class=&quot;sourceCode bash&quot;&gt;&lt;code class=&quot;sourceCode bash&quot;&gt;&lt;span class=&quot;kw&quot;&gt;for&lt;/span&gt; f &lt;span class=&quot;kw&quot;&gt;in&lt;/span&gt; *.pdf ; &lt;span class=&quot;kw&quot;&gt;do&lt;/span&gt; convert -density 300 &lt;span class=&quot;st&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;ot&quot;&gt;$f&lt;/span&gt;&lt;span class=&quot;st&quot;&gt;&amp;quot;&lt;/span&gt; &lt;span class=&quot;st&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;ot&quot;&gt;${f/&lt;/span&gt;.pdf&lt;span class=&quot;ot&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;st&quot;&gt;&amp;quot;&lt;/span&gt;.png ; &lt;span class=&quot;kw&quot;&gt;done&lt;/span&gt;
+flickr_upload --tag=&lt;span class=&quot;st&quot;&gt;&amp;quot;nonparametric-bayes ere2013 talk&amp;quot;&lt;/span&gt; *.png&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&quot;reading&quot;&gt;Reading&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;(&lt;span class=&quot;showtooltip&quot; title=&quot;Sirota J, Baiser B, Gotelli N and Ellison A (2013). 'Organic-Matter Loading Determines Regime Shifts And Alternative States in an Aquatic Ecosystem.' Proceedings of The National Academy of Sciences, 110, pp. 7742-7747. ISSN 0027-8424.&quot;&gt;&lt;a href=&quot;http://dx.doi.org/10.1073/pnas.1221037110&quot; rel=&quot;http://purl.org/spar/cito/discusses&quot; &gt;Sirota et al. 2013&lt;/a&gt;&lt;/span&gt; ) provide a cute example of a system that can be manipulated through a tipping point of eutrophication in the tiny pools forming inside pitcher plants by adding ground-up dead insects. A nice natural system that provides a more realistic setting than lab manipulations of single species micro-organisms while also being more accessible to replication that the whole-lake experiments in Wisconsin. I do note they critique retrospective analyses on the basis of length, but don’t mention the prosecutor’s fallacy. Five stars for archiving the raw data very nicely (see below) along with the mathematica notebook file used for the analysis. Also notable that the first author is an undergrad at North Dakota State.&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;Wow, Harvard Forest provides a data repository with EML files for each data entry (&lt;a href=&quot;http://t.co/G2sgd2n5L9&quot;&gt;example&lt;/a&gt;). EML file serves more as a metadata description, raw data provided as an 8.8 MB .csv file in tidy (long) format. Very nice.&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;http://t.co/4mtDCuNoIG&quot;&gt;The default state of new and modernized Government information resources shall be open and machine readable&lt;/a&gt; I can’t really express just how incredible that is. May it impact government funded science appropriately.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;J. Sirota, B. Baiser, N. J. Gotelli, A. M. Ellison, (2013) Organic-Matter Loading Determines Regime Shifts And Alternative States in an Aquatic Ecosystem. &lt;em&gt;Proceedings of The National Academy of Sciences&lt;/em&gt; &lt;strong&gt;110&lt;/strong&gt; 7742-7747 &lt;a href=&quot;http://dx.doi.org/10.1073/pnas.1221037110&quot;&gt;10.1073/pnas.1221037110&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Notes</title>
+   <link href="/2013/05/07/notes.html"/>
+   <updated>2013-05-07T00:00:00-07:00</updated>
+   <id>http://www.carlboettiger.info/2013/05/07/notes</id>
+    
+   <category term="//categories.html#ecology" label="ecology"/>
+   
+   <content type="html">&lt;h2 id=&quot;monday&quot;&gt;Monday&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;MacKenzie meeting&lt;/li&gt;
+&lt;li&gt;paperwork to Marc&lt;/li&gt;
+&lt;li&gt;paperwork to Karthik&lt;/li&gt;
+&lt;li&gt;Writing&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;tuesday&quot;&gt;Tuesday&lt;/h2&gt;
+&lt;h3 id=&quot;log&quot;&gt;Log&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Weak thresholds example – no cost but no profit if stocks are reduced below a certain threshold &lt;a href=&quot;https://github.com/cboettig/nonparametric-bayes/commit/6bdc9535f0def3c5f2ed168bfac9c86517d48466&quot;&gt;09:31 pm 2013/05/07&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;example using short (20 pts) observation period &lt;a href=&quot;https://github.com/cboettig/nonparametric-bayes/commit/ac225715a20a0628d84d33d240bced834228424c&quot;&gt;02:00 pm 2013/05/07&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;subset plotting of simulations (for slides potentially) &lt;a href=&quot;https://github.com/cboettig/nonparametric-bayes/commit/04ddf0d5022ed66d214d58232224dc618f7fa898&quot;&gt;02:00 pm 2013/05/07&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;script for the parallel analysis based on policy thresholds &lt;a href=&quot;https://github.com/cboettig/nonparametric-bayes/commit/ca0219bd833cae278aa855fc42c1c07b6aaf850f&quot;&gt;01:59 pm 2013/05/07&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;short vs long observation time runs &lt;a href=&quot;https://github.com/cboettig/nonparametric-bayes/commit/d420c0578e8c77906b4d4e7f94fa4c4dcdfefeee&quot;&gt;12:54 pm 2013/05/07&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;online example of replicates comparing all models &lt;a href=&quot;https://github.com/cboettig/nonparametric-bayes/commit/0f682028113e42355f811793c915252d40ac45bb&quot;&gt;12:28 pm 2013/05/07&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;misc&quot;&gt;Misc&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/cboettig/sandbox/blob/c319b983535be2e79ea8987d68ad6d21f7bc5381/tex-pandoc-tricks/ucscletter.cls&quot;&gt;latex templates for UCSC AMS dept&lt;/a&gt; Gosh sometimes it’s nice to be officially in a department that understands tex.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;http://news.harvard.edu/gazette/story/2013/04/understanding-student-weaknesses/&quot;&gt;Best teacher’s know student’s misconceptions&lt;/a&gt; Hmm, our misconceptions are probably a bigger barrier than lack of knowledge for most scientists too…&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Ohh, &lt;a href=&quot;http://jekyllrb.com/docs/upgrading/&quot;&gt;Jekyll 1.0 released&lt;/a&gt;, &lt;a href=&quot;https://github.com/mojombo/jekyll/blob/v1.0.0/History.txt&quot;&gt;changelog&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=pFJtwSXC6qA&quot;&gt;#openoxford’s debate&lt;/a&gt; Elseiver rep says that if they disclose prices, prices would be driven so low that they’d go out of buisness. Yikes, what would the economists say!&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Finally, you can &lt;a href=&quot;https://github.com/blog/1492-repository-search-on-all-repositories&quot;&gt;search within a git repositories&lt;/a&gt; (without cloning first and using grep obviously. Before one was had global search options only, albeit filtered by language, etc).&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;span class=&quot;showtooltip&quot; title=&quot;Callaway E (2013). 'Biomedical Journal And Publisher Hope to Bring Preprints to Life.' Nature Medicine, 19, pp. 512-512. ISSN 1078-8956.&quot;&gt;&lt;a href=&quot;http://dx.doi.org/10.1038/nm0513-512&quot; rel=&quot;http://purl.org/spar/cito/critiques&quot; &gt;Callaway (2013)&lt;/a&gt;&lt;/span&gt; Ironic that they quote @mfenner saying that peerJ preprints are too like Nature Preceedings while also pointing out the role of archiving things like slides and posters (as these were categories of objects in Preceedings, but not in arXiv or PeerJ). Of course I agree with Martin about diverse outputs, but there appears to be something about the concept of preprint server that carries more meaning for people. Clearly figshare is a viable preprint server that is both the most discipline agonstic (arXiv isn’t interesting in expanding its scope, and peerJ’s stated scope does not cover earth science / climate science / physical oceanography side of things) and content-type agnostic (paper, poster, data, code, or anything else), and has a rich API that is absent or minimal in the other platforms.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;esa-schedule&quot;&gt;ESA schedule&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Sun Aug 4 noon-5pm &lt;a href=&quot;http://eco.confex.com/eco/2013/webprogrampreliminary/Session9030.html&quot;&gt;Conducting Open Science Using R and DataOne&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Tues Aug 6 8-10 pm &lt;a href=&quot;http://eco.confex.com/eco/2013/webprogrampreliminary/Session8911.html&quot;&gt;Open Science and Ecology&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Ewen Callaway, (2013) Biomedical Journal And Publisher Hope to Bring Preprints to Life. &lt;em&gt;Nature Medicine&lt;/em&gt; &lt;strong&gt;19&lt;/strong&gt; 512-512 &lt;a href=&quot;http://dx.doi.org/10.1038/nm0513-512&quot;&gt;10.1038/nm0513-512&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Reading and potential examples for talk to ERE next week</title>
+   <link href="/2013/05/03/notes.html"/>
+   <updated>2013-05-03T00:00:00-07:00</updated>
+   <id>http://www.carlboettiger.info/2013/05/03/notes</id>
+    
+   <category term="//categories.html#ecology" label="ecology"/>
+   
+   <content type="html">&lt;h2 id=&quot;parametric-bayesian-comparisons&quot;&gt;Parametric Bayesian comparisons&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Added parameteric Bayesian version of Ricker to the set of comparisons, see &lt;a href=&quot;https://github.com/cboettig/nonparametric-bayes/blob/ee4467c8defe81a27aadfbc4359cd0695339de6b/inst/examples/BUGS/allen.md&quot;&gt;allen.Rmd&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Adjusted thinning of posterior sample before determining optimum of GP&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;reading-examples&quot;&gt;Reading / Examples&lt;/h2&gt;
+&lt;p&gt;Need a nice set of basic fisheries examples involving potential tipping points for ERE talk. hmm.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;As mentioned in &lt;span class=&quot;showtooltip&quot; title=&quot;Worm B, Hilborn R, Baum J, Branch T, Collie J, Costello C, Fogarty M, Fulton E, Hutchings J, Jennings S, Jensen O, Lotze H, Mace P, McClanahan T, Minto C, Palumbi S, Parma A, Ricard D, Rosenberg A, Watson R and Zeller D (2009). 'Rebuilding Global Fisheries.' Science, 325, pp. 578-585. ISSN 0036-8075.&quot;&gt;&lt;a href=&quot;http://dx.doi.org/10.1126/science.1173146&quot; rel=&quot;http://purl.org/spar/cito/citesAsEvidence&quot; &gt;Worm et al. (2009)&lt;/a&gt;&lt;/span&gt; .&lt;/li&gt;
+&lt;li&gt;Algal-reef example from &lt;span class=&quot;showtooltip&quot; title=&quot;Aronson R and Precht W (2000). 'Herbivory And Algal Dynamics on The Coral Reef at Discovery Bay, Jamaica.' Limnology And Oceanography, 45, pp. 251-255. .&quot;&gt;&lt;a href=&quot;http://dx.doi.org/10.4319/lo.2000.45.1.0251&quot; rel=&quot;http://purl.org/spar/cito/citesAsEvidence&quot; &gt;Aronson &amp;amp; Precht (2000)&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;Fish collapse following reef distruction &lt;span class=&quot;showtooltip&quot; title=&quot;Paddack M, Reynolds J, Aguilar C, Appeldoorn R, Beets J, Burkett E, Chittaro P, Clarke K, Esteves R, Fonseca A, Forrester G, Friedlander A, García-Sais J, González-Sansón G, Jordan L, McClellan D, Miller M, Molloy P, Mumby P, Nagelkerken I, Nemeth M, Navas-Camacho R, Pitt J, Polunin N, Reyes-Nivia M, Robertson D, Rodríguez-Ramírez A, Salas E, Smith S, Spieler R, Steele M, Williams I, Wormald C, Watkinson A and Côté I (2009). 'Recent Region-Wide Declines in Caribbean Reef Fish Abundance.' Current Biology, 19, pp. 590-595. ISSN 09609822.&quot;&gt;&lt;a href=&quot;http://dx.doi.org/10.1016/j.cub.2009.02.041&quot; rel=&quot;http://purl.org/spar/cito/citesAsEvidence&quot; &gt;Paddack et al. (2009)&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;Alt stable states in marine systems &lt;span class=&quot;showtooltip&quot; title=&quot;Petraitis P and Dudgeon S (2004). 'Detection of Alternative Stable States in Marine Communities.' Journal of Experimental Marine Biology And Ecology, 300, pp. 343-371. ISSN 00220981.&quot;&gt;&lt;a href=&quot;http://dx.doi.org/10.1016/j.jembe.2003.12.026&quot; rel=&quot;http://purl.org/spar/cito/citesAsEvidence&quot; &gt;Petraitis &amp;amp; Dudgeon (2004)&lt;/a&gt;&lt;/span&gt; , &lt;span class=&quot;showtooltip&quot; title=&quot;Osman R, Munguia P and Zajac R (2010). 'Ecological Thresholds in Marine Communities: Theory, Experiments And Management.' Marine Ecology Progress Series, 413, pp. 185-187. ISSN 0171-8630.&quot;&gt;&lt;a href=&quot;http://dx.doi.org/10.3354/meps08765&quot; rel=&quot;http://purl.org/spar/cito/citesAsEvidence&quot; &gt;Osman et al. (2010)&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Cod examples? Forage fish? Peruvian Anchovy. Overfishing vs climate variability.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;And more examples from marine systems in &lt;span class=&quot;showtooltip&quot; title=&quot;Oguz T and Velikova V (2010). 'Abrupt Transition of The Northwestern Black Sea Shelf Ecosystem From A Eutrophic to an Alternative Pristine State.' Marine Ecology Progress Series, 405, pp. 231-242. ISSN 0171-8630.&quot;&gt;&lt;a href=&quot;http://dx.doi.org/10.3354/meps08538&quot; rel=&quot;http://purl.org/spar/cito/discusses&quot; &gt;Oguz &amp;amp; Velikova (2010)&lt;/a&gt;&lt;/span&gt; , &lt;span class=&quot;showtooltip&quot; title=&quot;Lindegren M, Diekmann R and Möllmann C (2010). 'Regime Shifts, Resilience And Recovery of A Cod Stock.' Marine Ecology Progress Series, 402, pp. 239-253. ISSN 0171-8630.&quot;&gt;&lt;a href=&quot;http://dx.doi.org/10.3354/meps08454&quot; rel=&quot;http://purl.org/spar/cito/discusses&quot; &gt;Lindegren et al. (2010)&lt;/a&gt;&lt;/span&gt; , &lt;span class=&quot;showtooltip&quot; title=&quot;deYoung B, Barange M, Beaugrand G, Harris R, Perry R, Scheffer M and Werner F (2008). 'Regime Shifts in Marine Ecosystems: Detection, Prediction And Management.' Trends in Ecology &amp;amp; Evolution, 23, pp. 402-409. ISSN 01695347.&quot;&gt;&lt;a href=&quot;http://dx.doi.org/10.1016/j.tree.2008.03.008&quot; rel=&quot;http://purl.org/spar/cito/discusses&quot; &gt;deYoung et al. (2008)&lt;/a&gt;&lt;/span&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Beyond tipping points: avoiding policy-based thresholds. &lt;span class=&quot;showtooltip&quot; title=&quot;Pikitch E (2012). 'The Risks of Overfishing.' Science, 338, pp. 474-475. ISSN 0036-8075.&quot;&gt;&lt;a href=&quot;http://dx.doi.org/10.1126/science.1229965&quot; rel=&quot;http://purl.org/spar/cito/citesAsEvidence&quot; &gt;Pikitch (2012)&lt;/a&gt;&lt;/span&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;http://www.ecotippingpoints.org/our-stories/indepth/usa-hawaii-hanauma-environmental-management.html ?&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;http://www.ecotippingpoints.org/our-stories/indepth/philippines-apo-marine-sanctuary-coral-reef-fishery.html&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Richard B. Aronson, William F. Precht, (2000) Herbivory And Algal Dynamics on The Coral Reef at Discovery Bay, Jamaica. &lt;em&gt;Limnology And Oceanography&lt;/em&gt; &lt;strong&gt;45&lt;/strong&gt; 251-255 &lt;a href=&quot;http://dx.doi.org/10.4319/lo.2000.45.1.0251&quot;&gt;10.4319/lo.2000.45.1.0251&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;M Lindegren, R Diekmann, C Möllmann, (2010) Regime Shifts, Resilience And Recovery of A Cod Stock. &lt;em&gt;Marine Ecology Progress Series&lt;/em&gt; &lt;strong&gt;402&lt;/strong&gt; 239-253 &lt;a href=&quot;http://dx.doi.org/10.3354/meps08454&quot;&gt;10.3354/meps08454&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;T Oguz, V Velikova, (2010) Abrupt Transition of The Northwestern Black Sea Shelf Ecosystem From A Eutrophic to an Alternative Pristine State. &lt;em&gt;Marine Ecology Progress Series&lt;/em&gt; &lt;strong&gt;405&lt;/strong&gt; 231-242 &lt;a href=&quot;http://dx.doi.org/10.3354/meps08538&quot;&gt;10.3354/meps08538&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;RW Osman, P Munguia, RN Zajac, (2010) Ecological Thresholds in Marine Communities: Theory, Experiments And Management. &lt;em&gt;Marine Ecology Progress Series&lt;/em&gt; &lt;strong&gt;413&lt;/strong&gt; 185-187 &lt;a href=&quot;http://dx.doi.org/10.3354/meps08765&quot;&gt;10.3354/meps08765&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Michelle J. Paddack, John D. Reynolds, Consuelo Aguilar, Richard S. Appeldoorn, Jim Beets, Edward W. Burkett, Paul M. Chittaro, Kristen Clarke, Rene Esteves, Ana C. Fonseca, Graham E. Forrester, Alan M. Friedlander, Jorge García-Sais, Gaspar González-Sansón, Lance K.B. Jordan, David B. McClellan, Margaret W. Miller, Philip P. Molloy, Peter J. Mumby, Ivan Nagelkerken, Michael Nemeth, Raúl Navas-Camacho, Joanna Pitt, Nicholas V.C. Polunin, Maria Catalina Reyes-Nivia, D. Ross Robertson, Alberto Rodríguez-Ramírez, Eva Salas, Struan R. Smith, Richard E. Spieler, Mark A. Steele, Ivor D. Williams, Clare L. Wormald, Andrew R. Watkinson, Isabelle M. Côté, (2009) Recent Region-Wide Declines in Caribbean Reef Fish Abundance. &lt;em&gt;Current Biology&lt;/em&gt; &lt;strong&gt;19&lt;/strong&gt; 590-595 &lt;a href=&quot;http://dx.doi.org/10.1016/j.cub.2009.02.041&quot;&gt;10.1016/j.cub.2009.02.041&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Peter S. Petraitis, Steve R. Dudgeon, (2004) Detection of Alternative Stable States in Marine Communities. &lt;em&gt;Journal of Experimental Marine Biology And Ecology&lt;/em&gt; &lt;strong&gt;300&lt;/strong&gt; 343-371 &lt;a href=&quot;http://dx.doi.org/10.1016/j.jembe.2003.12.026&quot;&gt;10.1016/j.jembe.2003.12.026&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;E. K. Pikitch, (2012) The Risks of Overfishing. &lt;em&gt;Science&lt;/em&gt; &lt;strong&gt;338&lt;/strong&gt; 474-475 &lt;a href=&quot;http://dx.doi.org/10.1126/science.1229965&quot;&gt;10.1126/science.1229965&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;B. Worm, R. Hilborn, J. K. Baum, T. A. Branch, J. S. Collie, C. Costello, M. J. Fogarty, E. A. Fulton, J. A. Hutchings, S. Jennings, O. P. Jensen, H. K. Lotze, P. M. Mace, T. R. McClanahan, C. Minto, S. R. Palumbi, A. M. Parma, D. Ricard, A. A. Rosenberg, R. Watson, D. Zeller, (2009) Rebuilding Global Fisheries. &lt;em&gt;Science&lt;/em&gt; &lt;strong&gt;325&lt;/strong&gt; 578-585 &lt;a href=&quot;http://dx.doi.org/10.1126/science.1173146&quot;&gt;10.1126/science.1173146&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Brad deYoung, Manuel Barange, Gregory Beaugrand, Roger Harris, R. Ian Perry, Marten Scheffer, Francisco Werner, (2008) Regime Shifts in Marine Ecosystems: Detection, Prediction And Management. &lt;em&gt;Trends in Ecology &amp;amp; Evolution&lt;/em&gt; &lt;strong&gt;23&lt;/strong&gt; 402-409 &lt;a href=&quot;http://dx.doi.org/10.1016/j.tree.2008.03.008&quot;&gt;10.1016/j.tree.2008.03.008&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+ </entry>
  
  <entry>
    <title>Notebook features: SHA Hashes</title>
@@ -26,6 +157,76 @@
 &lt;p&gt;In addition to the GitHub repository for my lab notebook, My research code, analyses, and manuscripts are collected into Github repositories by project. This allows my analysis and paper writing to benefit from this same immutable and verifiable record. Because GitHub uses the SHA hashes in its link structure, this also provides a convenient way to link to a particular version of code in a given entry. This way, I can be sure the contents of the file displayed at that link never change, even as I continue to update that file. Even if the file or containing directory is later deleted or moved, the link will still resolve. Only if the entire project repo were deleted or if Github itself dissolved would the link be lost. Even then, using the SHA hash given in the link we could determine the contents of the file from some other copy of the repository (such as a local or figshare archive).&lt;/p&gt;
 &lt;p&gt;Tobias is actually working on his own SHA hash approach which is somewhat superior to the simpler method of using git. The Github hash corresponds to the state of the entire repository/notebook at the time of the commit, rather than the contents of an individual file. Consequently, one would need a snapshot of the entire repository, available on Github, to perform the verification. Tobias is looking into generating hashes based on the contents of the file directly – so far, only RDF data – that could proivde a unique and verifiable reference for any scholarly data or publication.&lt;/p&gt;
 &lt;p&gt;Version managing the notebook and code has many more practical day-to-day benefits, such as recovering from a mistaken deleted or corrupted file, merging changes made on different machines or by collaborators, or creating branches to test new features without disrupting current version, and comparing differences as a file evolves.&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Scholarly Infrastructure Thoughts</title>
+   <link href="/2013/05/02/scholarly-infrastructure-thoughts.html"/>
+   <updated>2013-05-02T00:00:00-07:00</updated>
+   <id>http://www.carlboettiger.info/2013/05/02/scholarly-infrastructure-thoughts</id>
+    
+   <category term="//categories.html#open-science" label="open-science"/>
+   
+   <content type="html">&lt;h2 id=&quot;sustainable-research&quot;&gt;Sustainable Research&lt;/h2&gt;
+&lt;p&gt;Happened across a provocative &lt;a href=&quot;http://cran.r-project.org/web/packages/mcmc/ChangeLog&quot;&gt;example&lt;/a&gt; of why we need a software ecosystem, though it was certainly not intended to be one, which led me to ask myself:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;How complex does an algorithm have to be before a talented researcher with expertise in both the relevant mathematics and computer science will make a significant mistake in their first release of the software?&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;As a corollary we might also ask, “How much less care do we put into research code not destined for release?”&lt;/p&gt;
+&lt;p&gt;This changelog clearly reflects these difficulties face well-established researchers with long publication records on these very methods. If such individuals can make mistakes in packages, are we supposed to trust the myriad personal implementations of this and more complex algorithms that bulwark our literature today?&lt;/p&gt;
+&lt;p&gt;Academic knowledge is currently built in the mortar and bricks of publication and citation. Publications advance new claims built up on existing claims (and very occasionally replacing them) through citations. It an approach that does not scale well on many fronts. To verify information we must trace the citation chain, which grows far to quickly to for human processing and is not usually amenable to computer processing. Yet here it is the statistical scaling that concerns me more – a paper advances that a claim is true with a certain probability, given that the methods are implemented without error. The more publications we string together, the higher the probability that we observe false positives, but also that we observe implementation errors. For much of research today, we need not construct the scientific argument in this manner.&lt;/p&gt;
+&lt;p&gt;Thanks to computational advances of the last several decades, public repositories of the data and the methods (such as can be implemented as software anyway), we can build on existing work by direct analysis of the data and methods, rather than treating the conclusions as given. Evidence would no longer come primarily in the highly circumstantial manner of citations to previous claims, but to direct analysis of data. Using a common pool of data and methods would align incentives better to maintain and improve upon this infrastructure (the way major companies contribute to the underlying ‘plumbing’ provided by shared open source infrastructure), while there is no incentive for the literature to work in such a way.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://cameronneylon.net/blog/whats-the-right-model-for-shared-scholarly-communications-infrastructure&quot;&gt;Cameron Neylon&lt;/a&gt;, and link in my comment.&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Musings On Conservation Literature</title>
+   <link href="/2013/05/02/musings-on-conservation-literature.html"/>
+   <updated>2013-05-02T00:00:00-07:00</updated>
+   <id>http://www.carlboettiger.info/2013/05/02/musings-on-conservation-literature</id>
+   
+   <content type="html">&lt;p&gt;Just because I’m a theorist deeply entrenched in methodological concerns about uncertainty and decision making doesn’t mean I don’t think about practical conservation from time to time. Some musings from my &lt;a href=&quot;http://dynamicecology.wordpress.com/2013/04/29/the-implementation-gap-in-conservation-biology-is-math-contributing-to-the-problem&quot;&gt;comment here&lt;/a&gt;, copied over for my own reference.&lt;/p&gt;
+&lt;p&gt;Though I would like to believe the gap stems from the problems you discuss, I think that differing objectives between research and application may play a much larger role. I suspect that scientific papers that are most useful and influential for conservation practitioners and policymakers are those which confirm what they already believe, or whatever the interests opposed to them least want to hear. Let’s call these “Cassandra” papers, since in this context they usually forecast disaster. For the practitioner it may matters little whether the math is simple or complex, clearly explained or impenetrable, or even right or not so right. Worm et al 2006 paper which the media quickly decided predicted the end of global fisheries within 50 years is perhaps a good example.&lt;/p&gt;
+&lt;p&gt;Okay, so beyond bolstering arguments already being made by those who propose, implement or legislate conservation against their opposition, there are certainly unknowns that they might turn to research to answer. Resource allocation might be an example of this; e.g. do we prioritize purchasing pristine areas that are not likely to be threatened or less pristine areas in more immediate danger (a la Pfaff). Let’s call these “rule of thumb” papers, where the conclusion is an easily applied guide-line. It seems doubtful that the practitioners would be inhibited by their access and understanding of the math in this case, since they want the research to provide an answer they can trust, and not worry so much about what math justifies it. They are more likely to use proxies of quality (journal, researcher, affiliation, popularity of the method), then working through the assumptions to see if they like them; no?&lt;/p&gt;
+&lt;p&gt;So there is a third case in which the conclusion is of the sort “apply my method and it will tell you what to do”, as opposed to “here’s what to do”. I think only this case falls at risk to the mathematics being a barrier, though when accompanied by user-friendly software tools perhaps that can be dismissed as well. These “methods” papers are probably the favorite option of many researchers, as they seem the most rigorous, accurate way, reflecting the details of the problem at hand. Scientists are probably least fond of the first example, where even the paper’s authors may feel the conclusions are being overstated, while others feel such work is wrong and counterproductive. I’d guess many researchers are lukewarm towards the middle case, as better than a coin flip. I imagine from the conservation practitioner’s ranking is reversed. To what extent would you agree with this classification? If so, how is the conservation literature distributed across these categories, and how might we want it to be distributed? Do we indeed have the greatest impact writing Cassandra papers rather than writing nice clear methods, and if so, what are the implications?&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Integrating Over Posterior Gp</title>
+   <link href="/2013/05/01/integrating-over-posterior-gp.html"/>
+   <updated>2013-05-01T00:00:00-07:00</updated>
+   <id>http://www.carlboettiger.info/2013/05/01/integrating-over-posterior-gp</id>
+    
+   <category term="//categories.html#ecology" label="ecology"/>
+   
+   <content type="html">&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Added integration over the posterior distribution of the GP&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Added example of parametric Bayesian inference based on Ricker&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;log&quot;&gt;Log&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;varying parameters &lt;a href=&quot;https://github.com/cboettig/nonparametric-bayes/commit/eecb2c12c33a522fb8dcbe588d7cf4fcbb0269eb&quot;&gt;06:07 pm 2013/05/01&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;example based on gp means &lt;a href=&quot;https://github.com/cboettig/nonparametric-bayes/commit/68004b28ab15e89c6f6e05cd2953a4844385dca2&quot;&gt;03:44 pm 2013/05/01&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;run means example as separate script &lt;a href=&quot;https://github.com/cboettig/nonparametric-bayes/commit/91a21b655f6fadeb8daf364c87bcd87d5069c2e7&quot;&gt;02:55 pm 2013/05/01&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;compare against just using means &lt;a href=&quot;https://github.com/cboettig/nonparametric-bayes/commit/ba4e491d6ecd0fd3fae533337e099d522d5a6b8d&quot;&gt;02:52 pm 2013/05/01&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Merge branch ‘master’ of github.com:cboettig/nonparametric-bayes &lt;a href=&quot;https://github.com/cboettig/nonparametric-bayes/commit/9a58d0f9c73f85dee5b7010d895f024cd3f6dbb5&quot;&gt;02:26 pm 2013/05/01&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Merge branch ‘master’ of github.com:cboettig/nonparametric-bayes &lt;a href=&quot;https://github.com/cboettig/nonparametric-bayes/commit/eb9ee9f76f6638d8300132a4830e39a052cb223f&quot;&gt;02:23 pm 2013/05/01&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;add gp posteriors to package &lt;a href=&quot;https://github.com/cboettig/nonparametric-bayes/commit/e32361cdc39e7902d9374b303d9474f0f26a860c&quot;&gt;02:16 pm 2013/05/01&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;staging run for integrating over GP posterior (large memory reqs) &lt;a href=&quot;https://github.com/cboettig/nonparametric-bayes/commit/50c0bc655f8d71f98f7b144f6d51d2e269d878fc&quot;&gt;02:13 pm 2013/05/01&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;updated example of gp basics includes mcmc and shows influence of the prior &lt;a href=&quot;https://github.com/cboettig/nonparametric-bayes/commit/e6c9b3048fd0cc50d0ec7eb00ac7cb9b00591618&quot;&gt;01:15 pm 2013/05/01&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;example testing new routine &lt;a href=&quot;https://github.com/cboettig/nonparametric-bayes/commit/331a441ca8bdf83ce660e9fc35c58bb9fb5e2a47&quot;&gt;01:14 pm 2013/05/01&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;tidying repo &lt;a href=&quot;https://github.com/cboettig/nonparametric-bayes/commit/2b33ab0323778dfc7a60c18fc62acb98486d9c72&quot;&gt;01:07 pm 2013/05/01&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;merge analyses back into allen.Rmd &lt;a href=&quot;https://github.com/cboettig/nonparametric-bayes/commit/27f4db239583bd861d58d9a2e63a9e3c2907a943&quot;&gt;12:48 pm 2013/05/01&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;adapted to the custom version &lt;a href=&quot;https://github.com/cboettig/nonparametric-bayes/commit/368456178edc571bb4d48b1c5952f40c1224f187&quot;&gt;12:37 pm 2013/05/01&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Test examples demonstrating the custom mcmc GP &lt;a href=&quot;https://github.com/cboettig/nonparametric-bayes/commit/a1a2c37aae225005193029d19d6a9b435cbf3921&quot;&gt;12:36 pm 2013/05/01&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;package updates with the custom gp method &lt;a href=&quot;https://github.com/cboettig/nonparametric-bayes/commit/61508484713958d00dc8072fb9d224749f1a9915&quot;&gt;12:35 pm 2013/05/01&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Example using custom GP routine. In this case, both MLE methods fail, while the GP does fine and the parametric Bayesian method performs best. &lt;a href=&quot;https://github.com/cboettig/nonparametric-bayes/commit/ff33c9b6f78ffa1e135204789e730e65e82951b5&quot;&gt;12:34 pm 2013/05/01&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 </content>
  </entry>
  
@@ -5464,6 +5665,8 @@ fig2c&lt;/code&gt;&lt;/pre&gt;
 &lt;h2 id=&quot;results&quot;&gt;Results&lt;/h2&gt;
 &lt;p&gt;Linked in the automatically generated commit log:&lt;/p&gt;
 &lt;ul&gt;&lt;li&gt;
+generalize par uncertainty f &lt;a href=&quot;https://github.com/cboettig/pdg_control/commit/4a239336fd9f77fbff5b30bf1018d558052a7b74&quot;&gt;07:57 pm 2013/05/07&lt;/a&gt;
+&lt;/li&gt;&lt;li&gt;
 parameter uncertainty SDP methods added &lt;a href=&quot;https://github.com/cboettig/pdg_control/commit/988f879df215349adad0fe3fa6b59ffe2e2c6aaf&quot;&gt;10:00 pm 2013/05/01&lt;/a&gt;
 &lt;/li&gt;&lt;li&gt;
 Separate functions in separate files &lt;a href=&quot;https://github.com/cboettig/pdg_control/commit/44fd97bad79188423299d44e11f2e9b2b47676fd&quot;&gt;07:42 pm 2013/04/19&lt;/a&gt;
@@ -5477,8 +5680,6 @@ documentation &lt;a href=&quot;https://github.com/cboettig/pdg_control/commit/96
 multiple uncertainty maintained as separate package now &lt;a href=&quot;https://github.com/cboettig/pdg_control/commit/7392816bcf499d37639e332a760e7ac838f4a53e&quot;&gt;02:51 pm 2013/03/13&lt;/a&gt;
 &lt;/li&gt;&lt;li&gt;
 Merge branch ‘master’ of github.com:cboettig/pdg_control &lt;a href=&quot;https://github.com/cboettig/pdg_control/commit/aebd2d522349d72b77bb614fddd07e3406aeeeba&quot;&gt;11:39 pm 2012/12/27&lt;/a&gt;
-&lt;/li&gt;&lt;li&gt;
-initialized multiple_uncertainty as separate project (branched from pdg_control &lt;a href=&quot;https://github.com/cboettig/pdg_control/commit/e1819cda84f4f74e8607a5e7f41a683312841c7a&quot;&gt;11:38 pm 2012/12/27&lt;/a&gt;
 &lt;/li&gt;&lt;/ul&gt;
 
 
@@ -5959,21 +6160,21 @@ linear &amp;lt;- dt[, &lt;span class=&quot;kw&quot;&gt;approx&lt;/span&gt;(stock
 &lt;p&gt;vim set sytnax language, useful for getting R highlighting in &lt;code&gt;.Rmd&lt;/code&gt; files: &lt;code&gt;setf r&lt;/code&gt;, or equivalently, &lt;code&gt;set filetype=r&lt;/code&gt; (must be lowercase r). &lt;code&gt;set filetype&lt;/code&gt; with no argument gives the current filetype.&lt;/p&gt;
 &lt;h3 id=&quot;coding&quot;&gt;Coding&lt;/h3&gt;
 &lt;ul&gt;&lt;li&gt;
-cboettig opened issue cboettig/nonparametric-bayes#43: &lt;em&gt;add parametric Bayesian version of Ricker&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/nonparametric-bayes/issues/43&quot;&gt;04:46 2013/05/07&lt;/a&gt;
+cboettig pushed to master at cboettig/labnotebook: &lt;em&gt;cleanup draft added missing space in address&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/labnotebook/compare/1b96627688...09e30fdcc1&quot;&gt;07:25 2013/05/13&lt;/a&gt;
 &lt;/li&gt;&lt;li&gt;
-cboettig opened issue cboettig/nonparametric-bayes#42: &lt;em&gt;add Parametric Bayesian version of Myers model&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/nonparametric-bayes/issues/42&quot;&gt;04:46 2013/05/07&lt;/a&gt;
+cboettig pushed to master at cboettig/nonparametric-bayes: &lt;em&gt;plots for step-ahead predictions of each model (from allen.Rmd)&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/nonparametric-bayes/compare/d24628033e...ee194276b9&quot;&gt;06:53 2013/05/13&lt;/a&gt;
 &lt;/li&gt;&lt;li&gt;
-cboettig pushed to master at cboettig/nonparametric-bayes: &lt;em&gt;added parametric bayesian myers and ricker for comparison&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/nonparametric-bayes/compare/5de66333e0...5b2aced2b1&quot;&gt;04:44 2013/05/07&lt;/a&gt;
+cboettig pushed to master at cboettig/nonparametric-bayes: &lt;em&gt;animation plots, run with corrected ricker model writing Return the entire posterior distribution of covariance matrices&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/nonparametric-bayes/compare/0fc9f1407e...d24628033e&quot;&gt;06:50 2013/05/13&lt;/a&gt;
 &lt;/li&gt;&lt;li&gt;
-cboettig closed issue cboettig/nonparametric-bayes#24: &lt;em&gt;send draft for friendly review&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/nonparametric-bayes/issues/24&quot;&gt;04:26 2013/05/07&lt;/a&gt;
+cboettig starred hadley/httr: &lt;em&gt;&lt;/em&gt; &lt;a href=&quot;https://github.com/hadley/httr&quot;&gt;03:51 2013/05/13&lt;/a&gt;
 &lt;/li&gt;&lt;li&gt;
-cboettig commented on issue cboettig/nonparametric-bayes#24: &lt;em&gt;current draft sent to ERE group prior to Friday’s talk&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/nonparametric-bayes/issues/24#issuecomment-17549327&quot;&gt;04:26 2013/05/07&lt;/a&gt;
+cboettig commented on issue vmg/redcarpet#130: &lt;em&gt;Correct. You can still host your site on github pages, you simply have to run jekyll locally to build the site first. As many folks do that already …&lt;/em&gt; &lt;a href=&quot;https://github.com/vmg/redcarpet/issues/130#issuecomment-17769108&quot;&gt;11:03 2013/05/11&lt;/a&gt;
 &lt;/li&gt;&lt;li&gt;
-cboettig closed issue cboettig/nonparametric-bayes#31: &lt;em&gt;Add code explicitly rather than rely on custom but non-generic functions&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/nonparametric-bayes/issues/31&quot;&gt;04:26 2013/05/07&lt;/a&gt;
+cboettig starred karthikram/markdown_science: &lt;em&gt;&lt;/em&gt; &lt;a href=&quot;https://github.com/karthikram/markdown_science&quot;&gt;01:13 2013/05/11&lt;/a&gt;
 &lt;/li&gt;&lt;li&gt;
-cboettig commented on issue cboettig/nonparametric-bayes#31: &lt;em&gt;Done, see allen.Rmd (modulo the par_est code…) Could tidy up code still&lt;/em&gt; &lt;a href=&quot;https://github.com/cboettig/nonparametric-bayes/issues/31#issuecomment-17549275&quot;&gt;04:26 2013/05/07&lt;/a&gt;
+cboettig commented on issue vmg/redcarpet#130: &lt;em&gt;@hupili thanks for sharing your work-around. Personally I’ve found it easiest to go with the Pandoc markdown parser which has a native understandin…&lt;/em&gt; &lt;a href=&quot;https://github.com/vmg/redcarpet/issues/130#issuecomment-17748133&quot;&gt;10:34 2013/05/10&lt;/a&gt;
 &lt;/li&gt;&lt;li&gt;
-cboettig commented on issue Sija/garb#27: &lt;em&gt;Hmm, happens just when I run profile = Garb::Management::Profile.all.detect {|p| p.web_property_id == cred[“:ua”]} It looks like this might be Mu…&lt;/em&gt; &lt;a href=&quot;https://github.com/Sija/garb/issues/27#issuecomment-17548761&quot;&gt;04:22 2013/05/07&lt;/a&gt;
+cboettig starred coolwanglu/pdf2htmlEX: &lt;em&gt;&lt;/em&gt; &lt;a href=&quot;https://github.com/coolwanglu/pdf2htmlEX&quot;&gt;04:12 2013/05/10&lt;/a&gt;
 &lt;/li&gt;&lt;/ul&gt;
 
 

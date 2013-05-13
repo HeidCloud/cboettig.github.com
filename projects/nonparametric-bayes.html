@@ -24,7 +24,7 @@
 <!-- RDFa Metadata (in DublinCore) -->
 <meta property="dc:title" content="Non-parametric Bayesian Inference for Conservation Decisions" />
 <meta property="dc:creator" content="Carl Boettiger" />
-<meta property="dc:date" content="2013-05-07T12:11:08-07:00" />
+<meta property="dc:date" content="2013-05-13T12:26:23-07:00" />
 <meta property="dc:format" content="text/html" />
 <meta property="dc:language" content="en" />
 <meta property="dc:identifier" content="/projects/nonparametric-bayes.html" />
@@ -37,13 +37,13 @@
 <meta property="og:author" content="http://www.carlboettiger.info/index.html#me" />  <!-- Should be Liquid? URI? -->
 <meta property="http://ogp.me/ns/profile#first_name" content="Carl"/>
 <meta property="http://ogp.me/ns/profile#last_name" content="Boettiger"/>
-<meta property="http://ogp.me/ns/article#published_time" content="2013-05-07T12:11:08-07:00" />
+<meta property="http://ogp.me/ns/article#published_time" content="2013-05-13T12:26:23-07:00" />
 <meta property="og:site_name" content="Lab Notebook" /> <!-- Same as dc:source? -->
 <meta property="og:url" content="http://www.carlboettiger.info/projects/nonparametric-bayes.html" />
 <meta property="og:type" content="website" /> 
 <!-- Google Scholar Metadata -->
 <meta name="citation_author" content="Carl Boettiger"/>
-<meta name="citation_date" content="2013-05-07T12:11:08-07:00"/>
+<meta name="citation_date" content="2013-05-13T12:26:23-07:00"/>
 <meta name="citation_title" content="Non-parametric Bayesian Inference for Conservation Decisions"/>
 <meta name="citation_journal_title" content="Lab Notebook"/>
 
@@ -211,6 +211,22 @@ Funding and Support/Affiliation
 
 
 <p> 
+<a href="/2013/05/09/notes.html">Prep for ERE talk</a> <span style="font-style:italic"> 09 May 2013</span>
+</p>
+
+<p> 
+<a href="/2013/05/07/notes.html">Notes</a> <span style="font-style:italic"> 07 May 2013</span>
+</p>
+
+<p> 
+<a href="/2013/05/03/notes.html">Reading and potential examples for talk to ERE next week</a> <span style="font-style:italic"> 03 May 2013</span>
+</p>
+
+<p> 
+<a href="/2013/05/01/integrating-over-posterior-gp.html">Integrating Over Posterior Gp</a> <span style="font-style:italic"> 01 May 2013</span>
+</p>
+
+<p> 
 <a href="/2013/04/30/tgp-difficulties-and-custom-mcmc-for-gp.html">Difficulties with tgp; taking custom mcmc approach for GPs</a> <span style="font-style:italic"> 30 Apr 2013</span>
 </p>
 
@@ -224,22 +240,6 @@ Funding and Support/Affiliation
 
 <p> 
 <a href="/2013/04/25/notes.html">Notes</a> <span style="font-style:italic"> 25 Apr 2013</span>
-</p>
-
-<p> 
-<a href="/2013/04/19/bayesian-parametric-uncertainty-sdp.html">Bayesian Parametric Uncertainty Sdp</a> <span style="font-style:italic"> 19 Apr 2013</span>
-</p>
-
-<p> 
-<a href="/2013/04/18/notes.html">Notes</a> <span style="font-style:italic"> 18 Apr 2013</span>
-</p>
-
-<p> 
-<a href="/2013/04/12/parametric-bayesian-example.html">Parametric Bayesian Example</a> <span style="font-style:italic"> 12 Apr 2013</span>
-</p>
-
-<p> 
-<a href="/2013/04/11/nonparametric-bayes-framing-the-issues.html">nonparametric-bayes: framing the issues for the manuscript</a> <span style="font-style:italic"> 11 Apr 2013</span>
 </p>
 
 
@@ -269,23 +269,27 @@ Distinguishing random environmental fluctuations from ecological catastrophes fo
 </h4>
 
 <ul><li>
-added parametric bayesian myers and ricker for comparison <a href="https://github.com/cboettig/nonparametric-bayes/commit/5b2aced2b1b9f8e1247e2f80fe76a89c16b57993">03:55 pm 2013/05/07</a>
+plots for step-ahead predictions of each model (from allen.Rmd) <a href="https://github.com/cboettig/nonparametric-bayes/commit/ee194276b9339711eec88de22ea43c53b4012c57">06:52 pm 2013/05/13</a>
 </li><li>
-test script for ricker (good for template for extending BUGS) <a href="https://github.com/cboettig/nonparametric-bayes/commit/5de66333e0cc0d4d896ab832b727eb7447602339">03:48 am 2013/05/06</a>
+animation plots, run with corrected ricker model <a href="https://github.com/cboettig/nonparametric-bayes/commit/d24628033e648003fa0d573ed3a718acca01304f">06:50 pm 2013/05/13</a>
 </li><li>
-bugs file for meyers model <a href="https://github.com/cboettig/nonparametric-bayes/commit/c17bb2fb13a9f51fb14d476959300396d4126f03">01:24 am 2013/05/06</a>
+writing <a href="https://github.com/cboettig/nonparametric-bayes/commit/2aec6bbc3878efa828f2cb8a5fb91b5361492ecf">06:49 pm 2013/05/13</a>
 </li><li>
-replicate runs <a href="https://github.com/cboettig/nonparametric-bayes/commit/cfb0a46acfb47c0241912e44db2568f2e46cd3bf">01:24 am 2013/05/06</a>
+Return the entire posterior distribution of covariance matrices <a href="https://github.com/cboettig/nonparametric-bayes/commit/d346b8f30d130c951c8a1a0570f46778e56d199a">06:48 pm 2013/05/13</a>
 </li><li>
-Merge branch ‘master’ of github.com:cboettig/nonparametric-bayes <a href="https://github.com/cboettig/nonparametric-bayes/commit/042fd87c26f1fb47091c4b9f39ca7507ff26e668">01:24 am 2013/05/06</a>
+<p>Adjusted penalty for policy thresholds case</p>
+<ul>
+<li>Need to make sure each algorithm permits the flexible choise of policy function</li>
+<li>Compare severe penalty case to zero-profit case <a href="https://github.com/cboettig/nonparametric-bayes/commit/20d26046197c1e616d5561b49893cafed886f598">06:47 pm 2013/05/13</a>
 </li><li>
-replicates <a href="https://github.com/cboettig/nonparametric-bayes/commit/ac6290c9dd39b2bf71bd20c891b805f77e2f115d">12:33 am 2013/05/03</a>
+fixed typo in equation(!) <a href="https://github.com/cboettig/nonparametric-bayes/commit/6763c143050b5e866ba7d4f8ff14aaff8615f1c6">06:46 pm 2013/05/13</a>
 </li><li>
-Merge branch ‘master’ of github.com:cboettig/nonparametric-bayes <a href="https://github.com/cboettig/nonparametric-bayes/commit/5b5d03ede752ca1205a6dab0f80b393a1e80e932">12:32 am 2013/05/03</a>
+add a movie of data <a href="https://github.com/cboettig/nonparametric-bayes/commit/0fc9f1407e6c4f8bc9643cb42c4e81d4322e82bb">07:57 pm 2013/05/08</a>
 </li><li>
-draft for ERE <a href="https://github.com/cboettig/nonparametric-bayes/commit/fcda3f66f069b9da74daba1ec93a27bb0bc9f644">12:32 am 2013/05/03</a>
+Weak thresholds example – no cost but no profit if stocks are reduced below a certain threshold <a href="https://github.com/cboettig/nonparametric-bayes/commit/6bdc9535f0def3c5f2ed168bfac9c86517d48466">04:31 am 2013/05/08</a>
 </li></ul>
-
+</li>
+</ul>
 </div>
 <div class="span3">
 <h4>
