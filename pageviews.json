@@ -1,7 +1,7 @@
 {
   "/": [
-    "5728",
-    "14808"
+    "5729",
+    "14812"
   ],
   "/ Hastings student at UC Davis": [
     "0",
@@ -952,8 +952,8 @@
     "1"
   ],
   "/2010/11/07/welcome-to-my-lab-notebook.html": [
-    "282",
-    "655"
+    "283",
+    "656"
   ],
   "/2010/11/08/monday-and-some-phylogenetics.html": [
     "2",
@@ -1304,8 +1304,8 @@
     "2"
   ],
   "/2011/03/15/models-in-phylogenetic-inference.html": [
-    "342",
-    "388"
+    "343",
+    "389"
   ],
   "/2011/03/15/tuesday-2.html": [
     "0",
@@ -2169,7 +2169,7 @@
   ],
   "/2012/02/12/elegant-fast-data-manipulation-with-data-table.html": [
     "443",
-    "499"
+    "500"
   ],
   "/2012/02/12/saturday-projects-reading-markdown-plugins.html": [
     "6",
@@ -2296,8 +2296,8 @@
     "5"
   ],
   "/2012/03/21/knitr-github-and-a-new-phase-for-the-lab-notebook.html": [
-    "230",
-    "390"
+    "231",
+    "391"
   ],
   "/2012/03/21/policy-costs-to-changing-mangement-tp-1b-apples-to-apples.html": [
     "0",
@@ -2308,8 +2308,8 @@
     "17"
   ],
   "/2012/03/24/citations-in-markdown-using-knitr.html": [
-    "690",
-    "921"
+    "691",
+    "922"
   ],
   "/2012/03/24/citations-in-markdown-usingknitr.html": [
     "0",
@@ -2432,8 +2432,8 @@
     "1"
   ],
   "/2012/05/09/notes.html": [
-    "135",
-    "201"
+    "136",
+    "202"
   ],
   "/2012/05/09/proofs": [
     "0",
@@ -2489,7 +2489,7 @@
   ],
   "/2012/05/30/knitcitations.html": [
     "614",
-    "889"
+    "890"
   ],
   "/2012/05/30/knitcitations.html?search-text=": [
     "0",
@@ -2625,7 +2625,7 @@
   ],
   "/2012/09/28/Welcome-to-my-lab-notebook.html": [
     "459",
-    "1706"
+    "1708"
   ],
   "/2012/10/01/multiple-uncertainty.html": [
     "10",
@@ -2991,6 +2991,10 @@
     "7",
     "57"
   ],
+  "/2013/03/19/prosecutor-fallacy-as-large-deviations.html": [
+    "1",
+    "1"
+  ],
   "/2013/03/20/research.html": [
     "5",
     "28"
@@ -3089,35 +3093,39 @@
   ],
   "/2013/04/30/tgp-difficulties-and-custom-mcmc-for-gp.html": [
     "4",
-    "18"
+    "19"
+  ],
+  "/2013/05/01/bayesian-GP-regression-by-metropolis-hastings.html": [
+    "0",
+    "1"
   ],
   "/2013/05/01/integrating-over-posterior-gp.html": [
     "0",
-    "2"
+    "3"
   ],
   "/2013/05/02/musings-on-conservation-literature.html": [
     "0",
-    "2"
+    "3"
   ],
   "/2013/05/02/scholarly-infrastructure-thoughts.html": [
     "0",
-    "3"
+    "4"
   ],
   "/2013/05/03/notebook-features-hashes-providing-an-immutable-and-verifiable-research-record.html": [
-    "121",
-    "175"
+    "120",
+    "177"
   ],
   "/2013/05/03/notes.html": [
     "0",
-    "3"
+    "7"
   ],
   "/2013/05/07/notes.html": [
     "0",
-    "4"
+    "8"
   ],
   "/2013/05/09/notes.html": [
-    "5",
-    "8"
+    "6",
+    "11"
   ],
   "/2013/05/13/notes.html": [
     "0",
@@ -3990,13 +3998,5 @@
   "/?s=Doygen": [
     "0",
     "1"
-  ],
-  "/?s=Dryad+wiki": [
-    "0",
-    "1"
-  ],
-  "/?s=EC2": [
-    "0",
-    "2"
   ]
 }
