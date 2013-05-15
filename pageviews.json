@@ -1,7 +1,7 @@
 {
   "/": [
     "5728",
-    "14807"
+    "14808"
   ],
   "/ Hastings student at UC Davis": [
     "0",
@@ -1624,8 +1624,8 @@
     "1"
   ],
   "/2011/07/07/segue-easy-cloud-computing-in-r-now-with-custom-packages.html": [
-    "111",
-    "131"
+    "112",
+    "132"
   ],
   "/2011/07/07/thursday-8.html": [
     "0",
@@ -1889,7 +1889,7 @@
   ],
   "/2011/10/12/rfishbase-tutorial-updated-extended.html": [
     "60",
-    "98"
+    "99"
   ],
   "/2011/10/12/wednesday-10.html": [
     "0",
@@ -3104,20 +3104,24 @@
     "3"
   ],
   "/2013/05/03/notebook-features-hashes-providing-an-immutable-and-verifiable-research-record.html": [
-    "120",
-    "174"
+    "121",
+    "175"
   ],
   "/2013/05/03/notes.html": [
     "0",
-    "2"
+    "3"
   ],
   "/2013/05/07/notes.html": [
     "0",
-    "3"
+    "4"
   ],
   "/2013/05/09/notes.html": [
     "5",
-    "7"
+    "8"
+  ],
+  "/2013/05/13/notes.html": [
+    "0",
+    "1"
   ],
   "/211": [
     "0",
@@ -3994,9 +3998,5 @@
   "/?s=EC2": [
     "0",
     "2"
-  ],
-  "/?s=EM+algorithm": [
-    "0",
-    "1"
   ]
 }
