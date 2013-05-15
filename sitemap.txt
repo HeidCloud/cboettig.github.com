@@ -810,6 +810,7 @@ http://carlboettiger.info/wordpress/archives/4482/index.html
 http://carlboettiger.info/archives/4482/index.html 
 
  
+http://carlboettiger.info/2013/05/13/notes.html  
 http://carlboettiger.info/2013/05/09/notes.html  
 http://carlboettiger.info/2013/05/07/notes.html  
 http://carlboettiger.info/2013/05/03/notes.html  
@@ -817,6 +818,7 @@ http://carlboettiger.info/2013/05/03/notebook-features-hashes-providing-an-immut
 http://carlboettiger.info/2013/05/02/scholarly-infrastructure-thoughts.html  
 http://carlboettiger.info/2013/05/02/musings-on-conservation-literature.html  
 http://carlboettiger.info/2013/05/01/integrating-over-posterior-gp.html  
+http://carlboettiger.info/2013/05/01/bayesian-GP-regression-by-metropolis-hastings.html  
 http://carlboettiger.info/2013/04/30/tgp-difficulties-and-custom-mcmc-for-gp.html  
 http://carlboettiger.info/2013/04/29/finishing-comparison-parametric-and-nonparametric.html  
 http://carlboettiger.info/2013/04/27/comparison-of-nonparametric-and-parametric-approaches.html  
@@ -840,6 +842,7 @@ http://carlboettiger.info/2013/03/26/research.html
 http://carlboettiger.info/2013/03/25/research.html  
 http://carlboettiger.info/2013/03/22/research.html  
 http://carlboettiger.info/2013/03/20/research.html  
+http://carlboettiger.info/2013/03/19/prosecutor-fallacy-as-large-deviations.html  
 http://carlboettiger.info/2013/03/19/collected-notes.html  
 http://carlboettiger.info/2013/03/14/notes.html  
 http://carlboettiger.info/2013/03/13/notes.html  

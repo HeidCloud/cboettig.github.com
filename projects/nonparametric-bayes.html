@@ -24,7 +24,7 @@
 <!-- RDFa Metadata (in DublinCore) -->
 <meta property="dc:title" content="Non-parametric Bayesian Inference for Conservation Decisions" />
 <meta property="dc:creator" content="Carl Boettiger" />
-<meta property="dc:date" content="2013-05-13T12:26:23-07:00" />
+<meta property="dc:date" content="2013-05-15T10:31:08-07:00" />
 <meta property="dc:format" content="text/html" />
 <meta property="dc:language" content="en" />
 <meta property="dc:identifier" content="/projects/nonparametric-bayes.html" />
@@ -37,13 +37,13 @@
 <meta property="og:author" content="http://www.carlboettiger.info/index.html#me" />  <!-- Should be Liquid? URI? -->
 <meta property="http://ogp.me/ns/profile#first_name" content="Carl"/>
 <meta property="http://ogp.me/ns/profile#last_name" content="Boettiger"/>
-<meta property="http://ogp.me/ns/article#published_time" content="2013-05-13T12:26:23-07:00" />
+<meta property="http://ogp.me/ns/article#published_time" content="2013-05-15T10:31:08-07:00" />
 <meta property="og:site_name" content="Lab Notebook" /> <!-- Same as dc:source? -->
 <meta property="og:url" content="http://www.carlboettiger.info/projects/nonparametric-bayes.html" />
 <meta property="og:type" content="website" /> 
 <!-- Google Scholar Metadata -->
 <meta name="citation_author" content="Carl Boettiger"/>
-<meta name="citation_date" content="2013-05-13T12:26:23-07:00"/>
+<meta name="citation_date" content="2013-05-15T10:31:08-07:00"/>
 <meta name="citation_title" content="Non-parametric Bayesian Inference for Conservation Decisions"/>
 <meta name="citation_journal_title" content="Lab Notebook"/>
 
@@ -227,6 +227,10 @@ Funding and Support/Affiliation
 </p>
 
 <p> 
+<a href="/2013/05/01/bayesian-GP-regression-by-metropolis-hastings.html">Bayesian Gp Regression By Metropolis Hastings</a> <span style="font-style:italic"> 01 May 2013</span>
+</p>
+
+<p> 
 <a href="/2013/04/30/tgp-difficulties-and-custom-mcmc-for-gp.html">Difficulties with tgp; taking custom mcmc approach for GPs</a> <span style="font-style:italic"> 30 Apr 2013</span>
 </p>
 
@@ -236,10 +240,6 @@ Funding and Support/Affiliation
 
 <p> 
 <a href="/2013/04/27/comparison-of-nonparametric-and-parametric-approaches.html">A comparison of nonparametric Bayesian Gaussian process estimates to standard the parametric Bayesian approach</a> <span style="font-style:italic"> 27 Apr 2013</span>
-</p>
-
-<p> 
-<a href="/2013/04/25/notes.html">Notes</a> <span style="font-style:italic"> 25 Apr 2013</span>
 </p>
 
 
@@ -269,24 +269,24 @@ Distinguishing random environmental fluctuations from ecological catastrophes fo
 </h4>
 
 <ul><li>
+Fixed GP use of standard deviation in place of variance <a href="https://github.com/cboettig/nonparametric-bayes/commit/4f5858c4a7c88b47996a27b8d23b5f02a680a92c">05:24 pm 2013/05/15</a>
+</li><li>
+<p>Updated runs of complete script</p>
+<ul>
+<li>Includes alternative Figure 1 (in time-series space, with GP #44)</li>
+<li>Includes (fixed) Bayesian Ricker (#43) and Bayesian Myers (#42) case <a href="https://github.com/cboettig/nonparametric-bayes/commit/177a1e28ddeacef24d6ff1324664b95c563ad91f">11:32 pm 2013/05/14</a>
+</li><li>
+replicate run <a href="https://github.com/cboettig/nonparametric-bayes/commit/7dd8fc444cb9d20d839286eac8068b3099ea9b6a">07:49 pm 2013/05/14</a>
+</li><li>
+example step-ahead plots #44 <a href="https://github.com/cboettig/nonparametric-bayes/commit/e43e98477ce5293017a1d39a92cdf4d796be430d">07:49 pm 2013/05/14</a>
+</li><li>
+include function definitions in example for reference purposes only <a href="https://github.com/cboettig/nonparametric-bayes/commit/a1c67861eeb4729b3cb7b0d29c3ae95463b41f64">07:44 pm 2013/05/14</a>
+</li><li>
 plots for step-ahead predictions of each model (from allen.Rmd) <a href="https://github.com/cboettig/nonparametric-bayes/commit/ee194276b9339711eec88de22ea43c53b4012c57">06:52 pm 2013/05/13</a>
 </li><li>
 animation plots, run with corrected ricker model <a href="https://github.com/cboettig/nonparametric-bayes/commit/d24628033e648003fa0d573ed3a718acca01304f">06:50 pm 2013/05/13</a>
 </li><li>
 writing <a href="https://github.com/cboettig/nonparametric-bayes/commit/2aec6bbc3878efa828f2cb8a5fb91b5361492ecf">06:49 pm 2013/05/13</a>
-</li><li>
-Return the entire posterior distribution of covariance matrices <a href="https://github.com/cboettig/nonparametric-bayes/commit/d346b8f30d130c951c8a1a0570f46778e56d199a">06:48 pm 2013/05/13</a>
-</li><li>
-<p>Adjusted penalty for policy thresholds case</p>
-<ul>
-<li>Need to make sure each algorithm permits the flexible choise of policy function</li>
-<li>Compare severe penalty case to zero-profit case <a href="https://github.com/cboettig/nonparametric-bayes/commit/20d26046197c1e616d5561b49893cafed886f598">06:47 pm 2013/05/13</a>
-</li><li>
-fixed typo in equation(!) <a href="https://github.com/cboettig/nonparametric-bayes/commit/6763c143050b5e866ba7d4f8ff14aaff8615f1c6">06:46 pm 2013/05/13</a>
-</li><li>
-add a movie of data <a href="https://github.com/cboettig/nonparametric-bayes/commit/0fc9f1407e6c4f8bc9643cb42c4e81d4322e82bb">07:57 pm 2013/05/08</a>
-</li><li>
-Weak thresholds example – no cost but no profit if stocks are reduced below a certain threshold <a href="https://github.com/cboettig/nonparametric-bayes/commit/6bdc9535f0def3c5f2ed168bfac9c86517d48466">04:31 am 2013/05/08</a>
 </li></ul>
 </li>
 </ul>
@@ -297,21 +297,21 @@ Weak thresholds example – no cost but no profit if stocks are reduced below a 
 </h4>
 
 <ul><li> 
-<a href="https://github.com/cboettig/nonparametric-bayes/issues/43">add parametric Bayesian version of Ricker</a> (<font color="#e10c02">high priority</font>)
+<a href="https://github.com/cboettig/nonparametric-bayes/issues/46">Tidy code in allen.Rmd, internalize all BUGS scripts into the R code</a> (<font color="#d4c5f9">analysis</font>)
 </li><li> 
-<a href="https://github.com/cboettig/nonparametric-bayes/issues/42">add Parametric Bayesian version of Myers model </a> (<font color="#e10c02">high priority</font>)
+<a href="https://github.com/cboettig/nonparametric-bayes/issues/45">Vary the utility function / costs / risk relation</a> (<font color="#bfe5bf">low priority</font>)
 </li><li> 
-<a href="https://github.com/cboettig/nonparametric-bayes/issues/41">Comparison against an active learning parametric model (facing a tipping point)</a> (<font color="#d7e102">med priority</font>)
+<a href="https://github.com/cboettig/nonparametric-bayes/issues/44">Plot estimated functions against original data</a>
 </li><li> 
-<a href="https://github.com/cboettig/nonparametric-bayes/issues/38">Abstract</a> (<font color="#0b02e1">manuscript</font>)
+<a href="https://github.com/cboettig/nonparametric-bayes/issues/41">Comparison against an active learning parametric model (facing a tipping point)</a> (<font color="#fef2c0">med priority</font>)
 </li><li> 
-<a href="https://github.com/cboettig/nonparametric-bayes/issues/37">Concluding paragraph following “further directions”</a> (<font color="#0b02e1">manuscript</font>)
+<a href="https://github.com/cboettig/nonparametric-bayes/issues/38">Abstract</a> (<font color="#bfd4f2">manuscript</font>)
 </li><li> 
-<a href="https://github.com/cboettig/nonparametric-bayes/issues/36">Tidy / improve Figure 4. Expand associated discussion as well. </a> (<font color="#0b02e1">manuscript</font>)
+<a href="https://github.com/cboettig/nonparametric-bayes/issues/37">Concluding paragraph following “further directions”</a> (<font color="#bfd4f2">manuscript</font>)
 </li><li> 
-<a href="https://github.com/cboettig/nonparametric-bayes/issues/35">Simulate example in which noise has structure, allows GP to capture that structure</a> (<font color="#d7e102">med priority</font>)
+<a href="https://github.com/cboettig/nonparametric-bayes/issues/36">Tidy / improve Figure 4. Expand associated discussion as well. </a> (<font color="#bfd4f2">manuscript</font>)
 </li><li> 
-<a href="https://github.com/cboettig/nonparametric-bayes/issues/34">Example of how we can add broad-brush constraints to the nonparametric bayesian model</a> (<font color="#d7e102">med priority</font>)
+<a href="https://github.com/cboettig/nonparametric-bayes/issues/35">Simulate example in which noise has structure, allows GP to capture that structure</a> (<font color="#fef2c0">med priority</font>)
 </li></ul>
 
 </div>

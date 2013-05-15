@@ -1,0 +1,97 @@
+<p>(Corresponds to commit <a href="https://github.com/cboettig/earlywarning/blob/4bd84221078df738034e1611b23d7c5aca48de3f/inst/examples/comment.md">4bd8422107</a> in <a href="https://github.com/cboettig/earlywarning/blob/prosecutor">earlywarning</a> repo)</p>
+<p>For the individual-based simulation, the population dynamics are given by</p>
+<p><span class="math">\[\begin{align}
+  \frac{dP(n,t)}{dt} &amp;= b_{n-1} P(n-1,t) + d_{n+1}P(n+1,t) - (b_n+d_n) P(n,t),  \\
+    b_n &amp;= \frac{e K n^2}{n^2 + h^2}, \\
+    d_n &amp;= e n + a,
+\end{align}\]</span></p>
+<p>which is provided by the <code>saddle_node_ibm</code> model in <code>populationdynamics</code>.</p>
+<p>For each of the warning signal statistics in question, we need to generate the distibution over all replicates and then over replicates which have been selected conditional on having experienced a crash.</p>
+<p>We begin by running the simulation of the process for all replicates.</p>
+<p>Load the required libraries</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(populationdynamics)
+<span class="kw">library</span>(earlywarning)
+<span class="kw">library</span>(reshape2)   <span class="co"># data manipulation</span>
+<span class="kw">library</span>(data.table) <span class="co"># data manipulation</span>
+<span class="kw">library</span>(ggplot2)    <span class="co"># graphics</span>
+<span class="kw">library</span>(snowfall)   <span class="co"># parallel</span></code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">theme_publish &lt;- <span class="kw">theme_set</span>(<span class="kw">theme_bw</span>(<span class="dv">12</span>))
+theme_publish &lt;- 
+  <span class="kw">theme_update</span>(<span class="dt">legend.key=</span><span class="kw">theme_blank</span>(),
+        <span class="dt">panel.grid.major=</span><span class="kw">theme_blank</span>(),<span class="dt">panel.grid.minor=</span><span class="kw">theme_blank</span>(),
+        <span class="dt">plot.background=</span><span class="kw">theme_blank</span>(), <span class="dt">legend.title=</span><span class="kw">theme_blank</span>())</code></pre>
+<h3 id="conditional-distribution">Conditional distribution</h3>
+<p>Then we fix a set of paramaters we will use for the simulation function. Since we will simulate 20,000 replicates with 50,000 pts a piece, we can save memory by performing the conditional selection on the ones that cross a threshold we go along and disgard the others. (We will create a null distribution in which we ignore this conditional selection later).</p>
+<pre class="sourceCode r"><code class="sourceCode r">threshold &lt;- <span class="dv">250</span>
+select_crashes &lt;- function(n){
+  T&lt;- <span class="dv">5000</span>
+  n_pts &lt;- n
+  pars = <span class="kw">c</span>(<span class="dt">Xo =</span> <span class="dv">500</span>, <span class="dt">e =</span> <span class="fl">0.5</span>, <span class="dt">a =</span> <span class="dv">180</span>, <span class="dt">K =</span> <span class="dv">1000</span>, <span class="dt">h =</span> <span class="dv">200</span>,
+    <span class="dt">i =</span> <span class="dv">0</span>, <span class="dt">Da =</span> <span class="dv">0</span>, <span class="dt">Dt =</span> <span class="dv">0</span>, <span class="dt">p =</span> <span class="dv">2</span>)
+  sn &lt;- <span class="kw">saddle_node_ibm</span>(pars, <span class="dt">times=</span><span class="kw">seq</span>(<span class="dv">0</span>,T, <span class="dt">length=</span>n_pts), <span class="dt">reps=</span><span class="dv">1000</span>)
+  d &lt;- <span class="kw">dim</span>(sn$x1)
+  crashed &lt;- <span class="kw">which</span>(sn$x1[d[<span class="dv">1</span>],] &lt;= threshold)
+<span class="co"># crashed &lt;- which(sn$x1[d[1],]==0)</span>
+  sn$x1[,crashed] 
+}</code></pre>
+<p>A few extra commands format the data into a table with columns of times, replicate id number, and population value at the given time.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sfInit</span>(<span class="dt">parallel=</span><span class="ot">FALSE</span>)
+<span class="kw">sfLibrary</span>(populationdynamics)</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sfExportAll</span>()
+examples &lt;- <span class="kw">sfLapply</span>(<span class="dv">1</span>:<span class="dv">20</span>, function(i) <span class="kw">select_crashes</span>(<span class="dv">50000</span>))
+dat &lt;- <span class="kw">melt</span>(<span class="kw">as.matrix</span>(<span class="kw">as.data.frame</span>(examples, <span class="dt">check.names=</span><span class="ot">FALSE</span>)))
+<span class="kw">names</span>(dat) = <span class="kw">c</span>(<span class="st">&quot;time&quot;</span>, <span class="st">&quot;reps&quot;</span>, <span class="st">&quot;value&quot;</span>)
+<span class="kw">levels</span>(dat$reps) &lt;- <span class="dv">1</span>:<span class="kw">length</span>(<span class="kw">levels</span>(dat$reps)) <span class="co"># use numbers for reps</span></code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="kw">subset</span>(dat, reps %in% <span class="kw">levels</span>(dat$reps)[<span class="dv">1</span>:<span class="dv">9</span>])) + <span class="kw">geom_line</span>(<span class="kw">aes</span>(time, value)) + <span class="kw">facet_wrap</span>(~reps, <span class="dt">scales=</span><span class="st">&quot;free&quot;</span>)</code></pre>
+<figure>
+<img src="http://farm9.staticflickr.com/8100/8572282877_815dc4341d_o.png" alt="plot of chunk testing" /><figcaption>plot of chunk testing</figcaption>
+</figure>
+<p>Zoom in on the relevant area of data near the crash</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">require</span>(plyr)
+zoom &lt;- <span class="kw">ddply</span>(dat, <span class="st">&quot;reps&quot;</span>, function(X){
+    tip &lt;- <span class="kw">min</span>(<span class="kw">which</span>(X$value&lt;threshold))
+    index &lt;- <span class="kw">max</span>(tip<span class="dv">-200</span>,<span class="dv">1</span>):tip
+    <span class="kw">data.frame</span>(<span class="dt">time=</span>X$time[index], <span class="dt">value=</span>X$value[index])
+    })</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="kw">subset</span>(zoom, reps %in% <span class="kw">levels</span>(zoom$reps)[<span class="dv">1</span>:<span class="dv">9</span>])) + <span class="kw">geom_line</span>(<span class="kw">aes</span>(time, value)) + <span class="kw">facet_wrap</span>(~reps, <span class="dt">scales=</span><span class="st">&quot;free&quot;</span>)</code></pre>
+<figure>
+<img src="http://farm9.staticflickr.com/8243/8573375714_956b2721cf_o.png" alt="plot of chunk example-trajectories" /><figcaption>plot of chunk example-trajectories</figcaption>
+</figure>
+<p>Compute model-based warning signals on all each of these.</p>
+<pre class="sourceCode r"><code class="sourceCode r">dt &lt;- <span class="kw">data.table</span>(<span class="kw">subset</span>(zoom, value&gt;threshold))
+var &lt;- dt[, <span class="kw">warningtrend</span>(<span class="kw">data.frame</span>(<span class="dt">time=</span>time, <span class="dt">value=</span>value), window_var), by=reps]$V1
+acor &lt;- dt[, <span class="kw">warningtrend</span>(<span class="kw">data.frame</span>(<span class="dt">time=</span>time, <span class="dt">value=</span>value), window_autocorr), by=reps]$V1
+dat &lt;- <span class="kw">melt</span>(<span class="kw">data.frame</span>(<span class="dt">Variance=</span>var, <span class="dt">Autocorrelation=</span>acor))</code></pre>
+<h3 id="null-distribution">Null distribution</h3>
+<p>To compare against the expected distribution of these statistics, we create another set of simulations without conditioning on having experienced a chance transition, on which we perform the identical analysis.</p>
+<pre class="sourceCode r"><code class="sourceCode r">threshold &lt;- <span class="dv">250</span>
+select_crashes &lt;- function(n){
+  T&lt;- <span class="dv">5000</span>
+  n_pts &lt;- n
+  pars = <span class="kw">c</span>(<span class="dt">Xo =</span> <span class="dv">500</span>, <span class="dt">e =</span> <span class="fl">0.5</span>, <span class="dt">a =</span> <span class="dv">180</span>, <span class="dt">K =</span> <span class="dv">1000</span>, <span class="dt">h =</span> <span class="dv">200</span>,
+    <span class="dt">i =</span> <span class="dv">0</span>, <span class="dt">Da =</span> <span class="dv">0</span>, <span class="dt">Dt =</span> <span class="dv">0</span>, <span class="dt">p =</span> <span class="dv">2</span>)
+  sn &lt;- <span class="kw">saddle_node_ibm</span>(pars, <span class="dt">times=</span><span class="kw">seq</span>(<span class="dv">0</span>,T, <span class="dt">length=</span>n_pts), <span class="dt">reps=</span><span class="dv">500</span>)
+  d &lt;- <span class="kw">dim</span>(sn$x1)
+  sn$x1[<span class="dv">1</span>:<span class="dv">501</span>,]
+}</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sfExportAll</span>()
+examples &lt;-  <span class="kw">sfLapply</span>(<span class="dv">1</span>:<span class="dv">10</span>, function(i) <span class="kw">select_crashes</span>(<span class="dv">50000</span>))
+nulldat &lt;- <span class="kw">melt</span>(<span class="kw">as.matrix</span>(<span class="kw">as.data.frame</span>(examples, <span class="dt">check.names=</span><span class="ot">FALSE</span>)))
+nulldat &lt;- <span class="kw">melt</span>(examples)
+<span class="kw">names</span>(nulldat) = <span class="kw">c</span>(<span class="st">&quot;time&quot;</span>, <span class="st">&quot;reps&quot;</span>, <span class="st">&quot;value&quot;</span>)
+<span class="kw">levels</span>(nulldat$reps) &lt;- <span class="dv">1</span>:<span class="kw">length</span>(<span class="kw">levels</span>(dat$reps)) </code></pre>
+<p>Zoom in on the relevant area of data near the crash</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">require</span>(plyr)
+nullzoom &lt;- <span class="kw">ddply</span>(nulldat, <span class="st">&quot;reps&quot;</span>, function(X){
+    <span class="kw">data.frame</span>(<span class="dt">time=</span>X$time, <span class="dt">value=</span>X$value)
+    })</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">nulldt &lt;- <span class="kw">data.table</span>(nullzoom)
+nullvar &lt;- nulldt[, <span class="kw">warningtrend</span>(<span class="kw">data.frame</span>(<span class="dt">time=</span>time, <span class="dt">value=</span>value), window_var), by=reps]$V1
+nullacor &lt;- nulldt[, <span class="kw">warningtrend</span>(<span class="kw">data.frame</span>(<span class="dt">time=</span>time, <span class="dt">value=</span>value), window_autocorr), by=reps]$V1
+nulldat &lt;- <span class="kw">melt</span>(<span class="kw">data.frame</span>(<span class="dt">Variance=</span>nullvar, <span class="dt">Autocorrelation=</span>nullacor))</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(dat) + <span class="kw">geom_histogram</span>(<span class="kw">aes</span>(value, <span class="dt">y=</span>..density..), <span class="dt">binwidth=</span><span class="fl">0.3</span>, <span class="dt">alpha=</span>.<span class="dv">5</span>) +
+ <span class="kw">facet_wrap</span>(~variable) + <span class="kw">xlim</span>(<span class="kw">c</span>(-<span class="dv">1</span>, <span class="dv">1</span>)) + 
+ <span class="kw">geom_density</span>(<span class="dt">data=</span>nulldat, <span class="kw">aes</span>(value), <span class="dt">adjust=</span><span class="dv">2</span>) + <span class="kw">xlab</span>(<span class="st">&quot;Kendall&#39;s tau&quot;</span>) + <span class="kw">theme_bw</span>()</code></pre>
+<figure>
+<img src="http://farm9.staticflickr.com/8093/8572283195_496404332d_o.png" alt="plot of chunk fig" /><figcaption>plot of chunk fig</figcaption>
+</figure>
