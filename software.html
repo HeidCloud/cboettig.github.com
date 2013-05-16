@@ -123,8 +123,7 @@
   </head>
   <body>
 
-  
-<!-- Navbar  ================================================== -->
+  <!-- Navbar  ================================================== -->
 <div class="navbar navbar-fixed-top">
   <div class="navbar-inner">
     <div class="container">
@@ -159,7 +158,7 @@
         </ul>
       </div><!--/.nav-collapse -->
 
-      <!-- Search site using Google's index --><!--
+      <!-- Search site using Google's index -->
       <form class="navbar-search pull-right" method="get" action="http://google.com/search">
         <p>
           <input type="hidden" name="q" value="site:carlboettiger.info" />
@@ -167,7 +166,7 @@
           <button class="btn btn-mini" type="submit"><i class="icon-search"></i></button> 
         </p>
       </form>
-      -->
+      <!--
       <div id="search">
       <form method="get" class="navbar-search pull-right form-search">
         <p>
@@ -176,6 +175,7 @@
         </p>
       </form>
       </div>
+      -->
      </div> <!-- /container -->
    </div> <!-- /navbar-inner -->
  </div> <!-- /navbar -->
@@ -243,7 +243,14 @@
              name="theme" value="light" id="light" 
              class="btn btn-mini"><span class="showtooltip" 
                                         title="switch to light theme"><i class="icon-certificate"></i>
+           <a onclick="switch_style('white'); 
+                      recordOutboundLink(this, 'Outbound Links', 'white theme'); 
+                      return false;" 
+             name="theme" value="white" id="white" 
+             class="btn btn-mini"><span class="showtooltip" 
+                                        title="switch to white theme"><i class="icon-circle-blank"></i>
                                   </span></a>
+                                 </span></a>
         </form>
       </div>
     </div>
