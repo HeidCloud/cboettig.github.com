@@ -810,6 +810,10 @@ http://carlboettiger.info/wordpress/archives/4482/index.html
 http://carlboettiger.info/archives/4482/index.html 
 
  
+http://carlboettiger.info/2013/05/31/notebook-features-digital-archiving.html  
+http://carlboettiger.info/2013/05/24/notes.html  
+http://carlboettiger.info/2013/05/23/notes.html  
+http://carlboettiger.info/2013/05/22/notes.html  
 http://carlboettiger.info/2013/05/20/notes.html  
 http://carlboettiger.info/2013/05/17/null-distribution-width-minor-puzzle.html  
 http://carlboettiger.info/2013/05/16/notes.html  
@@ -835,9 +839,11 @@ http://carlboettiger.info/2013/04/19/bayesian-parametric-uncertainty-sdp.html
 http://carlboettiger.info/2013/04/18/notes.html  
 http://carlboettiger.info/2013/04/17/notes.html  
 http://carlboettiger.info/2013/04/16/notes.html  
+http://carlboettiger.info/2013/04/15/notes.html  
 http://carlboettiger.info/2013/04/12/parametric-bayesian-example.html  
 http://carlboettiger.info/2013/04/11/tutorial-on-likelihood-and-roc-methods-for-early-warning-signals.html  
 http://carlboettiger.info/2013/04/11/nonparametric-bayes-framing-the-issues.html  
+http://carlboettiger.info/2013/04/10/fun-and-not-so-fun-with-bibliographic-APIs.html  
 http://carlboettiger.info/2013/04/05/a-clever-derivation-on-realized-escape-times.html  
 http://carlboettiger.info/2013/04/04/notebook-parsing.html  
 http://carlboettiger.info/2013/04/03/further-examples-managing-tipping-points-with-gp.html  
@@ -915,6 +921,7 @@ http://carlboettiger.info/2012/10/02/solarized-colors.html
 http://carlboettiger.info/2012/10/01/multiple-uncertainty.html  
 http://carlboettiger.info/2012/09/28/Welcome-to-my-lab-notebook.html  
 http://carlboettiger.info/2012/09/27/Migrating-OWW-posts-to-Jekyll.html  
+http://carlboettiger.info/2012/09/19/prosecutors-fallacy.html  
 http://carlboettiger.info/2012/09/19/migrating-from-wordpress-to-jekyll.html  
 http://carlboettiger.info/2012/09/14/analytic-solution-to-multiple-uncertainty.html  
 http://carlboettiger.info/2012/09/12/notes.html  
