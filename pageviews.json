@@ -2164,8 +2164,8 @@
     "4"
   ],
   "/2012/01/31/journey-to-freedom-a-codes-tale-of-open-source-license-migration.html": [
-    "43",
-    "62"
+    "42",
+    "65"
   ],
   "/2012/02/02/thursday-13.html": [
     "2",
@@ -3109,7 +3109,7 @@
   ],
   "/2013/04/26/notebook-features-introduction.html": [
     "17",
-    "105"
+    "106"
   ],
   "/2013/04/26/notebook-features-reproducible-code.html": [
     "15",
@@ -3145,7 +3145,7 @@
   ],
   "/2013/05/03/notebook-features-hashes-providing-an-immutable-and-verifiable-research-record.html": [
     "131",
-    "202"
+    "203"
   ],
   "/2013/05/03/notes.html": [
     "1",
@@ -3178,6 +3178,10 @@
   "/2013/05/20/notes.html": [
     "1",
     "13"
+  ],
+  "/2013/05/31/notebook-features-digital-archiving.html": [
+    "1",
+    "2"
   ],
   "/211": [
     "0",
@@ -3993,10 +3997,6 @@
   ],
   "/?s=\"visualize+power\"": [
     "0",
-    "1"
-  ],
-  "/?s=\"white\"": [
-    "1",
     "1"
   ]
 }
