@@ -810,6 +810,10 @@ http://carlboettiger.info/wordpress/archives/4482/index.html
 http://carlboettiger.info/archives/4482/index.html 
 
  
+http://carlboettiger.info/2013/06/03/DOI-citable.html  
+http://carlboettiger.info/2013/05/31/notebook-features-digital-archiving.html  
+http://carlboettiger.info/2013/05/31/notebook-features-archiving-with-figshare.html  
+http://carlboettiger.info/2013/05/29/notes.html  
 http://carlboettiger.info/2013/05/28/notes.html  
 http://carlboettiger.info/2013/05/27/exploring-approximate-dynamic-programming-approaches.html  
 http://carlboettiger.info/2013/05/24/notes.html  
