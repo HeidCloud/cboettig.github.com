@@ -1,7 +1,7 @@
 {
   "/": [
-    "5921",
-    "15295"
+    "5924",
+    "15302"
   ],
   "/ Hastings student at UC Davis": [
     "0",
@@ -972,8 +972,8 @@
     "13"
   ],
   "/2010/11/08/welcome-to-my-lab-notebook.html": [
-    "39",
-    "94"
+    "40",
+    "97"
   ],
   "/2010/11/10/tuesday-sdes-then-back-to-phylogenetics.html": [
     "1",
@@ -1324,8 +1324,8 @@
     "2"
   ],
   "/2011/03/15/models-in-phylogenetic-inference.html": [
-    "379",
-    "432"
+    "381",
+    "434"
   ],
   "/2011/03/15/tuesday-2.html": [
     "0",
@@ -1488,8 +1488,8 @@
     "4"
   ],
   "/2011/05/06/mendeley-api-in-r.html": [
-    "50",
-    "73"
+    "51",
+    "74"
   ],
   "/2011/05/06/reproducible-research-large-data-sets-and-si2.html": [
     "1",
@@ -1528,12 +1528,12 @@
     "3"
   ],
   "/2011/05/18/birth-death-tutorial-for-pbg-core.html": [
-    "66",
-    "80"
+    "67",
+    "81"
   ],
   "/2011/05/19/algorithms-group-mcmcmc.html": [
-    "169",
-    "199"
+    "170",
+    "201"
   ],
   "/2011/05/19/thursday-5.html": [
     "0",
@@ -1648,8 +1648,8 @@
     "6"
   ],
   "/2011/07/06/exact-simulation-by-the-gillespie-algorithm.html": [
-    "81",
-    "98"
+    "82",
+    "99"
   ],
   "/2011/07/07/early-warning-signals-presentation-notes.html": [
     "0",
@@ -1984,8 +1984,8 @@
     "183"
   ],
   "/2011/10/28/optimal-control-examples-continued-bellman-dynamic-programming.html": [
-    "115",
-    "152"
+    "117",
+    "155"
   ],
   "/2011/10/31/monday-openfisheries-ggplot.html": [
     "15",
@@ -2016,8 +2016,8 @@
     "1"
   ],
   "/2011/11/04/sparkleshare-configuration.html": [
-    "2019",
-    "2441"
+    "2025",
+    "2449"
   ],
   "/2011/11/06/sunday-5.html": [
     "0",
@@ -2064,8 +2064,8 @@
     "6"
   ],
   "/2011/11/25/friday-wrightscape-ggplot-wp-memory.html": [
-    "23",
-    "26"
+    "24",
+    "27"
   ],
   "/2011/11/28/monday-11.html": [
     "1",
@@ -2128,8 +2128,8 @@
     "1"
   ],
   "/2012/01/09/monday-13.html": [
-    "67",
-    "83"
+    "68",
+    "84"
   ],
   "/2012/01/10/resilience-seminar-course-plan.html": [
     "1",
@@ -2200,8 +2200,8 @@
     "37"
   ],
   "/2012/02/12/elegant-fast-data-manipulation-with-data-table.html": [
-    "513",
-    "578"
+    "517",
+    "582"
   ],
   "/2012/02/12/saturday-projects-reading-markdown-plugins.html": [
     "6",
@@ -2264,16 +2264,16 @@
     "4"
   ],
   "/2012/02/27/using-knitr-and-rwordpress-to-publish-results-directly-from-r-6.html": [
-    "331",
-    "499"
+    "332",
+    "501"
   ],
   "/2012/02/27/using-knitr-and-rwordpress-to-publish-results-directly-from-r.html": [
     "1",
     "1"
   ],
   "/2012/02/28/knitr-with-flickr-and-wordpress.html": [
-    "138",
-    "211"
+    "140",
+    "213"
   ],
   "/2012/02/28/warning-signals-in-fish-collapse.html": [
     "10",
@@ -2316,8 +2316,8 @@
     "8"
   ],
   "/2012/03/20/citing-r-packages.html": [
-    "1066",
-    "1154"
+    "1070",
+    "1158"
   ],
   "/2012/03/20/friday-some-random-notes.html": [
     "2",
@@ -2328,8 +2328,8 @@
     "5"
   ],
   "/2012/03/21/knitr-github-and-a-new-phase-for-the-lab-notebook.html": [
-    "261",
-    "434"
+    "263",
+    "436"
   ],
   "/2012/03/21/policy-costs-to-changing-mangement-tp-1b-apples-to-apples.html": [
     "0",
@@ -2340,8 +2340,8 @@
     "18"
   ],
   "/2012/03/24/citations-in-markdown-using-knitr.html": [
-    "749",
-    "1000"
+    "751",
+    "1003"
   ],
   "/2012/03/24/citations-in-markdown-usingknitr.html": [
     "0",
@@ -2352,8 +2352,8 @@
     "11"
   ],
   "/2012/03/27/tuesday-pandoc-citations-notes-various.html": [
-    "124",
-    "178"
+    "126",
+    "180"
   ],
   "/2012/03/29/data-to-knowledge-conference-uc-berkeley-application-abstract.html": [
     "7",
@@ -2384,8 +2384,8 @@
     "3"
   ],
   "/2012/04/07/writing-reproducibly-in-the-open-with-knitr.html": [
-    "595",
-    "998"
+    "596",
+    "1000"
   ],
   "/2012/04/10/monday-tuesday.html": [
     "1",
@@ -2444,8 +2444,8 @@
     "15"
   ],
   "/2012/05/06/research-workflow.html": [
-    "619",
-    "1027"
+    "661",
+    "1084"
   ],
   "/2012/05/07/github.com/deads/bigrf": [
     "0",
@@ -2512,16 +2512,16 @@
     "164"
   ],
   "/2012/05/26/exploring-jekyll-layout.html": [
-    "785",
-    "1018"
+    "786",
+    "1019"
   ],
   "/2012/05/26/exploring-jekyll-layout.html?search-text=jekyll": [
     "0",
     "1"
   ],
   "/2012/05/30/knitcitations.html": [
-    "649",
-    "942"
+    "652",
+    "945"
   ],
   "/2012/05/30/knitcitations.html?search-text=": [
     "0",
@@ -2656,16 +2656,16 @@
     "65"
   ],
   "/2012/09/28/Welcome-to-my-lab-notebook.html": [
-    "489",
-    "1822"
+    "490",
+    "1832"
   ],
   "/2012/10/01/multiple-uncertainty.html": [
     "10",
     "93"
   ],
   "/2012/10/02/solarized-colors.html": [
-    "818",
-    "1155"
+    "821",
+    "1158"
   ],
   "/2012/10/05/lab-notebook.html": [
     "0",
@@ -2880,8 +2880,8 @@
     "1"
   ],
   "/2012/12/10/prior-distributions-for-tgp-mcmc.html": [
-    "30",
-    "53"
+    "31",
+    "54"
   ],
   "/2012/12/10/prior-distributions-for-tgp-mcmc.html?search-text=entropy": [
     "1",
@@ -2924,8 +2924,8 @@
     "10"
   ],
   "/2012/12/30/learning-jekyll.html": [
-    "768",
-    "1078"
+    "771",
+    "1081"
   ],
   "/2013": [
     "0",
@@ -2993,7 +2993,7 @@
   ],
   "/2013/02/22/semantic-citations-for-the-notebook-and-knitr.html": [
     "139",
-    "233"
+    "234"
   ],
   "/2013/02/22/semantic-citations-for-the-notebook-and-knitr.html?search-text=shotton": [
     "0",
@@ -3160,8 +3160,8 @@
     "14"
   ],
   "/2013/05/03/notebook-features-hashes-providing-an-immutable-and-verifiable-research-record.html": [
-    "139",
-    "216"
+    "141",
+    "219"
   ],
   "/2013/05/03/notes.html": [
     "2",
@@ -3200,8 +3200,8 @@
     "4"
   ],
   "/2013/05/23/notes.html": [
-    "2",
-    "8"
+    "3",
+    "9"
   ],
   "/2013/05/24/notes.html": [
     "2",
@@ -3229,15 +3229,15 @@
   ],
   "/2013/05/31/notebook-features-digital-archiving": [
     "2",
-    "7"
+    "8"
   ],
   "/2013/05/31/notebook-features-digital-archiving.html": [
     "0",
     "10"
   ],
   "/2013/06/03/DOI-citable.html": [
-    "204",
-    "262"
+    "218",
+    "284"
   ],
   "/2013/06/03/www.mla.org/style/handbook_faq/cite_a_tweet": [
     "2",

@@ -144,18 +144,18 @@
   <div class="span3 offset1">
     <h4>  <a property="account" href="https://github.com/cboettig" onclick="recordOutboundLink(this, 'Outbound Links', 'Github'); return false;"><i class="icon-github" alt="github"></i> Coding </a></h4> 
      <div class="excerpt">
-        <ul><li>cboettig closed issue cboettig/labnotebook#86: <em>Correct the dates in `dc:date`</em> <a href="https://github.com/cboettig/labnotebook/issues/86">07:21 2013/06/05</a></li><li>cboettig closed issue cboettig/labnotebook#85: <em>Link grant applications on vita.html to pdfs (on figshare, with dois)</em> <a href="https://github.com/cboettig/labnotebook/issues/85">07:21 2013/06/05</a></li><li>cboettig commented on issue cboettig/labnotebook#85: <em>not sure if can add CSGF application or NERSC grant, so closing for now.</em> <a href="https://github.com/cboettig/labnotebook/issues/85#issuecomment-18959472">07:21 2013/06/05</a></li><li>cboettig pushed to master at cboettig/labnotebook: <em>fixed formatting, more doi links new post (draft) example updated</em> <a href="https://github.com/cboettig/labnotebook/compare/817f6c365c...60fee991d3">07:15 2013/06/05</a></li><li>cboettig pushed to master at cboettig/nonparametric-bayes: <em>Merge branch 'master' of github.com:cboettig/nonparametric-bayes exploring admb vs optim a bit further</em> <a href="https://github.com/cboettig/nonparametric-bayes/compare/667f5b28ea...458db20361">07:12 2013/06/05</a></li></ul>
+        <ul><li>cboettig pushed to master at cboettig/nonparametric-bayes: <em>Merge branch 'master' of github.com:cboettig/nonparametric-bayes semi-analytic posteriors (first go)</em> <a href="https://github.com/cboettig/nonparametric-bayes/compare/727ae3420e...82ac1fdfe1">07:43 2013/06/05</a></li><li>cboettig pushed to master at cboettig/nonparametric-bayes: <em>Merge branch 'master' of github.com:cboettig/nonparametric-bayes updated priors results updated priors</em> <a href="https://github.com/cboettig/nonparametric-bayes/compare/458db20361...727ae3420e">03:22 2013/06/05</a></li><li>cboettig opened issue tkuhn/hashuri-java#1: <em>A few thoughts</em> <a href="https://github.com/tkuhn/hashuri-java/issues/1">03:18 2013/06/05</a></li><li>cboettig pushed to master at cboettig/cboettig.github.com: <em>update site update site</em> <a href="https://github.com/cboettig/cboettig.github.com/compare/1eabcca7d6...711b93595b">07:31 2013/06/05</a></li><li>cboettig closed issue cboettig/labnotebook#86: <em>Correct the dates in `dc:date`</em> <a href="https://github.com/cboettig/labnotebook/issues/86">07:21 2013/06/05</a></li></ul>
     </div>
   </div>
   <div class="span3">
     <h4> <a property="account" href="https://twitter.com/cboettig" onclick="recordOutboundLink(this, 'Outbound Links', 'Twitter'); return false;"><i class="icon-twitter"></i> Discussing </a></h4> 
      <div class="excerpt">
-       <ul><li><p>.@acka47 whoops, thanks! Need to automate some link checks... advise, twitterverse? (<a href="https://t.co/v60AfHoRId">https://t.co/v60AfHoRId</a>)</p>
+       <ul><li><p>in PRSB: &quot;Optimal behaviour can violate the principle of regularity&quot;  <a href="http://t.co/iyq5xiuYDc">http://t.co/iyq5xiuYDc</a></p>
+ <a href="http://twitter.com/cboettig/statuses/342308248793272320">08:53 2013/06/05</a> </li><li><p>@jbkinney @davidjayharris we say an SDE/Fokker Planck is a GP when the drift term is linear. So yes, BM is linear (zero-drift) GP</p>
+ <a href="http://twitter.com/cboettig/statuses/342305439238725633">08:42 2013/06/05</a> </li><li><p>.@acka47 whoops, thanks! Need to automate some link checks... advise, twitterverse? (<a href="https://t.co/v60AfHoRId">https://t.co/v60AfHoRId</a>)</p>
  <a href="http://twitter.com/cboettig/statuses/341915640346603520">06:53 2013/06/04</a> </li><li><p>.@brembs etal &quot;we suggest .. abandoning journals altogether.&quot; wow  MT @recology_: Unintended cons of journal rank <a href="http://t.co/EtgtlCEiUH">http://t.co/EtgtlCEiUH</a></p>
  <a href="http://twitter.com/cboettig/statuses/341772548742197248">09:25 2013/06/03</a> </li><li><p>@augustmuench thanks! perhaps, but @CrossRefNews does impressive job of educating. (e.g. compare to EZID handles @datadryad started with..)</p>
- <a href="http://twitter.com/cboettig/statuses/341772065843593217">09:23 2013/06/03</a> </li><li><p>@yawaramin @AhmedMoustafa @gvwilson @figshare @IanMulvany yup. &amp; if Github disappears, simply must remap purl to online repo elsewhere</p>
- <a href="http://twitter.com/cboettig/statuses/341701221574406144">04:41 2013/06/03</a> </li><li><p>@ucfagls thanks, i should really automate some link checking</p>
- <a href="http://twitter.com/cboettig/statuses/341689704720248832">03:55 2013/06/03</a> </li></ul>
+ <a href="http://twitter.com/cboettig/statuses/341772065843593217">09:23 2013/06/03</a> </li></ul>
     </div> 
   </div> 
   <div class="span3">
@@ -177,11 +177,104 @@
               ><i class="icon-rss" ></i> Entries</a></h4>
       
         <div class="span3">
+          <header><h4><a href="/2013/06/05/semi-analytic-posteriors.html">Semi Analytic Posteriors</a></h4></header>
+<p><span></span></p>
+<p style="font-style:italic"> 05 Jun 2013</p>
+
+<p style="font-style:italic"> pageviews: (not calculated) </p>
+
+<article>
+<div class="excerpt">
+<p>The difficulty in comparing the nonparametric Bayesian inference against parametric Bayesian inference is ensuring that the poorer performance of the latter is not do to numerical limitations of the MCMC (no one is quite so worried about the cases where the mcmc solution appears to work well…) Convergence is almost impossible to truly establish, and lots of pathologies (correlations between variables, particularly without simulataneous updating) can frustrate it considerably. While multiple chains and long run times are the reasonable default, for simple enough models we can take a more direct approach.</p>
+<ul>
+<li>Script matches commit <a href="https://github.com/cboettig/nonparametric-bayes/blob/26d84c5c147d853a075dc5b1c1be593a38d04f10/inst/examples/semi-analytic-posteriors.md">26d84c/semi-analytic-posteriors.md</a></li>
+</ul>
+<h3 id="generating-model-and-parameters">Generating Model and parameters</h3>
+<p>Ricker model, parameterized as</p>
+<p><span class="math">\[X_{t+1} = X_t r e^{-\beta X_t + \sigma Z_t}\]</span></p>
+<p>for random unit normal <span class="math">\(Z_t\)</span></p>
+<pre class="sourceCode r"><code class="sourceCode r">f &lt;- function(x,h,p)  x * p[<span class="dv">1</span>] * <span class="kw">exp</span>(-x * p[<span class="dv">2</span>]) 
+p &lt;- <span class="kw">c</span>(<span class="kw">exp</span>(<span class="dv">1</span>), <span class="dv">1</span>/<span class="dv">10</span>)
+K &lt;- <span class="dv">10</span>  <span class="co"># approx, a li&#39;l&#39; less</span>
+Xo &lt;- <span class="dv">1</span> <span class="co"># approx, a li&#39;l&#39; less</span></code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">sigma_g &lt;- <span class="fl">0.1</span>
+z_g &lt;- function() <span class="kw">rlnorm</span>(<span class="dv">1</span>,<span class="dv">0</span>, sigma_g)
+x_grid &lt;- <span class="kw">seq</span>(<span class="dv">0</span>, <span class="fl">1.5</span> * K, <span class="dt">length=</span><span class="dv">50</span>)
+N &lt;- <span class="dv">40</span>
+<span class="kw">set.seed</span>(<span class="dv">123</span>)</code></pre>
+<h3 id="sample-data">Sample Data</h3>
+<pre class="sourceCode r"><code class="sourceCode r">x &lt;- <span class="kw">numeric</span>(N)
+x[<span class="dv">1</span>] &lt;- Xo
+for(t in <span class="dv">1</span>:(N<span class="dv">-1</span>))
+  x[t<span class="dv">+1</span>] = <span class="kw">z_g</span>() * <span class="kw">f</span>(x[t], <span class="dt">h=</span><span class="dv">0</span>, <span class="dt">p=</span>p)
+<span class="kw">qplot</span>(<span class="dv">1</span>:N, x)</code></pre>
+<figure>
+<img src="http://farm9.staticflickr.com/8279/8962756154_f2a4fa4257_o.png" />
+</figure>
+<h2 id="compute-the-posterior-after-marginalizing-over-r-and-sigma-parameters">Compute the posterior after marginalizing over <span class="math">\(r\)</span> and <span class="math">\(\sigma\)</span> parameters:</h2>
+<p><span class="math">\[P(\beta | X) \]</span></p>
+<pre class="sourceCode r"><code class="sourceCode r">Mt &lt;- function(t, beta) <span class="kw">log</span>(x[t<span class="dv">+1</span>]) - <span class="kw">log</span>(x[t]) + beta * x[t]
+beta_grid = <span class="kw">seq</span>(<span class="fl">1e-5</span>, <span class="dv">2</span>, <span class="dt">by=</span><span class="fl">1e-3</span>)
+
+P_B.X &lt;- <span class="kw">sapply</span>(beta_grid, function(beta){
+  Mt_vec = <span class="kw">sapply</span>(<span class="dv">1</span>:(N<span class="dv">-1</span>), Mt, beta)
+  sum_of_squares &lt;- <span class="kw">sum</span>(Mt_vec^<span class="dv">2</span>)
+  square_of_sums &lt;- <span class="kw">sum</span>(Mt_vec)^<span class="dv">2</span>
+  <span class="fl">0.5</span> ^ (N/<span class="dv">2-1</span>) * (sum_of_squares - square_of_sums/(N<span class="dv">-1</span>)) ^ (N/<span class="dv">2-1</span>) / <span class="kw">gamma</span>(N/<span class="dv">2-1</span>)
+  })
+
+<span class="kw">qplot</span>(beta_grid, -<span class="kw">log</span>(P_B.X))</code></pre>
+<figure>
+<img src="http://farm4.staticflickr.com/3800/8962756744_a8e8471f32_o.png" />
+</figure>
+<p>Posterior mode is at:</p>
+<pre class="sourceCode r"><code class="sourceCode r">beta_grid[<span class="kw">which.min</span>(P_B.X)]</code></pre>
+<pre><code>[1] 0.09801</code></pre>
+<p>Estimating the Myers model on this data:</p>
+<p><span class="math">\[X_{t+1} = Z_t \frac{r X_t^{\theta}}{1 + X_t^{\theta} / K\]</span></p>
+<p>With <span class="math">\(Z_t\)</span> lognormal, unit mean, std <span class="math">\(\sigma\)</span>.</p>
+<p>Marginal distribution over the remaining parameters is a 2D grid:</p>
+<pre class="sourceCode r"><code class="sourceCode r">Mt &lt;- function(t, theta, K) <span class="kw">log</span>(x[t<span class="dv">+1</span>]) - theta * <span class="kw">log</span>(x[t]) + <span class="kw">log</span>(<span class="dv">1</span> + x[t] ^ theta / K) 
+theta_grid = <span class="kw">seq</span>(<span class="fl">1e-5</span>, <span class="dv">5</span>, <span class="dt">length=</span><span class="dv">100</span>)
+K_grid = <span class="kw">seq</span>(<span class="fl">1e-5</span>, <span class="dv">30</span>, <span class="dt">length=</span><span class="dv">100</span>)
+
+prob &lt;- function(theta, K){
+  Mt_vec = <span class="kw">sapply</span>(<span class="dv">1</span>:(N<span class="dv">-1</span>), Mt, theta, K)
+  sum_of_squares &lt;- <span class="kw">sum</span>(Mt_vec^<span class="dv">2</span>)
+  square_of_sums &lt;- <span class="kw">sum</span>(Mt_vec)^<span class="dv">2</span>
+  <span class="fl">0.5</span> ^ (N/<span class="dv">2-1</span>) * (sum_of_squares - square_of_sums/(N<span class="dv">-1</span>)) ^ (N/<span class="dv">2-1</span>) / <span class="kw">gamma</span>(N/<span class="dv">2-1</span>)
+}
+
+
+
+P_theta_K.X &lt;- <span class="kw">sapply</span>(theta_grid, function(theta)
+                <span class="kw">sapply</span>(K_grid, function(k) <span class="kw">prob</span>(theta, k)))
+
+
+<span class="kw">require</span>(reshape2)</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">df = <span class="kw">melt</span>(P_theta_K.X)
+<span class="kw">names</span>(df) = <span class="kw">c</span>(<span class="st">&quot;theta&quot;</span>, <span class="st">&quot;K&quot;</span>, <span class="st">&quot;lik&quot;</span>)
+<span class="kw">ggplot</span>(df, <span class="kw">aes</span>(theta_grid[theta], K_grid[K], <span class="dt">z=</span>-<span class="kw">log</span>(lik))) + <span class="kw">stat_contour</span>(<span class="kw">aes</span>(<span class="dt">color=</span>..level..), <span class="dt">binwidth=</span><span class="dv">3</span>)</code></pre>
+<figure>
+<img src="http://farm3.staticflickr.com/2806/8961561559_66a72a0ecc_o.png" />
+</figure>
+ 
+<!-- not that raw_content depends on custom generator, 
+     see _plugins/jekyll-labnotebook-plugins/raw_content --> 
+</article> 
+<p> <a href="/2013/06/05/semi-analytic-posteriors.html"> <em>Read more</em></a> </p>
+<br />
+<br />
+
+
+        </div>
+      
+        <div class="span3">
           <header><h4><a href="/2013/06/03/DOI-citable.html">DOI != citable</a></h4></header>
 <p><span></span></p>
 <p style="font-style:italic"> 03 Jun 2013</p>
 
-<p style="font-style:italic"> pageviews: 262 </p>
+<p style="font-style:italic"> pageviews: 284 </p>
 
 <article>
 <div class="excerpt">
@@ -369,6 +462,10 @@ Coefficients:
 
         </div>
       
+    </div>
+
+    <div class="row">
+      
         <div class="span3">
           <header><h4><a href="/2013/05/31/notebook-features-digital-archiving.html">Notebook features: digital archiving</a></h4></header>
 <p><span></span></p>
@@ -418,10 +515,6 @@ Coefficients:
 
 
         </div>
-      
-    </div>
-
-    <div class="row">
       
         <div class="span3">
           <header><h4><a href="/2013/05/31/notebook-features-archiving-with-figshare.html">Archiving the lab notebook on figshare</a></h4></header>
@@ -533,6 +626,10 @@ opts_chunk$<span class="kw">set</span>(<span class="dt">tidy=</span><span class=
 
         </div>
       
+    </div>
+
+    <div class="row">
+      
         <div class="span3">
           <header><h4><a href="/2013/05/28/notes.html">Notes</a></h4></header>
 <p><span></span></p>
@@ -611,10 +708,6 @@ wrightscape/DESCRIPTION:License: GPL-2</code></pre>
 
 
         </div>
-      
-    </div>
-
-    <div class="row">
       
         <div class="span3">
           <header><h4><a href="/2013/05/27/exploring-approximate-dynamic-programming-approaches.html">Exploring Approximate Dynamic Programming Approaches</a></h4></header>
@@ -847,54 +940,6 @@ V[x_nt] = v_nt</code></pre>
      see _plugins/jekyll-labnotebook-plugins/raw_content --> 
 </article> 
 <p> <a href="/2013/05/24/notes.html"> <em>Read more</em></a> </p>
-<br />
-<br />
-
-
-        </div>
-      
-        <div class="span3">
-          <header><h4><a href="/2013/05/23/notes.html">Notes</a></h4></header>
-<p><span></span></p>
-<p style="font-style:italic"> 23 May 2013</p>
-
-<p style="font-style:italic"> pageviews: 8 </p>
-
-<article>
-<div class="excerpt">
-<ul>
-<li>Added multiple chains, randomized starting points for each chain, and confirming Gelman-Rubin convergence criteron via <code>autojags</code>.<br /></li>
-<li>Some edits to adapt the extraction of posteriors from the multiple chains.<br /></li>
-<li>Stange behavior in <code>jags.parallel</code> <a href="http://stackoverflow.com/questions/16723036">SO/16723036</a>, looks like an annoying bug.</li>
-<li>Ah-ha, and now a nice solution to this problem via <code>do.call</code>.</li>
-</ul>
-<p>When running on farm, try to remember: (yes it’s in the run.sh script already).</p>
-<pre class="sourceCode bash"><code class="sourceCode bash">module load <span class="kw">gcc</span> R jags</code></pre>
-<p>This appears to result in greater uncertainty:</p>
-<figure>
-<img src="http://farm4.staticflickr.com/3826/8797217705_c75548ffa7_o.png" />
-</figure>
-<p>Suggesting the earlier appearance of convergence occurs only thanks to starting conditions close to the optimum?</p>
-<h2 id="log">Log</h2>
-<ul>
-<li>parallel jags working now <a href="https://github.com/cboettig/nonparametric-bayes/commit/92a1d8d6a1fba819f419d069b0a089da891041e7">05:53 pm 2013/05/23</a></li>
-<li>cleanup <a href="https://github.com/cboettig/nonparametric-bayes/commit/e5d76a0718997c215521beb4cbba740b42ff3791">04:50 pm 2013/05/23</a></li>
-<li>generic version of allen <a href="https://github.com/cboettig/nonparametric-bayes/commit/669245f2e39839e06cdf58e290b22b783eb08aad">04:09 pm 2013/05/23</a></li>
-<li><p>Revising MCMC iterations</p></li>
-<li>Added multiple chains, randomized starting points for each chain, and confirming Gelman-Rubin convergence criteron via <code>autojags</code>.</li>
-<li>Some edits to adapt the extraction of posteriors from the multiple chains.</li>
-<li>Stange behavior in <code>jags.parallel</code> <a href="http://stackoverflow.com/questions/16723036">SO/16723036</a>, looks like an annoying bug. <a href="https://github.com/cboettig/nonparametric-bayes/commit/98b6a58bca43fe25ab0224d582f18a820ac5c57e">04:05 pm 2013/05/23</a></li>
-<li><p>No reply from query to package maintainer, but the SO link now has a clever work-around to said annoying bug.</p></li>
-</ul>
-<h2 id="misc">Misc</h2>
-<ul>
-<li>Grr, why is <code>dcast</code> not more intuitive to me. Thank you SO folks. <a href="http://stackoverflow.com/questions/16722117">SO/16722117</a></li>
-</ul>
- 
-<!-- not that raw_content depends on custom generator, 
-     see _plugins/jekyll-labnotebook-plugins/raw_content --> 
-</article> 
-<p> <a href="/2013/05/23/notes.html"> <em>Read more</em></a> </p>
 <br />
 <br />
 
