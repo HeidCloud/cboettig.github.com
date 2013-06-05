@@ -7,15 +7,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
 
-<!-- Some liquid code so that pages get the site.time creation date 
-      Would be nice to use github modified times, but doesn't handle 
-      the path for pages -->
+<!-- Get date last modified from git log. (Uses current time if file entry not found, e.g. projects/)  -->
 
 
 
+<!-- For posts, page.date is the date they are published under, which we use as their 'canonical' dc:date -->
+ <!-- If we don't have a page.date, then use modified time (pages) -->
+   
 
 
-
+<!-- Posts declare modified timestamps in the sidebar, so would be redundant to put here. But then 
+     pages don't have a dc:modified... unless we give them their own (modified) sidebar?  
+-->
+<!-- Ideally we would want date originally created from the _oldest_ git commit too...-->
 
 <!-- HTML5 metadata -->
 <meta name="keywords" content="" />
@@ -24,7 +28,7 @@
 <!-- RDFa Metadata (in DublinCore) -->
 <meta property="dc:title" content="Lab Notebook" />
 <meta property="dc:creator" content="Carl Boettiger" />
-<meta property="dc:date" content="2013-06-03T16:02:27-07:00" />
+<meta property="dc:date" content="2013-04-12T08:53:44-07:00" />
 <meta property="dc:format" content="text/html" />
 <meta property="dc:language" content="en" />
 <meta property="dc:identifier" content="/lab-notebook.html" />
@@ -34,16 +38,16 @@
 <meta property="dc:type" content="website" /> 
 <!-- RDFa Metadata (in OpenGraph) -->
 <meta property="og:title" content="Lab Notebook" />
-<meta property="og:author" content="http://www.carlboettiger.info/index.html#me" />  <!-- Should be Liquid? URI? -->
+<meta property="og:author" content="http://carlboettiger.info/index.html#me" />  <!-- Should be Liquid? URI? -->
 <meta property="http://ogp.me/ns/profile#first_name" content="Carl"/>
 <meta property="http://ogp.me/ns/profile#last_name" content="Boettiger"/>
-<meta property="http://ogp.me/ns/article#published_time" content="2013-06-03T16:02:27-07:00" />
+<meta property="http://ogp.me/ns/article#published_time" content="2013-04-12T08:53:44-07:00" />
 <meta property="og:site_name" content="Lab Notebook" /> <!-- Same as dc:source? -->
-<meta property="og:url" content="http://www.carlboettiger.info/lab-notebook.html" />
+<meta property="og:url" content="http://carlboettiger.info/lab-notebook.html" />
 <meta property="og:type" content="website" /> 
 <!-- Google Scholar Metadata -->
 <meta name="citation_author" content="Carl Boettiger"/>
-<meta name="citation_date" content="2013-06-03T16:02:27-07:00"/>
+<meta name="citation_date" content="2013-04-12T08:53:44-07:00"/>
 <meta name="citation_title" content="Lab Notebook"/>
 <meta name="citation_journal_title" content="Lab Notebook"/>
 
@@ -140,18 +144,18 @@
   <div class="span3 offset1">
     <h4>  <a property="account" href="https://github.com/cboettig" onclick="recordOutboundLink(this, 'Outbound Links', 'Github'); return false;"><i class="icon-github" alt="github"></i> Coding </a></h4> 
      <div class="excerpt">
-        <ul><li>cboettig pushed to master at cboettig/nonparametric-bayes: <em>admb example working now</em> <a href="https://github.com/cboettig/nonparametric-bayes/compare/1b74018b4f...b4576cfc0b">11:09 2013/06/03</a></li><li>cboettig pushed to master at cboettig/cboettig.github.com: <em>update site</em> <a href="https://github.com/cboettig/cboettig.github.com/compare/0864728e3c...6f3c160fe2">09:21 2013/06/03</a></li><li>cboettig pushed to master at cboettig/labnotebook: <em>fixed typos links added to new posts touch up and post</em> <a href="https://github.com/cboettig/labnotebook/compare/e7eadcb98e...a3fe998746">09:13 2013/06/03</a></li><li>cboettig pushed to master at cboettig/nonparametric-bayes: <em>Merge branch 'master' of github.com:cboettig/nonparametric-bayes admb file</em> <a href="https://github.com/cboettig/nonparametric-bayes/compare/4911dc47b4...1b74018b4f">06:19 2013/06/03</a></li><li>cboettig pushed to master at cboettig/nonparametric-bayes: <em>fix ricker chunk creation of ricker_pardist</em> <a href="https://github.com/cboettig/nonparametric-bayes/compare/80ee481902...4911dc47b4">04:17 2013/06/03</a></li></ul>
+        <ul><li>cboettig closed issue cboettig/labnotebook#86: <em>Correct the dates in `dc:date`</em> <a href="https://github.com/cboettig/labnotebook/issues/86">07:21 2013/06/05</a></li><li>cboettig closed issue cboettig/labnotebook#85: <em>Link grant applications on vita.html to pdfs (on figshare, with dois)</em> <a href="https://github.com/cboettig/labnotebook/issues/85">07:21 2013/06/05</a></li><li>cboettig commented on issue cboettig/labnotebook#85: <em>not sure if can add CSGF application or NERSC grant, so closing for now.</em> <a href="https://github.com/cboettig/labnotebook/issues/85#issuecomment-18959472">07:21 2013/06/05</a></li><li>cboettig pushed to master at cboettig/labnotebook: <em>fixed formatting, more doi links new post (draft) example updated</em> <a href="https://github.com/cboettig/labnotebook/compare/817f6c365c...60fee991d3">07:15 2013/06/05</a></li><li>cboettig pushed to master at cboettig/nonparametric-bayes: <em>Merge branch 'master' of github.com:cboettig/nonparametric-bayes exploring admb vs optim a bit further</em> <a href="https://github.com/cboettig/nonparametric-bayes/compare/667f5b28ea...458db20361">07:12 2013/06/05</a></li></ul>
     </div>
   </div>
   <div class="span3">
     <h4> <a property="account" href="https://twitter.com/cboettig" onclick="recordOutboundLink(this, 'Outbound Links', 'Twitter'); return false;"><i class="icon-twitter"></i> Discussing </a></h4> 
      <div class="excerpt">
-       <ul><li><p>@ucfagls thanks, i should really automate some link checking</p>
- <a href="http://twitter.com/cboettig/statuses/341689704720248832">03:55 2013/06/03</a> </li><li><p>@yawaramin @AhmedMoustafa @gvwilson @figshare @IanMulvany sure! try purl: cboettig/ews-review/33dfb58e24ceb5861dad7cf756cffe2c5d66a655</p>
- <a href="http://twitter.com/cboettig/statuses/341681791079432192">03:24 2013/06/03</a> </li><li><p>@IanMulvany @augustmuench @aagie @astrodrian ;-) I shoulda known</p>
- <a href="http://twitter.com/cboettig/statuses/341669370793185280">02:35 2013/06/03</a> </li><li><p>@IanMulvany @augustmuench @aagie @astrodrian as defined by whom? Thompson Reuters? Google Scholar? CrossRef?</p>
- <a href="http://twitter.com/cboettig/statuses/341669180937998336">02:34 2013/06/03</a> </li><li><p>.@yawaramin @AhmedMoustafa @gvwilson @figshare Why not use PURLs then? Anyone can register a PURL, only a publisher can register a DOI</p>
- <a href="http://twitter.com/cboettig/statuses/341668194743881730">02:30 2013/06/03</a> </li></ul>
+       <ul><li><p>.@acka47 whoops, thanks! Need to automate some link checks... advise, twitterverse? (<a href="https://t.co/v60AfHoRId">https://t.co/v60AfHoRId</a>)</p>
+ <a href="http://twitter.com/cboettig/statuses/341915640346603520">06:53 2013/06/04</a> </li><li><p>.@brembs etal &quot;we suggest .. abandoning journals altogether.&quot; wow  MT @recology_: Unintended cons of journal rank <a href="http://t.co/EtgtlCEiUH">http://t.co/EtgtlCEiUH</a></p>
+ <a href="http://twitter.com/cboettig/statuses/341772548742197248">09:25 2013/06/03</a> </li><li><p>@augustmuench thanks! perhaps, but @CrossRefNews does impressive job of educating. (e.g. compare to EZID handles @datadryad started with..)</p>
+ <a href="http://twitter.com/cboettig/statuses/341772065843593217">09:23 2013/06/03</a> </li><li><p>@yawaramin @AhmedMoustafa @gvwilson @figshare @IanMulvany yup. &amp; if Github disappears, simply must remap purl to online repo elsewhere</p>
+ <a href="http://twitter.com/cboettig/statuses/341701221574406144">04:41 2013/06/03</a> </li><li><p>@ucfagls thanks, i should really automate some link checking</p>
+ <a href="http://twitter.com/cboettig/statuses/341689704720248832">03:55 2013/06/03</a> </li></ul>
     </div> 
   </div> 
   <div class="span3">
@@ -166,7 +170,7 @@
 <div class="row postpreview">
   <div class="span11 offset1">
     <div class="row">
-      <h4> <a href="http://www.carlboettiger.info/atom.xml"
+      <h4> <a href="http://carlboettiger.info/atom.xml"
               onClick="recordOutboundLink(this,
               'Outbound Links', 'RSS'); return false;"
               style="color: inherit;"
@@ -177,7 +181,7 @@
 <p><span></span></p>
 <p style="font-style:italic"> 03 Jun 2013</p>
 
-<p style="font-style:italic"> pageviews: 15 </p>
+<p style="font-style:italic"> pageviews: 262 </p>
 
 <article>
 <div class="excerpt">
@@ -195,10 +199,10 @@ Is there a way to obtain DOI for a <a href="https://twitter.com/github">@github<
 <h3 id="some-background-on-dois">Some background on DOIs</h3>
 <p>At its heart, a DOI is a very simple concept. It is a “permanent identifier”. All this means is that is is really just a URL redirect. Type http://dx.doi.org/mnn into any browser and get redirected to where the article actually lives. Why does that make it permanent? Because if the journal decides to change their URL structure, the DOI’s redirect can just be mapped to the new address and voila, it still works. That is, a DOI is simply a tool to fight <a href="https://en.wikipedia.org/wiki/Link_rot">link-rot</a>.</p>
 <p>So you might ask, why does the ability to remap the address have anything to do with being “permanent?” It doesn’t, really. The permanence comes not so much from the technology as from the social contract that goes with it. As CrossRef’s <a href="http://blogs.plos.org/mfenner/2009/02/17/interview_with_geoffrey_bilder/">Geoffery Bilder eloquently explains</a>, a publisher can only receive DOIs if they promise to keep these redirects up-to-date. A publisher who fails to maintain this responsibility would presumably lose their right to receive DOIs. A brilliant, simple, social incentive.</p>
-<p>This still does not guarantee permanence – e.g. what would happen to the content if the publisher disappears. That problem is not addressed by the DOI technology itself, but by a robust backup archiving solution, such as <a href="http://clocks.org">CLOCKSS</a>, which provides a geo-politically distributed network of backup copies for many journals. Again the social contract comes into play – presumably CrossRef would not provide a publisher with DOIs if they did not have such a robust archival solution in place.</p>
+<p>This still does not guarantee permanence – e.g. what would happen to the content if the publisher disappears. That problem is not addressed by the DOI technology itself, but by a robust backup archiving solution, such as <a href="http://clockss.org">CLOCKSS</a>, which provides a geo-politically distributed network of backup copies for many journals. Again the social contract comes into play – presumably CrossRef would not provide a publisher with DOIs if they did not have such a robust archival solution in place.</p>
 <p>So far we have seen two crucial functions of the DOI – as a permanent identifier that can be used to reach the content despite link rot, and as an incentive to maintain good archival backups of the content and the links to it.</p>
 <h3 id="what-do-we-mean-by-citations-anyway">What do we mean by citations, anyway?</h3>
-<p>So what does this have to do with being citable? Obviously these are nice properties to have for things we cite – but they are by no means a requirement. (As <a href="https://twitter.com/noamross/status/337987521243918337">Noam Ross observes</a>, try finding a permanent identifier for “Personal Communication”). Books, reports, and other grey literature frequently appear in citations, as do links to websites. MLA even has guidelines on the proper format to <a href="www.mla.org/style/handbook_faq/cite_a_tweet">cite a tweet</a> (which, incidentally, come closer to having a permanent identifier and an archival strategy than most other things in this list). So what do we mean by citable anyway?</p>
+<p>So what does this have to do with being citable? Obviously these are nice properties to have for things we cite – but they are by no means a requirement. (As <a href="https://twitter.com/noamross/status/337987521243918337">Noam Ross observes</a>, try finding a permanent identifier for “Personal Communication”). Books, reports, and other grey literature frequently appear in citations, as do links to websites. MLA even has guidelines on the proper format to <a href="http://www.mla.org/style/handbook_faq/cite_a_tweet">cite a tweet</a> (which, incidentally, come closer to having a permanent identifier and an archival strategy than most other things in this list). So what do we mean by citable anyway?</p>
 <p>But what about the reference list? While a publisher may be just fine including some link to your software, is it really cited if it isn’t in the reference list? Journals restrict what appears in the reference list because these references are indexed by the infamous citation counters like Thompson-Reuters. (A frequent complaint is that many journals do not similarly index citations appearing in the reference list of the supplementary materials, making it difficult or impossible to give appropriate attribution to large numbers of data providers, for instance). Does having a DOI address this problem?</p>
 <h4 id="citation-counts-in-dois">Citation counts in DOIs</h4>
 <p>Counting citations depends on who is counting them. The most well-known is Thompson-Reuters, which has their own process for deciding what gets counted (based on publisher), so no guarantee there. Meanwhile Google Scholar counts anything meeting it’s <a href="http://carlboettiger.info/2012/11/23/citing-lab-notebook-entries.html">indexing requirements &amp; arbitrary selection</a>. I have recently learned that CrossRef just launched it’s own <a href="https://github.com/articlemetrics/alm/wiki/Crossref">internal citation counting</a>, which is available from the CrossRef metadata (totals only for the public, publishers can resolve which articles did the citing…). However, most proposals to make some alternative research product “citable” by giving it a DOI use DataCite DOIs (e.g. fig<strong>share</strong>, PeerJ Preprints), which lag behind in this feature. Moving the control of citation data beyond the grasp of particular publishing companies like TR is undoubtedly an important step forward. The <a href="http://www.jisc.ac.uk/whatwedo/programmes/inf11/jiscexpo/jiscopencitation.aspx">Open Citation Project</a> is a more comprehensive, if very young, move in this direct. (Hat tip to Martin Fenner for explaining CrossRef citations to me).</p>
@@ -227,11 +231,150 @@ Is there a way to obtain DOI for a <a href="https://twitter.com/github">@github<
         </div>
       
         <div class="span3">
+          <header><h4><a href="/2013/06/03/ADMB-basic-example.html">Admb Basic Example</a></h4></header>
+<p><span></span></p>
+<p style="font-style:italic"> 03 Jun 2013</p>
+
+<p style="font-style:italic"> pageviews: (not calculated) </p>
+
+<article>
+<div class="excerpt">
+<p>After a few <a href="https://github.com/cboettig/nonparametric-bayes/commits/b4576cfc0b5a0c87701348976875c8657f0fd048/inst/examples/admb-example.md">iterations</a> I have a working minimal example (below). Hoping that ADMB is a bit more robust than vanilla <code>optim</code> out of R as I loop over data sets for the sensitivity analysis (<a href="https://github.com/cboettig/nonparametric-bayes/issues/32">#32</a>). Does not seem to hold in simple example here, not sure why.</p>
+<ul>
+<li>These notes correspond to script <a href="https://github.com/cboettig/nonparametric-bayes/blob/84a1025854987ef659b4ef17e172933d72547f6d/inst/examples/admb-example.md">84a102/admb-example.md</a></li>
+</ul>
+<h1 id="learning-admb">Learning ADMB</h1>
+<p>Plotting and knitr options, (can generally be ignored)</p>
+<h3 id="model-and-parameters">Model and parameters</h3>
+<pre class="sourceCode r"><code class="sourceCode r">f &lt;- function(x,h,p)  x * <span class="kw">exp</span>(p[<span class="dv">1</span>] * (<span class="dv">1</span> - x / p[<span class="dv">2</span>]) * (x - p[<span class="dv">3</span>]) / p[<span class="dv">2</span>] ) 
+p &lt;- <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">10</span>, <span class="dv">5</span>)
+K &lt;- <span class="dv">10</span>  <span class="co"># approx, a li&#39;l&#39; less</span>
+Xo &lt;- <span class="dv">6</span> <span class="co"># approx, a li&#39;l&#39; less</span></code></pre>
+<p>Various parameters defining noise dynamics, grid, and policy costs.</p>
+<pre class="sourceCode r"><code class="sourceCode r">sigma_g &lt;- <span class="fl">0.1</span>
+z_g &lt;- function() <span class="kw">rlnorm</span>(<span class="dv">1</span>,<span class="dv">0</span>, sigma_g)
+x_grid &lt;- <span class="kw">seq</span>(<span class="dv">0</span>, <span class="fl">1.5</span> * K, <span class="dt">length=</span><span class="dv">50</span>)
+Tobs &lt;- <span class="dv">40</span>
+<span class="kw">set.seed</span>(<span class="dv">123</span>)</code></pre>
+<h3 id="sample-data">Sample Data</h3>
+<pre class="sourceCode r"><code class="sourceCode r">x &lt;- <span class="kw">numeric</span>(Tobs)
+x[<span class="dv">1</span>] &lt;- Xo
+for(t in <span class="dv">1</span>:(Tobs<span class="dv">-1</span>))
+  x[t<span class="dv">+1</span>] = <span class="kw">z_g</span>() * <span class="kw">f</span>(x[t], <span class="dt">h=</span><span class="dv">0</span>, <span class="dt">p=</span>p)
+<span class="kw">qplot</span>(<span class="dv">1</span>:Tobs, x)</code></pre>
+<figure>
+<img src="http://farm3.staticflickr.com/2807/8956942302_0d7d47ea49_o.png" alt="plot of chunk obs" /><figcaption>plot of chunk obs</figcaption>
+</figure>
+<h2 id="maximum-likelihood-by-hand">Maximum Likelihood “by hand”</h2>
+<pre class="sourceCode r"><code class="sourceCode r">STABLIZE = <span class="fl">1e-10</span>
+n = <span class="kw">length</span>(x)
+mloglik &lt;- function(pars){ 
+  r = pars[<span class="dv">1</span>]; k = pars[<span class="dv">2</span>]; c = pars[<span class="dv">3</span>]; s = pars[<span class="dv">4</span>];
+  mu = (x+STABLIZE) * <span class="kw">exp</span>( r * (<span class="dv">1</span> - x / (k+STABLIZE)) * (x - c) / (k + STABLIZE));
+  mu = <span class="kw">pmin</span>(<span class="fl">1e100</span>, mu) <span class="co"># avoid infinite values </span>
+  f = <span class="fl">0.5</span> * n * <span class="kw">log</span>(<span class="dv">2</span> * pi) + n * <span class="kw">log</span>(s + STABLIZE) + <span class="fl">0.5</span> * <span class="kw">sum</span>(x - mu + STABLIZE)^<span class="dv">2</span>/ (s + STABLIZE)^<span class="dv">2</span>;
+
+  f
+  }</code></pre>
+<p>Starting from the true values we mostly just shrink the noise parameter:</p>
+<pre class="sourceCode r"><code class="sourceCode r">init &lt;- <span class="kw">c</span>(p, sigma_g)
+<span class="kw">mloglik</span>(init) <span class="co">#true minus loglik</span></code></pre>
+<pre><code>[1] -35.72</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">o &lt;- <span class="kw">optim</span>(init, mloglik, <span class="dt">method=</span><span class="st">&quot;L&quot;</span>, <span class="dt">lower=</span><span class="fl">1e-5</span>, <span class="dt">upper=</span><span class="fl">1e5</span>)
+o$value</code></pre>
+<pre><code>[1] -247.6</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">o$par</code></pre>
+<pre><code>[1] 0.9967297 9.9813554 5.1742699 0.0008183</code></pre>
+<p>While starting from arbitrary values we still find the optim.</p>
+<pre class="sourceCode r"><code class="sourceCode r">init &lt;- <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>)  
+init &lt;- <span class="kw">c</span>(p, sigma_g)
+<span class="kw">mloglik</span>(init) <span class="co">#true minus loglik</span></code></pre>
+<pre><code>[1] -35.72</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">o &lt;- <span class="kw">optim</span>(init, mloglik, <span class="dt">method=</span><span class="st">&quot;L&quot;</span>, <span class="dt">lower=</span><span class="fl">1e-5</span>, <span class="dt">upper=</span><span class="fl">1e5</span>)
+o$value</code></pre>
+<pre><code>[1] -247.6</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">o$par</code></pre>
+<pre><code>[1] 0.9967297 9.9813554 5.1742699 0.0008183</code></pre>
+<p>Okay, now lets try admb. We use R2admb which is just a convenient way to write our data and parameters into an admb file.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># install_github(&quot;R2admb&quot;, &quot;bbolker&quot;, subdir=&quot;R2admb&quot;) # dev version</span>
+<span class="kw">library</span>(R2admb)</code></pre>
+<h2 id="admb-definition">ADMB definition</h2>
+<p>We still need to define the model using ADMB notation in the procedure section. This is mostly like R or C++, with the exception of special functions like <code>square</code> in place of <code>^2</code>, <code>norm2</code> for the sum of squares, and <code>elem_prod</code> istead of <code>*</code> for the element-wise product of two arrays. The constant <code>pi</code> is given as <code>M_PI</code>, as typical of C/C++ libraries. Where these other functions are defined I’m not sure, but some useful guides to <a href="http://fish.washington.edu/research/MPAM/resources/ADMB_Minte-Vera.pdf">ADMB vector/matrix operations</a> or an (undefined) list of <a href="http://www.admb-project.org/developers/contribute-documentation/functions/keywords.txt/view">keywords</a>…</p>
+<p>The equivalent model</p>
+<pre class="sourceCode r"><code class="sourceCode r">model &lt;- 
+<span class="kw">paste</span>(<span class="st">&quot;</span>
+<span class="st">PARAMETER_SECTION</span>
+<span class="st">  vector mu(1,n) // per capita mort prob</span>
+<span class="st">      </span>
+<span class="st">PROCEDURE_SECTION</span>
+<span class="st">  mu = log(x) + r * elem_prod((1 - x / k), (x - c) / k);</span>
+<span class="st">  f = 0.5 * n * log(2 * M_PI) + n * log(s) + 0.5 * norm2(x - exp(mu)) / square(s);</span>
+<span class="st">&quot;</span>)
+<span class="kw">writeLines</span>(model, <span class="st">&quot;model.tpl&quot;</span>)</code></pre>
+<p>Without explicit handling of the overflow errors, ADMB does not give us reliable estimates with arbitrary starting conditions</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">setup_admb</span>(<span class="st">&quot;/var/admb&quot;</span>)</code></pre>
+<pre><code>[1] &quot;/var/admb&quot;</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">
+df &lt;- <span class="kw">data.frame</span>(<span class="dt">x=</span>x)
+params &lt;- <span class="kw">list</span>(<span class="dt">r =</span> <span class="dv">1</span>, <span class="dt">k =</span> <span class="dv">1</span>, <span class="dt">c =</span> <span class="dv">1</span>, <span class="dt">s =</span> <span class="dv">1</span>) ## starting parameters
+bounds &lt;- <span class="kw">list</span>(<span class="dt">r =</span> <span class="kw">c</span>(<span class="fl">1e-10</span>, <span class="fl">1e3</span>), <span class="dt">k=</span><span class="kw">c</span>(<span class="fl">1e-10</span>, <span class="fl">1e3</span>), <span class="dt">c=</span><span class="kw">c</span>(<span class="fl">1e-10</span>, <span class="fl">1e3</span>), <span class="dt">s =</span> <span class="kw">c</span>(<span class="fl">1e-5</span>,<span class="fl">1e3</span>)) ## bounds
+dat &lt;- <span class="kw">c</span>(<span class="kw">list</span>(<span class="dt">n =</span> <span class="kw">nrow</span>(df)), df)
+m1 &lt;- <span class="kw">do_admb</span>(<span class="st">&quot;model&quot;</span>,
+              <span class="dt">data =</span> dat,
+              <span class="dt">params =</span> params,
+              <span class="dt">bounds =</span> bounds,
+              <span class="dt">run.opts =</span> <span class="kw">run.control</span>(<span class="dt">checkparam=</span><span class="st">&quot;write&quot;</span>,
+                                     <span class="dt">checkdata=</span><span class="st">&quot;write&quot;</span>, <span class="dt">clean=</span><span class="ot">FALSE</span>))
+m1</code></pre>
+<pre><code>Model file: model_gen 
+Negative log-likelihood: 146.5 
+Coefficients:
+     r      k      c      s 
+0.9992 1.0023 1.0004 9.4369 </code></pre>
+<p>But does fine with good starting values. Hmm.. thought that was supposed to be the other way around…</p>
+<pre class="sourceCode r"><code class="sourceCode r">params &lt;- <span class="kw">list</span>(<span class="dt">r =</span> <span class="dv">1</span>, <span class="dt">k =</span> <span class="dv">10</span>, <span class="dt">c =</span> <span class="dv">5</span>, <span class="dt">s =</span> .<span class="dv">1</span>) ## starting parameters
+
+m1 &lt;- <span class="kw">do_admb</span>(<span class="st">&quot;model&quot;</span>,
+              <span class="dt">data =</span> dat,
+              <span class="dt">params =</span> params,
+              <span class="dt">bounds =</span> bounds,
+              <span class="dt">run.opts =</span> <span class="kw">run.control</span>(<span class="dt">checkparam=</span><span class="st">&quot;write&quot;</span>,
+                                     <span class="dt">checkdata=</span><span class="st">&quot;write&quot;</span>))</code></pre>
+<pre><code>Warning: running command &#39;./model_gen &gt; model_gen.out&#39; had status 1</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">m1</code></pre>
+<pre><code>Model file: model_gen 
+Negative log-likelihood: -423.8 
+Coefficients:
+        r         k         c         s 
+2.025e-10 9.498e+00 1.051e+01 1.000e-05 </code></pre>
+<p>Which finds a better optim (though substantailly overfit in reality)</p>
+<p>Hans suggests adding an error term in the function definitions rather than in limiting the bounds or log transforming the variables:</p>
+<blockquote>
+<p>The most common plase where this goes wrong is 1/0, log(0), sqrt(0), pow(0,1) etc. Your suggestion is OK, but usually I prefer to put in log(1e-10+my_expression), sqrt(1e-10+my_expression), pow(1e-10+my_expression,1)</p>
+</blockquote>
+<h2 id="misc">Misc</h2>
+<ul>
+<li><p>Finished off posts regarding DOIs and digital archiving. A shorter version appears in my answer to <a href="http://opendata.stackexchange.com/questions/694/preservation-of-blog-posts-articles-and-essays/719#719">opendata.stackexchange</a> on blog archiving.</p></li>
+<li><p>Interesting discussion on using PURL redirects with SHA hash to link to repositories. For instance, the commit matching our arXiv submission of the ews-review paper is found at <a href="http://purl.org/cboettig/ews-review/33dfb58e24ceb5861dad7cf756cffe2c5d66a655">cboettig/ews-review/33dfb58e24ceb5861dad7cf756cffe2c5d66a655</a>. If the hash shown in the PURL doesn’t match the one at the repository then we know something has gone wrong, since it is impossible to change the contents without changing the hash. This gives us a version-stable identifier that can always be remapped to this commit, even if Github should disappear. Of course nothing guarentees that the PURL maintainer / package author does this updating, but in principle the system is more robust than simply linking to Github.</p></li>
+<li><p>In other news, I should add some <a href="https://github.com/cboettig/labnotebook/issues/94">automatic link checking, #94</a> to the notebook.</p></li>
+</ul>
+ 
+<!-- not that raw_content depends on custom generator, 
+     see _plugins/jekyll-labnotebook-plugins/raw_content --> 
+</article> 
+<p> <a href="/2013/06/03/ADMB-basic-example.html"> <em>Read more</em></a> </p>
+<br />
+<br />
+
+
+        </div>
+      
+        <div class="span3">
           <header><h4><a href="/2013/05/31/notebook-features-digital-archiving.html">Notebook features: digital archiving</a></h4></header>
 <p><span></span></p>
 <p style="font-style:italic"> 31 May 2013</p>
 
-<p style="font-style:italic"> pageviews: 4 </p>
+<p style="font-style:italic"> pageviews: 10 </p>
 
 <article>
 <div class="excerpt">
@@ -276,12 +419,16 @@ Is there a way to obtain DOI for a <a href="https://twitter.com/github">@github<
 
         </div>
       
+    </div>
+
+    <div class="row">
+      
         <div class="span3">
           <header><h4><a href="/2013/05/31/notebook-features-archiving-with-figshare.html">Archiving the lab notebook on figshare</a></h4></header>
 <p><span>Advantages and challenges</span></p>
 <p style="font-style:italic"> 31 May 2013</p>
 
-<p style="font-style:italic"> pageviews: 1 </p>
+<p style="font-style:italic"> pageviews: 5 </p>
 
 <article>
 <div class="excerpt">
@@ -322,16 +469,12 @@ Is there a way to obtain DOI for a <a href="https://twitter.com/github">@github<
 
         </div>
       
-    </div>
-
-    <div class="row">
-      
         <div class="span3">
           <header><h4><a href="/2013/05/29/notes.html">Notes</a></h4></header>
 <p><span></span></p>
 <p style="font-style:italic"> 29 May 2013</p>
 
-<p style="font-style:italic"> pageviews: 1 </p>
+<p style="font-style:italic"> pageviews: 6 </p>
 
 <article>
 <div class="excerpt">
@@ -395,7 +538,7 @@ opts_chunk$<span class="kw">set</span>(<span class="dt">tidy=</span><span class=
 <p><span></span></p>
 <p style="font-style:italic"> 28 May 2013</p>
 
-<p style="font-style:italic"> pageviews: 8 </p>
+<p style="font-style:italic"> pageviews: 11 </p>
 
 <article>
 <div class="excerpt">
@@ -469,12 +612,16 @@ wrightscape/DESCRIPTION:License: GPL-2</code></pre>
 
         </div>
       
+    </div>
+
+    <div class="row">
+      
         <div class="span3">
           <header><h4><a href="/2013/05/27/exploring-approximate-dynamic-programming-approaches.html">Exploring Approximate Dynamic Programming Approaches</a></h4></header>
 <p><span></span></p>
 <p style="font-style:italic"> 27 May 2013</p>
 
-<p style="font-style:italic"> pageviews: 7 </p>
+<p style="font-style:italic"> pageviews: 9 </p>
 
 <article>
 <div class="excerpt">
@@ -667,16 +814,12 @@ V[x_nt] = v_nt</code></pre>
 
         </div>
       
-    </div>
-
-    <div class="row">
-      
         <div class="span3">
           <header><h4><a href="/2013/05/24/notes.html">Notes</a></h4></header>
 <p><span></span></p>
 <p style="font-style:italic"> 24 May 2013</p>
 
-<p style="font-style:italic"> pageviews: 8 </p>
+<p style="font-style:italic"> pageviews: 9 </p>
 
 <article>
 <div class="excerpt">
@@ -715,7 +858,7 @@ V[x_nt] = v_nt</code></pre>
 <p><span></span></p>
 <p style="font-style:italic"> 23 May 2013</p>
 
-<p style="font-style:italic"> pageviews: 5 </p>
+<p style="font-style:italic"> pageviews: 8 </p>
 
 <article>
 <div class="excerpt">
@@ -752,88 +895,6 @@ V[x_nt] = v_nt</code></pre>
      see _plugins/jekyll-labnotebook-plugins/raw_content --> 
 </article> 
 <p> <a href="/2013/05/23/notes.html"> <em>Read more</em></a> </p>
-<br />
-<br />
-
-
-        </div>
-      
-        <div class="span3">
-          <header><h4><a href="/2013/05/22/notes.html">Notes</a></h4></header>
-<p><span></span></p>
-<p style="font-style:italic"> 22 May 2013</p>
-
-<p style="font-style:italic"> pageviews: 3 </p>
-
-<article>
-<div class="excerpt">
-<h2 id="nonparametric-bayes">Nonparametric-bayes</h2>
-<ul>
-<li><p>Establishing chunck dependencies, simplifying and abstracting code.</p></li>
-<li>still need to fix up Allen MCMC convergence when underlying model is Myers <a href="https://github.com/cboettig/nonparametric-bayes/commit/dce19f44d6dec779ba5a1a3e245365cdca4bb034">10:18 am 2013/05/22</a></li>
-<li><p>replicate runs on data from allen and myers model <a href="https://github.com/cboettig/nonparametric-bayes/commit/f8a241c677583ef3b324f274f3846b08243ddacb">08:39 pm 2013/05/21</a></p></li>
-</ul>
-<h3 id="clean-code-for-complicated-scripts">Clean code for complicated scripts</h3>
-<p>Pseudo-code somewhat captured by the chuncks. Ideal would be:</p>
-<ul>
-<li>Define models</li>
-<li>Define parameters</li>
-<li>Simulate data</li>
-<li>Estimate MLE</li>
-<li>Estimate under GPP</li>
-<li>Allen MCMC</li>
-<li>Ricker MCMC</li>
-<li>Myers MCMC</li>
-<li>Determine optimal policy for each…</li>
-<li>Simulation</li>
-<li>Graphs</li>
-</ul>
-<h2 id="a-preponderance-of-preprint-servers">A preponderance of preprint servers</h2>
-<p>Having sent in my review for IEE, do I also post it on the peerJ preprint? File each complaint or suggestion as issue on the paper’s Github repository? Post a comment on the corresponding author’s blogpost on the paper? In my own online notebook? Oh, the reviewer’s plight! From review-recognition poverty to an embarassment of riches!</p>
-<h2 id="other-writing-and-thoughts">Other writing and thoughts</h2>
-<ul>
-<li>Open Science cover letters?</li>
-<li><a href="https://plus.google.com/112929796403983408632/posts/8whV6rtvsuw">In which I rant about scientific software</a> again</li>
-</ul>
-<h2 id="ews-review">ews-review</h2>
-<ul>
-<li>re-submitted. <a href="https://github.com/cboettig/ews-review/tags">submmitted_revisions tag</a></li>
-</ul>
-<h2 id="reading">Reading</h2>
-<ul>
-<li><p><span class="showtooltip" title="Joppa L, McInerny G, Harper R, Salido L, Takeda K, O'Hara K,
-Gavaghan D and Emmott S (2013). Troubling Trends in Scientific
-Software Use. _Science_, *340*. ISSN 0036-8075, 
-http://dx.doi.org/10.1126/science.1231535."><a href="http://dx.doi.org/10.1126/science.1231535" rel="http://purl.org/spar/cito/critiques" >Joppa <em>et. al.</em> (2013)</a></span> utoh… I rant about software again</p></li>
-<li><p><a href="http://theseamonster.net/2013/05/are-unreasonably-harsh-reviewers-retarding-the-pace-of-coral-reef-science/">Are unreasonably harsh reviews retarding the pace of coral reef science?</a> I applaud the spirit of this piece. When I saw the article, <span class="showtooltip" title="Coral reef baselines: how much macroalgae is natural?.  https://peerj.com/preprints/19/."><a href="https://peerj.com/preprints/19/" rel="http://purl.org/spar/cito/discusses" >Bruno <em>et al.</em> (2013)</a></span> appear on PeerJ last week I thought to myself, “Ooh, looks like controversial stuff! Bravo for using a preprint server,” so it is quite delightful to read the back story and confirm my guess. Though I am a proponent of open peer review, I find the practice of posting anonymous peer reviews a bit ethically murky still.</p></li>
-</ul>
-<h2 id="misc">Misc</h2>
-<ul>
-<li><p>Trying to submit <a href="https://github.com/cboettig/knitcitations">knitcitations</a> to CRAN; R-devel has updated linewrapping requirements that brake roxygen2 <a href="https://github.com/klutometis/roxygen/issues/125">roxygen/125</a>, so have to correct <code>.Rd</code> files after the fact.</p></li>
-<li><p>My ans: <a href="http://opendata.stackexchange.com/questions/522">Open data vs Linked data</a> on opendata.stackexchange opendata SO launches public beta</p></li>
-<li><p><a href="http://stackoverflow.com/questions/1312087/">Why people don’t use WADL</a> Basically we can accomplish structure much better by having well-defined media types. We can define the schema of the json or xml file we return, <sup><a href="#fn1" class="footnoteRef" id="fnref1">1</a></sup> and then the application knows what to expect and what it can do with the data. This is far more useful than just having a programmatic version of the API calls in the native language (“client objects”). Seems like REST was supposed to make such things obsolete, and to make deploying the API far simpler than it was in SOAP (which provides WSDL).</p></li>
-<li><p>An interesting discussion on <a href="http://barelyenough.org/blog/2008/05/versioning-rest-web-services/">using mediatypes for REST APIs</a>, which might be referred to as the <a href="http://barelyenough.org/blog/2007/05/hypermedia-as-the-engine-of-application-state/">HATEOAS</a> approach:</p></li>
-</ul>
-<blockquote>
-<p>which basically means that responses from the server will be documents that include URIs to everything you can do next</p>
-</blockquote>
-<p>hmm, a powerful idea.</p>
-<h2 id="references">References</h2>
-<ul>
-<li>L. N. Joppa, G. McInerny, R. Harper, L. Salido, K. Takeda, K. O’Hara, D. Gavaghan, S. Emmott, (2013) Troubling Trends in Scientific Software Use. <em>Science</em> <strong>340</strong> <a href="http://dx.doi.org/10.1126/science.1231535">10.1126/science.1231535</a></li>
-<li>Bruno et al. (2013) <a href="https://peerj.com/preprints/19/">https://peerj.com/preprints/19/</a></li>
-</ul>
-<section class="footnotes">
-<hr />
-<ol>
-<li id="fn1"><p>yes, JSON has schemas too. wow.<a href="#fnref1">↩</a></p></li>
-</ol>
-</section>
- 
-<!-- not that raw_content depends on custom generator, 
-     see _plugins/jekyll-labnotebook-plugins/raw_content --> 
-</article> 
-<p> <a href="/2013/05/22/notes.html"> <em>Read more</em></a> </p>
 <br />
 <br />
 
@@ -891,7 +952,7 @@ http://dx.doi.org/10.1126/science.1231535."><a href="http://dx.doi.org/10.1126/s
 
 <!--************** FOAF information to social networks ***************************** -->
   <div class="row">
-    <div class="span3 socialicons" style="font-size:20px" typeof="foaf:Person" about="http://www.carlboettiger.info#me">
+    <div class="span3 socialicons" style="font-size:20px" typeof="foaf:Person" about="http://carlboettiger.info#me">
       <p>
           <script type="text/javascript" src="/assets/js/obfuscate-email-link.js" language="javascript"></script> 
           <a rel="foaf:account" alt="twitter" href="https://twitter.com/cboettig" 
@@ -925,7 +986,7 @@ http://dx.doi.org/10.1126/science.1231535."><a href="http://dx.doi.org/10.1126/s
       <a onclick="recordOutboundLink(this, 'Outbound Links', 'ONS_claim'); return false;" href="http://onsclaims.wikispaces.com/"><img src="http://onsclaims.wikispaces.com/file/view/ons-aci2-icon.png" alt="ONS" class="showtooltip" title="An Open Notebook Science (ONS) project claim: Entry provides all content (AC) immediately (I) or without significant delay.  See link for details"/></a>
 
       <a title="This site uses linked data semantics. Click to extract as RDF XML." class="btn btn-mini showtooltip" style="font-size: .8em" 
-       href="http://any23.org/?format=rdfxml&validate=validate&uri=http://www.carlboettiger.info/lab-notebook.html"><i 
+       href="http://any23.org/?format=rdfxml&validate=validate&uri=http://carlboettiger.info/lab-notebook.html"><i 
          class="icon-cloud-download"  onclick="recordOutboundLink(this, 'Outbound Links', 'RDF'); return false;"></i> RDF</a>
       </p>
     </div>
@@ -951,7 +1012,7 @@ http://dx.doi.org/10.1126/science.1231535."><a href="http://dx.doi.org/10.1126/s
       &amp;rft.date=
       &amp;rft.language=EN
       &amp;rft.rights=CC0
-      &amp;rft_id=http://www.carlboettiger.info/lab-notebook.html">
+      &amp;rft_id=http://carlboettiger.info/lab-notebook.html">
   </span>
 
 

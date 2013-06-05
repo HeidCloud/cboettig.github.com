@@ -811,6 +811,7 @@ http://carlboettiger.info/archives/4482/index.html
 
  
 http://carlboettiger.info/2013/06/03/DOI-citable.html  
+http://carlboettiger.info/2013/06/03/ADMB-basic-example.html  
 http://carlboettiger.info/2013/05/31/notebook-features-digital-archiving.html  
 http://carlboettiger.info/2013/05/31/notebook-features-archiving-with-figshare.html  
 http://carlboettiger.info/2013/05/29/notes.html  

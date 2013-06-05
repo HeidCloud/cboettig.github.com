@@ -7,15 +7,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
 
-<!-- Some liquid code so that pages get the site.time creation date 
-      Would be nice to use github modified times, but doesn't handle 
-      the path for pages -->
+<!-- Get date last modified from git log. (Uses current time if file entry not found, e.g. projects/)  -->
 
 
 
+<!-- For posts, page.date is the date they are published under, which we use as their 'canonical' dc:date -->
+ <!-- If we don't have a page.date, then use modified time (pages) -->
+   
 
 
-
+<!-- Posts declare modified timestamps in the sidebar, so would be redundant to put here. But then 
+     pages don't have a dc:modified... unless we give them their own (modified) sidebar?  
+-->
+<!-- Ideally we would want date originally created from the _oldest_ git commit too...-->
 
 <!-- HTML5 metadata -->
 <meta name="keywords" content="" />
@@ -24,7 +28,7 @@
 <!-- RDFa Metadata (in DublinCore) -->
 <meta property="dc:title" content="Non-parametric Bayesian Inference for Conservation Decisions" />
 <meta property="dc:creator" content="Carl Boettiger" />
-<meta property="dc:date" content="2013-06-03T16:02:27-07:00" />
+<meta property="dc:date" content="2013-06-05T00:30:21-07:00" />
 <meta property="dc:format" content="text/html" />
 <meta property="dc:language" content="en" />
 <meta property="dc:identifier" content="/projects/nonparametric-bayes.html" />
@@ -34,16 +38,16 @@
 <meta property="dc:type" content="website" /> 
 <!-- RDFa Metadata (in OpenGraph) -->
 <meta property="og:title" content="Non-parametric Bayesian Inference for Conservation Decisions" />
-<meta property="og:author" content="http://www.carlboettiger.info/index.html#me" />  <!-- Should be Liquid? URI? -->
+<meta property="og:author" content="http://carlboettiger.info/index.html#me" />  <!-- Should be Liquid? URI? -->
 <meta property="http://ogp.me/ns/profile#first_name" content="Carl"/>
 <meta property="http://ogp.me/ns/profile#last_name" content="Boettiger"/>
-<meta property="http://ogp.me/ns/article#published_time" content="2013-06-03T16:02:27-07:00" />
+<meta property="http://ogp.me/ns/article#published_time" content="2013-06-05T00:30:21-07:00" />
 <meta property="og:site_name" content="Lab Notebook" /> <!-- Same as dc:source? -->
-<meta property="og:url" content="http://www.carlboettiger.info/projects/nonparametric-bayes.html" />
+<meta property="og:url" content="http://carlboettiger.info/projects/nonparametric-bayes.html" />
 <meta property="og:type" content="website" /> 
 <!-- Google Scholar Metadata -->
 <meta name="citation_author" content="Carl Boettiger"/>
-<meta name="citation_date" content="2013-06-03T16:02:27-07:00"/>
+<meta name="citation_date" content="2013-06-05T00:30:21-07:00"/>
 <meta name="citation_title" content="Non-parametric Bayesian Inference for Conservation Decisions"/>
 <meta name="citation_journal_title" content="Lab Notebook"/>
 
@@ -211,6 +215,10 @@ Funding and Support/Affiliation
 
 
 <p> 
+<a href="/2013/06/03/ADMB-basic-example.html">Admb Basic Example</a> <span style="font-style:italic"> 03 Jun 2013</span>
+</p>
+
+<p> 
 <a href="/2013/05/29/notes.html">Notes</a> <span style="font-style:italic"> 29 May 2013</span>
 </p>
 
@@ -236,10 +244,6 @@ Funding and Support/Affiliation
 
 <p> 
 <a href="/2013/05/14/notes.html">Notes</a> <span style="font-style:italic"> 14 May 2013</span>
-</p>
-
-<p> 
-<a href="/2013/05/09/notes.html">Prep for ERE talk</a> <span style="font-style:italic"> 09 May 2013</span>
 </p>
 
 
@@ -269,21 +273,21 @@ Innovations in capture fisheries are an imperative for nutrition security in the
 </h4>
 
 <ul><li>
+Merge branch ‘master’ of github.com:cboettig/nonparametric-bayes <a href="https://github.com/cboettig/nonparametric-bayes/commit/458db203619620bc42c472eceaac175a6adb866c">07:12 am 2013/06/05</a>
+</li><li>
+exploring admb vs optim a bit further <a href="https://github.com/cboettig/nonparametric-bayes/commit/84a1025854987ef659b4ef17e172933d72547f6d">07:00 am 2013/06/05</a>
+</li><li>
+replicate run <a href="https://github.com/cboettig/nonparametric-bayes/commit/667f5b28ea9d706095701fe7c9d84938faae6df2">05:51 am 2013/06/05</a>
+</li><li>
+tpl code <a href="https://github.com/cboettig/nonparametric-bayes/commit/700b30096bce0efabb3d12a40bdccc5fb0159827">01:42 am 2013/06/04</a>
+</li><li>
+admb example working now <a href="https://github.com/cboettig/nonparametric-bayes/commit/b4576cfc0b5a0c87701348976875c8657f0fd048">11:09 pm 2013/06/03</a>
+</li><li>
 Merge branch ‘master’ of github.com:cboettig/nonparametric-bayes <a href="https://github.com/cboettig/nonparametric-bayes/commit/1b74018b4fd8c58653b4586f67886515a095c30d">06:19 pm 2013/06/03</a>
 </li><li>
 admb file <a href="https://github.com/cboettig/nonparametric-bayes/commit/e14f50ce71a824c9b5183b234c519a1759032cb4">06:18 pm 2013/06/03</a>
 </li><li>
 fix ricker chunk creation of ricker_pardist <a href="https://github.com/cboettig/nonparametric-bayes/commit/4911dc47b482e55b67156048d79e82417787df83">04:16 pm 2013/06/03</a>
-</li><li>
-admb example <a href="https://github.com/cboettig/nonparametric-bayes/commit/80ee481902a5afa7cb41f32baa919d44a9984e8b">01:39 am 2013/06/01</a>
-</li><li>
-Merge branch ‘master’ of github.com:cboettig/nonparametric-bayes <a href="https://github.com/cboettig/nonparametric-bayes/commit/20d2f24852af1b75076a57a1849f915b96c0dcac">01:36 am 2013/06/01</a>
-</li><li>
-learning ADMB. not working yet. <a href="https://github.com/cboettig/nonparametric-bayes/commit/3966ecd27064e4be7c83efe91d7f50b89332325f">01:35 am 2013/06/01</a>
-</li><li>
-using better initial conditions <a href="https://github.com/cboettig/nonparametric-bayes/commit/64e0ab4dc26d4b0a2441a18a298a78e4f59a572b">01:31 am 2013/06/01</a>
-</li><li>
-non-external chunks need unique chunk names <a href="https://github.com/cboettig/nonparametric-bayes/commit/a80ebd6435f22b911572bbe0fc5badbdf48702a5">12:37 am 2013/06/01</a>
 </li></ul>
 
 </div>
@@ -368,7 +372,7 @@ non-external chunks need unique chunk names <a href="https://github.com/cboettig
 
 <!--************** FOAF information to social networks ***************************** -->
   <div class="row">
-    <div class="span3 socialicons" style="font-size:20px" typeof="foaf:Person" about="http://www.carlboettiger.info#me">
+    <div class="span3 socialicons" style="font-size:20px" typeof="foaf:Person" about="http://carlboettiger.info#me">
       <p>
           <script type="text/javascript" src="/assets/js/obfuscate-email-link.js" language="javascript"></script> 
           <a rel="foaf:account" alt="twitter" href="https://twitter.com/cboettig" 
@@ -402,7 +406,7 @@ non-external chunks need unique chunk names <a href="https://github.com/cboettig
       <a onclick="recordOutboundLink(this, 'Outbound Links', 'ONS_claim'); return false;" href="http://onsclaims.wikispaces.com/"><img src="http://onsclaims.wikispaces.com/file/view/ons-aci2-icon.png" alt="ONS" class="showtooltip" title="An Open Notebook Science (ONS) project claim: Entry provides all content (AC) immediately (I) or without significant delay.  See link for details"/></a>
 
       <a title="This site uses linked data semantics. Click to extract as RDF XML." class="btn btn-mini showtooltip" style="font-size: .8em" 
-       href="http://any23.org/?format=rdfxml&validate=validate&uri=http://www.carlboettiger.info/projects/nonparametric-bayes.html"><i 
+       href="http://any23.org/?format=rdfxml&validate=validate&uri=http://carlboettiger.info/projects/nonparametric-bayes.html"><i 
          class="icon-cloud-download"  onclick="recordOutboundLink(this, 'Outbound Links', 'RDF'); return false;"></i> RDF</a>
       </p>
     </div>
@@ -428,7 +432,7 @@ non-external chunks need unique chunk names <a href="https://github.com/cboettig
       &amp;rft.date=
       &amp;rft.language=EN
       &amp;rft.rights=CC0
-      &amp;rft_id=http://www.carlboettiger.info/projects/nonparametric-bayes.html">
+      &amp;rft_id=http://carlboettiger.info/projects/nonparametric-bayes.html">
   </span>
 
 

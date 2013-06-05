@@ -7,15 +7,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
 
-<!-- Some liquid code so that pages get the site.time creation date 
-      Would be nice to use github modified times, but doesn't handle 
-      the path for pages -->
+<!-- Get date last modified from git log. (Uses current time if file entry not found, e.g. projects/)  -->
 
 
 
+<!-- For posts, page.date is the date they are published under, which we use as their 'canonical' dc:date -->
+ 
+  
+  
 
-
-
+<!-- Posts declare modified timestamps in the sidebar, so would be redundant to put here. But then 
+     pages don't have a dc:modified... unless we give them their own (modified) sidebar?  
+-->
+<!-- Ideally we would want date originally created from the _oldest_ git commit too...-->
 
 <!-- HTML5 metadata -->
 <meta name="keywords" content="notebook-technology, blog" />
@@ -24,7 +28,7 @@
 <!-- RDFa Metadata (in DublinCore) -->
 <meta property="dc:title" content="DOI != citable" />
 <meta property="dc:creator" content="Carl Boettiger" />
-<meta property="dc:date" content="2013-06-03T16:02:27-07:00" />
+<meta property="dc:date" content="2013-06-03T00:00:00-07:00" />
 <meta property="dc:format" content="text/html" />
 <meta property="dc:language" content="en" />
 <meta property="dc:identifier" content="/2013/06/03/DOI-citable.html" />
@@ -34,16 +38,16 @@
 <meta property="dc:type" content="website" /> 
 <!-- RDFa Metadata (in OpenGraph) -->
 <meta property="og:title" content="DOI != citable" />
-<meta property="og:author" content="http://www.carlboettiger.info/index.html#me" />  <!-- Should be Liquid? URI? -->
+<meta property="og:author" content="http://carlboettiger.info/index.html#me" />  <!-- Should be Liquid? URI? -->
 <meta property="http://ogp.me/ns/profile#first_name" content="Carl"/>
 <meta property="http://ogp.me/ns/profile#last_name" content="Boettiger"/>
-<meta property="http://ogp.me/ns/article#published_time" content="2013-06-03T16:02:27-07:00" />
+<meta property="http://ogp.me/ns/article#published_time" content="2013-06-03T00:00:00-07:00" />
 <meta property="og:site_name" content="Lab Notebook" /> <!-- Same as dc:source? -->
-<meta property="og:url" content="http://www.carlboettiger.info/2013/06/03/DOI-citable.html" />
+<meta property="og:url" content="http://carlboettiger.info/2013/06/03/DOI-citable.html" />
 <meta property="og:type" content="website" /> 
 <!-- Google Scholar Metadata -->
 <meta name="citation_author" content="Carl Boettiger"/>
-<meta name="citation_date" content="2013-06-03T16:02:27-07:00"/>
+<meta name="citation_date" content="2013-06-03T00:00:00-07:00"/>
 <meta name="citation_title" content="DOI != citable"/>
 <meta name="citation_journal_title" content="Lab Notebook"/>
 
@@ -153,10 +157,10 @@ Is there a way to obtain DOI for a <a href="https://twitter.com/github">@github<
 <h3 id="some-background-on-dois">Some background on DOIs</h3>
 <p>At its heart, a DOI is a very simple concept. It is a “permanent identifier”. All this means is that is is really just a URL redirect. Type http://dx.doi.org/mnn into any browser and get redirected to where the article actually lives. Why does that make it permanent? Because if the journal decides to change their URL structure, the DOI’s redirect can just be mapped to the new address and voila, it still works. That is, a DOI is simply a tool to fight <a href="https://en.wikipedia.org/wiki/Link_rot">link-rot</a>.</p>
 <p>So you might ask, why does the ability to remap the address have anything to do with being “permanent?” It doesn’t, really. The permanence comes not so much from the technology as from the social contract that goes with it. As CrossRef’s <a href="http://blogs.plos.org/mfenner/2009/02/17/interview_with_geoffrey_bilder/">Geoffery Bilder eloquently explains</a>, a publisher can only receive DOIs if they promise to keep these redirects up-to-date. A publisher who fails to maintain this responsibility would presumably lose their right to receive DOIs. A brilliant, simple, social incentive.</p>
-<p>This still does not guarantee permanence – e.g. what would happen to the content if the publisher disappears. That problem is not addressed by the DOI technology itself, but by a robust backup archiving solution, such as <a href="http://clocks.org">CLOCKSS</a>, which provides a geo-politically distributed network of backup copies for many journals. Again the social contract comes into play – presumably CrossRef would not provide a publisher with DOIs if they did not have such a robust archival solution in place.</p>
+<p>This still does not guarantee permanence – e.g. what would happen to the content if the publisher disappears. That problem is not addressed by the DOI technology itself, but by a robust backup archiving solution, such as <a href="http://clockss.org">CLOCKSS</a>, which provides a geo-politically distributed network of backup copies for many journals. Again the social contract comes into play – presumably CrossRef would not provide a publisher with DOIs if they did not have such a robust archival solution in place.</p>
 <p>So far we have seen two crucial functions of the DOI – as a permanent identifier that can be used to reach the content despite link rot, and as an incentive to maintain good archival backups of the content and the links to it.</p>
 <h3 id="what-do-we-mean-by-citations-anyway">What do we mean by citations, anyway?</h3>
-<p>So what does this have to do with being citable? Obviously these are nice properties to have for things we cite – but they are by no means a requirement. (As <a href="https://twitter.com/noamross/status/337987521243918337">Noam Ross observes</a>, try finding a permanent identifier for “Personal Communication”). Books, reports, and other grey literature frequently appear in citations, as do links to websites. MLA even has guidelines on the proper format to <a href="www.mla.org/style/handbook_faq/cite_a_tweet">cite a tweet</a> (which, incidentally, come closer to having a permanent identifier and an archival strategy than most other things in this list). So what do we mean by citable anyway?</p>
+<p>So what does this have to do with being citable? Obviously these are nice properties to have for things we cite – but they are by no means a requirement. (As <a href="https://twitter.com/noamross/status/337987521243918337">Noam Ross observes</a>, try finding a permanent identifier for “Personal Communication”). Books, reports, and other grey literature frequently appear in citations, as do links to websites. MLA even has guidelines on the proper format to <a href="http://www.mla.org/style/handbook_faq/cite_a_tweet">cite a tweet</a> (which, incidentally, come closer to having a permanent identifier and an archival strategy than most other things in this list). So what do we mean by citable anyway?</p>
 <p>But what about the reference list? While a publisher may be just fine including some link to your software, is it really cited if it isn’t in the reference list? Journals restrict what appears in the reference list because these references are indexed by the infamous citation counters like Thompson-Reuters. (A frequent complaint is that many journals do not similarly index citations appearing in the reference list of the supplementary materials, making it difficult or impossible to give appropriate attribution to large numbers of data providers, for instance). Does having a DOI address this problem?</p>
 <h4 id="citation-counts-in-dois">Citation counts in DOIs</h4>
 <p>Counting citations depends on who is counting them. The most well-known is Thompson-Reuters, which has their own process for deciding what gets counted (based on publisher), so no guarantee there. Meanwhile Google Scholar counts anything meeting it’s <a href="http://carlboettiger.info/2012/11/23/citing-lab-notebook-entries.html">indexing requirements &amp; arbitrary selection</a>. I have recently learned that CrossRef just launched it’s own <a href="https://github.com/articlemetrics/alm/wiki/Crossref">internal citation counting</a>, which is available from the CrossRef metadata (totals only for the public, publishers can resolve which articles did the citing…). However, most proposals to make some alternative research product “citable” by giving it a DOI use DataCite DOIs (e.g. fig<strong>share</strong>, PeerJ Preprints), which lag behind in this feature. Moving the control of citation data beyond the grasp of particular publishing companies like TR is undoubtedly an important step forward. The <a href="http://www.jisc.ac.uk/whatwedo/programmes/inf11/jiscexpo/jiscopencitation.aspx">Open Citation Project</a> is a more comprehensive, if very young, move in this direct. (Hat tip to Martin Fenner for explaining CrossRef citations to me).</p>
@@ -183,13 +187,13 @@ Is there a way to obtain DOI for a <a href="https://twitter.com/github">@github<
     <time datetime="2013-06-03T00:00:00-07:00" 
     property="dc:created">03 Jun 2013</time></p>
   <p><small> modified: <time 
-            datetime="2013-05-14T12:01:30-07:00" 
-            property="dc:modified">14 May 2013</time></small></p>
+            datetime="2013-06-04T07:01:29-07:00" 
+            property="dc:modified">04 Jun 2013</time></small></p>
 
  <br />
 
   
-    <p><a class="btn btn-mini" rel="prev" href='/2013/05/31/notebook-features-digital-archiving.html'><i class="icon-chevron-left"></i> prev</a>
+    <p><a class="btn btn-mini" rel="prev" href='/2013/06/03/ADMB-basic-example.html'><i class="icon-chevron-left"></i> prev</a>
   
   
     </p>
@@ -224,11 +228,11 @@ Is there a way to obtain DOI for a <a href="https://twitter.com/github">@github<
 
   <br/>
 
-   <p style="font-style:italic"> <i class="icon-signal"></i> pageviews: 15</p>
+   <p style="font-style:italic"> <i class="icon-signal"></i> pageviews: 262</p>
 
   <br/>
 
-  <p><small> <i class="icon-barcode"></i> SHA Hash: <a href="https://github.com/cboettig/labnotebook/commit/44ea14c8fb18d4e099d7d3354c2f577489786cf7/_posts/2013-06-03-DOI-citable.md"> 44ea14c8fb18d4e099d7d3354c2f577489786cf7</a></small></p>
+  <p><small> <i class="icon-barcode"></i> SHA Hash: <a href="https://github.com/cboettig/labnotebook/commit/60fee991d34c96a1f8d91d4dbbe0efe63c4daef7/_posts/2013-06-03-DOI-citable.md"> 60fee991d34c96a1f8d91d4dbbe0efe63c4daef7</a></small></p>
     
   <br/>
 
@@ -296,7 +300,7 @@ Is there a way to obtain DOI for a <a href="https://twitter.com/github">@github<
 
 <!--************** FOAF information to social networks ***************************** -->
   <div class="row">
-    <div class="span3 socialicons" style="font-size:20px" typeof="foaf:Person" about="http://www.carlboettiger.info#me">
+    <div class="span3 socialicons" style="font-size:20px" typeof="foaf:Person" about="http://carlboettiger.info#me">
       <p>
           <script type="text/javascript" src="/assets/js/obfuscate-email-link.js" language="javascript"></script> 
           <a rel="foaf:account" alt="twitter" href="https://twitter.com/cboettig" 
@@ -330,7 +334,7 @@ Is there a way to obtain DOI for a <a href="https://twitter.com/github">@github<
       <a onclick="recordOutboundLink(this, 'Outbound Links', 'ONS_claim'); return false;" href="http://onsclaims.wikispaces.com/"><img src="http://onsclaims.wikispaces.com/file/view/ons-aci2-icon.png" alt="ONS" class="showtooltip" title="An Open Notebook Science (ONS) project claim: Entry provides all content (AC) immediately (I) or without significant delay.  See link for details"/></a>
 
       <a title="This site uses linked data semantics. Click to extract as RDF XML." class="btn btn-mini showtooltip" style="font-size: .8em" 
-       href="http://any23.org/?format=rdfxml&validate=validate&uri=http://www.carlboettiger.info/2013/06/03/DOI-citable.html"><i 
+       href="http://any23.org/?format=rdfxml&validate=validate&uri=http://carlboettiger.info/2013/06/03/DOI-citable.html"><i 
          class="icon-cloud-download"  onclick="recordOutboundLink(this, 'Outbound Links', 'RDF'); return false;"></i> RDF</a>
       </p>
     </div>
@@ -356,7 +360,7 @@ Is there a way to obtain DOI for a <a href="https://twitter.com/github">@github<
       &amp;rft.date=2013-06-03
       &amp;rft.language=EN
       &amp;rft.rights=CC0
-      &amp;rft_id=http://www.carlboettiger.info/2013/06/03/DOI-citable.html">
+      &amp;rft_id=http://carlboettiger.info/2013/06/03/DOI-citable.html">
   </span>
 
 

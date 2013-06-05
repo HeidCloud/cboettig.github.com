@@ -7,15 +7,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
 
-<!-- Some liquid code so that pages get the site.time creation date 
-      Would be nice to use github modified times, but doesn't handle 
-      the path for pages -->
+<!-- Get date last modified from git log. (Uses current time if file entry not found, e.g. projects/)  -->
 
 
 
+<!-- For posts, page.date is the date they are published under, which we use as their 'canonical' dc:date -->
+ <!-- If we don't have a page.date, then use modified time (pages) -->
+   
 
 
-
+<!-- Posts declare modified timestamps in the sidebar, so would be redundant to put here. But then 
+     pages don't have a dc:modified... unless we give them their own (modified) sidebar?  
+-->
+<!-- Ideally we would want date originally created from the _oldest_ git commit too...-->
 
 <!-- HTML5 metadata -->
 <meta name="keywords" content="" />
@@ -24,7 +28,7 @@
 <!-- RDFa Metadata (in DublinCore) -->
 <meta property="dc:title" content="The ropensci project" />
 <meta property="dc:creator" content="Carl Boettiger" />
-<meta property="dc:date" content="2013-06-03T16:02:27-07:00" />
+<meta property="dc:date" content="2013-06-05T00:30:32-07:00" />
 <meta property="dc:format" content="text/html" />
 <meta property="dc:language" content="en" />
 <meta property="dc:identifier" content="/projects/ropensci.html" />
@@ -34,16 +38,16 @@
 <meta property="dc:type" content="website" /> 
 <!-- RDFa Metadata (in OpenGraph) -->
 <meta property="og:title" content="The ropensci project" />
-<meta property="og:author" content="http://www.carlboettiger.info/index.html#me" />  <!-- Should be Liquid? URI? -->
+<meta property="og:author" content="http://carlboettiger.info/index.html#me" />  <!-- Should be Liquid? URI? -->
 <meta property="http://ogp.me/ns/profile#first_name" content="Carl"/>
 <meta property="http://ogp.me/ns/profile#last_name" content="Boettiger"/>
-<meta property="http://ogp.me/ns/article#published_time" content="2013-06-03T16:02:27-07:00" />
+<meta property="http://ogp.me/ns/article#published_time" content="2013-06-05T00:30:32-07:00" />
 <meta property="og:site_name" content="Lab Notebook" /> <!-- Same as dc:source? -->
-<meta property="og:url" content="http://www.carlboettiger.info/projects/ropensci.html" />
+<meta property="og:url" content="http://carlboettiger.info/projects/ropensci.html" />
 <meta property="og:type" content="website" /> 
 <!-- Google Scholar Metadata -->
 <meta name="citation_author" content="Carl Boettiger"/>
-<meta name="citation_date" content="2013-06-03T16:02:27-07:00"/>
+<meta name="citation_date" content="2013-06-05T00:30:32-07:00"/>
 <meta name="citation_title" content="The ropensci project"/>
 <meta name="citation_journal_title" content="Lab Notebook"/>
 
@@ -197,12 +201,12 @@
     <div class="span3">
       <h4><a href="http://twitter.com/ropensci"><i class="icon-twitter"></i> Discussing </a> </h4>
       <!--  -->
-       <ul><li><p>@ramnath_vaidya what’s your email address? Got some ideas to run by you. Karthik at ropensci org.</p>
- <a href="http://twitter.com/ropensci/statuses/340998314268958723">06:08 2013/06/01</a> </li><li><p>@ramnath_vaidya these are fantastic!</p>
- <a href="http://twitter.com/ropensci/statuses/340995716237365249">05:58 2013/06/01</a> </li><li><p>RT @ramnath_vaidya: @rOpenSci @hadleywickham @USGS Another example is here <a href="http://t.co/jDxNfYJgbS">http://t.co/jDxNfYJgbS</a></p>
- <a href="http://twitter.com/ropensci/statuses/340990660150702080">05:38 2013/06/01</a> </li><li><p>RT @ramnath_vaidya: @rOpenSci @hadleywickham @USGS Species map with rCharts + Leaflet <a href="http://t.co/eXoOy1OeA5">http://t.co/eXoOy1OeA5</a> <a href="http://t.co/8MB7aqK64u">http://t.co/8MB7aqK64u</a></p>
- <a href="http://twitter.com/ropensci/statuses/340990610842451968">05:37 2013/06/01</a> </li><li><p>@gianlucaemireni likewise, thanks for the follow baack</p>
- <a href="http://twitter.com/ropensci/statuses/340926507415384064">01:23 2013/06/01</a> </li></ul>
+       <ul><li><p>RT @ipnosimmia: @TheAtavism Anyhow, just got devtools installed in the dept, so now working with @rOpenSci Sweet as!</p>
+ <a href="http://twitter.com/ropensci/statuses/342153032512978944">10:36 2013/06/04</a> </li><li><p>@DanMcGlinn We’ll add it. Thanks for the heads up.</p>
+ <a href="http://twitter.com/ropensci/statuses/341956270582013952">09:35 2013/06/04</a> </li><li><p>@DanMcGlinn @cbahlai thanks for pointing that out, will make it easier to find</p>
+ <a href="http://twitter.com/ropensci/statuses/341948021304602626">09:02 2013/06/04</a> </li><li><p>@cbahlai @DanMcGlinn We have a much improved version of the app coming out a week from now</p>
+ <a href="http://twitter.com/ropensci/statuses/341941440512917504">08:36 2013/06/04</a> </li><li><p>@cbahlai @DanMcGlinn we&#39;re working on incorporating other taxa, check back in later...</p>
+ <a href="http://twitter.com/ropensci/statuses/341941117278908418">08:34 2013/06/04</a> </li></ul>
     </div>
     <div class="span3">
       <h4> Workshops </h4>
@@ -254,7 +258,7 @@
     </div>
     <div class="span3">
       <h4><a href="" style="color:#dc322f;"> <i class="icon-bookmark" ></i> Reading</a> </h4>
-      <ul><li>Troubling Trends in Scientific Software Use.: Science (New York, N.Y.) (2013). Volume: 340, Issue: 6134. Pages: 814-815. Lucas N Joppa, Greg McInerny, Richard Harper, Lara Salido, Kenji Takeda, Kenton O'Hara, David Gavaghan, Stephen Emmott et al. <a href="http://www.mendeley.com/research/troubling-trends-scientific-software/">12:28 2013/05/24</a></li><li>Referencing and preservation: Phillip Lord, Lindsay Marshall et al.Published using Mendeley: The research paper manager <a href="http://www.mendeley.com/research/referencing-preservation/">07:20 2013/05/15</a></li><li>An introduction to social media for scientists.: PLoS biology (2013). Volume: 11, Issue: 4. Pages: e1001535. Holly M Bik, Miriam C Goldstein et al. <a href="http://www.mendeley.com/research/introduction-social-media-scientists/">07:20 2013/05/15</a></li><li>Exploring the costs and benefits Economic implications of alternative scholarly publishing models : Exploring the costs and benefits: John Houghton, Bruce Rasmussen, Charles Oppenheim, Anne Morris, Helen Greenwood, Mark Summers, Adrian Gourlay et al.Published using Mendeley: The reference software for researchers <a href="http://www.mendeley.com/catalog/economic-implications-alternative-scholarly-publishing-models-exploring-costs-benefits/">07:20 2013/05/15</a></li></ul>
+      <ul><li>Troubling Trends in Scientific Software Use.: Science (New York, N.Y.) (2013). Volume: 340, Issue: 6134. Pages: 814-815. Lucas N Joppa, Greg McInerny, Richard Harper, Lara Salido, Kenji Takeda, Kenton O'Hara, David Gavaghan, Stephen Emmott et al. <a href="http://www.mendeley.com/research/troubling-trends-scientific-software/">12:28 2013/05/24</a></li><li>Referencing and preservation: Phillip Lord, Lindsay Marshall et al.Published using Mendeley: The reference software for researchers <a href="http://www.mendeley.com/research/referencing-preservation/">07:20 2013/05/15</a></li><li>An introduction to social media for scientists.: PLoS biology (2013). Volume: 11, Issue: 4. Pages: e1001535. Holly M Bik, Miriam C Goldstein et al. <a href="http://www.mendeley.com/research/introduction-social-media-scientists/">07:20 2013/05/15</a></li><li>Exploring the costs and benefits Economic implications of alternative scholarly publishing models : Exploring the costs and benefits: John Houghton, Bruce Rasmussen, Charles Oppenheim, Anne Morris, Helen Greenwood, Mark Summers, Adrian Gourlay et al.Published using Mendeley: Academic software for researchers <a href="http://www.mendeley.com/catalog/economic-implications-alternative-scholarly-publishing-models-exploring-costs-benefits/">07:20 2013/05/15</a></li></ul>
   </div>
   </div>
 </div>
@@ -300,7 +304,7 @@
 
 <!--************** FOAF information to social networks ***************************** -->
   <div class="row">
-    <div class="span3 socialicons" style="font-size:20px" typeof="foaf:Person" about="http://www.carlboettiger.info#me">
+    <div class="span3 socialicons" style="font-size:20px" typeof="foaf:Person" about="http://carlboettiger.info#me">
       <p>
           <script type="text/javascript" src="/assets/js/obfuscate-email-link.js" language="javascript"></script> 
           <a rel="foaf:account" alt="twitter" href="https://twitter.com/cboettig" 
@@ -334,7 +338,7 @@
       <a onclick="recordOutboundLink(this, 'Outbound Links', 'ONS_claim'); return false;" href="http://onsclaims.wikispaces.com/"><img src="http://onsclaims.wikispaces.com/file/view/ons-aci2-icon.png" alt="ONS" class="showtooltip" title="An Open Notebook Science (ONS) project claim: Entry provides all content (AC) immediately (I) or without significant delay.  See link for details"/></a>
 
       <a title="This site uses linked data semantics. Click to extract as RDF XML." class="btn btn-mini showtooltip" style="font-size: .8em" 
-       href="http://any23.org/?format=rdfxml&validate=validate&uri=http://www.carlboettiger.info/projects/ropensci.html"><i 
+       href="http://any23.org/?format=rdfxml&validate=validate&uri=http://carlboettiger.info/projects/ropensci.html"><i 
          class="icon-cloud-download"  onclick="recordOutboundLink(this, 'Outbound Links', 'RDF'); return false;"></i> RDF</a>
       </p>
     </div>
@@ -360,7 +364,7 @@
       &amp;rft.date=
       &amp;rft.language=EN
       &amp;rft.rights=CC0
-      &amp;rft_id=http://www.carlboettiger.info/projects/ropensci.html">
+      &amp;rft_id=http://carlboettiger.info/projects/ropensci.html">
   </span>
 
 

@@ -7,15 +7,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
 
-<!-- Some liquid code so that pages get the site.time creation date 
-      Would be nice to use github modified times, but doesn't handle 
-      the path for pages -->
+<!-- Get date last modified from git log. (Uses current time if file entry not found, e.g. projects/)  -->
 
 
 
+<!-- For posts, page.date is the date they are published under, which we use as their 'canonical' dc:date -->
+ <!-- If we don't have a page.date, then use modified time (pages) -->
+   
 
 
-
+<!-- Posts declare modified timestamps in the sidebar, so would be redundant to put here. But then 
+     pages don't have a dc:modified... unless we give them their own (modified) sidebar?  
+-->
+<!-- Ideally we would want date originally created from the _oldest_ git commit too...-->
 
 <!-- HTML5 metadata -->
 <meta name="keywords" content="" />
@@ -24,7 +28,7 @@
 <!-- RDFa Metadata (in DublinCore) -->
 <meta property="dc:title" content="Pretty Darn Good Control" />
 <meta property="dc:creator" content="Carl Boettiger" />
-<meta property="dc:date" content="2013-06-03T16:02:27-07:00" />
+<meta property="dc:date" content="2013-06-05T00:30:19-07:00" />
 <meta property="dc:format" content="text/html" />
 <meta property="dc:language" content="en" />
 <meta property="dc:identifier" content="/projects/pdg-control.html" />
@@ -34,16 +38,16 @@
 <meta property="dc:type" content="website" /> 
 <!-- RDFa Metadata (in OpenGraph) -->
 <meta property="og:title" content="Pretty Darn Good Control" />
-<meta property="og:author" content="http://www.carlboettiger.info/index.html#me" />  <!-- Should be Liquid? URI? -->
+<meta property="og:author" content="http://carlboettiger.info/index.html#me" />  <!-- Should be Liquid? URI? -->
 <meta property="http://ogp.me/ns/profile#first_name" content="Carl"/>
 <meta property="http://ogp.me/ns/profile#last_name" content="Boettiger"/>
-<meta property="http://ogp.me/ns/article#published_time" content="2013-06-03T16:02:27-07:00" />
+<meta property="http://ogp.me/ns/article#published_time" content="2013-06-05T00:30:19-07:00" />
 <meta property="og:site_name" content="Lab Notebook" /> <!-- Same as dc:source? -->
-<meta property="og:url" content="http://www.carlboettiger.info/projects/pdg-control.html" />
+<meta property="og:url" content="http://carlboettiger.info/projects/pdg-control.html" />
 <meta property="og:type" content="website" /> 
 <!-- Google Scholar Metadata -->
 <meta name="citation_author" content="Carl Boettiger"/>
-<meta name="citation_date" content="2013-06-03T16:02:27-07:00"/>
+<meta name="citation_date" content="2013-06-05T00:30:19-07:00"/>
 <meta name="citation_title" content="Pretty Darn Good Control"/>
 <meta name="citation_journal_title" content="Lab Notebook"/>
 
@@ -350,7 +354,7 @@ attempt to convert tex and comments to markdown <a href="https://github.com/cboe
 
 <!--************** FOAF information to social networks ***************************** -->
   <div class="row">
-    <div class="span3 socialicons" style="font-size:20px" typeof="foaf:Person" about="http://www.carlboettiger.info#me">
+    <div class="span3 socialicons" style="font-size:20px" typeof="foaf:Person" about="http://carlboettiger.info#me">
       <p>
           <script type="text/javascript" src="/assets/js/obfuscate-email-link.js" language="javascript"></script> 
           <a rel="foaf:account" alt="twitter" href="https://twitter.com/cboettig" 
@@ -384,7 +388,7 @@ attempt to convert tex and comments to markdown <a href="https://github.com/cboe
       <a onclick="recordOutboundLink(this, 'Outbound Links', 'ONS_claim'); return false;" href="http://onsclaims.wikispaces.com/"><img src="http://onsclaims.wikispaces.com/file/view/ons-aci2-icon.png" alt="ONS" class="showtooltip" title="An Open Notebook Science (ONS) project claim: Entry provides all content (AC) immediately (I) or without significant delay.  See link for details"/></a>
 
       <a title="This site uses linked data semantics. Click to extract as RDF XML." class="btn btn-mini showtooltip" style="font-size: .8em" 
-       href="http://any23.org/?format=rdfxml&validate=validate&uri=http://www.carlboettiger.info/projects/pdg-control.html"><i 
+       href="http://any23.org/?format=rdfxml&validate=validate&uri=http://carlboettiger.info/projects/pdg-control.html"><i 
          class="icon-cloud-download"  onclick="recordOutboundLink(this, 'Outbound Links', 'RDF'); return false;"></i> RDF</a>
       </p>
     </div>
@@ -410,7 +414,7 @@ attempt to convert tex and comments to markdown <a href="https://github.com/cboe
       &amp;rft.date=
       &amp;rft.language=EN
       &amp;rft.rights=CC0
-      &amp;rft_id=http://www.carlboettiger.info/projects/pdg-control.html">
+      &amp;rft_id=http://carlboettiger.info/projects/pdg-control.html">
   </span>
 
 
