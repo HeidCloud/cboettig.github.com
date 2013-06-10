@@ -144,7 +144,7 @@
   <div class="span3 offset1">
     <h4>  <a property="account" href="https://github.com/cboettig" onclick="recordOutboundLink(this, 'Outbound Links', 'Github'); return false;"><i class="icon-github" alt="github"></i> Coding </a></h4> 
      <div class="excerpt">
-        <ul><li>cboettig pushed to master at cboettig/labnotebook: <em>review moved to reviews repository instead new post updated and released post</em> <a href="https://github.com/cboettig/labnotebook/compare/60fee991d3...dd0c31f713">03:58 2013/06/10</a></li><li>cboettig pushed to master at cboettig/nonparametric-bayes: <em>myers model with diff parameters from parametric-vs-nonparametric at … allen model with diff parameters from process-noise-only at this comm…</em> <a href="https://github.com/cboettig/nonparametric-bayes/compare/239da673f5...a1dcf10186">10:49 2013/06/07</a></li><li>cboettig pushed to master at cboettig/nonparametric-bayes: <em>example set up based on Myers model simulations</em> <a href="https://github.com/cboettig/nonparametric-bayes/compare/f6de09b60a...239da673f5">10:42 2013/06/07</a></li><li>cboettig pushed to master at cboettig/nonparametric-bayes: <em>update (merge with process-noise-only) try searching in non-transformed paramaters on all models ignore mpi queue submit scripts</em> <a href="https://github.com/cboettig/nonparametric-bayes/compare/f4efe39de5...f6de09b60a">10:40 2013/06/07</a></li><li>cboettig pushed to master at cboettig/sandbox: <em>knit_defaults chunk options</em> <a href="https://github.com/cboettig/sandbox/compare/c319b98353...786ae0df27">06:46 2013/06/07</a></li></ul>
+        <ul><li>cboettig pushed to master at cboettig/cboettig.github.com: <em>update site</em> <a href="https://github.com/cboettig/cboettig.github.com/compare/6fdaf5ec66...8a0af5a64c">04:15 2013/06/10</a></li><li>cboettig pushed to master at cboettig/labnotebook: <em>review moved to reviews repository instead new post updated and released post</em> <a href="https://github.com/cboettig/labnotebook/compare/60fee991d3...dd0c31f713">03:58 2013/06/10</a></li><li>cboettig pushed to master at cboettig/nonparametric-bayes: <em>myers model with diff parameters from parametric-vs-nonparametric at … allen model with diff parameters from process-noise-only at this comm…</em> <a href="https://github.com/cboettig/nonparametric-bayes/compare/239da673f5...a1dcf10186">10:49 2013/06/07</a></li><li>cboettig pushed to master at cboettig/nonparametric-bayes: <em>example set up based on Myers model simulations</em> <a href="https://github.com/cboettig/nonparametric-bayes/compare/f6de09b60a...239da673f5">10:42 2013/06/07</a></li><li>cboettig pushed to master at cboettig/nonparametric-bayes: <em>update (merge with process-noise-only) try searching in non-transformed paramaters on all models ignore mpi queue submit scripts</em> <a href="https://github.com/cboettig/nonparametric-bayes/compare/f4efe39de5...f6de09b60a">10:40 2013/06/07</a></li></ul>
     </div>
   </div>
   <div class="span3">
@@ -231,39 +231,6 @@ http://dx.doi.org/10.1126/science.1213847."><a href="http://dx.doi.org/10.1126/s
      see _plugins/jekyll-labnotebook-plugins/raw_content --> 
 </article> 
 <p> <a href="/2013/06/10/mansucript-reviews-on-github.html"> <em>Read more</em></a> </p>
-<br />
-<br />
-
-
-        </div>
-      
-        <div class="span3">
-          <header><h4><a href="/2013/06/06/what-I-look-for-in-software-papers.html">What I look for in 'Sofware Papers'</a></h4></header>
-<p><span>pet peeves and faux pas</span></p>
-<p style="font-style:italic"> 06 Jun 2013</p>
-
-<p style="font-style:italic"> pageviews: (not calculated) </p>
-
-<article>
-<div class="excerpt">
-<p>I am more and more frequently reviewing ‘software papers:’ which I define as publications whose primary purpose is to publicize a piece of scientific software and provide a traditional research product with hopes that it will receive citations and recognition from other researchers in grant and job reviews. To me this feels very much like hacking the publication recognition system rather than the ideal way to recognize and track the role of software in research communities, but a very pratical one in the current climate. I have written two myself, so I have been on both ends of this issue.</p>
-<p>I don’t include “to document” the software as a purpose, since none do so very comprehensively, and besides, documentation belongs in the software, not in a journal. “Publicize” usually includes some motivating examples that could convince many readers that the software does something useful for them without too much effort. As such, I expect the paper to provide the journal’s audience with a clear motivation for why the package is useful, and at least one functioning “wow” example that I can run and understand without difficulty. This is a low bar, though still often missed in round 1, that I hope will encourage these kinds of contributions. But that is not why I am writing this post.</p>
-<p>I see papers about software packages primarily as invitations to review the software itself, not just the paper. I assume most other authors, reviewers and editors on this content share this implicit assumption, but I’d love to hear first hand from anyone else. When I review software, there are some pet peeves or faux pas that I see appear again and again, so I thought I’d take a moment to write them out here. (If you end up with a copy-paste of this at some later date, my apologies but I got tired of writing the same thing over and over again. And if it’s not signed, then someone else also got tired of writing the same thing over and over again.)</p>
-<p>As I am almost always reviewing R packages, the software already meets some very basic standards required by submission to CRAN: dependencies and license stated, built-in documentation, passing some minimal automatic checks, etc. (See the <a href="">CRAN Policies</a> and the <a href="">Writing R Extensions Manual</a> for details). This is great, as it clears the first few hurdles of installation, etc without much fuss, but still provides a bar that is by itself unacceptably low for published scientific software. Here is a list of the things I see that most often frustrate me, which range from rather minor pet peeves to absolutely essential elements.</p>
-<h3 id="automatic-tests">Automatic tests</h3>
-<p>A scientific R package <em>must must must</em> have some automated tests that are run by <code>R CMD check</code>. Even if further development of the package doesn’t break anything (most likely only if further development doesn’t happen), changes to the package dependencies could still break things, and so it is crucial to have a mechanism in place to detect these problems when they arise. For code that runs quickly, the simplest way to do this is through the examples in the documentation. I don’t expect all scientific software to have a complete test suite with 100% coverage covering all the weird things that can happen if a user passes in a matrix when the function expects a data frame or has some unanticipated missing values, etc. Just some tests to make sure the basic examples execute and I’ll be happy. Longer running functions or those that need calls to external web resources shouldn’t be run in the examples (too much of a burden for CRAN’s automatic testing) so they should be marked <code>dontrun</code> and put in a separate test suite or vignette as it says in the manual.</p>
-<h3 id="passing-optional-arguments">Passing optional arguments</h3>
-<p>I see code like this all the time:</p>
-<p><code>{r} f &lt;- myfunction(</code></p>
-<h3 id="imports-not-depends">IMPORTS not DEPENDS</h3>
-<p>Many developers overlook that package dependencies that provide functions your functions will use internally should be listed as under IMPORTS rather than DEPENDS. This keeps the users namespace cleaner and avoids collisions of functions having the same name.</p>
-<p>If you are an author, editor, or reviewer of R software packages, what are your pet peeves?</p>
-<p>(as proposed in</p>
- 
-<!-- not that raw_content depends on custom generator, 
-     see _plugins/jekyll-labnotebook-plugins/raw_content --> 
-</article> 
-<p> <a href="/2013/06/06/what-I-look-for-in-software-papers.html"> <em>Read more</em></a> </p>
 <br />
 <br />
 
@@ -363,10 +330,6 @@ P_theta_K.X &lt;- <span class="kw">sapply</span>(theta_grid, function(theta)
 
         </div>
       
-    </div>
-
-    <div class="row">
-      
         <div class="span3">
           <header><h4><a href="/2013/06/03/DOI-citable.html">DOI != citable</a></h4></header>
 <p><span></span></p>
@@ -420,6 +383,10 @@ Is there a way to obtain DOI for a <a href="https://twitter.com/github">@github<
 
 
         </div>
+      
+    </div>
+
+    <div class="row">
       
         <div class="span3">
           <header><h4><a href="/2013/06/03/ADMB-basic-example.html">Admb Basic Example</a></h4></header>
@@ -610,10 +577,6 @@ Coefficients:
 
         </div>
       
-    </div>
-
-    <div class="row">
-      
         <div class="span3">
           <header><h4><a href="/2013/05/31/notebook-features-archiving-with-figshare.html">Archiving the lab notebook on figshare</a></h4></header>
 <p><span>Advantages and challenges</span></p>
@@ -659,6 +622,10 @@ Coefficients:
 
 
         </div>
+      
+    </div>
+
+    <div class="row">
       
         <div class="span3">
           <header><h4><a href="/2013/05/29/notes.html">Notes</a></h4></header>
@@ -797,6 +764,204 @@ wrightscape/DESCRIPTION:License: GPL-2</code></pre>
      see _plugins/jekyll-labnotebook-plugins/raw_content --> 
 </article> 
 <p> <a href="/2013/05/28/notes.html"> <em>Read more</em></a> </p>
+<br />
+<br />
+
+
+        </div>
+      
+        <div class="span3">
+          <header><h4><a href="/2013/05/27/exploring-approximate-dynamic-programming-approaches.html">Exploring Approximate Dynamic Programming Approaches</a></h4></header>
+<p><span></span></p>
+<p style="font-style:italic"> 27 May 2013</p>
+
+<p style="font-style:italic"> pageviews: 12 </p>
+
+<article>
+<div class="excerpt">
+<h2 id="introductory-examples-in-approximate-dynamic-programming">Introductory examples in approximate dynamic programming</h2>
+<p><em>Based on Powell 2006, page 97. I try to conform to that notation throughout</em>. Haven’t really figured this out yet, so this is more a walk through of me thinking this out then a tutorial. My active copy of this analysis can be found in the <a href="https://github.com/cboettig/nonparametric-bayes/blob/4eb6a30441f28e9cbe87690d9e098b0e068cc395/inst/examples/adp-intro.md">adp-intro</a> file of my nonparametric-bayes repo, see there for the <a href="https://github.com/cboettig/nonparametric-bayes/blob/master/inst/examples/adp-intro.md">most recent</a> (or earlier) versions.</p>
+<h2 id="setup-my-sample-problem">Setup my sample problem</h2>
+<p>First we define the Beverton-Holt stock-recruitment relationship as a function of stock size <code>x</code>, harvest <code>h</code> and parameters <code>p</code></p>
+<pre class="sourceCode r"><code class="sourceCode r">f &lt;- function(x, h, p){
+    A &lt;- p[<span class="dv">1</span>] 
+    B &lt;- p[<span class="dv">2</span>] 
+    s &lt;- <span class="kw">pmax</span>(x-h, <span class="dv">0</span>)
+    A * s/(<span class="dv">1</span> + B * s)
+}
+p &lt;- pars &lt;- <span class="kw">c</span>(<span class="fl">1.5</span>, <span class="fl">0.5</span>)
+K &lt;- (p[<span class="dv">1</span>] - <span class="dv">1</span>)/p[<span class="dv">2</span>]
+sigma_g &lt;- <span class="fl">0.2</span></code></pre>
+<p>We begin with a simulation method <span class="math">\(X_{t+1} = f(X_t, Z_t)\)</span>. For illustration, let us consider <span class="math">\(f(X_t, Z_t) = Z_t \frac{a X_t}{b + X_t}\)</span> with a = 1.5 and b = 0.5. We define a statespace <span class="math">\(S\)</span></p>
+<pre class="sourceCode r"><code class="sourceCode r">S &lt;- <span class="kw">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dt">length=</span><span class="dv">11</span>) </code></pre>
+<p>as a uniform grid of 11 points from 0 to 1.<br />We also need a value function on the state space, <span class="math">\(C_t(S_t)\)</span>. For simplicity, we set the price of harvest at unity and the cost of harvesting at zero, so that <span class="math">\(C_t(S_t, x_t) = \min(x_t, S_t)\)</span>.<br />(<span class="math">\(C_t\)</span> is sometimes denoted <span class="math">\(\mathbb{\Pi}\)</span>).<br />We also need an action space <span class="math">\(\chi_t\)</span> of possible harvest values.<br />Again for simplicity we assume that harvest can be set to any possible state size, <span class="math">\(\chi_t \equiv S_t\)</span>,</p>
+<pre class="sourceCode r"><code class="sourceCode r">chi &lt;- S</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">T &lt;- <span class="dv">10</span>
+N &lt;- <span class="dv">10</span></code></pre>
+<p>The approximate dynamic programming algorithm will perform a finite number <span class="math">\(N\)</span> = 10 iterations over a window of time <span class="math">\(T\)</span> =10 in our example. The algorithm can then be described as follows:</p>
+<h2 id="algorithm-1">Algorithm (1)</h2>
+<ul>
+<li><p><strong>Step 0</strong></p></li>
+<li><p>Initialize some value <span class="math">\(\tilde V_t^0(S_t)\)</span> for all states <span class="math">\(S_t\)</span>, where the superscripts denote iterations in the forward approximation.<br /> As we know absolutely nothing yet to base our initial guess on, we just arbitrarily set this to zero.</p></li>
+</ul>
+<pre class="sourceCode r"><code class="sourceCode r">V &lt;- <span class="kw">numeric</span>(<span class="kw">length</span>(S))</code></pre>
+<ul>
+<li>Choose some initial state <span class="math">\(S_0^1\)</span> We start at some initial state for <span class="math">\(n = 1\)</span> (superscript) and <span class="math">\(t = 0\)</span> (subscript). The choice of initial condition may come from the problem itself, otherwise we choose something arbitrarily.</li>
+</ul>
+<pre class="sourceCode r"><code class="sourceCode r">S_0 &lt;- <span class="fl">0.5</span></code></pre>
+<ul>
+<li><p>Set <span class="math">\(n = 1\)</span></p></li>
+<li><p><strong>Step 1</strong>: Choose a sample path, <span class="math">\(\omega^n\)</span> (a vector of random draws)</p></li>
+</ul>
+<pre class="sourceCode r"><code class="sourceCode r">sigma &lt;- <span class="fl">0.2</span>
+omega_n &lt;- <span class="kw">rlnorm</span>(T, <span class="dv">0</span>, sigma)</code></pre>
+<ul>
+<li><p><em>* Step 2</em>*: For <span class="math">\(t = 0, 1, 2, \ldots, T\)</span>, do:</p></li>
+<li><p>Solve:</p></li>
+</ul>
+<p><span class="math">\[V_t(S_t) = \max_{x_t \in \chi_t} \left(C(S_t, x_t) + \gamma \sum_{s^{\prime} \in \mathcal{S}} \mathbb{P}(s^{\prime} | S_t^n, x_t) V_{t+1}^{n-1} s^{\prime} \right)\]</span></p>
+<p>That is, choose action <span class="math">\(x_t\)</span> that maximizes the value of the next step.</p>
+<p>Let’s start with <span class="math">\(t=0\)</span>, <span class="math">\(n=1\)</span> and fix an <span class="math">\(x_0\)</span> from the set of <span class="math">\(\chi\)</span> (allowing the action space to be the same in each period, we can omit the subscript on <span class="math">\(\chi\)</span>) to get started. We first compute <span class="math">\(C(S_0, x_0)\)</span>.</p>
+<p><span class="math">\(S_0 = S_0^1\)</span> which we fixed in step <strong>0b</strong> arbitrarily at 0.5.</p>
+<p>The profits/costs <span class="math">\(C(S_t, x_t)\)</span> are the value derived by action (harvest) <span class="math">\(x_t\)</span> at state (stock) <span class="math">\(S_t\)</span>. Assuming a fixed price and no costs to harvesting, this is just whichever number is smaller (since we cannot harvest more than the available stock,</p>
+<pre class="sourceCode r"><code class="sourceCode r">C &lt;- function(S, X) <span class="kw">pmin</span>(S, X)</code></pre>
+<p>(where we have used R’s vectorized form of the min function).</p>
+<p>This forward dynamic programming will still rely on the one-step transition matrix, <span class="math">\(\mathbb{P}\)</span>.</p>
+<p>Let’s get the transition matrices for this problem, assuming log-normal noise,</p>
+<pre class="sourceCode r"><code class="sourceCode r">sdp_matrix &lt;- <span class="kw">determine_SDP_matrix</span>(f, p, <span class="dt">x_grid=</span>S, <span class="dt">h_grid=</span>chi, sigma_g)</code></pre>
+<p>Which is a list of matrices, one for each harvest (action) <span class="math">\(x_t\)</span>.</p>
+<p>Then we want to consider a fixed <span class="math">\(S_t^n\)</span> and fixed <span class="math">\(x_t\)</span>, and take the sum of <span class="math">\(\mathbb{P}(s^{\prime} | S_t^n, x_t)\)</span> over the <span class="math">\(s^{\prime}\)</span>, which means we want the <span class="math">\(x_t\)</span> element from the list, and then we need sum over the distribution of future states given the current state <span class="math">\(S_t^n\)</span>, e.g. a row of the matrix, e.g. <code>sdp_matrix[[x]][s,]</code>, which we (vector) multiply by <span class="math">\(V_{t+1}^{n-1}(s^{\prime})\)</span>.</p>
+<p>This value <span class="math">\(V\)</span> is of course unknown, other than our initial random guess <span class="math">\(V_{t}^0\)</span>.<br />As we step through the iterations <span class="math">\(V_t^1\)</span>, <span class="math">\(V_t^2\)</span>, <span class="math">\(V_t^3\)</span>, etc., this should convgerge to something meaningful.</p>
+<p>Note that the index along <span class="math">\(S\)</span> corresponding to <span class="math">\(S_t^n\)</span> is given by</p>
+<pre class="sourceCode r"><code class="sourceCode r">s &lt;- <span class="kw">which.min</span>(<span class="kw">abs</span>(S-S_0))</code></pre>
+<p>So our maximization across <span class="math">\(x\)</span> just involves:</p>
+<pre class="sourceCode r"><code class="sourceCode r">values &lt;- 
+  <span class="kw">sapply</span>(<span class="dv">1</span>:<span class="kw">length</span>(chi), function(x)
+    <span class="kw">C</span>(S[s], chi[x]) + sdp_matrix[[x]][s,] %*% V
+)
+
+max_x &lt;- <span class="kw">which.max</span>(values)
+v_hat &lt;- <span class="kw">max</span>(values)</code></pre>
+<p>Trivially, this is just the harvest level that maximizes <span class="math">\(C\)</span> so far (which is just harvesting the <span class="math">\(S_0\)</span>, since <span class="math">\(\bar V^0_t\)</span> begins at zero:</p>
+<pre class="sourceCode r"><code class="sourceCode r">chi[max_x]</code></pre>
+<pre><code>[1] 0.5</code></pre>
+<ul>
+<li>step <strong>2b</strong> We can now update our <span class="math">\(\bar V^0_t\)</span> to get <span class="math">\(\bar V^1_t\)</span>, using the rule:</li>
+</ul>
+<p><span class="math">\[V_t^n(S_t) = \begin{cases} 
+\hat v_t^n &amp; S_t = S_t^n \\
+\bar V_t^{n-1}(S_t) &amp; \textrm{otherwise} 
+\end{cases}\]</span></p>
+<p>e.g. use our maximum value for the case of the state we just considered <span class="math">\(S_t = S_t^n\)</span>, otherwise leave <span class="math">\(V_t\)</span> unchanged. Our new <span class="math">\(V\)</span> is thus:</p>
+<pre class="sourceCode r"><code class="sourceCode r">V[s] = v_hat</code></pre>
+<ul>
+<li>step <strong>2c</strong> Compute <span class="math">\(S^n_{t+1} = S^M(S_t^n, x^n_t, W_{t+1}(\omega^n))\)</span></li>
+</ul>
+<p>We compute the next state using our <code>max_x</code> for <span class="math">\(x^n_t\)</span>, our random samples and the transition function…</p>
+<pre class="sourceCode r"><code class="sourceCode r">S_1 &lt;- omega_n[<span class="dv">1</span>] * <span class="kw">f</span>(S_0, chi[hat[<span class="st">&quot;x_nt&quot;</span>]], p)</code></pre>
+<ul>
+<li><strong>Step 3</strong> Let <span class="math">\(n = n+1\)</span>. if <span class="math">\(n &lt; N\)</span>, go to step 1</li>
+</ul>
+<h2 id="putting-this-all-together-as-a-recursive-algorithm">Putting this all together as a recursive algorithm</h2>
+<pre class="sourceCode r"><code class="sourceCode r">N &lt;- <span class="dv">5000</span> <span class="co"># iterations</span>
+M &lt;- <span class="dv">20</span> <span class="co"># gridsize </span>
+Tmax &lt;- <span class="dv">5</span> <span class="co"># Time horizon</span>
+
+gamma &lt;- <span class="fl">0.95</span> <span class="co"># Discount</span>
+<span class="co"># f (defined above) </span>
+<span class="co"># p  (defined above)</span>
+
+sigma_g &lt;- <span class="fl">0.5</span> <span class="co"># larger variation in random draws helps</span>
+chi &lt;- <span class="kw">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dt">length.out =</span> M)
+S &lt;- <span class="kw">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dt">length.out =</span> M)
+
+sdp_matrix &lt;- <span class="kw">determine_SDP_matrix</span>(f, p, <span class="dt">x_grid=</span>S, <span class="dt">h_grid=</span>chi, sigma_g)
+
+V &lt;- <span class="kw">matrix</span>(<span class="dv">1</span>, M, Tmax)  <span class="co"># A* strategy</span>
+<span class="co"># Fails to explore at matrix(0, M, Tmax)</span>
+<span class="co"># consider: # V &lt;- matrix(rep(chi, Tmax), nrow=M) # </span>
+<span class="co"># V[,1] &lt;- chi   # fails to explore if it doesn&#39;t have at least some non-zero values</span>
+
+C &lt;- function(S, X) <span class="kw">pmin</span>(S, X)
+S_0 &lt;- <span class="fl">0.5</span> 
+alpha &lt;- <span class="dv">1</span> <span class="co"># learning rate</span>
+
+
+for(n in <span class="dv">1</span>:N){
+  
+  omega_n &lt;- <span class="kw">rlnorm</span>(Tmax, <span class="dv">0</span>, sigma_g)
+  S_current &lt;- S_0 <span class="co">#runif(1,0,1) # explores faster when this is random</span>
+
+  for(t in <span class="dv">1</span>:Tmax){
+    <span class="co"># index of the state we&#39;re considering</span>
+    s &lt;- <span class="kw">which.min</span>(<span class="kw">abs</span>(S-S_current)) 
+    
+    <span class="co"># Find the action maximizing the value</span>
+    values &lt;- <span class="kw">sapply</span>(<span class="dv">1</span>:<span class="kw">length</span>(chi), function(x)
+      <span class="kw">C</span>(S[s], chi[x]) + gamma * sdp_matrix[[x]][s,] %*% V[,t])
+    hat &lt;-  <span class="kw">c</span>(<span class="dt">x_nt =</span> <span class="kw">which.max</span>(values), <span class="dt">v_nt =</span> <span class="kw">max</span>(values))
+
+    <span class="co"># Update value V as mixture of new value and previous value</span>
+    V[hat[<span class="st">&quot;x_nt&quot;</span>], t] &lt;- (<span class="dv">1</span> - alpha) * V[hat[<span class="st">&quot;x_nt&quot;</span>],t] + alpha * hat[<span class="st">&quot;v_nt&quot;</span>] 
+    
+    <span class="co"># Advance the state in time along random path  </span>
+    S_current &lt;- omega_n[t] * <span class="kw">f</span>(S_current, chi[hat[<span class="st">&quot;x_nt&quot;</span>]], p)
+
+  }
+}</code></pre>
+<p>for comparison: the SDP solution</p>
+<pre class="sourceCode r"><code class="sourceCode r">opt &lt;- <span class="kw">find_dp_optim</span>(sdp_matrix, S, chi, <span class="dv">70</span>, <span class="fl">0.5</span>, C, <span class="dv">1</span>-gamma, <span class="dt">reward=</span><span class="dv">0</span>)
+opt$V</code></pre>
+<pre><code> [1] 0.000 7.173 7.375 7.496 7.584 7.653 7.710 7.760 7.810 7.860 7.910
+[12] 7.960 8.010 8.060 8.110 8.160 8.210 8.260 8.310 8.360</code></pre>
+<h3 id="problems-arising-from-the-discretization">Problems arising from the discretization</h3>
+<p>Note that after the first iteration, <span class="math">\(n=1\)</span>, the value matrix <span class="math">\(V\)</span> is no longer all zeros. There is a single state, <span class="math">\(S = S_0 =\)</span> 0.5, at which we have value. That value is lost if we set harvest <span class="math">\(x\)</span> too high, since we know we will not then end up in that state – from whence comes the incentive to consider future value. Unfortunately, the value exists only if we hit that state exactly – all other states are assumed to have zero value still.</p>
+<h3 id="additional-problems">Additional problems</h3>
+<p>We no longer have the loop-over-all-states problem, but we face several new or remaining issues:</p>
+<ol type="1">
+<li><p>We still require the use of the one-step transition matrix, with the equally troublesome sum over all states <span class="math">\(\sum_{s^{\prime}\in S} \mathbb{P}(s^{\prime} | S_t^n, x_t)\)</span>.<br />We will fix this by approximating the transitions in step 2b using random draws as well.</p></li>
+<li><p>We only update the values of states we visit. We still need a way to estimate the value of states we have not visited.</p></li>
+<li><p>Worse, we might not visit states that seem bad relative to states we have visited. This is particularly atrocious in this example. Since we initialize the value of all states at 0, the algorithm prefers to harvest all stock from the current state rather than risk a transition into a state starting at 0. There is no convergence guarentee that we will ever escape this cycle of avoiding states we have not seen. We can alter the initial guess of the value of course, and we could alter the starting condition to better explore.</p></li>
+</ol>
+<h2 id="extensions">Extensions</h2>
+<p>The rest of the ADP development is designed to tackle each of these issues. This algorithm gives very poor performance, but very flexible skeleton on which to extend features that have made ADP such a successful approach for impossibly large problems.</p>
+<h3 id="stochastic-value-function-sampling">Stochastic value function sampling</h3>
+<p>Dealing with problem 1:</p>
+<p><span class="math">\[V_t(S_t) = \max_{x_t \in \chi_t} \left(C(S_t, x_t) + \gamma \sum_{\hat \omega \in \hat \Omega^n_{t+1}} p_t+1(\hat \omega) \bar V_{t+1}^{n-1} (S_{t+1}) \right)\]</span></p>
+<pre class="sourceCode r"><code class="sourceCode r">    V[hat[<span class="st">&quot;x_nt&quot;</span>], t] &lt;- (<span class="dv">1</span> - alpha) * 
+                         V[hat[<span class="st">&quot;x_nt&quot;</span>],t] + 
+                          alpha * hat[<span class="st">&quot;v_nt&quot;</span>] </code></pre>
+<h3 id="decreasing-the-state-space-size">Decreasing the state space size</h3>
+<ul>
+<li>Aggregation</li>
+<li>Continuous Value function approximations</li>
+<li>Using the post-decision state variable (improves dealing with the expectation calc)</li>
+</ul>
+<h3 id="initialization-problem">Initialization problem</h3>
+<ul>
+<li>We do not explore if we are too pessimistic about value of visiting other states. Start optimisitc: AI’s A* alogrithm (synchronous)</li>
+<li>Asynchronous updating – randomly sampling starting variables</li>
+<li>RTDP (Real Time Dynamic Programming – not necessarily what it sounds like) external rule determines which states we visit</li>
+</ul>
+<h3 id="learning">Learning</h3>
+<ul>
+<li>The concepts of learning and the trade-off between exploration and exploitation are already built-in to the forward algorithm.</li>
+</ul>
+<h3 id="using-non-stochastic-transition-information-only-step-2b-can-be-written-as">Using Non-stochastic transition information only, step <strong>2b</strong> can be written as:</h3>
+<p>Taking <span class="math">\(x_0\)</span> as the smallest harvest, <span class="math">\(\min(\chi)\)</span> = 0 and evaluating <span class="math">\(C(S_0,X_0) = \min(S_0, X_0)\)</span> gives us 0, rather trivially.<br />The next terms depend on the value <span class="math">\(\tilde V^0_1(s^{\prime})\)</span> for all <span class="math">\(s^{\prime} \in S\)</span>, which we have no idea about. Fortunately we have assumed a value for each of these in step 0a.</p>
+<p>We must also come up with some values for the probability <span class="math">\(\mathbb{P}(s^{\prime} | S_1^0, x_1)\)</span> for each state, given our current state <span class="math">\(S_1^0\)</span> and considered action <span class="math">\(x_1\)</span>. This is more straight forward, since it is determined by our one-step transition function (without simulation - recall that the single step transition is given exactly).</p>
+<p>To do so, we evaluate the argument for each value in our action space, <span class="math">\(x_t \in \chi_t\)</span>,</p>
+<pre class="sourceCode r"><code class="sourceCode r">s &lt;- S_0
+C &lt;- function(S, X) <span class="kw">pmin</span>(S, X)
+arg &lt;- <span class="kw">sapply</span>(chi, function(x) <span class="kw">C</span>(s, x) + <span class="kw">f</span>(S, x, p) %*% V)
+x_nt = <span class="kw">which.max</span>(arg)
+v_nt = <span class="kw">max</span>(arg)
+V[x_nt] = v_nt</code></pre>
+ 
+<!-- not that raw_content depends on custom generator, 
+     see _plugins/jekyll-labnotebook-plugins/raw_content --> 
+</article> 
+<p> <a href="/2013/05/27/exploring-approximate-dynamic-programming-approaches.html"> <em>Read more</em></a> </p>
 <br />
 <br />
 

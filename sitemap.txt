@@ -811,7 +811,6 @@ http://carlboettiger.info/archives/4482/index.html
 
  
 http://carlboettiger.info/2013/06/10/mansucript-reviews-on-github.html  
-http://carlboettiger.info/2013/06/06/what-I-look-for-in-software-papers.html  
 http://carlboettiger.info/2013/06/05/semi-analytic-posteriors.html  
 http://carlboettiger.info/2013/06/03/DOI-citable.html  
 http://carlboettiger.info/2013/06/03/ADMB-basic-example.html  
