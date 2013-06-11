@@ -2,7 +2,7 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
   <head prefix="dc: http://purl.org/dc/terms/ og: http://ogp.me/ns#">
   <meta http-equiv='Content-Type' content='text/html; charset=utf-8'/>
-  <title>Notes</title>
+  <title>Analytic Marginalizing For Posteriors</title>
   <meta name="author" content="Carl Boettiger" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
@@ -22,33 +22,33 @@
 <!-- Ideally we would want date originally created from the _oldest_ git commit too...-->
 
 <!-- HTML5 metadata -->
-<meta name="keywords" content="nonparametric-bayes" />
+<meta name="keywords" content="nonparametric-bayes, derivation" />
 <meta name="description" content="" />
 <meta name="resource_type" content="website"/> 
 <!-- RDFa Metadata (in DublinCore) -->
-<meta property="dc:title" content="Notes" />
+<meta property="dc:title" content="Analytic Marginalizing For Posteriors" />
 <meta property="dc:creator" content="Carl Boettiger" />
-<meta property="dc:date" content="2013-05-24T00:00:00-07:00" />
+<meta property="dc:date" content="2013-06-04T00:00:00-07:00" />
 <meta property="dc:format" content="text/html" />
 <meta property="dc:language" content="en" />
-<meta property="dc:identifier" content="/2013/05/24/notes.html" />
+<meta property="dc:identifier" content="/2013/06/04/analytic-marginalizing-for-posteriors.html" />
 <meta property="dc:rights" content="CC0" />
 <meta property="dc:source" content="Lab Notebook" />
 <meta property="dc:subject" content="Ecology" /> 
 <meta property="dc:type" content="website" /> 
 <!-- RDFa Metadata (in OpenGraph) -->
-<meta property="og:title" content="Notes" />
+<meta property="og:title" content="Analytic Marginalizing For Posteriors" />
 <meta property="og:author" content="http://carlboettiger.info/index.html#me" />  <!-- Should be Liquid? URI? -->
 <meta property="http://ogp.me/ns/profile#first_name" content="Carl"/>
 <meta property="http://ogp.me/ns/profile#last_name" content="Boettiger"/>
-<meta property="http://ogp.me/ns/article#published_time" content="2013-05-24T00:00:00-07:00" />
+<meta property="http://ogp.me/ns/article#published_time" content="2013-06-04T00:00:00-07:00" />
 <meta property="og:site_name" content="Lab Notebook" /> <!-- Same as dc:source? -->
-<meta property="og:url" content="http://carlboettiger.info/2013/05/24/notes.html" />
+<meta property="og:url" content="http://carlboettiger.info/2013/06/04/analytic-marginalizing-for-posteriors.html" />
 <meta property="og:type" content="website" /> 
 <!-- Google Scholar Metadata -->
 <meta name="citation_author" content="Carl Boettiger"/>
-<meta name="citation_date" content="2013-05-24T00:00:00-07:00"/>
-<meta name="citation_title" content="Notes"/>
+<meta name="citation_date" content="2013-06-04T00:00:00-07:00"/>
+<meta name="citation_title" content="Analytic Marginalizing For Posteriors"/>
 <meta name="citation_journal_title" content="Lab Notebook"/>
 
 <!--NOTE: see also the COinS Metadata in span element in footer -->
@@ -134,7 +134,7 @@
     <div class="container"> <!-- Responsive grid layout --> 
 
       <header class="jumbotron">
-  <h1 class="entry-title">Notes</h1>
+  <h1 class="entry-title">Analytic Marginalizing For Posteriors</h1>
   <h3></h3>
 </header>
 
@@ -143,25 +143,53 @@
 <div class="row">
   <div class="span7 offset1">
     <article>
-    <h3 id="prosecutor">prosecutor</h3>
-<ul>
-<li>Bit more writing on comment reply. Sent to Alex and Alan for feedback.</li>
-</ul>
-<h3 id="nonparametric-bayes">nonparametric-bayes</h3>
-<p>Demonstrating robustness of the GP approach is remarkably difficult ironically because the comparison methods are not particularly robust; most often due to poor initial conditions. Doing all I can to make the MLE and parametric Bayesian cases suitably automated such that the can give reasonable performance as I loop over various simulation parameters and models without much hand-holding of each of the estimators.</p>
-<p>Also an automatic sensitivity analysis gets pretty computationally intensive and generates a lot of different outputs to keep track of, trying to improve this through cleaner code, parallelization, caching, chunk dependencies, and namespaces for scripts.</p>
-<ul>
-<li>Playing with mcmc convergence over initial conditions</li>
-<li>Running case without measurement error for parametric bayesian models</li>
-<li>Adaptuing runs for parallel and for execution on farm cluster</li>
-<li>Consider ADMB for the MLE estimate to be a bit more robust for automated cases.</li>
-</ul>
-<h3 id="log">Log</h3>
-<ul>
-<li>process noise only example (first attempt) <a href="https://github.com/cboettig/nonparametric-bayes/commit/be4d986b46f98d27f19add3ac42e536ee4ef5805">04:50 pm 2013/05/24</a></li>
-<li>Consider the case of process noise only in the parametric bayesian versions <a href="https://github.com/cboettig/nonparametric-bayes/commit/bbeaf4fc6b5f999e04d02b3487151c982bcf6771">03:38 pm 2013/05/24</a></li>
-<li>parallel jags <a href="https://github.com/cboettig/nonparametric-bayes/commit/29db77699a8ff6b9041f45a952a548b6cd255af3">03:31 pm 2013/05/24</a></li>
-</ul>
+    <p>Consider the model</p>
+<p><span class="math">\[ X_{t+1} = X_t r e^{-\beta X_t + \sigma Z_t } \]</span></p>
+<p>with <span class="math">\(Z_t\)</span> a unit normal random variable. The likelihood of the sequence of <span class="math">\(T\)</span> observations of <span class="math">\(X\)</span> under this model is thus</p>
+<p><span class="math">\[P(r, \beta, \sigma | X) = \frac{1}{\sqrt{2 \pi \sigma^2}^{T-1}} \exp\left(\frac{\sum_t^{T-1} \left(\log X_{t+1} - \log X_t - \log r + \beta X_t\right)^2 }{2 \sigma^2}\right) \]</span></p>
+<p>To integrate out <span class="math">\(r\)</span>, <span class="math">\(\int P(r, \beta, \sigma | X) P(r) dr\)</span>, we’ll make this look like a Gaussian in <span class="math">\(\log r\)</span> by completing the square; getting the square on the outside of the sum. First we collect all the other terms as the factor, <span class="math">\(M_t\)</span>;</p>
+<p><span class="math">\[M_t := \log X_{t+1} - \log X_t + \beta X_t\]</span></p>
+<p>Also define <span class="math">\(a = \log r\)</span>, then after expanding the square inside the sum we have</p>
+<p><span class="math">\[\sum_t^{T-1} \left(\log r - M_t\right)^2 = \sum_t^{T-1} a^2 - 2 \sum_t^{T-1} a M_t + \sum_t^{T-1} M_t^2 \]</span></p>
+<p>(using the linearity of the summation operator). Use the trick of adding and subtracting <span class="math">\(\left( \sum M_t \right)^2/(T-1)\)</span>, to get:</p>
+<p><span class="math">\[ = -\sum_t^{T-1} M_t^2 -\frac{\left(\sum_t^{T-1} M_t\right)^2}{T-1}  + \frac{\left(\sum_t^{T-1} M_t\right)^2}{T-1} - 2 a \sum M_t + (T-1)a^2\]</span></p>
+<p><span class="math">\[ =  -\sum_t^{T-1} M_t^2 -\frac{\left(\sum_t^{T-1} M_t\right)^2}{T-1}  +(T-1)\left( \left(\frac{\sum_t^{T-1} M_t}{T-1}\right)^2 - \frac{2 a \sum M_t}{T-1} + a^2\right)\]</span></p>
+<p><span class="math">\[ = -\sum_t^{T-1} M_t^2 -\frac{\left(\sum_t^{T-1} M_t\right)^2}{T-1}  +(T-1)\left( \frac{\sum_t^{T-1} M_t}{T-1} - a\right)^2\]</span></p>
+<p>Returning this expression into our exponential in place of the sum of squares, we have</p>
+<p><span class="math">\[P(r, \beta, \sigma | X) = \frac{1}{\sqrt{2 \pi \sigma^2}^{T-1}} \exp\left(\frac{(T-1)\left( \frac{\sum_t^{T-1} M_t}{T-1} - a\right)^2}{2 \sigma^2}\right) \exp\left(\frac{-\sum_t^{T-1} M_t^2 -\frac{\left(\sum_t^{T-1} M_t\right)^2}{T-1} }{2 \sigma^2}\right) \]</span></p>
+<p>Note that the second <span class="math">\(\exp\)</span> term does not depend on <span class="math">\(a\)</span>. The remaining argument has Gaussian form in <span class="math">\(da\)</span>, so after pulling out the constant terms we can easily integrate this over <span class="math">\(da\)</span>. (Note that we have an implicit uniform prior on <span class="math">\(a\)</span> here).</p>
+<p><span class="math">\[ \int \exp\left(\frac{-\left(\frac{\sum_t^{T-1} M_t}{T-1} - a \right)^2}{2 \sigma^1 (T-1)^{-1} } \right) d a  = \sqrt{\frac{2\pi\sigma^2}{T-1}}\]</span></p>
+<p>which we can combine with the remaining terms to recover</p>
+<p>$  ( )$$</p>
+<h2 id="marginalizing-over-sigma">marginalizing over <span class="math">\(\sigma\)</span></h2>
+<p>Now that we have effectively eliminated the parameter <span class="math">\(r\)</span> from our posterior calculation, we wish to also integrate out the second parameter, <span class="math">\(\sigma\)</span>. Once again we can “integrate by analogy;” the expression above in the variable <span class="math">\(\sigma^2\)</span> looks like a Gamma distribution,</p>
+<p><span class="math">\[ \int x^{\alpha - 1} e^{-\beta x} dx = \frac{\beta^{\alpha}}{\Gamma(\alpha)} \]</span></p>
+<p>Where we take</p>
+<p><span class="math">\[ \alpha = T/2\]</span></p>
+<p>and</p>
+<p><span class="math">\[ \beta = \frac{1}{2} \left( \sum M_t^2 - \frac{ \left( \sum M_t \right)^2}{T - 1}\right) \]</span>,</p>
+<p>leaving us with</p>
+<p><span class="math">\[\frac{1}{(T-1)\sqrt{2 \pi}^{T-2} } \frac{\tfrac{1}{2}^{T/2} \left( \sum M_t^2 - \frac{ \left( \sum M_t \right)^2}{T - 1}\right)^{T/2}}{\Gamma(T/2)} \]</span></p>
+<h2 id="additional-recruitment-functions">Additional recruitment functions</h2>
+<p>The above derivation can be followed identically for the three-parameter recruitment functions I refer to as the Allen and Myers models after an appropriate choice of <span class="math">\(M_t\)</span>. In both the Ricker and Allen models we must first reparamaterize the models to isolate the <span class="math">\(\alpha\)</span> term correctly.</p>
+<h4 id="ricker">Ricker</h4>
+<p>The original parameterization</p>
+<p><span class="math">\[ X_{t+1} = X_t e^{r \left( 1 - \frac{X_t}{K}\right)}\]</span> does not partition into the form above. Taking <span class="math">\(\beta =  \tfrac{r}{K}\)</span> and <span class="math">\(a = r\)</span>, we can write <span class="math">\(M_t\)</span> as above,</p>
+<p><span class="math">\[M_t := \log X_{t+1} - \log X_t + \beta X_t\]</span></p>
+<h4 id="myers">Myers</h4>
+<p><span class="math">\[ X_{t+1} = \frac{ r X_t^{\theta} }{1 + \frac{X_t^{\theta}}{K} } Z_t\]</span></p>
+<p>For <span class="math">\(Z_t\)</span> lognormal with log-mean zero and log-standard-deviation <span class="math">\(\sigma\)</span>, The log-likelihood takes the form</p>
+<p>and thus we can write <span class="math">\(M_t\)</span> as</p>
+<p><span class="math">\[M_t := \log X_{t+1} - \theta \log X_t + \log\left(1 +  \frac{X_t^{\theta}}{K} \right)\]</span></p>
+<h4 id="allen">Allen</h4>
+<p>The original parameterization</p>
+<p><span class="math">\[ X_{t+1} = Z_t X_t e^{r \left( 1 - \frac{X_t}{K} \right) \frac{\left(X_t - \theta\right)}{K}} \]</span></p>
+<p>does not let us isolate an additive constant (log-mean term) as we did in the example above. Writing the argument of the exponent in standard quadratic form,</p>
+<p><span class="math">\[ X_{t+1} = Z_t X_t e^{c + b X+t + a X_t^2} \]</span></p>
+<p>Where</p>
+<p><span class="math">\[c = \tfrac{-rC}{K}\]</span> <span class="math">\[b = \tfrac{r}{K}\left(\tfrac{C}{K} + 1\right)\]</span> <span class="math">\[a = \tfrac{r}{K^2}\]</span></p>
+<p>then</p>
+<p><span class="math">\[M_t := \log X_{t+1} - \log X_t - b X_t + a X_t^2 \]</span></p>
 
     </article>
   </div>
@@ -169,19 +197,19 @@
     <div class="sidebar">
       <aside prefix="og:http://ogp.me/ns/article#">
   <p> <i class="icon-calendar"></i>
-    <time datetime="2013-05-24T00:00:00-07:00" 
-    property="dc:created">24 May 2013</time></p>
+    <time datetime="2013-06-04T00:00:00-07:00" 
+    property="dc:created">04 Jun 2013</time></p>
   <p><small> modified: <time 
-            datetime="2013-05-28T20:22:50-07:00" 
-            property="dc:modified">28 May 2013</time></small></p>
+            datetime="2013-06-11T15:58:25-07:00" 
+            property="dc:modified">11 Jun 2013</time></small></p>
 
  <br />
 
   
-    <p><a class="btn btn-mini" rel="prev" href='/2013/05/23/notes.html'><i class="icon-chevron-left"></i> prev</a>
+    <p><a class="btn btn-mini" rel="prev" href='/2013/06/03/DOI-citable.html'><i class="icon-chevron-left"></i> prev</a>
   
   
-  <a class="btn btn-mini" rel="next" href='/2013/05/27/exploring-approximate-dynamic-programming-approaches.html'>next <i class="icon-chevron-right"></i></a></p>
+  <a class="btn btn-mini" rel="next" href='/2013/06/05/semi-analytic-posteriors.html'>next <i class="icon-chevron-right"></i></a></p>
   
 
   <br />
@@ -189,7 +217,7 @@
   <p> <a  onclick="recordOutboundLink(this, 'Outbound Links', 'history'); 
             return false;" 
           class="btn btn-mini" 
-          href="https://github.com/cboettig/labnotebook/commits/master/_posts/2013-05-24-notes.md"><i class="icon-time"></i> history</a></p>
+          href="https://github.com/cboettig/labnotebook/commits/master/_posts/2013-06-04-analytic-marginalizing-for-posteriors.md"><i class="icon-time"></i> history</a></p>
 
   <br />
 
@@ -204,16 +232,20 @@
     
     <!-- http://schema.org/BlogPosting/keywords -->
     <a rel="og:tag" class="tag" 
-       href="/tags.html#nonparametric-bayes">#nonparametric-bayes</a>
+       href="/tags.html#nonparametric-bayes">#nonparametric-bayes</a>, 
+    
+    <!-- http://schema.org/BlogPosting/keywords -->
+    <a rel="og:tag" class="tag" 
+       href="/tags.html#derivation">#derivation</a>
     </p>
 
   <br/>
 
-   <p style="font-style:italic"> <i class="icon-signal"></i> pageviews: 11</p>
+   <p style="font-style:italic"> <i class="icon-signal"></i> pageviews: (not calculated)</p>
 
   <br/>
 
-  <p><small> <i class="icon-barcode"></i> SHA Hash: <a href="https://github.com/cboettig/labnotebook/commit/60fee991d34c96a1f8d91d4dbbe0efe63c4daef7/_posts/2013-05-24-notes.md"> 60fee991d34c96a1f8d91d4dbbe0efe63c4daef7</a></small></p>
+  <p><small> <i class="icon-barcode"></i> SHA Hash: <a href="https://github.com/cboettig/labnotebook/commit/60fee991d34c96a1f8d91d4dbbe0efe63c4daef7/_posts/2013-06-04-analytic-marginalizing-for-posteriors.md"> 60fee991d34c96a1f8d91d4dbbe0efe63c4daef7</a></small></p>
     
   <br/>
 
@@ -315,7 +347,7 @@
       <a onclick="recordOutboundLink(this, 'Outbound Links', 'ONS_claim'); return false;" href="http://onsclaims.wikispaces.com/"><img src="http://onsclaims.wikispaces.com/file/view/ons-aci2-icon.png" alt="ONS" class="showtooltip" title="An Open Notebook Science (ONS) project claim: Entry provides all content (AC) immediately (I) or without significant delay.  See link for details"/></a>
 
       <a title="This site uses linked data semantics. Click to extract as RDF XML." class="btn btn-mini showtooltip" style="font-size: .8em" 
-       href="http://any23.org/?format=rdfxml&validate=validate&uri=http://carlboettiger.info/2013/05/24/notes.html"><i 
+       href="http://any23.org/?format=rdfxml&validate=validate&uri=http://carlboettiger.info/2013/06/04/analytic-marginalizing-for-posteriors.html"><i 
          class="icon-cloud-download"  onclick="recordOutboundLink(this, 'Outbound Links', 'RDF'); return false;"></i> RDF</a>
       </p>
     </div>
@@ -336,12 +368,12 @@
       title="ctx_ver=Z39.88-2004
       &amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Adc
       &amp;rfr_id=info%3Asid%2Focoins.info%3Agenerator
-      &amp;rft.title=Notes
+      &amp;rft.title=Analytic Marginalizing For Posteriors
       &amp;rft.creator=Carl Boettiger
-      &amp;rft.date=2013-05-24
+      &amp;rft.date=2013-06-04
       &amp;rft.language=EN
       &amp;rft.rights=CC0
-      &amp;rft_id=http://carlboettiger.info/2013/05/24/notes.html">
+      &amp;rft_id=http://carlboettiger.info/2013/06/04/analytic-marginalizing-for-posteriors.html">
   </span>
 
 
