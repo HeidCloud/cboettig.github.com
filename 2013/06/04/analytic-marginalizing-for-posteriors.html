@@ -146,8 +146,8 @@
     <p>Consider the model</p>
 <p><span class="math">\[ X_{t+1} = X_t r e^{-\beta X_t + \sigma Z_t } \]</span></p>
 <p>with <span class="math">\(Z_t\)</span> a unit normal random variable. The likelihood of the sequence of <span class="math">\(T\)</span> observations of <span class="math">\(X\)</span> under this model is thus</p>
-<p><span class="math">\[P(r, \beta, \sigma | X) = \frac{1}{\sqrt{2 \pi \sigma^2}^{T-1}} \exp\left(\frac{\sum_t^{T-1} \left(\log X_{t+1} - \log X_t - \log r + \beta X_t\right)^2 }{2 \sigma^2}\right) \]</span></p>
-<p>To integrate out <span class="math">\(r\)</span>, <span class="math">\(\int P(r, \beta, \sigma | X) P(r) dr\)</span>, we’ll make this look like a Gaussian in <span class="math">\(\log r\)</span> by completing the square; getting the square on the outside of the sum. First we collect all the other terms as the factor, <span class="math">\(M_t\)</span>;</p>
+<p><span class="math">\[P(X | r, \beta, \sigma) = \frac{1}{\sqrt{2 \pi \sigma^2}^{T-1}} \exp\left(\frac{\sum_t^{T-1} \left(\log X_{t+1} - \log X_t - \log r + \beta X_t\right)^2 }{2 \sigma^2}\right) \]</span></p>
+<p>To integrate out <span class="math">\(r\)</span>, <span class="math">\(P(X | \beta, \sigma) = \int P(X | r, \beta, \sigma ) P(r) dr\)</span>, we’ll make this look like a Gaussian in <span class="math">\(\log r\)</span> by completing the square; getting the square on the outside of the sum. First we collect all the other terms as the factor, <span class="math">\(M_t\)</span>;</p>
 <p><span class="math">\[M_t := \log X_{t+1} - \log X_t + \beta X_t\]</span></p>
 <p>Also define <span class="math">\(a = \log r\)</span>, then after expanding the square inside the sum we have</p>
 <p><span class="math">\[\sum_t^{T-1} \left(\log r - M_t\right)^2 = \sum_t^{T-1} a^2 - 2 \sum_t^{T-1} a M_t + \sum_t^{T-1} M_t^2 \]</span></p>
@@ -156,11 +156,11 @@
 <p><span class="math">\[ =  -\sum_t^{T-1} M_t^2 -\frac{\left(\sum_t^{T-1} M_t\right)^2}{T-1}  +(T-1)\left( \left(\frac{\sum_t^{T-1} M_t}{T-1}\right)^2 - \frac{2 a \sum M_t}{T-1} + a^2\right)\]</span></p>
 <p><span class="math">\[ = -\sum_t^{T-1} M_t^2 -\frac{\left(\sum_t^{T-1} M_t\right)^2}{T-1}  +(T-1)\left( \frac{\sum_t^{T-1} M_t}{T-1} - a\right)^2\]</span></p>
 <p>Returning this expression into our exponential in place of the sum of squares, we have</p>
-<p><span class="math">\[P(r, \beta, \sigma | X) = \frac{1}{\sqrt{2 \pi \sigma^2}^{T-1}} \exp\left(\frac{(T-1)\left( \frac{\sum_t^{T-1} M_t}{T-1} - a\right)^2}{2 \sigma^2}\right) \exp\left(\frac{-\sum_t^{T-1} M_t^2 -\frac{\left(\sum_t^{T-1} M_t\right)^2}{T-1} }{2 \sigma^2}\right) \]</span></p>
+<p><span class="math">\[P(r, \beta, \sigma | X) = \frac{1}{\sqrt{2 \pi \sigma^2}^{T-1}} \exp\left(-\frac{(T-1)\left( \frac{\sum_t^{T-1} M_t}{T-1} - a\right)^2}{2 \sigma^2}\right) \exp\left(\frac{-\sum_t^{T-1} M_t^2 -\frac{\left(\sum_t^{T-1} M_t\right)^2}{T-1} }{2 \sigma^2}\right) \]</span></p>
 <p>Note that the second <span class="math">\(\exp\)</span> term does not depend on <span class="math">\(a\)</span>. The remaining argument has Gaussian form in <span class="math">\(da\)</span>, so after pulling out the constant terms we can easily integrate this over <span class="math">\(da\)</span>. (Note that we have an implicit uniform prior on <span class="math">\(a\)</span> here).</p>
 <p><span class="math">\[ \int \exp\left(\frac{-\left(\frac{\sum_t^{T-1} M_t}{T-1} - a \right)^2}{2 \sigma^1 (T-1)^{-1} } \right) d a  = \sqrt{\frac{2\pi\sigma^2}{T-1}}\]</span></p>
 <p>which we can combine with the remaining terms to recover</p>
-<p>$  ( )$$</p>
+<p><span class="math">\[ \frac{1}{(T-1)\left(2 \pi \sigma^2 \right)^{T-2}} \exp\left(\frac{-\sum M_t^2 + \frac{\left(\sum M_t\right)^2}{T-1}}{2\sigma^2} \right)\]</span></p>
 <h2 id="marginalizing-over-sigma">marginalizing over <span class="math">\(\sigma\)</span></h2>
 <p>Now that we have effectively eliminated the parameter <span class="math">\(r\)</span> from our posterior calculation, we wish to also integrate out the second parameter, <span class="math">\(\sigma\)</span>. Once again we can “integrate by analogy;” the expression above in the variable <span class="math">\(\sigma^2\)</span> looks like a Gamma distribution,</p>
 <p><span class="math">\[ \int x^{\alpha - 1} e^{-\beta x} dx = \frac{\beta^{\alpha}}{\Gamma(\alpha)} \]</span></p>
@@ -200,8 +200,8 @@
     <time datetime="2013-06-04T00:00:00-07:00" 
     property="dc:created">04 Jun 2013</time></p>
   <p><small> modified: <time 
-            datetime="2013-06-11T15:58:25-07:00" 
-            property="dc:modified">11 Jun 2013</time></small></p>
+            datetime="2013-06-14T16:23:04-07:00" 
+            property="dc:modified">14 Jun 2013</time></small></p>
 
  <br />
 
@@ -241,11 +241,11 @@
 
   <br/>
 
-   <p style="font-style:italic"> <i class="icon-signal"></i> pageviews: 2</p>
+   <p style="font-style:italic"> <i class="icon-signal"></i> pageviews: 6</p>
 
   <br/>
 
-  <p><small> <i class="icon-barcode"></i> SHA Hash: <a href="https://github.com/cboettig/labnotebook/commit/60fee991d34c96a1f8d91d4dbbe0efe63c4daef7/_posts/2013-06-04-analytic-marginalizing-for-posteriors.md"> 60fee991d34c96a1f8d91d4dbbe0efe63c4daef7</a></small></p>
+  <p><small> <i class="icon-barcode"></i> SHA Hash: <a href="https://github.com/cboettig/labnotebook/commit/b74046a6738033ebe3fdc223bc510105282f68de/_posts/2013-06-04-analytic-marginalizing-for-posteriors.md"> b74046a6738033ebe3fdc223bc510105282f68de</a></small></p>
     
   <br/>
 
@@ -332,8 +332,8 @@
            citations on google-scholar
            stackoverflow
       -->
-      <a alt="rss" type="application/atom+xml" href="/atom.xml"  
-         class="showtooltip" title="subscribe to RSS feeds for my open lab notebook" 
+      <a alt="rss" type="application/atom+xml" href="/blog.xml"  
+         class="showtooltip" title="RSS feeds for my blog-style entries. See the feed on my lab notebook (/atom.xml) to follow all entries instead." 
          onclick="recordOutboundLink(this, 'Outbound Links', 'RSS'); 
          return false;"><i class="icon-rss"></i></a>
        </p>

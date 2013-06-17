@@ -12,6 +12,7 @@ http://carlboettiger.info/index.html
 http://carlboettiger.info/atom.xml  
 http://carlboettiger.info/research.html  
 http://carlboettiger.info/R.xml  
+http://carlboettiger.info/blog.xml  
 http://carlboettiger.info/archive.html  
 http://carlboettiger.info/projects/warning-signals.html  
 http://carlboettiger.info/projects/pdg-control.html  
