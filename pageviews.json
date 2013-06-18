@@ -1,7 +1,7 @@
 {
   "/": [
-    "6009",
-    "15529"
+    "6019",
+    "15549"
   ],
   "/ Hastings student at UC Davis": [
     "0",
@@ -200,8 +200,8 @@
     "1"
   ],
   "/2010/02/25/The-Ergodicity-Question--Time-averaging-vs-Ensemble-averaging.html": [
-    "4",
-    "9"
+    "5",
+    "10"
   ],
   "/2010/02/25/Thursday.html": [
     "0",
@@ -416,8 +416,8 @@
     "1"
   ],
   "/2010/04/12/Teaching.html": [
-    "1",
-    "2"
+    "2",
+    "3"
   ],
   "/2010/04/13/Teaching.html": [
     "0",
@@ -932,8 +932,8 @@
     "15"
   ],
   "/2010/10/30/short-note-trait-diversification-rates-controlled-by-other-traits.html": [
-    "4",
-    "4"
+    "5",
+    "5"
   ],
   "/2010/11/": [
     "0",
@@ -972,8 +972,8 @@
     "13"
   ],
   "/2010/11/08/welcome-to-my-lab-notebook.html": [
-    "59",
-    "135"
+    "60",
+    "137"
   ],
   "/2010/11/10/tuesday-sdes-then-back-to-phylogenetics.html": [
     "1",
@@ -1412,8 +1412,8 @@
     "6"
   ],
   "/2011/04/17/treepar-changing-rates-of-evolution.html": [
-    "89",
-    "121"
+    "90",
+    "122"
   ],
   "/2011/04/18/algorithms-discussion-group-abc-continued.html": [
     "1",
@@ -1516,8 +1516,8 @@
     "4"
   ],
   "/2011/05/16/mathjax-the-smart-way-child-themes.html": [
-    "8",
-    "14"
+    "9",
+    "15"
   ],
   "/2011/05/16/treebase-in-r-a-first-tutorial.html": [
     "40",
@@ -1532,8 +1532,8 @@
     "84"
   ],
   "/2011/05/19/algorithms-group-mcmcmc.html": [
-    "185",
-    "220"
+    "189",
+    "224"
   ],
   "/2011/05/19/thursday-5.html": [
     "0",
@@ -1597,7 +1597,7 @@
   ],
   "/2011/06/13/em-algorithm-2.html": [
     "10",
-    "11"
+    "12"
   ],
   "/2011/06/14/tuesday-evolutionwrightscape-talk-sundry.html": [
     "1",
@@ -1701,7 +1701,7 @@
   ],
   "/2011/07/24/csgf-conference-notes.html": [
     "0",
-    "2"
+    "3"
   ],
   "/2011/07/25/monday-algorithms-discussion-group-em-finished.html": [
     "2",
@@ -1788,12 +1788,12 @@
     "14"
   ],
   "/2011/08/26/fishbase-from-r-some-xml-parsing.html": [
-    "274",
-    "323"
+    "275",
+    "324"
   ],
   "/2011/08/26/rfishbase-and-some-taxonomy-in-r-with-taxize.html": [
-    "41",
-    "48"
+    "42",
+    "49"
   ],
   "/2011/08/27/saturday-working-on-computational-scaling-abstraction-etc.html": [
     "4",
@@ -1805,7 +1805,7 @@
   ],
   "/2011/08/29/algorithms-group-hidden-markov-models.html": [
     "5",
-    "8"
+    "9"
   ],
   "/2011/08/29/monday-scaling-wrightscape-examples.html": [
     "1",
@@ -2000,8 +2000,8 @@
     "2"
   ],
   "/2011/11/01/server-file-management-from-bowser-ajaxplorer-mollify.html": [
-    "227",
-    "260"
+    "230",
+    "264"
   ],
   "/2011/11/01/training-problem-2-update.html": [
     "4",
@@ -2016,8 +2016,8 @@
     "1"
   ],
   "/2011/11/04/sparkleshare-configuration.html": [
-    "2059",
-    "2488"
+    "2063",
+    "2492"
   ],
   "/2011/11/06/sunday-5.html": [
     "0",
@@ -2112,8 +2112,8 @@
     "6"
   ],
   "/2011/12/12/better-sweave-dynamic-documents-with-syntax-highlighting-easier-tools.html": [
-    "28",
-    "40"
+    "29",
+    "41"
   ],
   "/2012/": [
     "0",
@@ -2184,8 +2184,8 @@
     "70"
   ],
   "/2012/02/06/some-collaborative-tools-for-science.html": [
-    "39",
-    "77"
+    "40",
+    "78"
   ],
   "/2012/02/06/stackoverflow.com": [
     "0",
@@ -2201,11 +2201,11 @@
   ],
   "/2012/02/10/thursday-writing-some-latexdiff-notes.html": [
     "26",
-    "37"
+    "38"
   ],
   "/2012/02/12/elegant-fast-data-manipulation-with-data-table.html": [
-    "562",
-    "632"
+    "566",
+    "636"
   ],
   "/2012/02/12/saturday-projects-reading-markdown-plugins.html": [
     "6",
@@ -2268,8 +2268,8 @@
     "4"
   ],
   "/2012/02/27/using-knitr-and-rwordpress-to-publish-results-directly-from-r-6.html": [
-    "342",
-    "519"
+    "344",
+    "525"
   ],
   "/2012/02/27/using-knitr-and-rwordpress-to-publish-results-directly-from-r.html": [
     "1",
@@ -2320,8 +2320,8 @@
     "8"
   ],
   "/2012/03/20/citing-r-packages.html": [
-    "1120",
-    "1217"
+    "1128",
+    "1225"
   ],
   "/2012/03/20/friday-some-random-notes.html": [
     "2",
@@ -2344,8 +2344,8 @@
     "19"
   ],
   "/2012/03/24/citations-in-markdown-using-knitr.html": [
-    "783",
-    "1044"
+    "785",
+    "1048"
   ],
   "/2012/03/24/citations-in-markdown-usingknitr.html": [
     "0",
@@ -2388,8 +2388,8 @@
     "3"
   ],
   "/2012/04/07/writing-reproducibly-in-the-open-with-knitr.html": [
-    "621",
-    "1032"
+    "622",
+    "1034"
   ],
   "/2012/04/10/monday-tuesday.html": [
     "1",
@@ -2420,8 +2420,8 @@
     "45"
   ],
   "/2012/05/01/Jekyll-vs-Wordpress.html": [
-    "1316",
-    "1739"
+    "1320",
+    "1743"
   ],
   "/2012/05/01/Jekyll-vs-Wordpress.html)": [
     "6",
@@ -2448,8 +2448,8 @@
     "15"
   ],
   "/2012/05/06/research-workflow.html": [
-    "781",
-    "1244"
+    "792",
+    "1256"
   ],
   "/2012/05/07/github.com/deads/bigrf": [
     "0",
@@ -2516,16 +2516,16 @@
     "164"
   ],
   "/2012/05/26/exploring-jekyll-layout.html": [
-    "815",
-    "1057"
+    "819",
+    "1061"
   ],
   "/2012/05/26/exploring-jekyll-layout.html?search-text=jekyll": [
     "0",
     "1"
   ],
   "/2012/05/30/knitcitations.html": [
-    "671",
-    "970"
+    "673",
+    "972"
   ],
   "/2012/05/30/knitcitations.html?search-text=": [
     "0",
@@ -2664,8 +2664,8 @@
     "65"
   ],
   "/2012/09/28/Welcome-to-my-lab-notebook.html": [
-    "508",
-    "1887"
+    "511",
+    "1893"
   ],
   "/2012/10/01/multiple-uncertainty.html": [
     "10",
@@ -2688,8 +2688,8 @@
     "51"
   ],
   "/2012/10/09/data-management-plan.html": [
-    "75",
-    "167"
+    "76",
+    "168"
   ],
   "/2012/10/09/data-management-plan.html)": [
     "1",
@@ -2724,8 +2724,8 @@
     "1"
   ],
   "/2012/10/17/basic-regression-in-gaussian-processes.html": [
-    "78",
-    "135"
+    "80",
+    "138"
   ],
   "/2012/10/17/talkingpoints.html": [
     "0",
@@ -2880,8 +2880,8 @@
     "24"
   ],
   "/2012/12/06/github-issues-tracker:-the-perfect-research-todo-list.html": [
-    "185",
-    "250"
+    "188",
+    "254"
   ],
   "/2012/12/07/": [
     "0",
@@ -2892,8 +2892,8 @@
     "1"
   ],
   "/2012/12/10/prior-distributions-for-tgp-mcmc.html": [
-    "31",
-    "54"
+    "32",
+    "55"
   ],
   "/2012/12/10/prior-distributions-for-tgp-mcmc.html?search-text=entropy": [
     "1",
@@ -2936,8 +2936,8 @@
     "10"
   ],
   "/2012/12/30/learning-jekyll.html": [
-    "896",
-    "1219"
+    "903",
+    "1226"
   ],
   "/2013": [
     "0",
@@ -3000,8 +3000,8 @@
     "33"
   ],
   "/2013/02/21/notes.html": [
-    "9",
-    "46"
+    "10",
+    "47"
   ],
   "/2013/02/22/semantic-citations-for-the-notebook-and-knitr.html": [
     "143",
@@ -3077,7 +3077,7 @@
   ],
   "/2013/04/04/notebook-parsing.html": [
     "40",
-    "85"
+    "86"
   ],
   "/2013/04/05/a-clever-derivation-on-realized-escape-times.html": [
     "24",
@@ -3088,8 +3088,8 @@
     "4"
   ],
   "/2013/04/11/nonparametric-bayes-framing-the-issues.html": [
-    "18",
-    "49"
+    "19",
+    "50"
   ],
   "/2013/04/11/nonparametric-bayes-framing-the-issues.html?search-text=": [
     "0",
@@ -3133,7 +3133,7 @@
   ],
   "/2013/04/23/we-need-more-object-oriented-design-in-comparative-methods.html": [
     "182",
-    "255"
+    "256"
   ],
   "/2013/04/24/empirical-demonstration-of-that-clever-derivation.html": [
     "10",
@@ -3188,8 +3188,8 @@
     "16"
   ],
   "/2013/05/03/notebook-features-hashes-providing-an-immutable-and-verifiable-research-record.html": [
-    "155",
-    "238"
+    "156",
+    "239"
   ],
   "/2013/05/03/notes.html": [
     "3",
@@ -3265,19 +3265,19 @@
   ],
   "/2013/06/03/ADMB-basic-example.html": [
     "2",
-    "11"
+    "12"
   ],
   "/2013/06/03/DOI-citable.html": [
-    "358",
-    "469"
+    "374",
+    "489"
   ],
   "/2013/06/03/www.mla.org/style/handbook_faq/cite_a_tweet": [
     "2",
     "5"
   ],
   "/2013/06/04/analytic-marginalizing-for-posteriors.html": [
-    "5",
-    "6"
+    "8",
+    "12"
   ],
   "/2013/06/04/sensitivity-of-gp-comparisons-in-further-examples.html": [
     "0",
@@ -3288,12 +3288,12 @@
     "23"
   ],
   "/2013/06/10/mansucript-reviews-on-github.html": [
-    "191",
-    "248"
+    "196",
+    "253"
   ],
   "/2013/06/13/what-I-look-for-in-software-papers.html": [
-    "316",
-    "441"
+    "379",
+    "516"
   ],
   "/211": [
     "0",
