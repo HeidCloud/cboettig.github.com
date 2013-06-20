@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
-  <head prefix="dc: http://purl.org/dc/terms/ og: http://ogp.me/ns#">
+  <head prefix="dc: http://purl.org/dc/terms/ og: http://ogp.me/ns#"> <!-- namespaces used in metadata.html -->
   <meta http-equiv='Content-Type' content='text/html; charset=utf-8'/>
   <title>Notes</title>
   <meta name="author" content="Carl Boettiger" />
@@ -56,7 +56,7 @@
 
 
 
-  <!-- CSS Stylesheets (toggled with javascript) -->
+  <!-- CSS Stylesheets (alternate sheets toggled with javascript or browsers supporting rel='alternative stylesheet') -->
   <link href="/assets/css/bootstrap.css" rel="stylesheet" 
         type="text/css" title="white" />
   <link href="/assets/css/light.css" rel="alternate stylesheet"
@@ -64,12 +64,12 @@
   <link href="/assets/css/dark.css" rel="alternate stylesheet" 
         type="text/css" title="dark" />
   <link href="/assets/css/bootstrap-responsive.css" rel="stylesheet" 
-        type="text/css"/>
+  type="text/css"/>
+  <!-- Help the browser identify the RSS feed automatically -->
+  <link rel="alternate" type="application/rss+xml" title="Carl Boettiger's Lab Notebook" href="/blog.xml" />
   <!-- Javascript needed for theme toggle, load immediately -->
   <script type="text/javascript" src="/assets/js/switch-css.js"></script>
-  <script type="text/javascript">
-    set_style_from_cookie(); 
-  </script>
+  <script type="text/javascript">set_style_from_cookie(); </script>
 </head>
 
 
@@ -164,21 +164,21 @@
 <p>vim set sytnax language, useful for getting R highlighting in <code>.Rmd</code> files: <code>setf r</code>, or equivalently, <code>set filetype=r</code> (must be lowercase r). <code>set filetype</code> with no argument gives the current filetype.</p>
 <h3 id="coding">Coding</h3>
 <ul><li>
-cboettig pushed to master at cboettig/nonparametric-bayes: <em>supress printing of mcmc diagnostics until appendix supress printing of mcmc diagnostics</em> <a href="https://github.com/cboettig/nonparametric-bayes/compare/0e17a4faa1...cebcb235ae">08:24 2013/06/18</a>
+cboettig opened issue cboettig/nonparametric-bayes#50: <em>Semi-analytic posteriors by integration and grid search</em> <a href="https://github.com/cboettig/nonparametric-bayes/issues/50">06:54 2013/06/20</a>
 </li><li>
-cboettig pushed to master at cboettig/labnotebook: <em>drafting drafting draft</em> <a href="https://github.com/cboettig/labnotebook/compare/792fabccbb...10a403960f">03:50 2013/06/18</a>
+cboettig closed issue cboettig/nonparametric-bayes#48: <em>Use ADMB estimates for MLE</em> <a href="https://github.com/cboettig/nonparametric-bayes/issues/48">06:47 2013/06/20</a>
 </li><li>
-cboettig pushed to master at cboettig/nonparametric-bayes: <em>include color palette</em> <a href="https://github.com/cboettig/nonparametric-bayes/compare/25d7c33909...0e17a4faa1">04:32 2013/06/18</a>
+cboettig commented on issue cboettig/nonparametric-bayes#48: <em>Implemented: http://carlboettiger.info/2013/06/03/ADMB-basic-example.html Though performance is often no better, see notes at link.</em> <a href="https://github.com/cboettig/nonparametric-bayes/issues/48#issuecomment-19774818">06:47 2013/06/20</a>
 </li><li>
-cboettig pushed to master at cboettig/nonparametric-bayes: <em>try the p=1,10,5 settings deviances block got deleted accidentally. restored</em> <a href="https://github.com/cboettig/nonparametric-bayes/compare/5099b96fc8...25d7c33909">11:12 2013/06/17</a>
+cboettig pushed to master at cboettig/nonparametric-bayes: <em>deviances block provides a table comparing likelihood fits, closes #47</em> <a href="https://github.com/cboettig/nonparametric-bayes/compare/fc63651f1b...a07c749efe">06:46 2013/06/20</a>
 </li><li>
-cboettig pushed to master at cboettig/cboettig.github.com: <em>update site</em> <a href="https://github.com/cboettig/cboettig.github.com/compare/2e37fc96d3...3fa8550d2b">08:44 2013/06/17</a>
+cboettig closed issue cboettig/nonparametric-bayes#47: <em>Add note/example on simply comparing models by AIC/BIC/DIC etc</em> <a href="https://github.com/cboettig/nonparametric-bayes/issues/47">06:46 2013/06/20</a>
 </li><li>
-cboettig pushed to master at cboettig/AdaptiveDynamics: <em>md versions with datestamps from pdf copies in archive</em> <a href="https://github.com/cboettig/AdaptiveDynamics/compare/09446ad415...7d82d5afa7">06:47 2013/06/17</a>
+cboettig pushed to master at cboettig/labnotebook: <em>still drafting misc notes combine into 06-13 post</em> <a href="https://github.com/cboettig/labnotebook/compare/bb1f857937...f20525d358">06:40 2013/06/20</a>
 </li><li>
-cboettig pushed to master at cboettig/nonparametric-bayes: <em>code examples updated recompile manuscript move value iteration convergence timeout to set-pars</em> <a href="https://github.com/cboettig/nonparametric-bayes/compare/73e94e4a62...5099b96fc8">06:31 2013/06/17</a>
+cboettig pushed to master at cboettig/labnotebook: <em>post</em> <a href="https://github.com/cboettig/labnotebook/compare/00482ab5f4...bb1f857937">06:28 2013/06/20</a>
 </li><li>
-cboettig pushed to master at cboettig/AdaptiveDynamics: <em>notes and writeups from work in Vienna tex files from archive added</em> <a href="https://github.com/cboettig/AdaptiveDynamics/compare/030d32a0c7...09446ad415">06:14 2013/06/17</a>
+cboettig pushed to master at cboettig/labnotebook: <em>draft draft draft</em> <a href="https://github.com/cboettig/labnotebook/compare/cc7bae1a01...00482ab5f4">02:49 2013/06/20</a>
 </li></ul>
 
 
