@@ -144,7 +144,7 @@
   <div class="span3 offset1">
     <h4>  <a property="account" href="https://github.com/cboettig" onclick="recordOutboundLink(this, 'Outbound Links', 'Github'); return false;"><i class="icon-github" alt="github"></i> Coding </a></h4> 
      <div class="excerpt">
-        <ul><li>cboettig pushed to master at cboettig/labnotebook: <em>clean up post released post released</em> <a href="https://github.com/cboettig/labnotebook/compare/cf8768bffa...677361f4b5">05:57 2013/06/30</a></li><li>cboettig commented on issue ropensci/reml#8: <em>The approaches to semantics you outline in #5 sound promising: I see how annotations (e.g. this one) map onto the eml (e.g. this one), though I don…</em> <a href="https://github.com/ropensci/reml/issues/8#issuecomment-20239664">12:13 2013/06/30</a></li><li>cboettig commented on issue ropensci/reml#5: <em>Re 1. This is great, can definitely implement this kind of call. I am curious about what we can offer, if anything, by way of search interfaces for…</em> <a href="https://github.com/ropensci/reml/issues/5#issuecomment-20239591">12:06 2013/06/30</a></li><li>cboettig pushed to master at ropensci/reml: <em>some unit tests added for #14</em> <a href="https://github.com/ropensci/reml/compare/5841d82186...ac3890d0bb">12:00 2013/06/30</a></li><li>cboettig closed issue ropensci/reml#18: <em>Install fails due to bug while compiling vignette</em> <a href="https://github.com/ropensci/reml/issues/18">11:27 2013/06/29</a></li></ul>
+        <ul><li>cboettig pushed to master at cboettig/labnotebook: <em>post on EML</em> <a href="https://github.com/cboettig/labnotebook/compare/677361f4b5...3b512cf5c7">06:17 2013/06/30</a></li><li>cboettig pushed to master at cboettig/cboettig.github.com: <em>update site</em> <a href="https://github.com/cboettig/cboettig.github.com/compare/a26c25b04f...bd732f2e06">06:12 2013/06/30</a></li><li>cboettig pushed to master at cboettig/labnotebook: <em>clean up post released post released</em> <a href="https://github.com/cboettig/labnotebook/compare/cf8768bffa...677361f4b5">05:57 2013/06/30</a></li><li>cboettig commented on issue ropensci/reml#8: <em>The approaches to semantics you outline in #5 sound promising: I see how annotations (e.g. this one) map onto the eml (e.g. this one), though I don…</em> <a href="https://github.com/ropensci/reml/issues/8#issuecomment-20239664">12:13 2013/06/30</a></li><li>cboettig commented on issue ropensci/reml#5: <em>Re 1. This is great, can definitely implement this kind of call. I am curious about what we can offer, if anything, by way of search interfaces for…</em> <a href="https://github.com/ropensci/reml/issues/5#issuecomment-20239591">12:06 2013/06/30</a></li></ul>
     </div>
   </div>
   <div class="span3">
@@ -175,6 +175,68 @@
               'Outbound Links', 'RSS'); return false;"
               style="color: inherit;"
               ><i class="icon-rss" ></i> Entries</a></h4>
+      
+        <div class="span3">
+          <header><h4><a href="/2013/06/26/starting-an-EML-package-for-R.html">Starting An Eml Package For R</a></h4></header>
+<p><span></span></p>
+<p style="font-style:italic"> 26 Jun 2013</p>
+
+<p style="font-style:italic"> pageviews: (not calculated) </p>
+
+<article>
+<div class="excerpt">
+<p>Started <a href="https://github.com/ropensci/reml"><code>reml</code></a>, and R package for reading, writing, manipulating and publishing EML files. More details and progress so far on the Github page; in particular flushing out design goals in the <a href="https://github.com/ropensci/reml/issues">issues tracker</a>.</p>
+<h3 id="initial-goals">Initial goals</h3>
+<p>To start, I am aiming for a proof of principle case in which we can write an R <code>data.frame</code> into EML (<a href="https://github.com/ropensci/reml/issues/2">issue #2</a>), publish to a remote repository such as figshare (<a href="https://github.com/ropensci/reml/issues/3">issue #3</a>), and then read the data back in as the original R object types from the EML (<a href="https://github.com/ropensci/reml/issues/6">issue #6</a>). This will require specifying some generic metadata and basic column and unit metadata for the data frame. It would be good to get feedback on what way is most convenient to specify the required metadata in R.</p>
+<h3 id="integration-goals-issue-8">Integration goals (issue <a href="https://github.com/ropensci/reml/issues/8">#8</a>)</h3>
+<p>This is the <strong>holy grail</strong> of metadata infrastructure and ostensibly the primary purpose of EML, see <a href="http://dx.doi.org/10.1146/annurev.ecolsys.37.091305.110031" title="The New Bioinformatics: Integrating Ecological Data from the Gene to the Biosphere in Annual Review of Ecology, Evolution, and Systematics">Jones et al 2006</a>. Despite that, integration is not actually possible without semantic definitions as well, see <a href="http://dx.doi.org/10.1016/j.tree.2011.11.016" title="Ecoinformatics: supporting ecology as a data-intensive science; in Trends in Ecology &amp; Evolution. doi: 10.1016/j.tree.2011.11.016">Michener &amp; Jones 2012</a>, from which we adapt this minimal example below.</p>
+<p>This example provides minimal and sometimes missing semantics; which may make it unresolvable. A complete semantic solution is diagrammed in the figure from <a href="http://dx.doi.org/10.1016/j.tree.2011.11.016" title="Ecoinformatics: supporting ecology as a data-intensive science; in Trends in Ecology &amp; Evolution. doi: 10.1016/j.tree.2011.11.016">Michener &amp; Jones 2012</a>.</p>
+<h3 id="dataset-1">Dataset 1</h3>
+<pre class="sourceCode ruby"><code class="sourceCode ruby"> dat = data.frame(river=c(<span class="st">&quot;SAC&quot;</span>, <span class="st">&quot;SAC&quot;</span>, <span class="st">&quot;AM&quot;</span>), 
+                   spp = c(<span class="st">&quot;king&quot;</span>, <span class="st">&quot;king&quot;</span>, <span class="st">&quot;ccho&quot;</span>), 
+                   stg = c(<span class="st">&quot;smolt&quot;</span>, <span class="st">&quot;parr&quot;</span>, <span class="st">&quot;smolt&quot;</span>),
+                   ct =  c(293L, 410L, 210L))
+
+ col_metadata = c(river = <span class="st">&quot;http://dbpedia.org/ontology/River&quot;</span>,
+                  spp = <span class="st">&quot;http://dbpedia.org/ontology/Species&quot;</span>, 
+                  stg = <span class="st">&quot;Life history stage&quot;</span>,
+                  ct = <span class="st">&quot;count&quot;</span>)
+
+ unit_metadata = 
+  list(river = c(<span class="dt">SAC</span> = <span class="st">&quot;The Sacramento River&quot;</span>, <span class="dt">AM</span> = <span class="st">&quot;The American River&quot;</span>),
+       spp = c(king = <span class="st">&quot;King Salmon&quot;</span>, ccho = <span class="st">&quot;Coho Salmon&quot;</span>),
+       stg = c(parr = <span class="st">&quot;third life stage&quot;</span>, smolt = <span class="st">&quot;fourth life stage&quot;</span>),
+       ct = <span class="st">&quot;number&quot;</span>)</code></pre>
+<h3 id="dataset-2">Dataset 2</h3>
+<pre class="sourceCode ruby"><code class="sourceCode ruby"> dat = data.frame(site = c(<span class="st">&quot;SAC&quot;</span>, <span class="st">&quot;AM&quot;</span>, <span class="st">&quot;AM&quot;</span>), 
+                   species = c(<span class="st">&quot;Chinook&quot;</span>, <span class="st">&quot;Chinook&quot;</span>, <span class="st">&quot;Silver&quot;</span>), 
+                   smct = c(245L, 511L, 199L),
+                   pcnt =  c(290L, 408L, 212L))
+
+ col_metadata = c(site = <span class="st">&quot;http://dbpedia.org/ontology/River&quot;</span>,
+                  species = <span class="st">&quot;http://dbpedia.org/ontology/Species&quot;</span>, 
+                  smct = <span class="st">&quot;Smolt count&quot;</span>,
+                  pcnt = <span class="st">&quot;Parr count&quot;</span>)
+
+ unit_metadata = 
+  list(river = c(<span class="dt">SAC</span> = <span class="st">&quot;The Sacramento River&quot;</span>, <span class="dt">AM</span> = <span class="st">&quot;The American River&quot;</span>),
+       spp = c(<span class="dt">Chinook</span> = <span class="st">&quot;King Salmon&quot;</span>, <span class="dt">Silver</span> = <span class="st">&quot;Coho Salmon&quot;</span>),
+       smct = <span class="st">&quot;number&quot;</span>,
+       pcnt = <span class="st">&quot;number&quot;</span>)</code></pre>
+<h3 id="figure">Figure</h3>
+<figure>
+<img src="https://f.cloud.github.com/assets/222586/710800/c0d567b6-de83-11e2-94b1-52090b0c9a5f.png" alt="ontology_synthesis2" /><figcaption>ontology_synthesis2</figcaption>
+</figure>
+ 
+<!-- not that raw_content depends on custom generator, 
+     see _plugins/jekyll-labnotebook-plugins/raw_content --> 
+</article> 
+<p> <a href="/2013/06/26/starting-an-EML-package-for-R.html"> <em>Read more</em></a> </p>
+<br />
+<br />
+
+
+        </div>
       
         <div class="span3">
           <header><h4><a href="/2013/06/24/notes.html">Notes</a></h4></header>
@@ -333,6 +395,10 @@ Error in UseMethod(&quot;xmlAttrs&quot;, node) :
 
         </div>
       
+    </div>
+
+    <div class="row">
+      
         <div class="span3">
           <header><h4><a href="/2013/06/18/figure-for-summarizing-simulations.html">Figure For Summarizing Simulations</a></h4></header>
 <p><span></span></p>
@@ -410,10 +476,6 @@ actual_over_optimal &lt;-<span class="kw">subset</span>(tmp, variable != <span c
 
 
         </div>
-      
-    </div>
-
-    <div class="row">
       
         <div class="span3">
           <header><h4><a href="/2013/06/13/what-I-look-for-in-software-papers.html">What I look for in 'Software Papers'</a></h4></header>
@@ -579,6 +641,10 @@ Actually, I don't care.  Almost any journal publishing methodology recieves soft
 
         </div>
       
+    </div>
+
+    <div class="row">
+      
         <div class="span3">
           <header><h4><a href="/2013/06/10/mansucript-reviews-on-github.html">manuscript reviews on github?</a></h4></header>
 <p><span>examples and questions</span></p>
@@ -639,10 +705,6 @@ http://dx.doi.org/10.1126/science.1213847."><a href="http://dx.doi.org/10.1126/s
 
 
         </div>
-      
-    </div>
-
-    <div class="row">
       
         <div class="span3">
           <header><h4><a href="/2013/06/05/semi-analytic-posteriors.html">Semi Analytic Posteriors</a></h4></header>
@@ -1371,73 +1433,6 @@ mle_deviance &lt;- <span class="dv">2</span>*<span class="kw">estf</span>(<span 
      see _plugins/jekyll-labnotebook-plugins/raw_content --> 
 </article> 
 <p> <a href="/2013/06/04/sensitivity-of-gp-comparisons-in-further-examples.html"> <em>Read more</em></a> </p>
-<br />
-<br />
-
-
-        </div>
-      
-        <div class="span3">
-          <header><h4><a href="/2013/06/04/analytic-marginalizing-for-posteriors.html">Analytic Marginalizing For Posteriors</a></h4></header>
-<p><span></span></p>
-<p style="font-style:italic"> 04 Jun 2013</p>
-
-<p style="font-style:italic"> pageviews: 27 </p>
-
-<article>
-<div class="excerpt">
-<p>Consider the model</p>
-<p><span class="math">\[ X_{t+1} = X_t r e^{-\beta X_t + \sigma Z_t } \]</span></p>
-<p>with <span class="math">\(Z_t\)</span> a unit normal random variable. The likelihood of the sequence of <span class="math">\(T\)</span> observations of <span class="math">\(X\)</span> under this model is thus</p>
-<p><span class="math">\[P(X | r, \beta, \sigma) = \frac{1}{\sqrt{2 \pi \sigma^2}^{T-1}} \exp\left(\frac{\sum_t^{T-1} \left(\log X_{t+1} - \log X_t - \log r + \beta X_t\right)^2 }{2 \sigma^2}\right) \]</span></p>
-<p>To integrate out <span class="math">\(r\)</span>, <span class="math">\(P(X | \beta, \sigma) = \int P(X | r, \beta, \sigma ) P(r) dr\)</span>, we’ll make this look like a Gaussian in <span class="math">\(\log r\)</span> by completing the square; getting the square on the outside of the sum. First we collect all the other terms as the factor, <span class="math">\(M_t\)</span>;</p>
-<p><span class="math">\[M_t := \log X_{t+1} - \log X_t + \beta X_t\]</span></p>
-<p>Also define <span class="math">\(a = \log r\)</span>, then after expanding the square inside the sum we have</p>
-<p><span class="math">\[\sum_t^{T-1} \left(\log r - M_t\right)^2 = \sum_t^{T-1} a^2 - 2 \sum_t^{T-1} a M_t + \sum_t^{T-1} M_t^2 \]</span></p>
-<p>(using the linearity of the summation operator). Use the trick of adding and subtracting <span class="math">\(\left( \sum M_t \right)^2/(T-1)\)</span>, to get:</p>
-<p><span class="math">\[ = -\sum_t^{T-1} M_t^2 -\frac{\left(\sum_t^{T-1} M_t\right)^2}{T-1}  + \frac{\left(\sum_t^{T-1} M_t\right)^2}{T-1} - 2 a \sum M_t + (T-1)a^2\]</span></p>
-<p><span class="math">\[ =  -\sum_t^{T-1} M_t^2 -\frac{\left(\sum_t^{T-1} M_t\right)^2}{T-1}  +(T-1)\left( \left(\frac{\sum_t^{T-1} M_t}{T-1}\right)^2 - \frac{2 a \sum M_t}{T-1} + a^2\right)\]</span></p>
-<p><span class="math">\[ = -\sum_t^{T-1} M_t^2 -\frac{\left(\sum_t^{T-1} M_t\right)^2}{T-1}  +(T-1)\left( \frac{\sum_t^{T-1} M_t}{T-1} - a\right)^2\]</span></p>
-<p>Returning this expression into our exponential in place of the sum of squares, we have</p>
-<p><span class="math">\[P(r, \beta, \sigma | X) = \frac{1}{\sqrt{2 \pi \sigma^2}^{T-1}} \exp\left(-\frac{(T-1)\left( \frac{\sum_t^{T-1} M_t}{T-1} - a\right)^2}{2 \sigma^2}\right) \exp\left(\frac{-\sum_t^{T-1} M_t^2 -\frac{\left(\sum_t^{T-1} M_t\right)^2}{T-1} }{2 \sigma^2}\right) \]</span></p>
-<p>Note that the second <span class="math">\(\exp\)</span> term does not depend on <span class="math">\(a\)</span>. The remaining argument has Gaussian form in <span class="math">\(da\)</span>, so after pulling out the constant terms we can easily integrate this over <span class="math">\(da\)</span>. (Note that we have an implicit uniform prior on <span class="math">\(a\)</span> here).</p>
-<p><span class="math">\[ \int \exp\left(\frac{-\left(\frac{\sum_t^{T-1} M_t}{T-1} - a \right)^2}{2 \sigma^1 (T-1)^{-1} } \right) d a  = \sqrt{\frac{2\pi\sigma^2}{T-1}}\]</span></p>
-<p>which we can combine with the remaining terms to recover</p>
-<p><span class="math">\[ \frac{1}{(T-1)\left(2 \pi \sigma^2 \right)^{T-2}} \exp\left(\frac{-\sum M_t^2 + \frac{\left(\sum M_t\right)^2}{T-1}}{2\sigma^2} \right)\]</span></p>
-<h2 id="marginalizing-over-sigma">marginalizing over <span class="math">\(\sigma\)</span></h2>
-<p>Now that we have effectively eliminated the parameter <span class="math">\(r\)</span> from our posterior calculation, we wish to also integrate out the second parameter, <span class="math">\(\sigma\)</span>. Once again we can “integrate by analogy;” the expression above in the variable <span class="math">\(\sigma^2\)</span> looks like a Gamma distribution,</p>
-<p><span class="math">\[ \int x^{\alpha - 1} e^{-\beta x} dx = \frac{\beta^{\alpha}}{\Gamma(\alpha)} \]</span></p>
-<p>Where we take</p>
-<p><span class="math">\[ \alpha = T/2\]</span></p>
-<p>and</p>
-<p><span class="math">\[ \beta = \frac{1}{2} \left( \sum M_t^2 - \frac{ \left( \sum M_t \right)^2}{T - 1}\right) \]</span>,</p>
-<p>leaving us with</p>
-<p><span class="math">\[\frac{1}{(T-1)\sqrt{2 \pi}^{T-2} } \frac{\tfrac{1}{2}^{T/2} \left( \sum M_t^2 - \frac{ \left( \sum M_t \right)^2}{T - 1}\right)^{T/2}}{\Gamma(T/2)} \]</span></p>
-<h2 id="additional-recruitment-functions">Additional recruitment functions</h2>
-<p>The above derivation can be followed identically for the three-parameter recruitment functions I refer to as the Allen and Myers models after an appropriate choice of <span class="math">\(M_t\)</span>. In both the Ricker and Allen models we must first reparamaterize the models to isolate the <span class="math">\(\alpha\)</span> term correctly.</p>
-<h4 id="ricker">Ricker</h4>
-<p>The original parameterization</p>
-<p><span class="math">\[ X_{t+1} = X_t e^{r \left( 1 - \frac{X_t}{K}\right)}\]</span> does not partition into the form above. Taking <span class="math">\(\beta =  \tfrac{r}{K}\)</span> and <span class="math">\(a = r\)</span>, we can write <span class="math">\(M_t\)</span> as above,</p>
-<p><span class="math">\[M_t := \log X_{t+1} - \log X_t + \beta X_t\]</span></p>
-<h4 id="myers">Myers</h4>
-<p><span class="math">\[ X_{t+1} = \frac{ r X_t^{\theta} }{1 + \frac{X_t^{\theta}}{K} } Z_t\]</span></p>
-<p>For <span class="math">\(Z_t\)</span> lognormal with log-mean zero and log-standard-deviation <span class="math">\(\sigma\)</span>, The log-likelihood takes the form</p>
-<p>and thus we can write <span class="math">\(M_t\)</span> as</p>
-<p><span class="math">\[M_t := \log X_{t+1} - \theta \log X_t + \log\left(1 +  \frac{X_t^{\theta}}{K} \right)\]</span></p>
-<h4 id="allen">Allen</h4>
-<p>The original parameterization</p>
-<p><span class="math">\[ X_{t+1} = Z_t X_t e^{r \left( 1 - \frac{X_t}{K} \right) \frac{\left(X_t - \theta\right)}{K}} \]</span></p>
-<p>does not let us isolate an additive constant (log-mean term) as we did in the example above. Writing the argument of the exponent in standard quadratic form,</p>
-<p><span class="math">\[ X_{t+1} = Z_t X_t e^{c + b X+t + a X_t^2} \]</span></p>
-<p>Where</p>
-<p><span class="math">\[c = \tfrac{-rC}{K}\]</span> <span class="math">\[b = \tfrac{r}{K}\left(\tfrac{C}{K} + 1\right)\]</span> <span class="math">\[a = \tfrac{r}{K^2}\]</span></p>
-<p>then</p>
-<p><span class="math">\[M_t := \log X_{t+1} - \log X_t - b X_t + a X_t^2 \]</span></p>
- 
-<!-- not that raw_content depends on custom generator, 
-     see _plugins/jekyll-labnotebook-plugins/raw_content --> 
-</article> 
-<p> <a href="/2013/06/04/analytic-marginalizing-for-posteriors.html"> <em>Read more</em></a> </p>
 <br />
 <br />
 

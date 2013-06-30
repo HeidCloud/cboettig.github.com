@@ -811,6 +811,7 @@ http://carlboettiger.info/wordpress/archives/4482/index.html
 http://carlboettiger.info/archives/4482/index.html 
 
  
+http://carlboettiger.info/2013/06/26/starting-an-EML-package-for-R.html  
 http://carlboettiger.info/2013/06/24/notes.html  
 http://carlboettiger.info/2013/06/23/notes-on-leveraging-the-ecological-markup-language.html  
 http://carlboettiger.info/2013/06/18/figure-for-summarizing-simulations.html  
