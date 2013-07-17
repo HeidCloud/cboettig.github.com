@@ -149,10 +149,10 @@
 <p><span class="math">\[ dX = r(t) (K - X) dt + \sqrt{K} dB_t \]</span></p>
 <p>Now to implement them for fitting by likelihood using generic $ r(t) $.  I go back to the warning() model implemented in sde_likelihood.R code.  We can just solve the odes directly:</p>
 <pre class="sourceCode r"><code class="sourceCode r">
-    moments &lt;- function(t,y,p){ 
-        sqrtR &lt;- <span class="kw">sqrt</span>(<span class="kw">R</span>(t,pars)) 
-        yd1 &lt;- <span class="dv">2</span>*sqrtR*(sqrtR+pars[<span class="st">&#39;theta&#39;</span>] - y[<span class="dv">1</span>]) 
-        yd2 &lt;- -<span class="dv">2</span>*sqrtR*y[<span class="dv">2</span>] + p[<span class="st">&quot;sigma&quot;</span>]^<span class="dv">2</span>*(sqrtR+pars[<span class="st">&#39;theta&#39;</span>])
+    moments &lt;-<span class="st"> </span>function(t,y,p){ 
+        sqrtR &lt;-<span class="st"> </span><span class="kw">sqrt</span>(<span class="kw">R</span>(t,pars)) 
+        yd1 &lt;-<span class="st"> </span><span class="dv">2</span>*sqrtR*(sqrtR+pars[<span class="st">&#39;theta&#39;</span>] -<span class="st"> </span>y[<span class="dv">1</span>]) 
+        yd2 &lt;-<span class="st"> </span>-<span class="dv">2</span>*sqrtR*y[<span class="dv">2</span>] +<span class="st"> </span>p[<span class="st">&quot;sigma&quot;</span>]^<span class="dv">2</span>*(sqrtR+pars[<span class="st">&#39;theta&#39;</span>])
         <span class="kw">list</span>(<span class="kw">c</span>(<span class="dt">yd1=</span>yd1, <span class="dt">yd2=</span>yd2))
     }</code></pre>
 <p>See full code in likelihood_bifur_models.R, note the somewhat verbose apply calls simply handle a vector of initial conditions so the likelihood of the whole timeseries can be evaluated in a single function call.</p>
@@ -167,16 +167,16 @@ x\left( t\right) ={e}^{-\int \alpha\left( t\right) dt}\,\left( {\sigma}^{2}\,\in
 <p>All right, back from a few hours of coding and now have a nice lil <a href="https://github.com/cboettig/structured-populations/commit/91619e47e1cbdd65d5a1a5ae44bbaa7dcdc4ea0e#diff-0">library for Gaussian Processes</a>.  This should be much more efficient then writing out nearly identical functions for probability density, random sampling, likelihood and mle estimation.  Just specify the Gaussian process such as either of the above (<a href="https://github.com/cboettig/structured-populations/commit/91619e47e1cbdd65d5a1a5ae44bbaa7dcdc4ea0e#diff-1">see code</a>), and voila:</p>
 <h4 id="linearized-transcritical-bifurcation-example">Linearized Transcritical Bifurcation example</h4>
 <pre class="sourceCode r"><code class="sourceCode r">
-&gt; <span class="kw">source</span>(<span class="st">&quot;../R/likelihood_bifur_models.R&quot;</span>)
-&gt; <span class="kw">source</span>(<span class="st">&quot;../R/gaussian_process.R&quot;</span>)
-&gt; 
-&gt; gaussmodel &lt;- setLTC
-&gt; 
-&gt; pars &lt;- <span class="kw">c</span>(<span class="dt">Ro=</span><span class="dv">1</span>, <span class="dt">m=</span><span class="dv">0</span>, <span class="dt">theta=</span><span class="dv">1</span>, <span class="dt">sigma=</span><span class="dv">1</span>)
-&gt; X &lt;- <span class="kw">simulate.gauss</span>(gaussmodel, pars, <span class="dt">N=</span><span class="dv">500</span>, <span class="dt">T=</span><span class="dv">10</span>)
-&gt; start &lt;- <span class="kw">c</span>(<span class="dt">Ro=</span>.<span class="dv">5</span>, <span class="dt">m=</span><span class="dv">0</span>, <span class="dt">theta=</span>.<span class="dv">1</span>, <span class="dt">sigma=</span>.<span class="dv">1</span>)
-&gt; M &lt;- <span class="kw">update.gauss</span>(gaussmodel, start, X)
-&gt; M$par
+&gt;<span class="st"> </span><span class="kw">source</span>(<span class="st">&quot;../R/likelihood_bifur_models.R&quot;</span>)
+&gt;<span class="st"> </span><span class="kw">source</span>(<span class="st">&quot;../R/gaussian_process.R&quot;</span>)
+&gt;<span class="st"> </span>
+<span class="er">&gt;</span><span class="st"> </span>gaussmodel &lt;-<span class="st"> </span>setLTC
+&gt;<span class="st"> </span>
+<span class="er">&gt;</span><span class="st"> </span>pars &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dt">Ro=</span><span class="dv">1</span>, <span class="dt">m=</span><span class="dv">0</span>, <span class="dt">theta=</span><span class="dv">1</span>, <span class="dt">sigma=</span><span class="dv">1</span>)
+&gt;<span class="st"> </span>X &lt;-<span class="st"> </span><span class="kw">simulate.gauss</span>(gaussmodel, pars, <span class="dt">N=</span><span class="dv">500</span>, <span class="dt">T=</span><span class="dv">10</span>)
+&gt;<span class="st"> </span>start &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dt">Ro=</span>.<span class="dv">5</span>, <span class="dt">m=</span><span class="dv">0</span>, <span class="dt">theta=</span>.<span class="dv">1</span>, <span class="dt">sigma=</span>.<span class="dv">1</span>)
+&gt;<span class="st"> </span>M &lt;-<span class="st"> </span><span class="kw">update.gauss</span>(gaussmodel, start, X)
+&gt;<span class="st"> </span>M$par
        Ro         m     theta     sigma 
  <span class="fl">2.788049</span> -<span class="fl">0.280440</span>  <span class="fl">1.296090</span>  <span class="fl">1.002597</span> 
 </code></pre>
@@ -184,17 +184,17 @@ x\left( t\right) ={e}^{-\int \alpha\left( t\right) dt}\,\left( {\sigma}^{2}\,\in
 <h4 id="linearized-saddle-node-bifurcation-example">Linearized Saddle Node Bifurcation example</h4>
 <p>This model has more trouble with the default maxit, needs more to converge. Also needs to avoid negative R values since it takes the square root (these produce the warnings).</p>
 <pre class="sourceCode r"><code class="sourceCode r">
-&gt; <span class="kw">source</span>(<span class="st">&quot;../R/likelihood_bifur_models.R&quot;</span>)
-&gt; <span class="kw">source</span>(<span class="st">&quot;../R/gaussian_process.R&quot;</span>)
-&gt; 
-&gt; <span class="co">#gaussmodel &lt;- setLTC</span>
-&gt; gaussmodel &lt;- setLSN
-&gt; 
-&gt; pars &lt;- <span class="kw">c</span>(<span class="dt">Ro=</span><span class="dv">1</span>, <span class="dt">m=</span><span class="dv">0</span>, <span class="dt">theta=</span><span class="dv">1</span>, <span class="dt">sigma=</span><span class="dv">1</span>)
-&gt; X &lt;- <span class="kw">simulate.gauss</span>(gaussmodel, pars, <span class="dt">N=</span><span class="dv">500</span>, <span class="dt">T=</span><span class="dv">10</span>)
-&gt; start &lt;- <span class="kw">c</span>(<span class="dt">Ro=</span>.<span class="dv">5</span>, <span class="dt">m=</span><span class="dv">0</span>, <span class="dt">theta=</span>.<span class="dv">1</span>, <span class="dt">sigma=</span>.<span class="dv">1</span>)
-&gt;  M &lt;- <span class="kw">update.gauss</span>(gaussmodel, start, X, <span class="dt">control=</span><span class="kw">list</span>(<span class="dt">maxit=</span><span class="dv">1000</span>))
-&gt; M$optim_output
+&gt;<span class="st"> </span><span class="kw">source</span>(<span class="st">&quot;../R/likelihood_bifur_models.R&quot;</span>)
+&gt;<span class="st"> </span><span class="kw">source</span>(<span class="st">&quot;../R/gaussian_process.R&quot;</span>)
+&gt;<span class="st"> </span>
+<span class="er">&gt;</span><span class="st"> </span><span class="co">#gaussmodel &lt;- setLTC</span>
+<span class="er">&gt;</span><span class="st"> </span>gaussmodel &lt;-<span class="st"> </span>setLSN
+&gt;<span class="st"> </span>
+<span class="er">&gt;</span><span class="st"> </span>pars &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dt">Ro=</span><span class="dv">1</span>, <span class="dt">m=</span><span class="dv">0</span>, <span class="dt">theta=</span><span class="dv">1</span>, <span class="dt">sigma=</span><span class="dv">1</span>)
+&gt;<span class="st"> </span>X &lt;-<span class="st"> </span><span class="kw">simulate.gauss</span>(gaussmodel, pars, <span class="dt">N=</span><span class="dv">500</span>, <span class="dt">T=</span><span class="dv">10</span>)
+&gt;<span class="st"> </span>start &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dt">Ro=</span>.<span class="dv">5</span>, <span class="dt">m=</span><span class="dv">0</span>, <span class="dt">theta=</span>.<span class="dv">1</span>, <span class="dt">sigma=</span>.<span class="dv">1</span>)
+&gt;<span class="st">  </span>M &lt;-<span class="st"> </span><span class="kw">update.gauss</span>(gaussmodel, start, X, <span class="dt">control=</span><span class="kw">list</span>(<span class="dt">maxit=</span><span class="dv">1000</span>))
+&gt;<span class="st"> </span>M$optim_output
 $par
         Ro          m      theta      sigma 
 <span class="fl">2.04075853</span> <span class="fl">0.01060771</span> <span class="fl">0.57580070</span> <span class="fl">1.02352678</span> 
@@ -266,7 +266,7 @@ $message
 
   <br/>
 
-   <p style="font-style:italic"> <i class="icon-signal"></i> pageviews: 5</p>
+   <p style="font-style:italic"> <i class="icon-signal"></i> pageviews: 6</p>
 
   <br/>
 

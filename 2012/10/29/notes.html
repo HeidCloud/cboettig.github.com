@@ -158,19 +158,19 @@
 <p>R script for converting place names into latitude/longitude:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(RCurl)
 <span class="kw">library</span>(RJSONIO)
-construct.geocode.url &lt;- function(address, <span class="dt">return.call =</span> <span class="st">&quot;json&quot;</span>, <span class="dt">sensor =</span> <span class="st">&quot;false&quot;</span>) {
-    root &lt;- <span class="st">&quot;http://maps.google.com/maps/api/geocode/&quot;</span>
-    u &lt;- <span class="kw">paste</span>(root, return.call, <span class="st">&quot;?address=&quot;</span>, address, <span class="st">&quot;&amp;sensor=&quot;</span>, sensor, <span class="dt">sep =</span> <span class="st">&quot;&quot;</span>)
+construct.geocode.url &lt;-<span class="st"> </span>function(address, <span class="dt">return.call =</span> <span class="st">&quot;json&quot;</span>, <span class="dt">sensor =</span> <span class="st">&quot;false&quot;</span>) {
+    root &lt;-<span class="st"> &quot;http://maps.google.com/maps/api/geocode/&quot;</span>
+    u &lt;-<span class="st"> </span><span class="kw">paste</span>(root, return.call, <span class="st">&quot;?address=&quot;</span>, address, <span class="st">&quot;&amp;sensor=&quot;</span>, sensor, <span class="dt">sep =</span> <span class="st">&quot;&quot;</span>)
     <span class="kw">return</span>(<span class="kw">URLencode</span>(u))
 }
-gGeoCode &lt;- function(address,<span class="dt">verbose=</span><span class="ot">FALSE</span>) {
+gGeoCode &lt;-<span class="st"> </span>function(address,<span class="dt">verbose=</span><span class="ot">FALSE</span>) {
   if(verbose) <span class="kw">cat</span>(address,<span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>)
-  u &lt;- <span class="kw">construct.geocode.url</span>(address)
-  doc &lt;- <span class="kw">getURL</span>(u)
-  x &lt;- <span class="kw">fromJSON</span>(doc,<span class="dt">simplify =</span> <span class="ot">FALSE</span>)
+  u &lt;-<span class="st"> </span><span class="kw">construct.geocode.url</span>(address)
+  doc &lt;-<span class="st"> </span><span class="kw">getURL</span>(u)
+  x &lt;-<span class="st"> </span><span class="kw">fromJSON</span>(doc,<span class="dt">simplify =</span> <span class="ot">FALSE</span>)
   if(x$status==<span class="st">&quot;OK&quot;</span>) {
-    lat &lt;- x$results[[<span class="dv">1</span>]]$geometry$location$lat
-    lng &lt;- x$results[[<span class="dv">1</span>]]$geometry$location$lng
+    lat &lt;-<span class="st"> </span>x$results[[<span class="dv">1</span>]]$geometry$location$lat
+    lng &lt;-<span class="st"> </span>x$results[[<span class="dv">1</span>]]$geometry$location$lng
     <span class="kw">return</span>(<span class="kw">c</span>(lat, lng))
   } else {
   <span class="kw">return</span>(<span class="kw">c</span>(<span class="ot">NA</span>,<span class="ot">NA</span>))
@@ -185,8 +185,8 @@ gGeoCode &lt;- function(address,<span class="dt">verbose=</span><span class="ot"
 <p>Basic XML parsing is now possible, e.g. in R:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">require</span>(XML)
 <span class="kw">require</span>(RCurl)
-tt &lt;- <span class="kw">getURLContent</span>(<span class="st">&quot;http://www.carlboettiger.info/2012/10/25/stochastic-dynamic-programming-with-gaussian-process-approx.html&quot;</span>)
-doc &lt;- <span class="kw">xmlParse</span>(tt)
+tt &lt;-<span class="st"> </span><span class="kw">getURLContent</span>(<span class="st">&quot;http://www.carlboettiger.info/2012/10/25/stochastic-dynamic-programming-with-gaussian-process-approx.html&quot;</span>)
+doc &lt;-<span class="st"> </span><span class="kw">xmlParse</span>(tt)
 <span class="kw">getNodeSet</span>(doc, <span class="st">&quot;//x:meta&quot;</span>, <span class="dt">namespace=</span><span class="st">&quot;x&quot;</span>)</code></pre>
 <p>Validation requires <code>meta</code> tags only appear in <code>&lt;head&gt;</code> and not <code>&lt;body&gt;</code> (but still do use <code>property</code> and not <code>name</code> for RDFa properties). Validation also requries all images have alt-text, which means I should remember to use anchor text om pandoc images (e.g. also name my graph knitr chunks intelligently). Otherwise the site validates as HTML5.</p>
 <p>Ignoring the declared content-type will nearly validate as XML. Had to make the attribute <code>onClick</code> from the Google tracker javascript lowercase <code>onclick</code>, like all other attributes. Now th only challenge is that HTML5 needs <code>lang=</code> declared in <code>&lt;html&gt;</code> tag, (while is tolerant of <code>xml:lang</code>), but <code>XML</code> doesn’t want to see <code>lang</code> in the <code>&lt;html&gt;</code> tag. Perhaps can go somewhere else and be valid HTML5? (Using a <code>meta</code> tag for this is now <a href="http://nimbupani.com/declaring-languages-in-html-5.html">obsolete</a>).</p>
@@ -251,7 +251,7 @@ doc &lt;- <span class="kw">xmlParse</span>(tt)
 
   <br/>
 
-   <p style="font-style:italic"> <i class="icon-signal"></i> pageviews: 46</p>
+   <p style="font-style:italic"> <i class="icon-signal"></i> pageviews: 47</p>
 
   <br/>
 

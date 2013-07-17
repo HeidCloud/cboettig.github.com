@@ -144,92 +144,92 @@
   <div class="span7 offset1">
     <article>
     <p>Adapting the parametric uncertainty represented by the posterior distributions of the Bayesian estimate (see <a href="http://carlboettiger.info/2013/04/12/parametric-bayesian-example.html">earlier notes</a>) to the stochastic dynamic programming solution for the optimal policy. Simply requires evaluating the expectation over the distribution, but is computationally intensive given the spread and the three parameters.</p>
-<pre class="sourceCode r"><code class="sourceCode r">f_transition_matrix &lt;- function(f, p, x_grid, h_grid, sigma_g, pardist){
+<pre class="sourceCode r"><code class="sourceCode r">f_transition_matrix &lt;-<span class="st"> </span>function(f, p, x_grid, h_grid, sigma_g, pardist){
   <span class="kw">lapply</span>(h_grid, par_F, f, p, x_grid, sigma_g, pardist)
 }
 
 
-par_F &lt;- function(h, f, p, x_grid, sigma_g, pardist, <span class="dt">n_mc =</span> <span class="dv">100</span>){
+par_F &lt;-<span class="st"> </span>function(h, f, p, x_grid, sigma_g, pardist, <span class="dt">n_mc =</span> <span class="dv">100</span>){
   
   <span class="co"># Set up monte carlo sampling </span>
-  d &lt;- <span class="kw">dim</span>(pardist)
-  indices &lt;- <span class="kw">round</span>(<span class="kw">runif</span>(n_mc,<span class="dv">1</span>, d[<span class="dv">1</span>]))
+  d &lt;-<span class="st"> </span><span class="kw">dim</span>(pardist)
+  indices &lt;-<span class="st"> </span><span class="kw">round</span>(<span class="kw">runif</span>(n_mc,<span class="dv">1</span>, d[<span class="dv">1</span>]))
   
   <span class="co"># Compute the matrix</span>
-  F_true &lt;- 
-    <span class="kw">sapply</span>(x_grid, function(x_t){           <span class="co"># For each x_t  </span>
+  F_true &lt;-<span class="st"> </span>
+<span class="st">    </span><span class="kw">sapply</span>(x_grid, function(x_t){           <span class="co"># For each x_t  </span>
 
-      bypar &lt;- <span class="kw">sapply</span>(indices, function(i){ <span class="co"># For each parameter value</span>
-        p &lt;- <span class="kw">unname</span>(pardist[i,<span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">1</span>,<span class="dv">5</span>)])    <span class="co"># parameters for the mean, at current sample </span>
-        mu &lt;- <span class="kw">f</span>(x_t,h,p)
-        est_sigma_g &lt;- pardist[i,<span class="dv">2</span>]         <span class="co"># Variance parameter </span>
+      bypar &lt;-<span class="st"> </span><span class="kw">sapply</span>(indices, function(i){ <span class="co"># For each parameter value</span>
+        p &lt;-<span class="st"> </span><span class="kw">unname</span>(pardist[i,<span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">1</span>,<span class="dv">5</span>)])    <span class="co"># parameters for the mean, at current sample </span>
+        mu &lt;-<span class="st"> </span><span class="kw">f</span>(x_t,h,p)
+        est_sigma_g &lt;-<span class="st"> </span>pardist[i,<span class="dv">2</span>]         <span class="co"># Variance parameter </span>
 
-        if(<span class="kw">snap_to_grid</span>(mu,x_grid) &lt; x_grid[<span class="dv">2</span>]){ <span class="co"># handle the degenerate case </span>
-          out &lt;- <span class="kw">numeric</span>(<span class="kw">length</span>(x_grid))
-          out[<span class="dv">1</span>] &lt;- <span class="dv">1</span>
+        if(<span class="kw">snap_to_grid</span>(mu,x_grid) &lt;<span class="st"> </span>x_grid[<span class="dv">2</span>]){ <span class="co"># handle the degenerate case </span>
+          out &lt;-<span class="st"> </span><span class="kw">numeric</span>(<span class="kw">length</span>(x_grid))
+          out[<span class="dv">1</span>] &lt;-<span class="st"> </span><span class="dv">1</span>
           out
         } else {
-          out &lt;- <span class="kw">dlnorm</span>(x_grid/mu, <span class="dv">0</span>, est_sigma_g) 
+          out &lt;-<span class="st"> </span><span class="kw">dlnorm</span>(x_grid/mu, <span class="dv">0</span>, est_sigma_g) 
         }
       })  
-      ave_over_pars &lt;- <span class="kw">apply</span>(bypar, <span class="dv">1</span>, sum) <span class="co"># collapse by weighted average over possible parameters    </span>
-      ave_over_pars / <span class="kw">sum</span>(ave_over_pars)
+      ave_over_pars &lt;-<span class="st"> </span><span class="kw">apply</span>(bypar, <span class="dv">1</span>, sum) <span class="co"># collapse by weighted average over possible parameters    </span>
+      ave_over_pars /<span class="st"> </span><span class="kw">sum</span>(ave_over_pars)
       })
-  F_true &lt;- <span class="kw">t</span>(F_true)
+  F_true &lt;-<span class="st"> </span><span class="kw">t</span>(F_true)
         
 }
 
 
-snap_to_grid &lt;- function(x, grid) <span class="kw">sapply</span>(x, function(x) grid[<span class="kw">which.min</span>(<span class="kw">abs</span>(grid - x))])   
+snap_to_grid &lt;-<span class="st"> </span>function(x, grid) <span class="kw">sapply</span>(x, function(x) grid[<span class="kw">which.min</span>(<span class="kw">abs</span>(grid -<span class="st"> </span>x))])   
 
 
 <span class="co"># internal helper function</span>
-rownorm &lt;- function(M) 
+rownorm &lt;-<span class="st"> </span>function(M) 
   <span class="kw">t</span>(<span class="kw">apply</span>(M, <span class="dv">1</span>, function(x){ 
     if(<span class="kw">sum</span>(x)&gt;<span class="dv">0</span>){
       x/<span class="kw">sum</span>(x)
     } else {
-      out &lt;- <span class="kw">numeric</span>(<span class="kw">length</span>(x))
-      out[<span class="dv">1</span>] &lt;- <span class="dv">1</span>
+      out &lt;-<span class="st"> </span><span class="kw">numeric</span>(<span class="kw">length</span>(x))
+      out[<span class="dv">1</span>] &lt;-<span class="st"> </span><span class="dv">1</span>
       out
     }
   }))</code></pre>
 <p>Run the Bayesian analysis to obtain posterior distributions for parameters.</p>
 <h2 id="test-case-using-perturbed-parameters">Test case using perturbed parameters</h2>
 <p>First, sanity test. Use the correct parameter values (slightly perturbed).</p>
-<pre class="sourceCode r"><code class="sourceCode r">pardist &lt;- mcmcall
-pardist[,<span class="dv">1</span>] = p[<span class="dv">2</span>] + <span class="kw">rnorm</span>(<span class="dv">100</span>, <span class="dv">0</span>, <span class="fl">0.000001</span>)
-pardist[,<span class="dv">4</span>] = p[<span class="dv">1</span>] + <span class="kw">rnorm</span>(<span class="dv">100</span>, <span class="dv">0</span>, <span class="fl">0.000001</span>)
-pardist[,<span class="dv">2</span>] = sigma_g + <span class="kw">rnorm</span>(<span class="dv">100</span>, <span class="dv">0</span>, <span class="fl">0.000001</span>)
-pardist[,<span class="dv">5</span>] = p[<span class="dv">3</span>] + <span class="kw">rnorm</span>(<span class="dv">100</span>, <span class="dv">0</span>, <span class="fl">0.000001</span>)</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">pardist &lt;-<span class="st"> </span>mcmcall
+pardist[,<span class="dv">1</span>] =<span class="st"> </span>p[<span class="dv">2</span>] +<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">100</span>, <span class="dv">0</span>, <span class="fl">0.000001</span>)
+pardist[,<span class="dv">4</span>] =<span class="st"> </span>p[<span class="dv">1</span>] +<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">100</span>, <span class="dv">0</span>, <span class="fl">0.000001</span>)
+pardist[,<span class="dv">2</span>] =<span class="st"> </span>sigma_g +<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">100</span>, <span class="dv">0</span>, <span class="fl">0.000001</span>)
+pardist[,<span class="dv">5</span>] =<span class="st"> </span>p[<span class="dv">3</span>] +<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">100</span>, <span class="dv">0</span>, <span class="fl">0.000001</span>)</code></pre>
 <p>Compute optimal policy</p>
-<pre class="sourceCode r"><code class="sourceCode r">sdp = <span class="kw">f_transition_matrix</span>(f, p, x_grid, h_grid, sigma_g, pardist)
-s_opt &lt;- <span class="kw">value_iteration</span>(sdp, x_grid, h_grid, <span class="dt">OptTime=</span><span class="dv">1000</span>, xT, profit, delta)</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">sdp =<span class="st"> </span><span class="kw">f_transition_matrix</span>(f, p, x_grid, h_grid, sigma_g, pardist)
+s_opt &lt;-<span class="st"> </span><span class="kw">value_iteration</span>(sdp, x_grid, h_grid, <span class="dt">OptTime=</span><span class="dv">1000</span>, xT, profit, delta)</code></pre>
 <p>Compare to the case without parameter uncertainty (growth noise only)</p>
-<pre class="sourceCode r"><code class="sourceCode r">SDP_Mat &lt;- <span class="kw">determine_SDP_matrix</span>(f, p, x_grid, h_grid, sigma_g)
-pars_fixed &lt;- <span class="kw">value_iteration</span>(SDP_Mat, x_grid, h_grid, <span class="dt">OptTime=</span><span class="dv">1000</span>, xT, profit, delta)</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">SDP_Mat &lt;-<span class="st"> </span><span class="kw">determine_SDP_matrix</span>(f, p, x_grid, h_grid, sigma_g)
+pars_fixed &lt;-<span class="st"> </span><span class="kw">value_iteration</span>(SDP_Mat, x_grid, h_grid, <span class="dt">OptTime=</span><span class="dv">1000</span>, xT, profit, delta)</code></pre>
 <p>Plot results</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">require</span>(reshape2)
-policies &lt;- <span class="kw">melt</span>(<span class="kw">data.frame</span>(<span class="dt">stock=</span>x_grid, <span class="dt">pars.uncert =</span> x_grid[s_opt$D], <span class="dt">pars.fixed =</span> x_grid[pars_fixed$D]), <span class="dt">id=</span><span class="st">&quot;stock&quot;</span>)
-<span class="kw">ggplot</span>(policies, <span class="kw">aes</span>(stock, stock - value, <span class="dt">color=</span>variable)) + <span class="kw">geom_line</span>(<span class="dt">alpha=</span><span class="dv">1</span>) + <span class="kw">xlab</span>(<span class="st">&quot;stock size&quot;</span>) + <span class="kw">ylab</span>(<span class="st">&quot;escapement&quot;</span>) </code></pre>
+policies &lt;-<span class="st"> </span><span class="kw">melt</span>(<span class="kw">data.frame</span>(<span class="dt">stock=</span>x_grid, <span class="dt">pars.uncert =</span> x_grid[s_opt$D], <span class="dt">pars.fixed =</span> x_grid[pars_fixed$D]), <span class="dt">id=</span><span class="st">&quot;stock&quot;</span>)
+<span class="kw">ggplot</span>(policies, <span class="kw">aes</span>(stock, stock -<span class="st"> </span>value, <span class="dt">color=</span>variable)) +<span class="st"> </span><span class="kw">geom_line</span>(<span class="dt">alpha=</span><span class="dv">1</span>) +<span class="st"> </span><span class="kw">xlab</span>(<span class="st">&quot;stock size&quot;</span>) +<span class="st"> </span><span class="kw">ylab</span>(<span class="st">&quot;escapement&quot;</span>) </code></pre>
 <figure>
 <img src="http://farm9.staticflickr.com/8247/8664808783_af5240ec6e_o.png" alt="plot of chunk unnamed-chunk-6" /><figcaption>plot of chunk unnamed-chunk-6</figcaption>
 </figure>
 <h2 id="using-actual-estimates">Using actual estimates</h2>
-<pre class="sourceCode r"><code class="sourceCode r">pardist &lt;- mcmcall</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">pardist &lt;-<span class="st"> </span>mcmcall</code></pre>
 <p>Transform parameters back</p>
-<pre class="sourceCode r"><code class="sourceCode r">pardist[,<span class="dv">4</span>] = <span class="kw">exp</span>(pardist[,<span class="dv">4</span>])
-pardist[,<span class="dv">5</span>] = <span class="kw">exp</span>(pardist[,<span class="dv">5</span>])</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">pardist[,<span class="dv">4</span>] =<span class="st"> </span><span class="kw">exp</span>(pardist[,<span class="dv">4</span>])
+pardist[,<span class="dv">5</span>] =<span class="st"> </span><span class="kw">exp</span>(pardist[,<span class="dv">5</span>])</code></pre>
 <p>Compute optimal policy</p>
-<pre class="sourceCode r"><code class="sourceCode r">sdp = <span class="kw">f_transition_matrix</span>(f, p, x_grid, h_grid, sigma_g, pardist)
-s_opt &lt;- <span class="kw">value_iteration</span>(sdp, x_grid, h_grid, <span class="dt">OptTime=</span><span class="dv">1000</span>, xT, profit, delta)</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">sdp =<span class="st"> </span><span class="kw">f_transition_matrix</span>(f, p, x_grid, h_grid, sigma_g, pardist)
+s_opt &lt;-<span class="st"> </span><span class="kw">value_iteration</span>(sdp, x_grid, h_grid, <span class="dt">OptTime=</span><span class="dv">1000</span>, xT, profit, delta)</code></pre>
 <p>Compare to the case without parameter uncertainty (growth noise only)</p>
-<pre class="sourceCode r"><code class="sourceCode r">SDP_Mat &lt;- <span class="kw">determine_SDP_matrix</span>(f, p, x_grid, h_grid, sigma_g)
-pars_fixed &lt;- <span class="kw">value_iteration</span>(SDP_Mat, x_grid, h_grid, <span class="dt">OptTime=</span><span class="dv">1000</span>, xT, profit, delta)</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">SDP_Mat &lt;-<span class="st"> </span><span class="kw">determine_SDP_matrix</span>(f, p, x_grid, h_grid, sigma_g)
+pars_fixed &lt;-<span class="st"> </span><span class="kw">value_iteration</span>(SDP_Mat, x_grid, h_grid, <span class="dt">OptTime=</span><span class="dv">1000</span>, xT, profit, delta)</code></pre>
 <p>Plot results</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">require</span>(reshape2)
-policies &lt;- <span class="kw">melt</span>(<span class="kw">data.frame</span>(<span class="dt">stock=</span>x_grid, <span class="dt">pars.uncert =</span> x_grid[s_opt$D], <span class="dt">pars.fixed =</span> x_grid[pars_fixed$D]), <span class="dt">id=</span><span class="st">&quot;stock&quot;</span>)
-<span class="kw">ggplot</span>(policies, <span class="kw">aes</span>(stock, stock - value, <span class="dt">color=</span>variable)) + <span class="kw">geom_line</span>(<span class="dt">alpha=</span><span class="dv">1</span>) + <span class="kw">xlab</span>(<span class="st">&quot;stock size&quot;</span>) + <span class="kw">ylab</span>(<span class="st">&quot;escapement&quot;</span>) </code></pre>
+policies &lt;-<span class="st"> </span><span class="kw">melt</span>(<span class="kw">data.frame</span>(<span class="dt">stock=</span>x_grid, <span class="dt">pars.uncert =</span> x_grid[s_opt$D], <span class="dt">pars.fixed =</span> x_grid[pars_fixed$D]), <span class="dt">id=</span><span class="st">&quot;stock&quot;</span>)
+<span class="kw">ggplot</span>(policies, <span class="kw">aes</span>(stock, stock -<span class="st"> </span>value, <span class="dt">color=</span>variable)) +<span class="st"> </span><span class="kw">geom_line</span>(<span class="dt">alpha=</span><span class="dv">1</span>) +<span class="st"> </span><span class="kw">xlab</span>(<span class="st">&quot;stock size&quot;</span>) +<span class="st"> </span><span class="kw">ylab</span>(<span class="st">&quot;escapement&quot;</span>) </code></pre>
 <figure>
 <img src="http://farm9.staticflickr.com/8264/8664820975_f29cc8d3be_o.png" alt="plot of chunk unnamed-chunk-11" /><figcaption>plot of chunk unnamed-chunk-11</figcaption>
 </figure>
@@ -286,7 +286,7 @@ policies &lt;- <span class="kw">melt</span>(<span class="kw">data.frame</span>(<
 
   <br/>
 
-   <p style="font-style:italic"> <i class="icon-signal"></i> pageviews: 27</p>
+   <p style="font-style:italic"> <i class="icon-signal"></i> pageviews: 31</p>
 
   <br/>
 

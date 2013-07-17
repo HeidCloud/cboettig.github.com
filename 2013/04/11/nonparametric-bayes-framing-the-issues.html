@@ -192,8 +192,8 @@ ISSN 0706-652X,  http://dx.doi.org/10.1139/f81-094."><a href="http://dx.doi.org/
 <li><p>Created a <a href="http://purl.org">PURL</a> persistent identifier for the notebook <a href="http://purl.org/globalecology/lab-notebook">purl.org/globalecology/lab-notebook</a>. Existing public top level domain. Waiting for approval for my own top-level domain (cboettig).</p></li>
 </ul>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(Hmisc)
-df = <span class="kw">data.frame</span>(<span class="dt">Age =</span> <span class="kw">round</span>(<span class="kw">rnorm</span>(<span class="dv">100</span>, <span class="dv">50</span>,<span class="dv">15</span>)), <span class="dt">Sex =</span> <span class="kw">rep</span>(<span class="kw">c</span>(<span class="st">&quot;M&quot;</span>, <span class="st">&quot;W&quot;</span>)))
-out &lt;- <span class="kw">summary.formula</span>( ~ Age + Sex, <span class="dt">data =</span> df, <span class="dt">method =</span> <span class="st">&quot;reverse&quot;</span>)
+df =<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">Age =</span> <span class="kw">round</span>(<span class="kw">rnorm</span>(<span class="dv">100</span>, <span class="dv">50</span>,<span class="dv">15</span>)), <span class="dt">Sex =</span> <span class="kw">rep</span>(<span class="kw">c</span>(<span class="st">&quot;M&quot;</span>, <span class="st">&quot;W&quot;</span>)))
+out &lt;-<span class="st"> </span><span class="kw">summary.formula</span>( ~<span class="st"> </span>Age +<span class="st"> </span>Sex, <span class="dt">data =</span> df, <span class="dt">method =</span> <span class="st">&quot;reverse&quot;</span>)
 <span class="kw">print</span>(out, <span class="dt">hsep=</span> <span class="st">&#39;|&#39;</span>, <span class="dt">csep=</span><span class="st">&#39;|&#39;</span>, <span class="dt">vsep=</span><span class="st">&#39;-&#39;</span>, <span class="dt">left.border=</span><span class="ot">FALSE</span>, <span class="dt">top.border=</span><span class="ot">FALSE</span>)</code></pre>
 <h2 id="references">References</h2>
 <ul>
@@ -260,7 +260,7 @@ out &lt;- <span class="kw">summary.formula</span>( ~ Age + Sex, <span class="dt"
 
   <br/>
 
-   <p style="font-style:italic"> <i class="icon-signal"></i> pageviews: 53</p>
+   <p style="font-style:italic"> <i class="icon-signal"></i> pageviews: 58</p>
 
   <br/>
 

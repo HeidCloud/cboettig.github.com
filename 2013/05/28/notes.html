@@ -163,35 +163,35 @@
 <p>Clearly my own thinking on licenses has evolved ahead of my adaptation:</p>
 <pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">grep</span> <span class="st">&quot;License&quot;</span> code/*/DESCRIPTION
 
-AdaptiveDynamics/DESCRIPTION:License: GPL <span class="kw">(&gt;</span>= 2<span class="kw">)</span>
-earlywarning/DESCRIPTION:License: BSD
-fluctuationDomains/DESCRIPTION:License: CC ZERO 1.0 + <span class="kw">file</span> LICENSE
-knitcitations/DESCRIPTION:License: CC0
-mcmcTools/DESCRIPTION:License: BSD
-multiple_uncertainty/DESCRIPTION:License: BSD
-nonparametric-bayes/DESCRIPTION:License: BSD
-OUwie/DESCRIPTION:License: GPL <span class="kw">(&gt;</span>= 2<span class="kw">)</span>
-pdg_control/DESCRIPTION:License: BSD
-pmc/DESCRIPTION:License: CC0
-populationdynamics/DESCRIPTION:License: BSD
-prosecutors-fallacy/DESCRIPTION:License: BSD
-socialR/DESCRIPTION:License: GPL <span class="kw">(&gt;</span>= 2<span class="kw">)</span>
-structured-populations/DESCRIPTION:License: GPL <span class="kw">(&gt;</span>= 3<span class="kw">)</span>
-warningsignals/DESCRIPTION:License: GPL <span class="kw">(&gt;</span>= 2<span class="kw">)</span>
-wrightscape/DESCRIPTION:License: GPL-2</code></pre>
+<span class="kw">AdaptiveDynamics</span>/DESCRIPTION:<span class="kw">License</span>: GPL (<span class="kw">&gt;</span>= 2)
+<span class="kw">earlywarning</span>/DESCRIPTION:<span class="kw">License</span>: BSD
+<span class="kw">fluctuationDomains</span>/DESCRIPTION:<span class="kw">License</span>: CC ZERO 1.0 + file LICENSE
+<span class="kw">knitcitations</span>/DESCRIPTION:<span class="kw">License</span>: CC0
+<span class="kw">mcmcTools</span>/DESCRIPTION:<span class="kw">License</span>: BSD
+<span class="kw">multiple_uncertainty</span>/DESCRIPTION:<span class="kw">License</span>: BSD
+<span class="kw">nonparametric-bayes</span>/DESCRIPTION:<span class="kw">License</span>: BSD
+<span class="kw">OUwie</span>/DESCRIPTION:<span class="kw">License</span>: GPL (<span class="kw">&gt;</span>= 2)
+<span class="kw">pdg_control</span>/DESCRIPTION:<span class="kw">License</span>: BSD
+<span class="kw">pmc</span>/DESCRIPTION:<span class="kw">License</span>: CC0
+<span class="kw">populationdynamics</span>/DESCRIPTION:<span class="kw">License</span>: BSD
+<span class="kw">prosecutors-fallacy</span>/DESCRIPTION:<span class="kw">License</span>: BSD
+<span class="kw">socialR</span>/DESCRIPTION:<span class="kw">License</span>: GPL (<span class="kw">&gt;</span>= 2)
+<span class="kw">structured-populations</span>/DESCRIPTION:<span class="kw">License</span>: GPL (<span class="kw">&gt;</span>= 3)
+<span class="kw">warningsignals</span>/DESCRIPTION:<span class="kw">License</span>: GPL (<span class="kw">&gt;</span>= 2)
+<span class="kw">wrightscape</span>/DESCRIPTION:<span class="kw">License</span>: GPL-2</code></pre>
 <p>Looks like it’s time for a little</p>
 <pre><code>sed -i &quot;s/License: .*/License: CC0/&quot; */DESCRIPTION</code></pre>
 <p>Yeehaw!</p>
 <p>Just for the sake of being pendantic,</p>
 <pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">wget</span> http://creativecommons.org/publicdomain/zero/1.0/legalcode.txt
 <span class="kw">mv</span> legalcode.txt LICENSE
-<span class="kw">echo</span> */R/.. <span class="kw">|</span> <span class="kw">xargs</span> -n 1 <span class="kw">cp</span> LICENSE </code></pre>
+<span class="kw">echo</span> */R/.. <span class="kw">|</span> <span class="kw">xargs</span> -n 1 cp LICENSE </code></pre>
 <h3 id="rcurl-query-from-scott">RCurl query from Scott</h3>
 <p>Translate a cURL command’s <code>-d</code> flag to RCurl, e.g.</p>
-<pre class="sourceCode bash"><code class="sourceCode bash">curl -H <span class="st">&quot;X-Gauges-Token: &lt;token&gt;&quot;</span> <span class="kw">\</span>
-     -d <span class="st">&quot;title=Example&quot;</span> <span class="kw">\</span>
-     -d <span class="st">&quot;tz=Eastern Time (US %26 Canada)&quot;</span> <span class="kw">\</span>
-     https://secure.gaug.es/gauges</code></pre>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">curl</span> -H <span class="st">&quot;X-Gauges-Token: &lt;token&gt;&quot;</span> \
+     <span class="kw">-d</span> <span class="st">&quot;title=Example&quot;</span> \
+     <span class="kw">-d</span> <span class="st">&quot;tz=Eastern Time (US %26 Canada)&quot;</span> \
+     <span class="kw">https</span>://secure.gaug.es/gauges</code></pre>
 <p>I proposed</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">httpPOST</span>(<span class="st">&quot;https://secure.gaug.es/gauges&quot;</span>, 
          <span class="dt">postfields=</span><span class="st">&quot;title=Example&amp;tz=Eastern Time (US %26 Canada)&quot;</span>, 
@@ -257,7 +257,7 @@ wrightscape/DESCRIPTION:License: GPL-2</code></pre>
 
   <br/>
 
-   <p style="font-style:italic"> <i class="icon-signal"></i> pageviews: 21</p>
+   <p style="font-style:italic"> <i class="icon-signal"></i> pageviews: 25</p>
 
   <br/>
 

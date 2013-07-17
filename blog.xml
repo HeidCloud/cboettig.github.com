@@ -4,13 +4,26 @@
  <title>Lab Notebook - R</title>
  <link href="/blog.xml" rel="self"/>
  <link href="/"/>
- <updated>2013-06-29T23:17:53-07:00</updated>
+ <updated>2013-07-16T19:23:22-07:00</updated>
  <id>http://carlboettiger.info</id>
  <author>
    <name>Carl Boettiger</name>
    <email></email>
  </author>
 
+ 
+ <entry>
+   <title>Forking The R Journal</title>
+   <link href="/2013/07/10/forking-the-R-journal.html"/>
+   <updated>2013-07-10T00:00:00-07:00</updated>
+   <id>/2013/07/10/forking-the-R-journal</id>
+   <content type="html">&lt;p&gt;All I really wanted to do is cite a paper in &lt;em&gt;the R Journal&lt;/em&gt;, which is peer-reviewed, open access (CC-BY), LaTeX based and without author charges. Sure, I could do that already, but I like being able to programmatically generate citation metadata from a URL – we do have this thing called the internet now, and citations are just links, right? Unfortunately, nice as it is, the R journal doesn’t have HTML landing pages for articles that embed the metadata.&lt;/p&gt;
+&lt;p&gt;This makes it harder for Google Scholar to index the articles, and means that we cannot extract citation metadata from the URL using a tool like &lt;a href=&quot;http://greycite.knowledgeblog.org&quot;&gt;greycite&lt;/a&gt;. Until now.&lt;/p&gt;
+&lt;p&gt;I wrote to Editor-in-Chief Hadley Wickam about this, who responded in the best way possible: making the &lt;a href=&quot;ihttps://github.com/rjournal/rjournal.github.io&quot;&gt;journal website’s Github repository&lt;/a&gt; public. A fork and a little hacking later, and voila, we have html landing pages for &lt;em&gt;the R Journal&lt;/em&gt; with embedded metadata (pending a &lt;a href=&quot;https://github.com/rjournal/rjournal.github.io/pull/1&quot;&gt;pull request&lt;/a&gt;). Check out &lt;a href=&quot;https://github.com/cboettig/rjournal.github.io/commit/e70e84e6e53e6c04ec9864af162d7ba58439d4d5&quot;&gt;the source code&lt;/a&gt; for how this works – it’s really quite straight forward since the metadata is already available in &lt;code&gt;_config.yaml&lt;/code&gt;. The main step involves a &lt;a href=&quot;https://github.com/cboettig/rjournal.github.io/blob/e70e84e6e53e6c04ec9864af162d7ba58439d4d5/_plugins/article_html_pages.rb&quot;&gt;Generator plugin&lt;/a&gt; which builds a page for each article and makes the relevant article metadata available to the page. Then we can write a &lt;a href=&quot;https://github.com/cboettig/rjournal.github.io/blob/e70e84e6e53e6c04ec9864af162d7ba58439d4d5/_layouts/article.html&quot;&gt;page template&lt;/a&gt; using Liquid code to import the metadata.&lt;/p&gt;
+&lt;p&gt;The really exciting thing about this is the basic idea of forking a journal website and improving it. There’s a lot we could do to improve the R journal. I think that ideally we’d have HTML5 versions of the articles as well, something that would be straight forward if authors used knitr of course, but I realize that’s a bigger shift. One could also automatically enhance the HTML with quite a bit more semantic content, we could have animations, links the Rnw files, etc etc. I’d be happy to help and I’m sure others would too. R-journal is great but it could be so much more as an example and test-bed of innovation in statistical publishing.&lt;/p&gt;
+&lt;p&gt;Well, now that the journal is open for pull requests, hack away!&lt;/p&gt;
+</content>
+ </entry>
  
  <entry>
    <title>What I look for in 'Software Papers'</title>
@@ -42,23 +55,23 @@
 &lt;p&gt;A scientific R package &lt;em&gt;must must must&lt;/em&gt; have some automated tests that are run by &lt;code&gt;R CMD check&lt;/code&gt;. Even if further development of the package doesn’t break anything (most likely only if further development doesn’t happen), changes to the package dependencies could still break things, and so it is crucial to have a mechanism in place to detect these problems when they arise. For code that runs quickly, the simplest way to do this is through the examples in the documentation. I don’t expect all scientific software to have a complete test suite with 100% coverage covering all the weird things that can happen if a user passes in a matrix when the function expects a data frame or has some unanticipated missing values, etc. Just some tests to make sure the basic examples execute and I’ll be happy. Longer running functions or those that need calls to external web resources shouldn’t be run in the examples (too much of a burden for CRAN’s automatic testing) so they should be marked &lt;code&gt;dontrun&lt;/code&gt; and put in a separate test suite or vignette as it says in the manual.&lt;/p&gt;
 &lt;h3 id=&quot;passing-optional-arguments&quot;&gt;Passing optional arguments&lt;/h3&gt;
 &lt;p&gt;I see authors write functions like this all the time:&lt;/p&gt;
-&lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;f &amp;lt;- &lt;span class=&quot;kw&quot;&gt;myfunction&lt;/span&gt;(f, p){ 
+&lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;f &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;myfunction&lt;/span&gt;(f, p){ 
   &lt;span class=&quot;co&quot;&gt;#  stuff&lt;/span&gt;
-  o &amp;lt;- &lt;span class=&quot;kw&quot;&gt;optim&lt;/span&gt;(f, p)
+  o &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;optim&lt;/span&gt;(f, p)
   &lt;span class=&quot;co&quot;&gt;#  stuff&lt;/span&gt;
 }&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;calling an existing library function like &lt;code&gt;optim&lt;/code&gt; that has a whole host of very useful optional arguments that have a significant impact on how the algorithm functions. Whenever you a rich function like &lt;code&gt;optim&lt;/code&gt;, please have the courtesy to make it’s arguments available to future users and developers through your function call. Yes, most users will just want the default arguments, (or your default arguments, if different), and that can be handled just fine by providing default values as optional arguments. R has a fantastic mechanism for this exact issue: the &lt;code&gt;...&lt;/code&gt; argument. The above code could be fixed simply by using:&lt;/p&gt;
-&lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;f &amp;lt;- &lt;span class=&quot;kw&quot;&gt;myfunction&lt;/span&gt;(f, p, ...){ 
+&lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;f &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;myfunction&lt;/span&gt;(f, p, ...){ 
   &lt;span class=&quot;co&quot;&gt;#  stuff&lt;/span&gt;
-  o &amp;lt;- &lt;span class=&quot;kw&quot;&gt;optim&lt;/span&gt;(f, p, ...)
+  o &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;optim&lt;/span&gt;(f, p, ...)
   &lt;span class=&quot;co&quot;&gt;#  stuff&lt;/span&gt;
 }&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;which works just they way you think it would. If you have more than one such function (ask yourself if you can write shorter functions first and then) pass optional arguments as lists,&lt;/p&gt;
-&lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;f &amp;lt;- &lt;span class=&quot;kw&quot;&gt;myfunction&lt;/span&gt;(f, p, optim_options, fn2_options){
+&lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;f &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;myfunction&lt;/span&gt;(f, p, optim_options, fn2_options){
   &lt;span class=&quot;co&quot;&gt;# stuff&lt;/span&gt;
-  o &amp;lt;- &lt;span class=&quot;kw&quot;&gt;do.call&lt;/span&gt;(optim, &lt;span class=&quot;kw&quot;&gt;as.list&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;c&lt;/span&gt;(f, p, optim_options)))
+  o &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;do.call&lt;/span&gt;(optim, &lt;span class=&quot;kw&quot;&gt;as.list&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;c&lt;/span&gt;(f, p, optim_options)))
   &lt;span class=&quot;co&quot;&gt;# stuff&lt;/span&gt;
-  b &amp;lt;- &lt;span class=&quot;kw&quot;&gt;do.call&lt;/span&gt;(fn2, fn2_options)
+  b &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;do.call&lt;/span&gt;(fn2, fn2_options)
   &lt;span class=&quot;co&quot;&gt;# stuff &lt;/span&gt;
 }&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;arguments can also be extracted with &lt;code&gt;list(...)$arg1&lt;/code&gt; etc.&lt;/p&gt;
@@ -305,7 +318,7 @@ Is there a way to obtain DOI for a &lt;a href=&quot;https://twitter.com/github&q
 &lt;p&gt;We can install the entire research compendium at exactly the state it was at the time of the analysis using the hash (long chain of seemingly random characters, see the (upcoming) entry on &lt;a href=&quot;&quot;&gt;hashes&lt;/a&gt;) using the clever &lt;code&gt;devtools&lt;/code&gt; R package,&lt;/p&gt;
 &lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;&lt;span class=&quot;kw&quot;&gt;install_github&lt;/span&gt;(&lt;span class=&quot;st&quot;&gt;&amp;quot;nonparametric-bayes&amp;quot;&lt;/span&gt;, &lt;span class=&quot;st&quot;&gt;&amp;quot;cboettig&amp;quot;&lt;/span&gt;, &lt;span class=&quot;st&quot;&gt;&amp;quot;9d5cd1f027bdfe5f356dce83756726c95a6fcdd8&amp;quot;&lt;/span&gt;) &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;We can then copy and paste the code linked from the figure to replicate the results. This provides a fast and effective way replicate the work appearing in or linked to any entry. More importantly perhaps, this approach also allows one to repeat any given analysis with the most recent version of an algorithm and compare the results, since the package structure provides a logical seperation between algorithm and analysis. In practice such fine-grained control and invistigation is more important than simply being able to regenerate what has already been done without any further input.&lt;/p&gt;
-&lt;p&gt;This is not entirely failsafe. The package may depend on other packages, which themselves may have changed. For my use cases, it is a deal more reliable than running the current version of a package that is actively changing during my research. Readers interested in even more robust replication and verification should take a look at Roger Peng’s package &lt;code&gt;stashR&lt;/code&gt; package and associated publications &lt;span class=&quot;showtooltip&quot; data-html=&quot;true&quot; title=&quot;&lt;p&gt;Eckel S and Peng RD (2012). stashR: A Set of Tools for Administering SHared Repositories. R package version 0.3-5.&amp;quot;&amp;gt;&lt;a href=&quot;http://CRAN.R-project.org/package=stashR&quot;&gt;Eckel &amp;amp; Peng (2012)&lt;/a&gt;&lt;/span&gt; .&lt;/p&gt;
+&lt;p&gt;This is not entirely failsafe. The package may depend on other packages, which themselves may have changed. For my use cases, it is a deal more reliable than running the current version of a package that is actively changing during my research. Readers interested in even more robust replication and verification should take a look at Roger Peng’s package &lt;code&gt;stashR&lt;/code&gt; package and associated publications &lt;span class=&quot;showtooltip&quot; data-html=&quot;true&quot; title=&quot;&lt;p&gt;Eckel S and Peng RD (2012). stashR: A Set of Tools for Administering SHared Repositories. R package version 0.3-5.“&amp;gt;&lt;a href=&quot;http://CRAN.R-project.org/package=stashR&quot;&gt;Eckel &amp;amp; Peng (2012)&lt;/a&gt;&lt;/span&gt; .&lt;/p&gt;
 &lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;Sandy Eckel, Roger Peng, (2012) stashR: A Set of Tools for Administering SHared Repositories. &lt;a href=&quot;http://CRAN.R-project.org/package=stashR&quot;&gt;http://CRAN.R-project.org/package=stashR&lt;/a&gt;&lt;/li&gt;
@@ -362,21 +375,21 @@ Revisited. _Ieee Intelligent Systems_, *21*, pp. 96-101. ISSN
 &lt;span class=&quot;kw&quot;&gt;library&lt;/span&gt;(wordcloud)
 &lt;span class=&quot;kw&quot;&gt;library&lt;/span&gt;(RColorBrewer)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;We can get a list of pages to download from the sitemap&lt;/p&gt;
-&lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;pagelist &amp;lt;- &lt;span class=&quot;kw&quot;&gt;readLines&lt;/span&gt;(&lt;span class=&quot;st&quot;&gt;&amp;quot;http://carlboettiger.info/sitemap.txt&amp;quot;&lt;/span&gt;)
-pagelist &amp;lt;- pagelist[&lt;span class=&quot;kw&quot;&gt;grep&lt;/span&gt;(&lt;span class=&quot;st&quot;&gt;&amp;quot;/201&lt;/span&gt;&lt;span class=&quot;ch&quot;&gt;\\&lt;/span&gt;&lt;span class=&quot;st&quot;&gt;d/&amp;quot;&lt;/span&gt;, pagelist)]  &lt;span class=&quot;co&quot;&gt;# drop non-posts)&lt;/span&gt;
-pages &amp;lt;- &lt;span class=&quot;kw&quot;&gt;lapply&lt;/span&gt;(pagelist, getURLContent, &lt;span class=&quot;dt&quot;&gt;followlocation =&lt;/span&gt; &lt;span class=&quot;ot&quot;&gt;TRUE&lt;/span&gt;)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;pagelist &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;readLines&lt;/span&gt;(&lt;span class=&quot;st&quot;&gt;&amp;quot;http://carlboettiger.info/sitemap.txt&amp;quot;&lt;/span&gt;)
+pagelist &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;pagelist[&lt;span class=&quot;kw&quot;&gt;grep&lt;/span&gt;(&lt;span class=&quot;st&quot;&gt;&amp;quot;/201&lt;/span&gt;&lt;span class=&quot;ch&quot;&gt;\\&lt;/span&gt;&lt;span class=&quot;st&quot;&gt;d/&amp;quot;&lt;/span&gt;, pagelist)]  &lt;span class=&quot;co&quot;&gt;# drop non-posts)&lt;/span&gt;
+pages &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;lapply&lt;/span&gt;(pagelist, getURLContent, &lt;span class=&quot;dt&quot;&gt;followlocation =&lt;/span&gt; &lt;span class=&quot;ot&quot;&gt;TRUE&lt;/span&gt;)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Or, if an archive is available locally, (e.g. from figshare cache), we can read the files in directly.&lt;/p&gt;
-&lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;pages &amp;lt;- &lt;span class=&quot;kw&quot;&gt;system&lt;/span&gt;(&lt;span class=&quot;st&quot;&gt;&amp;quot;ls ~/Documents/labnotebook/_site/2***/*/*/*.html&amp;quot;&lt;/span&gt;, 
+&lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;pages &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;system&lt;/span&gt;(&lt;span class=&quot;st&quot;&gt;&amp;quot;ls ~/Documents/labnotebook/_site/2***/*/*/*.html&amp;quot;&lt;/span&gt;, 
     &lt;span class=&quot;dt&quot;&gt;intern =&lt;/span&gt; &lt;span class=&quot;ot&quot;&gt;TRUE&lt;/span&gt;)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;We parse each of the pages as HTML so that we can manipulate them with XML tools&lt;/p&gt;
-&lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;html &amp;lt;- &lt;span class=&quot;kw&quot;&gt;lapply&lt;/span&gt;(pages, htmlParse)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;html &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;lapply&lt;/span&gt;(pages, htmlParse)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;For instance, we can easily get the content of all entries:&lt;/p&gt;
-&lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;text &amp;lt;- &lt;span class=&quot;kw&quot;&gt;sapply&lt;/span&gt;(html, xpathSApply, &lt;span class=&quot;st&quot;&gt;&amp;quot;//article&amp;quot;&lt;/span&gt;, xmlValue)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;text &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;sapply&lt;/span&gt;(html, xpathSApply, &lt;span class=&quot;st&quot;&gt;&amp;quot;//article&amp;quot;&lt;/span&gt;, xmlValue)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;We can also extract metadata based on the semantic markup.&lt;/p&gt;
-&lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;titles &amp;lt;- &lt;span class=&quot;kw&quot;&gt;sapply&lt;/span&gt;(html, xpathSApply, &lt;span class=&quot;st&quot;&gt;&amp;quot;//title&amp;quot;&lt;/span&gt;, xmlValue)
-categories &amp;lt;- &lt;span class=&quot;kw&quot;&gt;sapply&lt;/span&gt;(html, xpathSApply, &lt;span class=&quot;st&quot;&gt;&amp;quot;//node()[@class=&amp;#39;category&amp;#39;]&amp;quot;&lt;/span&gt;, 
+&lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;titles &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;sapply&lt;/span&gt;(html, xpathSApply, &lt;span class=&quot;st&quot;&gt;&amp;quot;//title&amp;quot;&lt;/span&gt;, xmlValue)
+categories &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;sapply&lt;/span&gt;(html, xpathSApply, &lt;span class=&quot;st&quot;&gt;&amp;quot;//node()[@class=&amp;#39;category&amp;#39;]&amp;quot;&lt;/span&gt;, 
     xmlValue)
-tags &amp;lt;- &lt;span class=&quot;kw&quot;&gt;sapply&lt;/span&gt;(html, xpathSApply, &lt;span class=&quot;st&quot;&gt;&amp;quot;//node()[@class=&amp;#39;tag&amp;#39;]&amp;quot;&lt;/span&gt;, xmlValue)&lt;/code&gt;&lt;/pre&gt;
+tags &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;sapply&lt;/span&gt;(html, xpathSApply, &lt;span class=&quot;st&quot;&gt;&amp;quot;//node()[@class=&amp;#39;tag&amp;#39;]&amp;quot;&lt;/span&gt;, xmlValue)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;R makes it easy to summarize this data, e.g. by generating a table of the number of entries in each category, or a wordcloud of the tags.&lt;/p&gt;
 &lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;&lt;span class=&quot;kw&quot;&gt;table&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;unlist&lt;/span&gt;(categories))&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;
@@ -389,9 +402,9 @@ tags &amp;lt;- &lt;span class=&quot;kw&quot;&gt;sapply&lt;/span&gt;(html, xpathS
 &lt;h3 id=&quot;extracting-citations&quot;&gt;Extracting citations&lt;/h3&gt;
 &lt;p&gt;Citation information can be encoded&lt;/p&gt;
 &lt;p&gt;We can perform more direct text mining as well. For instance, we extract all DOIs found in the text:&lt;/p&gt;
-&lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;doi_pattern = &lt;span class=&quot;st&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;ch&quot;&gt;\\&lt;/span&gt;&lt;span class=&quot;st&quot;&gt;b(10[.][0-9]{4,}(?:[.][0-9]+)*/(?:(?![&lt;/span&gt;&lt;span class=&quot;ch&quot;&gt;\&amp;quot;&lt;/span&gt;&lt;span class=&quot;st&quot;&gt;&amp;amp;&amp;#39;&amp;lt;&amp;gt;])&lt;/span&gt;&lt;span class=&quot;ch&quot;&gt;\\&lt;/span&gt;&lt;span class=&quot;st&quot;&gt;S)+)&lt;/span&gt;&lt;span class=&quot;ch&quot;&gt;\\&lt;/span&gt;&lt;span class=&quot;st&quot;&gt;b&amp;quot;&lt;/span&gt;
+&lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;doi_pattern =&lt;span class=&quot;st&quot;&gt; &amp;quot;&lt;/span&gt;&lt;span class=&quot;ch&quot;&gt;\\&lt;/span&gt;&lt;span class=&quot;st&quot;&gt;b(10[.][0-9]{4,}(?:[.][0-9]+)*/(?:(?![&lt;/span&gt;&lt;span class=&quot;ch&quot;&gt;\&amp;quot;&lt;/span&gt;&lt;span class=&quot;st&quot;&gt;&amp;amp;&amp;#39;&amp;lt;&amp;gt;])&lt;/span&gt;&lt;span class=&quot;ch&quot;&gt;\\&lt;/span&gt;&lt;span class=&quot;st&quot;&gt;S)+)&lt;/span&gt;&lt;span class=&quot;ch&quot;&gt;\\&lt;/span&gt;&lt;span class=&quot;st&quot;&gt;b&amp;quot;&lt;/span&gt;
 &lt;span class=&quot;kw&quot;&gt;require&lt;/span&gt;(gsubfn)
-dois &amp;lt;- &lt;span class=&quot;kw&quot;&gt;strapply&lt;/span&gt;(text, doi_pattern, &lt;span class=&quot;dt&quot;&gt;perl =&lt;/span&gt; &lt;span class=&quot;ot&quot;&gt;TRUE&lt;/span&gt;)  &lt;span class=&quot;co&quot;&gt;#text[-462]&lt;/span&gt;
+dois &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;strapply&lt;/span&gt;(text, doi_pattern, &lt;span class=&quot;dt&quot;&gt;perl =&lt;/span&gt; &lt;span class=&quot;ot&quot;&gt;TRUE&lt;/span&gt;)  &lt;span class=&quot;co&quot;&gt;#text[-462]&lt;/span&gt;
 &lt;span class=&quot;kw&quot;&gt;head&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;sort&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;table&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;unlist&lt;/span&gt;(dois))))&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;
 10.1002/(SICI)1520-6602(1998)1:1                 10.1002/bjs.6880 
@@ -402,15 +415,15 @@ dois &amp;lt;- &lt;span class=&quot;kw&quot;&gt;strapply&lt;/span&gt;(text, doi_
                                1                                1 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Or generate a wordcloud of the full text&lt;/p&gt;
 &lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;
-carl &amp;lt;- &lt;span class=&quot;kw&quot;&gt;Corpus&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;VectorSource&lt;/span&gt;(text))
-carl &amp;lt;- &lt;span class=&quot;kw&quot;&gt;tm_map&lt;/span&gt;(carl, removePunctuation)
-carl &amp;lt;- &lt;span class=&quot;kw&quot;&gt;tm_map&lt;/span&gt;(carl, tolower)
-carl &amp;lt;- &lt;span class=&quot;kw&quot;&gt;tm_map&lt;/span&gt;(carl, function(x) &lt;span class=&quot;kw&quot;&gt;removeWords&lt;/span&gt;(x, &lt;span class=&quot;kw&quot;&gt;stopwords&lt;/span&gt;()))
+carl &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;Corpus&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;VectorSource&lt;/span&gt;(text))
+carl &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;tm_map&lt;/span&gt;(carl, removePunctuation)
+carl &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;tm_map&lt;/span&gt;(carl, tolower)
+carl &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;tm_map&lt;/span&gt;(carl, function(x) &lt;span class=&quot;kw&quot;&gt;removeWords&lt;/span&gt;(x, &lt;span class=&quot;kw&quot;&gt;stopwords&lt;/span&gt;()))
 
-carl.tdm &amp;lt;- &lt;span class=&quot;kw&quot;&gt;TermDocumentMatrix&lt;/span&gt;(carl)
-carl.m &amp;lt;- &lt;span class=&quot;kw&quot;&gt;as.matrix&lt;/span&gt;(carl.tdm)
-carl.v &amp;lt;- &lt;span class=&quot;kw&quot;&gt;sort&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;rowSums&lt;/span&gt;(carl.m), &lt;span class=&quot;dt&quot;&gt;decreasing =&lt;/span&gt; &lt;span class=&quot;ot&quot;&gt;TRUE&lt;/span&gt;)
-carl.d &amp;lt;- &lt;span class=&quot;kw&quot;&gt;data.frame&lt;/span&gt;(&lt;span class=&quot;dt&quot;&gt;word =&lt;/span&gt; &lt;span class=&quot;kw&quot;&gt;names&lt;/span&gt;(carl.v), &lt;span class=&quot;dt&quot;&gt;freq =&lt;/span&gt; carl.v)
+carl.tdm &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;TermDocumentMatrix&lt;/span&gt;(carl)
+carl.m &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;as.matrix&lt;/span&gt;(carl.tdm)
+carl.v &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;sort&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;rowSums&lt;/span&gt;(carl.m), &lt;span class=&quot;dt&quot;&gt;decreasing =&lt;/span&gt; &lt;span class=&quot;ot&quot;&gt;TRUE&lt;/span&gt;)
+carl.d &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;data.frame&lt;/span&gt;(&lt;span class=&quot;dt&quot;&gt;word =&lt;/span&gt; &lt;span class=&quot;kw&quot;&gt;names&lt;/span&gt;(carl.v), &lt;span class=&quot;dt&quot;&gt;freq =&lt;/span&gt; carl.v)
 
 
 &lt;span class=&quot;kw&quot;&gt;wordcloud&lt;/span&gt;(carl.d$word, carl.d$freq, &lt;span class=&quot;dt&quot;&gt;scale =&lt;/span&gt; &lt;span class=&quot;kw&quot;&gt;c&lt;/span&gt;(&lt;span class=&quot;dv&quot;&gt;8&lt;/span&gt;, &lt;span class=&quot;fl&quot;&gt;0.4&lt;/span&gt;), &lt;span class=&quot;dt&quot;&gt;min.freq =&lt;/span&gt; &lt;span class=&quot;dv&quot;&gt;3&lt;/span&gt;, 
@@ -424,7 +437,7 @@ carl.d &amp;lt;- &lt;span class=&quot;kw&quot;&gt;data.frame&lt;/span&gt;(&lt;sp
 &lt;p&gt;RDFa is a way of adding these precise statements to HTML, again see the &lt;a href=&quot;/2012/10/14/semantic-lab-notebook.html&quot;&gt;earlier entry&lt;/a&gt; on how this is done. The technically inclined will note that the namespaces of the RDFa itself are not accessible in the XML parsing we used above, since they do not correspond to nodes or attributes, but appear only in the values of attributes. Fortunately, there are many excellent tools to extract this RDFa data, turning it into the XML formatted RDF triples we need. e can perform this using the &lt;a href=&quot;http://any23.org&quot;&gt;Any23&lt;/a&gt; API&lt;/p&gt;
 &lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;&lt;span class=&quot;kw&quot;&gt;download.file&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;paste&lt;/span&gt;(&lt;span class=&quot;st&quot;&gt;&amp;quot;http://any23.org/rdfxml&amp;quot;&lt;/span&gt;, &lt;span class=&quot;st&quot;&gt;&amp;quot;http://carlboettiger.info&amp;quot;&lt;/span&gt;, 
     &lt;span class=&quot;dt&quot;&gt;sep =&lt;/span&gt; &lt;span class=&quot;st&quot;&gt;&amp;quot;/&amp;quot;&lt;/span&gt;), &lt;span class=&quot;st&quot;&gt;&amp;quot;temp.xml&amp;quot;&lt;/span&gt;)
-doc &amp;lt;- &lt;span class=&quot;kw&quot;&gt;xmlParse&lt;/span&gt;(&lt;span class=&quot;st&quot;&gt;&amp;quot;temp.xml&amp;quot;&lt;/span&gt;)&lt;/code&gt;&lt;/pre&gt;
+doc &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;xmlParse&lt;/span&gt;(&lt;span class=&quot;st&quot;&gt;&amp;quot;temp.xml&amp;quot;&lt;/span&gt;)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Which creates a beautiful RDF XML file of all linked data found in the entry.&lt;/p&gt;
 &lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;doc&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt;
@@ -920,7 +933,7 @@ with &amp;#39;help(package=ouch)&amp;#39;.&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;After running your code, consider creating a custom bibtex file containing the citation information for all the packages you have just used. (The file can be imported into most citation managers, if LaTeX isn’t your thing).&lt;/p&gt;
 &lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;
 &lt;span class=&quot;kw&quot;&gt;sink&lt;/span&gt;(&lt;span class=&quot;st&quot;&gt;&amp;quot;test.bib&amp;quot;&lt;/span&gt;)
-out &amp;lt;- &lt;span class=&quot;kw&quot;&gt;sapply&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;names&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;sessionInfo&lt;/span&gt;()$otherPkgs), 
+out &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;sapply&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;names&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;sessionInfo&lt;/span&gt;()$otherPkgs), 
     function(x) &lt;span class=&quot;kw&quot;&gt;print&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;citation&lt;/span&gt;(x), &lt;span class=&quot;dt&quot;&gt;style =&lt;/span&gt; &lt;span class=&quot;st&quot;&gt;&amp;quot;Bibtex&amp;quot;&lt;/span&gt;))&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;You can also simply generate the list of loaded package in LaTeX format, which could be automatically included.&lt;/p&gt;
 &lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;
@@ -981,7 +994,7 @@ out &amp;lt;- &lt;span class=&quot;kw&quot;&gt;sapply&lt;/span&gt;(&lt;span clas
 &lt;p&gt;R uses a simple but powerful license format in the DESCRIPTION files of all packages, which contain the essential meta-data for the package. Common FOSS licenses are recognized automatically (including version numbers or version inequalities). Since CC0 doesn’t (yet) make this list, we can use a custom license file where we provide the full plaintext CC0 license in the file LICENSE and write “file LICENSE” in the DESCRIPTION (&lt;a href=&quot;https://github.com/cboettig/fluctuationDomains&quot;&gt;my example&lt;/a&gt;).&lt;/p&gt;
 &lt;p&gt;We can also see the frequency with which various licenses are used on the R repository, CRAN, with a few lines of code:&lt;/p&gt;
 &lt;pre class=&quot;sourceCode R&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;
-p = &lt;span class=&quot;kw&quot;&gt;available.packages&lt;/span&gt;(contrib.
+p =&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;available.packages&lt;/span&gt;(contrib.
 &lt;span class=&quot;kw&quot;&gt;url&lt;/span&gt;(&lt;span class=&quot;st&quot;&gt;&amp;quot;http://cran.r-project.org&amp;quot;&lt;/span&gt;), &lt;span class=&quot;dt&quot;&gt;type =&lt;/span&gt; &lt;span class=&quot;st&quot;&gt;&amp;quot;source&amp;quot;&lt;/span&gt;)
 &lt;span class=&quot;kw&quot;&gt;sort&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;table&lt;/span&gt;(p[, &lt;span class=&quot;st&quot;&gt;&amp;quot;License&amp;quot;&lt;/span&gt;]))&lt;/code&gt;&lt;/pre&gt;
 </content>
@@ -1032,27 +1045,27 @@ p = &lt;span class=&quot;kw&quot;&gt;available.packages&lt;/span&gt;(contrib.
 &lt;span class=&quot;kw&quot;&gt;require&lt;/span&gt;(wordcloud)
 &lt;span class=&quot;kw&quot;&gt;require&lt;/span&gt;(RColorBrewer)
 
-carl &amp;lt;- &lt;span class=&quot;kw&quot;&gt;read.csv&lt;/span&gt;(&lt;span class=&quot;st&quot;&gt;&amp;quot;searchterms.csv&amp;quot;&lt;/span&gt;, &lt;span class=&quot;dt&quot;&gt;colClasses=&lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;c&lt;/span&gt;(&lt;span class=&quot;st&quot;&gt;&amp;quot;character&amp;quot;&lt;/span&gt;, &lt;span class=&quot;st&quot;&gt;&amp;quot;numeric&amp;quot;&lt;/span&gt;))
+carl &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;read.csv&lt;/span&gt;(&lt;span class=&quot;st&quot;&gt;&amp;quot;searchterms.csv&amp;quot;&lt;/span&gt;, &lt;span class=&quot;dt&quot;&gt;colClasses=&lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;c&lt;/span&gt;(&lt;span class=&quot;st&quot;&gt;&amp;quot;character&amp;quot;&lt;/span&gt;, &lt;span class=&quot;st&quot;&gt;&amp;quot;numeric&amp;quot;&lt;/span&gt;))
 
-words &amp;lt;- &lt;span class=&quot;kw&quot;&gt;character&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;sum&lt;/span&gt;(carl[[&lt;span class=&quot;dv&quot;&gt;2&lt;/span&gt;]]))
-m &amp;lt;- &lt;span class=&quot;dv&quot;&gt;1&lt;/span&gt;
+words &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;character&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;sum&lt;/span&gt;(carl[[&lt;span class=&quot;dv&quot;&gt;2&lt;/span&gt;]]))
+m &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;dv&quot;&gt;1&lt;/span&gt;
 for(i in &lt;span class=&quot;dv&quot;&gt;1&lt;/span&gt;:&lt;span class=&quot;kw&quot;&gt;length&lt;/span&gt;(carl[[&lt;span class=&quot;dv&quot;&gt;1&lt;/span&gt;]])){
-  n &amp;lt;- carl[[&lt;span class=&quot;dv&quot;&gt;2&lt;/span&gt;]][i]
-  x &amp;lt;- carl[[&lt;span class=&quot;dv&quot;&gt;1&lt;/span&gt;]][i]
-  words[m:(m+(n&lt;span class=&quot;dv&quot;&gt;-1&lt;/span&gt;))] &amp;lt;- &lt;span class=&quot;kw&quot;&gt;rep&lt;/span&gt;(x, n)
-  m &amp;lt;- m+n
+  n &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;carl[[&lt;span class=&quot;dv&quot;&gt;2&lt;/span&gt;]][i]
+  x &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;carl[[&lt;span class=&quot;dv&quot;&gt;1&lt;/span&gt;]][i]
+  words[m:(m+(n&lt;span class=&quot;dv&quot;&gt;-1&lt;/span&gt;))] &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;rep&lt;/span&gt;(x, n)
+  m &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;m+n
 }
 
- carl &amp;lt;- &lt;span class=&quot;kw&quot;&gt;Corpus&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;DataframeSource&lt;/span&gt;(carl))
- carl &amp;lt;- &lt;span class=&quot;kw&quot;&gt;tm_map&lt;/span&gt;(carl, removePunctuation)
- carl &amp;lt;- &lt;span class=&quot;kw&quot;&gt;tm_map&lt;/span&gt;(carl, tolower)
+ carl &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;Corpus&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;DataframeSource&lt;/span&gt;(carl))
+ carl &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;tm_map&lt;/span&gt;(carl, removePunctuation)
+ carl &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;tm_map&lt;/span&gt;(carl, tolower)
 
- carl.tdm &amp;lt;- &lt;span class=&quot;kw&quot;&gt;TermDocumentMatrix&lt;/span&gt;(carl)
- carl.m &amp;lt;- &lt;span class=&quot;kw&quot;&gt;as.matrix&lt;/span&gt;(carl.tdm)
- carl.v &amp;lt;- &lt;span class=&quot;kw&quot;&gt;sort&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;rowSums&lt;/span&gt;(carl.m), &lt;span class=&quot;dt&quot;&gt;decreasing=&lt;/span&gt;&lt;span class=&quot;ot&quot;&gt;TRUE&lt;/span&gt;)
- carl.d &amp;lt;- &lt;span class=&quot;kw&quot;&gt;data.frame&lt;/span&gt;(&lt;span class=&quot;dt&quot;&gt;word=&lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;names&lt;/span&gt;(carl.v), &lt;span class=&quot;dt&quot;&gt;freq=&lt;/span&gt;carl.v)
+ carl.tdm &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;TermDocumentMatrix&lt;/span&gt;(carl)
+ carl.m &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;as.matrix&lt;/span&gt;(carl.tdm)
+ carl.v &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;sort&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;rowSums&lt;/span&gt;(carl.m), &lt;span class=&quot;dt&quot;&gt;decreasing=&lt;/span&gt;&lt;span class=&quot;ot&quot;&gt;TRUE&lt;/span&gt;)
+ carl.d &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;data.frame&lt;/span&gt;(&lt;span class=&quot;dt&quot;&gt;word=&lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;names&lt;/span&gt;(carl.v), &lt;span class=&quot;dt&quot;&gt;freq=&lt;/span&gt;carl.v)
 
-pal2 &amp;lt;- &lt;span class=&quot;kw&quot;&gt;brewer.pal&lt;/span&gt;(&lt;span class=&quot;dv&quot;&gt;8&lt;/span&gt;,&lt;span class=&quot;st&quot;&gt;&amp;quot;Dark2&amp;quot;&lt;/span&gt;)
+pal2 &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;brewer.pal&lt;/span&gt;(&lt;span class=&quot;dv&quot;&gt;8&lt;/span&gt;,&lt;span class=&quot;st&quot;&gt;&amp;quot;Dark2&amp;quot;&lt;/span&gt;)
 
 &lt;span class=&quot;kw&quot;&gt;png&lt;/span&gt;(&lt;span class=&quot;st&quot;&gt;&amp;quot;wordcloud.png&amp;quot;&lt;/span&gt;, &lt;span class=&quot;dt&quot;&gt;width=&lt;/span&gt;&lt;span class=&quot;dv&quot;&gt;800&lt;/span&gt;,&lt;span class=&quot;dt&quot;&gt;height=&lt;/span&gt;&lt;span class=&quot;dv&quot;&gt;800&lt;/span&gt;) 
 &lt;span class=&quot;co&quot;&gt;#larger canvas doesn&amp;#39;t increase plot size&lt;/span&gt;
@@ -1201,6 +1214,56 @@ pal2 &amp;lt;- &lt;span class=&quot;kw&quot;&gt;brewer.pal&lt;/span&gt;(&lt;span
 &lt;h2 id=&quot;your-input&quot;&gt;Your Input?&lt;/h2&gt;
 &lt;p&gt;What would you like to see?  Structure, organization, topics?&lt;/p&gt;
 &lt;p&gt;[iframe http://friendfeed.com/science-2-0/e68945dc/i-m-planning-workshop-at-ucdavis-on-future-of?embed=1 480 400]&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Reflections from #scio11: Saturday's Open Science Track</title>
+   <link href="/2011/01/15/reflections-from-scio11-saturdays-open-science-track.html"/>
+   <updated>2011-01-15T23:12:45Z</updated>
+   <id>/2011/01/15/reflections-from-scio11-saturdays-open-science-track</id>
+   <content type="html">&lt;p&gt;Have just returned from the amazing and energetic science online 2011 conference, where I will now, like the rest of the attendees, turn to catching up on sleep, following new online acquaintances, struggling not to append #scio11 to everything I write, and composing that nearly obligatory post-event blog entry we all use like a glass of water after a party; with the hope in may help me metabolize the experience.&lt;/p&gt;
+&lt;p&gt;Never mind that I don’t actually blog. I just have this lab notebook, normally filled with equations, graphs and code. But it is recordings of my research experience, even if it is written only for me most of the time, so let’s just call this part of research and forgive the conversational tone. Meanwhile I will use the excuse to write more at length for myself the notes I wish to remember than would be seemly in writing in a blog with an audience.  In the spirit of this resembling my daily notebook and also in actually finishing this post, here are my notes and thoughts on Saturday’s amazing blur. &lt;sup&gt;&lt;a href=&quot;#fn1&quot; class=&quot;footnoteRef&quot; id=&quot;fnref1&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+&lt;h3 id=&quot;saturday&quot;&gt;Saturday&lt;/h3&gt;
+&lt;p&gt;I began the day in Kay’s (@&lt;a href=&quot;http://twitter.com/#!/kaythaney&quot;&gt;kaythaney&lt;/a&gt;) Digital Toolbox session, room C, where I would return for each of my sessions that day. It was one of the live-streamed rooms, so all the following sessions should have &lt;a href=&quot;http://scienceonline2011.com/watch-2/&quot;&gt;archived recordings&lt;/a&gt;.  The sessions that followed sequentially in this room fit together like a perfectly flowing conversation, as if each one responding to the former and anticipating the next.  Just further evidence that Bora (&lt;a href=&quot;http://twitter.com/#!/boraz&quot;&gt;@Boraz&lt;/a&gt;) and Anton (&lt;a href=&quot;http://twitter.com/#!/mistersugar&quot;&gt;@mistersugar&lt;/a&gt;) must come from magic lamps.&lt;/p&gt;
+&lt;p&gt;Next up brought one of my existing luminaries, &lt;a href=&quot;http://twitter.com/#!/skoch3&quot;&gt;Steve Koch&lt;/a&gt;),&lt;sup&gt;&lt;a href=&quot;#fn2&quot; class=&quot;footnoteRef&quot; id=&quot;fnref2&quot;&gt;2&lt;/a&gt;&lt;/sup&gt;, with  &lt;a href=&quot;http://libraryadventures.com/&quot;&gt;Kiyomi Deards&lt;/a&gt; and &lt;a href=&quot;http://cloud.lib.wfu.edu/blog/pd/&quot;&gt;Molly Keener&lt;/a&gt; to the panel on data discover-ability and archiving in Open Notebook Science. The session erupted in lively debate on the relative merits of commercial hosting solutions which may offer great discoverability and ease of use until they suddenly go the way of Del.icio.us, or institutional repositories, which are long lived but often unintegrated even amongst themselves. The good-spirited solutions all pointed to doing both and trying to make each better.&lt;/p&gt;
+&lt;p&gt;Not that we wouldn’t also question that optimism too, for the next session asked us: “What’s keeping us from open science?” Covering many things, at the heart of this session was the crux of lacking incentives. The promise of altmetrics loomed large, but &lt;a href=&quot;http://friendfeed.com/stevekoch/a0823501/scio11-good-question-from-carl-should-emphasis&quot;&gt;I wondered&lt;/a&gt; if we needed to do focus more on making impact with open science than merely measuring it. For instance, we can surely try to measure the impact of open notebooks and science tweets, but tools for better discovery, standardization, or more semantic open content may go much father to having unmistakable impact.&lt;/p&gt;
+&lt;p&gt;The schedule indicates &lt;sup&gt;&lt;a href=&quot;#fn3&quot; class=&quot;footnoteRef&quot; id=&quot;fnref3&quot;&gt;3&lt;/a&gt;&lt;/sup&gt; that lunch happened next. though he whirling discussions left me with lots of ideas and names than memories of food or thoughts to my own upcoming panel. But no matter, I would be sitting with the heroes Jean-Claude Bradley (@jcbradley) and Anthony Williams (@ChemConnector), so why worry?&lt;/p&gt;
+&lt;figure&gt;
+&lt;img src=&quot;http://m.friendfeed-media.com/a9192c4f24f3b1cc96c306e48bad1c498cab0c23&quot; /&gt;
+&lt;/figure&gt;
+&lt;p&gt;Our session on Open Notebook Science quickly gave us reason to worry when the projector which had done fine thus far suddenly refused to work. Nevermind, we all work with technology too frequently to be unfamiliar with its failure - we would do without. If you were there and you’re wondering what you missed, here are my slides.  See &lt;a href=&quot;http://usefulchem.blogspot.com/2011/01/science-online-2011-thoughts.html&quot;&gt;Jean-Claude’s post&lt;/a&gt; for more on our session.&lt;/p&gt;
+&lt;iframe src=&quot;http://www.slideshare.net/slideshow/embed_code/6606229&quot; width=&quot;427&quot; height=&quot;356&quot; frameborder=&quot;0&quot; marginwidth=&quot;0&quot; marginheight=&quot;0&quot; scrolling=&quot;no&quot; style=&quot;border:1px solid #CCC;border-width:1px 1px 0;margin-bottom:5px&quot; allowfullscreen webkitallowfullscreen mozallowfullscreen&gt; &lt;/iframe&gt; &lt;div style=&quot;margin-bottom:5px&quot;&gt; 
+&lt;strong&gt; &lt;a href=&quot;http://www.slideshare.net/cboettig/scioslides&quot; title=&quot;Scioslides&quot; target=&quot;_blank&quot;&gt;Scioslides&lt;/a&gt; &lt;/strong&gt; from &lt;strong&gt;&lt;a href=&quot;http://www.slideshare.net/cboettig&quot; target=&quot;_blank&quot;&gt;Carl Boettiger&lt;/a&gt;&lt;/strong&gt;
+&lt;/div&gt;
+
+
+&lt;p&gt;I described the tools I use to make my notebook more automated and complete and discussed my vision of a social lab notebook.  In face of the observation that many open database efforts face the tragedy of commons effect (many researchers may use the resources but few contribute) I discussed some of the many immediate benefits the practice has had for me.  I must say what an immense treat it is to be able to finish a session and see the immediate feedback and reactions it has generated through the online streams.&lt;/p&gt;
+&lt;p&gt;The video recording of our session has now been posted:&lt;/p&gt;
+&lt;iframe src=&quot;http://player.vimeo.com/video/20100632&quot; width=&quot;500&quot; height=&quot;281&quot; frameborder=&quot;0&quot; webkitAllowFullScreen mozallowfullscreen allowFullScreen&gt;&lt;/iframe&gt; &lt;p&gt;
+&lt;a href=&quot;http://vimeo.com/20100632&quot;&gt;Open Notebook Science: Pushing Data from Bench to Web Service&lt;/a&gt; from &lt;a href=&quot;http://vimeo.com/user2419982&quot;&gt;Smartley-Dunn&lt;/a&gt; on &lt;a href=&quot;https://vimeo.com&quot;&gt;Vimeo&lt;/a&gt;.
+&lt;/p&gt;
+
+&lt;p&gt;See the &lt;a href=&quot;http://scienceonline2011.com/watch-2/&quot;&gt;recordings of the other sessions&lt;/a&gt; as well.&lt;/p&gt;
+&lt;p&gt;Having broached the idea of &lt;a href=&quot;http://altmetrics.org/manifesto/&quot;&gt;altmetrics&lt;/a&gt; on several occasions already, our next session dove into the details of how we might construct these, what they might measure, and how they would be received. Or as it was more concisely and provocatively phrased by Paul Groth (&lt;a href=&quot;http://twitter.com/#!/pgroth&quot;&gt;@pgroth&lt;/a&gt;):&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Would you list the number of twitter followers you have on your CV?&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;The last session dived further into tackling and improving the most common metric: citations. From citations that map to specific parts of articles to ones measuring the sentiment (supports/refutes) or even anticipating the social-cultural context of citations, the potential here is amazing. Jason Hoyt’s (&lt;a href=&quot;http://twitter.com/#!/jasonhoyt&quot;&gt;@jasonHoyt&lt;/a&gt;) 140 characters may have captured this session best:&lt;img src=&quot;http://m.friendfeed-media.com/f22753e4ef38225cbad94b61e22a9e5fdb701f23&quot; /&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;if I do my job right, no one will care about publishing in Nature, Science or Cell…&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Indicating that better article discovery and citation tracking through tools such as Mendeley would make the impact factor obsolete.&lt;/p&gt;
+&lt;p&gt;The evening banquet featured many highlights, including seeing one of my fellow graduate students in the video competition, the very moving story of Meg Lowman’s (&lt;a href=&quot;http://twitter.com/#!/canopymeg&quot;&gt;@canopymeg&lt;/a&gt;) work researching and inspiring rain-forest conservation, laughing tears at Brian Marlow’s (&lt;a href=&quot;http://twitter.com/#!/sciencecomedian&quot;&gt;@sciencecomedian&lt;/a&gt;) humorist routine, and talks deep into the night about &lt;a href=&quot;http://drexel-coas-elearning.blogspot.com/&quot;&gt;innovated ideas in open education&lt;/a&gt; with JC and then the future of publishing with Jason, Mark and Tony (&lt;a href=&quot;http://twitter.com/#!/jasonpriem&quot;&gt;@jasonPriem&lt;/a&gt;, &lt;a href=&quot;http://twitter.com/#!/science3point0&quot;&gt;@science3point0&lt;/a&gt;, and &lt;a href=&quot;http://twitter.com/#!/ChemConnector&quot;&gt;@ChemConnector&lt;/a&gt;).&lt;/p&gt;
+&lt;p&gt;Many other great discussions throughout the day on and off line that I cannot begin to capture here.  But after all, they are just beginning.&lt;/p&gt;
+&lt;section class=&quot;footnotes&quot;&gt;
+&lt;hr /&gt;
+&lt;ol&gt;
+&lt;li id=&quot;fn1&quot;&gt;&lt;p&gt;Note this was written up on Jan 17 upon returning to reality with enough time to write, but published under the event date for notebook consistency. Touched up for the Jekyll notebook 2013-07-09, see history in sidebar.&lt;a href=&quot;#fnref1&quot;&gt;↩&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li id=&quot;fn2&quot;&gt;&lt;p&gt;pronounced cook, I learned, and all of a sudden understood the &lt;a href=&quot;http://openwetware.org/wiki/User:Skoch3&quot;&gt;chef’s hat symbol&lt;/a&gt; for their lab that has puzzled me for a year!&lt;a href=&quot;#fnref2&quot;&gt;↩&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li id=&quot;fn3&quot;&gt;&lt;p&gt;Also, the schedule lists the full topics and presenters for these sessions, for which reason I should  &lt;a href=&quot;http://scio11.wikispaces.com/Program&quot;&gt;work in a link  to it somewhere.&lt;/a&gt;&lt;a href=&quot;#fnref3&quot;&gt;↩&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/section&gt;
 </content>
  </entry>
  

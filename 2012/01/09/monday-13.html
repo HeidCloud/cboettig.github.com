@@ -148,7 +148,7 @@
 <p>Also, in writing the documentation I’d like to point the .Rnw file to my global library’s bibtex document, but then this means having the .Rnw/tex file generated to by the package pointing to a file that’s outside the package.</p>
 <p>To get around both of these issues, I’ve started using bibtool. Bibtool can generate a smaller bibfile of only the included citations, and remove the duplicates, which I can use in the package.</p>
 <pre class="sourceCode bash"><code class="sourceCode bash">
-bibtool -s -d -x paper.aux global.bib <span class="kw">&gt;</span> paper.bib</code></pre>
+<span class="kw">bibtool</span> -s -d -x paper.aux global.bib <span class="kw">&gt;</span> paper.bib</code></pre>
 <p>tex generates the aux file. bibtools generates a local bib file from the citations listed in the .aux using my global bib file, then bibtex can run on the aux and format these citations, which are inserted by re-running tex as usual. Note that this could combine different bibs instead of using a global.bib.</p>
 <ul>
 <li><p>The ubuntu version of bibtool (2.48 alpha) doesn’t handle large bibfiles well, the current version 2.53 seems to do fine. Inspiration for this from <a href="http://tex.stackexchange.com/questions/1380/how-to-avoid-bibtex-error-message-repeated-entry-for-an-entry-appearing-in-sev">tex Q&amp;A</a>.</p></li>
@@ -168,13 +168,13 @@ bibtool -s -d -x paper.aux global.bib <span class="kw">&gt;</span> paper.bib</co
 <p>added TreePar example</p>
 <pre class="sourceCode R"><code class="sourceCode r">
 
-yule_4rate &lt;- <span class="kw">bd.shifts.optim</span>(x, <span class="dt">sampling =</span> <span class="kw">c</span>(<span class="dv">1</span>,
+yule_4rate &lt;-<span class="st"> </span><span class="kw">bd.shifts.optim</span>(x, <span class="dt">sampling =</span> <span class="kw">c</span>(<span class="dv">1</span>,
 <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>), <span class="dt">grid =</span> <span class="dv">5</span>, <span class="dt">start =</span> <span class="dv">0</span>, <span class="dt">end =</span> <span class="dv">60</span>, <span class="dt">ME =</span> <span class="ot">FALSE</span>,
 <span class="dt">yule =</span> <span class="ot">TRUE</span>)
 
-aic &lt;- <span class="kw">sapply</span>(yule_4rate[[<span class="dv">2</span>]], function(x) <span class="dv">2</span> *
+aic &lt;-<span class="st"> </span><span class="kw">sapply</span>(yule_4rate[[<span class="dv">2</span>]], function(x) <span class="dv">2</span> *
 
-(<span class="kw">length</span>(x) - <span class="dv">1</span>) + <span class="dv">2</span> * x[<span class="dv">1</span>] )
+(<span class="kw">length</span>(x) -<span class="st"> </span><span class="dv">1</span>) +<span class="st"> </span><span class="dv">2</span> *<span class="st"> </span>x[<span class="dv">1</span>] )
 <span class="kw">which.min</span>(aic)
 </code></pre>
 <p>and flushed out text. Sending to Peter and Duncan for a read over.</p>
@@ -225,7 +225,7 @@ aic &lt;- <span class="kw">sapply</span>(yule_4rate[[<span class="dv">2</span>]]
 
   <br/>
 
-   <p style="font-style:italic"> <i class="icon-signal"></i> pageviews: 89</p>
+   <p style="font-style:italic"> <i class="icon-signal"></i> pageviews: 90</p>
 
   <br/>
 

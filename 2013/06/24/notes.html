@@ -162,44 +162,44 @@
 <h3 id="nexml">NexML</h3>
 <p>This is a schema for phylogenetic trees. Being able to use this schema would be a big improvement over the current approach of our treebase package, which queries a vertically integrated database that is far less expressive then the NeXML schema.</p>
 <p>I tried this schema, but cannot download the file for some reason:</p>
-<pre class="sourceCode r"><code class="sourceCode r">nex &lt;- <span class="kw">readSchema</span>(<span class="st">&quot;http://www.nexml.org/2009/nexml.xsd&quot;</span>)
+<pre class="sourceCode r"><code class="sourceCode r">nex &lt;-<span class="st"> </span><span class="kw">readSchema</span>(<span class="st">&quot;http://www.nexml.org/2009/nexml.xsd&quot;</span>)
 failed to load HTTP resource
-Error: <span class="dv">1</span>: failed to load HTTP resource
-&gt; </code></pre>
+Error:<span class="st"> </span><span class="dv">1</span>:<span class="st"> </span>failed to load HTTP resource
+&gt;<span class="st"> </span></code></pre>
 <p>I download a copy from here and set its xsd/ directory as my working directory:</p>
-<pre class="sourceCode r"><code class="sourceCode r">&gt; nex &lt;- <span class="kw">readSchema</span>(<span class="st">&quot;nexml.xsd&quot;</span>)
-Error: XML content does not seem to be XML: <span class="st">&#39;./continuous.xsd&#39;</span></code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">&gt;<span class="st"> </span>nex &lt;-<span class="st"> </span><span class="kw">readSchema</span>(<span class="st">&quot;nexml.xsd&quot;</span>)
+Error:<span class="st"> </span>XML content does not seem to be XML:<span class="st"> &#39;./continuous.xsd&#39;</span></code></pre>
 <p>because the path should be <code>characters/continuous.xsd</code>. Not sure why I’m not managing to navigate the paths correctly here.</p>
 <h3 id="kml-example-from-book">KML example from book</h3>
 <p>I cannot load the KML schema directly from the website:</p>
-<pre class="sourceCode r"><code class="sourceCode r">&gt; kx = <span class="st">&quot;https://developers.google.com/kml/schema/kml21.xsd&quot;</span>
-&gt; kml = <span class="kw">readSchema</span>(kx)
-Error: XML content does not seem to be XML: <span class="st">&#39;https://developers.google.com/kml/schema/kml21.xsd&#39;</span></code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">&gt;<span class="st"> </span>kx =<span class="st"> &quot;https://developers.google.com/kml/schema/kml21.xsd&quot;</span>
+&gt;<span class="st"> </span>kml =<span class="st"> </span><span class="kw">readSchema</span>(kx)
+Error:<span class="st"> </span>XML content does not seem to be XML:<span class="st"> &#39;https://developers.google.com/kml/schema/kml21.xsd&#39;</span></code></pre>
 <p>Likewise,</p>
-<pre class="sourceCode r"><code class="sourceCode r">kml = <span class="kw">readSchema</span>( <span class="st">&quot;http://schemas.opengis.net/kml/2.2.0/ogckml22.xsd&quot;</span>)
+<pre class="sourceCode r"><code class="sourceCode r">kml =<span class="st"> </span><span class="kw">readSchema</span>( <span class="st">&quot;http://schemas.opengis.net/kml/2.2.0/ogckml22.xsd&quot;</span>)
 failed to load HTTP resource
-Error: <span class="dv">1</span>: failed to load HTTP resource</code></pre>
+Error:<span class="st"> </span><span class="dv">1</span>:<span class="st"> </span>failed to load HTTP resource</code></pre>
 <p>fails, though the other example works</p>
-<pre class="sourceCode r"><code class="sourceCode r">pmml = <span class="kw">readSchema</span>(<span class="st">&quot;http://www.dmg.org/v4-1/pmml-4-1.xsd&quot;</span>)</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">pmml =<span class="st"> </span><span class="kw">readSchema</span>(<span class="st">&quot;http://www.dmg.org/v4-1/pmml-4-1.xsd&quot;</span>)</code></pre>
 <p>If I wget the xsd and save it locally first, then I can readSchema on the local file. If I have <code>options(error = recover)</code> set, then</p>
 <pre class="sourceCode r"><code class="sourceCode r"> <span class="kw">defineClasses</span>(kml)</code></pre>
 <p>gets me deep into the debugger. If I run it with <code>options(error=NULL)</code>, then I get warnings:</p>
-<pre class="sourceCode r"><code class="sourceCode r">&gt; <span class="kw">defineClasses</span>(kml)
+<pre class="sourceCode r"><code class="sourceCode r">&gt;<span class="st"> </span><span class="kw">defineClasses</span>(kml)
 <span class="kw">character</span>(<span class="dv">0</span>)
 Warning messages:
-<span class="dv">1</span>: <span class="kw">In</span> (function (className, baseType, <span class="dt">where =</span> <span class="kw">globalenv</span>())  :
-  http<span class="er">://</span>earth.google.com/kml/<span class="fl">2.1</span>.Object is an existing class
-<span class="dv">2</span>: <span class="kw">In</span> (function (className, baseType, <span class="dt">where =</span> <span class="kw">globalenv</span>())  :
-  http<span class="er">://</span>earth.google.com/kml/<span class="fl">2.1</span>.Feature is an existing class
-<span class="dv">3</span>: <span class="kw">In</span> (function (className, baseType, <span class="dt">where =</span> <span class="kw">globalenv</span>())  :
-  http<span class="er">://</span>earth.google.com/kml/<span class="fl">2.1</span>.LookAt is an existing class
-<span class="dv">4</span>: <span class="kw">In</span> (function (className, baseType, <span class="dt">where =</span> <span class="kw">globalenv</span>())  :
-  http<span class="er">://</span>earth.google.com/kml/<span class="fl">2.1</span>.Geometry is an existing class
-<span class="dv">5</span>: <span class="kw">In</span> (function (className, baseType, <span class="dt">where =</span> <span class="kw">globalenv</span>())  :
-  http<span class="er">://</span>earth.google.com/kml/<span class="fl">2.1</span>.StyleSelector is an existing class
-<span class="dv">6</span>: <span class="kw">In</span> (function (className, baseType, <span class="dt">where =</span> <span class="kw">globalenv</span>())  :
-  http<span class="er">://</span>earth.google.com/kml/<span class="fl">2.1</span>.TimePrimitive is an existing class
-&gt; </code></pre>
+<span class="dv">1</span>:<span class="st"> </span><span class="kw">In</span> (function (className, baseType, <span class="dt">where =</span> <span class="kw">globalenv</span>())  :
+<span class="st">  </span>http:<span class="er">//</span>earth.google.com/kml/<span class="fl">2.1</span>.Object is an existing class
+<span class="dv">2</span>:<span class="st"> </span><span class="kw">In</span> (function (className, baseType, <span class="dt">where =</span> <span class="kw">globalenv</span>())  :
+<span class="st">  </span>http:<span class="er">//</span>earth.google.com/kml/<span class="fl">2.1</span>.Feature is an existing class
+<span class="dv">3</span>:<span class="st"> </span><span class="kw">In</span> (function (className, baseType, <span class="dt">where =</span> <span class="kw">globalenv</span>())  :
+<span class="st">  </span>http:<span class="er">//</span>earth.google.com/kml/<span class="fl">2.1</span>.LookAt is an existing class
+<span class="dv">4</span>:<span class="st"> </span><span class="kw">In</span> (function (className, baseType, <span class="dt">where =</span> <span class="kw">globalenv</span>())  :
+<span class="st">  </span>http:<span class="er">//</span>earth.google.com/kml/<span class="fl">2.1</span>.Geometry is an existing class
+<span class="dv">5</span>:<span class="st"> </span><span class="kw">In</span> (function (className, baseType, <span class="dt">where =</span> <span class="kw">globalenv</span>())  :
+<span class="st">  </span>http:<span class="er">//</span>earth.google.com/kml/<span class="fl">2.1</span>.StyleSelector is an existing class
+<span class="dv">6</span>:<span class="st"> </span><span class="kw">In</span> (function (className, baseType, <span class="dt">where =</span> <span class="kw">globalenv</span>())  :
+<span class="st">  </span>http:<span class="er">//</span>earth.google.com/kml/<span class="fl">2.1</span>.TimePrimitive is an existing class
+&gt;<span class="st"> </span></code></pre>
 <p>I load an minimal <a href="http://en.wikipedia.org/wiki/Keyhole_Markup_Language">example file</a> and try fromXML, but hit an error:</p>
 <pre><code>&gt; doc &lt;- xmlParse(&quot;kmlexample.xml&quot;)
 &gt; fromXML(doc)
@@ -287,7 +287,7 @@ Error in UseMethod(&quot;xmlAttrs&quot;, node) :
 
   <br/>
 
-   <p style="font-style:italic"> <i class="icon-signal"></i> pageviews: (not calculated)</p>
+   <p style="font-style:italic"> <i class="icon-signal"></i> pageviews: 25</p>
 
   <br/>
 

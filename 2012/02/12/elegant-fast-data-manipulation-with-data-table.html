@@ -145,17 +145,17 @@
     <article>
     <p>Just learned about the R <a href="http://cran.r-project.org/web/packages/data.table/index.html">data.table package</a> (ht @recology_) makes R data frames into ultra-fast, SQL-like objects.</p>
 <p>One thing we get is some very nice and powerful syntax. Consider some simple data of replicate time series:</p>
-<pre class="sourceCode r"><code class="sourceCode r">time &lt;- <span class="kw">rep</span>(<span class="dv">1</span>:<span class="dv">10</span>, <span class="dv">10</span>)
-replicate &lt;- <span class="kw">sort</span>(time)
-value &lt;- <span class="kw">rnorm</span>(<span class="dv">100</span>)
-df &lt;- <span class="kw">data.frame</span>(replicate, time, value)</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">time &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="dv">1</span>:<span class="dv">10</span>, <span class="dv">10</span>)
+replicate &lt;-<span class="st"> </span><span class="kw">sort</span>(time)
+value &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">100</span>)
+df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(replicate, time, value)</code></pre>
 <p>To apply a function to each set of replicates, instead of</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sapply</span>(<span class="dv">1</span>:<span class="kw">max</span>(df$replicate), function(i) 
-  <span class="kw">mean</span>( df[df$replicate == i,]$value) 
+  <span class="kw">mean</span>( df[df$replicate ==<span class="st"> </span>i,]$value) 
 )</code></pre>
 <p>We can use</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">require</span>(data.table)
-dt &lt;- <span class="kw">data.table</span>(df)
+dt &lt;-<span class="st"> </span><span class="kw">data.table</span>(df)
 dt[, <span class="kw">mean</span>(value), by=<span class="st">&quot;replicate&quot;</span>]</code></pre>
 <p>Note that we could have passed multiple arguments to the function, <code>f(time, value)</code>, or functions of the arguments, <code>mean(value*time)</code>, etc. While this can be much faster data-frames to begin with (see below), when the function is much more computationally intensive than “mean”, it might be sensible to parallelize this command instead:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">require</span>(snowfall)
@@ -164,14 +164,14 @@ dt[, <span class="kw">mean</span>(value), by=<span class="st">&quot;replicate&qu
   <span class="kw">mean</span> (dt[replicate==i, value] )
 )</code></pre>
 <p>Note that we could have given the second argument as a list if we needed multiple columns, i.e. <code>list(time, value)</code>. For a provocative example, consider this example comparing the two. Let’s create a very big data frame, and also make it a data table:</p>
-<pre class="sourceCode r"><code class="sourceCode r">grpsize = <span class="kw">ceiling</span>(<span class="fl">1e7</span>/<span class="dv">26</span>^<span class="dv">2</span>) 
-DF &lt;- <span class="kw">data.frame</span>(<span class="dt">x=</span><span class="kw">rep</span>(<span class="kw">factor</span>(LETTERS), <span class="dt">each =</span> <span class="dv">26</span> * grpsize), 
+<pre class="sourceCode r"><code class="sourceCode r">grpsize =<span class="st"> </span><span class="kw">ceiling</span>(<span class="fl">1e7</span>/<span class="dv">26</span>^<span class="dv">2</span>) 
+DF &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">x=</span><span class="kw">rep</span>(<span class="kw">factor</span>(LETTERS), <span class="dt">each =</span> <span class="dv">26</span> *<span class="st"> </span>grpsize), 
                  <span class="dt">y=</span><span class="kw">rep</span>(<span class="kw">factor</span>(letters), <span class="dt">each =</span> grpsize), 
-                 <span class="dt">v=</span><span class="kw">runif</span>(grpsize * <span class="dv">26</span> ^ <span class="dv">2</span>))
-DT &lt;- <span class="kw">data.table</span>(DF)</code></pre>
+                 <span class="dt">v=</span><span class="kw">runif</span>(grpsize *<span class="st"> </span><span class="dv">26</span> ^<span class="st"> </span><span class="dv">2</span>))
+DT &lt;-<span class="st"> </span><span class="kw">data.table</span>(DF)</code></pre>
 <p>This table has three columns, each capital letter of the alphabet (fist column) paired with each lower-case letter in column B. Let’s imagine we want all the cases that have a capital “R” and lowercase “f”. Well, in classic R we might do:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">system.time</span>( 
-  DF[DF$x==<span class="st">&quot;R&quot;</span> &amp; DF$y==<span class="st">&quot;f&quot;</span>, ]
+  DF[DF$x==<span class="st">&quot;R&quot;</span> &amp;<span class="st"> </span>DF$y==<span class="st">&quot;f&quot;</span>, ]
 )
 user  system elapsed 
   <span class="fl">2.796</span>   <span class="fl">0.500</span>   <span class="fl">3.313</span> </code></pre>
@@ -283,7 +283,7 @@ user  system elapsed
 
   <br/>
 
-   <p style="font-style:italic"> <i class="icon-signal"></i> pageviews: 680</p>
+   <p style="font-style:italic"> <i class="icon-signal"></i> pageviews: 739</p>
 
   <br/>
 

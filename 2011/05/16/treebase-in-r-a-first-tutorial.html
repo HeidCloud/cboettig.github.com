@@ -155,8 +155,8 @@
 <p>How has TreeBASE grown since it’s inception?  Let’s grab the metadata for all entries and histogram by publication year:</p>
 <pre class="sourceCode r"><code class="sourceCode r">
 
-all &lt;- <span class="kw">search_metadata</span>(<span class="st">&quot;&quot;</span>, <span class="dt">by=</span><span class="st">&quot;all&quot;</span>)
-dates &lt;- <span class="kw">sapply</span>(all, function(x) <span class="kw">as.numeric</span>(x$date))
+all &lt;-<span class="st"> </span><span class="kw">search_metadata</span>(<span class="st">&quot;&quot;</span>, <span class="dt">by=</span><span class="st">&quot;all&quot;</span>)
+dates &lt;-<span class="st"> </span><span class="kw">sapply</span>(all, function(x) <span class="kw">as.numeric</span>(x$date))
 <span class="kw">hist</span>(dates, <span class="dt">main=</span><span class="st">&quot;TreeBase growth&quot;</span>, <span class="dt">xlab=</span><span class="st">&quot;Year&quot;</span>)
 </code></pre>
 <figure>
@@ -165,9 +165,9 @@ dates &lt;- <span class="kw">sapply</span>(all, function(x) <span class="kw">as.
 <p>What journals have submitted the most studies to treebase?</p>
 <pre class="sourceCode r"><code class="sourceCode r">
 
-journals &lt;- <span class="kw">sapply</span>(all, function(x) x$publisher)
-J &lt;- <span class="kw">tail</span>(<span class="kw">sort</span>(<span class="kw">table</span>(<span class="kw">as.factor</span>(<span class="kw">unlist</span>(journals)))),<span class="dv">5</span>)
-b &lt;- <span class="kw">barplot</span>(<span class="kw">as.numeric</span>(J))
+journals &lt;-<span class="st"> </span><span class="kw">sapply</span>(all, function(x) x$publisher)
+J &lt;-<span class="st"> </span><span class="kw">tail</span>(<span class="kw">sort</span>(<span class="kw">table</span>(<span class="kw">as.factor</span>(<span class="kw">unlist</span>(journals)))),<span class="dv">5</span>)
+b &lt;-<span class="st"> </span><span class="kw">barplot</span>(<span class="kw">as.numeric</span>(J))
 <span class="kw">text</span>(b, <span class="kw">names</span>(J), <span class="dt">srt=</span><span class="dv">70</span>, <span class="dt">pos=</span><span class="dv">4</span>, <span class="dt">xpd=</span>T)
 </code></pre>
 <figure>
@@ -176,23 +176,23 @@ b &lt;- <span class="kw">barplot</span>(<span class="kw">as.numeric</span>(J))
 <p>How many have been submitted from <em>Nature</em>? <em>Science</em>?</p>
 <pre class="sourceCode r"><code class="sourceCode r">
 
-nature &lt;- <span class="kw">sapply</span>(all, function(x) <span class="kw">length</span>(<span class="kw">grep</span>(<span class="st">&quot;Nature&quot;</span>, x$publisher))&gt;<span class="dv">0</span>)
-science &lt;- <span class="kw">sapply</span>(all, function(x) <span class="kw">length</span>(<span class="kw">grep</span>(<span class="st">&quot;^Science$&quot;</span>, x$publisher))&gt;<span class="dv">0</span>)
+nature &lt;-<span class="st"> </span><span class="kw">sapply</span>(all, function(x) <span class="kw">length</span>(<span class="kw">grep</span>(<span class="st">&quot;Nature&quot;</span>, x$publisher))&gt;<span class="dv">0</span>)
+science &lt;-<span class="st"> </span><span class="kw">sapply</span>(all, function(x) <span class="kw">length</span>(<span class="kw">grep</span>(<span class="st">&quot;^Science$&quot;</span>, x$publisher))&gt;<span class="dv">0</span>)
 
 <span class="kw">sum</span>(nature)
 
-&gt; <span class="dv">11</span>
+&gt;<span class="st"> </span><span class="dv">11</span>
 
 <span class="kw">sum</span>(science)
 
-&gt; <span class="dv">8</span>
+&gt;<span class="st"> </span><span class="dv">8</span>
 </code></pre>
 <p>Which studies were those?  Can I have those trees please?</p>
 <pre class="sourceCode r"><code class="sourceCode r">
 
-s &lt;- <span class="kw">get_study_id</span>( all[nature] )
+s &lt;-<span class="st"> </span><span class="kw">get_study_id</span>( all[nature] )
 
-nature_trees &lt;- <span class="kw">sapply</span>(s, function(x) <span class="kw">search_treebase</span>(x, <span class="st">&quot;id.study&quot;</span>))
+nature_trees &lt;-<span class="st"> </span><span class="kw">sapply</span>(s, function(x) <span class="kw">search_treebase</span>(x, <span class="st">&quot;id.study&quot;</span>))
 </code></pre>
 <p>Other details associated with the study are certainly also available.  Since we downloaded all metadata we have this stored already.  Any tree downloaded stores the TreeBASE study id in <span class="math">\(S.id, ((and the unique tree id in \)</span>Tr.id)) which we can use to look up the metadata again.</p>
 <pre class="sourceCode r"><code class="sourceCode r">
@@ -211,18 +211,18 @@ all[nature][<span class="dv">1</span>] <span class="co"># Pull metadata from com
 
 ## We&#39;ll often use max_trees in the example so that they run quickly,
 <span class="co"># notice the quotes for species.</span>
-dolphins &lt;- <span class="kw">search_treebase</span>(<span class="st">&#39;&quot;Delphinus&quot;&#39;</span>, <span class="dt">by=</span><span class="st">&quot;taxon&quot;</span>, <span class="dt">max_trees=</span><span class="dv">5</span>)
+dolphins &lt;-<span class="st"> </span><span class="kw">search_treebase</span>(<span class="st">&#39;&quot;Delphinus&quot;&#39;</span>, <span class="dt">by=</span><span class="st">&quot;taxon&quot;</span>, <span class="dt">max_trees=</span><span class="dv">5</span>)
 ## can do exact matches
-humans &lt;- <span class="kw">search_treebase</span>(<span class="st">&#39;&quot;Homo sapiens&quot;&#39;</span>, <span class="dt">by=</span><span class="st">&quot;taxon&quot;</span>, <span class="dt">exact_match=</span><span class="ot">TRUE</span>, <span class="dt">max_trees=</span><span class="dv">10</span>)
+humans &lt;-<span class="st"> </span><span class="kw">search_treebase</span>(<span class="st">&#39;&quot;Homo sapiens&quot;&#39;</span>, <span class="dt">by=</span><span class="st">&quot;taxon&quot;</span>, <span class="dt">exact_match=</span><span class="ot">TRUE</span>, <span class="dt">max_trees=</span><span class="dv">10</span>)
 <span class="co"># all trees with 5 taxa</span>
-five &lt;- <span class="kw">search_treebase</span>(<span class="dv">5</span>, <span class="dt">by=</span><span class="st">&quot;ntax&quot;</span>, <span class="dt">max_trees =</span> <span class="dv">10</span>)
+five &lt;-<span class="st"> </span><span class="kw">search_treebase</span>(<span class="dv">5</span>, <span class="dt">by=</span><span class="st">&quot;ntax&quot;</span>, <span class="dt">max_trees =</span> <span class="dv">10</span>)
 <span class="co"># These are different, a tree id isn&#39;t a Study id.  we report both</span>
-studies &lt;- <span class="kw">search_treebase</span>(<span class="st">&quot;2377&quot;</span>, <span class="dt">by=</span><span class="st">&quot;id.study&quot;</span>)
-tree &lt;- <span class="kw">search_treebase</span>(<span class="st">&quot;2377&quot;</span>, <span class="dt">by=</span><span class="st">&quot;id.tree&quot;</span>)
-<span class="kw">c</span>(<span class="st">&quot;TreeID&quot;</span> = tree$Tr.id, <span class="st">&quot;StudyID&quot;</span> = tree$S.id)
+studies &lt;-<span class="st"> </span><span class="kw">search_treebase</span>(<span class="st">&quot;2377&quot;</span>, <span class="dt">by=</span><span class="st">&quot;id.study&quot;</span>)
+tree &lt;-<span class="st"> </span><span class="kw">search_treebase</span>(<span class="st">&quot;2377&quot;</span>, <span class="dt">by=</span><span class="st">&quot;id.tree&quot;</span>)
+<span class="kw">c</span>(<span class="st">&quot;TreeID&quot;</span> =<span class="st"> </span>tree$Tr.id, <span class="st">&quot;StudyID&quot;</span> =<span class="st"> </span>tree$S.id)
 <span class="co"># Only results wiht branch lengths</span>
 <span class="co"># Has to grab all the trees first, then toss out ones without branch_lengths</span>
-Near &lt;- <span class="kw">search_treebase</span>(<span class="st">&quot;Near&quot;</span>, <span class="st">&quot;author&quot;</span>, <span class="dt">branch_lengths=</span><span class="ot">TRUE</span>)
+Near &lt;-<span class="st"> </span><span class="kw">search_treebase</span>(<span class="st">&quot;Near&quot;</span>, <span class="st">&quot;author&quot;</span>, <span class="dt">branch_lengths=</span><span class="ot">TRUE</span>)
 <span class="kw">length</span>(Near)
 </code></pre>
 <p>These queries can be combined with metadata searches</p>
@@ -239,48 +239,48 @@ Near &lt;- <span class="kw">search_treebase</span>(<span class="st">&quot;Near&q
 
 <span class="co"># Use that to get all trees &quot;published&quot; after 2010</span>
 <span class="co"># publication date is only a year</span>
-post2010 &lt;- <span class="kw">sapply</span>(dates, function(x) <span class="dv">2010</span> &lt; <span class="kw">as.numeric</span>(x))
-s &lt;- <span class="kw">get_study_id</span>( all[post2010] )
-out &lt;- <span class="kw">lapply</span>(s, function(x) <span class="kw">search_treebase</span>(x, <span class="st">&quot;id.study&quot;</span>))
+post2010 &lt;-<span class="st"> </span><span class="kw">sapply</span>(dates, function(x) <span class="dv">2010</span> &lt;<span class="st"> </span><span class="kw">as.numeric</span>(x))
+s &lt;-<span class="st"> </span><span class="kw">get_study_id</span>( all[post2010] )
+out &lt;-<span class="st"> </span><span class="kw">lapply</span>(s, function(x) <span class="kw">search_treebase</span>(x, <span class="st">&quot;id.study&quot;</span>))
 <span class="co"># Grab the trees entered since 2011: (some studies will have multiple trees)</span>
 <span class="co">#can compare dates with as.Date(&quot;2001-01-01&quot;, &quot;%y-%m-%d) &lt; as.Date ...</span>
-m &lt;- <span class="kw">search_metadata</span>(<span class="st">&quot;2011-05-05&quot;</span>, <span class="dt">by=</span><span class="st">&quot;from&quot;</span>)
-s &lt;- <span class="kw">get_study_id</span>(m)
-out &lt;- <span class="kw">lapply</span>(s, function(x) <span class="kw">search_treebase</span>(x, <span class="st">&quot;id.study&quot;</span>))</code></pre>
+m &lt;-<span class="st"> </span><span class="kw">search_metadata</span>(<span class="st">&quot;2011-05-05&quot;</span>, <span class="dt">by=</span><span class="st">&quot;from&quot;</span>)
+s &lt;-<span class="st"> </span><span class="kw">get_study_id</span>(m)
+out &lt;-<span class="st"> </span><span class="kw">lapply</span>(s, function(x) <span class="kw">search_treebase</span>(x, <span class="st">&quot;id.study&quot;</span>))</code></pre>
 <h2 id="a-simple-meta-analysis">A simple meta-analysis</h2>
 <p>Of course, this capacity is most powerful not to merely get some summary statistics of the database, but repeat analyses of given studies or perform meta-analyses.  Most comparative phylogenetics methods require ultrametric trees.</p>
 <p>We can assemble a simple pipeline to perform the meta-analysis across all existing studies of whether phylogenies tend to fit a pure-birth or a birth-death model more frequently:</p>
 <p>As a proof-of-principle, we can create a pipeline that will estimate chronograms for all trees containing branchlengths in treebase.</p>
 <pre class="sourceCode r"><code class="sourceCode r">
 
-timetree &lt;- function(tree){
-check.na &lt;- <span class="kw">try</span>(<span class="kw">sum</span>(<span class="kw">is.na</span>(tree$edge.length))&gt;<span class="dv">0</span>)
-if(<span class="kw">is</span>(check.na, <span class="st">&quot;try-error&quot;</span>) | check.na)
+timetree &lt;-<span class="st"> </span>function(tree){
+check.na &lt;-<span class="st"> </span><span class="kw">try</span>(<span class="kw">sum</span>(<span class="kw">is.na</span>(tree$edge.length))&gt;<span class="dv">0</span>)
+if(<span class="kw">is</span>(check.na, <span class="st">&quot;try-error&quot;</span>) |<span class="st"> </span>check.na)
 <span class="ot">NULL</span>
 else
 <span class="kw">try</span>( <span class="kw">chronoMPL</span>(<span class="kw">multi2di</span>(tree)) )
 }
-drop_errors &lt;- function(trees){
+drop_errors &lt;-<span class="st"> </span>function(trees){
 ## apply to a list of trees created with timetree to drop errors
-tt &lt;- tt[!<span class="kw">sapply</span>(trees, is.null)]
-tt &lt;- tt[!<span class="kw">sapply</span>(tt, function(x) <span class="kw">is</span>(x, <span class="st">&quot;try-error&quot;</span>))]
+tt &lt;-<span class="st"> </span>tt[!<span class="kw">sapply</span>(trees, is.null)]
+tt &lt;-<span class="st"> </span>tt[!<span class="kw">sapply</span>(tt, function(x) <span class="kw">is</span>(x, <span class="st">&quot;try-error&quot;</span>))]
 <span class="kw">print</span>(<span class="kw">paste</span>(<span class="st">&quot;dropped&quot;</span>, <span class="kw">length</span>(trees)-<span class="kw">length</span>(tt), <span class="st">&quot;trees&quot;</span>))
 tt
 
 }
 
 <span class="kw">require</span>(laser)
-pick_branching_model &lt;- function(tree){
- m1 &lt;- <span class="kw">try</span>(<span class="kw">pureBirth</span>(<span class="kw">branching.times</span>(tree)))
- m2 &lt;- <span class="kw">try</span>(<span class="kw">bd</span>(<span class="kw">branching.times</span>(tree)))
- <span class="kw">as.logical</span>(<span class="kw">try</span>(m2$aic &lt; m1$aic))
+pick_branching_model &lt;-<span class="st"> </span>function(tree){
+ m1 &lt;-<span class="st"> </span><span class="kw">try</span>(<span class="kw">pureBirth</span>(<span class="kw">branching.times</span>(tree)))
+ m2 &lt;-<span class="st"> </span><span class="kw">try</span>(<span class="kw">bd</span>(<span class="kw">branching.times</span>(tree)))
+ <span class="kw">as.logical</span>(<span class="kw">try</span>(m2$aic &lt;<span class="st"> </span>m1$aic))
 }
 
 <span class="co"># Return all treebase trees that have branch lengths</span>
 <span class="co"># This has to download every tree in treebase, so not superfast...</span>
-all &lt;- <span class="kw">search_treebase</span>(<span class="st">&quot;Consensus&quot;</span>, <span class="st">&quot;type.tree&quot;</span>, <span class="dt">branch_lengths=</span><span class="ot">TRUE</span>)
-tt &lt;- <span class="kw">drop_errors</span>(<span class="kw">sapply</span>(all, timetree))
-is_yule &lt;- <span class="kw">sapply</span>(tt, pick_branching_model)
+all &lt;-<span class="st"> </span><span class="kw">search_treebase</span>(<span class="st">&quot;Consensus&quot;</span>, <span class="st">&quot;type.tree&quot;</span>, <span class="dt">branch_lengths=</span><span class="ot">TRUE</span>)
+tt &lt;-<span class="st"> </span><span class="kw">drop_errors</span>(<span class="kw">sapply</span>(all, timetree))
+is_yule &lt;-<span class="st"> </span><span class="kw">sapply</span>(tt, pick_branching_model)
 <span class="kw">table</span>(is_yule)</code></pre>
 <h2 id="replicating-individual-studies">Replicating individual studies</h2>
 <p>Replicating individual studies is a bit more challenging, mostly do to the quality of available data.  For instance, here is a nice recent study (Rowe <em>et. al.</em> 2011) that has nicely time calibrated chronograms (from BEAST, Figure 4) and species trees (using BEST, Figure 3), but it seems only the<a href="http://purl.org/phylo/treebase/dev/phylows/study/find?query=tb.identifier.study=10869&amp;format=rss1&amp;recordSchema=tree">Mr. Bayes tree in Figure 2 is given in TreeBASE.</a></p>
@@ -349,7 +349,7 @@ is_yule &lt;- <span class="kw">sapply</span>(tt, pick_branching_model)
 
   <br/>
 
-   <p style="font-style:italic"> <i class="icon-signal"></i> pageviews: 61</p>
+   <p style="font-style:italic"> <i class="icon-signal"></i> pageviews: 63</p>
 
   <br/>
 

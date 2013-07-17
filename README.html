@@ -167,14 +167,14 @@
 <h1 id="building-from-source">Building from source</h1>
 <p>This site is built by Jekyll, a static site generator which creates html pages from markdown files. Here are the instructions for building the site from source, based on my Ubuntu 12.04 platform. Feel free to adapt this configuration to your own needs.</p>
 <p>Clone the site source-code from github:</p>
-<pre class="sourceCode bash"><code class="sourceCode bash">git clone https://github.com/cboettig/labnotebook.git</code></pre>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">git</span> clone https://github.com/cboettig/labnotebook.git</code></pre>
 <p>Install Ruby version &gt;= 1.9</p>
-<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">sudo</span> apt-get <span class="kw">install</span> ruby1.9.1-full</code></pre>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">sudo</span> apt-get install ruby1.9.1-full</code></pre>
 <p>Make sure the <a href="http://askubuntu.com/questions/91693/how-do-you-uninstall-ruby-1-8-7-and-install-ruby-1-9-2">latest version is selected</a></p>
 <pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">sudo</span> update-alternatives --config ruby
 <span class="kw">sudo</span> update-alternatives --config gem</code></pre>
 <p>Install Jekyll and the dependencies needed for a few plugins.</p>
-<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">sudo</span> gem <span class="kw">install</span> jekyll feedzirra nokogiri twitter octokit pandoc-ruby garb chronic json <span class="kw">time</span> </code></pre>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">sudo</span> gem install jekyll feedzirra nokogiri twitter octokit pandoc-ruby garb chronic json time </code></pre>
 <p>In the root directory of the project, run <code>jekyll --server</code>, if successfull, after a few seconds the site should be available by pointing your browser to <code>localhost:4000</code>. The additional gems are required for various plugins; see below for more information. Due to these additional requirements, this site cannot be automatically rendered on Github’s pages. Compile the site locally and copy the html files in <code>_site</code> to the <code>gh-pages</code> branch of a Github repository for Github-based hosting.</p>
 <h2 id="jekyll-dependencies">Jekyll Dependencies</h2>
 <p>The site relies on following additional ruby gems (not available on the Jekyll copy provided on Github’s gh-pages) to compile successfully.</p>

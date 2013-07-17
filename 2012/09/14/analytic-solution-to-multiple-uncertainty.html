@@ -148,12 +148,12 @@
 <p>In adding these two sources of error, our state variable becomes our <em>measured</em> (or believed) stock <span class="math">\(x\)</span>, rather than the true stock size <span class="math">\(y\)</span>, and our control variable becomes the quota <span class="math">\(q\)</span> set, rather than the realized harvest <span class="math">\(h\)</span>.</p>
 <h2 id="analytical-integrals">Analytical integrals</h2>
 <p>The central calculation to accomodating additional sources of uncertainty is the determination of the transition matrix; the probability of going from state <span class="math">\(x_t\)</span> at time <span class="math">\(t\)</span> to state <span class="math">\(x_{t+1}\)</span> in the next interval, for each possible value of the control variable (quota). We discritize the statespace onto a fine grid of values <span class="math">\(x\)</span> and <span class="math">\(h\)</span> to seek a stochastic dynamic programming solution.</p>
-<pre class="sourceCode r"><code class="sourceCode r">xmin &lt;- <span class="dv">0</span>
-xmax &lt;- <span class="dv">150</span>
-grid_n &lt;- <span class="dv">100</span></code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">xmin &lt;-<span class="st"> </span><span class="dv">0</span>
+xmax &lt;-<span class="st"> </span><span class="dv">150</span>
+grid_n &lt;-<span class="st"> </span><span class="dv">100</span></code></pre>
 <p>We seek a harvest policy which maximizes the discounted profit from the fishery using a stochastic dynamic programming approach over a discrete grid of stock sizes from <code>0</code> to <code>150</code> on a grid of <code>100</code> points, and over an identical discrete grid of possible harvest values.</p>
-<pre class="sourceCode r"><code class="sourceCode r">x_grid &lt;- <span class="kw">seq</span>(xmin, xmax, <span class="dt">length =</span> grid_n)
-h_grid &lt;- x_grid</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">x_grid &lt;-<span class="st"> </span><span class="kw">seq</span>(xmin, xmax, <span class="dt">length =</span> grid_n)
+h_grid &lt;-<span class="st"> </span>x_grid</code></pre>
 <p>With purely growth noise, a row of the matrix is given by the probability density of the growth noise with mean <span class="math">\(f(x,h)\)</span>, that is, the probability of tranistion from <span class="math">\(x\)</span> to <span class="math">\(x_{t+1}\)</span> at harvest <span class="math">\(h\)</span> is given by the function <span class="math">\(P(x_t+1, f(x,h))\)</span> for some probability density function <span class="math">\(P\)</span>. In the case of uncertainty in stock <span class="math">\(y\)</span> and harvest <span class="math">\(h\)</span>, we must integrate over the probability distributions for possible harvests and possible stock sizes,</p>
 <div> 
 <span class="math">\[ \int dh \int dy P(x_{t+1}, f(y, h))P(y)P(h) \]</span>
@@ -168,87 +168,87 @@ h_grid &lt;- x_grid</code></pre>
 <p>So now we are left to merely integrate the <span class="math">\(f(y,h)\)</span> over these finite intervals. We can do this for arbitrary <span class="math">\(f\)</span> through multidimensional numerical integration (In fact we could have done this in the first place, but it is too slow for the convolutions of arbitrary probability densities)</p>
 <pre class="sourceCode r"><code class="sourceCode r">int_f</code></pre>
 <pre class="sourceCode r"><code class="sourceCode r">function(f, x, q, sigma_m, sigma_i, pars){
-  K &lt;- pars[<span class="dv">2</span>]
-  sigma_m &lt;- K*sigma_m
-  sigma_i &lt;- K*sigma_i <span class="co"># scale noise into units of K</span>
+  K &lt;-<span class="st"> </span>pars[<span class="dv">2</span>]
+  sigma_m &lt;-<span class="st"> </span>K*sigma_m
+  sigma_i &lt;-<span class="st"> </span>K*sigma_i <span class="co"># scale noise into units of K</span>
   
-  if(sigma_m &gt; <span class="dv">0</span> &amp;&amp; sigma_i &gt; <span class="dv">0</span>){
-    g &lt;- function(X) <span class="kw">f</span>(X[<span class="dv">1</span>], X[<span class="dv">2</span>], pars)
-    lower &lt;- <span class="kw">c</span>(<span class="kw">max</span>(x - sigma_m, <span class="dv">0</span>), <span class="kw">max</span>(q - sigma_i, <span class="dv">0</span>))
-    upper &lt;- <span class="kw">c</span>(x + sigma_m, q + sigma_i)
-    A &lt;- <span class="kw">adaptIntegrate</span>(g, lower, upper)
-    out &lt;- A$integral/((q+sigma_i-<span class="kw">max</span>(q-sigma_i, <span class="dv">0</span>))*(x+sigma_m-<span class="kw">max</span>(x-sigma_m, <span class="dv">0</span>)))
-  } else if(sigma_m == <span class="dv">0</span> &amp;&amp; sigma_i &gt; <span class="dv">0</span>){ 
-    g &lt;- function(h) <span class="kw">f</span>(x, h, pars)
-    lower &lt;- <span class="kw">max</span>(q - sigma_i, <span class="dv">0</span>)
-    upper &lt;- q + sigma_i
-    A &lt;- <span class="kw">adaptIntegrate</span>(g, lower, upper)
-    out &lt;- A$integral/(q+sigma_i-<span class="kw">max</span>(q-sigma_i, <span class="dv">0</span>))
-  } else if(sigma_i == <span class="dv">0</span> &amp;&amp; sigma_m &gt; <span class="dv">0</span>){ 
-    g &lt;- function(y) <span class="kw">f</span>(y, q, pars)
-    lower &lt;- <span class="kw">max</span>(x - sigma_m, <span class="dv">0</span>)
-    upper &lt;- x + sigma_m
-    A &lt;- <span class="kw">adaptIntegrate</span>(g, lower, upper)
-    out &lt;- A$integral/(x+sigma_m-<span class="kw">max</span>(x-sigma_m, <span class="dv">0</span>))
-  } else if (m == <span class="dv">0</span> &amp;&amp; n == <span class="dv">0</span>){
-    out &lt;- <span class="kw">f</span>(x,q,pars)
+  if(sigma_m &gt;<span class="st"> </span><span class="dv">0</span> &amp;&amp;<span class="st"> </span>sigma_i &gt;<span class="st"> </span><span class="dv">0</span>){
+    g &lt;-<span class="st"> </span>function(X) <span class="kw">f</span>(X[<span class="dv">1</span>], X[<span class="dv">2</span>], pars)
+    lower &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">max</span>(x -<span class="st"> </span>sigma_m, <span class="dv">0</span>), <span class="kw">max</span>(q -<span class="st"> </span>sigma_i, <span class="dv">0</span>))
+    upper &lt;-<span class="st"> </span><span class="kw">c</span>(x +<span class="st"> </span>sigma_m, q +<span class="st"> </span>sigma_i)
+    A &lt;-<span class="st"> </span><span class="kw">adaptIntegrate</span>(g, lower, upper)
+    out &lt;-<span class="st"> </span>A$integral/((q+sigma_i-<span class="kw">max</span>(q-sigma_i, <span class="dv">0</span>))*(x+sigma_m-<span class="kw">max</span>(x-sigma_m, <span class="dv">0</span>)))
+  } else if(sigma_m ==<span class="st"> </span><span class="dv">0</span> &amp;&amp;<span class="st"> </span>sigma_i &gt;<span class="st"> </span><span class="dv">0</span>){ 
+    g &lt;-<span class="st"> </span>function(h) <span class="kw">f</span>(x, h, pars)
+    lower &lt;-<span class="st"> </span><span class="kw">max</span>(q -<span class="st"> </span>sigma_i, <span class="dv">0</span>)
+    upper &lt;-<span class="st"> </span>q +<span class="st"> </span>sigma_i
+    A &lt;-<span class="st"> </span><span class="kw">adaptIntegrate</span>(g, lower, upper)
+    out &lt;-<span class="st"> </span>A$integral/(q+sigma_i-<span class="kw">max</span>(q-sigma_i, <span class="dv">0</span>))
+  } else if(sigma_i ==<span class="st"> </span><span class="dv">0</span> &amp;&amp;<span class="st"> </span>sigma_m &gt;<span class="st"> </span><span class="dv">0</span>){ 
+    g &lt;-<span class="st"> </span>function(y) <span class="kw">f</span>(y, q, pars)
+    lower &lt;-<span class="st"> </span><span class="kw">max</span>(x -<span class="st"> </span>sigma_m, <span class="dv">0</span>)
+    upper &lt;-<span class="st"> </span>x +<span class="st"> </span>sigma_m
+    A &lt;-<span class="st"> </span><span class="kw">adaptIntegrate</span>(g, lower, upper)
+    out &lt;-<span class="st"> </span>A$integral/(x+sigma_m-<span class="kw">max</span>(x-sigma_m, <span class="dv">0</span>))
+  } else if (m ==<span class="st"> </span><span class="dv">0</span> &amp;&amp;<span class="st"> </span>n ==<span class="st"> </span><span class="dv">0</span>){
+    out &lt;-<span class="st"> </span><span class="kw">f</span>(x,q,pars)
   } else {
     <span class="kw">stop</span>(<span class="st">&quot;distribution widths cannot be negative&quot;</span>)
   }
   out
 }
-&lt;environment: namespace:pdgControl&gt;</code></pre>
+&lt;environment:<span class="st"> </span>namespace:pdgControl&gt;</code></pre>
 <p>If we assume a simple function like logistic growth, \(f(s) = r s (1-s/K) + s \), where \(s = x - h\),</p>
-<pre class="sourceCode r"><code class="sourceCode r">f &lt;- function(x, h, p) {
+<pre class="sourceCode r"><code class="sourceCode r">f &lt;-<span class="st"> </span>function(x, h, p) {
     <span class="kw">sapply</span>(x, function(x) {
-        S = <span class="kw">max</span>(x - h, <span class="dv">0</span>)
-        p[<span class="dv">1</span>] * S * (<span class="dv">1</span> - S/p[<span class="dv">2</span>]) + S
+        S =<span class="st"> </span><span class="kw">max</span>(x -<span class="st"> </span>h, <span class="dv">0</span>)
+        p[<span class="dv">1</span>] *<span class="st"> </span>S *<span class="st"> </span>(<span class="dv">1</span> -<span class="st"> </span>S/p[<span class="dv">2</span>]) +<span class="st"> </span>S
     })
 }</code></pre>
 <p>With parameters</p>
-<pre class="sourceCode r"><code class="sourceCode r">r &lt;- <span class="dv">1</span>
-K &lt;- <span class="dv">100</span>
-pars &lt;- <span class="kw">c</span>(r, K)</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">r &lt;-<span class="st"> </span><span class="dv">1</span>
+K &lt;-<span class="st"> </span><span class="dv">100</span>
+pars &lt;-<span class="st"> </span><span class="kw">c</span>(r, K)</code></pre>
 <p><code>r</code> = <code>1</code> and <code>K</code> = <code>100</code>.</p>
 <p>Following Sethi et al, we can do this in closed form,</p>
 <pre class="sourceCode r"><code class="sourceCode r">function(x,q, m, n, pars){
-  K &lt;- pars[<span class="dv">2</span>]
-  m &lt;- K*m
-  n &lt;- K*n <span class="co"># scale noise by K</span>
-  if(m &gt; <span class="dv">0</span> &amp;&amp; n &gt; <span class="dv">0</span>){
-  out &lt;- ((q+n-<span class="kw">max</span>(<span class="dv">0</span>,q-n))*(x+m-<span class="kw">max</span>(<span class="dv">0</span>,x-m))*(<span class="dv">6</span>*x*K<span class="dv">-6</span>*q*K<span class="dv">-6</span>*n*K<span class="dv">+6</span>*m*K<span class="dv">+6</span>*<span class="kw">max</span>(<span class="dv">0</span>,x-m)*K<span class="dv">-6</span>*
-    <span class="kw">max</span>(<span class="dv">0</span>,q-n)*K<span class="dv">-2</span>*x^<span class="dv">2+3</span>*q*x<span class="dv">+3</span>*n*x<span class="dv">-4</span>*m*x<span class="dv">-2</span>*<span class="kw">max</span>(<span class="dv">0</span>,x-m)*x<span class="dv">+3</span>*<span class="kw">max</span>(<span class="dv">0</span>,q-n)*x<span class="dv">-2</span>*q^<span class="dv">2-4</span>*n*q<span class="dv">+3</span>*m*q<span class="dv">+3</span>*
-    <span class="kw">max</span>(<span class="dv">0</span>,x-m)*q<span class="dv">-2</span>*<span class="kw">max</span>(<span class="dv">0</span>,q-n)*q<span class="dv">-2</span>*n^<span class="dv">2+3</span>*m*n<span class="dv">+3</span>*<span class="kw">max</span>(<span class="dv">0</span>,x-m)*n<span class="dv">-2</span>*<span class="kw">max</span>(<span class="dv">0</span>,q-n)*n<span class="dv">-2</span>*m^<span class="dv">2-2</span>*<span class="kw">max</span>(<span class="dv">0</span>,x-m)*m<span class="dv">+3</span>*
-    <span class="kw">max</span>(<span class="dv">0</span>,q-n)*m<span class="dv">-2</span>*<span class="kw">max</span>(<span class="dv">0</span>,x-m)^<span class="dv">2+3</span>*<span class="kw">max</span>(<span class="dv">0</span>,q-n)*<span class="kw">max</span>(<span class="dv">0</span>,x-m)-<span class="dv">2</span>*<span class="kw">max</span>(<span class="dv">0</span>,q-n)^<span class="dv">2</span>))/(<span class="dv">6</span>*K)/((q+n-<span class="kw">max</span>(q-n, <span class="dv">0</span>))*(x+m-<span class="kw">max</span>(x-m, <span class="dv">0</span>)))
-  } else if(m == <span class="dv">0</span> &amp;&amp; n &gt; <span class="dv">0</span>) {
-    y &lt;- x
-    out &lt;- (((<span class="dv">6</span>*q<span class="dv">+6</span>*n<span class="dv">-6</span>*<span class="kw">max</span>(<span class="dv">0</span>,q-n))*y<span class="dv">-3</span>*q^<span class="dv">2-6</span>*n*q<span class="dv">-3</span>*n^<span class="dv">2+3</span>*<span class="kw">max</span>(<span class="dv">0</span>,q-n)^<span class="dv">2</span>)*K+(-<span class="dv">3</span>*q<span class="dv">-3</span>*n<span class="dv">+3</span>*<span class="kw">max</span>(<span class="dv">0</span>,q-n))*
-      y^<span class="dv">2</span>+(<span class="dv">3</span>*q^<span class="dv">2+6</span>*n*q<span class="dv">+3</span>*n^<span class="dv">2-3</span>*<span class="kw">max</span>(<span class="dv">0</span>,q-n)^<span class="dv">2</span>)*y-q^<span class="dv">3-3</span>*n*q^<span class="dv">2-3</span>*n^<span class="dv">2</span>*q-n^<span class="dv">3</span>+<span class="kw">max</span>(<span class="dv">0</span>,q-n)^<span class="dv">3</span>)/(<span class="dv">3</span>*K*(q+n-<span class="kw">max</span>(q-n, <span class="dv">0</span>)))
-  } else if(n == <span class="dv">0</span> &amp;&amp; m &gt; <span class="dv">0</span>){
-    h &lt;- q
-    out &lt;- ((<span class="dv">3</span>*x^<span class="dv">2</span>+(<span class="dv">6</span>*m<span class="dv">-6</span>*h)*x<span class="dv">+3</span>*m^<span class="dv">2-6</span>*h*m<span class="dv">+6</span>*<span class="kw">max</span>(<span class="dv">0</span>,x-m)*h<span class="dv">-3</span>*<span class="kw">max</span>(<span class="dv">0</span>,x-m)^<span class="dv">2</span>)*K-x^<span class="dv">3</span>+(<span class="dv">3</span>*h<span class="dv">-3</span>*m)*x^<span class="dv">2</span>+
-      (-<span class="dv">3</span>*m^<span class="dv">2+6</span>*h*m<span class="dv">-3</span>*h^<span class="dv">2</span>)*x-m^<span class="dv">3+3</span>*h*m^<span class="dv">2-3</span>*h^<span class="dv">2</span>*m<span class="dv">+3</span>*<span class="kw">max</span>(<span class="dv">0</span>,x-m)*h^<span class="dv">2-3</span>*<span class="kw">max</span>(<span class="dv">0</span>,x-m)^<span class="dv">2</span>*h+<span class="kw">max</span>(<span class="dv">0</span>,x-m)^<span class="dv">3</span>)/(<span class="dv">3</span>*K*(x+m-<span class="kw">max</span>(x-m, <span class="dv">0</span>)))
-  } else if (m == <span class="dv">0</span> &amp;&amp; n == <span class="dv">0</span>){
-    S &lt;- <span class="kw">max</span>(x - q, <span class="dv">0</span>)
-    out &lt;- S * (<span class="dv">1</span> - S/K) + S
+  K &lt;-<span class="st"> </span>pars[<span class="dv">2</span>]
+  m &lt;-<span class="st"> </span>K*m
+  n &lt;-<span class="st"> </span>K*n <span class="co"># scale noise by K</span>
+  if(m &gt;<span class="st"> </span><span class="dv">0</span> &amp;&amp;<span class="st"> </span>n &gt;<span class="st"> </span><span class="dv">0</span>){
+  out &lt;-<span class="st"> </span>((q+n-<span class="kw">max</span>(<span class="dv">0</span>,q-n))*(x+m-<span class="kw">max</span>(<span class="dv">0</span>,x-m))*(<span class="dv">6</span>*x*K<span class="dv">-6</span>*q*K<span class="dv">-6</span>*n*K<span class="dv">+6</span>*m*K<span class="dv">+6</span>*<span class="kw">max</span>(<span class="dv">0</span>,x-m)*K<span class="dv">-6</span>*
+<span class="st">    </span><span class="kw">max</span>(<span class="dv">0</span>,q-n)*K<span class="dv">-2</span>*x^<span class="dv">2+3</span>*q*x<span class="dv">+3</span>*n*x<span class="dv">-4</span>*m*x<span class="dv">-2</span>*<span class="kw">max</span>(<span class="dv">0</span>,x-m)*x<span class="dv">+3</span>*<span class="kw">max</span>(<span class="dv">0</span>,q-n)*x<span class="dv">-2</span>*q^<span class="dv">2-4</span>*n*q<span class="dv">+3</span>*m*q<span class="dv">+3</span>*
+<span class="st">    </span><span class="kw">max</span>(<span class="dv">0</span>,x-m)*q<span class="dv">-2</span>*<span class="kw">max</span>(<span class="dv">0</span>,q-n)*q<span class="dv">-2</span>*n^<span class="dv">2+3</span>*m*n<span class="dv">+3</span>*<span class="kw">max</span>(<span class="dv">0</span>,x-m)*n<span class="dv">-2</span>*<span class="kw">max</span>(<span class="dv">0</span>,q-n)*n<span class="dv">-2</span>*m^<span class="dv">2-2</span>*<span class="kw">max</span>(<span class="dv">0</span>,x-m)*m<span class="dv">+3</span>*
+<span class="st">    </span><span class="kw">max</span>(<span class="dv">0</span>,q-n)*m<span class="dv">-2</span>*<span class="kw">max</span>(<span class="dv">0</span>,x-m)^<span class="dv">2+3</span>*<span class="kw">max</span>(<span class="dv">0</span>,q-n)*<span class="kw">max</span>(<span class="dv">0</span>,x-m)-<span class="dv">2</span>*<span class="kw">max</span>(<span class="dv">0</span>,q-n)^<span class="dv">2</span>))/(<span class="dv">6</span>*K)/((q+n-<span class="kw">max</span>(q-n, <span class="dv">0</span>))*(x+m-<span class="kw">max</span>(x-m, <span class="dv">0</span>)))
+  } else if(m ==<span class="st"> </span><span class="dv">0</span> &amp;&amp;<span class="st"> </span>n &gt;<span class="st"> </span><span class="dv">0</span>) {
+    y &lt;-<span class="st"> </span>x
+    out &lt;-<span class="st"> </span>(((<span class="dv">6</span>*q<span class="dv">+6</span>*n<span class="dv">-6</span>*<span class="kw">max</span>(<span class="dv">0</span>,q-n))*y<span class="dv">-3</span>*q^<span class="dv">2-6</span>*n*q<span class="dv">-3</span>*n^<span class="dv">2+3</span>*<span class="kw">max</span>(<span class="dv">0</span>,q-n)^<span class="dv">2</span>)*K+(-<span class="dv">3</span>*q<span class="dv">-3</span>*n<span class="dv">+3</span>*<span class="kw">max</span>(<span class="dv">0</span>,q-n))*
+<span class="st">      </span>y^<span class="dv">2</span>+(<span class="dv">3</span>*q^<span class="dv">2+6</span>*n*q<span class="dv">+3</span>*n^<span class="dv">2-3</span>*<span class="kw">max</span>(<span class="dv">0</span>,q-n)^<span class="dv">2</span>)*y-q^<span class="dv">3-3</span>*n*q^<span class="dv">2-3</span>*n^<span class="dv">2</span>*q-n^<span class="dv">3</span>+<span class="kw">max</span>(<span class="dv">0</span>,q-n)^<span class="dv">3</span>)/(<span class="dv">3</span>*K*(q+n-<span class="kw">max</span>(q-n, <span class="dv">0</span>)))
+  } else if(n ==<span class="st"> </span><span class="dv">0</span> &amp;&amp;<span class="st"> </span>m &gt;<span class="st"> </span><span class="dv">0</span>){
+    h &lt;-<span class="st"> </span>q
+    out &lt;-<span class="st"> </span>((<span class="dv">3</span>*x^<span class="dv">2</span>+(<span class="dv">6</span>*m<span class="dv">-6</span>*h)*x<span class="dv">+3</span>*m^<span class="dv">2-6</span>*h*m<span class="dv">+6</span>*<span class="kw">max</span>(<span class="dv">0</span>,x-m)*h<span class="dv">-3</span>*<span class="kw">max</span>(<span class="dv">0</span>,x-m)^<span class="dv">2</span>)*K-x^<span class="dv">3</span>+(<span class="dv">3</span>*h<span class="dv">-3</span>*m)*x^<span class="dv">2</span>+
+<span class="st">      </span>(-<span class="dv">3</span>*m^<span class="dv">2+6</span>*h*m<span class="dv">-3</span>*h^<span class="dv">2</span>)*x-m^<span class="dv">3+3</span>*h*m^<span class="dv">2-3</span>*h^<span class="dv">2</span>*m<span class="dv">+3</span>*<span class="kw">max</span>(<span class="dv">0</span>,x-m)*h^<span class="dv">2-3</span>*<span class="kw">max</span>(<span class="dv">0</span>,x-m)^<span class="dv">2</span>*h+<span class="kw">max</span>(<span class="dv">0</span>,x-m)^<span class="dv">3</span>)/(<span class="dv">3</span>*K*(x+m-<span class="kw">max</span>(x-m, <span class="dv">0</span>)))
+  } else if (m ==<span class="st"> </span><span class="dv">0</span> &amp;&amp;<span class="st"> </span>n ==<span class="st"> </span><span class="dv">0</span>){
+    S &lt;-<span class="st"> </span><span class="kw">max</span>(x -<span class="st"> </span>q, <span class="dv">0</span>)
+    out &lt;-<span class="st"> </span>S *<span class="st"> </span>(<span class="dv">1</span> -<span class="st"> </span>S/K) +<span class="st"> </span>S
   } else {
     <span class="kw">stop</span>(<span class="st">&quot;distribution widths cannot be negative&quot;</span>)
   }
   <span class="kw">max</span>(out,<span class="dv">0</span>)
 }
-&lt;environment: namespace:pdgControl&gt;</code></pre>
+&lt;environment:<span class="st"> </span>namespace:pdgControl&gt;</code></pre>
 <p>We can compare timing and equivalence of these two expressions:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">require</span>(cubature)
 <span class="co"># Confirm that these give the same value, and time performance</span>
-<span class="kw">system.time</span>(a &lt;- <span class="kw">sapply</span>(x_grid, function(x) <span class="kw">int_f</span>(f, x, <span class="dv">1</span>, <span class="fl">0.1</span>, <span class="fl">0.1</span>, 
+<span class="kw">system.time</span>(a &lt;-<span class="st"> </span><span class="kw">sapply</span>(x_grid, function(x) <span class="kw">int_f</span>(f, x, <span class="dv">1</span>, <span class="fl">0.1</span>, <span class="fl">0.1</span>, 
     pars)))</code></pre>
 <pre><code>   user  system elapsed 
   7.444   0.000   7.394 </code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">system.time</span>(b &lt;- <span class="kw">sapply</span>(x_grid, function(x) <span class="kw">F</span>(x, <span class="dv">1</span>, <span class="fl">0.1</span>, <span class="fl">0.1</span>, pars)))</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">system.time</span>(b &lt;-<span class="st"> </span><span class="kw">sapply</span>(x_grid, function(x) <span class="kw">F</span>(x, <span class="dv">1</span>, <span class="fl">0.1</span>, <span class="fl">0.1</span>, pars)))</code></pre>
 <pre><code>   user  system elapsed 
   0.012   0.000   0.015 </code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="kw">data.frame</span>(<span class="dt">x =</span> x_grid, <span class="dt">a =</span> a, <span class="dt">b =</span> b)) + <span class="kw">geom_line</span>(<span class="kw">aes</span>(x, a), 
-    <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>) + <span class="kw">geom_line</span>(<span class="kw">aes</span>(x, b), <span class="dt">lty =</span> <span class="dv">2</span>)</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="kw">data.frame</span>(<span class="dt">x =</span> x_grid, <span class="dt">a =</span> a, <span class="dt">b =</span> b)) +<span class="st"> </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(x, a), 
+    <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>) +<span class="st"> </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(x, b), <span class="dt">lty =</span> <span class="dv">2</span>)</code></pre>
 <figure>
 <img src="http://farm9.staticflickr.com/8443/7986666475_3fce0b9e96_o.png" alt="plot of chunk unnamed-chunk-6" /><figcaption>plot of chunk unnamed-chunk-6</figcaption>
 </figure>
@@ -262,52 +262,52 @@ pars &lt;- <span class="kw">c</span>(r, K)</code></pre>
 <p>When the noise width is much smaller than the bin width we may have trouble, particularly with the uniform distribution, since part of the bin corresponds to zero density, part to high density.</p>
 <h2 id="numerical-implementation">Numerical implementation</h2>
 <p>We consider a profits from fishing to be a function of harvest <code>h</code> and stock size <code>x</code>, \( (x,h) = h - ( c_0 + c_1  )  \), conditioned on \( h &gt; x \) and \(x &gt; 0 \),</p>
-<pre class="sourceCode r"><code class="sourceCode r">price &lt;- <span class="dv">1</span>
-c0 &lt;- <span class="dv">0</span>
-c1 &lt;- <span class="dv">0</span>
-profit &lt;- <span class="kw">profit_harvest</span>(<span class="dt">price =</span> price, <span class="dt">c0 =</span> c0, <span class="dt">c1 =</span> c1)</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">price &lt;-<span class="st"> </span><span class="dv">1</span>
+c0 &lt;-<span class="st"> </span><span class="dv">0</span>
+c1 &lt;-<span class="st"> </span><span class="dv">0</span>
+profit &lt;-<span class="st"> </span><span class="kw">profit_harvest</span>(<span class="dt">price =</span> price, <span class="dt">c0 =</span> c0, <span class="dt">c1 =</span> c1)</code></pre>
 <p>with price = <code>1</code>, <code>c0</code> = <code>0</code> and <code>c1</code> = <code>0</code>.</p>
 <p>Additional parameters</p>
-<pre class="sourceCode r"><code class="sourceCode r">delta &lt;- <span class="fl">0.05</span>
-xT &lt;- <span class="dv">0</span>
-OptTime &lt;- <span class="dv">25</span>
-sigma_g &lt;- <span class="fl">0.1</span>
-sigma_m &lt;- <span class="fl">0.5</span>
-sigma_i &lt;- <span class="fl">0.5</span></code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">delta &lt;-<span class="st"> </span><span class="fl">0.05</span>
+xT &lt;-<span class="st"> </span><span class="dv">0</span>
+OptTime &lt;-<span class="st"> </span><span class="dv">25</span>
+sigma_g &lt;-<span class="st"> </span><span class="fl">0.1</span>
+sigma_m &lt;-<span class="st"> </span><span class="fl">0.5</span>
+sigma_i &lt;-<span class="st"> </span><span class="fl">0.5</span></code></pre>
 <p>The uniform distribution must be careful for noise sizes smaller than binwidth</p>
-<pre class="sourceCode r"><code class="sourceCode r">pdfn &lt;- function(P, s) <span class="kw">dunif</span>(P, <span class="dv">1</span> - s, <span class="dv">1</span> + s)
+<pre class="sourceCode r"><code class="sourceCode r">pdfn &lt;-<span class="st"> </span>function(P, s) <span class="kw">dunif</span>(P, <span class="dv">1</span> -<span class="st"> </span>s, <span class="dv">1</span> +<span class="st"> </span>s)
 <span class="co"># pdfn &lt;- function(P, s) dlnorm(P, 0, s)</span></code></pre>
 <p>We will determine the optimal solution over a <code>25</code> time step window with boundary condition for stock at <code>0</code> and discounting rate of <code>0.05</code>.</p>
 <h1 id="scenarios">Scenarios:</h1>
-<pre class="sourceCode r"><code class="sourceCode r">sdp &lt;- <span class="kw">SDP_uniform</span>(f, pars, x_grid, h_grid, <span class="dt">sigma_g =</span> sigma_g, pdfn, 
+<pre class="sourceCode r"><code class="sourceCode r">sdp &lt;-<span class="st"> </span><span class="kw">SDP_uniform</span>(f, pars, x_grid, h_grid, <span class="dt">sigma_g =</span> sigma_g, pdfn, 
     <span class="dt">sigma_m =</span> sigma_m, <span class="dt">sigma_i =</span> sigma_i, F)</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r">uniform &lt;- <span class="kw">find_dp_optim</span>(sdp, x_grid, h_grid, OptTime, xT, profit, 
+<pre class="sourceCode r"><code class="sourceCode r">uniform &lt;-<span class="st"> </span><span class="kw">find_dp_optim</span>(sdp, x_grid, h_grid, OptTime, xT, profit, 
     delta, <span class="dt">reward =</span> <span class="dv">0</span>)</code></pre>
 <p>Do the deterministic exactly,</p>
 <pre class="sourceCode r"><code class="sourceCode r">
-SDP_Mat &lt;- <span class="kw">determine_SDP_matrix</span>(f, pars, x_grid, h_grid, <span class="dt">sigma_g =</span> sigma_g, 
+SDP_Mat &lt;-<span class="st"> </span><span class="kw">determine_SDP_matrix</span>(f, pars, x_grid, h_grid, <span class="dt">sigma_g =</span> sigma_g, 
     pdfn)
-det &lt;- <span class="kw">find_dp_optim</span>(SDP_Mat, x_grid, h_grid, OptTime, xT, profit, 
+det &lt;-<span class="st"> </span><span class="kw">find_dp_optim</span>(SDP_Mat, x_grid, h_grid, OptTime, xT, profit, 
     delta, <span class="dt">reward =</span> <span class="dv">0</span>)</code></pre>
 <p>Determine the policies for each of the scenarios (noise combinations).</p>
 <h3 id="plots">plots</h3>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">require</span>(reshape2)
 <span class="co"># policy &lt;- melt(data.frame(stock = x_grid, deterministic=det$D[,1],</span>
 <span class="co"># uniform = uniform$D[,1], mc=opt$D[,1]), id = &#39;stock&#39;)</span>
-policy &lt;- <span class="kw">melt</span>(<span class="kw">data.frame</span>(<span class="dt">stock =</span> x_grid, <span class="dt">deterministic =</span> det$D[, 
+policy &lt;-<span class="st"> </span><span class="kw">melt</span>(<span class="kw">data.frame</span>(<span class="dt">stock =</span> x_grid, <span class="dt">deterministic =</span> det$D[, 
     <span class="dv">1</span>], <span class="dt">uniform =</span> uniform$D[, <span class="dv">1</span>]), <span class="dt">id =</span> <span class="st">&quot;stock&quot;</span>)
 
-<span class="kw">ggplot</span>(policy) + <span class="kw">geom_jitter</span>(<span class="kw">aes</span>(stock, stock - x_grid[value], <span class="dt">color =</span> variable), 
+<span class="kw">ggplot</span>(policy) +<span class="st"> </span><span class="kw">geom_jitter</span>(<span class="kw">aes</span>(stock, stock -<span class="st"> </span>x_grid[value], <span class="dt">color =</span> variable), 
     <span class="dt">shape =</span> <span class="st">&quot;+&quot;</span>)</code></pre>
 <figure>
 <img src="http://farm9.staticflickr.com/8456/7986667113_28574bc620_o.png" />
 </figure>
-<pre class="sourceCode r"><code class="sourceCode r">dat &lt;- <span class="kw">subset</span>(policy, stock &lt; <span class="dv">140</span>)
-dt &lt;- <span class="kw">data.table</span>(dat)
-linear &lt;- dt[, <span class="kw">approx</span>(stock, stock - x_grid[value], <span class="dt">xout =</span> <span class="kw">seq</span>(<span class="dv">1</span>, 
-    <span class="dv">150</span>, <span class="dt">length =</span> <span class="dv">15</span>)), by = variable]
-<span class="kw">ggplot</span>(linear) + <span class="kw">stat_smooth</span>(<span class="kw">aes</span>(x, y, <span class="dt">color =</span> variable), <span class="dt">degree =</span> <span class="dv">1</span>, 
-    <span class="dt">se =</span> <span class="ot">FALSE</span>, <span class="dt">span =</span> <span class="fl">0.3</span>) + <span class="kw">xlab</span>(<span class="st">&quot;Measured Stock&quot;</span>) + <span class="kw">ylab</span>(<span class="st">&quot;Optimal Expected Escapement&quot;</span>)</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">dat &lt;-<span class="st"> </span><span class="kw">subset</span>(policy, stock &lt;<span class="st"> </span><span class="dv">140</span>)
+dt &lt;-<span class="st"> </span><span class="kw">data.table</span>(dat)
+linear &lt;-<span class="st"> </span>dt[, <span class="kw">approx</span>(stock, stock -<span class="st"> </span>x_grid[value], <span class="dt">xout =</span> <span class="kw">seq</span>(<span class="dv">1</span>, 
+    <span class="dv">150</span>, <span class="dt">length =</span> <span class="dv">15</span>)), by =<span class="st"> </span>variable]
+<span class="kw">ggplot</span>(linear) +<span class="st"> </span><span class="kw">stat_smooth</span>(<span class="kw">aes</span>(x, y, <span class="dt">color =</span> variable), <span class="dt">degree =</span> <span class="dv">1</span>, 
+    <span class="dt">se =</span> <span class="ot">FALSE</span>, <span class="dt">span =</span> <span class="fl">0.3</span>) +<span class="st"> </span><span class="kw">xlab</span>(<span class="st">&quot;Measured Stock&quot;</span>) +<span class="st"> </span><span class="kw">ylab</span>(<span class="st">&quot;Optimal Expected Escapement&quot;</span>)</code></pre>
 <figure>
 <img src="http://farm9.staticflickr.com/8031/7986675144_095fd50f94_o.png" />
 </figure>
@@ -362,7 +362,7 @@ linear &lt;- dt[, <span class="kw">approx</span>(stock, stock - x_grid[value], <
 
   <br/>
 
-   <p style="font-style:italic"> <i class="icon-signal"></i> pageviews: 171</p>
+   <p style="font-style:italic"> <i class="icon-signal"></i> pageviews: 173</p>
 
   <br/>
 
