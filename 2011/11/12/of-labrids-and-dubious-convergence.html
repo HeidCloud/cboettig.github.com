@@ -155,22 +155,22 @@
 </figure>
 <pre class="sourceCode R"><code class="sourceCode r">
 <span class="co"># create a colorcoded plot of how well each tip is fitting it&#39;s predicted value</span>
-tip_plot &lt;-<span class="st"> </span>function(modelfit, <span class="dt">n=</span><span class="dv">100</span>, ...){
-  dat &lt;-<span class="st"> </span>modelfit$data
-  tree &lt;-<span class="st"> </span>modelfit$tree
+tip_plot &lt;- function(modelfit, <span class="dt">n=</span><span class="dv">100</span>, ...){
+  dat &lt;- modelfit$data
+  tree &lt;- modelfit$tree
 
-  reps &lt;-<span class="st"> </span><span class="kw">sapply</span>(<span class="dv">1</span>:n, function(i) <span class="kw">t</span>(<span class="kw">simulate</span>(modelfit)))
+  reps &lt;- <span class="kw">sapply</span>(<span class="dv">1</span>:n, function(i) <span class="kw">t</span>(<span class="kw">simulate</span>(modelfit)))
 
-  m &lt;-<span class="st"> </span><span class="kw">rowMeans</span>(reps)
-  sder &lt;-<span class="st"> </span><span class="kw">sapply</span>(<span class="dv">1</span>:(<span class="kw">dim</span>(reps)[<span class="dv">1</span>]), function(i) <span class="kw">sd</span>(reps[i,]))
-  colorcode &lt;-<span class="st"> </span>dat[[<span class="dv">1</span>]]
-  colorcode[ <span class="kw">abs</span>(dat -<span class="st"> </span>m) &lt;<span class="st"> </span><span class="dv">3</span>*sder ] &lt;-<span class="st"> &quot;orange&quot;</span>
-  colorcode[ <span class="kw">abs</span>(dat -<span class="st"> </span>m) &lt;<span class="st"> </span><span class="dv">2</span>*sder ] &lt;-<span class="st"> &quot;green&quot;</span>
-  colorcode[ <span class="kw">abs</span>(dat -<span class="st"> </span>m) &lt;<span class="st"> </span>sder ] &lt;-<span class="st"> &quot;blue&quot;</span>
-  colorcode[ <span class="kw">abs</span>(dat -<span class="st"> </span>m) &gt;<span class="st"> </span><span class="dv">3</span>*sder ] &lt;-<span class="st"> &quot;red&quot;</span>
-  tr &lt;-<span class="st"> </span><span class="kw">convert</span>(tree, colorcode)
+  m &lt;- <span class="kw">rowMeans</span>(reps)
+  sder &lt;- <span class="kw">sapply</span>(<span class="dv">1</span>:(<span class="kw">dim</span>(reps)[<span class="dv">1</span>]), function(i) <span class="kw">sd</span>(reps[i,]))
+  colorcode &lt;- dat[[<span class="dv">1</span>]]
+  colorcode[ <span class="kw">abs</span>(dat - m) &lt; <span class="dv">3</span>*sder ] &lt;- <span class="st">&quot;orange&quot;</span>
+  colorcode[ <span class="kw">abs</span>(dat - m) &lt; <span class="dv">2</span>*sder ] &lt;- <span class="st">&quot;green&quot;</span>
+  colorcode[ <span class="kw">abs</span>(dat - m) &lt; sder ] &lt;- <span class="st">&quot;blue&quot;</span>
+  colorcode[ <span class="kw">abs</span>(dat - m) &gt; <span class="dv">3</span>*sder ] &lt;- <span class="st">&quot;red&quot;</span>
+  tr &lt;- <span class="kw">convert</span>(tree, colorcode)
 
-  col &lt;-<span class="st"> </span>tr$regimes[!<span class="kw">is.na</span>(tr$regimes)]
+  col &lt;- tr$regimes[!<span class="kw">is.na</span>(tr$regimes)]
   <span class="kw">plot</span>(tr, ...)
   <span class="kw">tiplabels</span>(<span class="dt">col=</span>col, <span class="dt">pch=</span><span class="dv">19</span>)
   <span class="kw">list</span>(<span class="dt">tree=</span>tr, <span class="dt">tipcolors=</span>col)

@@ -153,15 +153,15 @@ RLIBS=<span class="st">&quot;~/R/x86_64-redhat-linux-gnu-library/2.13&quot;</spa
 <p>From there I can initialize an MPI instance, set up exit conditions, load variables and functions to the slave nodes and then have them all execute the desired function:</p>
 <pre class="sourceCode R"><code class="sourceCode r">
 
-N &lt;-<span class="st"> </span><span class="dv">10</span> <span class="co"># n-1 from the threads allocated(?) </span>
+N &lt;- <span class="dv">10</span> <span class="co"># n-1 from the threads allocated(?) </span>
 
 <span class="kw">require</span>(Rmpi)
 <span class="kw">mpi.spawn.Rslaves</span>(<span class="dt">nslaves=</span>N)
 
 ## Clean-up 
-.Last &lt;-<span class="st"> </span>function(){
+.Last &lt;- function(){
     if (<span class="kw">is.loaded</span>(<span class="st">&quot;mpi_initialize&quot;</span>)){
-        if (<span class="kw">mpi.comm.size</span>(<span class="dv">1</span>) &gt;<span class="st"> </span><span class="dv">0</span>){
+        if (<span class="kw">mpi.comm.size</span>(<span class="dv">1</span>) &gt; <span class="dv">0</span>){
             <span class="kw">print</span>(<span class="st">&quot;Please use mpi.close.Rslaves() to close slaves.&quot;</span>)
             <span class="kw">mpi.close.Rslaves</span>()
         }
@@ -174,7 +174,7 @@ N &lt;-<span class="st"> </span><span class="dv">10</span> <span class="co"># n-
 <span class="kw">mpi.bcast.Robj2slave</span>(new_world)
 <span class="kw">mpi.bcast.Robj2slave</span>(chains)
 
-mcmc_out &lt;-<span class="st"> </span><span class="kw">mpi.remote.exec</span>(<span class="kw">chains</span>())
+mcmc_out &lt;- <span class="kw">mpi.remote.exec</span>(<span class="kw">chains</span>())
 
 
 <span class="co"># close slaves and exit</span>
@@ -188,9 +188,9 @@ mcmc_out &lt;-<span class="st"> </span><span class="kw">mpi.remote.exec</span>(<
 <li><p>installing R packages: load the R module and swap in the intel compilers first</p></li>
 </ul>
 <pre class="sourceCode bash"><code class="sourceCode bash">
-<span class="kw">module</span> load R/2.12.1
-<span class="kw">module</span> swap pgi intel
-<span class="kw">module</span> swap openmpi openmpi-intel </code></pre>
+module load R/2.12.1
+module swap pgi intel
+module swap openmpi openmpi-intel </code></pre>
 <p>Note that format for the batch jobs differs substantially between architectures. Hopper is a Cray, and launches commands with <a href="http://www.csc.fi/english/pages/louhi_guide/batch_jobs/commands/aprun">aprun</a>, see <a href="http://www.nersc.gov/users/computational-systems/hopper/getting-started/your-first-program/">example</a>.</p>
 <p>Carver is an IBM, and seems to use <a href="http://www.mcs.anl.gov/research/projects/mpi/www/www1/mpirun.html">mpirun</a> instead, which appears to be a more general architecture command. See the <a href="http://www.nersc.gov/users/computational-systems/carver/getting-started/">Carver example program</a>.</p>
 <h5 id="testing">Testing:</h5>

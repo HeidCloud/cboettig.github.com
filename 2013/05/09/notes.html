@@ -153,9 +153,9 @@
 <span class="kw">saveMovie</span>({    
     for (i in <span class="kw">seq</span>(<span class="dv">1</span>, OptTime, <span class="dt">by=</span><span class="dv">2</span>)) {
       <span class="kw">print</span>(
-        <span class="kw">ggplot</span>(<span class="kw">subset</span>(dt, method %in%<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;True&quot;</span>, <span class="st">&quot;Ricker&quot;</span>) &amp;<span class="st"> </span>reps &lt;<span class="st"> </span><span class="dv">5</span> &amp;<span class="st"> </span>time &lt;=<span class="st"> </span>i), 
-               <span class="kw">aes</span>(time, fishstock, <span class="dt">group=</span><span class="kw">interaction</span>(reps,method), <span class="dt">color =</span> method), <span class="dt">alpha=</span>.<span class="dv">9</span>) +<span class="st"> </span>
-<span class="st">          </span><span class="kw">geom_line</span>() +<span class="st"> </span><span class="kw">xlim</span>(<span class="dv">0</span>, OptTime)
+        <span class="kw">ggplot</span>(<span class="kw">subset</span>(dt, method %in% <span class="kw">c</span>(<span class="st">&quot;True&quot;</span>, <span class="st">&quot;Ricker&quot;</span>) &amp; reps &lt; <span class="dv">5</span> &amp; time &lt;= i), 
+               <span class="kw">aes</span>(time, fishstock, <span class="dt">group=</span><span class="kw">interaction</span>(reps,method), <span class="dt">color =</span> method), <span class="dt">alpha=</span>.<span class="dv">9</span>) + 
+          <span class="kw">geom_line</span>() + <span class="kw">xlim</span>(<span class="dv">0</span>, OptTime)
         )
     }
 }, <span class="dt">interval =</span> <span class="fl">0.1</span>, <span class="dt">movie.name =</span> <span class="st">&quot;wrong-model.gif&quot;</span>, <span class="dt">ani.width =</span> <span class="dv">600</span>, <span class="dt">ani.height =</span> <span class="dv">600</span>)</code></pre>
@@ -167,8 +167,8 @@
 <li><p>All plots for slides also archived in <a href="http://www.flickr.com/photos/cboettig/tags/ere2013">flickr/ere2013</a></p></li>
 <li><p>Which were quickly converted from vector pdfs into decent resolution pngs with a few commands:</p></li>
 </ul>
-<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">for</span> <span class="kw">f</span> in *.pdf <span class="kw">;</span> <span class="kw">do</span> <span class="kw">convert</span> -density 300 <span class="st">&quot;</span><span class="ot">$f</span><span class="st">&quot;</span> <span class="st">&quot;</span><span class="ot">${f/</span>.pdf<span class="ot">}</span><span class="st">&quot;</span>.png <span class="kw">;</span> <span class="kw">done</span>
-<span class="kw">flickr_upload</span> --tag=<span class="st">&quot;nonparametric-bayes ere2013 talk&quot;</span> *.png</code></pre>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">for</span> f <span class="kw">in</span> *.pdf ; <span class="kw">do</span> convert -density 300 <span class="st">&quot;</span><span class="ot">$f</span><span class="st">&quot;</span> <span class="st">&quot;</span><span class="ot">${f/</span>.pdf<span class="ot">}</span><span class="st">&quot;</span>.png ; <span class="kw">done</span>
+flickr_upload --tag=<span class="st">&quot;nonparametric-bayes ere2013 talk&quot;</span> *.png</code></pre>
 <h2 id="reading">Reading</h2>
 <ul>
 <li>(<span class="showtooltip" title="Sirota J, Baiser B, Gotelli N and Ellison A (2013). 'Organic-Matter Loading Determines Regime Shifts And Alternative States in an Aquatic Ecosystem.' Proceedings of The National Academy of Sciences, 110, pp. 7742-7747. ISSN 0027-8424."><a href="http://dx.doi.org/10.1073/pnas.1221037110" rel="http://purl.org/spar/cito/discusses" >Sirota et al. 2013</a></span> ) provide a cute example of a system that can be manipulated through a tipping point of eutrophication in the tiny pools forming inside pitcher plants by adding ground-up dead insects. A nice natural system that provides a more realistic setting than lab manipulations of single species micro-organisms while also being more accessible to replication that the whole-lake experiments in Wisconsin. I do note they critique retrospective analyses on the basis of length, but don’t mention the prosecutor’s fallacy. Five stars for archiving the raw data very nicely (see below) along with the mathematica notebook file used for the analysis. Also notable that the first author is an undergrad at North Dakota State.<br /></li>

@@ -161,15 +161,15 @@ The Royal Society Interface_, *9*, pp. 2527-2539. ISSN 1742-5689,
 <img src="http://farm9.staticflickr.com/8261/8641108753_956f179a1d_o.png" />
 </figure>
 <p>Fit both models to the original data, record the observed likelihood ratio of the original data</p>
-<pre class="sourceCode r"><code class="sourceCode r">A &lt;-<span class="st"> </span><span class="kw">stability_model</span>(ibm_critical, <span class="st">&quot;OU&quot;</span>)
-B &lt;-<span class="st"> </span><span class="kw">stability_model</span>(ibm_critical, <span class="st">&quot;LSN&quot;</span>)
-observed &lt;-<span class="st"> </span>-<span class="dv">2</span> *<span class="st"> </span>(<span class="kw">logLik</span>(A) -<span class="st"> </span><span class="kw">logLik</span>(B))</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">A &lt;- <span class="kw">stability_model</span>(ibm_critical, <span class="st">&quot;OU&quot;</span>)
+B &lt;- <span class="kw">stability_model</span>(ibm_critical, <span class="st">&quot;LSN&quot;</span>)
+observed &lt;- -<span class="dv">2</span> * (<span class="kw">logLik</span>(A) - <span class="kw">logLik</span>(B))</code></pre>
 <p>Perform the bootstrapped model comparison on the parallel cluster.</p>
-<pre class="sourceCode r"><code class="sourceCode r">runtime &lt;-<span class="st"> </span><span class="kw">system.time</span>(
-reps &lt;-<span class="st"> </span><span class="kw">mclapply</span>(<span class="dv">1</span>:<span class="dv">200</span>, function(i) <span class="kw">compare</span>(A, B)))</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">runtime &lt;- <span class="kw">system.time</span>(
+reps &lt;- <span class="kw">mclapply</span>(<span class="dv">1</span>:<span class="dv">200</span>, function(i) <span class="kw">compare</span>(A, B)))</code></pre>
 <p>Which took 4176.78 seconds to run for the example shown here.</p>
 <p>A helper function extracts the likelihood ratios under each of the pairwise comparisons (The null distribution: -2 times the log likelihood of data fit under A that had been simulated under A, minus the log likelihood of fits under A simulated under B; and the test distribution: fit under B when simulated under A, minus the loglikehood of being fit under B, simulated under B) as a data frame. we show the top of the data frame as output below.</p>
-<pre class="sourceCode r"><code class="sourceCode r">lr &lt;-<span class="st"> </span><span class="kw">lik_ratios</span>(reps)
+<pre class="sourceCode r"><code class="sourceCode r">lr &lt;- <span class="kw">lik_ratios</span>(reps)
 <span class="kw">head</span>(lr)</code></pre>
 <pre><code>##   simulation rep     value
 ## 1       null   1  0.001659
@@ -179,28 +179,28 @@ reps &lt;-<span class="st"> </span><span class="kw">mclapply</span>(<span class=
 ## 5       null   3  4.795269
 ## 6       test   3 22.696982</code></pre>
 <p>We use this data to generate the overlapping distributions shown in Boettiger &amp; Hastings, (2012),</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(lr) +<span class="st"> </span><span class="kw">geom_density</span>(<span class="kw">aes</span>(value, <span class="dt">fill=</span>simulation), <span class="dt">alpha=</span><span class="fl">0.6</span>) +<span class="st"> </span><span class="kw">geom_vline</span>(<span class="kw">aes</span>(<span class="dt">xintercept=</span>observed))</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(lr) + <span class="kw">geom_density</span>(<span class="kw">aes</span>(value, <span class="dt">fill=</span>simulation), <span class="dt">alpha=</span><span class="fl">0.6</span>) + <span class="kw">geom_vline</span>(<span class="kw">aes</span>(<span class="dt">xintercept=</span>observed))</code></pre>
 <figure>
 <img src="http://farm9.staticflickr.com/8245/8642325058_d70eaee962_o.png" />
 </figure>
 <p>A second helper function generates the ROC curve from the likelihood ratio data, providing an alternative way to visualize this overlap:</p>
-<pre class="sourceCode r"><code class="sourceCode r">roc &lt;-<span class="st"> </span><span class="kw">roc_data</span>(lr)
-<span class="kw">ggplot</span>(roc) +<span class="st"> </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(False.positives, True.positives))</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">roc &lt;- <span class="kw">roc_data</span>(lr)
+<span class="kw">ggplot</span>(roc) + <span class="kw">geom_line</span>(<span class="kw">aes</span>(False.positives, True.positives))</code></pre>
 <figure>
 <img src="http://farm9.staticflickr.com/8402/8641224925_83a045afbb_o.png" />
 </figure>
 <p>ROC curves are particularly useful in comparing the power of a variety of approaches. For instance, we can compare the performance of the likelihood-based signal shown above to the traditional approach of using a correlation coefficient to detect the increase in some summary statistic such as variance or autocorrelation. To obtain replicates, we will still simulate under the null (OU) and test (LSN) models estimated above, but instead of computing the likelihood of these data, we will estimate the commonly used rank correlation coefficient, Kendall’s tau, to quantify the increase in variance, autcorrelation, and skew observed in a moving window over the data.</p>
-<pre class="sourceCode r"><code class="sourceCode r">var &lt;-<span class="st"> </span><span class="kw">bootstrap_trend</span>(ibm_critical, window_var, <span class="dt">method=</span><span class="st">&quot;kendall&quot;</span>, <span class="dt">rep=</span><span class="dv">200</span>)
-acor &lt;-<span class="st"> </span><span class="kw">bootstrap_trend</span>(ibm_critical, window_autocorr, <span class="dt">method=</span><span class="st">&quot;kendall&quot;</span>, <span class="dt">rep=</span><span class="dv">200</span>)
-skew &lt;-<span class="st"> </span><span class="kw">bootstrap_trend</span>(ibm_critical, window_skew, <span class="dt">method=</span><span class="st">&quot;kendall&quot;</span>, <span class="dt">rep=</span><span class="dv">200</span>)</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">var &lt;- <span class="kw">bootstrap_trend</span>(ibm_critical, window_var, <span class="dt">method=</span><span class="st">&quot;kendall&quot;</span>, <span class="dt">rep=</span><span class="dv">200</span>)
+acor &lt;- <span class="kw">bootstrap_trend</span>(ibm_critical, window_autocorr, <span class="dt">method=</span><span class="st">&quot;kendall&quot;</span>, <span class="dt">rep=</span><span class="dv">200</span>)
+skew &lt;- <span class="kw">bootstrap_trend</span>(ibm_critical, window_skew, <span class="dt">method=</span><span class="st">&quot;kendall&quot;</span>, <span class="dt">rep=</span><span class="dv">200</span>)</code></pre>
 <p>These data are formatted like the likeihood ratio data above, only that the statistic is now Kendall’s tau.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(var) +<span class="st"> </span><span class="kw">geom_density</span>(<span class="kw">aes</span>(value, <span class="dt">fill=</span>simulation), <span class="dt">alpha=</span><span class="fl">0.6</span>) +<span class="st"> </span><span class="kw">geom_vline</span>(<span class="kw">aes</span>(<span class="dt">xintercept=</span>observed))</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(var) + <span class="kw">geom_density</span>(<span class="kw">aes</span>(value, <span class="dt">fill=</span>simulation), <span class="dt">alpha=</span><span class="fl">0.6</span>) + <span class="kw">geom_vline</span>(<span class="kw">aes</span>(<span class="dt">xintercept=</span>observed))</code></pre>
 <figure>
 <img src="http://farm9.staticflickr.com/8265/8642341382_1d87080d5c_o.png" />
 </figure>
 <p>We can combine the data for the ROC curves of each indicator to compare:</p>
-<pre class="sourceCode r"><code class="sourceCode r">indicators &lt;-<span class="st"> </span><span class="kw">melt</span>(<span class="kw">list</span>(<span class="dt">var =</span> <span class="kw">roc_data</span>(var), <span class="dt">acor =</span> <span class="kw">roc_data</span>(acor), <span class="dt">skew =</span> <span class="kw">roc_data</span>(skew), <span class="dt">lr =</span> roc), <span class="dt">id =</span> <span class="kw">c</span>(<span class="st">&quot;Threshold&quot;</span>, <span class="st">&quot;False.positives&quot;</span>, <span class="st">&quot;True.positives&quot;</span>))
-<span class="kw">ggplot</span>(indicators) +<span class="st"> </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(False.positives, True.positives, <span class="dt">color=</span>L1)) </code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">indicators &lt;- <span class="kw">melt</span>(<span class="kw">list</span>(<span class="dt">var =</span> <span class="kw">roc_data</span>(var), <span class="dt">acor =</span> <span class="kw">roc_data</span>(acor), <span class="dt">skew =</span> <span class="kw">roc_data</span>(skew), <span class="dt">lr =</span> roc), <span class="dt">id =</span> <span class="kw">c</span>(<span class="st">&quot;Threshold&quot;</span>, <span class="st">&quot;False.positives&quot;</span>, <span class="st">&quot;True.positives&quot;</span>))
+<span class="kw">ggplot</span>(indicators) + <span class="kw">geom_line</span>(<span class="kw">aes</span>(False.positives, True.positives, <span class="dt">color=</span>L1)) </code></pre>
 <figure>
 <img src="http://farm9.staticflickr.com/8122/8641241253_4c3704523e_o.png" />
 </figure>

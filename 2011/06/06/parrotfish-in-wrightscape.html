@@ -152,21 +152,21 @@
 
 <span class="co"># Using match.call()</span>
 <span class="co">#--------------------</span>
-f =<span class="st"> </span>function(y, ... ) {
- myCall =<span class="st"> </span><span class="kw">match.call</span>()
- <span class="kw">list</span>(<span class="dt">myCall =</span> myCall, <span class="dt">ans =</span> y +<span class="st"> </span><span class="kw">dnorm</span>(...))
+f = function(y, ... ) {
+ myCall = <span class="kw">match.call</span>()
+ <span class="kw">list</span>(<span class="dt">myCall =</span> myCall, <span class="dt">ans =</span> y + <span class="kw">dnorm</span>(...))
 &lt;div&gt;}
-a =<span class="st"> </span><span class="kw">f</span>(<span class="dv">1</span>, <span class="dt">x =</span> <span class="dv">4</span>, <span class="dt">sd =</span> <span class="dv">2</span>, <span class="dt">mean =</span> <span class="dv">4</span>)&gt;<span class="st"> </span><span class="kw">length</span>(a$myCall)&lt;<span class="er">/</span>div&gt;
+a = <span class="kw">f</span>(<span class="dv">1</span>, <span class="dt">x =</span> <span class="dv">4</span>, <span class="dt">sd =</span> <span class="dv">2</span>, <span class="dt">mean =</span> <span class="dv">4</span>)&gt; <span class="kw">length</span>(a$myCall)&lt;/div&gt;
 [<span class="dv">1</span>] <span class="dv">5</span>
-&gt;<span class="st"> </span>a$myCall
+&gt; a$myCall
 <span class="kw">f</span>(<span class="dt">y =</span> <span class="dv">1</span>, <span class="dt">x =</span> <span class="dv">4</span>, <span class="dt">sd =</span> <span class="dv">2</span>, <span class="dt">mean =</span> <span class="dv">4</span>)
- &gt;<span class="st"> </span>a$myCall[[<span class="dv">1</span>]] <span class="co"># the function</span>
+ &gt; a$myCall[[<span class="dv">1</span>]] <span class="co"># the function</span>
 f
-&gt;<span class="st"> </span>a$myCall[[<span class="dv">2</span>]] <span class="co"># represents the first argument, y</span>
+&gt; a$myCall[[<span class="dv">2</span>]] <span class="co"># represents the first argument, y</span>
 [<span class="dv">1</span>] <span class="dv">1</span>
 <span class="co"># Now I want to change this second value (representing y) to a 2</span>
-&gt;<span class="st"> </span>a$myCall[[<span class="dv">2</span>]] =<span class="st"> </span><span class="dv">2</span>
-&gt;<span class="st"> </span>a$myCall
+&gt; a$myCall[[<span class="dv">2</span>]] = <span class="dv">2</span>
+&gt; a$myCall
  <span class="kw">f</span>(<span class="dt">y =</span> <span class="dv">2</span>, <span class="dt">x =</span> <span class="dv">4</span>, <span class="dt">sd =</span> <span class="dv">2</span>, <span class="dt">mean =</span> <span class="dv">4</span>)
 <span class="kw">eval</span>(a$myCall)
 $myCall
@@ -175,10 +175,10 @@ $ans
 [<span class="dv">1</span>] <span class="fl">2.199471</span>
 <span class="co"># Using closures</span>
 <span class="co">#---------------</span>
-set_up_f =<span class="st"> </span>function(...) {
- fFn =<span class="st"> </span>function(y) y +<span class="st"> </span><span class="kw">dnorm</span>(...)
+set_up_f = function(...) {
+ fFn = function(y) y + <span class="kw">dnorm</span>(...)
  }
-f =<span class="st"> </span><span class="kw">set_up_f</span>(<span class="dt">x =</span> <span class="dv">4</span>, <span class="dt">sd =</span> <span class="dv">2</span>, <span class="dt">mean =</span> <span class="dv">4</span>)
+f = <span class="kw">set_up_f</span>(<span class="dt">x =</span> <span class="dv">4</span>, <span class="dt">sd =</span> <span class="dv">2</span>, <span class="dt">mean =</span> <span class="dv">4</span>)
 <span class="kw">f</span>(<span class="dv">1</span>)
 <span class="co"># 1.199471</span>
 <span class="kw">f</span>(<span class="dv">2</span>)

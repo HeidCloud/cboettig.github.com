@@ -167,13 +167,13 @@
 <p>Open main.R, run the library loads, source preprocess.R and ensembles.R</p>
 <h3 id="reanalysis-independently-exploring-data">Reanalysis: Independently exploring data</h3>
 <p>Applying my methods to a single replicate from a warning signals example: (<a href="https://github.com/cboettig/private/commit/fc52893e97de7013f0810692c717ffa97e3cc64c">see code</a>)</p>
-<pre class="sourceCode r"><code class="sourceCode r">    id &lt;-<span class="st"> </span>det.set$ID[<span class="dv">1</span>]
+<pre class="sourceCode r"><code class="sourceCode r">    id &lt;- det.set$ID[<span class="dv">1</span>]
       w&lt;-<span class="dv">8</span>   <span class="co">#size of moving window in terms of sampling periods</span>
       pop&lt;-<span class="kw">data.frame</span>(<span class="dt">day=</span>populations$day[populations$ID==id],<span class="dt">x=</span>populations$x[populations$ID==id])
       pop&lt;-pop[<span class="kw">order</span>(pop$day),]
     
-    interval &lt;-<span class="st"> </span>pop$day &gt;<span class="st"> </span><span class="dv">154</span> &amp;<span class="st"> </span>pop$day &lt;<span class="st"> </span><span class="dv">271</span>
-    X &lt;-<span class="st"> </span>pop[interval,]</code></pre>
+    interval &lt;- pop$day &gt; <span class="dv">154</span> &amp; pop$day &lt; <span class="dv">271</span>
+    X &lt;- pop[interval,]</code></pre>
 <figure>
 <img src="http://farm6.static.flickr.com/5176/5535292129_d5bce24322_o.png" />
 </figure>

@@ -147,22 +147,22 @@
 <p>Load some sample data</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(geiger)
 <span class="kw">data</span>(geospiza)
-dat &lt;-<span class="st"> </span><span class="kw">treedata</span>(geospiza$geospiza.tree, geospiza$geospiza.data$wingL)</code></pre>
+dat &lt;- <span class="kw">treedata</span>(geospiza$geospiza.tree, geospiza$geospiza.data$wingL)</code></pre>
 <p>To find the disparity relative to a particular model, we must compute the variance-covariance matrix for that model</p>
-<pre class="sourceCode r"><code class="sourceCode r">X &lt;-<span class="st"> </span>dat$data
-V_bm &lt;-<span class="st"> </span><span class="kw">vcv</span>(dat$phy)
-mean_X &lt;-<span class="st"> </span>geiger:::<span class="kw">phylogMean</span>(V_bm, X)
-bm_disparity &lt;-<span class="st"> </span><span class="kw">t</span>(X-mean_X) %*%<span class="st"> </span>V_bm %*%<span class="st"> </span>(X-mean_X)</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">X &lt;- dat$data
+V_bm &lt;- <span class="kw">vcv</span>(dat$phy)
+mean_X &lt;- geiger:::<span class="kw">phylogMean</span>(V_bm, X)
+bm_disparity &lt;- <span class="kw">t</span>(X-mean_X) %*% V_bm %*% (X-mean_X)</code></pre>
 <p>I believe this needs to be scaled by the Brownian rate parameter of the trait, e.g.</p>
-<pre class="sourceCode r"><code class="sourceCode r">bm &lt;-<span class="st"> </span><span class="kw">fitContinuous</span>(dat$phy, dat$data)
-bm_disparity &lt;-<span class="st"> </span>bm[[<span class="dv">1</span>]]$beta *<span class="st"> </span>bm_disparity
+<pre class="sourceCode r"><code class="sourceCode r">bm &lt;- <span class="kw">fitContinuous</span>(dat$phy, dat$data)
+bm_disparity &lt;- bm[[<span class="dv">1</span>]]$beta * bm_disparity
 OU would be similar, but transform the tree</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r">ou &lt;-<span class="st"> </span><span class="kw">fitContinuous</span>(dat$phy, dat$data, <span class="dt">model=</span><span class="st">&quot;OU&quot;</span>)
-alpha &lt;-<span class="st">  </span>ou[[<span class="dv">1</span>]]$alpha
-V_ou &lt;-<span class="st"> </span><span class="kw">vcv</span>(<span class="kw">ouTree</span>(dat$phy, alpha))
-ou_var &lt;-<span class="st"> </span>ou[[<span class="dv">1</span>]]$beta/(<span class="dv">2</span>*alpha)
-X_mean &lt;-<span class="st"> </span><span class="kw">phylogMean</span>(V_ou, X)
-ou_disparity &lt;-<span class="st"> </span><span class="kw">t</span>(X-X_mean) %*%<span class="st"> </span>V_ou %*%<span class="st"> </span>(X-X_mean) *<span class="st"> </span>ou_var</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">ou &lt;- <span class="kw">fitContinuous</span>(dat$phy, dat$data, <span class="dt">model=</span><span class="st">&quot;OU&quot;</span>)
+alpha &lt;-  ou[[<span class="dv">1</span>]]$alpha
+V_ou &lt;- <span class="kw">vcv</span>(<span class="kw">ouTree</span>(dat$phy, alpha))
+ou_var &lt;- ou[[<span class="dv">1</span>]]$beta/(<span class="dv">2</span>*alpha)
+X_mean &lt;- <span class="kw">phylogMean</span>(V_ou, X)
+ou_disparity &lt;- <span class="kw">t</span>(X-X_mean) %*% V_ou %*% (X-X_mean) * ou_var</code></pre>
 <p>There’s a few things I’m unsure about off the top of my head in this. I should double-check that <code>beta</code> in geiger is the same as <span class="math">\(\sigma^2\)</span>, and I should double check the ou variance-covariance formula (e.g. compare to the un-numbered equation after equation 5 in Butler &amp; King). I also not sure I quite have the right <code>X_mean</code> in the OU case.</p>
 
     </article>

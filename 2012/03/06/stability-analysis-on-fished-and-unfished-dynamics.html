@@ -149,71 +149,71 @@
 <p>Clear the workspace and load package dependencies. <code>pdgControl</code> is my implementation of these optimization methods and should be <a href="https://github.com/cboettig/pdg_control">installed from this repository</a>, see README.</p>
 <p>Define basic parameters of the economic optimal control problem. We have a discrete economic discounting rate, and will solve the dynamic problem over a time window of 50 years. In the discrete implementation we do not inforce the boundary condition, but rather put a value on meeting it. The optimal solution may choose to not statisfy this boundary condition if the benefit outways this lost reward.</p>
 <pre class="sourceCode r"><code class="sourceCode r">
-delta &lt;-<span class="st"> </span><span class="fl">0.1</span>      <span class="co"># economic discounting rate</span>
-OptTime &lt;-<span class="st"> </span><span class="dv">50</span>     <span class="co"># stopping time</span>
-reward &lt;-<span class="st"> </span><span class="dv">1</span>       <span class="co"># bonus for satisfying the boundary condition</span></code></pre>
+delta &lt;- <span class="fl">0.1</span>      <span class="co"># economic discounting rate</span>
+OptTime &lt;- <span class="dv">50</span>     <span class="co"># stopping time</span>
+reward &lt;- <span class="dv">1</span>       <span class="co"># bonus for satisfying the boundary condition</span></code></pre>
 <p>Use log-normal noise functions for growth noise, measurement error in the stock assessment, and implementation error, following the notation and definitions in <a href="http://dx.doi.org/10.1016/j.jeem.2004.11.005">Sethi et al. (2005)</a>. To begin, we will allow only noise in growth, as in Reed 1979.</p>
 <pre class="sourceCode r"><code class="sourceCode r">
-sigma_g &lt;-<span class="st"> </span><span class="fl">0.2</span>    <span class="co"># Noise in population growth</span>
-sigma_m &lt;-<span class="st"> </span><span class="dv">0</span>.     <span class="co"># noise in stock assessment measurement</span>
-sigma_i &lt;-<span class="st"> </span><span class="dv">0</span>.     <span class="co"># noise in implementation of the quota</span>
-z_g &lt;-<span class="st"> </span>function() <span class="kw">rlnorm</span>(<span class="dv">1</span>,  <span class="dv">0</span>, sigma_g) <span class="co"># mean 1</span>
-z_m &lt;-<span class="st"> </span>function() <span class="kw">rlnorm</span>(<span class="dv">1</span>,  <span class="dv">0</span>, sigma_m) <span class="co"># mean 1</span>
-z_i &lt;-<span class="st"> </span>function() <span class="kw">rlnorm</span>(<span class="dv">1</span>,  <span class="dv">0</span>, sigma_i) <span class="co"># mean 1</span></code></pre>
+sigma_g &lt;- <span class="fl">0.2</span>    <span class="co"># Noise in population growth</span>
+sigma_m &lt;- <span class="dv">0</span>.     <span class="co"># noise in stock assessment measurement</span>
+sigma_i &lt;- <span class="dv">0</span>.     <span class="co"># noise in implementation of the quota</span>
+z_g &lt;- function() <span class="kw">rlnorm</span>(<span class="dv">1</span>,  <span class="dv">0</span>, sigma_g) <span class="co"># mean 1</span>
+z_m &lt;- function() <span class="kw">rlnorm</span>(<span class="dv">1</span>,  <span class="dv">0</span>, sigma_m) <span class="co"># mean 1</span>
+z_i &lt;- function() <span class="kw">rlnorm</span>(<span class="dv">1</span>,  <span class="dv">0</span>, sigma_i) <span class="co"># mean 1</span></code></pre>
 <p>Chose the state equation / population dynamics function to have alternate stable states. This is a Beverton-Holt like model with an Allee effect, a model based off of <a href="http://dx.doi.org/10.1126/science.269.5227.1106">Myers et al. (1995)</a>. Note here we’re just loading the function from the package. The equilibrium value K is calculated explicitly from the model given this choice of parameters, as is the allee threshold. We’ll use the allee threshold as the final value <code>xT</code>. We’ll start the model at the unharvested stochastic equilbrium size.</p>
 <pre class="sourceCode r"><code class="sourceCode r">
-f &lt;-<span class="st"> </span>Myer_harvest
-pars &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">6</span>) 
-p &lt;-<span class="st"> </span>pars <span class="co"># shorthand </span>
-K &lt;-<span class="st"> </span>p[<span class="dv">1</span>] *<span class="st"> </span>p[<span class="dv">3</span>] /<span class="st"> </span><span class="dv">2</span> +<span class="st"> </span><span class="kw">sqrt</span>( (p[<span class="dv">1</span>] *<span class="st"> </span>p[<span class="dv">3</span>]) ^<span class="st"> </span><span class="dv">2</span> -<span class="st"> </span><span class="dv">4</span> *<span class="st"> </span>p[<span class="dv">3</span>] ) /<span class="st"> </span><span class="dv">2</span>
-xT &lt;-<span class="st"> </span>p[<span class="dv">1</span>] *<span class="st"> </span>p[<span class="dv">3</span>] /<span class="st"> </span><span class="dv">2</span> -<span class="st"> </span><span class="kw">sqrt</span>( (p[<span class="dv">1</span>] *<span class="st"> </span>p[<span class="dv">3</span>]) ^<span class="st"> </span><span class="dv">2</span> -<span class="st"> </span><span class="dv">4</span> *<span class="st"> </span>p[<span class="dv">3</span>] ) /<span class="st"> </span><span class="dv">2</span> <span class="co"># allee threshold</span>
-x0 &lt;-<span class="st"> </span>K -<span class="st"> </span>sigma_g ^<span class="st"> </span><span class="dv">2</span> /<span class="st"> </span><span class="dv">2</span> </code></pre>
+f &lt;- Myer_harvest
+pars &lt;- <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">6</span>) 
+p &lt;- pars <span class="co"># shorthand </span>
+K &lt;- p[<span class="dv">1</span>] * p[<span class="dv">3</span>] / <span class="dv">2</span> + <span class="kw">sqrt</span>( (p[<span class="dv">1</span>] * p[<span class="dv">3</span>]) ^ <span class="dv">2</span> - <span class="dv">4</span> * p[<span class="dv">3</span>] ) / <span class="dv">2</span>
+xT &lt;- p[<span class="dv">1</span>] * p[<span class="dv">3</span>] / <span class="dv">2</span> - <span class="kw">sqrt</span>( (p[<span class="dv">1</span>] * p[<span class="dv">3</span>]) ^ <span class="dv">2</span> - <span class="dv">4</span> * p[<span class="dv">3</span>] ) / <span class="dv">2</span> <span class="co"># allee threshold</span>
+x0 &lt;- K - sigma_g ^ <span class="dv">2</span> / <span class="dv">2</span> </code></pre>
 <p>We define a profit function with no stock effect for simplicity. Profit is just linear in price, with some operating cost (which prevents strategies that put out more fishing effort than required when trying to catch all fish.)</p>
 <pre class="sourceCode r"><code class="sourceCode r">
-profit &lt;-<span class="st"> </span><span class="kw">profit_harvest</span>(<span class="dt">price_fish =</span> <span class="dv">1</span>, 
+profit &lt;- <span class="kw">profit_harvest</span>(<span class="dt">price_fish =</span> <span class="dv">1</span>, 
                          <span class="dt">cost_stock_effect =</span> <span class="dv">0</span>,
                          <span class="dt">operating_cost =</span> <span class="fl">0.1</span>)</code></pre>
 <p>We solve the system numerically on a discrete grid. We’ll consider all possible fish stocks between zero and twice the carrying capacity, and we’ll consider harvest levels at the same resolution.</p>
 <pre class="sourceCode r"><code class="sourceCode r">
-gridsize &lt;-<span class="st"> </span><span class="dv">100</span>   <span class="co"># gridsize (discretized population)</span>
-x_grid &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">0</span>, <span class="dv">2</span> *<span class="st"> </span>K, <span class="dt">length =</span> gridsize)  
+gridsize &lt;- <span class="dv">100</span>   <span class="co"># gridsize (discretized population)</span>
+x_grid &lt;- <span class="kw">seq</span>(<span class="dv">0</span>, <span class="dv">2</span> * K, <span class="dt">length =</span> gridsize)  
 
-h_grid &lt;-<span class="st"> </span>x_grid  
+h_grid &lt;- x_grid  
 </code></pre>
 <h3 id="the-perfect-policy">The perfect policy</h3>
 <p>Having defined the problem, we are now ready to calculate the optimal policy by Bellman’s stochastic dynamic programming solution. We compute the stochastic transition matrices giving the probability that the stock goes from any value on the grid <code>x</code> at time <code>t</code> to any other value <code>y</code> at time <code>t+1</code>, for each possible harvest value. Then we use this to compute the optimal harvest rate at each time interval in the system, solving backwards by dynamic programming. The functions to do this are implemented in this package.</p>
 <pre class="sourceCode r"><code class="sourceCode r">
-SDP_Mat &lt;-<span class="st"> </span><span class="kw">determine_SDP_matrix</span>(f, pars, x_grid, h_grid, sigma_g )
-opt &lt;-<span class="st"> </span><span class="kw">find_dp_optim</span>(SDP_Mat, x_grid, h_grid, OptTime, xT, 
+SDP_Mat &lt;- <span class="kw">determine_SDP_matrix</span>(f, pars, x_grid, h_grid, sigma_g )
+opt &lt;- <span class="kw">find_dp_optim</span>(SDP_Mat, x_grid, h_grid, OptTime, xT, 
                      profit, delta, <span class="dt">reward=</span>reward)</code></pre>
 <h3 id="the-implementation">The implementation</h3>
 <p>Here we see how this policy performs over 100 replicates</p>
 <pre class="sourceCode r"><code class="sourceCode r">
-sims &lt;-<span class="st"> </span><span class="kw">lapply</span>(<span class="dv">1</span>:<span class="dv">100</span>, function(i){
+sims &lt;- <span class="kw">lapply</span>(<span class="dv">1</span>:<span class="dv">100</span>, function(i){
   <span class="kw">ForwardSimulate</span>(f, pars, x_grid, h_grid, x0, opt$D, z_g, z_m, z_i)
 })</code></pre>
 <h4 id="outcome">Outcome</h4>
 <p>We summarize the results of the simulation in a tidy data table.</p>
 <pre class="sourceCode r"><code class="sourceCode r">
-dat &lt;-<span class="st"> </span><span class="kw">melt</span>(sims, <span class="dt">id=</span><span class="kw">names</span>(sims[[<span class="dv">1</span>]]))  
+dat &lt;- <span class="kw">melt</span>(sims, <span class="dt">id=</span><span class="kw">names</span>(sims[[<span class="dv">1</span>]]))  
 
-dt &lt;-<span class="st"> </span><span class="kw">data.table</span>(dat)
+dt &lt;- <span class="kw">data.table</span>(dat)
 <span class="kw">setnames</span>(dt, <span class="st">&quot;L1&quot;</span>, <span class="st">&quot;reps&quot;</span>) <span class="co"># names are nice</span>
 
 
 
 
 
-crashed &lt;-<span class="st"> </span>dt[time==<span class="kw">as.integer</span>(OptTime<span class="dv">-1</span>), fishstock &lt;<span class="st"> </span>xT, by=reps]
+crashed &lt;- dt[time==<span class="kw">as.integer</span>(OptTime<span class="dv">-1</span>), fishstock &lt; xT, by=reps]
 <span class="kw">setkey</span>(dt, reps)
 <span class="kw">setkey</span>(crashed, reps)
-dt &lt;-<span class="st"> </span>dt[crashed]
+dt &lt;- dt[crashed]
 <span class="kw">setnames</span>(dt, <span class="st">&quot;V1&quot;</span>, <span class="st">&quot;crashed&quot;</span>)</code></pre>
 <pre class="sourceCode r"><code class="sourceCode r">
-p1 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(dt) +<span class="st"> </span><span class="kw">geom_abline</span>(<span class="dt">intercept=</span>opt$S, <span class="dt">slope =</span> <span class="dv">0</span>) +<span class="st"> </span>
-<span class="st">  </span><span class="kw">geom_abline</span>(<span class="dt">intercept=</span>xT, <span class="dt">slope =</span> <span class="dv">0</span>, <span class="dt">lty=</span><span class="dv">2</span>) 
-p1 +<span class="st"> </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(time, fishstock, <span class="dt">group =</span> reps), <span class="dt">alpha =</span> <span class="fl">0.2</span>, <span class="dt">col=</span><span class="st">&quot;darkblue&quot;</span>) +<span class="st"> </span>
-<span class="st"> </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(time, unharvested, <span class="dt">group =</span> reps), <span class="dt">alpha =</span> <span class="fl">0.2</span>, <span class="dt">col=</span><span class="st">&quot;lightblue&quot;</span>)  
+p1 &lt;- <span class="kw">ggplot</span>(dt) + <span class="kw">geom_abline</span>(<span class="dt">intercept=</span>opt$S, <span class="dt">slope =</span> <span class="dv">0</span>) + 
+  <span class="kw">geom_abline</span>(<span class="dt">intercept=</span>xT, <span class="dt">slope =</span> <span class="dv">0</span>, <span class="dt">lty=</span><span class="dv">2</span>) 
+p1 + <span class="kw">geom_line</span>(<span class="kw">aes</span>(time, fishstock, <span class="dt">group =</span> reps), <span class="dt">alpha =</span> <span class="fl">0.2</span>, <span class="dt">col=</span><span class="st">&quot;darkblue&quot;</span>) + 
+ <span class="kw">geom_line</span>(<span class="kw">aes</span>(time, unharvested, <span class="dt">group =</span> reps), <span class="dt">alpha =</span> <span class="fl">0.2</span>, <span class="dt">col=</span><span class="st">&quot;lightblue&quot;</span>)  
 </code></pre>
 <figure>
 <img src="http://farm8.staticflickr.com/7184/6814250662_15cb4bdb45_z.jpg" alt="plot of chunk raw" /><figcaption>plot of chunk raw</figcaption>
@@ -222,20 +222,20 @@ p1 +<span class="st"> </span><span class="kw">geom_line</span>(<span class="kw">
 <p>Define a quick function to return just the parameters (or missing values if algorithm does not converge).</p>
 <pre class="sourceCode r"><code class="sourceCode r">
 <span class="kw">require</span>(earlywarning)
-stability &lt;-<span class="st"> </span>function(x){
-  n &lt;-<span class="st"> </span><span class="kw">length</span>(x)
-  x &lt;-<span class="st"> </span>x[<span class="dv">1</span>:(n<span class="dv">-2</span>)]
-  fit &lt;-<span class="st"> </span><span class="kw">stability_model</span>(x, <span class="st">&quot;OU&quot;</span>)
+stability &lt;- function(x){
+  n &lt;- <span class="kw">length</span>(x)
+  x &lt;- x[<span class="dv">1</span>:(n<span class="dv">-2</span>)]
+  fit &lt;- <span class="kw">stability_model</span>(x, <span class="st">&quot;OU&quot;</span>)
   if(fit$convergence)
-    out &lt;-<span class="st"> </span><span class="kw">as.list</span>(fit$pars)
+    out &lt;- <span class="kw">as.list</span>(fit$pars)
   else
-    out &lt;-<span class="st"> </span><span class="kw">as.list</span>(<span class="kw">rep</span>(<span class="ot">NA</span>, <span class="kw">length</span>(fig$pars)))
+    out &lt;- <span class="kw">as.list</span>(<span class="kw">rep</span>(<span class="ot">NA</span>, <span class="kw">length</span>(fig$pars)))
   out
 }</code></pre>
 <p>This function can then be applied to the variable in the data.table.</p>
 <pre class="sourceCode r"><code class="sourceCode r">
-fished =<span class="st"> </span>dt[!crashed, <span class="kw">stability</span>(fishstock), by=reps]
-unfished =<span class="st"> </span>dt[!crashed, <span class="kw">stability</span>(unharvested), by=reps]</code></pre>
+fished = dt[!crashed, <span class="kw">stability</span>(fishstock), by=reps]
+unfished = dt[!crashed, <span class="kw">stability</span>(unharvested), by=reps]</code></pre>
 <p>We can then plot the resulting distribution of parameters. (Annoyingly we have to reformat the data to get it in tidy form again).</p>
 <pre class="sourceCode r"><code class="sourceCode r">
 
@@ -247,10 +247,10 @@ unfished =<span class="st"> </span>dt[!crashed, <span class="kw">stability</span
 
 
 
-unfished_d &lt;-<span class="st"> </span><span class="kw">melt</span>(<span class="kw">data.frame</span>(<span class="kw">cbind</span>(unfished, <span class="dt">type=</span><span class="st">&quot;unfished&quot;</span>)), <span class="dt">id=</span><span class="kw">c</span>(<span class="st">&quot;reps&quot;</span>, <span class="st">&quot;type&quot;</span>))
-fished_d &lt;-<span class="st"> </span><span class="kw">melt</span>(<span class="kw">data.frame</span>(<span class="kw">cbind</span>(fished, <span class="dt">type=</span><span class="st">&quot;fished&quot;</span>)), <span class="dt">id=</span><span class="kw">c</span>(<span class="st">&quot;reps&quot;</span>, <span class="st">&quot;type&quot;</span>))
-dat &lt;-<span class="st"> </span><span class="kw">rbind</span>(fished_d,unfished_d)
-<span class="kw">ggplot</span>(dat) +<span class="st"> </span><span class="kw">geom_boxplot</span>(<span class="kw">aes</span>(variable, value, <span class="dt">fill=</span>type)) </code></pre>
+unfished_d &lt;- <span class="kw">melt</span>(<span class="kw">data.frame</span>(<span class="kw">cbind</span>(unfished, <span class="dt">type=</span><span class="st">&quot;unfished&quot;</span>)), <span class="dt">id=</span><span class="kw">c</span>(<span class="st">&quot;reps&quot;</span>, <span class="st">&quot;type&quot;</span>))
+fished_d &lt;- <span class="kw">melt</span>(<span class="kw">data.frame</span>(<span class="kw">cbind</span>(fished, <span class="dt">type=</span><span class="st">&quot;fished&quot;</span>)), <span class="dt">id=</span><span class="kw">c</span>(<span class="st">&quot;reps&quot;</span>, <span class="st">&quot;type&quot;</span>))
+dat &lt;- <span class="kw">rbind</span>(fished_d,unfished_d)
+<span class="kw">ggplot</span>(dat) + <span class="kw">geom_boxplot</span>(<span class="kw">aes</span>(variable, value, <span class="dt">fill=</span>type)) </code></pre>
 <figure>
 <img src="http://farm8.staticflickr.com/7041/6960365083_4b41dd1f0a_z.jpg" alt="plot of chunk unnamed-chunk-2" /><figcaption>plot of chunk unnamed-chunk-2</figcaption>
 </figure>
@@ -258,34 +258,34 @@ dat &lt;-<span class="st"> </span><span class="kw">rbind</span>(fished_d,unfishe
 
 
 
-<span class="kw">ggplot</span>(dat, <span class="kw">aes</span>(value, variable)) +<span class="st"> </span><span class="kw">geom_ribbon</span>(<span class="kw">aes</span>(<span class="dt">ymax =</span> ..density.., <span class="dt">ymin=</span>-..density..),  <span class="dt">stat=</span><span class="st">&quot;density&quot;</span>) +<span class="st"> </span><span class="kw">facet_grid</span>(variable ~<span class="st"> </span>type, <span class="dt">as.table=</span><span class="ot">FALSE</span>, <span class="dt">scales=</span><span class="st">&quot;free_y&quot;</span>) </code></pre>
+<span class="kw">ggplot</span>(dat, <span class="kw">aes</span>(value, variable)) + <span class="kw">geom_ribbon</span>(<span class="kw">aes</span>(<span class="dt">ymax =</span> ..density.., <span class="dt">ymin=</span>-..density..),  <span class="dt">stat=</span><span class="st">&quot;density&quot;</span>) + <span class="kw">facet_grid</span>(variable ~ type, <span class="dt">as.table=</span><span class="ot">FALSE</span>, <span class="dt">scales=</span><span class="st">&quot;free_y&quot;</span>) </code></pre>
 <figure>
 <img src="http://farm8.staticflickr.com/7053/6814251736_13895ef259_z.jpg" alt="plot of chunk unnamed-chunk-2" /><figcaption>plot of chunk unnamed-chunk-2</figcaption>
 </figure>
 <p>It’s not entirely evident that we have bimodal distributions from the boxplots. The beanplot (perversion of ggplot’s ribbon plot) makes this abundantly obvious.</p>
 <p>So what are those outliers doing?</p>
 <pre class="sourceCode r"><code class="sourceCode r">
-weirdos &lt;-<span class="st"> </span>fished$reps[fished$Ro&gt;<span class="dv">10</span>]
-<span class="kw">ggplot</span>(<span class="kw">subset</span>(dt, !(reps %in%<span class="st"> </span>weirdos) )) +
-<span class="st">  </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(time, fishstock, <span class="dt">group=</span>reps), <span class="dt">alpha=</span>.<span class="dv">7</span>) +
-<span class="st">  </span><span class="kw">geom_line</span>(<span class="dt">dat=</span><span class="kw">subset</span>(dt, (reps %in%<span class="st"> </span>weirdos)),
+weirdos &lt;- fished$reps[fished$Ro&gt;<span class="dv">10</span>]
+<span class="kw">ggplot</span>(<span class="kw">subset</span>(dt, !(reps %in% weirdos) )) +
+  <span class="kw">geom_line</span>(<span class="kw">aes</span>(time, fishstock, <span class="dt">group=</span>reps), <span class="dt">alpha=</span>.<span class="dv">7</span>) +
+  <span class="kw">geom_line</span>(<span class="dt">dat=</span><span class="kw">subset</span>(dt, (reps %in% weirdos)),
             <span class="kw">aes</span>(time, fishstock, <span class="dt">group=</span>reps), <span class="dt">col=</span><span class="st">&quot;purple&quot;</span>, <span class="dt">alpha=</span>.<span class="dv">4</span>)</code></pre>
 <figure>
 <img src="http://farm8.staticflickr.com/7044/6814251888_80d660a566_z.jpg" alt="plot of chunk unnamed-chunk-3" /><figcaption>plot of chunk unnamed-chunk-3</figcaption>
 </figure>
 <p>If anything they are less variable, but not exceptionally so. Likely this is estimation error.</p>
 <pre class="sourceCode r"><code class="sourceCode r">
-<span class="kw">mean</span>(dt[reps %in%<span class="st"> </span>weirdos,<span class="kw">var</span>(fishstock), <span class="dt">by=</span><span class="st">&quot;reps&quot;</span>]$V1)</code></pre>
+<span class="kw">mean</span>(dt[reps %in% weirdos,<span class="kw">var</span>(fishstock), <span class="dt">by=</span><span class="st">&quot;reps&quot;</span>]$V1)</code></pre>
 <p>[code][1] 0.5116</p>
 <p>```</p>
 <pre class="sourceCode r"><code class="sourceCode r">
-<span class="kw">mean</span>(dt[!(reps %in%<span class="st"> </span>weirdos),<span class="kw">var</span>(fishstock), <span class="dt">by=</span><span class="st">&quot;reps&quot;</span>]$V1)</code></pre>
+<span class="kw">mean</span>(dt[!(reps %in% weirdos),<span class="kw">var</span>(fishstock), <span class="dt">by=</span><span class="st">&quot;reps&quot;</span>]$V1)</code></pre>
 <p>[code][1] 0.6191</p>
 <p>```</p>
 <p>Note that the populations do not show different coefficients of variation:</p>
 <pre class="sourceCode r"><code class="sourceCode r">
-f1 &lt;-<span class="st"> </span>dt[,<span class="kw">var</span>(fishstock)/<span class="kw">mean</span>(fishstock), by=reps]$V1
-f2 &lt;-<span class="st"> </span>dt[,<span class="kw">var</span>(unharvested)/<span class="kw">mean</span>(unharvested), by=reps]$V1
+f1 &lt;- dt[,<span class="kw">var</span>(fishstock)/<span class="kw">mean</span>(fishstock), by=reps]$V1
+f2 &lt;- dt[,<span class="kw">var</span>(unharvested)/<span class="kw">mean</span>(unharvested), by=reps]$V1
 <span class="kw">mean</span>(f2)</code></pre>
 <p>[code][1] 0.2306</p>
 <p>```</p>

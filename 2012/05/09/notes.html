@@ -283,7 +283,7 @@ Filtering. _The Annals of Statistics_, *39*. ISSN 0090-5364,
 <li>Christophe Andrieu, Arnaud Doucet, Roman Holenstein, (2010) Particle Markov Chain Monte Carlo Methods. <em>Journal of The Royal Statistical Society: Series B (Statistical Methodology)</em> <strong>72</strong> <a href="http://dx.doi.org/10.1111/j.1467-9868.2009.00736.x">10.1111/j.1467-9868.2009.00736.x</a></li>
 <li>E. L. Ionides, C. Breto, A. A. King, (2006) Inference For Nonlinear Dynamical Systems. <em>Proceedings of The National Academy of Sciences</em> <strong>103</strong> <a href="http://dx.doi.org/10.1073/pnas.0603181103">10.1073/pnas.0603181103</a></li>
 <li>Edward L. Ionides, Anindya Bhadra, Yves Atchadé, Aaron King, (2011) Iterated Filtering. <em>The Annals of Statistics</em> <strong>39</strong> <a href="http://dx.doi.org/10.1214/11-AOS886">10.1214/11-AOS886</a></li>
-<li>Bruce E. Kendall, Cheryl J. Briggs, William W. Murdoch, Peter Turchin, Stephen P. Ellner, Edward McCauley, Roger M. Nisbet, Simon N. Wood, (1999) Why do Populations Cycle? A Synthesis of Statistical And Mechanistic Modeling Approaches. <em>Ecology</em> <strong>80</strong> <a href="http://dx.doi.org/10.1890/0012-9658(1999)080[1789:WDPCAS]2.0.CO;2">10.1890/0012-9658(1999)080[1789:WDPCAS]2.0.CO;2</a></li>
+<li>Bruce E. Kendall, Cheryl J. Briggs, William W. Murdoch, Peter Turchin, Stephen P. Ellner, Edward McCauley, Roger M. Nisbet, Simon N. Wood, (1999) Why do Populations Cycle? A Synthesis of Statistical And Mechanistic Modeling Approaches. <em>Ecology</em> <strong>80</strong> <a href="http://dx.doi.org/10.1890/0012-96581999080[1789:WDPCAS]2.0.CO;2">10.1890/0012-9658(1999)080[1789:WDPCAS]2.0.CO;2</a></li>
 <li><p>Simon N. Wood, (2010) Statistical Inference For Noisy Nonlinear Ecological Dynamic Systems. <em>Nature</em> <strong>466</strong> <a href="http://dx.doi.org/10.1038/nature09319">10.1038/nature09319</a></p></li>
 <li>E. L. Ionides, C. Breto, A. A. King, (2006) Inference For Nonlinear Dynamical Systems. <em>Proceedings of The National Academy of Sciences</em> <strong>103</strong> <a href="http://dx.doi.org/10.1073/pnas.0603181103">10.1073/pnas.0603181103</a></li>
 <li>T. Toni, D. Welch, N. Strelkowa, A. Ipsen, M. P.H Stumpf, (2009) Approximate Bayesian Computation Scheme For Parameter Inference And Model Selection in Dynamical Systems. <em>Journal of The Royal Society Interface</em> <strong>6</strong> <a href="http://dx.doi.org/10.1098/rsif.2008.0172">10.1098/rsif.2008.0172</a></li>
@@ -294,52 +294,52 @@ Filtering. _The Annals of Statistics_, *39*. ISSN 0090-5364,
 <p>Note that the iterative filtering algorithm took a little over 16 minutes on ten processors on the farm cluster. pomp does not provide any parallelization. Particles must communicate at each iteration. With tight communication loops, could probably get substantial acceleration on MPI or GPU.</p>
 <p>(Would be interesting to drive the simulation with Gillespie algorithm, something richer than a crude discritization. Depending on timescale, may result in very computationally intensive requirements).</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">require</span>(pomp)
-gompertz.proc.sim &lt;-<span class="st"> </span>function(x, t, params, delta.t, ...) {
-    r &lt;-<span class="st"> </span>params[<span class="st">&quot;r&quot;</span>]
-    K &lt;-<span class="st"> </span>params[<span class="st">&quot;K&quot;</span>]
-    sigma &lt;-<span class="st"> </span>params[<span class="st">&quot;sigma&quot;</span>]
-    X &lt;-<span class="st"> </span>x[<span class="st">&quot;X&quot;</span>]  <span class="co"># the state at time t:</span>
+gompertz.proc.sim &lt;- function(x, t, params, delta.t, ...) {
+    r &lt;- params[<span class="st">&quot;r&quot;</span>]
+    K &lt;- params[<span class="st">&quot;K&quot;</span>]
+    sigma &lt;- params[<span class="st">&quot;sigma&quot;</span>]
+    X &lt;- x[<span class="st">&quot;X&quot;</span>]  <span class="co"># the state at time t:</span>
     ## generate a log-normal random variable:
-    eps &lt;-<span class="st"> </span><span class="kw">exp</span>(<span class="kw">rnorm</span>(<span class="dt">n =</span> <span class="dv">1</span>, <span class="dt">mean =</span> <span class="dv">0</span>, <span class="dt">sd =</span> sigma))
+    eps &lt;- <span class="kw">exp</span>(<span class="kw">rnorm</span>(<span class="dt">n =</span> <span class="dv">1</span>, <span class="dt">mean =</span> <span class="dv">0</span>, <span class="dt">sd =</span> sigma))
     ## compute the state at time t+delta.t:
-    S &lt;-<span class="st"> </span><span class="kw">exp</span>(-r *<span class="st"> </span>delta.t)
-    <span class="kw">c</span>(<span class="dt">X =</span> <span class="kw">unname</span>(K^(<span class="dv">1</span> -<span class="st"> </span>S) *<span class="st"> </span>X^S *<span class="st"> </span>eps))
+    S &lt;- <span class="kw">exp</span>(-r * delta.t)
+    <span class="kw">c</span>(<span class="dt">X =</span> <span class="kw">unname</span>(K^(<span class="dv">1</span> - S) * X^S * eps))
 }</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r">gompertz.meas.sim &lt;-<span class="st"> </span>function(x, t, params, ...) {
-    tau &lt;-<span class="st"> </span>params[<span class="st">&quot;tau&quot;</span>]
-    X &lt;-<span class="st"> </span>x[<span class="st">&quot;X&quot;</span>]  <span class="co"># state at time t:</span>
-    y &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dt">Y =</span> <span class="kw">unname</span>(<span class="kw">rlnorm</span>(<span class="dt">n =</span> <span class="dv">1</span>, <span class="dt">meanlog =</span> <span class="kw">log</span>(X), <span class="dt">sd =</span> tau)))
+<pre class="sourceCode r"><code class="sourceCode r">gompertz.meas.sim &lt;- function(x, t, params, ...) {
+    tau &lt;- params[<span class="st">&quot;tau&quot;</span>]
+    X &lt;- x[<span class="st">&quot;X&quot;</span>]  <span class="co"># state at time t:</span>
+    y &lt;- <span class="kw">c</span>(<span class="dt">Y =</span> <span class="kw">unname</span>(<span class="kw">rlnorm</span>(<span class="dt">n =</span> <span class="dv">1</span>, <span class="dt">meanlog =</span> <span class="kw">log</span>(X), <span class="dt">sd =</span> tau)))
 }</code></pre>
 <p>create a container of class <code>pomp</code> to hold the model and data.</p>
-<pre class="sourceCode r"><code class="sourceCode r">gompertz &lt;-<span class="st"> </span><span class="kw">pomp</span>(<span class="dt">data =</span> <span class="kw">data.frame</span>(<span class="dt">time =</span> <span class="dv">1</span>:<span class="dv">100</span>, <span class="dt">Y =</span> <span class="ot">NA</span>), <span class="dt">times =</span> <span class="st">&quot;time&quot;</span>, 
+<pre class="sourceCode r"><code class="sourceCode r">gompertz &lt;- <span class="kw">pomp</span>(<span class="dt">data =</span> <span class="kw">data.frame</span>(<span class="dt">time =</span> <span class="dv">1</span>:<span class="dv">100</span>, <span class="dt">Y =</span> <span class="ot">NA</span>), <span class="dt">times =</span> <span class="st">&quot;time&quot;</span>, 
     <span class="dt">rprocess =</span> <span class="kw">discrete.time.sim</span>(<span class="dt">step.fun =</span> gompertz.proc.sim, <span class="dt">delta.t =</span> <span class="dv">1</span>), 
     <span class="dt">rmeasure =</span> gompertz.meas.sim, <span class="dt">t0 =</span> <span class="dv">0</span>)</code></pre>
 <p>Parameters and inital condition:</p>
-<pre class="sourceCode r"><code class="sourceCode r">theta &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dt">r =</span> <span class="fl">0.1</span>, <span class="dt">K =</span> <span class="dv">1</span>, <span class="dt">sigma =</span> <span class="fl">0.1</span>, <span class="dt">tau =</span> <span class="fl">0.1</span>, <span class="dt">X.0 =</span> <span class="dv">1</span>)</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r">gompertz &lt;-<span class="st"> </span><span class="kw">simulate</span>(gompertz, <span class="dt">params =</span> theta)
+<pre class="sourceCode r"><code class="sourceCode r">theta &lt;- <span class="kw">c</span>(<span class="dt">r =</span> <span class="fl">0.1</span>, <span class="dt">K =</span> <span class="dv">1</span>, <span class="dt">sigma =</span> <span class="fl">0.1</span>, <span class="dt">tau =</span> <span class="fl">0.1</span>, <span class="dt">X.0 =</span> <span class="dv">1</span>)</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">gompertz &lt;- <span class="kw">simulate</span>(gompertz, <span class="dt">params =</span> theta)
 <span class="kw">plot</span>(gompertz, <span class="dt">variables =</span> <span class="st">&quot;Y&quot;</span>)</code></pre>
 <figure>
 <img src="http://farm9.staticflickr.com/8012/7168130004_62bc33148d_o.png" alt="plot of chunk simulate" /><figcaption>plot of chunk simulate</figcaption>
 </figure>
 <p>Likelihood using a particle filter (sequential Monte Carlo) requires the measurement density (but not the process density).</p>
-<pre class="sourceCode r"><code class="sourceCode r">gompertz.meas.dens &lt;-<span class="st"> </span>function(y, x, t, params, log, ...) {
-    tau &lt;-<span class="st"> </span>params[<span class="st">&quot;tau&quot;</span>]
+<pre class="sourceCode r"><code class="sourceCode r">gompertz.meas.dens &lt;- function(y, x, t, params, log, ...) {
+    tau &lt;- params[<span class="st">&quot;tau&quot;</span>]
     ## state at time t:
-    X &lt;-<span class="st"> </span>x[<span class="st">&quot;X&quot;</span>]
+    X &lt;- x[<span class="st">&quot;X&quot;</span>]
     ## observation at time t:
-    Y &lt;-<span class="st"> </span>y[<span class="st">&quot;Y&quot;</span>]
+    Y &lt;- y[<span class="st">&quot;Y&quot;</span>]
     ## compute the likelihood of Y|X,tau
     <span class="kw">dlnorm</span>(<span class="dt">x =</span> Y, <span class="dt">meanlog =</span> <span class="kw">log</span>(X), <span class="dt">sdlog =</span> tau, <span class="dt">log =</span> log)
 }</code></pre>
 <p>Stick the new function into our container:</p>
-<pre class="sourceCode r"><code class="sourceCode r">gompertz &lt;-<span class="st"> </span><span class="kw">pomp</span>(gompertz, <span class="dt">dmeasure =</span> gompertz.meas.dens)</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">gompertz &lt;- <span class="kw">pomp</span>(gompertz, <span class="dt">dmeasure =</span> gompertz.meas.dens)</code></pre>
 <p>Then we get a point estimate of the likelihood,</p>
-<pre class="sourceCode r"><code class="sourceCode r">pf &lt;-<span class="st"> </span><span class="kw">pfilter</span>(gompertz, <span class="dt">params =</span> theta, <span class="dt">Np =</span> <span class="dv">1000</span>)
+<pre class="sourceCode r"><code class="sourceCode r">pf &lt;- <span class="kw">pfilter</span>(gompertz, <span class="dt">params =</span> theta, <span class="dt">Np =</span> <span class="dv">1000</span>)
 <span class="kw">logLik</span>(pf)</code></pre>
 <pre><code>[1] 49.29</code></pre>
 <h3 id="iterated-filtering">Iterated filtering</h3>
 <p>We will do this in the transformed variable space, so we add our transformation method to the container:</p>
-<pre class="sourceCode r"><code class="sourceCode r">gompertz &lt;-<span class="st"> </span><span class="kw">pomp</span>(gompertz, <span class="dt">parameter.transform =</span> function(params, 
+<pre class="sourceCode r"><code class="sourceCode r">gompertz &lt;- <span class="kw">pomp</span>(gompertz, <span class="dt">parameter.transform =</span> function(params, 
     ...) {
     <span class="kw">exp</span>(params)
 }, <span class="dt">parameter.inv.transform =</span> function(params, ...) {
@@ -348,39 +348,39 @@ gompertz.proc.sim &lt;-<span class="st"> </span>function(x, t, params, delta.t, 
 <p>Now we’re ready for an iterated-filtering run. This is gonna be slow, so let’s set up a parallel architecture first:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">require</span>(snowfall)
 <span class="kw">sfInit</span>(<span class="dt">parallel =</span> <span class="ot">TRUE</span>, <span class="dt">cpu =</span> <span class="dv">10</span>)</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r">rep &lt;-<span class="st"> </span>function(dummy_index) {
-    estpars &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;r&quot;</span>, <span class="st">&quot;sigma&quot;</span>, <span class="st">&quot;tau&quot;</span>)
-    theta.guess &lt;-<span class="st"> </span><span class="kw">coef</span>(gompertz)
-    theta.guess[estpars] &lt;-<span class="st"> </span><span class="kw">rlnorm</span>(<span class="dt">n =</span> <span class="kw">length</span>(estpars), <span class="dt">meanlog =</span> <span class="kw">log</span>(theta.guess[estpars]), 
+<pre class="sourceCode r"><code class="sourceCode r">rep &lt;- function(dummy_index) {
+    estpars &lt;- <span class="kw">c</span>(<span class="st">&quot;r&quot;</span>, <span class="st">&quot;sigma&quot;</span>, <span class="st">&quot;tau&quot;</span>)
+    theta.guess &lt;- <span class="kw">coef</span>(gompertz)
+    theta.guess[estpars] &lt;- <span class="kw">rlnorm</span>(<span class="dt">n =</span> <span class="kw">length</span>(estpars), <span class="dt">meanlog =</span> <span class="kw">log</span>(theta.guess[estpars]), 
         <span class="dt">sdlog =</span> <span class="dv">1</span>)
     <span class="kw">mif</span>(gompertz, <span class="dt">Nmif =</span> <span class="dv">100</span>, <span class="dt">start =</span> theta.guess, <span class="dt">transform =</span> <span class="ot">TRUE</span>, <span class="dt">pars =</span> estpars, 
         <span class="dt">rw.sd =</span> <span class="kw">c</span>(<span class="dt">r =</span> <span class="fl">0.02</span>, <span class="dt">sigma =</span> <span class="fl">0.02</span>, <span class="dt">tau =</span> <span class="fl">0.05</span>), <span class="dt">Np =</span> <span class="dv">2000</span>, <span class="dt">var.factor =</span> <span class="dv">4</span>, 
         <span class="dt">ic.lag =</span> <span class="dv">10</span>, <span class="dt">cooling.factor =</span> <span class="fl">0.999</span>, <span class="dt">max.fail =</span> <span class="dv">10</span>)
 }
 <span class="kw">sfExportAll</span>()
-<span class="kw">system.time</span>(mf &lt;-<span class="st"> </span><span class="kw">sfSapply</span>(<span class="dv">1</span>:<span class="dv">10</span>, rep))</code></pre>
+<span class="kw">system.time</span>(mf &lt;- <span class="kw">sfSapply</span>(<span class="dv">1</span>:<span class="dv">10</span>, rep))</code></pre>
 <pre><code>   user  system elapsed 
    0.02    0.00 1037.39 </code></pre>
 <p>Average parameter estimates (compare to theta)</p>
-<pre class="sourceCode r"><code class="sourceCode r">theta.mif &lt;-<span class="st"> </span><span class="kw">apply</span>(<span class="kw">sapply</span>(mf, coef), <span class="dv">1</span>, mean)
+<pre class="sourceCode r"><code class="sourceCode r">theta.mif &lt;- <span class="kw">apply</span>(<span class="kw">sapply</span>(mf, coef), <span class="dv">1</span>, mean)
 theta.mif</code></pre>
 <pre><code>      r       K   sigma     tau     X.0 
 0.04385 1.00000 0.09647 0.10495 1.00000 </code></pre>
 <p>Evaluating the log-likelihoods at the convergent parameters requires the particle filter. This line applies the particle filter to each of the parameter estimates</p>
-<pre class="sourceCode r"><code class="sourceCode r">loglik.mif &lt;-<span class="st"> </span><span class="kw">replicate</span>(<span class="dt">n =</span> <span class="dv">10</span>, <span class="kw">logLik</span>(<span class="kw">pfilter</span>(mf[[<span class="dv">1</span>]], <span class="dt">params =</span> theta.mif, 
+<pre class="sourceCode r"><code class="sourceCode r">loglik.mif &lt;- <span class="kw">replicate</span>(<span class="dt">n =</span> <span class="dv">10</span>, <span class="kw">logLik</span>(<span class="kw">pfilter</span>(mf[[<span class="dv">1</span>]], <span class="dt">params =</span> theta.mif, 
     <span class="dt">Np =</span> <span class="dv">10000</span>)))
-bl &lt;-<span class="st"> </span><span class="kw">mean</span>(loglik.mif)
-loglik.mif.est &lt;-<span class="st"> </span>bl +<span class="st"> </span><span class="kw">log</span>(<span class="kw">mean</span>(<span class="kw">exp</span>(loglik.mif -<span class="st"> </span>bl)))
-loglik.mif.se &lt;-<span class="st"> </span><span class="kw">sd</span>(<span class="kw">exp</span>(loglik.mif -<span class="st"> </span>bl))/<span class="kw">exp</span>(loglik.mif.est -<span class="st"> </span>bl)
+bl &lt;- <span class="kw">mean</span>(loglik.mif)
+loglik.mif.est &lt;- bl + <span class="kw">log</span>(<span class="kw">mean</span>(<span class="kw">exp</span>(loglik.mif - bl)))
+loglik.mif.se &lt;- <span class="kw">sd</span>(<span class="kw">exp</span>(loglik.mif - bl))/<span class="kw">exp</span>(loglik.mif.est - bl)
 <span class="kw">c</span>(<span class="dt">est =</span> loglik.mif.est, <span class="dt">se =</span> loglik.mif.se)</code></pre>
 <pre><code>     est       se 
 51.45397  0.09316 </code></pre>
 <p>“True” uses the original model and coefficients rather than the estimated one, but still approximates the log.likelihood using particle filtering</p>
-<pre class="sourceCode r"><code class="sourceCode r">loglik.true &lt;-<span class="st"> </span><span class="kw">replicate</span>(<span class="dt">n =</span> <span class="dv">10</span>, <span class="kw">logLik</span>(<span class="kw">pfilter</span>(gompertz, <span class="dt">params =</span> <span class="kw">coef</span>(gompertz), 
+<pre class="sourceCode r"><code class="sourceCode r">loglik.true &lt;- <span class="kw">replicate</span>(<span class="dt">n =</span> <span class="dv">10</span>, <span class="kw">logLik</span>(<span class="kw">pfilter</span>(gompertz, <span class="dt">params =</span> <span class="kw">coef</span>(gompertz), 
     <span class="dt">Np =</span> <span class="dv">10000</span>)))
-loglik.true.est &lt;-<span class="st"> </span>bl +<span class="st"> </span><span class="kw">log</span>(<span class="kw">mean</span>(<span class="kw">exp</span>(loglik.true -<span class="st"> </span>bl)))
-loglik.true.se &lt;-<span class="st"> </span><span class="kw">sd</span>(<span class="kw">exp</span>(loglik.true -<span class="st"> </span>bl))/<span class="kw">exp</span>(loglik.true.est -<span class="st"> </span>
-<span class="st">    </span>bl)
+loglik.true.est &lt;- bl + <span class="kw">log</span>(<span class="kw">mean</span>(<span class="kw">exp</span>(loglik.true - bl)))
+loglik.true.se &lt;- <span class="kw">sd</span>(<span class="kw">exp</span>(loglik.true - bl))/<span class="kw">exp</span>(loglik.true.est - 
+    bl)
 <span class="kw">c</span>(<span class="dt">est =</span> loglik.true.est, <span class="dt">se =</span> loglik.true.se)</code></pre>
 <pre><code>    est      se 
 50.0128  0.1062 </code></pre>
@@ -435,7 +435,7 @@ loglik.true.se &lt;-<span class="st"> </span><span class="kw">sd</span>(<span cl
 
   <br/>
 
-   <p style="font-style:italic"> <i class="icon-signal"></i> pageviews: 227</p>
+   <p style="font-style:italic"> <i class="icon-signal"></i> pageviews: 229</p>
 
   <br/>
 

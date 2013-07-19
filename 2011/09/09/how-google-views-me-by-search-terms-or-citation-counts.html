@@ -153,27 +153,27 @@
 <span class="kw">require</span>(wordcloud)
 <span class="kw">require</span>(RColorBrewer)
 
-carl &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;searchterms.csv&quot;</span>, <span class="dt">colClasses=</span><span class="kw">c</span>(<span class="st">&quot;character&quot;</span>, <span class="st">&quot;numeric&quot;</span>))
+carl &lt;- <span class="kw">read.csv</span>(<span class="st">&quot;searchterms.csv&quot;</span>, <span class="dt">colClasses=</span><span class="kw">c</span>(<span class="st">&quot;character&quot;</span>, <span class="st">&quot;numeric&quot;</span>))
 
-words &lt;-<span class="st"> </span><span class="kw">character</span>(<span class="kw">sum</span>(carl[[<span class="dv">2</span>]]))
-m &lt;-<span class="st"> </span><span class="dv">1</span>
+words &lt;- <span class="kw">character</span>(<span class="kw">sum</span>(carl[[<span class="dv">2</span>]]))
+m &lt;- <span class="dv">1</span>
 for(i in <span class="dv">1</span>:<span class="kw">length</span>(carl[[<span class="dv">1</span>]])){
-  n &lt;-<span class="st"> </span>carl[[<span class="dv">2</span>]][i]
-  x &lt;-<span class="st"> </span>carl[[<span class="dv">1</span>]][i]
-  words[m:(m+(n<span class="dv">-1</span>))] &lt;-<span class="st"> </span><span class="kw">rep</span>(x, n)
-  m &lt;-<span class="st"> </span>m+n
+  n &lt;- carl[[<span class="dv">2</span>]][i]
+  x &lt;- carl[[<span class="dv">1</span>]][i]
+  words[m:(m+(n<span class="dv">-1</span>))] &lt;- <span class="kw">rep</span>(x, n)
+  m &lt;- m+n
 }
 
- carl &lt;-<span class="st"> </span><span class="kw">Corpus</span>(<span class="kw">DataframeSource</span>(carl))
- carl &lt;-<span class="st"> </span><span class="kw">tm_map</span>(carl, removePunctuation)
- carl &lt;-<span class="st"> </span><span class="kw">tm_map</span>(carl, tolower)
+ carl &lt;- <span class="kw">Corpus</span>(<span class="kw">DataframeSource</span>(carl))
+ carl &lt;- <span class="kw">tm_map</span>(carl, removePunctuation)
+ carl &lt;- <span class="kw">tm_map</span>(carl, tolower)
 
- carl.tdm &lt;-<span class="st"> </span><span class="kw">TermDocumentMatrix</span>(carl)
- carl.m &lt;-<span class="st"> </span><span class="kw">as.matrix</span>(carl.tdm)
- carl.v &lt;-<span class="st"> </span><span class="kw">sort</span>(<span class="kw">rowSums</span>(carl.m), <span class="dt">decreasing=</span><span class="ot">TRUE</span>)
- carl.d &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">word=</span><span class="kw">names</span>(carl.v), <span class="dt">freq=</span>carl.v)
+ carl.tdm &lt;- <span class="kw">TermDocumentMatrix</span>(carl)
+ carl.m &lt;- <span class="kw">as.matrix</span>(carl.tdm)
+ carl.v &lt;- <span class="kw">sort</span>(<span class="kw">rowSums</span>(carl.m), <span class="dt">decreasing=</span><span class="ot">TRUE</span>)
+ carl.d &lt;- <span class="kw">data.frame</span>(<span class="dt">word=</span><span class="kw">names</span>(carl.v), <span class="dt">freq=</span>carl.v)
 
-pal2 &lt;-<span class="st"> </span><span class="kw">brewer.pal</span>(<span class="dv">8</span>,<span class="st">&quot;Dark2&quot;</span>)
+pal2 &lt;- <span class="kw">brewer.pal</span>(<span class="dv">8</span>,<span class="st">&quot;Dark2&quot;</span>)
 
 <span class="kw">png</span>(<span class="st">&quot;wordcloud.png&quot;</span>, <span class="dt">width=</span><span class="dv">800</span>,<span class="dt">height=</span><span class="dv">800</span>) 
 <span class="co">#larger canvas doesn&#39;t increase plot size</span>

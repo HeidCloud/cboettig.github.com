@@ -152,10 +152,10 @@
 <li>Apparently apt-get just cannot keep up with our modern world.</li>
 </ul>
 <p>Getting citation support for pandoc, also problematic.</p>
-<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">sudo</span> apt-get install libbibutils-dev bibutils haskell-platform
-<span class="kw">cabal</span> update
-<span class="kw">cabal</span> install pandoc
-<span class="kw">sudo</span> cp ~/.cabal/bin/pandoc /usr/bin/pandoc</code></pre>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">sudo</span> apt-get <span class="kw">install</span> libbibutils-dev bibutils haskell-platform
+cabal update
+cabal <span class="kw">install</span> pandoc
+<span class="kw">sudo</span> <span class="kw">cp</span> ~/.cabal/bin/pandoc /usr/bin/pandoc</code></pre>
 <p>Goodness grief. Everyone wants a custom install for their language today. At least this may be <a href="https://bugs.launchpad.net/ubuntu/+source/haskell-citeproc-hs/+bug/881355">fixed soon</a></p>
 <h3 id="pandoc-citations">Pandoc citations</h3>
 <p>Taking a look at pandoc citation formats. <a href="http://johnmacfarlane.net/pandoc/demos.html">see demo 24</a></p>

@@ -194,7 +194,7 @@
 <p>Would be nice to force me to write the comment about the script at runtime, rather than in the script itself (where I might forget to update it on a run). As long as any parameters are not written in by hand, the latter is okay. Tried adding prompt on batch mode, unsuccessfully:</p>
 <p>Read in command line arguments at batch mode: ((Adapted from <a href="http://yangfeng.wordpress.com/2009/09/03/including-arguments-in-r-cmd-batch-mode/">here</a>))</p>
 <pre class="sourceCode bash"><code class="sourceCode bash">
-$ <span class="kw">R</span> CMD BATCH --no-save --no-restore <span class="st">&#39;--args a=1 b=c(2,5,6)&#39;</span> test.R test.out <span class="kw">&amp;</span></code></pre>
+$ R CMD BATCH --no-save --no-restore <span class="st">&#39;--args a=1 b=c(2,5,6)&#39;</span> test.R test.out <span class="kw">&amp;</span></code></pre>
 <p>Each argument must have no spaces, doesn’t seem to be able to pass text strings.</p>
 <pre class="sourceCode r"><code class="sourceCode r">
 ##First read in the arguments listed at the command line
@@ -206,8 +206,8 @@ args=(<span class="kw">commandArgs</span>(<span class="ot">TRUE</span>))
 if(<span class="kw">length</span>(args)==<span class="dv">0</span>){
     <span class="kw">print</span>(<span class="st">&quot;No arguments supplied.&quot;</span>)
     ##supply default values
-    a =<span class="st"> </span><span class="dv">1</span>
-    b =<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>)
+    a = <span class="dv">1</span>
+    b = <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>)
 }else{
     for(i in <span class="dv">1</span>:<span class="kw">length</span>(args)){
          <span class="kw">eval</span>(<span class="kw">parse</span>(<span class="dt">text=</span>args[[i]]))

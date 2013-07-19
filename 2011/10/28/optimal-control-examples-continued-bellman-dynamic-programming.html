@@ -164,22 +164,22 @@
 <p>Cost/profit of harvesting: Profit <span class="math">\(p(t)\)</span> per fish (possibly varies with year), but cost gets harder <span class="math">\(c h^2\)</span>, <span class="math">\(c &lt;&lt; p(t)\)</span>, <span class="math">\[ U(h) = p h - c h^2 \]</span></p>
 <p>The algorithm can be specified by recursion,</p>
 <pre class="sourceCode R"><code class="sourceCode r">
-phi &lt;-<span class="st"> </span>function(x) <span class="dv">300</span>
+phi &lt;- function(x) <span class="dv">300</span>
 
-J &lt;-<span class="st"> </span>function(t,x){
-  if(t &lt;<span class="st"> </span>T)
-    out &lt;-<span class="st"> </span><span class="kw">U</span>(t,x, <span class="kw">h_star</span>(t,x)) +<span class="st"> </span>beta*<span class="kw">J</span>(t<span class="dv">+1</span>, <span class="kw">f</span>(t,x, <span class="kw">h_star</span>(t,x)))
+J &lt;- function(t,x){
+  if(t &lt; T)
+    out &lt;- <span class="kw">U</span>(t,x, <span class="kw">h_star</span>(t,x)) + beta*<span class="kw">J</span>(t<span class="dv">+1</span>, <span class="kw">f</span>(t,x, <span class="kw">h_star</span>(t,x)))
   else 
-    out &lt;-<span class="st"> </span><span class="kw">phi</span>(x)
+    out &lt;- <span class="kw">phi</span>(x)
   out
 }
  
-h_star &lt;-<span class="st"> </span>function(t,x){
-    func &lt;-<span class="st"> </span>function(h) <span class="kw">U</span>(t, x, h) +<span class="st"> </span>beta*<span class="kw">J</span>(t<span class="dv">+1</span>, <span class="kw">f</span>(t,x,h))
+h_star &lt;- function(t,x){
+    func &lt;- function(h) <span class="kw">U</span>(t, x, h) + beta*<span class="kw">J</span>(t<span class="dv">+1</span>, <span class="kw">f</span>(t,x,h))
 <span class="co">#    optimize(f=func, interval=c(0,1))[[1]]</span>
-    h &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">0</span>,<span class="dv">1000</span>,<span class="dt">length=</span><span class="dv">500</span>)
-    cost &lt;-<span class="st"> </span><span class="kw">sapply</span>(h, func)
-    i &lt;-<span class="st"> </span><span class="kw">which.max</span>(cost)
+    h &lt;- <span class="kw">seq</span>(<span class="dv">0</span>,<span class="dv">1000</span>,<span class="dt">length=</span><span class="dv">500</span>)
+    cost &lt;- <span class="kw">sapply</span>(h, func)
+    i &lt;- <span class="kw">which.max</span>(cost)
     h[i]
 }</code></pre>
 <p>See <a href="https://github.com/cboettig/pdg_control/blob/2fedf60ae61dafb21badaf05f1a97c213d59b1d1/R/discrete_optimal_control.R">full code</a>.</p>
@@ -262,7 +262,7 @@ h_star &lt;-<span class="st"> </span>function(t,x){
 
   <br/>
 
-   <p style="font-style:italic"> <i class="icon-signal"></i> pageviews: 172</p>
+   <p style="font-style:italic"> <i class="icon-signal"></i> pageviews: 173</p>
 
   <br/>
 

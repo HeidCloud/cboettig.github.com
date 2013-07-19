@@ -149,7 +149,7 @@
 <p>Revised method for wrapping PMC capability around existing functions (given a fit method and a simulation method).  A bit cumbersome still, as requires a couple user-defined functions, but at least faster for me to write wrappers, if not likely simple enough for most users to write their own wrappers.  Construction is explained in the in-code documentation of pmc_model.R, but easily illustrated with some simple examples (also in pmc_ex.R)</p>
 <pre class="sourceCode R"><code class="sourceCode r">
 <span class="co"># use the pmc_model to define a function that fits under &quot;pureBirth&quot; and simulates under &quot;sim.bd.taxa&quot;</span>
-pureBirth_fit &lt;-<span class="st"> </span>function(fit_input){
+pureBirth_fit &lt;- function(fit_input){
  <span class="kw">pmc_model</span>(pureBirth, sim.bd.taxa,
  <span class="dt">fit_input =</span> fit_input,
  <span class="dt">data_name =</span> <span class="st">&quot;x&quot;</span>,
@@ -162,9 +162,9 @@ pureBirth_fit &lt;-<span class="st"> </span>function(fit_input){
 
 <span class="kw">require</span>(pmc)
 <span class="kw">data</span>(geospiza)
-fit_input =<span class="st"> </span><span class="kw">list</span>(<span class="dt">x=</span><span class="kw">branching.times</span>(geospiza$geospiza.tree))
-m &lt;-<span class="st"> </span><span class="kw">pureBirth_fit</span>(fit_input)
-x &lt;-<span class="st"> </span><span class="kw">simulate</span>(m)
+fit_input = <span class="kw">list</span>(<span class="dt">x=</span><span class="kw">branching.times</span>(geospiza$geospiza.tree))
+m &lt;- <span class="kw">pureBirth_fit</span>(fit_input)
+x &lt;- <span class="kw">simulate</span>(m)
 m2&lt;-<span class="kw">update</span>(m,x)
 <span class="kw">print</span>(<span class="kw">loglik</span>(m2))</code></pre>
 <p>Note that then simulate, update, and loglik methods and work.   getParameters() returns all results of the fit method, which should be fixed (will create way too many copies of the data).</p>
@@ -183,28 +183,28 @@ m2&lt;-<span class="kw">update</span>(m,x)
 <pre class="sourceCode bash"><code class="sourceCode bash">
 <span class="kw">mkdir</span> tmp
 <span class="kw">cp</span> file.tex tmp/ <span class="co">#keep a copy to diff against</span>
-<span class="kw">git</span> checkout -b test master~1 file.tex <span class="co"># checkout onto a separate branch</span>
-<span class="kw">latexdiff</span> file.tex tmp/file.tex <span class="kw">&gt;</span> diff.tex <span class="co">#</span>
-<span class="kw">pdflatex</span> diff.tex <span class="co">#</span>
-<span class="kw">git</span> checkout master <span class="co"># switch back to master</span>
-<span class="kw">git-branch</span> -D test <span class="co"># remove the test branch</span></code></pre>
+git checkout -b <span class="kw">test</span> master~1 file.tex <span class="co"># checkout onto a separate branch</span>
+latexdiff file.tex tmp/file.tex <span class="kw">&gt;</span> diff.tex <span class="co">#</span>
+pdflatex diff.tex <span class="co">#</span>
+git checkout master <span class="co"># switch back to master</span>
+git-branch -D <span class="kw">test</span> <span class="co"># remove the test branch</span></code></pre>
 <p>Initialize an empty repository on webserver (note we need –bare if we want to start things off by pushing to this).</p>
 <pre class="sourceCode bash"><code class="sourceCode bash">
-<span class="kw">on</span> the server: git init --bare .</code></pre>
+on the server: git init --bare .</code></pre>
 <p>then give it a name and push the master branch to the server:</p>
 <pre class="sourceCode bash"><code class="sourceCode bash">
-<span class="kw">git</span> remote add dreamhost cboettig@server:/path/to/dir/
-<span class="kw">git</span> push -u dreamhost master</code></pre>
+git remote add dreamhost cboettig@server:/path/to/dir/
+git push -u dreamhost master</code></pre>
 <h2 id="treebase-rr-test-case">TreeBASE RR test case?</h2>
 <p>Exploring reproducible research with TreeBASE on the Evolution paper that just appeared (Derryberry <em>et. al.</em> 2011).  Character data is supposed to be morphobase.org, but don’t see it.  Maybe it hasn’t posted yet?</p>
 <p>Step one: See article in Google Reader reporting a beautiful phylogeny.</p>
 <p>Step two: grab tree into R and run analyses:</p>
 <pre class="sourceCode r"><code class="sourceCode r">
-&gt;<span class="st"> </span><span class="kw">require</span>(treebase)
-&gt;<span class="st"> </span><span class="kw">search_treebase</span>(<span class="st">&quot;Derryberry&quot;</span>, <span class="st">&quot;author&quot;</span>) -&gt;<span class="st"> </span>a
-&gt;<span class="st"> </span><span class="kw">metadata</span>(a[[<span class="dv">1</span>]]$S.id)
+&gt; <span class="kw">require</span>(treebase)
+&gt; <span class="kw">search_treebase</span>(<span class="st">&quot;Derryberry&quot;</span>, <span class="st">&quot;author&quot;</span>) -&gt; a
+&gt; <span class="kw">metadata</span>(a[[<span class="dv">1</span>]]$S.id)
 
-&gt;<span class="st"> </span><span class="kw">plot</span>(a[[<span class="dv">1</span>]])
+&gt; <span class="kw">plot</span>(a[[<span class="dv">1</span>]])
 </code></pre>
 <p>A beautiful time-calibrated tree of 297 taxa.</p>
 <p>Step 3: read paper, repeating all of the author’s analyses as we go.</p>

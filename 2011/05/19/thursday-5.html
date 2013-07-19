@@ -147,13 +147,13 @@
 <li>Finish and post core notes from yesterday.</li>
 <li>Debugging locale problem in phylo packages = success.  Emmanuel has already patched drop.fossils() in the ape package, will see if Gieger and TreeSim try to handle locale issue directly too.  Problem in comparisons:</li>
 </ul>
-<pre class="sourceCode r"><code class="sourceCode r">&gt;<span class="st"> </span><span class="kw">Sys.setlocale</span>(<span class="dt">locale =</span> <span class="st">&quot;&quot;</span>) <span class="co"># default locale using UTF8</span>
+<pre class="sourceCode r"><code class="sourceCode r">&gt; <span class="kw">Sys.setlocale</span>(<span class="dt">locale =</span> <span class="st">&quot;&quot;</span>) <span class="co"># default locale using UTF8</span>
  <span class="co"># message deleted</span>
- &gt;<span class="st"> &quot;-1&quot;</span> &gt;<span class="st"> </span><span class="dv">0</span>
+ &gt; <span class="st">&quot;-1&quot;</span> &gt; <span class="dv">0</span>
  [<span class="dv">1</span>] <span class="ot">TRUE</span>
- &gt;<span class="st"> </span><span class="kw">Sys.setlocale</span>(<span class="dt">locale =</span> <span class="st">&quot;C&quot;</span>)
+ &gt; <span class="kw">Sys.setlocale</span>(<span class="dt">locale =</span> <span class="st">&quot;C&quot;</span>)
  <span class="co"># message deleted</span>
- &gt;<span class="st"> &quot;-1&quot;</span> &gt;<span class="st"> </span><span class="dv">0</span>
+ &gt; <span class="st">&quot;-1&quot;</span> &gt; <span class="dv">0</span>
  [<span class="dv">1</span>] <span class="ot">FALSE</span></code></pre>
 <ul>
 <li>Posted MCMCMC notes from algorithms.</li>
