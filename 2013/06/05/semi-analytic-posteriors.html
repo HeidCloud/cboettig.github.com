@@ -151,34 +151,34 @@
 <p>Ricker model, parameterized as</p>
 <p><span class="math">\[X_{t+1} = X_t r e^{-\beta X_t + \sigma Z_t}\]</span></p>
 <p>for random unit normal <span class="math">\(Z_t\)</span></p>
-<pre class="sourceCode r"><code class="sourceCode r">f &lt;- function(x,h,p)  x * p[<span class="dv">1</span>] * <span class="kw">exp</span>(-x * p[<span class="dv">2</span>]) 
-p &lt;- <span class="kw">c</span>(<span class="kw">exp</span>(<span class="dv">1</span>), <span class="dv">1</span>/<span class="dv">10</span>)
-K &lt;- <span class="dv">10</span>  <span class="co"># approx, a li&#39;l&#39; less</span>
-Xo &lt;- <span class="dv">1</span> <span class="co"># approx, a li&#39;l&#39; less</span></code></pre>
-<pre class="sourceCode r"><code class="sourceCode r">sigma_g &lt;- <span class="fl">0.1</span>
-z_g &lt;- function() <span class="kw">rlnorm</span>(<span class="dv">1</span>,<span class="dv">0</span>, sigma_g)
-x_grid &lt;- <span class="kw">seq</span>(<span class="dv">0</span>, <span class="fl">1.5</span> * K, <span class="dt">length=</span><span class="dv">50</span>)
-N &lt;- <span class="dv">40</span>
+<pre class="sourceCode r"><code class="sourceCode r">f &lt;-<span class="st"> </span>function(x,h,p)  x *<span class="st"> </span>p[<span class="dv">1</span>] *<span class="st"> </span><span class="kw">exp</span>(-x *<span class="st"> </span>p[<span class="dv">2</span>]) 
+p &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">exp</span>(<span class="dv">1</span>), <span class="dv">1</span>/<span class="dv">10</span>)
+K &lt;-<span class="st"> </span><span class="dv">10</span>  <span class="co"># approx, a li&#39;l&#39; less</span>
+Xo &lt;-<span class="st"> </span><span class="dv">1</span> <span class="co"># approx, a li&#39;l&#39; less</span></code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">sigma_g &lt;-<span class="st"> </span><span class="fl">0.1</span>
+z_g &lt;-<span class="st"> </span>function() <span class="kw">rlnorm</span>(<span class="dv">1</span>,<span class="dv">0</span>, sigma_g)
+x_grid &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">0</span>, <span class="fl">1.5</span> *<span class="st"> </span>K, <span class="dt">length=</span><span class="dv">50</span>)
+N &lt;-<span class="st"> </span><span class="dv">40</span>
 <span class="kw">set.seed</span>(<span class="dv">123</span>)</code></pre>
 <h3 id="sample-data">Sample Data</h3>
-<pre class="sourceCode r"><code class="sourceCode r">x &lt;- <span class="kw">numeric</span>(N)
-x[<span class="dv">1</span>] &lt;- Xo
+<pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">numeric</span>(N)
+x[<span class="dv">1</span>] &lt;-<span class="st"> </span>Xo
 for(t in <span class="dv">1</span>:(N<span class="dv">-1</span>))
-  x[t<span class="dv">+1</span>] = <span class="kw">z_g</span>() * <span class="kw">f</span>(x[t], <span class="dt">h=</span><span class="dv">0</span>, <span class="dt">p=</span>p)
+  x[t<span class="dv">+1</span>] =<span class="st"> </span><span class="kw">z_g</span>() *<span class="st"> </span><span class="kw">f</span>(x[t], <span class="dt">h=</span><span class="dv">0</span>, <span class="dt">p=</span>p)
 <span class="kw">qplot</span>(<span class="dv">1</span>:N, x)</code></pre>
 <figure>
 <img src="http://farm9.staticflickr.com/8279/8962756154_f2a4fa4257_o.png" />
 </figure>
 <h2 id="compute-the-posterior-after-marginalizing-over-r-and-sigma-parameters">Compute the posterior after marginalizing over <span class="math">\(r\)</span> and <span class="math">\(\sigma\)</span> parameters:</h2>
 <p><span class="math">\[P(\beta | X) \]</span></p>
-<pre class="sourceCode r"><code class="sourceCode r">Mt &lt;- function(t, beta) <span class="kw">log</span>(x[t<span class="dv">+1</span>]) - <span class="kw">log</span>(x[t]) + beta * x[t]
-beta_grid = <span class="kw">seq</span>(<span class="fl">1e-5</span>, <span class="dv">2</span>, <span class="dt">by=</span><span class="fl">1e-3</span>)
+<pre class="sourceCode r"><code class="sourceCode r">Mt &lt;-<span class="st"> </span>function(t, beta) <span class="kw">log</span>(x[t<span class="dv">+1</span>]) -<span class="st"> </span><span class="kw">log</span>(x[t]) +<span class="st"> </span>beta *<span class="st"> </span>x[t]
+beta_grid =<span class="st"> </span><span class="kw">seq</span>(<span class="fl">1e-5</span>, <span class="dv">2</span>, <span class="dt">by=</span><span class="fl">1e-3</span>)
 
-P_B.X &lt;- <span class="kw">sapply</span>(beta_grid, function(beta){
-  Mt_vec = <span class="kw">sapply</span>(<span class="dv">1</span>:(N<span class="dv">-1</span>), Mt, beta)
-  sum_of_squares &lt;- <span class="kw">sum</span>(Mt_vec^<span class="dv">2</span>)
-  square_of_sums &lt;- <span class="kw">sum</span>(Mt_vec)^<span class="dv">2</span>
-  <span class="fl">0.5</span> ^ (N/<span class="dv">2-1</span>) * (sum_of_squares - square_of_sums/(N<span class="dv">-1</span>)) ^ (N/<span class="dv">2-1</span>) / <span class="kw">gamma</span>(N/<span class="dv">2-1</span>)
+P_B.X &lt;-<span class="st"> </span><span class="kw">sapply</span>(beta_grid, function(beta){
+  Mt_vec =<span class="st"> </span><span class="kw">sapply</span>(<span class="dv">1</span>:(N<span class="dv">-1</span>), Mt, beta)
+  sum_of_squares &lt;-<span class="st"> </span><span class="kw">sum</span>(Mt_vec^<span class="dv">2</span>)
+  square_of_sums &lt;-<span class="st"> </span><span class="kw">sum</span>(Mt_vec)^<span class="dv">2</span>
+  <span class="fl">0.5</span> ^<span class="st"> </span>(N/<span class="dv">2-1</span>) *<span class="st"> </span>(sum_of_squares -<span class="st"> </span>square_of_sums/(N<span class="dv">-1</span>)) ^<span class="st"> </span>(N/<span class="dv">2-1</span>) /<span class="st"> </span><span class="kw">gamma</span>(N/<span class="dv">2-1</span>)
   })
 
 <span class="kw">qplot</span>(beta_grid, -<span class="kw">log</span>(P_B.X))</code></pre>
@@ -192,27 +192,27 @@ P_B.X &lt;- <span class="kw">sapply</span>(beta_grid, function(beta){
 <p><span class="math">\[X_{t+1} = Z_t \frac{r X_t^{\theta}}{1 + X_t^{\theta} / K}\]</span></p>
 <p>With <span class="math">\(Z_t\)</span> lognormal, unit mean, std <span class="math">\(\sigma\)</span>.</p>
 <p>Marginal distribution over the remaining parameters is a 2D grid:</p>
-<pre class="sourceCode r"><code class="sourceCode r">Mt &lt;- function(t, theta, K) <span class="kw">log</span>(x[t<span class="dv">+1</span>]) - theta * <span class="kw">log</span>(x[t]) + <span class="kw">log</span>(<span class="dv">1</span> + x[t] ^ theta / K) 
-theta_grid = <span class="kw">seq</span>(<span class="fl">1e-5</span>, <span class="dv">5</span>, <span class="dt">length=</span><span class="dv">100</span>)
-K_grid = <span class="kw">seq</span>(<span class="fl">1e-5</span>, <span class="dv">30</span>, <span class="dt">length=</span><span class="dv">100</span>)
+<pre class="sourceCode r"><code class="sourceCode r">Mt &lt;-<span class="st"> </span>function(t, theta, K) <span class="kw">log</span>(x[t<span class="dv">+1</span>]) -<span class="st"> </span>theta *<span class="st"> </span><span class="kw">log</span>(x[t]) +<span class="st"> </span><span class="kw">log</span>(<span class="dv">1</span> +<span class="st"> </span>x[t] ^<span class="st"> </span>theta /<span class="st"> </span>K) 
+theta_grid =<span class="st"> </span><span class="kw">seq</span>(<span class="fl">1e-5</span>, <span class="dv">5</span>, <span class="dt">length=</span><span class="dv">100</span>)
+K_grid =<span class="st"> </span><span class="kw">seq</span>(<span class="fl">1e-5</span>, <span class="dv">30</span>, <span class="dt">length=</span><span class="dv">100</span>)
 
-prob &lt;- function(theta, K){
-  Mt_vec = <span class="kw">sapply</span>(<span class="dv">1</span>:(N<span class="dv">-1</span>), Mt, theta, K)
-  sum_of_squares &lt;- <span class="kw">sum</span>(Mt_vec^<span class="dv">2</span>)
-  square_of_sums &lt;- <span class="kw">sum</span>(Mt_vec)^<span class="dv">2</span>
-  <span class="fl">0.5</span> ^ (N/<span class="dv">2-1</span>) * (sum_of_squares - square_of_sums/(N<span class="dv">-1</span>)) ^ (N/<span class="dv">2-1</span>) / <span class="kw">gamma</span>(N/<span class="dv">2-1</span>)
+prob &lt;-<span class="st"> </span>function(theta, K){
+  Mt_vec =<span class="st"> </span><span class="kw">sapply</span>(<span class="dv">1</span>:(N<span class="dv">-1</span>), Mt, theta, K)
+  sum_of_squares &lt;-<span class="st"> </span><span class="kw">sum</span>(Mt_vec^<span class="dv">2</span>)
+  square_of_sums &lt;-<span class="st"> </span><span class="kw">sum</span>(Mt_vec)^<span class="dv">2</span>
+  <span class="fl">0.5</span> ^<span class="st"> </span>(N/<span class="dv">2-1</span>) *<span class="st"> </span>(sum_of_squares -<span class="st"> </span>square_of_sums/(N<span class="dv">-1</span>)) ^<span class="st"> </span>(N/<span class="dv">2-1</span>) /<span class="st"> </span><span class="kw">gamma</span>(N/<span class="dv">2-1</span>)
 }
 
 
 
-P_theta_K.X &lt;- <span class="kw">sapply</span>(theta_grid, function(theta)
+P_theta_K.X &lt;-<span class="st"> </span><span class="kw">sapply</span>(theta_grid, function(theta)
                 <span class="kw">sapply</span>(K_grid, function(k) <span class="kw">prob</span>(theta, k)))
 
 
 <span class="kw">require</span>(reshape2)</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r">df = <span class="kw">melt</span>(P_theta_K.X)
-<span class="kw">names</span>(df) = <span class="kw">c</span>(<span class="st">&quot;theta&quot;</span>, <span class="st">&quot;K&quot;</span>, <span class="st">&quot;lik&quot;</span>)
-<span class="kw">ggplot</span>(df, <span class="kw">aes</span>(theta_grid[theta], K_grid[K], <span class="dt">z=</span>-<span class="kw">log</span>(lik))) + <span class="kw">stat_contour</span>(<span class="kw">aes</span>(<span class="dt">color=</span>..level..), <span class="dt">binwidth=</span><span class="dv">3</span>)</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">df =<span class="st"> </span><span class="kw">melt</span>(P_theta_K.X)
+<span class="kw">names</span>(df) =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;theta&quot;</span>, <span class="st">&quot;K&quot;</span>, <span class="st">&quot;lik&quot;</span>)
+<span class="kw">ggplot</span>(df, <span class="kw">aes</span>(theta_grid[theta], K_grid[K], <span class="dt">z=</span>-<span class="kw">log</span>(lik))) +<span class="st"> </span><span class="kw">stat_contour</span>(<span class="kw">aes</span>(<span class="dt">color=</span>..level..), <span class="dt">binwidth=</span><span class="dv">3</span>)</code></pre>
 <figure>
 <img src="http://farm3.staticflickr.com/2806/8961561559_66a72a0ecc_o.png" />
 </figure>

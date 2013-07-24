@@ -4,7 +4,7 @@
  <title>Lab Notebook - R</title>
  <link href="/R.xml" rel="self"/>
  <link href="/"/>
- <updated>2013-07-18T22:37:56-07:00</updated>
+ <updated>2013-07-16T21:29:23-07:00</updated>
  <id>http://carlboettiger.info</id>
  <author>
    <name>Carl Boettiger</name>
@@ -41,7 +41,7 @@
 &lt;h2 id=&quot;generating-citations&quot;&gt;Generating citations&lt;/h2&gt;
 &lt;h3 id=&quot;doi-approach&quot;&gt;DOI Approach&lt;/h3&gt;
 &lt;p&gt;Then we can generate a citation given a DOI with the &lt;code&gt;ref&lt;/code&gt; function:&lt;/p&gt;
-&lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;r &amp;lt;- &lt;span class=&quot;kw&quot;&gt;ref&lt;/span&gt;(&lt;span class=&quot;st&quot;&gt;&amp;quot;10.1111/j.1461-0248.2005.00827.x&amp;quot;&lt;/span&gt;)
+&lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;r &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;ref&lt;/span&gt;(&lt;span class=&quot;st&quot;&gt;&amp;quot;10.1111/j.1461-0248.2005.00827.x&amp;quot;&lt;/span&gt;)
 &lt;span class=&quot;kw&quot;&gt;print&lt;/span&gt;(r, &lt;span class=&quot;st&quot;&gt;&amp;quot;html&amp;quot;&lt;/span&gt;)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Halpern BS, Regan HM, Possingham HP and Mccarthy MA (2006). “Accounting For Uncertainty in Marine Reserve Design.” &lt;em&gt;Ecology Letters&lt;/em&gt;, 9. ISSN 1461-023X, &lt;a href=&quot;http://dx.doi.org/10.1111/j.1461-0248.2005.00827.x&quot;&gt;http://dx.doi.org/10.1111/j.1461-0248.2005.00827.x&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Note that R allows bibitems to print in a variety of formats, including html.&lt;/p&gt;
@@ -77,11 +77,11 @@
 &lt;p&gt;If we have a bibtex file, we can use this for the citations as well. If you don’t have a bibtex file handy, you can make one containing the citation information for some of R’s packages:&lt;/p&gt;
 &lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;&lt;span class=&quot;kw&quot;&gt;write.bibtex&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;c&lt;/span&gt;(&lt;span class=&quot;st&quot;&gt;&amp;quot;bibtex&amp;quot;&lt;/span&gt;, &lt;span class=&quot;st&quot;&gt;&amp;quot;knitr&amp;quot;&lt;/span&gt;, &lt;span class=&quot;st&quot;&gt;&amp;quot;knitcitations&amp;quot;&lt;/span&gt;), &lt;span class=&quot;dt&quot;&gt;file =&lt;/span&gt; &lt;span class=&quot;st&quot;&gt;&amp;quot;example.bib&amp;quot;&lt;/span&gt;)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;We could also have used the &lt;code&gt;ref&lt;/code&gt; function write a bibtex file for our list of DOIs&lt;/p&gt;
-&lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;refs &amp;lt;- &lt;span class=&quot;kw&quot;&gt;lapply&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;c&lt;/span&gt;(&lt;span class=&quot;st&quot;&gt;&amp;quot;10.1111/j.1461-0248.2005.00827.x&amp;quot;&lt;/span&gt;, &lt;span class=&quot;st&quot;&gt;&amp;quot;10.1890/11-0011.1&amp;quot;&lt;/span&gt;), 
+&lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;refs &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;lapply&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;c&lt;/span&gt;(&lt;span class=&quot;st&quot;&gt;&amp;quot;10.1111/j.1461-0248.2005.00827.x&amp;quot;&lt;/span&gt;, &lt;span class=&quot;st&quot;&gt;&amp;quot;10.1890/11-0011.1&amp;quot;&lt;/span&gt;), 
     ref)
 &lt;span class=&quot;kw&quot;&gt;write.bibtex&lt;/span&gt;(refs, &lt;span class=&quot;dt&quot;&gt;file =&lt;/span&gt; &lt;span class=&quot;st&quot;&gt;&amp;quot;refs.bib&amp;quot;&lt;/span&gt;)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Once we have a bibtex file available, we must read it into R.&lt;/p&gt;
-&lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;bib &amp;lt;- &lt;span class=&quot;kw&quot;&gt;read.bibtex&lt;/span&gt;(&lt;span class=&quot;st&quot;&gt;&amp;quot;example.bib&amp;quot;&lt;/span&gt;)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;bib &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;read.bibtex&lt;/span&gt;(&lt;span class=&quot;st&quot;&gt;&amp;quot;example.bib&amp;quot;&lt;/span&gt;)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;We can now create citations from &lt;code&gt;bib&lt;/code&gt; using the bibtex key,&lt;/p&gt;
 &lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;bib[[&lt;span class=&quot;st&quot;&gt;&amp;quot;knitr&amp;quot;&lt;/span&gt;]]&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Xie Y (2012). &lt;em&gt;knitr: A general-purpose package for dynamic report generation in R&lt;/em&gt;. R package version 0.5.4, &lt;URL:
@@ -155,7 +155,7 @@ http://yihui.name/knitr/&gt;.&lt;/p&gt;
 &lt;span class=&quot;kw&quot;&gt;write.bib&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;c&lt;/span&gt;(&lt;span class=&quot;st&quot;&gt;&amp;#39;bibtex&amp;#39;&lt;/span&gt;, &lt;span class=&quot;st&quot;&gt;&amp;#39;knitr&amp;#39;&lt;/span&gt;, &lt;span class=&quot;st&quot;&gt;&amp;#39;knitcitations&amp;#39;&lt;/span&gt;), &lt;span class=&quot;dt&quot;&gt;file=&lt;/span&gt;&lt;span class=&quot;st&quot;&gt;&amp;quot;example.bib&amp;quot;&lt;/span&gt;)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Now we can simply read in the bibtex files:&lt;/p&gt;
 &lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;
-biblio &amp;lt;- &lt;span class=&quot;kw&quot;&gt;read.bib&lt;/span&gt;(&lt;span class=&quot;st&quot;&gt;&amp;quot;example.bib&amp;quot;&lt;/span&gt;)
+biblio &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;read.bib&lt;/span&gt;(&lt;span class=&quot;st&quot;&gt;&amp;quot;example.bib&amp;quot;&lt;/span&gt;)
 biblio[[&lt;span class=&quot;dv&quot;&gt;1&lt;/span&gt;]]&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Francois R (2011). &lt;em&gt;bibtex: bibtex parser&lt;/em&gt;. R package version 0.3-1/r332, .&lt;/p&gt;
 &lt;p&gt;(This would be much more awesome if we could generate keys on write.bib and use those bibtex keys, instead of the index value, &lt;code&gt;[[1]]&lt;/code&gt;, to generate the citation.)&lt;/p&gt;
@@ -251,7 +251,7 @@ with &amp;#39;help(package=ouch)&amp;#39;.&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;After running your code, consider creating a custom bibtex file containing the citation information for all the packages you have just used. (The file can be imported into most citation managers, if LaTeX isn’t your thing).&lt;/p&gt;
 &lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;
 &lt;span class=&quot;kw&quot;&gt;sink&lt;/span&gt;(&lt;span class=&quot;st&quot;&gt;&amp;quot;test.bib&amp;quot;&lt;/span&gt;)
-out &amp;lt;- &lt;span class=&quot;kw&quot;&gt;sapply&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;names&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;sessionInfo&lt;/span&gt;()$otherPkgs), 
+out &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;sapply&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;names&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;sessionInfo&lt;/span&gt;()$otherPkgs), 
     function(x) &lt;span class=&quot;kw&quot;&gt;print&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;citation&lt;/span&gt;(x), &lt;span class=&quot;dt&quot;&gt;style =&lt;/span&gt; &lt;span class=&quot;st&quot;&gt;&amp;quot;Bibtex&amp;quot;&lt;/span&gt;))&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;You can also simply generate the list of loaded package in LaTeX format, which could be automatically included.&lt;/p&gt;
 &lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;
@@ -293,17 +293,17 @@ out &amp;lt;- &lt;span class=&quot;kw&quot;&gt;sapply&lt;/span&gt;(&lt;span clas
    <id>/2012/02/12/elegant-fast-data-manipulation-with-data-table</id>
    <content type="html">&lt;p&gt;Just learned about the R &lt;a href=&quot;http://cran.r-project.org/web/packages/data.table/index.html&quot;&gt;data.table package&lt;/a&gt; (ht @recology_) makes R data frames into ultra-fast, SQL-like objects.&lt;/p&gt;
 &lt;p&gt;One thing we get is some very nice and powerful syntax. Consider some simple data of replicate time series:&lt;/p&gt;
-&lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;time &amp;lt;- &lt;span class=&quot;kw&quot;&gt;rep&lt;/span&gt;(&lt;span class=&quot;dv&quot;&gt;1&lt;/span&gt;:&lt;span class=&quot;dv&quot;&gt;10&lt;/span&gt;, &lt;span class=&quot;dv&quot;&gt;10&lt;/span&gt;)
-replicate &amp;lt;- &lt;span class=&quot;kw&quot;&gt;sort&lt;/span&gt;(time)
-value &amp;lt;- &lt;span class=&quot;kw&quot;&gt;rnorm&lt;/span&gt;(&lt;span class=&quot;dv&quot;&gt;100&lt;/span&gt;)
-df &amp;lt;- &lt;span class=&quot;kw&quot;&gt;data.frame&lt;/span&gt;(replicate, time, value)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;time &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;rep&lt;/span&gt;(&lt;span class=&quot;dv&quot;&gt;1&lt;/span&gt;:&lt;span class=&quot;dv&quot;&gt;10&lt;/span&gt;, &lt;span class=&quot;dv&quot;&gt;10&lt;/span&gt;)
+replicate &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;sort&lt;/span&gt;(time)
+value &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;rnorm&lt;/span&gt;(&lt;span class=&quot;dv&quot;&gt;100&lt;/span&gt;)
+df &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;data.frame&lt;/span&gt;(replicate, time, value)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;To apply a function to each set of replicates, instead of&lt;/p&gt;
 &lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;&lt;span class=&quot;kw&quot;&gt;sapply&lt;/span&gt;(&lt;span class=&quot;dv&quot;&gt;1&lt;/span&gt;:&lt;span class=&quot;kw&quot;&gt;max&lt;/span&gt;(df$replicate), function(i) 
-  &lt;span class=&quot;kw&quot;&gt;mean&lt;/span&gt;( df[df$replicate == i,]$value) 
+  &lt;span class=&quot;kw&quot;&gt;mean&lt;/span&gt;( df[df$replicate ==&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;i,]$value) 
 )&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;We can use&lt;/p&gt;
 &lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;&lt;span class=&quot;kw&quot;&gt;require&lt;/span&gt;(data.table)
-dt &amp;lt;- &lt;span class=&quot;kw&quot;&gt;data.table&lt;/span&gt;(df)
+dt &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;data.table&lt;/span&gt;(df)
 dt[, &lt;span class=&quot;kw&quot;&gt;mean&lt;/span&gt;(value), by=&lt;span class=&quot;st&quot;&gt;&amp;quot;replicate&amp;quot;&lt;/span&gt;]&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Note that we could have passed multiple arguments to the function, &lt;code&gt;f(time, value)&lt;/code&gt;, or functions of the arguments, &lt;code&gt;mean(value*time)&lt;/code&gt;, etc. While this can be much faster data-frames to begin with (see below), when the function is much more computationally intensive than “mean”, it might be sensible to parallelize this command instead:&lt;/p&gt;
 &lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;&lt;span class=&quot;kw&quot;&gt;require&lt;/span&gt;(snowfall)
@@ -312,14 +312,14 @@ dt[, &lt;span class=&quot;kw&quot;&gt;mean&lt;/span&gt;(value), by=&lt;span clas
   &lt;span class=&quot;kw&quot;&gt;mean&lt;/span&gt; (dt[replicate==i, value] )
 )&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Note that we could have given the second argument as a list if we needed multiple columns, i.e. &lt;code&gt;list(time, value)&lt;/code&gt;. For a provocative example, consider this example comparing the two. Let’s create a very big data frame, and also make it a data table:&lt;/p&gt;
-&lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;grpsize = &lt;span class=&quot;kw&quot;&gt;ceiling&lt;/span&gt;(&lt;span class=&quot;fl&quot;&gt;1e7&lt;/span&gt;/&lt;span class=&quot;dv&quot;&gt;26&lt;/span&gt;^&lt;span class=&quot;dv&quot;&gt;2&lt;/span&gt;) 
-DF &amp;lt;- &lt;span class=&quot;kw&quot;&gt;data.frame&lt;/span&gt;(&lt;span class=&quot;dt&quot;&gt;x=&lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;rep&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;factor&lt;/span&gt;(LETTERS), &lt;span class=&quot;dt&quot;&gt;each =&lt;/span&gt; &lt;span class=&quot;dv&quot;&gt;26&lt;/span&gt; * grpsize), 
+&lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;grpsize =&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;ceiling&lt;/span&gt;(&lt;span class=&quot;fl&quot;&gt;1e7&lt;/span&gt;/&lt;span class=&quot;dv&quot;&gt;26&lt;/span&gt;^&lt;span class=&quot;dv&quot;&gt;2&lt;/span&gt;) 
+DF &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;data.frame&lt;/span&gt;(&lt;span class=&quot;dt&quot;&gt;x=&lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;rep&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;factor&lt;/span&gt;(LETTERS), &lt;span class=&quot;dt&quot;&gt;each =&lt;/span&gt; &lt;span class=&quot;dv&quot;&gt;26&lt;/span&gt; *&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;grpsize), 
                  &lt;span class=&quot;dt&quot;&gt;y=&lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;rep&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;factor&lt;/span&gt;(letters), &lt;span class=&quot;dt&quot;&gt;each =&lt;/span&gt; grpsize), 
-                 &lt;span class=&quot;dt&quot;&gt;v=&lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;runif&lt;/span&gt;(grpsize * &lt;span class=&quot;dv&quot;&gt;26&lt;/span&gt; ^ &lt;span class=&quot;dv&quot;&gt;2&lt;/span&gt;))
-DT &amp;lt;- &lt;span class=&quot;kw&quot;&gt;data.table&lt;/span&gt;(DF)&lt;/code&gt;&lt;/pre&gt;
+                 &lt;span class=&quot;dt&quot;&gt;v=&lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;runif&lt;/span&gt;(grpsize *&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;dv&quot;&gt;26&lt;/span&gt; ^&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;dv&quot;&gt;2&lt;/span&gt;))
+DT &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;data.table&lt;/span&gt;(DF)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;This table has three columns, each capital letter of the alphabet (fist column) paired with each lower-case letter in column B. Let’s imagine we want all the cases that have a capital “R” and lowercase “f”. Well, in classic R we might do:&lt;/p&gt;
 &lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;&lt;span class=&quot;kw&quot;&gt;system.time&lt;/span&gt;( 
-  DF[DF$x==&lt;span class=&quot;st&quot;&gt;&amp;quot;R&amp;quot;&lt;/span&gt; &amp;amp; DF$y==&lt;span class=&quot;st&quot;&gt;&amp;quot;f&amp;quot;&lt;/span&gt;, ]
+  DF[DF$x==&lt;span class=&quot;st&quot;&gt;&amp;quot;R&amp;quot;&lt;/span&gt; &amp;amp;&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;DF$y==&lt;span class=&quot;st&quot;&gt;&amp;quot;f&amp;quot;&lt;/span&gt;, ]
 )
 user  system elapsed 
   &lt;span class=&quot;fl&quot;&gt;2.796&lt;/span&gt;   &lt;span class=&quot;fl&quot;&gt;0.500&lt;/span&gt;   &lt;span class=&quot;fl&quot;&gt;3.313&lt;/span&gt; &lt;/code&gt;&lt;/pre&gt;
@@ -409,11 +409,11 @@ user  system elapsed
 &lt;img src=&quot;http://farm8.staticflickr.com/7014/6727029515_bcfe58aedb_o.png&quot; /&gt;
 &lt;/figure&gt;
 &lt;p&gt;The package commands are explained in more detail in the &lt;strong&gt;&lt;a href=&quot;http://cran.r-project.org/web/packages/pmc/vignettes/pmc_tutorial.pdf&quot;&gt;package vignette&lt;/a&gt;&lt;/strong&gt;, but the idea is simple. Running the pmc comparison between two models (for the model-choice step) looks like this:&lt;/p&gt;
-&lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;bm_v_lambda &amp;lt;- &lt;span class=&quot;kw&quot;&gt;pmc&lt;/span&gt;(geospiza.tree, geospiza.data[&lt;span class=&quot;st&quot;&gt;&amp;quot;wingL&amp;quot;&lt;/span&gt;],
+&lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;bm_v_lambda &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;pmc&lt;/span&gt;(geospiza.tree, geospiza.data[&lt;span class=&quot;st&quot;&gt;&amp;quot;wingL&amp;quot;&lt;/span&gt;],
   &lt;span class=&quot;st&quot;&gt;&amp;quot;BM&amp;quot;&lt;/span&gt;, &lt;span class=&quot;st&quot;&gt;&amp;quot;lambda&amp;quot;&lt;/span&gt;, &lt;span class=&quot;dt&quot;&gt;nboot=&lt;/span&gt;&lt;span class=&quot;dv&quot;&gt;100&lt;/span&gt;)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Extracting the distribution of estimates for the parameter lambda got from fitting the lambda model (B) to data made by simulating under lambda model (A):&lt;/p&gt;
-&lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;lambdas &amp;lt;- &lt;span class=&quot;kw&quot;&gt;subset&lt;/span&gt;(bm_v_lambda[&lt;span class=&quot;st&quot;&gt;&amp;quot;par_dists&amp;quot;&lt;/span&gt;],
-  comparison==&lt;span class=&quot;st&quot;&gt;&amp;quot;BB&amp;quot;&lt;/span&gt; &amp;amp; parameter==&lt;span class=&quot;st&quot;&gt;&amp;quot;lambda&amp;quot;&lt;/span&gt;)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;lambdas &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;subset&lt;/span&gt;(bm_v_lambda[&lt;span class=&quot;st&quot;&gt;&amp;quot;par_dists&amp;quot;&lt;/span&gt;],
+  comparison==&lt;span class=&quot;st&quot;&gt;&amp;quot;BB&amp;quot;&lt;/span&gt; &amp;amp;&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;parameter==&lt;span class=&quot;st&quot;&gt;&amp;quot;lambda&amp;quot;&lt;/span&gt;)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;To view the model comparison, just plot the pmc result:&lt;/p&gt;
 &lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;&lt;span class=&quot;kw&quot;&gt;plot&lt;/span&gt;(bm_v_lambda)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;The substantial overlap in the likelihood ratios after simulating under either model indicate that we cannot choose between BM and lambda in this case.  I’ll leave the paper to explain this approach in more detail, but it’s just simulation and refitting.&lt;/p&gt;
@@ -451,14 +451,14 @@ user  system elapsed
 &lt;h2 id=&quot;basic-tree-and-metadata-queries&quot;&gt;Basic tree and metadata queries&lt;/h2&gt;
 &lt;p&gt;Downloading trees by different queries: by author, taxa, &amp;amp; study. More options are described in the help file.&lt;/p&gt;
 &lt;pre class=&quot;sourceCode R&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;
-both &amp;lt;- &lt;span class=&quot;kw&quot;&gt;search_treebase&lt;/span&gt;(&lt;span class=&quot;st&quot;&gt;&amp;quot;Ronquist or Hulesenbeck&amp;quot;&lt;/span&gt;, &lt;span class=&quot;dt&quot;&gt;by=&lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;c&lt;/span&gt;(&lt;span class=&quot;st&quot;&gt;&amp;quot;author&amp;quot;&lt;/span&gt;, &lt;span class=&quot;st&quot;&gt;&amp;quot;author&amp;quot;&lt;/span&gt;))
-dolphins &amp;lt;- &lt;span class=&quot;kw&quot;&gt;search_treebase&lt;/span&gt;(&lt;span class=&quot;st&quot;&gt;&amp;#39;&amp;quot;Delphinus&amp;quot;&amp;#39;&lt;/span&gt;, &lt;span class=&quot;dt&quot;&gt;by=&lt;/span&gt;&lt;span class=&quot;st&quot;&gt;&amp;quot;taxon&amp;quot;&lt;/span&gt;, &lt;span class=&quot;dt&quot;&gt;max_trees=&lt;/span&gt;&lt;span class=&quot;dv&quot;&gt;5&lt;/span&gt;)
-studies &amp;lt;- &lt;span class=&quot;kw&quot;&gt;search_treebase&lt;/span&gt;(&lt;span class=&quot;st&quot;&gt;&amp;quot;2377&amp;quot;&lt;/span&gt;, &lt;span class=&quot;dt&quot;&gt;by=&lt;/span&gt;&lt;span class=&quot;st&quot;&gt;&amp;quot;id.study&amp;quot;&lt;/span&gt;)
-Near &amp;lt;- &lt;span class=&quot;kw&quot;&gt;search_treebase&lt;/span&gt;(&lt;span class=&quot;st&quot;&gt;&amp;quot;Near&amp;quot;&lt;/span&gt;, &lt;span class=&quot;st&quot;&gt;&amp;quot;author&amp;quot;&lt;/span&gt;, &lt;span class=&quot;dt&quot;&gt;branch_lengths=&lt;/span&gt;&lt;span class=&quot;ot&quot;&gt;TRUE&lt;/span&gt;)&lt;/code&gt;&lt;/pre&gt;
+both &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;search_treebase&lt;/span&gt;(&lt;span class=&quot;st&quot;&gt;&amp;quot;Ronquist or Hulesenbeck&amp;quot;&lt;/span&gt;, &lt;span class=&quot;dt&quot;&gt;by=&lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;c&lt;/span&gt;(&lt;span class=&quot;st&quot;&gt;&amp;quot;author&amp;quot;&lt;/span&gt;, &lt;span class=&quot;st&quot;&gt;&amp;quot;author&amp;quot;&lt;/span&gt;))
+dolphins &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;search_treebase&lt;/span&gt;(&lt;span class=&quot;st&quot;&gt;&amp;#39;&amp;quot;Delphinus&amp;quot;&amp;#39;&lt;/span&gt;, &lt;span class=&quot;dt&quot;&gt;by=&lt;/span&gt;&lt;span class=&quot;st&quot;&gt;&amp;quot;taxon&amp;quot;&lt;/span&gt;, &lt;span class=&quot;dt&quot;&gt;max_trees=&lt;/span&gt;&lt;span class=&quot;dv&quot;&gt;5&lt;/span&gt;)
+studies &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;search_treebase&lt;/span&gt;(&lt;span class=&quot;st&quot;&gt;&amp;quot;2377&amp;quot;&lt;/span&gt;, &lt;span class=&quot;dt&quot;&gt;by=&lt;/span&gt;&lt;span class=&quot;st&quot;&gt;&amp;quot;id.study&amp;quot;&lt;/span&gt;)
+Near &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;search_treebase&lt;/span&gt;(&lt;span class=&quot;st&quot;&gt;&amp;quot;Near&amp;quot;&lt;/span&gt;, &lt;span class=&quot;st&quot;&gt;&amp;quot;author&amp;quot;&lt;/span&gt;, &lt;span class=&quot;dt&quot;&gt;branch_lengths=&lt;/span&gt;&lt;span class=&quot;ot&quot;&gt;TRUE&lt;/span&gt;)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;We can query the metadata record directly. For instance, plot the growth of Treebase submissions by publication date&lt;/p&gt;
 &lt;pre class=&quot;sourceCode R&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;
-all &amp;lt;- &lt;span class=&quot;kw&quot;&gt;search_metadata&lt;/span&gt;(&lt;span class=&quot;st&quot;&gt;&amp;quot;&amp;quot;&lt;/span&gt;, &lt;span class=&quot;dt&quot;&gt;by=&lt;/span&gt;&lt;span class=&quot;st&quot;&gt;&amp;quot;all&amp;quot;&lt;/span&gt;)
-dates &amp;lt;- &lt;span class=&quot;kw&quot;&gt;sapply&lt;/span&gt;(all, function(x) &lt;span class=&quot;kw&quot;&gt;as.numeric&lt;/span&gt;(x$date))
+all &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;search_metadata&lt;/span&gt;(&lt;span class=&quot;st&quot;&gt;&amp;quot;&amp;quot;&lt;/span&gt;, &lt;span class=&quot;dt&quot;&gt;by=&lt;/span&gt;&lt;span class=&quot;st&quot;&gt;&amp;quot;all&amp;quot;&lt;/span&gt;)
+dates &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;sapply&lt;/span&gt;(all, function(x) &lt;span class=&quot;kw&quot;&gt;as.numeric&lt;/span&gt;(x$date))
 &lt;span class=&quot;kw&quot;&gt;hist&lt;/span&gt;(dates, &lt;span class=&quot;dt&quot;&gt;main=&lt;/span&gt;&lt;span class=&quot;st&quot;&gt;&amp;quot;TreeBase growth&amp;quot;&lt;/span&gt;, &lt;span class=&quot;dt&quot;&gt;xlab=&lt;/span&gt;&lt;span class=&quot;st&quot;&gt;&amp;quot;Year&amp;quot;&lt;/span&gt;)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;(This query could also take a date range).&lt;/p&gt;
 &lt;figure&gt;
@@ -466,23 +466,23 @@ dates &amp;lt;- &lt;span class=&quot;kw&quot;&gt;sapply&lt;/span&gt;(all, functi
 &lt;/figure&gt;
 &lt;p&gt;How do the weekly’s do on submissions to Treebase? We construct this in a way that gives us back the indices of the matches, so we can then grab those trees directly. Run the scripts yourself to see if they’ve changed!&lt;/p&gt;
 &lt;pre class=&quot;sourceCode R&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;
-nature &amp;lt;- &lt;span class=&quot;kw&quot;&gt;sapply&lt;/span&gt;(all, function(x) &lt;span class=&quot;kw&quot;&gt;length&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;grep&lt;/span&gt;(&lt;span class=&quot;st&quot;&gt;&amp;quot;Nature&amp;quot;&lt;/span&gt;, x$publisher))&amp;gt;&lt;span class=&quot;dv&quot;&gt;0&lt;/span&gt;)
-science &amp;lt;- &lt;span class=&quot;kw&quot;&gt;sapply&lt;/span&gt;(all, function(x) &lt;span class=&quot;kw&quot;&gt;length&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;grep&lt;/span&gt;(&lt;span class=&quot;st&quot;&gt;&amp;quot;^Science$&amp;quot;&lt;/span&gt;, x$publisher))&amp;gt;&lt;span class=&quot;dv&quot;&gt;0&lt;/span&gt;)
-&amp;gt; &lt;span class=&quot;kw&quot;&gt;sum&lt;/span&gt;(nature)
+nature &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;sapply&lt;/span&gt;(all, function(x) &lt;span class=&quot;kw&quot;&gt;length&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;grep&lt;/span&gt;(&lt;span class=&quot;st&quot;&gt;&amp;quot;Nature&amp;quot;&lt;/span&gt;, x$publisher))&amp;gt;&lt;span class=&quot;dv&quot;&gt;0&lt;/span&gt;)
+science &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;sapply&lt;/span&gt;(all, function(x) &lt;span class=&quot;kw&quot;&gt;length&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;grep&lt;/span&gt;(&lt;span class=&quot;st&quot;&gt;&amp;quot;^Science$&amp;quot;&lt;/span&gt;, x$publisher))&amp;gt;&lt;span class=&quot;dv&quot;&gt;0&lt;/span&gt;)
+&amp;gt;&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;sum&lt;/span&gt;(nature)
 [&lt;span class=&quot;dv&quot;&gt;1&lt;/span&gt;] &lt;span class=&quot;dv&quot;&gt;14&lt;/span&gt;
-&amp;gt; &lt;span class=&quot;kw&quot;&gt;sum&lt;/span&gt;(science)
+&amp;gt;&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;sum&lt;/span&gt;(science)
 [&lt;span class=&quot;dv&quot;&gt;1&lt;/span&gt;] &lt;span class=&quot;dv&quot;&gt;14&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Now get me all of those treebase trees that have appeared in Nature.&lt;/p&gt;
 &lt;pre class=&quot;sourceCode R&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;
-s &amp;lt;- &lt;span class=&quot;kw&quot;&gt;get_study&lt;/span&gt;( all[nature] )&lt;/code&gt;&lt;/pre&gt;
+s &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;get_study&lt;/span&gt;( all[nature] )&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Which authors have the most submissions?&lt;/p&gt;
 &lt;pre class=&quot;sourceCode R&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;
-authors &amp;lt;- &lt;span class=&quot;kw&quot;&gt;sapply&lt;/span&gt;(all, function(x){
-  index &amp;lt;- &lt;span class=&quot;kw&quot;&gt;grep&lt;/span&gt;( &lt;span class=&quot;st&quot;&gt;&amp;quot;creator&amp;quot;&lt;/span&gt;, &lt;span class=&quot;kw&quot;&gt;names&lt;/span&gt;(x))
+authors &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;sapply&lt;/span&gt;(all, function(x){
+  index &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;grep&lt;/span&gt;( &lt;span class=&quot;st&quot;&gt;&amp;quot;creator&amp;quot;&lt;/span&gt;, &lt;span class=&quot;kw&quot;&gt;names&lt;/span&gt;(x))
   x[index]
   })
-a &amp;lt;- &lt;span class=&quot;kw&quot;&gt;as.factor&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;unlist&lt;/span&gt;(authors))
-&amp;gt; &lt;span class=&quot;kw&quot;&gt;head&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;summary&lt;/span&gt;(a))
+a &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;as.factor&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;unlist&lt;/span&gt;(authors))
+&amp;gt;&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;head&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;summary&lt;/span&gt;(a))
         Crous, Pedro W.   Wingfield, Michael J. Groenewald, Johannes Z.
                      &lt;span class=&quot;dv&quot;&gt;88&lt;/span&gt;                      &lt;span class=&quot;dv&quot;&gt;68&lt;/span&gt;                      &lt;span class=&quot;dv&quot;&gt;58&lt;/span&gt;
    Donoghue, Michael J.       Takamatsu, Susumu    Wingfield, Brenda D.
@@ -492,7 +492,7 @@ a &amp;lt;- &lt;span class=&quot;kw&quot;&gt;as.factor&lt;/span&gt;(&lt;span cla
 &lt;p&gt;Let’s grab the trees by that author and make sure we have the right one:&lt;/p&gt;
 &lt;pre class=&quot;sourceCode R&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;
 &lt;span class=&quot;kw&quot;&gt;require&lt;/span&gt;(treebase)
-&lt;span class=&quot;kw&quot;&gt;search_treebase&lt;/span&gt;(&lt;span class=&quot;st&quot;&gt;&amp;quot;Derryberry&amp;quot;&lt;/span&gt;, &lt;span class=&quot;st&quot;&gt;&amp;quot;author&amp;quot;&lt;/span&gt;)[[&lt;span class=&quot;dv&quot;&gt;1&lt;/span&gt;]] -&amp;gt; tree
+&lt;span class=&quot;kw&quot;&gt;search_treebase&lt;/span&gt;(&lt;span class=&quot;st&quot;&gt;&amp;quot;Derryberry&amp;quot;&lt;/span&gt;, &lt;span class=&quot;st&quot;&gt;&amp;quot;author&amp;quot;&lt;/span&gt;)[[&lt;span class=&quot;dv&quot;&gt;1&lt;/span&gt;]] -&amp;gt;&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;tree
 &lt;span class=&quot;kw&quot;&gt;metadata&lt;/span&gt;(tree$S.id)
 &lt;span class=&quot;kw&quot;&gt;plot&lt;/span&gt;(tree)&lt;/code&gt;&lt;/pre&gt;
 &lt;figure&gt;
@@ -502,8 +502,8 @@ a &amp;lt;- &lt;span class=&quot;kw&quot;&gt;as.factor&lt;/span&gt;(&lt;span cla
 &lt;p&gt;They fit a variety of diversification rate models avialable in the laser package, which they compare by aic.&lt;/p&gt;
 &lt;pre class=&quot;sourceCode R&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;
 &lt;span class=&quot;kw&quot;&gt;require&lt;/span&gt;(laser)
-tt &amp;lt;- &lt;span class=&quot;kw&quot;&gt;branching.times&lt;/span&gt;(tree)
-models &amp;lt;-  &lt;span class=&quot;kw&quot;&gt;list&lt;/span&gt;(&lt;span class=&quot;dt&quot;&gt;pb =&lt;/span&gt; &lt;span class=&quot;kw&quot;&gt;pureBirth&lt;/span&gt;(tt),
+tt &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;branching.times&lt;/span&gt;(tree)
+models &amp;lt;-&lt;span class=&quot;st&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;list&lt;/span&gt;(&lt;span class=&quot;dt&quot;&gt;pb =&lt;/span&gt; &lt;span class=&quot;kw&quot;&gt;pureBirth&lt;/span&gt;(tt),
                 &lt;span class=&quot;dt&quot;&gt;bdfit =&lt;/span&gt; &lt;span class=&quot;kw&quot;&gt;bd&lt;/span&gt;(tt),
                 &lt;span class=&quot;dt&quot;&gt;y2r =&lt;/span&gt; &lt;span class=&quot;kw&quot;&gt;yule2rate&lt;/span&gt;(tt), &lt;span class=&quot;co&quot;&gt;# yule model with single shift pt&lt;/span&gt;
                 &lt;span class=&quot;dt&quot;&gt;ddl =&lt;/span&gt; &lt;span class=&quot;kw&quot;&gt;DDL&lt;/span&gt;(tt), &lt;span class=&quot;co&quot;&gt;# linear, diversity-dependent&lt;/span&gt;
@@ -512,10 +512,10 @@ models &amp;lt;-  &lt;span class=&quot;kw&quot;&gt;list&lt;/span&gt;(&lt;span cl
                 &lt;span class=&quot;dt&quot;&gt;ev =&lt;/span&gt; &lt;span class=&quot;kw&quot;&gt;fitEXVAR&lt;/span&gt;(tt), &lt;span class=&quot;co&quot;&gt;# vary extinction in time&lt;/span&gt;
                 &lt;span class=&quot;dt&quot;&gt;bv =&lt;/span&gt; &lt;span class=&quot;kw&quot;&gt;fitBOTHVAR&lt;/span&gt;(tt)&lt;span class=&quot;co&quot;&gt;# vary both&lt;/span&gt;
                 )
-aics &amp;lt;- &lt;span class=&quot;kw&quot;&gt;sapply&lt;/span&gt;(models, function(x) x$aic)
+aics &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;sapply&lt;/span&gt;(models, function(x) x$aic)
 &lt;span class=&quot;co&quot;&gt;# show the winning model&lt;/span&gt;
 models[&lt;span class=&quot;kw&quot;&gt;which.min&lt;/span&gt;(aics)]
-&amp;gt; models[&lt;span class=&quot;kw&quot;&gt;which.min&lt;/span&gt;(aics)]
+&amp;gt;&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;models[&lt;span class=&quot;kw&quot;&gt;which.min&lt;/span&gt;(aics)]
 $y2r
           LH      st1        r1         r2       aic
 &lt;span class=&quot;dv&quot;&gt;276&lt;/span&gt; &lt;span class=&quot;fl&quot;&gt;505.0685&lt;/span&gt; &lt;span class=&quot;fl&quot;&gt;1.171871&lt;/span&gt; &lt;span class=&quot;fl&quot;&gt;0.1426537&lt;/span&gt; &lt;span class=&quot;fl&quot;&gt;0.05372305&lt;/span&gt; -&lt;span class=&quot;fl&quot;&gt;1004.137&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
@@ -524,30 +524,30 @@ $y2r
 &lt;p&gt;Of course one of the more interesting challenges of having an automated interface is the ability to perform meta-analyses across the set of available phylogenies in treebase. As a simple proof-of-principle, let’s check all the phylogenies in treebase to see if they fit a birth-death model or yule model better.&lt;/p&gt;
 &lt;p&gt;We’ll create two simple functions to help with this analysis. While these can be provided by the treebase package, I’ve included them here to illustrate that the real flexibility comes from being able to create custom functions. ((These are primarily illustrative; I hope users and developers will create their own. In a proper analysis we would want a few additional checks.))&lt;/p&gt;
 &lt;pre class=&quot;sourceCode R&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;
-timetree &amp;lt;- function(tree){
-    check.na &amp;lt;- &lt;span class=&quot;kw&quot;&gt;try&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;sum&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;is.na&lt;/span&gt;(tree$edge.length))&amp;gt;&lt;span class=&quot;dv&quot;&gt;0&lt;/span&gt;)
-    if(&lt;span class=&quot;kw&quot;&gt;is&lt;/span&gt;(check.na, &lt;span class=&quot;st&quot;&gt;&amp;quot;try-error&amp;quot;&lt;/span&gt;) | check.na)
+timetree &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;function(tree){
+    check.na &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;try&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;sum&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;is.na&lt;/span&gt;(tree$edge.length))&amp;gt;&lt;span class=&quot;dv&quot;&gt;0&lt;/span&gt;)
+    if(&lt;span class=&quot;kw&quot;&gt;is&lt;/span&gt;(check.na, &lt;span class=&quot;st&quot;&gt;&amp;quot;try-error&amp;quot;&lt;/span&gt;) |&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;check.na)
       &lt;span class=&quot;ot&quot;&gt;NULL&lt;/span&gt;
     else
     &lt;span class=&quot;kw&quot;&gt;try&lt;/span&gt;( &lt;span class=&quot;kw&quot;&gt;chronoMPL&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;multi2di&lt;/span&gt;(tree)) )
 }
-drop_errors &amp;lt;- function(tr){
-  tt &amp;lt;- tr[!&lt;span class=&quot;kw&quot;&gt;sapply&lt;/span&gt;(tr, is.null)]
-  tt &amp;lt;- tt[!&lt;span class=&quot;kw&quot;&gt;sapply&lt;/span&gt;(tt, function(x) &lt;span class=&quot;kw&quot;&gt;is&lt;/span&gt;(x, &lt;span class=&quot;st&quot;&gt;&amp;quot;try-error&amp;quot;&lt;/span&gt;))]
+drop_errors &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;function(tr){
+  tt &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;tr[!&lt;span class=&quot;kw&quot;&gt;sapply&lt;/span&gt;(tr, is.null)]
+  tt &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;tt[!&lt;span class=&quot;kw&quot;&gt;sapply&lt;/span&gt;(tt, function(x) &lt;span class=&quot;kw&quot;&gt;is&lt;/span&gt;(x, &lt;span class=&quot;st&quot;&gt;&amp;quot;try-error&amp;quot;&lt;/span&gt;))]
   &lt;span class=&quot;kw&quot;&gt;print&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;paste&lt;/span&gt;(&lt;span class=&quot;st&quot;&gt;&amp;quot;dropped&amp;quot;&lt;/span&gt;, &lt;span class=&quot;kw&quot;&gt;length&lt;/span&gt;(tr)-&lt;span class=&quot;kw&quot;&gt;length&lt;/span&gt;(tt), &lt;span class=&quot;st&quot;&gt;&amp;quot;trees&amp;quot;&lt;/span&gt;))
   tt
 }
 &lt;span class=&quot;kw&quot;&gt;require&lt;/span&gt;(laser)
-pick_branching_model &amp;lt;- function(tree){
-  m1 &amp;lt;- &lt;span class=&quot;kw&quot;&gt;try&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;pureBirth&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;branching.times&lt;/span&gt;(tree)))
-  m2 &amp;lt;- &lt;span class=&quot;kw&quot;&gt;try&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;bd&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;branching.times&lt;/span&gt;(tree)))
-  &lt;span class=&quot;kw&quot;&gt;as.logical&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;try&lt;/span&gt;(m2$aic &amp;lt; m1$aic))
+pick_branching_model &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;function(tree){
+  m1 &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;try&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;pureBirth&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;branching.times&lt;/span&gt;(tree)))
+  m2 &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;try&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;bd&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;branching.times&lt;/span&gt;(tree)))
+  &lt;span class=&quot;kw&quot;&gt;as.logical&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;try&lt;/span&gt;(m2$aic &amp;lt;&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;m1$aic))
 }&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Return only treebase trees that have branch lengths. This has to download every tree in treebase, so this will take a while. Good thing we don’t have to do that by hand.&lt;/p&gt;
 &lt;pre class=&quot;sourceCode R&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;
-all &amp;lt;- &lt;span class=&quot;kw&quot;&gt;search_treebase&lt;/span&gt;(&lt;span class=&quot;st&quot;&gt;&amp;quot;Consensus&amp;quot;&lt;/span&gt;, &lt;span class=&quot;st&quot;&gt;&amp;quot;type.tree&amp;quot;&lt;/span&gt;, &lt;span class=&quot;dt&quot;&gt;branch_lengths=&lt;/span&gt;&lt;span class=&quot;ot&quot;&gt;TRUE&lt;/span&gt;)
-tt &amp;lt;- &lt;span class=&quot;kw&quot;&gt;drop_errors&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;sapply&lt;/span&gt;(all, timetree))
-is_yule &amp;lt;- &lt;span class=&quot;kw&quot;&gt;sapply&lt;/span&gt;(tt, pick_branching_model)
+all &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;search_treebase&lt;/span&gt;(&lt;span class=&quot;st&quot;&gt;&amp;quot;Consensus&amp;quot;&lt;/span&gt;, &lt;span class=&quot;st&quot;&gt;&amp;quot;type.tree&amp;quot;&lt;/span&gt;, &lt;span class=&quot;dt&quot;&gt;branch_lengths=&lt;/span&gt;&lt;span class=&quot;ot&quot;&gt;TRUE&lt;/span&gt;)
+tt &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;drop_errors&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;sapply&lt;/span&gt;(all, timetree))
+is_yule &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;sapply&lt;/span&gt;(tt, pick_branching_model)
 &lt;span class=&quot;kw&quot;&gt;table&lt;/span&gt;(is_yule)&lt;/code&gt;&lt;/pre&gt;
 &lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
 &lt;ul&gt;
@@ -583,7 +583,7 @@ is_yule &amp;lt;- &lt;span class=&quot;kw&quot;&gt;sapply&lt;/span&gt;(tt, pick_
              &lt;span class=&quot;co&quot;&gt;# find an internal edge&lt;/span&gt;
              anc=&lt;span class=&quot;kw&quot;&gt;get.desc.of.node&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;Ntip&lt;/span&gt;(phy)+&lt;span class=&quot;dv&quot;&gt;1&lt;/span&gt;,phy)
              branches=phy$edge[,&lt;span class=&quot;dv&quot;&gt;2&lt;/span&gt;]
-             branches=branches[branches&amp;gt;&lt;span class=&quot;kw&quot;&gt;Ntip&lt;/span&gt;(phy) &amp;amp; branches!=anc]
+             branches=branches[branches&amp;gt;&lt;span class=&quot;kw&quot;&gt;Ntip&lt;/span&gt;(phy) &amp;amp;&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;branches!=anc]
              branch=branches[&lt;span class=&quot;kw&quot;&gt;sample&lt;/span&gt;(&lt;span class=&quot;dv&quot;&gt;1&lt;/span&gt;:&lt;span class=&quot;kw&quot;&gt;length&lt;/span&gt;(branches),&lt;span class=&quot;dv&quot;&gt;1&lt;/span&gt;)]
              desc=&lt;span class=&quot;kw&quot;&gt;get.descendants.of.node&lt;/span&gt;(branch,phy)
              if(&lt;span class=&quot;kw&quot;&gt;length&lt;/span&gt;(desc)&amp;gt;=&lt;span class=&quot;dv&quot;&gt;4&lt;/span&gt;) break()
@@ -635,7 +635,7 @@ dirs=&lt;span class=&quot;kw&quot;&gt;dir&lt;/span&gt;(&lt;span class=&quot;st&q
 
 &lt;span class=&quot;kw&quot;&gt;data&lt;/span&gt;(chelonia)
 &lt;span class=&quot;co&quot;&gt;# take a look at this data&lt;/span&gt;
-&amp;gt; chelonia
+&amp;gt;&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;chelonia
 $phy
 Phylogenetic tree with &lt;span class=&quot;dv&quot;&gt;226&lt;/span&gt; tips and &lt;span class=&quot;dv&quot;&gt;225&lt;/span&gt; internal nodes.
 
@@ -648,8 +648,8 @@ $dat
 Pelomedusa_subrufa                   Pelusios_williamsi
 &lt;span class=&quot;fl&quot;&gt;2.995732&lt;/span&gt;                             &lt;span class=&quot;fl&quot;&gt;3.218876&lt;/span&gt;
 ...
-dat &amp;lt;- chelonia$dat
-phy &amp;lt;- chelonia$phy
+dat &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;chelonia$dat
+phy &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;chelonia$phy
 ## ready to run as above
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;a href=&quot;http://www.R-bloggers.com&quot;&gt;&lt;img src=&quot;http://a1.twimg.com/profile_images/1344218056/RblogLogo_bigger.png&quot; alt=&quot;R-bloggers.com&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
@@ -676,8 +676,8 @@ phy &amp;lt;- chelonia$phy
 &lt;p&gt;How has TreeBASE grown since it’s inception?  Let’s grab the metadata for all entries and histogram by publication year:&lt;/p&gt;
 &lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;
 
-all &amp;lt;- &lt;span class=&quot;kw&quot;&gt;search_metadata&lt;/span&gt;(&lt;span class=&quot;st&quot;&gt;&amp;quot;&amp;quot;&lt;/span&gt;, &lt;span class=&quot;dt&quot;&gt;by=&lt;/span&gt;&lt;span class=&quot;st&quot;&gt;&amp;quot;all&amp;quot;&lt;/span&gt;)
-dates &amp;lt;- &lt;span class=&quot;kw&quot;&gt;sapply&lt;/span&gt;(all, function(x) &lt;span class=&quot;kw&quot;&gt;as.numeric&lt;/span&gt;(x$date))
+all &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;search_metadata&lt;/span&gt;(&lt;span class=&quot;st&quot;&gt;&amp;quot;&amp;quot;&lt;/span&gt;, &lt;span class=&quot;dt&quot;&gt;by=&lt;/span&gt;&lt;span class=&quot;st&quot;&gt;&amp;quot;all&amp;quot;&lt;/span&gt;)
+dates &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;sapply&lt;/span&gt;(all, function(x) &lt;span class=&quot;kw&quot;&gt;as.numeric&lt;/span&gt;(x$date))
 &lt;span class=&quot;kw&quot;&gt;hist&lt;/span&gt;(dates, &lt;span class=&quot;dt&quot;&gt;main=&lt;/span&gt;&lt;span class=&quot;st&quot;&gt;&amp;quot;TreeBase growth&amp;quot;&lt;/span&gt;, &lt;span class=&quot;dt&quot;&gt;xlab=&lt;/span&gt;&lt;span class=&quot;st&quot;&gt;&amp;quot;Year&amp;quot;&lt;/span&gt;)
 &lt;/code&gt;&lt;/pre&gt;
 &lt;figure&gt;
@@ -686,9 +686,9 @@ dates &amp;lt;- &lt;span class=&quot;kw&quot;&gt;sapply&lt;/span&gt;(all, functi
 &lt;p&gt;What journals have submitted the most studies to treebase?&lt;/p&gt;
 &lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;
 
-journals &amp;lt;- &lt;span class=&quot;kw&quot;&gt;sapply&lt;/span&gt;(all, function(x) x$publisher)
-J &amp;lt;- &lt;span class=&quot;kw&quot;&gt;tail&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;sort&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;table&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;as.factor&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;unlist&lt;/span&gt;(journals)))),&lt;span class=&quot;dv&quot;&gt;5&lt;/span&gt;)
-b &amp;lt;- &lt;span class=&quot;kw&quot;&gt;barplot&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;as.numeric&lt;/span&gt;(J))
+journals &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;sapply&lt;/span&gt;(all, function(x) x$publisher)
+J &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;tail&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;sort&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;table&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;as.factor&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;unlist&lt;/span&gt;(journals)))),&lt;span class=&quot;dv&quot;&gt;5&lt;/span&gt;)
+b &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;barplot&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;as.numeric&lt;/span&gt;(J))
 &lt;span class=&quot;kw&quot;&gt;text&lt;/span&gt;(b, &lt;span class=&quot;kw&quot;&gt;names&lt;/span&gt;(J), &lt;span class=&quot;dt&quot;&gt;srt=&lt;/span&gt;&lt;span class=&quot;dv&quot;&gt;70&lt;/span&gt;, &lt;span class=&quot;dt&quot;&gt;pos=&lt;/span&gt;&lt;span class=&quot;dv&quot;&gt;4&lt;/span&gt;, &lt;span class=&quot;dt&quot;&gt;xpd=&lt;/span&gt;T)
 &lt;/code&gt;&lt;/pre&gt;
 &lt;figure&gt;
@@ -697,23 +697,23 @@ b &amp;lt;- &lt;span class=&quot;kw&quot;&gt;barplot&lt;/span&gt;(&lt;span class
 &lt;p&gt;How many have been submitted from &lt;em&gt;Nature&lt;/em&gt;? &lt;em&gt;Science&lt;/em&gt;?&lt;/p&gt;
 &lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;
 
-nature &amp;lt;- &lt;span class=&quot;kw&quot;&gt;sapply&lt;/span&gt;(all, function(x) &lt;span class=&quot;kw&quot;&gt;length&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;grep&lt;/span&gt;(&lt;span class=&quot;st&quot;&gt;&amp;quot;Nature&amp;quot;&lt;/span&gt;, x$publisher))&amp;gt;&lt;span class=&quot;dv&quot;&gt;0&lt;/span&gt;)
-science &amp;lt;- &lt;span class=&quot;kw&quot;&gt;sapply&lt;/span&gt;(all, function(x) &lt;span class=&quot;kw&quot;&gt;length&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;grep&lt;/span&gt;(&lt;span class=&quot;st&quot;&gt;&amp;quot;^Science$&amp;quot;&lt;/span&gt;, x$publisher))&amp;gt;&lt;span class=&quot;dv&quot;&gt;0&lt;/span&gt;)
+nature &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;sapply&lt;/span&gt;(all, function(x) &lt;span class=&quot;kw&quot;&gt;length&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;grep&lt;/span&gt;(&lt;span class=&quot;st&quot;&gt;&amp;quot;Nature&amp;quot;&lt;/span&gt;, x$publisher))&amp;gt;&lt;span class=&quot;dv&quot;&gt;0&lt;/span&gt;)
+science &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;sapply&lt;/span&gt;(all, function(x) &lt;span class=&quot;kw&quot;&gt;length&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;grep&lt;/span&gt;(&lt;span class=&quot;st&quot;&gt;&amp;quot;^Science$&amp;quot;&lt;/span&gt;, x$publisher))&amp;gt;&lt;span class=&quot;dv&quot;&gt;0&lt;/span&gt;)
 
 &lt;span class=&quot;kw&quot;&gt;sum&lt;/span&gt;(nature)
 
-&amp;gt; &lt;span class=&quot;dv&quot;&gt;11&lt;/span&gt;
+&amp;gt;&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;dv&quot;&gt;11&lt;/span&gt;
 
 &lt;span class=&quot;kw&quot;&gt;sum&lt;/span&gt;(science)
 
-&amp;gt; &lt;span class=&quot;dv&quot;&gt;8&lt;/span&gt;
+&amp;gt;&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;dv&quot;&gt;8&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Which studies were those?  Can I have those trees please?&lt;/p&gt;
 &lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;
 
-s &amp;lt;- &lt;span class=&quot;kw&quot;&gt;get_study_id&lt;/span&gt;( all[nature] )
+s &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;get_study_id&lt;/span&gt;( all[nature] )
 
-nature_trees &amp;lt;- &lt;span class=&quot;kw&quot;&gt;sapply&lt;/span&gt;(s, function(x) &lt;span class=&quot;kw&quot;&gt;search_treebase&lt;/span&gt;(x, &lt;span class=&quot;st&quot;&gt;&amp;quot;id.study&amp;quot;&lt;/span&gt;))
+nature_trees &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;sapply&lt;/span&gt;(s, function(x) &lt;span class=&quot;kw&quot;&gt;search_treebase&lt;/span&gt;(x, &lt;span class=&quot;st&quot;&gt;&amp;quot;id.study&amp;quot;&lt;/span&gt;))
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Other details associated with the study are certainly also available.  Since we downloaded all metadata we have this stored already.  Any tree downloaded stores the TreeBASE study id in &lt;span class=&quot;math&quot;&gt;\(S.id, ((and the unique tree id in \)&lt;/span&gt;Tr.id)) which we can use to look up the metadata again.&lt;/p&gt;
 &lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;
@@ -732,18 +732,18 @@ all[nature][&lt;span class=&quot;dv&quot;&gt;1&lt;/span&gt;] &lt;span class=&quo
 
 ## We&amp;#39;ll often use max_trees in the example so that they run quickly,
 &lt;span class=&quot;co&quot;&gt;# notice the quotes for species.&lt;/span&gt;
-dolphins &amp;lt;- &lt;span class=&quot;kw&quot;&gt;search_treebase&lt;/span&gt;(&lt;span class=&quot;st&quot;&gt;&amp;#39;&amp;quot;Delphinus&amp;quot;&amp;#39;&lt;/span&gt;, &lt;span class=&quot;dt&quot;&gt;by=&lt;/span&gt;&lt;span class=&quot;st&quot;&gt;&amp;quot;taxon&amp;quot;&lt;/span&gt;, &lt;span class=&quot;dt&quot;&gt;max_trees=&lt;/span&gt;&lt;span class=&quot;dv&quot;&gt;5&lt;/span&gt;)
+dolphins &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;search_treebase&lt;/span&gt;(&lt;span class=&quot;st&quot;&gt;&amp;#39;&amp;quot;Delphinus&amp;quot;&amp;#39;&lt;/span&gt;, &lt;span class=&quot;dt&quot;&gt;by=&lt;/span&gt;&lt;span class=&quot;st&quot;&gt;&amp;quot;taxon&amp;quot;&lt;/span&gt;, &lt;span class=&quot;dt&quot;&gt;max_trees=&lt;/span&gt;&lt;span class=&quot;dv&quot;&gt;5&lt;/span&gt;)
 ## can do exact matches
-humans &amp;lt;- &lt;span class=&quot;kw&quot;&gt;search_treebase&lt;/span&gt;(&lt;span class=&quot;st&quot;&gt;&amp;#39;&amp;quot;Homo sapiens&amp;quot;&amp;#39;&lt;/span&gt;, &lt;span class=&quot;dt&quot;&gt;by=&lt;/span&gt;&lt;span class=&quot;st&quot;&gt;&amp;quot;taxon&amp;quot;&lt;/span&gt;, &lt;span class=&quot;dt&quot;&gt;exact_match=&lt;/span&gt;&lt;span class=&quot;ot&quot;&gt;TRUE&lt;/span&gt;, &lt;span class=&quot;dt&quot;&gt;max_trees=&lt;/span&gt;&lt;span class=&quot;dv&quot;&gt;10&lt;/span&gt;)
+humans &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;search_treebase&lt;/span&gt;(&lt;span class=&quot;st&quot;&gt;&amp;#39;&amp;quot;Homo sapiens&amp;quot;&amp;#39;&lt;/span&gt;, &lt;span class=&quot;dt&quot;&gt;by=&lt;/span&gt;&lt;span class=&quot;st&quot;&gt;&amp;quot;taxon&amp;quot;&lt;/span&gt;, &lt;span class=&quot;dt&quot;&gt;exact_match=&lt;/span&gt;&lt;span class=&quot;ot&quot;&gt;TRUE&lt;/span&gt;, &lt;span class=&quot;dt&quot;&gt;max_trees=&lt;/span&gt;&lt;span class=&quot;dv&quot;&gt;10&lt;/span&gt;)
 &lt;span class=&quot;co&quot;&gt;# all trees with 5 taxa&lt;/span&gt;
-five &amp;lt;- &lt;span class=&quot;kw&quot;&gt;search_treebase&lt;/span&gt;(&lt;span class=&quot;dv&quot;&gt;5&lt;/span&gt;, &lt;span class=&quot;dt&quot;&gt;by=&lt;/span&gt;&lt;span class=&quot;st&quot;&gt;&amp;quot;ntax&amp;quot;&lt;/span&gt;, &lt;span class=&quot;dt&quot;&gt;max_trees =&lt;/span&gt; &lt;span class=&quot;dv&quot;&gt;10&lt;/span&gt;)
+five &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;search_treebase&lt;/span&gt;(&lt;span class=&quot;dv&quot;&gt;5&lt;/span&gt;, &lt;span class=&quot;dt&quot;&gt;by=&lt;/span&gt;&lt;span class=&quot;st&quot;&gt;&amp;quot;ntax&amp;quot;&lt;/span&gt;, &lt;span class=&quot;dt&quot;&gt;max_trees =&lt;/span&gt; &lt;span class=&quot;dv&quot;&gt;10&lt;/span&gt;)
 &lt;span class=&quot;co&quot;&gt;# These are different, a tree id isn&amp;#39;t a Study id.  we report both&lt;/span&gt;
-studies &amp;lt;- &lt;span class=&quot;kw&quot;&gt;search_treebase&lt;/span&gt;(&lt;span class=&quot;st&quot;&gt;&amp;quot;2377&amp;quot;&lt;/span&gt;, &lt;span class=&quot;dt&quot;&gt;by=&lt;/span&gt;&lt;span class=&quot;st&quot;&gt;&amp;quot;id.study&amp;quot;&lt;/span&gt;)
-tree &amp;lt;- &lt;span class=&quot;kw&quot;&gt;search_treebase&lt;/span&gt;(&lt;span class=&quot;st&quot;&gt;&amp;quot;2377&amp;quot;&lt;/span&gt;, &lt;span class=&quot;dt&quot;&gt;by=&lt;/span&gt;&lt;span class=&quot;st&quot;&gt;&amp;quot;id.tree&amp;quot;&lt;/span&gt;)
-&lt;span class=&quot;kw&quot;&gt;c&lt;/span&gt;(&lt;span class=&quot;st&quot;&gt;&amp;quot;TreeID&amp;quot;&lt;/span&gt; = tree$Tr.id, &lt;span class=&quot;st&quot;&gt;&amp;quot;StudyID&amp;quot;&lt;/span&gt; = tree$S.id)
+studies &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;search_treebase&lt;/span&gt;(&lt;span class=&quot;st&quot;&gt;&amp;quot;2377&amp;quot;&lt;/span&gt;, &lt;span class=&quot;dt&quot;&gt;by=&lt;/span&gt;&lt;span class=&quot;st&quot;&gt;&amp;quot;id.study&amp;quot;&lt;/span&gt;)
+tree &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;search_treebase&lt;/span&gt;(&lt;span class=&quot;st&quot;&gt;&amp;quot;2377&amp;quot;&lt;/span&gt;, &lt;span class=&quot;dt&quot;&gt;by=&lt;/span&gt;&lt;span class=&quot;st&quot;&gt;&amp;quot;id.tree&amp;quot;&lt;/span&gt;)
+&lt;span class=&quot;kw&quot;&gt;c&lt;/span&gt;(&lt;span class=&quot;st&quot;&gt;&amp;quot;TreeID&amp;quot;&lt;/span&gt; =&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;tree$Tr.id, &lt;span class=&quot;st&quot;&gt;&amp;quot;StudyID&amp;quot;&lt;/span&gt; =&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;tree$S.id)
 &lt;span class=&quot;co&quot;&gt;# Only results wiht branch lengths&lt;/span&gt;
 &lt;span class=&quot;co&quot;&gt;# Has to grab all the trees first, then toss out ones without branch_lengths&lt;/span&gt;
-Near &amp;lt;- &lt;span class=&quot;kw&quot;&gt;search_treebase&lt;/span&gt;(&lt;span class=&quot;st&quot;&gt;&amp;quot;Near&amp;quot;&lt;/span&gt;, &lt;span class=&quot;st&quot;&gt;&amp;quot;author&amp;quot;&lt;/span&gt;, &lt;span class=&quot;dt&quot;&gt;branch_lengths=&lt;/span&gt;&lt;span class=&quot;ot&quot;&gt;TRUE&lt;/span&gt;)
+Near &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;search_treebase&lt;/span&gt;(&lt;span class=&quot;st&quot;&gt;&amp;quot;Near&amp;quot;&lt;/span&gt;, &lt;span class=&quot;st&quot;&gt;&amp;quot;author&amp;quot;&lt;/span&gt;, &lt;span class=&quot;dt&quot;&gt;branch_lengths=&lt;/span&gt;&lt;span class=&quot;ot&quot;&gt;TRUE&lt;/span&gt;)
 &lt;span class=&quot;kw&quot;&gt;length&lt;/span&gt;(Near)
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;These queries can be combined with metadata searches&lt;/p&gt;
@@ -760,48 +760,48 @@ Near &amp;lt;- &lt;span class=&quot;kw&quot;&gt;search_treebase&lt;/span&gt;(&lt
 
 &lt;span class=&quot;co&quot;&gt;# Use that to get all trees &amp;quot;published&amp;quot; after 2010&lt;/span&gt;
 &lt;span class=&quot;co&quot;&gt;# publication date is only a year&lt;/span&gt;
-post2010 &amp;lt;- &lt;span class=&quot;kw&quot;&gt;sapply&lt;/span&gt;(dates, function(x) &lt;span class=&quot;dv&quot;&gt;2010&lt;/span&gt; &amp;lt; &lt;span class=&quot;kw&quot;&gt;as.numeric&lt;/span&gt;(x))
-s &amp;lt;- &lt;span class=&quot;kw&quot;&gt;get_study_id&lt;/span&gt;( all[post2010] )
-out &amp;lt;- &lt;span class=&quot;kw&quot;&gt;lapply&lt;/span&gt;(s, function(x) &lt;span class=&quot;kw&quot;&gt;search_treebase&lt;/span&gt;(x, &lt;span class=&quot;st&quot;&gt;&amp;quot;id.study&amp;quot;&lt;/span&gt;))
+post2010 &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;sapply&lt;/span&gt;(dates, function(x) &lt;span class=&quot;dv&quot;&gt;2010&lt;/span&gt; &amp;lt;&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;as.numeric&lt;/span&gt;(x))
+s &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;get_study_id&lt;/span&gt;( all[post2010] )
+out &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;lapply&lt;/span&gt;(s, function(x) &lt;span class=&quot;kw&quot;&gt;search_treebase&lt;/span&gt;(x, &lt;span class=&quot;st&quot;&gt;&amp;quot;id.study&amp;quot;&lt;/span&gt;))
 &lt;span class=&quot;co&quot;&gt;# Grab the trees entered since 2011: (some studies will have multiple trees)&lt;/span&gt;
 &lt;span class=&quot;co&quot;&gt;#can compare dates with as.Date(&amp;quot;2001-01-01&amp;quot;, &amp;quot;%y-%m-%d) &amp;lt; as.Date ...&lt;/span&gt;
-m &amp;lt;- &lt;span class=&quot;kw&quot;&gt;search_metadata&lt;/span&gt;(&lt;span class=&quot;st&quot;&gt;&amp;quot;2011-05-05&amp;quot;&lt;/span&gt;, &lt;span class=&quot;dt&quot;&gt;by=&lt;/span&gt;&lt;span class=&quot;st&quot;&gt;&amp;quot;from&amp;quot;&lt;/span&gt;)
-s &amp;lt;- &lt;span class=&quot;kw&quot;&gt;get_study_id&lt;/span&gt;(m)
-out &amp;lt;- &lt;span class=&quot;kw&quot;&gt;lapply&lt;/span&gt;(s, function(x) &lt;span class=&quot;kw&quot;&gt;search_treebase&lt;/span&gt;(x, &lt;span class=&quot;st&quot;&gt;&amp;quot;id.study&amp;quot;&lt;/span&gt;))&lt;/code&gt;&lt;/pre&gt;
+m &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;search_metadata&lt;/span&gt;(&lt;span class=&quot;st&quot;&gt;&amp;quot;2011-05-05&amp;quot;&lt;/span&gt;, &lt;span class=&quot;dt&quot;&gt;by=&lt;/span&gt;&lt;span class=&quot;st&quot;&gt;&amp;quot;from&amp;quot;&lt;/span&gt;)
+s &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;get_study_id&lt;/span&gt;(m)
+out &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;lapply&lt;/span&gt;(s, function(x) &lt;span class=&quot;kw&quot;&gt;search_treebase&lt;/span&gt;(x, &lt;span class=&quot;st&quot;&gt;&amp;quot;id.study&amp;quot;&lt;/span&gt;))&lt;/code&gt;&lt;/pre&gt;
 &lt;h2 id=&quot;a-simple-meta-analysis&quot;&gt;A simple meta-analysis&lt;/h2&gt;
 &lt;p&gt;Of course, this capacity is most powerful not to merely get some summary statistics of the database, but repeat analyses of given studies or perform meta-analyses.  Most comparative phylogenetics methods require ultrametric trees.&lt;/p&gt;
 &lt;p&gt;We can assemble a simple pipeline to perform the meta-analysis across all existing studies of whether phylogenies tend to fit a pure-birth or a birth-death model more frequently:&lt;/p&gt;
 &lt;p&gt;As a proof-of-principle, we can create a pipeline that will estimate chronograms for all trees containing branchlengths in treebase.&lt;/p&gt;
 &lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;
 
-timetree &amp;lt;- function(tree){
-check.na &amp;lt;- &lt;span class=&quot;kw&quot;&gt;try&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;sum&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;is.na&lt;/span&gt;(tree$edge.length))&amp;gt;&lt;span class=&quot;dv&quot;&gt;0&lt;/span&gt;)
-if(&lt;span class=&quot;kw&quot;&gt;is&lt;/span&gt;(check.na, &lt;span class=&quot;st&quot;&gt;&amp;quot;try-error&amp;quot;&lt;/span&gt;) | check.na)
+timetree &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;function(tree){
+check.na &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;try&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;sum&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;is.na&lt;/span&gt;(tree$edge.length))&amp;gt;&lt;span class=&quot;dv&quot;&gt;0&lt;/span&gt;)
+if(&lt;span class=&quot;kw&quot;&gt;is&lt;/span&gt;(check.na, &lt;span class=&quot;st&quot;&gt;&amp;quot;try-error&amp;quot;&lt;/span&gt;) |&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;check.na)
 &lt;span class=&quot;ot&quot;&gt;NULL&lt;/span&gt;
 else
 &lt;span class=&quot;kw&quot;&gt;try&lt;/span&gt;( &lt;span class=&quot;kw&quot;&gt;chronoMPL&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;multi2di&lt;/span&gt;(tree)) )
 }
-drop_errors &amp;lt;- function(trees){
+drop_errors &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;function(trees){
 ## apply to a list of trees created with timetree to drop errors
-tt &amp;lt;- tt[!&lt;span class=&quot;kw&quot;&gt;sapply&lt;/span&gt;(trees, is.null)]
-tt &amp;lt;- tt[!&lt;span class=&quot;kw&quot;&gt;sapply&lt;/span&gt;(tt, function(x) &lt;span class=&quot;kw&quot;&gt;is&lt;/span&gt;(x, &lt;span class=&quot;st&quot;&gt;&amp;quot;try-error&amp;quot;&lt;/span&gt;))]
+tt &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;tt[!&lt;span class=&quot;kw&quot;&gt;sapply&lt;/span&gt;(trees, is.null)]
+tt &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;tt[!&lt;span class=&quot;kw&quot;&gt;sapply&lt;/span&gt;(tt, function(x) &lt;span class=&quot;kw&quot;&gt;is&lt;/span&gt;(x, &lt;span class=&quot;st&quot;&gt;&amp;quot;try-error&amp;quot;&lt;/span&gt;))]
 &lt;span class=&quot;kw&quot;&gt;print&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;paste&lt;/span&gt;(&lt;span class=&quot;st&quot;&gt;&amp;quot;dropped&amp;quot;&lt;/span&gt;, &lt;span class=&quot;kw&quot;&gt;length&lt;/span&gt;(trees)-&lt;span class=&quot;kw&quot;&gt;length&lt;/span&gt;(tt), &lt;span class=&quot;st&quot;&gt;&amp;quot;trees&amp;quot;&lt;/span&gt;))
 tt
 
 }
 
 &lt;span class=&quot;kw&quot;&gt;require&lt;/span&gt;(laser)
-pick_branching_model &amp;lt;- function(tree){
- m1 &amp;lt;- &lt;span class=&quot;kw&quot;&gt;try&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;pureBirth&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;branching.times&lt;/span&gt;(tree)))
- m2 &amp;lt;- &lt;span class=&quot;kw&quot;&gt;try&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;bd&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;branching.times&lt;/span&gt;(tree)))
- &lt;span class=&quot;kw&quot;&gt;as.logical&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;try&lt;/span&gt;(m2$aic &amp;lt; m1$aic))
+pick_branching_model &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;function(tree){
+ m1 &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;try&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;pureBirth&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;branching.times&lt;/span&gt;(tree)))
+ m2 &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;try&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;bd&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;branching.times&lt;/span&gt;(tree)))
+ &lt;span class=&quot;kw&quot;&gt;as.logical&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;try&lt;/span&gt;(m2$aic &amp;lt;&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;m1$aic))
 }
 
 &lt;span class=&quot;co&quot;&gt;# Return all treebase trees that have branch lengths&lt;/span&gt;
 &lt;span class=&quot;co&quot;&gt;# This has to download every tree in treebase, so not superfast...&lt;/span&gt;
-all &amp;lt;- &lt;span class=&quot;kw&quot;&gt;search_treebase&lt;/span&gt;(&lt;span class=&quot;st&quot;&gt;&amp;quot;Consensus&amp;quot;&lt;/span&gt;, &lt;span class=&quot;st&quot;&gt;&amp;quot;type.tree&amp;quot;&lt;/span&gt;, &lt;span class=&quot;dt&quot;&gt;branch_lengths=&lt;/span&gt;&lt;span class=&quot;ot&quot;&gt;TRUE&lt;/span&gt;)
-tt &amp;lt;- &lt;span class=&quot;kw&quot;&gt;drop_errors&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;sapply&lt;/span&gt;(all, timetree))
-is_yule &amp;lt;- &lt;span class=&quot;kw&quot;&gt;sapply&lt;/span&gt;(tt, pick_branching_model)
+all &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;search_treebase&lt;/span&gt;(&lt;span class=&quot;st&quot;&gt;&amp;quot;Consensus&amp;quot;&lt;/span&gt;, &lt;span class=&quot;st&quot;&gt;&amp;quot;type.tree&amp;quot;&lt;/span&gt;, &lt;span class=&quot;dt&quot;&gt;branch_lengths=&lt;/span&gt;&lt;span class=&quot;ot&quot;&gt;TRUE&lt;/span&gt;)
+tt &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;drop_errors&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;sapply&lt;/span&gt;(all, timetree))
+is_yule &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;sapply&lt;/span&gt;(tt, pick_branching_model)
 &lt;span class=&quot;kw&quot;&gt;table&lt;/span&gt;(is_yule)&lt;/code&gt;&lt;/pre&gt;
 &lt;h2 id=&quot;replicating-individual-studies&quot;&gt;Replicating individual studies&lt;/h2&gt;
 &lt;p&gt;Replicating individual studies is a bit more challenging, mostly do to the quality of available data.  For instance, here is a nice recent study (Rowe &lt;em&gt;et. al.&lt;/em&gt; 2011) that has nicely time calibrated chronograms (from BEAST, Figure 4) and species trees (using BEST, Figure 3), but it seems only the&lt;a href=&quot;http://purl.org/phylo/treebase/dev/phylows/study/find?query=tb.identifier.study=10869&amp;amp;format=rss1&amp;amp;recordSchema=tree&quot;&gt;Mr. Bayes tree in Figure 2 is given in TreeBASE.&lt;/a&gt;&lt;/p&gt;

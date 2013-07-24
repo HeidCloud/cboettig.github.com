@@ -154,11 +154,11 @@ x[!<span class="kw">sapply</span>(x, is.null)]</code></pre>
 <pre class="sourceCode R"><code class="sourceCode r">
 <span class="kw">require</span>(rfishbase)
 <span class="co"># Now let&#39;s just grab the entire fishbase database,</span>
-fish.data &lt;- <span class="kw">getData</span>(<span class="dv">1</span>:<span class="dv">30000</span>)
+fish.data &lt;-<span class="st"> </span><span class="kw">getData</span>(<span class="dv">1</span>:<span class="dv">30000</span>)
 <span class="kw">length</span>(fish.data)
 [<span class="dv">1</span>] <span class="dv">999</span>
 
-habitatSearch &lt;- function(keyword, fish.data){
+habitatSearch &lt;-<span class="st"> </span>function(keyword, fish.data){
 <span class="co"># A function to search for the occurances of a keyword in habitat description</span>
 <span class="co"># Args:</span>
 <span class="co">#   keyword: pattern to be used by grep</span>
@@ -166,21 +166,21 @@ habitatSearch &lt;- function(keyword, fish.data){
 <span class="co"># Example:</span>
 <span class="co">#   data &lt;- getData(1:10)</span>
 <span class="co">#   habitatSearch(&quot;feshwater&quot;, data)</span>
-  x &lt;- <span class="kw">sapply</span>(fish.data, function(x) <span class="kw">grep</span>(keyword, x$habitat) )
-  x &lt;- <span class="kw">as.integer</span>(x)
+  x &lt;-<span class="st"> </span><span class="kw">sapply</span>(fish.data, function(x) <span class="kw">grep</span>(keyword, x$habitat) )
+  x &lt;-<span class="st"> </span><span class="kw">as.integer</span>(x)
 }
 
-x &lt;- <span class="kw">habitatSearch</span>(<span class="st">&quot;reef&quot;</span>, fish.data)
-reef &lt;- <span class="kw">sum</span>(x, <span class="dt">na.rm=</span>T)
-nonreef &lt;- <span class="kw">sum</span>(<span class="kw">is.na</span>(x))
-percent_reef &lt;- reef/(reef+nonreef)</code></pre>
+x &lt;-<span class="st"> </span><span class="kw">habitatSearch</span>(<span class="st">&quot;reef&quot;</span>, fish.data)
+reef &lt;-<span class="st"> </span><span class="kw">sum</span>(x, <span class="dt">na.rm=</span>T)
+nonreef &lt;-<span class="st"> </span><span class="kw">sum</span>(<span class="kw">is.na</span>(x))
+percent_reef &lt;-<span class="st"> </span>reef/(reef+nonreef)</code></pre>
 <p>I’d like to be able to query fishbase by something other than fishbase’s own id numbers, but might have to make that database myself, since they don’t seem to be listed anywhere.</p>
 <h3 id="taxize">Taxize</h3>
 <p>Meanwhile, I’m looking into how we can query between common names and scientific names at different levels using the ROpenSci package taxize from Scott. I’ve just made a few modifications to handle some xml parsing with xpath expressions and formatting.  Tweaked some functions in taxize.R script-set for grabbing scientific names.  For instance, if I want all Plethodon salamanders in the <a href="http://itis.gov">Integrated Taxanomic Information System</a> database</p>
 <pre class="sourceCode r"><code class="sourceCode r">
 <span class="kw">require</span>(taxize)
-xml &lt;- <span class="kw">get_itis_xml</span>(<span class="st">&quot;Plethodon &quot;</span>)
-out &lt;- <span class="kw">parse_itis</span>(xml)
+xml &lt;-<span class="st"> </span><span class="kw">get_itis_xml</span>(<span class="st">&quot;Plethodon &quot;</span>)
+out &lt;-<span class="st"> </span><span class="kw">parse_itis</span>(xml)
 <span class="kw">head</span>(out)
                        sci    tsn                                com
 <span class="dv">1</span>         Plethodon aeneus <span class="dv">208328</span>                               &lt;<span class="ot">NA</span>&gt;
@@ -191,7 +191,7 @@ out &lt;- <span class="kw">parse_itis</span>(xml)
 <span class="dv">6</span>         Plethodon asupak <span class="dv">685566</span>               Scott Bar Salamander</code></pre>
 <p>Note I get common names, scientific names, and tsn id numbers. Using a tsn id number I can query the whole taxonomy, by querying by the given tsn ids:</p>
 <pre class="sourceCode r"><code class="sourceCode r">
-&gt; <span class="kw">classification</span>(<span class="dv">685566</span>)
+&gt;<span class="st"> </span><span class="kw">classification</span>(<span class="dv">685566</span>)
        rank            taxon tsn..length.tsn..
 <span class="dv">1</span>   Kingdom         Animalia            <span class="dv">202423</span>
 <span class="dv">2</span>    Phylum         Chordata            <span class="dv">158852</span>

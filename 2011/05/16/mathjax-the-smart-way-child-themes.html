@@ -183,7 +183,7 @@
  <span class="kw">&lt;?php</span>
 }
 add_action<span class="ot">(</span><span class="st">&#39;wp_head&#39;</span><span class="ot">,</span> <span class="st">&#39;mathjax_cdn&#39;</span><span class="ot">);</span>
-<span class="er">?&gt;</span>
+<span class="kw">?&gt;</span>
 </code></pre>
 <p>This creates a function that inserts the HTML code for MathJax into the header. Note that we create a php function, break out of php to use the HTML code, and then return to php to close the function.  The add_action uses action hooks to insert our function into the header, specified where wp_head appears (check it out in header.php).</p>
 <ul>

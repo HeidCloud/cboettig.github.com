@@ -174,16 +174,16 @@ http://dx.doi.org/10.1016/j.tree.2013.02.003."><a href="http://dx.doi.org/10.101
 </ul>
 <h4 id="code-tricks-notes-on-merging-select-files-from-pull-request">code-tricks: notes on merging select files from pull request</h4>
 <p>Pull request included changes to files we don’t want to change. To address this, we separate fetch and merge with <code>--no-commit</code>. First, fetch the remote repository:</p>
-<pre class="sourceCode bash"><code class="sourceCode bash">git fetch https://github.com/jcolomb/rfigshare master</code></pre>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">git</span> fetch https://github.com/jcolomb/rfigshare master</code></pre>
 <p>The fetch is at <code>FETCH_HEAD</code> as it tells us in the console.</p>
 <p>Now we merge the changes without committing them,</p>
-<pre class="sourceCode bash"><code class="sourceCode bash">git merge --no-commit FETCH_HEAD</code></pre>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">git</span> merge --no-commit FETCH_HEAD</code></pre>
 <p>So the changes are all made, but not committed. We can simply unstage the changes we do not want. Since we only want one file, lets start by unstaging all commits</p>
-<pre class="sourceCode bash"><code class="sourceCode bash">git reset --</code></pre>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">git</span> reset --</code></pre>
 <p>So all changes are in our working directory as if we had just made them, but not told git to do anything yet. We can now drop any of the files we did not want to change back to their state at last commit (HEAD), for instance,</p>
-<pre class="sourceCode bash"><code class="sourceCode bash">git checkout HEAD inst/examples/tutorial.Rmd</code></pre>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">git</span> checkout HEAD inst/examples/tutorial.Rmd</code></pre>
 <p>while staging the changes to the file we want changed:</p>
-<pre class="sourceCode bash"><code class="sourceCode bash">git add R/fs_update.R</code></pre>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">git</span> add R/fs_update.R</code></pre>
 <p>and finally commit and push the changes.</p>
 <h2 id="references">References</h2>
 <ul>

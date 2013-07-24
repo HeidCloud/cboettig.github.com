@@ -146,24 +146,24 @@
     <p>Installing R-Studio on my dreamhost VPS server. Dreamhost runs debian lenny, which is a bit dated, making it necessary to install from source. (Would be easy on a modern ubuntu server). Here we go.</p>
 <p>First, we probably want to install R from source to begin with (Lenny comes with cutting-edge R 2.7.1…). This needs to be done with shared libs enabled. Also I needed to run it without recommended-packages to get the initial install working</p>
 <pre class="sourceCode bash"><code class="sourceCode bash">
-./configure --with-recommended-packages=no --enable-R-shlib 
+<span class="kw">./configure</span> --with-recommended-packages=no --enable-R-shlib 
 <span class="kw">make</span> 
-<span class="kw">sudo</span> <span class="kw">make</span> <span class="kw">install</span>
+<span class="kw">sudo</span> make install
 <span class="co"># now install the shared libs</span>
-<span class="kw">make</span> <span class="ot">prefix=</span>/path/to/here install-libR
+<span class="kw">make</span> prefix=/path/to/here install-libR
 <span class="co"># and install the recommended packages </span>
-tools/./rsync-recommended</code></pre>
+<span class="kw">tools/./rsync-recommended</span></code></pre>
 <p>Patience is required. Increasing memory available during this task by about 400MB (through the dreamhost panel) might be a good idea.</p>
 <p>Rstudio source install uses cmake and packages the dependencies itself, so installation isn’t necessarily intuitive. Note that we will compile dependencies from source included in RStudio, rather than just grabbing libboost-dev over apt-get.</p>
 <p>Download and extract the tarball, and cd into the base rstudio directory. Then install the dependencies – sit tight, this can take a while. Again, the extra 400MB memory helps.</p>
 <pre class="sourceCode bash"><code class="sourceCode bash">
 <span class="kw">cd</span> dependencies/linux/older
-./install-boost</code></pre>
+<span class="kw">./install-boost</span></code></pre>
 <pre class="sourceCode bash"><code class="sourceCode bash">
 <span class="kw">cd</span> ../../..
 <span class="kw">mkdir</span> build
 <span class="kw">cd</span> build
-cmake -DRSTUDIO_TARGET=Server -DCMAKE_BUILD_TYPE=Release ..</code></pre>
+<span class="kw">cmake</span> -DRSTUDIO_TARGET=Server -DCMAKE_BUILD_TYPE=Release ..</code></pre>
 <p>Still stuck at this stage. Filed <a href="http://support.rstudio.org/help/discussions/problems/1169-installing-server-edition-by-source-on-debian-lenny">help ticket</a>.</p>
 <p>Trying out the desktop IDE. Might take a bit to get me to edit code outside of vim though…</p>
 <h2 id="sweave-documents-with-pretty-formatting-flexible-graphic-layout-and-syntax-highlighting">Sweave documents with pretty formatting, flexible graphic layout and syntax highlighting</h2>

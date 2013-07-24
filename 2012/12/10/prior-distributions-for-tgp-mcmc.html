@@ -174,70 +174,70 @@ Z | \beta, \sigma^2, K &amp;\sim N_n(\mathbf{F} \beta, \sigma^2 \mathbf{K}) \\
 \]</span></p>
 <h2 id="example-comparison">Example comparison</h2>
 <p>Say, given some observed data pairs <span class="math">\(x,y\)</span> and predictions desired on a grid <span class="math">\(X\)</span>,</p>
-<pre class="sourceCode r"><code class="sourceCode r">X = <span class="kw">seq</span>(-<span class="dv">5</span>, <span class="dv">5</span>, <span class="dt">length=</span><span class="dv">50</span>)
-x = <span class="kw">c</span>(-<span class="dv">4</span>, -<span class="dv">3</span>, -<span class="dv">1</span>,  <span class="dv">0</span>,  <span class="dv">2</span>)
-y = <span class="kw">c</span>(-<span class="dv">2</span>,  <span class="dv">0</span>,  <span class="dv">1</span>,  <span class="dv">2</span>, -<span class="dv">1</span>)</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">X =<span class="st"> </span><span class="kw">seq</span>(-<span class="dv">5</span>, <span class="dv">5</span>, <span class="dt">length=</span><span class="dv">50</span>)
+x =<span class="st"> </span><span class="kw">c</span>(-<span class="dv">4</span>, -<span class="dv">3</span>, -<span class="dv">1</span>,  <span class="dv">0</span>,  <span class="dv">2</span>)
+y =<span class="st"> </span><span class="kw">c</span>(-<span class="dv">2</span>,  <span class="dv">0</span>,  <span class="dv">1</span>,  <span class="dv">2</span>, -<span class="dv">1</span>)</code></pre>
 <p>Manually I could just do:</p>
-<pre class="sourceCode r"><code class="sourceCode r">d = .<span class="dv">5</span>; epsilon = .<span class="dv">1</span>; sigma = <span class="dv">1</span>; <span class="co">#fixed hyperparamaters</span>
-SE &lt;- function(Xi,Xj, d) sigma * <span class="kw">exp</span>(-<span class="fl">0.5</span> * (Xi - Xj) ^ <span class="dv">2</span> / d ^ <span class="dv">2</span>)
-cov &lt;- function(X, Y) <span class="kw">outer</span>(X, Y, SE, d) 
-cov_xx_inv &lt;- <span class="kw">solve</span>(<span class="kw">cov</span>(x, x) + epsilon * <span class="kw">diag</span>(<span class="dv">1</span>, <span class="kw">length</span>(x)))
-Ef &lt;- <span class="kw">cov</span>(X, x) %*% cov_xx_inv %*% y
-Cf &lt;- <span class="kw">cov</span>(X, X) - <span class="kw">cov</span>(X, x)  %*% cov_xx_inv %*% <span class="kw">cov</span>(x, X)</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">d =<span class="st"> </span>.<span class="dv">5</span>; epsilon =<span class="st"> </span>.<span class="dv">1</span>; sigma =<span class="st"> </span><span class="dv">1</span>; <span class="co">#fixed hyperparamaters</span>
+SE &lt;-<span class="st"> </span>function(Xi,Xj, d) sigma *<span class="st"> </span><span class="kw">exp</span>(-<span class="fl">0.5</span> *<span class="st"> </span>(Xi -<span class="st"> </span>Xj) ^<span class="st"> </span><span class="dv">2</span> /<span class="st"> </span>d ^<span class="st"> </span><span class="dv">2</span>)
+cov &lt;-<span class="st"> </span>function(X, Y) <span class="kw">outer</span>(X, Y, SE, d) 
+cov_xx_inv &lt;-<span class="st"> </span><span class="kw">solve</span>(<span class="kw">cov</span>(x, x) +<span class="st"> </span>epsilon *<span class="st"> </span><span class="kw">diag</span>(<span class="dv">1</span>, <span class="kw">length</span>(x)))
+Ef &lt;-<span class="st"> </span><span class="kw">cov</span>(X, x) %*%<span class="st"> </span>cov_xx_inv %*%<span class="st"> </span>y
+Cf &lt;-<span class="st"> </span><span class="kw">cov</span>(X, X) -<span class="st"> </span><span class="kw">cov</span>(X, x)  %*%<span class="st"> </span>cov_xx_inv %*%<span class="st"> </span><span class="kw">cov</span>(x, X)</code></pre>
 <p>And <code>Ef</code> and <code>Cf</code> are the estimated (krieging) mean and covariance.</p>
 <h2 id="priors">Priors</h2>
 <p>Note: it appears that the mixed gammas for <code>d</code> and <code>nug</code> actually treat the second argument, <code>g1</code> and <code>g2</code>, as the rate instead of the scale, so I invert the desired scale:</p>
-<pre class="sourceCode r"><code class="sourceCode r">s2.p &lt;- <span class="kw">c</span>(<span class="dv">50</span>,<span class="dv">50</span>)
-tau2.p &lt;- <span class="kw">c</span>(<span class="dv">20</span>,<span class="dv">1</span>)
-d.p = <span class="kw">c</span>(<span class="dv">10</span>, <span class="dv">1</span>/<span class="fl">0.01</span>, <span class="dv">10</span>, <span class="dv">1</span>/<span class="fl">0.01</span>)
-nug.p = <span class="kw">c</span>(<span class="dv">10</span>, <span class="dv">1</span>/<span class="fl">0.01</span>, <span class="dv">10</span>, <span class="dv">1</span>/<span class="fl">0.01</span>)</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">s2.p &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">50</span>,<span class="dv">50</span>)
+tau2.p &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">20</span>,<span class="dv">1</span>)
+d.p =<span class="st"> </span><span class="kw">c</span>(<span class="dv">10</span>, <span class="dv">1</span>/<span class="fl">0.01</span>, <span class="dv">10</span>, <span class="dv">1</span>/<span class="fl">0.01</span>)
+nug.p =<span class="st"> </span><span class="kw">c</span>(<span class="dv">10</span>, <span class="dv">1</span>/<span class="fl">0.01</span>, <span class="dv">10</span>, <span class="dv">1</span>/<span class="fl">0.01</span>)</code></pre>
 <p>Define as curves and plot the priors:</p>
-<pre class="sourceCode r"><code class="sourceCode r">s2_prior &lt;- function(x) <span class="kw">dinvgamma</span>(x, s2.p[<span class="dv">1</span>], s2.p[<span class="dv">2</span>])
-tau2_prior &lt;- function(x) <span class="kw">dinvgamma</span>(x, tau2.p[<span class="dv">1</span>], tau2.p[<span class="dv">2</span>])
-d_prior &lt;- function(x) <span class="kw">dgamma</span>(x, d.p[<span class="dv">1</span>], <span class="dt">scale =</span> d.p[<span class="dv">2</span>]) + <span class="kw">dgamma</span>(x, d.p[<span class="dv">3</span>], <span class="dt">scale =</span> d.p[<span class="dv">4</span>])
-nug_prior &lt;- function(x) <span class="kw">dgamma</span>(x, nug.p[<span class="dv">1</span>], <span class="dt">scale =</span> nug.p[<span class="dv">2</span>]) + <span class="kw">dgamma</span>(x, nug.p[<span class="dv">3</span>], <span class="dt">scale =</span> nug.p[<span class="dv">4</span>])
-beta0_prior &lt;- function(x, tau) <span class="kw">dnorm</span>(x, <span class="dv">0</span>, tau)
+<pre class="sourceCode r"><code class="sourceCode r">s2_prior &lt;-<span class="st"> </span>function(x) <span class="kw">dinvgamma</span>(x, s2.p[<span class="dv">1</span>], s2.p[<span class="dv">2</span>])
+tau2_prior &lt;-<span class="st"> </span>function(x) <span class="kw">dinvgamma</span>(x, tau2.p[<span class="dv">1</span>], tau2.p[<span class="dv">2</span>])
+d_prior &lt;-<span class="st"> </span>function(x) <span class="kw">dgamma</span>(x, d.p[<span class="dv">1</span>], <span class="dt">scale =</span> d.p[<span class="dv">2</span>]) +<span class="st"> </span><span class="kw">dgamma</span>(x, d.p[<span class="dv">3</span>], <span class="dt">scale =</span> d.p[<span class="dv">4</span>])
+nug_prior &lt;-<span class="st"> </span>function(x) <span class="kw">dgamma</span>(x, nug.p[<span class="dv">1</span>], <span class="dt">scale =</span> nug.p[<span class="dv">2</span>]) +<span class="st"> </span><span class="kw">dgamma</span>(x, nug.p[<span class="dv">3</span>], <span class="dt">scale =</span> nug.p[<span class="dv">4</span>])
+beta0_prior &lt;-<span class="st"> </span>function(x, tau) <span class="kw">dnorm</span>(x, <span class="dv">0</span>, tau)
 
-xx &lt;- <span class="kw">seq</span>(.<span class="dv">0001</span>, <span class="dv">5</span>, <span class="dt">length.out=</span><span class="dv">100</span>)
-priors &lt;- <span class="kw">data.frame</span>(<span class="dt">x =</span> xx, <span class="dt">s2 =</span> <span class="kw">s2_prior</span>(xx), <span class="dt">tau2 =</span> <span class="kw">tau2_prior</span>(xx), <span class="dt">beta0 =</span> <span class="kw">beta0_prior</span>(xx, <span class="dv">1</span>), <span class="dt">nug =</span> <span class="kw">nug_prior</span>(xx), <span class="dt">d =</span> <span class="kw">d_prior</span>(xx))
-priors &lt;- <span class="kw">melt</span>(priors, <span class="dt">id=</span><span class="st">&quot;x&quot;</span>)
-<span class="kw">ggplot</span>(priors) + <span class="kw">geom_line</span>(<span class="kw">aes</span>(x, value)) + <span class="kw">facet_wrap</span>(~variable, <span class="dt">scale=</span><span class="st">&quot;free&quot;</span>)</code></pre>
+xx &lt;-<span class="st"> </span><span class="kw">seq</span>(.<span class="dv">0001</span>, <span class="dv">5</span>, <span class="dt">length.out=</span><span class="dv">100</span>)
+priors &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">x =</span> xx, <span class="dt">s2 =</span> <span class="kw">s2_prior</span>(xx), <span class="dt">tau2 =</span> <span class="kw">tau2_prior</span>(xx), <span class="dt">beta0 =</span> <span class="kw">beta0_prior</span>(xx, <span class="dv">1</span>), <span class="dt">nug =</span> <span class="kw">nug_prior</span>(xx), <span class="dt">d =</span> <span class="kw">d_prior</span>(xx))
+priors &lt;-<span class="st"> </span><span class="kw">melt</span>(priors, <span class="dt">id=</span><span class="st">&quot;x&quot;</span>)
+<span class="kw">ggplot</span>(priors) +<span class="st"> </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(x, value)) +<span class="st"> </span><span class="kw">facet_wrap</span>(~variable, <span class="dt">scale=</span><span class="st">&quot;free&quot;</span>)</code></pre>
 <figure>
 <img src="/assets/figures/2012-12-10-9b2d792442-unnamed-chunk-5.png" alt="plot of chunk unnamed-chunk-5" /><figcaption>plot of chunk unnamed-chunk-5</figcaption>
 </figure>
-<pre class="sourceCode r"><code class="sourceCode r">gp &lt;- <span class="kw">bgp</span>(<span class="dt">X=</span>x, <span class="dt">XX=</span>X, <span class="dt">Z=</span>y, <span class="dt">verb=</span><span class="dv">0</span>,
+<pre class="sourceCode r"><code class="sourceCode r">gp &lt;-<span class="st"> </span><span class="kw">bgp</span>(<span class="dt">X=</span>x, <span class="dt">XX=</span>X, <span class="dt">Z=</span>y, <span class="dt">verb=</span><span class="dv">0</span>,
           <span class="dt">meanfn=</span><span class="st">&quot;constant&quot;</span>, <span class="dt">bprior=</span><span class="st">&quot;b0&quot;</span>, <span class="dt">BTE=</span><span class="kw">c</span>(<span class="dv">2000</span>,<span class="dv">6000</span>,<span class="dv">2</span>), <span class="dt">m0r1=</span><span class="ot">FALSE</span>, 
           <span class="dt">corr=</span><span class="st">&quot;exp&quot;</span>, <span class="dt">trace=</span><span class="ot">TRUE</span>, <span class="dt">beta =</span> <span class="dv">0</span>,
           <span class="dt">s2.p =</span> s2.p, <span class="dt">d.p =</span> d.p, <span class="dt">nug.p =</span> nug.p,
           <span class="dt">s2.lam =</span> <span class="st">&quot;fixed&quot;</span>, <span class="dt">d.lam =</span> <span class="st">&quot;fixed&quot;</span>, <span class="dt">nug.lam =</span> <span class="st">&quot;fixed&quot;</span>, 
           <span class="dt">tau2.lam =</span> <span class="st">&quot;fixed&quot;</span>, <span class="dt">tau2.p =</span> tau2.p)</code></pre>
 <p>Extract the posterior Gaussian process mean and the <span class="math">\(\pm 2\)</span> standard deviations over the predicted grid from the fit:</p>
-<pre class="sourceCode r"><code class="sourceCode r">V &lt;- gp$ZZ.ks2
-tgp_dat &lt;- <span class="kw">data.frame</span>(<span class="dt">x   =</span> gp$XX[[<span class="dv">1</span>]], 
+<pre class="sourceCode r"><code class="sourceCode r">V &lt;-<span class="st"> </span>gp$ZZ.ks2
+tgp_dat &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">x   =</span> gp$XX[[<span class="dv">1</span>]], 
                   <span class="dt">y   =</span> gp$ZZ.km, 
-                 <span class="dt">ymin =</span> gp$ZZ.km - <span class="fl">1.96</span> * <span class="kw">sqrt</span>(gp$ZZ.ks2), 
-                 <span class="dt">ymax =</span> gp$ZZ.km + <span class="fl">1.96</span> * <span class="kw">sqrt</span>(gp$ZZ.ks2))</code></pre>
+                 <span class="dt">ymin =</span> gp$ZZ.km -<span class="st"> </span><span class="fl">1.96</span> *<span class="st"> </span><span class="kw">sqrt</span>(gp$ZZ.ks2), 
+                 <span class="dt">ymax =</span> gp$ZZ.km +<span class="st"> </span><span class="fl">1.96</span> *<span class="st"> </span><span class="kw">sqrt</span>(gp$ZZ.ks2))</code></pre>
 <p>and likewise for our manual data:</p>
-<pre class="sourceCode r"><code class="sourceCode r">manual_dat &lt;- <span class="kw">data.frame</span>(<span class="dt">x =</span> X, 
+<pre class="sourceCode r"><code class="sourceCode r">manual_dat &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">x =</span> X, 
                          <span class="dt">y =</span> Ef, 
-                         <span class="dt">ymin =</span> (Ef - <span class="fl">1.96</span> * <span class="kw">sqrt</span>(<span class="kw">diag</span>(Cf))), 
-                         <span class="dt">ymax =</span> (Ef + <span class="fl">1.96</span> * <span class="kw">sqrt</span>(<span class="kw">diag</span>(Cf))))</code></pre>
+                         <span class="dt">ymin =</span> (Ef -<span class="st"> </span><span class="fl">1.96</span> *<span class="st"> </span><span class="kw">sqrt</span>(<span class="kw">diag</span>(Cf))), 
+                         <span class="dt">ymax =</span> (Ef +<span class="st"> </span><span class="fl">1.96</span> *<span class="st"> </span><span class="kw">sqrt</span>(<span class="kw">diag</span>(Cf))))</code></pre>
 <p>Compare the GP posteriors:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(tgp_dat) +
-    <span class="kw">geom_ribbon</span>(<span class="kw">aes</span>(x, y, <span class="dt">ymin =</span> ymin, <span class="dt">ymax =</span> ymax), <span class="dt">fill=</span><span class="st">&quot;red&quot;</span>, <span class="dt">alpha =</span> .<span class="dv">1</span>) + <span class="co"># Var</span>
-    <span class="kw">geom_line</span>(<span class="kw">aes</span>(x, y), <span class="dt">col=</span><span class="st">&quot;red&quot;</span>) + <span class="co"># mean</span>
-    <span class="kw">geom_point</span>(<span class="dt">data =</span> <span class="kw">data.frame</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y), <span class="kw">aes</span>(x, y)) + <span class="co"># raw data</span>
-    <span class="kw">geom_ribbon</span>(<span class="dt">dat =</span> manual_dat, <span class="kw">aes</span>(x, y, <span class="dt">ymin =</span> ymin, <span class="dt">ymax =</span> ymax), <span class="dt">fill =</span> <span class="st">&quot;blue&quot;</span>, <span class="dt">alpha =</span> .<span class="dv">1</span>) + <span class="co"># Var</span>
-    <span class="kw">geom_line</span>(<span class="dt">dat =</span> manual_dat, <span class="kw">aes</span>(x, y), <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>)  + <span class="co">#MEAN    </span>
-    <span class="kw">theme_bw</span>() + <span class="kw">theme</span>(<span class="dt">plot.background =</span> <span class="kw">element_rect</span>(<span class="dt">fill =</span> <span class="st">&quot;transparent&quot;</span>,<span class="dt">colour =</span> <span class="ot">NA</span>))</code></pre>
+<span class="st">    </span><span class="kw">geom_ribbon</span>(<span class="kw">aes</span>(x, y, <span class="dt">ymin =</span> ymin, <span class="dt">ymax =</span> ymax), <span class="dt">fill=</span><span class="st">&quot;red&quot;</span>, <span class="dt">alpha =</span> .<span class="dv">1</span>) +<span class="st"> </span><span class="co"># Var</span>
+<span class="st">    </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(x, y), <span class="dt">col=</span><span class="st">&quot;red&quot;</span>) +<span class="st"> </span><span class="co"># mean</span>
+<span class="st">    </span><span class="kw">geom_point</span>(<span class="dt">data =</span> <span class="kw">data.frame</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y), <span class="kw">aes</span>(x, y)) +<span class="st"> </span><span class="co"># raw data</span>
+<span class="st">    </span><span class="kw">geom_ribbon</span>(<span class="dt">dat =</span> manual_dat, <span class="kw">aes</span>(x, y, <span class="dt">ymin =</span> ymin, <span class="dt">ymax =</span> ymax), <span class="dt">fill =</span> <span class="st">&quot;blue&quot;</span>, <span class="dt">alpha =</span> .<span class="dv">1</span>) +<span class="st"> </span><span class="co"># Var</span>
+<span class="st">    </span><span class="kw">geom_line</span>(<span class="dt">dat =</span> manual_dat, <span class="kw">aes</span>(x, y), <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>)  +<span class="st"> </span><span class="co">#MEAN    </span>
+<span class="st">    </span><span class="kw">theme_bw</span>() +<span class="st"> </span><span class="kw">theme</span>(<span class="dt">plot.background =</span> <span class="kw">element_rect</span>(<span class="dt">fill =</span> <span class="st">&quot;transparent&quot;</span>,<span class="dt">colour =</span> <span class="ot">NA</span>))</code></pre>
 <figure>
 <img src="/assets/figures/2012-12-10-9b2d792442-gp-plot.png" alt="plot of chunk gp-plot" /><figcaption>plot of chunk gp-plot</figcaption>
 </figure>
 <h2 id="posteriors-of-hyperparameters">Posteriors of hyperparameters</h2>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">require</span>(reshape2)
-hyperparameters &lt;- <span class="kw">c</span>(<span class="st">&quot;index&quot;</span>, <span class="st">&quot;s2&quot;</span>, <span class="st">&quot;tau2&quot;</span>, <span class="st">&quot;beta0&quot;</span>, <span class="st">&quot;nug&quot;</span>, <span class="st">&quot;d&quot;</span>, <span class="st">&quot;ldetK&quot;</span>)
-posteriors &lt;- <span class="kw">melt</span>(gp$trace$XX[[<span class="dv">1</span>]][,hyperparameters], <span class="dt">id=</span><span class="st">&quot;index&quot;</span>)
-<span class="kw">ggplot</span>(posteriors) + <span class="kw">geom_histogram</span>(<span class="kw">aes</span>(value)) + <span class="kw">facet_wrap</span>(~variable, <span class="dt">scales=</span><span class="st">&quot;free&quot;</span>)</code></pre>
+hyperparameters &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;index&quot;</span>, <span class="st">&quot;s2&quot;</span>, <span class="st">&quot;tau2&quot;</span>, <span class="st">&quot;beta0&quot;</span>, <span class="st">&quot;nug&quot;</span>, <span class="st">&quot;d&quot;</span>, <span class="st">&quot;ldetK&quot;</span>)
+posteriors &lt;-<span class="st"> </span><span class="kw">melt</span>(gp$trace$XX[[<span class="dv">1</span>]][,hyperparameters], <span class="dt">id=</span><span class="st">&quot;index&quot;</span>)
+<span class="kw">ggplot</span>(posteriors) +<span class="st"> </span><span class="kw">geom_histogram</span>(<span class="kw">aes</span>(value)) +<span class="st"> </span><span class="kw">facet_wrap</span>(~variable, <span class="dt">scales=</span><span class="st">&quot;free&quot;</span>)</code></pre>
 <figure>
 <img src="/assets/figures/2012-12-10-9b2d792442-unnamed-chunk-9.png" alt="plot of chunk unnamed-chunk-9" /><figcaption>plot of chunk unnamed-chunk-9</figcaption>
 </figure>
@@ -288,7 +288,7 @@ posteriors &lt;- <span class="kw">melt</span>(gp$trace$XX[[<span class="dv">1</s
 
   <br/>
 
-   <p style="font-style:italic"> <i class="icon-signal"></i> pageviews: 59</p>
+   <p style="font-style:italic"> <i class="icon-signal"></i> pageviews: 57</p>
 
   <br/>
 

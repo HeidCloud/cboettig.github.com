@@ -181,8 +181,8 @@
 </figure>
 <h3 id="misc-notes">Misc notes</h3>
 <p>Caching is pretty helpful in fiddling with these slow computations. Sometimes it helps to copy the cache of the intensive part of a run over from the supercomputer to the local machine, and load the whole cache into an interactive R session. Loading the whole cache can be done as such:</p>
-<pre class="sourceCode r"><code class="sourceCode r">e &lt;- <span class="kw">environment</span>()
-files &lt;- <span class="kw">gsub</span>(<span class="st">&quot;.rdb&quot;</span>, <span class="st">&quot;&quot;</span>, <span class="kw">system</span>(<span class="st">&#39;ls *.rdb&#39;</span>, <span class="dt">intern=</span><span class="ot">TRUE</span>))
+<pre class="sourceCode r"><code class="sourceCode r">e &lt;-<span class="st"> </span><span class="kw">environment</span>()
+files &lt;-<span class="st"> </span><span class="kw">gsub</span>(<span class="st">&quot;.rdb&quot;</span>, <span class="st">&quot;&quot;</span>, <span class="kw">system</span>(<span class="st">&#39;ls *.rdb&#39;</span>, <span class="dt">intern=</span><span class="ot">TRUE</span>))
 <span class="kw">sapply</span>(files, lazyLoad, <span class="dt">env=</span>e)</code></pre>
 <p>providied the target chache directory doesn’t have caches of different commits.</p>
 
