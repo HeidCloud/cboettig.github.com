@@ -145,7 +145,7 @@
     <article>
     <p>Exploring implementation through <code>tgp</code> package MCMC routine and background reading (manual, vignettes, thesis).</p>
 <p>Example call:</p>
-<pre class="sourceCode r"><code class="sourceCode r">gp &lt;-<span class="st"> </span><span class="kw">bgp</span>(<span class="dt">X=</span>X, <span class="dt">XX=</span>XX, <span class="dt">Z=</span>Z, <span class="dt">meanfn=</span><span class="st">&quot;constant&quot;</span>, <span class="dt">bprior=</span><span class="st">&quot;b0&quot;</span>, <span class="dt">BTE=</span><span class="kw">c</span>(<span class="dv">1000</span>,<span class="dv">6000</span>,<span class="dv">2</span>), <span class="dt">m0r1=</span><span class="ot">TRUE</span>, <span class="dt">verb=</span><span class="dv">4</span>, <span class="dt">corr=</span><span class="st">&quot;exp&quot;</span>, <span class="dt">trace=</span><span class="ot">TRUE</span>, <span class="dt">s2.p=</span><span class="kw">c</span>(<span class="dv">5</span>,<span class="dv">10</span>), <span class="dt">tau2.p=</span><span class="kw">c</span>(<span class="dv">5</span>,<span class="dv">10</span>), <span class="dt">s2.lam=</span><span class="st">&quot;fixed&quot;</span>, <span class="dt">tau2.lam=</span><span class="st">&quot;fixed&quot;</span>)</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">gp &lt;- <span class="kw">bgp</span>(<span class="dt">X=</span>X, <span class="dt">XX=</span>XX, <span class="dt">Z=</span>Z, <span class="dt">meanfn=</span><span class="st">&quot;constant&quot;</span>, <span class="dt">bprior=</span><span class="st">&quot;b0&quot;</span>, <span class="dt">BTE=</span><span class="kw">c</span>(<span class="dv">1000</span>,<span class="dv">6000</span>,<span class="dv">2</span>), <span class="dt">m0r1=</span><span class="ot">TRUE</span>, <span class="dt">verb=</span><span class="dv">4</span>, <span class="dt">corr=</span><span class="st">&quot;exp&quot;</span>, <span class="dt">trace=</span><span class="ot">TRUE</span>, <span class="dt">s2.p=</span><span class="kw">c</span>(<span class="dv">5</span>,<span class="dv">10</span>), <span class="dt">tau2.p=</span><span class="kw">c</span>(<span class="dv">5</span>,<span class="dv">10</span>), <span class="dt">s2.lam=</span><span class="st">&quot;fixed&quot;</span>, <span class="dt">tau2.lam=</span><span class="st">&quot;fixed&quot;</span>)</code></pre>
 <p>Verbose return:</p>
 <pre><code>n=39, d=1, nn=101
 BTE=(1000,6000,2), R=1, linburn=0
@@ -190,77 +190,77 @@ d prior fixed</code></pre>
 <li><p>Where are the hyperparameters for the correlation function (e.g. the length-scale for the Gaussian??)</p></li>
 </ul>
 <h3 id="traces">Traces</h3>
-<pre class="sourceCode r"><code class="sourceCode r">pars &lt;-<span class="st"> </span><span class="kw">melt</span>(gp$trace$XX[[<span class="dv">1</span>]], <span class="dt">id =</span> <span class="st">&quot;index&quot;</span>)
-<span class="kw">ggplot</span>(pars, <span class="kw">aes</span>(index, value)) +<span class="st"> </span><span class="kw">geom_line</span>() +<span class="st"> </span><span class="kw">facet_wrap</span>(~variable, <span class="dt">scales=</span><span class="st">&quot;free_y&quot;</span>)</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">pars &lt;- <span class="kw">melt</span>(gp$trace$XX[[<span class="dv">1</span>]], <span class="dt">id =</span> <span class="st">&quot;index&quot;</span>)
+<span class="kw">ggplot</span>(pars, <span class="kw">aes</span>(index, value)) + <span class="kw">geom_line</span>() + <span class="kw">facet_wrap</span>(~variable, <span class="dt">scales=</span><span class="st">&quot;free_y&quot;</span>)</code></pre>
 <figure>
 <img src="/assets/figures/2012-12-04-046b509f8d-unnamed-chunk-5.png" alt="plot of chunk unnamed-chunk-5" /><figcaption>plot of chunk unnamed-chunk-5</figcaption>
 </figure>
 <p>It is possible to calculate summary statistics and check out the distribution of these fellows.</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span>(gp$trace$XX[[<span class="dv">1</span>]][,<span class="st">&quot;nug&quot;</span>])</code></pre>
 <pre><code>[1] 0.009755</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(pars, <span class="kw">aes</span>(value)) +<span class="st"> </span><span class="kw">geom_histogram</span>() +<span class="st"> </span><span class="kw">facet_wrap</span>(~variable, <span class="dt">scales=</span><span class="st">&quot;free&quot;</span>)</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(pars, <span class="kw">aes</span>(value)) + <span class="kw">geom_histogram</span>() + <span class="kw">facet_wrap</span>(~variable, <span class="dt">scales=</span><span class="st">&quot;free&quot;</span>)</code></pre>
 <figure>
 <img src="/assets/figures/2012-12-04-046b509f8d-unnamed-chunk-6.png" alt="plot of chunk unnamed-chunk-6" /><figcaption>plot of chunk unnamed-chunk-6</figcaption>
 </figure>
 <h2 id="extracting-the-estimated-process">Extracting the estimated process</h2>
 <p>(The <strong>MAP</strong>, maximum a posteriori expected mean and variance).</p>
 <p>Extract the posterior Gaussian process mean and the <span class="math">\(\pm 2\)</span> standard deviations over the predicted grid from the fit:</p>
-<pre class="sourceCode r"><code class="sourceCode r">V &lt;-<span class="st"> </span>gp$ZZ.ks2
-dat &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">x   =</span> gp$XX[[<span class="dv">1</span>]], 
+<pre class="sourceCode r"><code class="sourceCode r">V &lt;- gp$ZZ.ks2
+dat &lt;- <span class="kw">data.frame</span>(<span class="dt">x   =</span> gp$XX[[<span class="dv">1</span>]], 
                  <span class="dt">y    =</span> gp$ZZ.km, 
-                 <span class="dt">ymin =</span> gp$ZZ.km -<span class="st"> </span><span class="fl">1.96</span> *<span class="st"> </span><span class="kw">sqrt</span>(gp$ZZ.ks2), 
-                 <span class="dt">ymax =</span> gp$ZZ.km +<span class="st"> </span><span class="fl">1.96</span> *<span class="st"> </span><span class="kw">sqrt</span>(gp$ZZ.ks2))</code></pre>
+                 <span class="dt">ymin =</span> gp$ZZ.km - <span class="fl">1.96</span> * <span class="kw">sqrt</span>(gp$ZZ.ks2), 
+                 <span class="dt">ymax =</span> gp$ZZ.km + <span class="fl">1.96</span> * <span class="kw">sqrt</span>(gp$ZZ.ks2))</code></pre>
 <p>Plot the posterior Gaussian Process:</p>
-<pre class="sourceCode r"><code class="sourceCode r">  p1 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(dat) +
-<span class="st">    </span><span class="kw">geom_ribbon</span>(<span class="kw">aes</span>(<span class="dt">x=</span>x,<span class="dt">y=</span>y, <span class="dt">ymin=</span>ymin, <span class="dt">ymax=</span>ymax), <span class="dt">fill=</span><span class="st">&quot;grey80&quot;</span>) +<span class="st"> </span><span class="co"># Var</span>
-<span class="st">    </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">x=</span>x,<span class="dt">y=</span>y), <span class="dt">size=</span><span class="dv">1</span>) +<span class="st"> </span><span class="co">#MEAN</span>
-<span class="st">    </span><span class="kw">geom_point</span>(<span class="dt">data=</span>gp$obs,<span class="kw">aes</span>(<span class="dt">x=</span>x,<span class="dt">y=</span>y)) +<span class="st"> </span>
-<span class="st">    </span><span class="kw">labs</span>(<span class="dt">title=</span><span class="kw">paste</span>(<span class="st">&quot;llik =&quot;</span>, <span class="kw">prettyNum</span>(gp$llik)))
+<pre class="sourceCode r"><code class="sourceCode r">  p1 &lt;- <span class="kw">ggplot</span>(dat) +
+    <span class="kw">geom_ribbon</span>(<span class="kw">aes</span>(<span class="dt">x=</span>x,<span class="dt">y=</span>y, <span class="dt">ymin=</span>ymin, <span class="dt">ymax=</span>ymax), <span class="dt">fill=</span><span class="st">&quot;grey80&quot;</span>) + <span class="co"># Var</span>
+    <span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">x=</span>x,<span class="dt">y=</span>y), <span class="dt">size=</span><span class="dv">1</span>) + <span class="co">#MEAN</span>
+    <span class="kw">geom_point</span>(<span class="dt">data=</span>gp$obs,<span class="kw">aes</span>(<span class="dt">x=</span>x,<span class="dt">y=</span>y)) + 
+    <span class="kw">labs</span>(<span class="dt">title=</span><span class="kw">paste</span>(<span class="st">&quot;llik =&quot;</span>, <span class="kw">prettyNum</span>(gp$llik)))
   if(!<span class="kw">is.null</span>(true))
-    p1 &lt;-<span class="st"> </span>p1 +<span class="st"> </span><span class="kw">geom_line</span>(<span class="dt">data =</span> true, <span class="kw">aes</span>(x, y), <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">lty =</span> <span class="dv">2</span>) 
-p1 +<span class="st"> </span>theme_notebook</code></pre>
+    p1 &lt;- p1 + <span class="kw">geom_line</span>(<span class="dt">data =</span> true, <span class="kw">aes</span>(x, y), <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">lty =</span> <span class="dv">2</span>) 
+p1 + theme_notebook</code></pre>
 <figure>
 <img src="/assets/figures/2012-12-04-046b509f8d-gp-plot.png" alt="plot of chunk gp-plot" /><figcaption>plot of chunk gp-plot</figcaption>
 </figure>
 <p>Find the actual optimum policy from the true parametric model</p>
-<pre class="sourceCode r"><code class="sourceCode r">x_grid &lt;-<span class="st"> </span>dat$x
-h_grid &lt;-<span class="st"> </span>x_grid
-matrices_true &lt;-<span class="st"> </span><span class="kw">f_transition_matrix</span>(f, p, x_grid, h_grid)
-opt_true &lt;-<span class="st"> </span><span class="kw">find_dp_optim</span>(matrices_true, x_grid, h_grid, <span class="dv">20</span>, <span class="dv">0</span>, profit, <span class="dt">delta=</span>.<span class="dv">01</span>)</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">x_grid &lt;- dat$x
+h_grid &lt;- x_grid
+matrices_true &lt;- <span class="kw">f_transition_matrix</span>(f, p, x_grid, h_grid)
+opt_true &lt;- <span class="kw">find_dp_optim</span>(matrices_true, x_grid, h_grid, <span class="dv">20</span>, <span class="dv">0</span>, profit, <span class="dt">delta=</span>.<span class="dv">01</span>)</code></pre>
 <p>Estimate a policy from the Gaussian Process:</p>
-<pre class="sourceCode r"><code class="sourceCode r">rownorm &lt;-<span class="st"> </span>function(M) <span class="kw">t</span>(<span class="kw">apply</span>(M, <span class="dv">1</span>, function(x) x/<span class="kw">sum</span>(x)))
-matrices_gp &lt;-<span class="st"> </span><span class="kw">lapply</span>(h_grid, function(h){
-    S &lt;-<span class="st"> </span>dat$y -<span class="st"> </span>h
-    F_ &lt;-<span class="st"> </span><span class="kw">t</span>(<span class="kw">sapply</span>(<span class="dv">1</span>:<span class="kw">length</span>(S), function(i){
+<pre class="sourceCode r"><code class="sourceCode r">rownorm &lt;- function(M) <span class="kw">t</span>(<span class="kw">apply</span>(M, <span class="dv">1</span>, function(x) x/<span class="kw">sum</span>(x)))
+matrices_gp &lt;- <span class="kw">lapply</span>(h_grid, function(h){
+    S &lt;- dat$y - h
+    F_ &lt;- <span class="kw">t</span>(<span class="kw">sapply</span>(<span class="dv">1</span>:<span class="kw">length</span>(S), function(i){
       if(S[i]&gt;<span class="dv">0</span>) {
-        out &lt;-<span class="st"> </span><span class="kw">dlnorm</span>(x_grid/S[i], <span class="dv">0</span>, V[i])
+        out &lt;- <span class="kw">dlnorm</span>(x_grid/S[i], <span class="dv">0</span>, V[i])
       } else {
-        out &lt;-<span class="st"> </span><span class="kw">numeric</span>(<span class="kw">length</span>(x_grid))
-        out[<span class="dv">1</span>] &lt;-<span class="st"> </span><span class="dv">1</span>
+        out &lt;- <span class="kw">numeric</span>(<span class="kw">length</span>(x_grid))
+        out[<span class="dv">1</span>] &lt;- <span class="dv">1</span>
         out
       }
     }))
-    F_ &lt;-<span class="st"> </span><span class="kw">rownorm</span>(F_)
+    F_ &lt;- <span class="kw">rownorm</span>(F_)
   })
-opt_gp &lt;-<span class="st"> </span><span class="kw">find_dp_optim</span>(matrices_gp, x_grid, h_grid, <span class="dv">20</span>, <span class="dv">0</span>, profit, <span class="dt">delta=</span>.<span class="dv">01</span>)</code></pre>
+opt_gp &lt;- <span class="kw">find_dp_optim</span>(matrices_gp, x_grid, h_grid, <span class="dv">20</span>, <span class="dv">0</span>, profit, <span class="dt">delta=</span>.<span class="dv">01</span>)</code></pre>
 <p>and plot</p>
-<pre class="sourceCode r"><code class="sourceCode r">policies &lt;-<span class="st"> </span><span class="kw">melt</span>(<span class="kw">data.frame</span>(<span class="dt">stock=</span>x_grid, <span class="dt">GP =</span> x_grid[opt_gp$D[,<span class="dv">1</span>]], <span class="dt">Exact =</span> x_grid[opt_true$D[,<span class="dv">1</span>]]), <span class="dt">id=</span><span class="st">&quot;stock&quot;</span>)
-policy_plot &lt;-<span class="st"> </span><span class="kw">ggplot</span>(policies, <span class="kw">aes</span>(stock, stock -<span class="st"> </span>value, <span class="dt">color=</span>variable)) +
-<span class="st">  </span><span class="kw">geom_point</span>() +<span class="st"> </span><span class="kw">xlab</span>(<span class="st">&quot;stock size&quot;</span>) +<span class="st"> </span><span class="kw">ylab</span>(<span class="st">&quot;escapement&quot;</span>) 
-policy_plot +<span class="st"> </span>theme_notebook</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">policies &lt;- <span class="kw">melt</span>(<span class="kw">data.frame</span>(<span class="dt">stock=</span>x_grid, <span class="dt">GP =</span> x_grid[opt_gp$D[,<span class="dv">1</span>]], <span class="dt">Exact =</span> x_grid[opt_true$D[,<span class="dv">1</span>]]), <span class="dt">id=</span><span class="st">&quot;stock&quot;</span>)
+policy_plot &lt;- <span class="kw">ggplot</span>(policies, <span class="kw">aes</span>(stock, stock - value, <span class="dt">color=</span>variable)) +
+  <span class="kw">geom_point</span>() + <span class="kw">xlab</span>(<span class="st">&quot;stock size&quot;</span>) + <span class="kw">ylab</span>(<span class="st">&quot;escapement&quot;</span>) 
+policy_plot + theme_notebook</code></pre>
 <figure>
 <img src="/assets/figures/2012-12-04-046b509f8d-policy_plot.png" alt="plot of chunk policy_plot" /><figcaption>plot of chunk policy_plot</figcaption>
 </figure>
 <p>We can see what happens when we attempt to manage a stock using this:</p>
-<pre class="sourceCode r"><code class="sourceCode r">z_g &lt;-<span class="st"> </span>function() <span class="kw">rlnorm</span>(<span class="dv">1</span>,<span class="dv">0</span>, sigma_g)
+<pre class="sourceCode r"><code class="sourceCode r">z_g &lt;- function() <span class="kw">rlnorm</span>(<span class="dv">1</span>,<span class="dv">0</span>, sigma_g)
 <span class="kw">set.seed</span>(<span class="dv">1</span>)
-sim_gp &lt;-<span class="st"> </span><span class="kw">ForwardSimulate</span>(f, p, x_grid, h_grid, K, opt_gp$D, z_g, <span class="dt">profit=</span>profit)
+sim_gp &lt;- <span class="kw">ForwardSimulate</span>(f, p, x_grid, h_grid, K, opt_gp$D, z_g, <span class="dt">profit=</span>profit)
 <span class="kw">set.seed</span>(<span class="dv">1</span>)
-sim_true &lt;-<span class="st"> </span><span class="kw">ForwardSimulate</span>(f, p, x_grid, h_grid, K, opt_true$D, z_g, <span class="dt">profit=</span>profit)</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r">df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">time =</span> sim_gp$time, <span class="dt">stock_gp =</span> sim_gp$fishstock, <span class="dt">stock_true =</span> sim_true$fishstock, <span class="dt">harvest_gp =</span> sim_gp$harvest, <span class="dt">havest_true =</span> sim_true$harvest)
-df &lt;-<span class="st"> </span><span class="kw">melt</span>(df, <span class="dt">id=</span><span class="st">&quot;time&quot;</span>)
-simplot &lt;-<span class="st"> </span><span class="kw">ggplot</span>(df) +<span class="st"> </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(time,value, <span class="dt">color=</span>variable))
-simplot +<span class="st"> </span>theme_notebook</code></pre>
+sim_true &lt;- <span class="kw">ForwardSimulate</span>(f, p, x_grid, h_grid, K, opt_true$D, z_g, <span class="dt">profit=</span>profit)</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">df &lt;- <span class="kw">data.frame</span>(<span class="dt">time =</span> sim_gp$time, <span class="dt">stock_gp =</span> sim_gp$fishstock, <span class="dt">stock_true =</span> sim_true$fishstock, <span class="dt">harvest_gp =</span> sim_gp$harvest, <span class="dt">havest_true =</span> sim_true$harvest)
+df &lt;- <span class="kw">melt</span>(df, <span class="dt">id=</span><span class="st">&quot;time&quot;</span>)
+simplot &lt;- <span class="kw">ggplot</span>(df) + <span class="kw">geom_line</span>(<span class="kw">aes</span>(time,value, <span class="dt">color=</span>variable))
+simplot + theme_notebook</code></pre>
 <figure>
 <img src="/assets/figures/2012-12-04-046b509f8d-simplot.png" alt="plot of chunk simplot" /><figcaption>plot of chunk simplot</figcaption>
 </figure>

@@ -147,7 +147,7 @@
 <h3 id="show-the-parameter-distributions">Show the parameter distributions:</h3>
 <p>We can also look at the bootstraps of the parameters. Another helper function will reformat this data from reps list. The fit column uses a two-letter code to indicate first what model was used to simulate the data, and then what model was fit to the data. For instance, AB means the data was simulated from model A (the null, OU model) but fit to B.</p>
 <pre class="sourceCode R"><code class="sourceCode r">
-pars &lt;-<span class="st"> </span><span class="kw">parameter_bootstraps</span>(reps)
+pars &lt;- <span class="kw">parameter_bootstraps</span>(reps)
 <span class="kw">head</span>(pars)</code></pre>
 <pre class="sourceCode R"><code class="sourceCode r">
     value parameter fit rep
@@ -160,11 +160,11 @@ pars &lt;-<span class="st"> </span><span class="kw">parameter_bootstraps</span>(
 <p>There are lots of options for visualizing this relatively high-dimensional data, which we can easily explore with a few commands from the <code>ggplot2</code> package. For instance, we can look at average and range of parameters estimated in the bootstraps of each model:</p>
 <pre class="sourceCode R"><code class="sourceCode r">
 <span class="kw">require</span>(Hmisc)
-<span class="kw">ggplot</span>(<span class="kw">subset</span>(pars, fit %in%<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;AA&quot;</span>, <span class="st">&quot;BB&quot;</span>)), <span class="kw">aes</span>(fit, 
-    value)) +<span class="st"> </span><span class="kw">stat_summary</span>(<span class="dt">fun.y =</span> mean, <span class="dt">geom =</span> <span class="st">&quot;bar&quot;</span>, <span class="dt">position =</span> <span class="st">&quot;dodge&quot;</span>) +<span class="st"> </span>
-<span class="st">    </span><span class="kw">stat_summary</span>(<span class="dt">fun.data =</span> median_hilow, <span class="dt">geom =</span> <span class="st">&quot;pointrange&quot;</span>, 
-        <span class="dt">position =</span> <span class="kw">position_dodge</span>(<span class="dt">width =</span> <span class="fl">0.9</span>), <span class="dt">conf.int =</span> <span class="fl">0.95</span>) +<span class="st"> </span>
-<span class="st">    </span><span class="kw">facet_wrap</span>(~parameter, <span class="dt">scales =</span> <span class="st">&quot;free_y&quot;</span>)</code></pre>
+<span class="kw">ggplot</span>(<span class="kw">subset</span>(pars, fit %in% <span class="kw">c</span>(<span class="st">&quot;AA&quot;</span>, <span class="st">&quot;BB&quot;</span>)), <span class="kw">aes</span>(fit, 
+    value)) + <span class="kw">stat_summary</span>(<span class="dt">fun.y =</span> mean, <span class="dt">geom =</span> <span class="st">&quot;bar&quot;</span>, <span class="dt">position =</span> <span class="st">&quot;dodge&quot;</span>) + 
+    <span class="kw">stat_summary</span>(<span class="dt">fun.data =</span> median_hilow, <span class="dt">geom =</span> <span class="st">&quot;pointrange&quot;</span>, 
+        <span class="dt">position =</span> <span class="kw">position_dodge</span>(<span class="dt">width =</span> <span class="fl">0.9</span>), <span class="dt">conf.int =</span> <span class="fl">0.95</span>) + 
+    <span class="kw">facet_wrap</span>(~parameter, <span class="dt">scales =</span> <span class="st">&quot;free_y&quot;</span>)</code></pre>
 <figure>
 <img src="https://github.com/cboettig/earlywarning/wiki/parsplot.png" alt="plot of chunk parsplot" /><figcaption>plot of chunk parsplot</figcaption>
 </figure>

@@ -4,7 +4,7 @@
  <title>Lab Notebook - R</title>
  <link href="/blog.xml" rel="self"/>
  <link href="/"/>
- <updated>2013-07-16T21:29:23-07:00</updated>
+ <updated>2013-07-24T16:40:05-07:00</updated>
  <id>http://carlboettiger.info</id>
  <author>
    <name>Carl Boettiger</name>
@@ -22,6 +22,48 @@
 &lt;p&gt;I wrote to Editor-in-Chief Hadley Wickam about this, who responded in the best way possible: making the &lt;a href=&quot;ihttps://github.com/rjournal/rjournal.github.io&quot;&gt;journal website’s Github repository&lt;/a&gt; public. A fork and a little hacking later, and voila, we have html landing pages for &lt;em&gt;the R Journal&lt;/em&gt; with embedded metadata (pending a &lt;a href=&quot;https://github.com/rjournal/rjournal.github.io/pull/1&quot;&gt;pull request&lt;/a&gt;). Check out &lt;a href=&quot;https://github.com/cboettig/rjournal.github.io/commit/e70e84e6e53e6c04ec9864af162d7ba58439d4d5&quot;&gt;the source code&lt;/a&gt; for how this works – it’s really quite straight forward since the metadata is already available in &lt;code&gt;_config.yaml&lt;/code&gt;. The main step involves a &lt;a href=&quot;https://github.com/cboettig/rjournal.github.io/blob/e70e84e6e53e6c04ec9864af162d7ba58439d4d5/_plugins/article_html_pages.rb&quot;&gt;Generator plugin&lt;/a&gt; which builds a page for each article and makes the relevant article metadata available to the page. Then we can write a &lt;a href=&quot;https://github.com/cboettig/rjournal.github.io/blob/e70e84e6e53e6c04ec9864af162d7ba58439d4d5/_layouts/article.html&quot;&gt;page template&lt;/a&gt; using Liquid code to import the metadata.&lt;/p&gt;
 &lt;p&gt;The really exciting thing about this is the basic idea of forking a journal website and improving it. There’s a lot we could do to improve the R journal. I think that ideally we’d have HTML5 versions of the articles as well, something that would be straight forward if authors used knitr of course, but I realize that’s a bigger shift. One could also automatically enhance the HTML with quite a bit more semantic content, we could have animations, links the Rnw files, etc etc. I’d be happy to help and I’m sure others would too. R-journal is great but it could be so much more as an example and test-bed of innovation in statistical publishing.&lt;/p&gt;
 &lt;p&gt;Well, now that the journal is open for pull requests, hack away!&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Reviewing Software Revisited</title>
+   <link href="/2013/07/09/reviewing-software-revisited.html"/>
+   <updated>2013-07-09T00:00:00-07:00</updated>
+   <id>/2013/07/09/reviewing-software-revisited</id>
+   <content type="html">&lt;p&gt;Several weeks ago I wrote a &lt;a href=&quot;/2013/06/13/what-I-look-for-in-software-papers.html&quot;&gt;post&lt;/a&gt; describing issues I commonly raise when reviewing software papers. This provoked a lively discussion among authors, editors, and other reviewers of software papers (most of us having been on at least both reviewing and authoring end), with quite varied perspectives as to whether such criteria were appropriate in this context. As I describe there, I view the concept of dedicated software papers as a somewhat necessary “hack” of the publishing system, and hope a more mature system will eventually come into place, as is now happening for data through efforts such as &lt;a href=&quot;http://datadryad.org&quot;&gt;Dryad&lt;/a&gt; and associated journal archiving requirements.&lt;/p&gt;
+&lt;p&gt;Sustainability of the software is important for the same reason archiving the literature is important – without this, we cannot build on existing work. Building on “researcher/developer” software (e.g. the kind of software typically covered in ‘software papers’) is currently an uncommon and risky, as eloquently argued by Brian O’Meara in the comments of &lt;a href=&quot;http://carlboettiger.info/2013/04/23/we-need-more-object-oriented-design-in-comparative-methods.html&quot;&gt;an earlier post&lt;/a&gt; describing just such a failure.&lt;/p&gt;
+&lt;p&gt;Through that discussion, I’ve come to see the goal of reviewing software papers as one of software sustainability. After all, the publication becomes a part of the researcher’s permanent record and part of the permanent scholarly archive, designed to outlive the journal itself. It seems reasonable that the software it describes should at least exist and do something five years later. Though this sentiment underlies most of my criteria, my phrasing is often too specific and a little too grounded in language explicit to software development.&lt;/p&gt;
+&lt;p&gt;As I learned from Neil Chue Hong (&lt;a href=&quot;http://www.software.ac.uk/&quot;&gt;Software Sustainability Institute&lt;/a&gt;) in a follow up from that discussion, The Journal of Open Research Software has recently revised its guidelines making much of this more explicit and much better worded than I did. They provide separate lists for the reviewer to comment on both the paper and the software – making it clear that the review goes beyond the paper. The questions for the paper are every bit as valuable as those from the software section: for instance, reference to sections on “Reuse”, “Quality Control”, and “Implementation and Architecture”. While these things might not get their own section headings in an MEE paper, the ideas should certainly be addressed. I think these guidelines provide an excellent checklist for promoting sustainable software without putting undo emphasis on questions of performance, scalability, extensibility, etc.&lt;/p&gt;
+&lt;h2 id=&quot;journal-of-open-research-softwares-guidelines&quot;&gt;Journal of Open Research Software’s Guidelines&lt;/h2&gt;
+&lt;p&gt;(content below &lt;a href=&quot;http://creativecommons.org/licenses/by/3.0/&quot;&gt;CC-BY&lt;/a&gt;, quoted from &lt;a href=&quot;http://openresearchsoftware.metajnl.com/&quot;&gt;Journal of Open Research Software&lt;/a&gt;)&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Please provide a list of your recommendations, indicating which are compulsory for acceptance and which are optional but would improve the quality of the paper or the reusability of the software.&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id=&quot;the-paper&quot;&gt;The paper&lt;/h3&gt;
+&lt;ol type=&quot;a&quot;&gt;
+&lt;li&gt;Is the title of the paper descriptive and objective?&lt;/li&gt;
+&lt;li&gt;Does the Abstract give an indication of the software’s functionality, and where it would be used?&lt;/li&gt;
+&lt;li&gt;Do the keywords enable a reader to search for the software?&lt;/li&gt;
+&lt;li&gt;Does the Introduction give enough background information to understand the context of the software’s development and use?&lt;/li&gt;
+&lt;li&gt;Does the Implementation and Architecture section give enough information to get an idea of how the software is designed, and any constraints that may be placed on its use?&lt;/li&gt;
+&lt;li&gt;Does the Quality Control section adequately explain how the software results can be trusted?&lt;/li&gt;
+&lt;li&gt;Does the Reuse section provide concrete and useful suggestions for reuse of the software, for instance: other potential applications, ways of extending or modifying the software, integration with other software?&lt;/li&gt;
+&lt;li&gt;Are figures and diagrams used to enhance the description? Are they clear and meaningful?&lt;/li&gt;
+&lt;li&gt;Do you believe that another researcher could take the software and use it, or take the software and build on it?&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&quot;the-software&quot;&gt;The software&lt;/h3&gt;
+&lt;ol type=&quot;a&quot;&gt;
+&lt;li&gt;Is the software in a suitable repository? (see &lt;a href=&quot;http://openresearchsoftware.metajnl.com/about/repositories/&quot;&gt;http://openresearchsoftware.metajnl.com/about/repositories/&lt;/a&gt; for more information)&lt;/li&gt;
+&lt;li&gt;Does the software have a suitable open licence? (see &lt;a href=&quot;http://openresearchsoftware.metajnl.com/faq/#q5&quot;&gt;http://openresearchsoftware.metajnl.com/faq/#q5&lt;/a&gt; for more information)&lt;/li&gt;
+&lt;li&gt;If the Archive section is filled out, is the link in the form of a persistent identifier, e.g. a DOI? Can you download the software from this link?&lt;/li&gt;
+&lt;li&gt;If the Code repository section is filled out, does the identifier link to the appropriate place to download the source code? Can you download the source code from this link?&lt;/li&gt;
+&lt;li&gt;Is the software license included in the software in the repository? Is it included in the source code?&lt;/li&gt;
+&lt;li&gt;Is sample input and output data provided with the software?&lt;/li&gt;
+&lt;li&gt;Is the code adequately documented? Can a reader understand how to build/deploy/install/run the software, and identify whether the software is operating as expected?&lt;/li&gt;
+&lt;li&gt;Does the software run on the systems specified? (if you do not have access to a system with the prerequisite requirements, let us know)&lt;/li&gt;
+&lt;li&gt;Is it obvious what the support mechanisms for the software are?&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr /&gt;
+&lt;p&gt;Like my own list, a repository, a license, and sample input-output data are all mentioned explicitly. Software review section suggests there should be a mechanism in place to “identify whether the software is operating as expected” – such as basic unit tests. Extensibility is also mentioned, but without any reference to features that may or may not assist in that – a fault of my own list, which was probably over-specific on that account. I think these are reasonable and solid guidelines, and would love to see other journals that frequently publish software papers (Looking at you, MEE, JSS, Bioinformatics, R Journal, PLoS Comp Bio) adopt similar criteria.&lt;/p&gt;
+&lt;p&gt;Of course I’d love to hear what others think about this.&lt;/p&gt;
 </content>
  </entry>
  
@@ -55,23 +97,23 @@
 &lt;p&gt;A scientific R package &lt;em&gt;must must must&lt;/em&gt; have some automated tests that are run by &lt;code&gt;R CMD check&lt;/code&gt;. Even if further development of the package doesn’t break anything (most likely only if further development doesn’t happen), changes to the package dependencies could still break things, and so it is crucial to have a mechanism in place to detect these problems when they arise. For code that runs quickly, the simplest way to do this is through the examples in the documentation. I don’t expect all scientific software to have a complete test suite with 100% coverage covering all the weird things that can happen if a user passes in a matrix when the function expects a data frame or has some unanticipated missing values, etc. Just some tests to make sure the basic examples execute and I’ll be happy. Longer running functions or those that need calls to external web resources shouldn’t be run in the examples (too much of a burden for CRAN’s automatic testing) so they should be marked &lt;code&gt;dontrun&lt;/code&gt; and put in a separate test suite or vignette as it says in the manual.&lt;/p&gt;
 &lt;h3 id=&quot;passing-optional-arguments&quot;&gt;Passing optional arguments&lt;/h3&gt;
 &lt;p&gt;I see authors write functions like this all the time:&lt;/p&gt;
-&lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;f &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;myfunction&lt;/span&gt;(f, p){ 
+&lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;f &amp;lt;- &lt;span class=&quot;kw&quot;&gt;myfunction&lt;/span&gt;(f, p){ 
   &lt;span class=&quot;co&quot;&gt;#  stuff&lt;/span&gt;
-  o &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;optim&lt;/span&gt;(f, p)
+  o &amp;lt;- &lt;span class=&quot;kw&quot;&gt;optim&lt;/span&gt;(f, p)
   &lt;span class=&quot;co&quot;&gt;#  stuff&lt;/span&gt;
 }&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;calling an existing library function like &lt;code&gt;optim&lt;/code&gt; that has a whole host of very useful optional arguments that have a significant impact on how the algorithm functions. Whenever you a rich function like &lt;code&gt;optim&lt;/code&gt;, please have the courtesy to make it’s arguments available to future users and developers through your function call. Yes, most users will just want the default arguments, (or your default arguments, if different), and that can be handled just fine by providing default values as optional arguments. R has a fantastic mechanism for this exact issue: the &lt;code&gt;...&lt;/code&gt; argument. The above code could be fixed simply by using:&lt;/p&gt;
-&lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;f &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;myfunction&lt;/span&gt;(f, p, ...){ 
+&lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;f &amp;lt;- &lt;span class=&quot;kw&quot;&gt;myfunction&lt;/span&gt;(f, p, ...){ 
   &lt;span class=&quot;co&quot;&gt;#  stuff&lt;/span&gt;
-  o &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;optim&lt;/span&gt;(f, p, ...)
+  o &amp;lt;- &lt;span class=&quot;kw&quot;&gt;optim&lt;/span&gt;(f, p, ...)
   &lt;span class=&quot;co&quot;&gt;#  stuff&lt;/span&gt;
 }&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;which works just they way you think it would. If you have more than one such function (ask yourself if you can write shorter functions first and then) pass optional arguments as lists,&lt;/p&gt;
-&lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;f &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;myfunction&lt;/span&gt;(f, p, optim_options, fn2_options){
+&lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;f &amp;lt;- &lt;span class=&quot;kw&quot;&gt;myfunction&lt;/span&gt;(f, p, optim_options, fn2_options){
   &lt;span class=&quot;co&quot;&gt;# stuff&lt;/span&gt;
-  o &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;do.call&lt;/span&gt;(optim, &lt;span class=&quot;kw&quot;&gt;as.list&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;c&lt;/span&gt;(f, p, optim_options)))
+  o &amp;lt;- &lt;span class=&quot;kw&quot;&gt;do.call&lt;/span&gt;(optim, &lt;span class=&quot;kw&quot;&gt;as.list&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;c&lt;/span&gt;(f, p, optim_options)))
   &lt;span class=&quot;co&quot;&gt;# stuff&lt;/span&gt;
-  b &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;do.call&lt;/span&gt;(fn2, fn2_options)
+  b &amp;lt;- &lt;span class=&quot;kw&quot;&gt;do.call&lt;/span&gt;(fn2, fn2_options)
   &lt;span class=&quot;co&quot;&gt;# stuff &lt;/span&gt;
 }&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;arguments can also be extracted with &lt;code&gt;list(...)$arg1&lt;/code&gt; etc.&lt;/p&gt;
@@ -318,7 +360,7 @@ Is there a way to obtain DOI for a &lt;a href=&quot;https://twitter.com/github&q
 &lt;p&gt;We can install the entire research compendium at exactly the state it was at the time of the analysis using the hash (long chain of seemingly random characters, see the (upcoming) entry on &lt;a href=&quot;&quot;&gt;hashes&lt;/a&gt;) using the clever &lt;code&gt;devtools&lt;/code&gt; R package,&lt;/p&gt;
 &lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;&lt;span class=&quot;kw&quot;&gt;install_github&lt;/span&gt;(&lt;span class=&quot;st&quot;&gt;&amp;quot;nonparametric-bayes&amp;quot;&lt;/span&gt;, &lt;span class=&quot;st&quot;&gt;&amp;quot;cboettig&amp;quot;&lt;/span&gt;, &lt;span class=&quot;st&quot;&gt;&amp;quot;9d5cd1f027bdfe5f356dce83756726c95a6fcdd8&amp;quot;&lt;/span&gt;) &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;We can then copy and paste the code linked from the figure to replicate the results. This provides a fast and effective way replicate the work appearing in or linked to any entry. More importantly perhaps, this approach also allows one to repeat any given analysis with the most recent version of an algorithm and compare the results, since the package structure provides a logical seperation between algorithm and analysis. In practice such fine-grained control and invistigation is more important than simply being able to regenerate what has already been done without any further input.&lt;/p&gt;
-&lt;p&gt;This is not entirely failsafe. The package may depend on other packages, which themselves may have changed. For my use cases, it is a deal more reliable than running the current version of a package that is actively changing during my research. Readers interested in even more robust replication and verification should take a look at Roger Peng’s package &lt;code&gt;stashR&lt;/code&gt; package and associated publications &lt;span class=&quot;showtooltip&quot; data-html=&quot;true&quot; title=&quot;&lt;p&gt;Eckel S and Peng RD (2012). stashR: A Set of Tools for Administering SHared Repositories. R package version 0.3-5.“&amp;gt;&lt;a href=&quot;http://CRAN.R-project.org/package=stashR&quot;&gt;Eckel &amp;amp; Peng (2012)&lt;/a&gt;&lt;/span&gt; .&lt;/p&gt;
+&lt;p&gt;This is not entirely failsafe. The package may depend on other packages, which themselves may have changed. For my use cases, it is a deal more reliable than running the current version of a package that is actively changing during my research. Readers interested in even more robust replication and verification should take a look at Roger Peng’s package &lt;code&gt;stashR&lt;/code&gt; package and associated publications &lt;span class=&quot;showtooltip&quot; data-html=&quot;true&quot; title=&quot;&lt;p&gt;Eckel S and Peng RD (2012). stashR: A Set of Tools for Administering SHared Repositories. R package version 0.3-5.&amp;quot;&amp;gt;&lt;a href=&quot;http://CRAN.R-project.org/package=stashR&quot;&gt;Eckel &amp;amp; Peng (2012)&lt;/a&gt;&lt;/span&gt; .&lt;/p&gt;
 &lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;Sandy Eckel, Roger Peng, (2012) stashR: A Set of Tools for Administering SHared Repositories. &lt;a href=&quot;http://CRAN.R-project.org/package=stashR&quot;&gt;http://CRAN.R-project.org/package=stashR&lt;/a&gt;&lt;/li&gt;
@@ -375,21 +417,21 @@ Revisited. _Ieee Intelligent Systems_, *21*, pp. 96-101. ISSN
 &lt;span class=&quot;kw&quot;&gt;library&lt;/span&gt;(wordcloud)
 &lt;span class=&quot;kw&quot;&gt;library&lt;/span&gt;(RColorBrewer)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;We can get a list of pages to download from the sitemap&lt;/p&gt;
-&lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;pagelist &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;readLines&lt;/span&gt;(&lt;span class=&quot;st&quot;&gt;&amp;quot;http://carlboettiger.info/sitemap.txt&amp;quot;&lt;/span&gt;)
-pagelist &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;pagelist[&lt;span class=&quot;kw&quot;&gt;grep&lt;/span&gt;(&lt;span class=&quot;st&quot;&gt;&amp;quot;/201&lt;/span&gt;&lt;span class=&quot;ch&quot;&gt;\\&lt;/span&gt;&lt;span class=&quot;st&quot;&gt;d/&amp;quot;&lt;/span&gt;, pagelist)]  &lt;span class=&quot;co&quot;&gt;# drop non-posts)&lt;/span&gt;
-pages &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;lapply&lt;/span&gt;(pagelist, getURLContent, &lt;span class=&quot;dt&quot;&gt;followlocation =&lt;/span&gt; &lt;span class=&quot;ot&quot;&gt;TRUE&lt;/span&gt;)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;pagelist &amp;lt;- &lt;span class=&quot;kw&quot;&gt;readLines&lt;/span&gt;(&lt;span class=&quot;st&quot;&gt;&amp;quot;http://carlboettiger.info/sitemap.txt&amp;quot;&lt;/span&gt;)
+pagelist &amp;lt;- pagelist[&lt;span class=&quot;kw&quot;&gt;grep&lt;/span&gt;(&lt;span class=&quot;st&quot;&gt;&amp;quot;/201&lt;/span&gt;&lt;span class=&quot;ch&quot;&gt;\\&lt;/span&gt;&lt;span class=&quot;st&quot;&gt;d/&amp;quot;&lt;/span&gt;, pagelist)]  &lt;span class=&quot;co&quot;&gt;# drop non-posts)&lt;/span&gt;
+pages &amp;lt;- &lt;span class=&quot;kw&quot;&gt;lapply&lt;/span&gt;(pagelist, getURLContent, &lt;span class=&quot;dt&quot;&gt;followlocation =&lt;/span&gt; &lt;span class=&quot;ot&quot;&gt;TRUE&lt;/span&gt;)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Or, if an archive is available locally, (e.g. from figshare cache), we can read the files in directly.&lt;/p&gt;
-&lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;pages &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;system&lt;/span&gt;(&lt;span class=&quot;st&quot;&gt;&amp;quot;ls ~/Documents/labnotebook/_site/2***/*/*/*.html&amp;quot;&lt;/span&gt;, 
+&lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;pages &amp;lt;- &lt;span class=&quot;kw&quot;&gt;system&lt;/span&gt;(&lt;span class=&quot;st&quot;&gt;&amp;quot;ls ~/Documents/labnotebook/_site/2***/*/*/*.html&amp;quot;&lt;/span&gt;, 
     &lt;span class=&quot;dt&quot;&gt;intern =&lt;/span&gt; &lt;span class=&quot;ot&quot;&gt;TRUE&lt;/span&gt;)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;We parse each of the pages as HTML so that we can manipulate them with XML tools&lt;/p&gt;
-&lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;html &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;lapply&lt;/span&gt;(pages, htmlParse)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;html &amp;lt;- &lt;span class=&quot;kw&quot;&gt;lapply&lt;/span&gt;(pages, htmlParse)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;For instance, we can easily get the content of all entries:&lt;/p&gt;
-&lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;text &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;sapply&lt;/span&gt;(html, xpathSApply, &lt;span class=&quot;st&quot;&gt;&amp;quot;//article&amp;quot;&lt;/span&gt;, xmlValue)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;text &amp;lt;- &lt;span class=&quot;kw&quot;&gt;sapply&lt;/span&gt;(html, xpathSApply, &lt;span class=&quot;st&quot;&gt;&amp;quot;//article&amp;quot;&lt;/span&gt;, xmlValue)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;We can also extract metadata based on the semantic markup.&lt;/p&gt;
-&lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;titles &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;sapply&lt;/span&gt;(html, xpathSApply, &lt;span class=&quot;st&quot;&gt;&amp;quot;//title&amp;quot;&lt;/span&gt;, xmlValue)
-categories &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;sapply&lt;/span&gt;(html, xpathSApply, &lt;span class=&quot;st&quot;&gt;&amp;quot;//node()[@class=&amp;#39;category&amp;#39;]&amp;quot;&lt;/span&gt;, 
+&lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;titles &amp;lt;- &lt;span class=&quot;kw&quot;&gt;sapply&lt;/span&gt;(html, xpathSApply, &lt;span class=&quot;st&quot;&gt;&amp;quot;//title&amp;quot;&lt;/span&gt;, xmlValue)
+categories &amp;lt;- &lt;span class=&quot;kw&quot;&gt;sapply&lt;/span&gt;(html, xpathSApply, &lt;span class=&quot;st&quot;&gt;&amp;quot;//node()[@class=&amp;#39;category&amp;#39;]&amp;quot;&lt;/span&gt;, 
     xmlValue)
-tags &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;sapply&lt;/span&gt;(html, xpathSApply, &lt;span class=&quot;st&quot;&gt;&amp;quot;//node()[@class=&amp;#39;tag&amp;#39;]&amp;quot;&lt;/span&gt;, xmlValue)&lt;/code&gt;&lt;/pre&gt;
+tags &amp;lt;- &lt;span class=&quot;kw&quot;&gt;sapply&lt;/span&gt;(html, xpathSApply, &lt;span class=&quot;st&quot;&gt;&amp;quot;//node()[@class=&amp;#39;tag&amp;#39;]&amp;quot;&lt;/span&gt;, xmlValue)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;R makes it easy to summarize this data, e.g. by generating a table of the number of entries in each category, or a wordcloud of the tags.&lt;/p&gt;
 &lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;&lt;span class=&quot;kw&quot;&gt;table&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;unlist&lt;/span&gt;(categories))&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;
@@ -402,9 +444,9 @@ tags &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quo
 &lt;h3 id=&quot;extracting-citations&quot;&gt;Extracting citations&lt;/h3&gt;
 &lt;p&gt;Citation information can be encoded&lt;/p&gt;
 &lt;p&gt;We can perform more direct text mining as well. For instance, we extract all DOIs found in the text:&lt;/p&gt;
-&lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;doi_pattern =&lt;span class=&quot;st&quot;&gt; &amp;quot;&lt;/span&gt;&lt;span class=&quot;ch&quot;&gt;\\&lt;/span&gt;&lt;span class=&quot;st&quot;&gt;b(10[.][0-9]{4,}(?:[.][0-9]+)*/(?:(?![&lt;/span&gt;&lt;span class=&quot;ch&quot;&gt;\&amp;quot;&lt;/span&gt;&lt;span class=&quot;st&quot;&gt;&amp;amp;&amp;#39;&amp;lt;&amp;gt;])&lt;/span&gt;&lt;span class=&quot;ch&quot;&gt;\\&lt;/span&gt;&lt;span class=&quot;st&quot;&gt;S)+)&lt;/span&gt;&lt;span class=&quot;ch&quot;&gt;\\&lt;/span&gt;&lt;span class=&quot;st&quot;&gt;b&amp;quot;&lt;/span&gt;
+&lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;doi_pattern = &lt;span class=&quot;st&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;ch&quot;&gt;\\&lt;/span&gt;&lt;span class=&quot;st&quot;&gt;b(10[.][0-9]{4,}(?:[.][0-9]+)*/(?:(?![&lt;/span&gt;&lt;span class=&quot;ch&quot;&gt;\&amp;quot;&lt;/span&gt;&lt;span class=&quot;st&quot;&gt;&amp;amp;&amp;#39;&amp;lt;&amp;gt;])&lt;/span&gt;&lt;span class=&quot;ch&quot;&gt;\\&lt;/span&gt;&lt;span class=&quot;st&quot;&gt;S)+)&lt;/span&gt;&lt;span class=&quot;ch&quot;&gt;\\&lt;/span&gt;&lt;span class=&quot;st&quot;&gt;b&amp;quot;&lt;/span&gt;
 &lt;span class=&quot;kw&quot;&gt;require&lt;/span&gt;(gsubfn)
-dois &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;strapply&lt;/span&gt;(text, doi_pattern, &lt;span class=&quot;dt&quot;&gt;perl =&lt;/span&gt; &lt;span class=&quot;ot&quot;&gt;TRUE&lt;/span&gt;)  &lt;span class=&quot;co&quot;&gt;#text[-462]&lt;/span&gt;
+dois &amp;lt;- &lt;span class=&quot;kw&quot;&gt;strapply&lt;/span&gt;(text, doi_pattern, &lt;span class=&quot;dt&quot;&gt;perl =&lt;/span&gt; &lt;span class=&quot;ot&quot;&gt;TRUE&lt;/span&gt;)  &lt;span class=&quot;co&quot;&gt;#text[-462]&lt;/span&gt;
 &lt;span class=&quot;kw&quot;&gt;head&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;sort&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;table&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;unlist&lt;/span&gt;(dois))))&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;
 10.1002/(SICI)1520-6602(1998)1:1                 10.1002/bjs.6880 
@@ -415,15 +457,15 @@ dois &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quo
                                1                                1 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Or generate a wordcloud of the full text&lt;/p&gt;
 &lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;
-carl &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;Corpus&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;VectorSource&lt;/span&gt;(text))
-carl &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;tm_map&lt;/span&gt;(carl, removePunctuation)
-carl &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;tm_map&lt;/span&gt;(carl, tolower)
-carl &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;tm_map&lt;/span&gt;(carl, function(x) &lt;span class=&quot;kw&quot;&gt;removeWords&lt;/span&gt;(x, &lt;span class=&quot;kw&quot;&gt;stopwords&lt;/span&gt;()))
+carl &amp;lt;- &lt;span class=&quot;kw&quot;&gt;Corpus&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;VectorSource&lt;/span&gt;(text))
+carl &amp;lt;- &lt;span class=&quot;kw&quot;&gt;tm_map&lt;/span&gt;(carl, removePunctuation)
+carl &amp;lt;- &lt;span class=&quot;kw&quot;&gt;tm_map&lt;/span&gt;(carl, tolower)
+carl &amp;lt;- &lt;span class=&quot;kw&quot;&gt;tm_map&lt;/span&gt;(carl, function(x) &lt;span class=&quot;kw&quot;&gt;removeWords&lt;/span&gt;(x, &lt;span class=&quot;kw&quot;&gt;stopwords&lt;/span&gt;()))
 
-carl.tdm &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;TermDocumentMatrix&lt;/span&gt;(carl)
-carl.m &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;as.matrix&lt;/span&gt;(carl.tdm)
-carl.v &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;sort&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;rowSums&lt;/span&gt;(carl.m), &lt;span class=&quot;dt&quot;&gt;decreasing =&lt;/span&gt; &lt;span class=&quot;ot&quot;&gt;TRUE&lt;/span&gt;)
-carl.d &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;data.frame&lt;/span&gt;(&lt;span class=&quot;dt&quot;&gt;word =&lt;/span&gt; &lt;span class=&quot;kw&quot;&gt;names&lt;/span&gt;(carl.v), &lt;span class=&quot;dt&quot;&gt;freq =&lt;/span&gt; carl.v)
+carl.tdm &amp;lt;- &lt;span class=&quot;kw&quot;&gt;TermDocumentMatrix&lt;/span&gt;(carl)
+carl.m &amp;lt;- &lt;span class=&quot;kw&quot;&gt;as.matrix&lt;/span&gt;(carl.tdm)
+carl.v &amp;lt;- &lt;span class=&quot;kw&quot;&gt;sort&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;rowSums&lt;/span&gt;(carl.m), &lt;span class=&quot;dt&quot;&gt;decreasing =&lt;/span&gt; &lt;span class=&quot;ot&quot;&gt;TRUE&lt;/span&gt;)
+carl.d &amp;lt;- &lt;span class=&quot;kw&quot;&gt;data.frame&lt;/span&gt;(&lt;span class=&quot;dt&quot;&gt;word =&lt;/span&gt; &lt;span class=&quot;kw&quot;&gt;names&lt;/span&gt;(carl.v), &lt;span class=&quot;dt&quot;&gt;freq =&lt;/span&gt; carl.v)
 
 
 &lt;span class=&quot;kw&quot;&gt;wordcloud&lt;/span&gt;(carl.d$word, carl.d$freq, &lt;span class=&quot;dt&quot;&gt;scale =&lt;/span&gt; &lt;span class=&quot;kw&quot;&gt;c&lt;/span&gt;(&lt;span class=&quot;dv&quot;&gt;8&lt;/span&gt;, &lt;span class=&quot;fl&quot;&gt;0.4&lt;/span&gt;), &lt;span class=&quot;dt&quot;&gt;min.freq =&lt;/span&gt; &lt;span class=&quot;dv&quot;&gt;3&lt;/span&gt;, 
@@ -437,7 +479,7 @@ carl.d &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&q
 &lt;p&gt;RDFa is a way of adding these precise statements to HTML, again see the &lt;a href=&quot;/2012/10/14/semantic-lab-notebook.html&quot;&gt;earlier entry&lt;/a&gt; on how this is done. The technically inclined will note that the namespaces of the RDFa itself are not accessible in the XML parsing we used above, since they do not correspond to nodes or attributes, but appear only in the values of attributes. Fortunately, there are many excellent tools to extract this RDFa data, turning it into the XML formatted RDF triples we need. e can perform this using the &lt;a href=&quot;http://any23.org&quot;&gt;Any23&lt;/a&gt; API&lt;/p&gt;
 &lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;&lt;span class=&quot;kw&quot;&gt;download.file&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;paste&lt;/span&gt;(&lt;span class=&quot;st&quot;&gt;&amp;quot;http://any23.org/rdfxml&amp;quot;&lt;/span&gt;, &lt;span class=&quot;st&quot;&gt;&amp;quot;http://carlboettiger.info&amp;quot;&lt;/span&gt;, 
     &lt;span class=&quot;dt&quot;&gt;sep =&lt;/span&gt; &lt;span class=&quot;st&quot;&gt;&amp;quot;/&amp;quot;&lt;/span&gt;), &lt;span class=&quot;st&quot;&gt;&amp;quot;temp.xml&amp;quot;&lt;/span&gt;)
-doc &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;xmlParse&lt;/span&gt;(&lt;span class=&quot;st&quot;&gt;&amp;quot;temp.xml&amp;quot;&lt;/span&gt;)&lt;/code&gt;&lt;/pre&gt;
+doc &amp;lt;- &lt;span class=&quot;kw&quot;&gt;xmlParse&lt;/span&gt;(&lt;span class=&quot;st&quot;&gt;&amp;quot;temp.xml&amp;quot;&lt;/span&gt;)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Which creates a beautiful RDF XML file of all linked data found in the entry.&lt;/p&gt;
 &lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;doc&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt;
@@ -933,7 +975,7 @@ with &amp;#39;help(package=ouch)&amp;#39;.&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;After running your code, consider creating a custom bibtex file containing the citation information for all the packages you have just used. (The file can be imported into most citation managers, if LaTeX isn’t your thing).&lt;/p&gt;
 &lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;
 &lt;span class=&quot;kw&quot;&gt;sink&lt;/span&gt;(&lt;span class=&quot;st&quot;&gt;&amp;quot;test.bib&amp;quot;&lt;/span&gt;)
-out &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;sapply&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;names&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;sessionInfo&lt;/span&gt;()$otherPkgs), 
+out &amp;lt;- &lt;span class=&quot;kw&quot;&gt;sapply&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;names&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;sessionInfo&lt;/span&gt;()$otherPkgs), 
     function(x) &lt;span class=&quot;kw&quot;&gt;print&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;citation&lt;/span&gt;(x), &lt;span class=&quot;dt&quot;&gt;style =&lt;/span&gt; &lt;span class=&quot;st&quot;&gt;&amp;quot;Bibtex&amp;quot;&lt;/span&gt;))&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;You can also simply generate the list of loaded package in LaTeX format, which could be automatically included.&lt;/p&gt;
 &lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;
@@ -994,7 +1036,7 @@ out &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot
 &lt;p&gt;R uses a simple but powerful license format in the DESCRIPTION files of all packages, which contain the essential meta-data for the package. Common FOSS licenses are recognized automatically (including version numbers or version inequalities). Since CC0 doesn’t (yet) make this list, we can use a custom license file where we provide the full plaintext CC0 license in the file LICENSE and write “file LICENSE” in the DESCRIPTION (&lt;a href=&quot;https://github.com/cboettig/fluctuationDomains&quot;&gt;my example&lt;/a&gt;).&lt;/p&gt;
 &lt;p&gt;We can also see the frequency with which various licenses are used on the R repository, CRAN, with a few lines of code:&lt;/p&gt;
 &lt;pre class=&quot;sourceCode R&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;
-p =&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;available.packages&lt;/span&gt;(contrib.
+p = &lt;span class=&quot;kw&quot;&gt;available.packages&lt;/span&gt;(contrib.
 &lt;span class=&quot;kw&quot;&gt;url&lt;/span&gt;(&lt;span class=&quot;st&quot;&gt;&amp;quot;http://cran.r-project.org&amp;quot;&lt;/span&gt;), &lt;span class=&quot;dt&quot;&gt;type =&lt;/span&gt; &lt;span class=&quot;st&quot;&gt;&amp;quot;source&amp;quot;&lt;/span&gt;)
 &lt;span class=&quot;kw&quot;&gt;sort&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;table&lt;/span&gt;(p[, &lt;span class=&quot;st&quot;&gt;&amp;quot;License&amp;quot;&lt;/span&gt;]))&lt;/code&gt;&lt;/pre&gt;
 </content>
@@ -1045,27 +1087,27 @@ p =&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&
 &lt;span class=&quot;kw&quot;&gt;require&lt;/span&gt;(wordcloud)
 &lt;span class=&quot;kw&quot;&gt;require&lt;/span&gt;(RColorBrewer)
 
-carl &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;read.csv&lt;/span&gt;(&lt;span class=&quot;st&quot;&gt;&amp;quot;searchterms.csv&amp;quot;&lt;/span&gt;, &lt;span class=&quot;dt&quot;&gt;colClasses=&lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;c&lt;/span&gt;(&lt;span class=&quot;st&quot;&gt;&amp;quot;character&amp;quot;&lt;/span&gt;, &lt;span class=&quot;st&quot;&gt;&amp;quot;numeric&amp;quot;&lt;/span&gt;))
+carl &amp;lt;- &lt;span class=&quot;kw&quot;&gt;read.csv&lt;/span&gt;(&lt;span class=&quot;st&quot;&gt;&amp;quot;searchterms.csv&amp;quot;&lt;/span&gt;, &lt;span class=&quot;dt&quot;&gt;colClasses=&lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;c&lt;/span&gt;(&lt;span class=&quot;st&quot;&gt;&amp;quot;character&amp;quot;&lt;/span&gt;, &lt;span class=&quot;st&quot;&gt;&amp;quot;numeric&amp;quot;&lt;/span&gt;))
 
-words &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;character&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;sum&lt;/span&gt;(carl[[&lt;span class=&quot;dv&quot;&gt;2&lt;/span&gt;]]))
-m &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;dv&quot;&gt;1&lt;/span&gt;
+words &amp;lt;- &lt;span class=&quot;kw&quot;&gt;character&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;sum&lt;/span&gt;(carl[[&lt;span class=&quot;dv&quot;&gt;2&lt;/span&gt;]]))
+m &amp;lt;- &lt;span class=&quot;dv&quot;&gt;1&lt;/span&gt;
 for(i in &lt;span class=&quot;dv&quot;&gt;1&lt;/span&gt;:&lt;span class=&quot;kw&quot;&gt;length&lt;/span&gt;(carl[[&lt;span class=&quot;dv&quot;&gt;1&lt;/span&gt;]])){
-  n &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;carl[[&lt;span class=&quot;dv&quot;&gt;2&lt;/span&gt;]][i]
-  x &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;carl[[&lt;span class=&quot;dv&quot;&gt;1&lt;/span&gt;]][i]
-  words[m:(m+(n&lt;span class=&quot;dv&quot;&gt;-1&lt;/span&gt;))] &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;rep&lt;/span&gt;(x, n)
-  m &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;m+n
+  n &amp;lt;- carl[[&lt;span class=&quot;dv&quot;&gt;2&lt;/span&gt;]][i]
+  x &amp;lt;- carl[[&lt;span class=&quot;dv&quot;&gt;1&lt;/span&gt;]][i]
+  words[m:(m+(n&lt;span class=&quot;dv&quot;&gt;-1&lt;/span&gt;))] &amp;lt;- &lt;span class=&quot;kw&quot;&gt;rep&lt;/span&gt;(x, n)
+  m &amp;lt;- m+n
 }
 
- carl &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;Corpus&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;DataframeSource&lt;/span&gt;(carl))
- carl &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;tm_map&lt;/span&gt;(carl, removePunctuation)
- carl &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;tm_map&lt;/span&gt;(carl, tolower)
+ carl &amp;lt;- &lt;span class=&quot;kw&quot;&gt;Corpus&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;DataframeSource&lt;/span&gt;(carl))
+ carl &amp;lt;- &lt;span class=&quot;kw&quot;&gt;tm_map&lt;/span&gt;(carl, removePunctuation)
+ carl &amp;lt;- &lt;span class=&quot;kw&quot;&gt;tm_map&lt;/span&gt;(carl, tolower)
 
- carl.tdm &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;TermDocumentMatrix&lt;/span&gt;(carl)
- carl.m &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;as.matrix&lt;/span&gt;(carl.tdm)
- carl.v &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;sort&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;rowSums&lt;/span&gt;(carl.m), &lt;span class=&quot;dt&quot;&gt;decreasing=&lt;/span&gt;&lt;span class=&quot;ot&quot;&gt;TRUE&lt;/span&gt;)
- carl.d &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;data.frame&lt;/span&gt;(&lt;span class=&quot;dt&quot;&gt;word=&lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;names&lt;/span&gt;(carl.v), &lt;span class=&quot;dt&quot;&gt;freq=&lt;/span&gt;carl.v)
+ carl.tdm &amp;lt;- &lt;span class=&quot;kw&quot;&gt;TermDocumentMatrix&lt;/span&gt;(carl)
+ carl.m &amp;lt;- &lt;span class=&quot;kw&quot;&gt;as.matrix&lt;/span&gt;(carl.tdm)
+ carl.v &amp;lt;- &lt;span class=&quot;kw&quot;&gt;sort&lt;/span&gt;(&lt;span class=&quot;kw&quot;&gt;rowSums&lt;/span&gt;(carl.m), &lt;span class=&quot;dt&quot;&gt;decreasing=&lt;/span&gt;&lt;span class=&quot;ot&quot;&gt;TRUE&lt;/span&gt;)
+ carl.d &amp;lt;- &lt;span class=&quot;kw&quot;&gt;data.frame&lt;/span&gt;(&lt;span class=&quot;dt&quot;&gt;word=&lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;names&lt;/span&gt;(carl.v), &lt;span class=&quot;dt&quot;&gt;freq=&lt;/span&gt;carl.v)
 
-pal2 &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;brewer.pal&lt;/span&gt;(&lt;span class=&quot;dv&quot;&gt;8&lt;/span&gt;,&lt;span class=&quot;st&quot;&gt;&amp;quot;Dark2&amp;quot;&lt;/span&gt;)
+pal2 &amp;lt;- &lt;span class=&quot;kw&quot;&gt;brewer.pal&lt;/span&gt;(&lt;span class=&quot;dv&quot;&gt;8&lt;/span&gt;,&lt;span class=&quot;st&quot;&gt;&amp;quot;Dark2&amp;quot;&lt;/span&gt;)
 
 &lt;span class=&quot;kw&quot;&gt;png&lt;/span&gt;(&lt;span class=&quot;st&quot;&gt;&amp;quot;wordcloud.png&amp;quot;&lt;/span&gt;, &lt;span class=&quot;dt&quot;&gt;width=&lt;/span&gt;&lt;span class=&quot;dv&quot;&gt;800&lt;/span&gt;,&lt;span class=&quot;dt&quot;&gt;height=&lt;/span&gt;&lt;span class=&quot;dv&quot;&gt;800&lt;/span&gt;) 
 &lt;span class=&quot;co&quot;&gt;#larger canvas doesn&amp;#39;t increase plot size&lt;/span&gt;

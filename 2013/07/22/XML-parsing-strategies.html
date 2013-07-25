@@ -1,0 +1,49 @@
+<p>Writing out some advice for our GSOC student on XML parsing. (Now filed as <a href="https://github.com/shumelchyk/RNeXML/issues/11">RNeXML/#11</a></p>
+<hr />
+<p>Here is some quick background on different ways we might go about extracting NeXML into an R object we want to work with. We can use S4 classes, R’s native <code>data.frame</code> and <code>list</code> types, or extract specific terms of interest with xpath. I illustrate each of these below using the example “trees.xml” in your repository.</p>
+<p>It would be good to decide on which strategy you want. As you seem to be leaning to the S4 already, note how I have made the slot labels correspond exactly to the attribute and node labels of the NeXML. This lets us use the <code>xmlToS4</code> method:</p>
+<h2 id="using-s4-classes">Using S4 classes</h2>
+<p>We can define S4 class structures to correspond to the elements we want to extract. Elements omitted from our definition will be ignored.</p>
+<p><code>{r} setClass(&quot;node&quot;,     representation(id    = &quot;character&quot;,                    label = &quot;character&quot;,                    otu   = &quot;character&quot;,                    about = &quot;character&quot;,                    meta = &quot;meta&quot;))</code> Note that class “meta” is not yet defined, we will define it below. Note also that we could omit any slots we don’t care about, and they would simply be ignored. (Try deleting the <code>meta</code> line, or the <code>about</code> line.)</p>
+<p><code>{r} setClass(&quot;edge&quot;,     representation(source = &quot;character&quot;,                    target = &quot;character&quot;,                    id     = &quot;character&quot;,                    length = &quot;numeric&quot;))</code></p>
+<p>```{r} setClass(“meta”, representation(id =“character”, property=“character”, content=“logical”, ‘xsi:type’=“character”, datatype=“character”))</p>
+<p>setAs(“XMLInternalElementNode”, “meta”, function(from) xmlToS4(from)) ```</p>
+<p>In order for <code>xmlToS4</code> to work on nodes, I need the Coercion method for <code>meta</code> too, defined above. We are now ready to rock and roll:</p>
+<p>```{r} require(XML) doc &lt;- xmlParse(“tests/examples/trees.xml”)</p>
+<p>edges &lt;- getNodeSet(doc, “//x:tree[@id = ‘tree1’]/x:edge”, namespaces=“x”) edges &lt;- lapply(edges, xmlToS4)</p>
+<p>nodes &lt;- getNodeSet(doc, “//x:tree[@id = ‘tree1’]/x:node”, namespaces=“x”) nodes &lt;- lapply(nodes, xmlToS4) ```</p>
+<p>My opinion is that we should not bother writing validator methods etc for these classes we have just defined at this time. We can already validate the XML produced against the schema, and as the class definitions follow those from the schema, we should be reasonably robust. Happy to hear counter-arguments.</p>
+<h2 id="extracting-attributes-or-values-directly-by-xpath-query">Extracting Attributes or values directly by xpath query</h2>
+<p>A different route does not define class types at all, but just extracts the attributes we want. This is a bit more fast and loose.</p>
+<p><code>{r} edges = xpathSApply(doc, &quot;//x:tree[@id = 'tree1']/x:edge&quot;, namespaces = &quot;x&quot;, xmlAttrs) nodes = xpathSApply(doc, &quot;//x:tree[@id = 'tree1']/x:node&quot;, namespaces = &quot;x&quot;,    function(x)      c(xmlGetAttr(x, &quot;id&quot;, NA, as.character),         xmlGetAttr(x, &quot;otu&quot;, NA, as.character)))</code></p>
+<h2 id="coercing-into-standard-r-forms">Coercing into standard R forms</h2>
+<p>This approach can be very quick and powerful if the data conforms to this structure.</p>
+<p><code>{r} XML:::xmlAttrsToDataFrame(getNodeSet(doc, &quot;//x:tree[@id = 'tree1']/x:node&quot;, namespaces=&quot;x&quot;)) XML:::xmlAttrsToDataFrame(getNodeSet(doc, &quot;//x:tree[@id = 'tree1']/x:edge&quot;, namespaces=&quot;x&quot;))</code></p>
+<h2 id="without-xpath">without XPath</h2>
+<p>We can skip over XPath based expressions by using xmlToList immediately:</p>
+<p><code>{r} nex &lt;- xmlToList(doc)</code></p>
+<p>Unfortunately, this will do some possibly unexpected things: for instance, attributes are converted to list elements (<code>node$id</code>, <code>node$otu</code>, etc) on simple nodes (e.g. <code>&lt;nodes&gt;</code> without a <code>&lt;meta&gt;</code> node), while if they contain another node, attributes are one sub-list and the containing nodes another (e.g. <code>node$meta</code> and <code>node$.attr</code>, etc)</p>
+<p>Also note that instead of xpath queries as in the <code>xpathSApply</code> and <code>getNodeSet</code> examples above, we can index nodes the way would lists:</p>
+<p>e.g. <code>xmlRoot(doc)[[&quot;trees&quot;]][[&quot;tree&quot;]]</code> instead of <code>getNodeSet(doc, &quot;//trees/tree&quot;)[[1]]</code> (note that the former returns the first <code>&lt;tree&gt;</code> node in the <code>&lt;trees&gt;</code> node, while the latter returns all <code>&lt;tree&gt;</code> nodes unless we just ask for the <code>[[1]]</code></p>
+<p>So this gives us a table of all node and edge elements:</p>
+<p><code>{r} XML:::xmlAttrsToDataFrame(xmlRoot(doc)[[&quot;trees&quot;]][[&quot;tree&quot;]])</code></p>
+<p>Which gives us:</p>
+<pre><code>   id label root  otu about source target  length
+1  n1    n1 true &lt;NA&gt;  &lt;NA&gt;   &lt;NA&gt;   &lt;NA&gt;    &lt;NA&gt;
+2  n2    n2 &lt;NA&gt;   t1  &lt;NA&gt;   &lt;NA&gt;   &lt;NA&gt;    &lt;NA&gt;
+3  n3    n3 &lt;NA&gt; &lt;NA&gt;  &lt;NA&gt;   &lt;NA&gt;   &lt;NA&gt;    &lt;NA&gt;
+4  n4    n4 &lt;NA&gt; &lt;NA&gt;   #n4   &lt;NA&gt;   &lt;NA&gt;    &lt;NA&gt;
+5  n5    n5 &lt;NA&gt;   t3  &lt;NA&gt;   &lt;NA&gt;   &lt;NA&gt;    &lt;NA&gt;
+6  n6    n6 &lt;NA&gt;   t2  &lt;NA&gt;   &lt;NA&gt;   &lt;NA&gt;    &lt;NA&gt;
+7  n7    n7 &lt;NA&gt; &lt;NA&gt;  &lt;NA&gt;   &lt;NA&gt;   &lt;NA&gt;    &lt;NA&gt;
+8  n8    n8 &lt;NA&gt;   t5  &lt;NA&gt;   &lt;NA&gt;   &lt;NA&gt;    &lt;NA&gt;
+9  n9    n9 &lt;NA&gt;   t4  &lt;NA&gt;   &lt;NA&gt;   &lt;NA&gt;    &lt;NA&gt;
+10 e1  &lt;NA&gt; &lt;NA&gt; &lt;NA&gt;  &lt;NA&gt;     n1     n3 0.34534
+11 e2  &lt;NA&gt; &lt;NA&gt; &lt;NA&gt;  &lt;NA&gt;     n1     n2  0.4353
+12 e3  &lt;NA&gt; &lt;NA&gt; &lt;NA&gt;  &lt;NA&gt;     n3     n4   0.324
+13 e4  &lt;NA&gt; &lt;NA&gt; &lt;NA&gt;  &lt;NA&gt;     n3     n7  0.3247
+14 e5  &lt;NA&gt; &lt;NA&gt; &lt;NA&gt;  &lt;NA&gt;     n4     n5   0.234
+15 e6  &lt;NA&gt; &lt;NA&gt; &lt;NA&gt;  &lt;NA&gt;     n4     n6  0.3243
+16 e7  &lt;NA&gt; &lt;NA&gt; &lt;NA&gt;  &lt;NA&gt;     n7     n8 0.32443
+17 e8  &lt;NA&gt; &lt;NA&gt; &lt;NA&gt;  &lt;NA&gt;     n7     n9  0.2342</code></pre>
+<p>Sometimes this notation is cleaner than the xpath, sort of up to you.</p>

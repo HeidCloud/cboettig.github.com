@@ -148,7 +148,33 @@
 <p>Through that discussion, I’ve come to see the goal of reviewing software papers as one of software sustainability. After all, the publication becomes a part of the researcher’s permanent record and part of the permanent scholarly archive, designed to outlive the journal itself. It seems reasonable that the software it describes should at least exist and do something five years later. Though this sentiment underlies most of my criteria, my phrasing is often too specific and a little too grounded in language explicit to software development.</p>
 <p>As I learned from Neil Chue Hong (<a href="http://www.software.ac.uk/">Software Sustainability Institute</a>) in a follow up from that discussion, The Journal of Open Research Software has recently revised its guidelines making much of this more explicit and much better worded than I did. They provide separate lists for the reviewer to comment on both the paper and the software – making it clear that the review goes beyond the paper. The questions for the paper are every bit as valuable as those from the software section: for instance, reference to sections on “Reuse”, “Quality Control”, and “Implementation and Architecture”. While these things might not get their own section headings in an MEE paper, the ideas should certainly be addressed. I think these guidelines provide an excellent checklist for promoting sustainable software without putting undo emphasis on questions of performance, scalability, extensibility, etc.</p>
 <h2 id="journal-of-open-research-softwares-guidelines">Journal of Open Research Software’s Guidelines</h2>
-<p>(content <a href="http://creativecommons.org/licenses/by/3.0/">CC-BY</a> from <a href="http://openresearchsoftware.metajnl.com/">Journal of Open Research Software</a>) &gt; &gt; <em>Please provide a list of your recommendations, indicating which are compulsory for acceptance and which are optional but would improve the quality of the paper or the reusability of the software.</em> &gt; &gt; &gt; ### The paper &gt; &gt; a. Is the title of the paper descriptive and objective? &gt; b. Does the Abstract give an indication of the software’s functionality, and where it would be used? &gt; c. Do the keywords enable a reader to search for the software? &gt; d. Does the Introduction give enough background information to understand the context of the software’s development and use? &gt; e. Does the Implementation and Architecture section give enough information to get an idea of how the software is designed, and any constraints that may be placed on its use? &gt; f. Does the Quality Control section adequately explain how the software results can be trusted? &gt; g. Does the Reuse section provide concrete and useful suggestions for reuse of the software, for instance: other potential applications, ways of extending or modifying the software, integration with other software? &gt; h. Are figures and diagrams used to enhance the description? Are they clear and meaningful? &gt; i. Do you believe that another researcher could take the software and use it, or take the software and build on it? &gt; &gt; &gt; ### The software &gt; &gt; a. Is the software in a suitable repository? (see <a href="http://openresearchsoftware.metajnl.com/about/repositories/">http://openresearchsoftware.metajnl.com/about/repositories/</a> for more information) &gt; b. Does the software have a suitable open licence? (see <a href="http://openresearchsoftware.metajnl.com/faq/#q5">http://openresearchsoftware.metajnl.com/faq/#q5</a> for more information) &gt; c. If the Archive section is filled out, is the link in the form of a persistent identifier, e.g. a DOI? Can you download the software from this link? &gt; d. If the Code repository section is filled out, does the identifier link to the appropriate place to download the source code? Can you download the source code from this link? &gt; e. Is the software license included in the software in the repository? Is it included in the source code? &gt; f. Is sample input and output data provided with the software? &gt; g. Is the code adequately documented? Can a reader understand how to build/deploy/install/run the software, and identify whether the software is operating as expected? &gt; h. Does the software run on the systems specified? (if you do not have access to a system with the prerequisite requirements, let us know) &gt; i. Is it obvious what the support mechanisms for the software are? &gt;</p>
+<p>(content below <a href="http://creativecommons.org/licenses/by/3.0/">CC-BY</a>, quoted from <a href="http://openresearchsoftware.metajnl.com/">Journal of Open Research Software</a>)</p>
+<p><em>Please provide a list of your recommendations, indicating which are compulsory for acceptance and which are optional but would improve the quality of the paper or the reusability of the software.</em></p>
+<h3 id="the-paper">The paper</h3>
+<ol type="a">
+<li>Is the title of the paper descriptive and objective?</li>
+<li>Does the Abstract give an indication of the software’s functionality, and where it would be used?</li>
+<li>Do the keywords enable a reader to search for the software?</li>
+<li>Does the Introduction give enough background information to understand the context of the software’s development and use?</li>
+<li>Does the Implementation and Architecture section give enough information to get an idea of how the software is designed, and any constraints that may be placed on its use?</li>
+<li>Does the Quality Control section adequately explain how the software results can be trusted?</li>
+<li>Does the Reuse section provide concrete and useful suggestions for reuse of the software, for instance: other potential applications, ways of extending or modifying the software, integration with other software?</li>
+<li>Are figures and diagrams used to enhance the description? Are they clear and meaningful?</li>
+<li>Do you believe that another researcher could take the software and use it, or take the software and build on it?</li>
+</ol>
+<h3 id="the-software">The software</h3>
+<ol type="a">
+<li>Is the software in a suitable repository? (see <a href="http://openresearchsoftware.metajnl.com/about/repositories/">http://openresearchsoftware.metajnl.com/about/repositories/</a> for more information)</li>
+<li>Does the software have a suitable open licence? (see <a href="http://openresearchsoftware.metajnl.com/faq/#q5">http://openresearchsoftware.metajnl.com/faq/#q5</a> for more information)</li>
+<li>If the Archive section is filled out, is the link in the form of a persistent identifier, e.g. a DOI? Can you download the software from this link?</li>
+<li>If the Code repository section is filled out, does the identifier link to the appropriate place to download the source code? Can you download the source code from this link?</li>
+<li>Is the software license included in the software in the repository? Is it included in the source code?</li>
+<li>Is sample input and output data provided with the software?</li>
+<li>Is the code adequately documented? Can a reader understand how to build/deploy/install/run the software, and identify whether the software is operating as expected?</li>
+<li>Does the software run on the systems specified? (if you do not have access to a system with the prerequisite requirements, let us know)</li>
+<li>Is it obvious what the support mechanisms for the software are?</li>
+</ol>
+<hr />
 <p>Like my own list, a repository, a license, and sample input-output data are all mentioned explicitly. Software review section suggests there should be a mechanism in place to “identify whether the software is operating as expected” – such as basic unit tests. Extensibility is also mentioned, but without any reference to features that may or may not assist in that – a fault of my own list, which was probably over-specific on that account. I think these are reasonable and solid guidelines, and would love to see other journals that frequently publish software papers (Looking at you, MEE, JSS, Bioinformatics, R Journal, PLoS Comp Bio) adopt similar criteria.</p>
 <p>Of course I’d love to hear what others think about this.</p>
 
@@ -161,8 +187,8 @@
     <time datetime="2013-07-09T00:00:00-07:00" 
     property="dc:created">09 Jul 2013</time></p>
   <p><small> modified: <time 
-            datetime="2013-07-18T15:43:00-07:00" 
-            property="dc:modified">18 Jul 2013</time></small></p>
+            datetime="2013-07-24T16:31:16-07:00" 
+            property="dc:modified">24 Jul 2013</time></small></p>
 
  <br />
 
@@ -198,11 +224,11 @@
 
   <br/>
 
-   <p style="font-style:italic"> <i class="icon-signal"></i> pageviews: (not calculated)</p>
+   <p style="font-style:italic"> <i class="icon-signal"></i> pageviews: 18</p>
 
   <br/>
 
-  <p><small> <i class="icon-barcode"></i> SHA Hash: <a href="https://github.com/cboettig/labnotebook/commit/839434d9ba16acb175a404511e1d0bedb3603cd3/_posts/2013-07-09-reviewing-software-revisited.md"> 839434d9ba16acb175a404511e1d0bedb3603cd3</a></small></p>
+  <p><small> <i class="icon-barcode"></i> SHA Hash: <a href="https://github.com/cboettig/labnotebook/commit/50a7df5ebfd5bdae2709ae4aaf8e32d6fde8e31d/_posts/2013-07-09-reviewing-software-revisited.md"> 50a7df5ebfd5bdae2709ae4aaf8e32d6fde8e31d</a></small></p>
     
   <br/>
 

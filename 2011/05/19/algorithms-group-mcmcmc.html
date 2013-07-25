@@ -155,27 +155,27 @@
 <p>Note this code doesn’t run anything, we have to specify temperature ratios $ _i $, the likelihood function, and the prior, and then it can give us back chains.  Here’s a trivial example based on our Gaussian process:</p>
 <pre class="sourceCode r"><code class="sourceCode r">
 ## Observed Data
-X &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">20</span>, <span class="dv">2</span>, <span class="dv">5</span>)
+X &lt;- <span class="kw">rnorm</span>(<span class="dv">20</span>, <span class="dv">2</span>, <span class="dv">5</span>)
 
-loglik &lt;-<span class="st"> </span>function(pars){
+loglik &lt;- function(pars){
   ## The likelihood function
   <span class="kw">sum</span>( <span class="kw">dnorm</span>(X, <span class="dt">mean=</span>pars[<span class="dv">1</span>], <span class="dt">sd=</span>pars[<span class="dv">2</span>], <span class="dt">log=</span><span class="ot">TRUE</span>) )
 }
-prior &lt;-<span class="st"> </span>function(pars){
+prior &lt;- function(pars){
 <span class="dv">1</span>/pars[<span class="dv">2</span>]^<span class="dv">2</span>
 <span class="co">#  dnorm(pars[1], 0, 1000, log=TRUE)+</span>
  <span class="co"># dnorm(pars[2], 0, 1000, log=TRUE)</span>
 }
 
 <span class="co"># chains can have different or matching starting conditions, will mix anyway</span>
-pars &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>), <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))
+pars &lt;- <span class="kw">list</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>), <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))
 
-chains &lt;-<span class="st"> </span><span class="kw">mcmcmc_fn</span>(pars, loglik, prior, <span class="dt">MaxTime=</span><span class="fl">1e3</span>, <span class="dt">indep=</span><span class="dv">100</span>, <span class="dt">stepsizes=</span>.<span class="dv">02</span>)</code></pre>
+chains &lt;- <span class="kw">mcmcmc_fn</span>(pars, loglik, prior, <span class="dt">MaxTime=</span><span class="fl">1e3</span>, <span class="dt">indep=</span><span class="dv">100</span>, <span class="dt">stepsizes=</span>.<span class="dv">02</span>)</code></pre>
 <p>Works rather well: <img src="http://farm4.staticflickr.com/3642/5752281143_ea460ec9a2_o.png" /></p>
 <p>With different prior:</p>
 <pre class="sourceCode r"><code class="sourceCode r">
-prior &lt;-<span class="st"> </span>function(pars){
-  <span class="kw">dnorm</span>(pars[<span class="dv">1</span>], <span class="dv">0</span>, <span class="dv">1000</span>, <span class="dt">log=</span><span class="ot">TRUE</span>) +<span class="st"> </span><span class="kw">dexp</span>(pars[<span class="dv">2</span>], <span class="dv">10</span>, <span class="dt">log=</span><span class="ot">TRUE</span>)
+prior &lt;- function(pars){
+  <span class="kw">dnorm</span>(pars[<span class="dv">1</span>], <span class="dv">0</span>, <span class="dv">1000</span>, <span class="dt">log=</span><span class="ot">TRUE</span>) + <span class="kw">dexp</span>(pars[<span class="dv">2</span>], <span class="dv">10</span>, <span class="dt">log=</span><span class="ot">TRUE</span>)
 }</code></pre>
 <p>The run converges on an erroneous sigma value:</p>
 <figure>
@@ -249,7 +249,7 @@ prior &lt;-<span class="st"> </span>function(pars){
 
   <br/>
 
-   <p style="font-style:italic"> <i class="icon-signal"></i> pageviews: 249</p>
+   <p style="font-style:italic"> <i class="icon-signal"></i> pageviews: 260</p>
 
   <br/>
 

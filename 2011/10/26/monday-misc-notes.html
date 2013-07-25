@@ -156,13 +156,13 @@
 <li>Created basic package, toyHMM</li>
 <li>Some git notes:  The quick git-undo for a destroyed file:</li>
 </ul>
-<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">git</span> checkout filename</code></pre>
+<pre class="sourceCode bash"><code class="sourceCode bash">git checkout filename</code></pre>
 <p>This will checkout the file from HEAD, overwriting your change. If you’ve already committed changes, you need to go up one previous from head, using</p>
-<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">git</span> checkout HEAD^ filename</code></pre>
+<pre class="sourceCode bash"><code class="sourceCode bash">git checkout HEAD^ filename</code></pre>
 <p>Or for two commits back,</p>
-<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">git</span> checkout HEAD^^ filename</code></pre>
+<pre class="sourceCode bash"><code class="sourceCode bash">git checkout HEAD^^ filename</code></pre>
 <p>This command is also used to checkout branches, and you could happen to have a file with the same name as a branch. All is not lost, you will simply need to type:</p>
-<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">git</span> checkout -- filename</code></pre>
+<pre class="sourceCode bash"><code class="sourceCode bash">git checkout -- filename</code></pre>
 <p>You can also do this with files from other branches, and such. <code>man git-checkout</code> has the details.</p>
 <p>The rest of the Internet will tell you to use <code>git reset --hard</code>, but this resets <strong>all </strong> uncommitted changes you’ve made in your working copy. Type this with care.</p>
 

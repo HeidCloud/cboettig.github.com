@@ -160,11 +160,11 @@
 <img src="http://farm8.staticflickr.com/7014/6727029515_bcfe58aedb_o.png" />
 </figure>
 <p>The package commands are explained in more detail in the <strong><a href="http://cran.r-project.org/web/packages/pmc/vignettes/pmc_tutorial.pdf">package vignette</a></strong>, but the idea is simple. Running the pmc comparison between two models (for the model-choice step) looks like this:</p>
-<pre class="sourceCode r"><code class="sourceCode r">bm_v_lambda &lt;-<span class="st"> </span><span class="kw">pmc</span>(geospiza.tree, geospiza.data[<span class="st">&quot;wingL&quot;</span>],
+<pre class="sourceCode r"><code class="sourceCode r">bm_v_lambda &lt;- <span class="kw">pmc</span>(geospiza.tree, geospiza.data[<span class="st">&quot;wingL&quot;</span>],
   <span class="st">&quot;BM&quot;</span>, <span class="st">&quot;lambda&quot;</span>, <span class="dt">nboot=</span><span class="dv">100</span>)</code></pre>
 <p>Extracting the distribution of estimates for the parameter lambda got from fitting the lambda model (B) to data made by simulating under lambda model (A):</p>
-<pre class="sourceCode r"><code class="sourceCode r">lambdas &lt;-<span class="st"> </span><span class="kw">subset</span>(bm_v_lambda[<span class="st">&quot;par_dists&quot;</span>],
-  comparison==<span class="st">&quot;BB&quot;</span> &amp;<span class="st"> </span>parameter==<span class="st">&quot;lambda&quot;</span>)</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">lambdas &lt;- <span class="kw">subset</span>(bm_v_lambda[<span class="st">&quot;par_dists&quot;</span>],
+  comparison==<span class="st">&quot;BB&quot;</span> &amp; parameter==<span class="st">&quot;lambda&quot;</span>)</code></pre>
 <p>To view the model comparison, just plot the pmc result:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(bm_v_lambda)</code></pre>
 <p>The substantial overlap in the likelihood ratios after simulating under either model indicate that we cannot choose between BM and lambda in this case.  I’ll leave the paper to explain this approach in more detail, but it’s just simulation and refitting.</p>
@@ -245,7 +245,7 @@
 
   <br/>
 
-   <p style="font-style:italic"> <i class="icon-signal"></i> pageviews: 168</p>
+   <p style="font-style:italic"> <i class="icon-signal"></i> pageviews: 171</p>
 
   <br/>
 

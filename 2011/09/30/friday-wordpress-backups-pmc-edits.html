@@ -152,7 +152,7 @@
 define(&#39;DB_HOST&#39;, &#39;localhost&#39;);     // ...and the server MySQL is running on</code></pre>
 <p>create user: log in as root</p>
 <pre class="sourceCode bash"><code class="sourceCode bash">
-<span class="kw">mysql</span> -u root -p</code></pre>
+mysql -u root -p</code></pre>
 <p>and create user</p>
 <pre class="sourceCode sql"><code class="sourceCode sql">
 mysql&gt; <span class="kw">create</span> <span class="kw">database</span> database_name
@@ -163,7 +163,7 @@ mysql&gt; <span class="kw">grant</span> <span class="kw">all</span> <span class=
 mysql&gt; quit</code></pre>
 <p>yes you need the quotes around the password and the .* appended after database_name. Then can import the most recent dump.</p>
 <pre class="sourceCode bash"><code class="sourceCode bash">
-<span class="kw">mysql</span> -u username -p database_name <span class="kw">&lt;</span> mysqldump_file.sql</code></pre>
+mysql -u username -p database_name <span class="kw">&lt;</span> mysqldump_file.sql</code></pre>
 <p>Install wordpress, configure. Set from /var/www to backup location, following <a href="http://movingtofreedom.org/2007/05/09/how-to-wordpress-on-ubuntu-gnu-linux/">any</a> <a href="https://help.ubuntu.com/community/WordPress">decent</a> tutorial.</p>
 <h2 id="manuscript-edits">Manuscript edits</h2>
 <p>power_curve.R still running on farm. Run just the needed analysis. Done, updated data files. Runs much faster on farm then on zero, kinda amazing. Need these kind of explanatory <a href="http://www.carlboettiger.info/archives/286">figures</a>? Removed.</p>
@@ -171,11 +171,11 @@ mysql&gt; quit</code></pre>
 <pre class="sourceCode R"><code class="sourceCode r">
  <span class="kw">require</span>(pmc)
  <span class="kw">data</span>(anoles_model_choice)
- <span class="kw">confidenceIntervals.pow</span>(bm_v_ou1)$test -&gt;<span class="st"> </span>ou1_ci
- <span class="kw">confidenceIntervals.pow</span>(bm_v_ou1)$null -&gt;<span class="st"> </span>bm_ci
- <span class="kw">confidenceIntervals.pow</span>(ouLP_v_half)$test -&gt;<span class="st"> </span>ou15_ci
- <span class="kw">confidenceIntervals.pow</span>(ouLP_v_ouLP4)$null -&gt;<span class="st"> </span>ou3_ci
- <span class="kw">confidenceIntervals.pow</span>(ouLP_v_ouLP4)$test -&gt;<span class="st"> </span>ou4_ci</code></pre>
+ <span class="kw">confidenceIntervals.pow</span>(bm_v_ou1)$test -&gt; ou1_ci
+ <span class="kw">confidenceIntervals.pow</span>(bm_v_ou1)$null -&gt; bm_ci
+ <span class="kw">confidenceIntervals.pow</span>(ouLP_v_half)$test -&gt; ou15_ci
+ <span class="kw">confidenceIntervals.pow</span>(ouLP_v_ouLP4)$null -&gt; ou3_ci
+ <span class="kw">confidenceIntervals.pow</span>(ouLP_v_ouLP4)$test -&gt; ou4_ci</code></pre>
 <h2 id="application-statement">Application statement</h2>
 
     </article>

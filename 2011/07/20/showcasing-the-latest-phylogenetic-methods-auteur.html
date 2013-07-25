@@ -165,7 +165,7 @@
              <span class="co"># find an internal edge</span>
              anc=<span class="kw">get.desc.of.node</span>(<span class="kw">Ntip</span>(phy)+<span class="dv">1</span>,phy)
              branches=phy$edge[,<span class="dv">2</span>]
-             branches=branches[branches&gt;<span class="kw">Ntip</span>(phy) &amp;<span class="st"> </span>branches!=anc]
+             branches=branches[branches&gt;<span class="kw">Ntip</span>(phy) &amp; branches!=anc]
              branch=branches[<span class="kw">sample</span>(<span class="dv">1</span>:<span class="kw">length</span>(branches),<span class="dv">1</span>)]
              desc=<span class="kw">get.descendants.of.node</span>(branch,phy)
              if(<span class="kw">length</span>(desc)&gt;=<span class="dv">4</span>) break()
@@ -217,7 +217,7 @@ dirs=<span class="kw">dir</span>(<span class="st">&quot;./&quot;</span>,<span cl
 
 <span class="kw">data</span>(chelonia)
 <span class="co"># take a look at this data</span>
-&gt;<span class="st"> </span>chelonia
+&gt; chelonia
 $phy
 Phylogenetic tree with <span class="dv">226</span> tips and <span class="dv">225</span> internal nodes.
 
@@ -230,8 +230,8 @@ $dat
 Pelomedusa_subrufa                   Pelusios_williamsi
 <span class="fl">2.995732</span>                             <span class="fl">3.218876</span>
 ...
-dat &lt;-<span class="st"> </span>chelonia$dat
-phy &lt;-<span class="st"> </span>chelonia$phy
+dat &lt;- chelonia$dat
+phy &lt;- chelonia$phy
 ## ready to run as above
 </code></pre>
 <p><a href="http://www.R-bloggers.com"><img src="http://a1.twimg.com/profile_images/1344218056/RblogLogo_bigger.png" alt="R-bloggers.com" /></a></p>

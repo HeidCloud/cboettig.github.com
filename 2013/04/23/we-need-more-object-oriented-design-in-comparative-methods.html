@@ -148,24 +148,24 @@
 <p>To avoid this kind of problem in the future, Jon has written the function <code>coef</code> which will extract the coefficients from the fit. For anyone starting to write packages, writing and using such extraction functions seems like an unnecessary hassle – after all it is often no faster to call the additional function than to just pull the data out of the return object yourself. But there is good reason to implement and use such methods. By drawing the data out using a function, it is possible to change the internal structure of the output without breaking the package API; without breaking code that depends on the package. In future, the <code>coef</code> function can just be similarly updated to point to the correct location for the model coefficients.</p>
 <p>Better than providing just any function, the new <code>coef</code> and <code>logLik</code> functions are generic methods that can act on a wide range of model fits in R that return coefficients or log likelihoods. Just type <code>methods(&quot;coef&quot;)</code> in your R terminal after loading your commonly used libraries to see how many of them define such a function. Following the basic principle of object-oriented design, these generic function calls identify the class of object they are given, and figure out what method to use on that class. For instance, the list of stuff returned by <code>fitContinous</code> now has class <code>gcfit</code>, and a function <code>coef.gcfit</code> which the generic function <code>coef</code> uses to know where to find the coefficients in a <code>gcfit</code> object. Generic functions are particularly nice, since they allow us to write code that can deal with a wide variety of statistical fits without needing to know just how to perform those tasks. The pmc algorithm is a good example of this. Using the generics <code>simulate</code>, <code>update</code>, and <code>logLik</code>, we can write the algorithm as:</p>
 <pre class="sourceCode r"><code class="sourceCode r">## Fit the original data using a function that returns an intelligent object &quot;fit&quot; which has methods &quot;simulate&quot;, &quot;update&quot;, and &quot;logLik&quot;
-fit_A &lt;-<span class="st"> </span><span class="kw">my_fitting_function</span>(data, phy, model_pars_A, fitting_pars ...)
-fit_B &lt;-<span class="st"> </span><span class="kw">another_fitting_function</span>(data, phy, model_pars_B, fitting_pars ...)
+fit_A &lt;- <span class="kw">my_fitting_function</span>(data, phy, model_pars_A, fitting_pars ...)
+fit_B &lt;- <span class="kw">another_fitting_function</span>(data, phy, model_pars_B, fitting_pars ...)
 
-orig_LL &lt;-<span class="st"> </span><span class="kw">logLik</span>(fit_B) -<span class="st"> </span><span class="kw">logLik</span>(fit_A)
+orig_LL &lt;- <span class="kw">logLik</span>(fit_B) - <span class="kw">logLik</span>(fit_A)
 
 ## 1000 Simulations under each model
-A_sims &lt;-<span class="st"> </span><span class="kw">simulate</span>(fit_A, <span class="dv">1000</span>)
-B_sims &lt;-<span class="st"> </span><span class="kw">simulate</span>(fit_B, <span class="dv">1000</span>)
+A_sims &lt;- <span class="kw">simulate</span>(fit_A, <span class="dv">1000</span>)
+B_sims &lt;- <span class="kw">simulate</span>(fit_B, <span class="dv">1000</span>)
 
 ## here are the four fits
-AA &lt;-<span class="st"> </span><span class="kw">lapply</span>(A_sims, fit_A, update)
-AB &lt;-<span class="st"> </span><span class="kw">lapply</span>(A_sims, fit_B, update)
-BA &lt;-<span class="st"> </span><span class="kw">lapply</span>(B_sims, fit_A, update)
-BB &lt;-<span class="st"> </span><span class="kw">lapply</span>(B_sims, fit_B, update)
+AA &lt;- <span class="kw">lapply</span>(A_sims, fit_A, update)
+AB &lt;- <span class="kw">lapply</span>(A_sims, fit_B, update)
+BA &lt;- <span class="kw">lapply</span>(B_sims, fit_A, update)
+BB &lt;- <span class="kw">lapply</span>(B_sims, fit_B, update)
 
 ## which create 2 distributions
-null_dist =<span class="st"> </span><span class="kw">sapply</span>(AB, logLik) -<span class="st"> </span><span class="kw">sapply</span>(AA, logLik)
-test_dist =<span class="st"> </span><span class="kw">sapply</span>(BB, logLik) -<span class="st"> </span><span class="kw">sapply</span>(BA, logLik)</code></pre>
+null_dist = <span class="kw">sapply</span>(AB, logLik) - <span class="kw">sapply</span>(AA, logLik)
+test_dist = <span class="kw">sapply</span>(BB, logLik) - <span class="kw">sapply</span>(BA, logLik)</code></pre>
 <p>in which the exact same code could be used regardless of whether <code>my_fitting_function</code> was <code>brownie.lite</code>, <code>fitContinuous</code>, <code>fitDiscrete</code>, <code>hansen</code>, <code>OUwie</code>, any of the laser fns, etc etc, and <code>another_fitting_function</code> could be the same call with different parameters (e.g. call to <code>hansen</code> with a different painting) or a call to some other function entirely (e.g. <code>brownie.lite</code>). Instead, <code>OUCH</code> is the only one that does this, and it insists on using a different format for “data” and “phy” which makes it annoying to have it play nicely with other fitting routines.</p>
 <p>The <code>pmc</code> package simply writes wrappers that will provide these generic methods to some of these functions. Because different packages (e.g. ouch, geiger) handle data differently, the wrappers must also be able to convert back and forth between these formats if we want to compare methods across different packages in this way. Though straight forward, it is not good practice to have the methods such as <code>simulate</code> and <code>update</code> provided in a different package than the actual fitting routines, but the number of package fitting methods continues to grow and I haven’t persuaded anyone to consider including such routines. With my postdoctoral work outside the area of phylogenetics, updating pmc each time is impractical. If packages provided such generic routines, code such as the above would work out of the box without the need for a specialized <code>pmc</code> package, which appears to make this very intuitive technique more opaque then necessary.</p>
 <p>There are many other good statistical tests that could benefit from such methods (particularly simulation methods which could assist in many ways). I hope one day they may be more popular in our phylogenetics community.</p>
@@ -216,7 +216,7 @@ test_dist =<span class="st"> </span><span class="kw">sapply</span>(BB, logLik) -
 
   <br/>
 
-   <p style="font-style:italic"> <i class="icon-signal"></i> pageviews: 267</p>
+   <p style="font-style:italic"> <i class="icon-signal"></i> pageviews: 278</p>
 
   <br/>
 

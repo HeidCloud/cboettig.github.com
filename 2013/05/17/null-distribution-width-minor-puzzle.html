@@ -147,47 +147,47 @@
 <p>Load the original run of the <a href="https://github.com/cboettig/earlywarning/blob/712b63d2719839b6bbf4188d9affb34d7cec68ce/inst/examples/beer.md">ou model</a> and increase the <code>nulldt</code> data frame to use all points instead of a sample of length 5000</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">load</span>(<span class="st">&quot;beer_run.rda&quot;</span>)
 
-ou_dat &lt;-<span class="st"> </span>dat
-ou_null &lt;-<span class="st"> </span>nulldat
+ou_dat &lt;- dat
+ou_null &lt;- nulldat
 <span class="co">#ou_null_ts &lt;- nulldt</span>
 
-null &lt;-<span class="st"> </span>timeseries <span class="co">#[1000:6010,]</span>
-null &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(<span class="kw">cbind</span>(<span class="dt">time =</span> <span class="dv">1</span>:<span class="kw">dim</span>(null)[<span class="dv">1</span>], null))
-ndf &lt;-<span class="st"> </span><span class="kw">melt</span>(null, <span class="dt">id=</span><span class="st">&quot;time&quot;</span>)
-<span class="kw">names</span>(ndf) =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;time&quot;</span>, <span class="st">&quot;reps&quot;</span>, <span class="st">&quot;value&quot;</span>)
-<span class="kw">levels</span>(ndf$reps) &lt;-<span class="st"> </span><span class="dv">1</span>:<span class="kw">length</span>(<span class="kw">levels</span>(ndf$reps)) <span class="co"># use numbers for reps instead of V1, V2, etc</span>
-nulldt &lt;-<span class="st"> </span><span class="kw">data.table</span>(ndf)
-ou_null_ts &lt;-<span class="st"> </span>nulldt</code></pre>
+null &lt;- timeseries <span class="co">#[1000:6010,]</span>
+null &lt;- <span class="kw">as.data.frame</span>(<span class="kw">cbind</span>(<span class="dt">time =</span> <span class="dv">1</span>:<span class="kw">dim</span>(null)[<span class="dv">1</span>], null))
+ndf &lt;- <span class="kw">melt</span>(null, <span class="dt">id=</span><span class="st">&quot;time&quot;</span>)
+<span class="kw">names</span>(ndf) = <span class="kw">c</span>(<span class="st">&quot;time&quot;</span>, <span class="st">&quot;reps&quot;</span>, <span class="st">&quot;value&quot;</span>)
+<span class="kw">levels</span>(ndf$reps) &lt;- <span class="dv">1</span>:<span class="kw">length</span>(<span class="kw">levels</span>(ndf$reps)) <span class="co"># use numbers for reps instead of V1, V2, etc</span>
+nulldt &lt;- <span class="kw">data.table</span>(ndf)
+ou_null_ts &lt;- nulldt</code></pre>
 <p>Plot the final distribution of indicator statistics, showing the width of the null,</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(dat) +<span class="st"> </span><span class="kw">geom_histogram</span>(<span class="kw">aes</span>(value, <span class="dt">y=</span>..density..), <span class="dt">binwidth=</span><span class="fl">0.3</span>, <span class="dt">alpha=</span>.<span class="dv">5</span>) +
-<span class="st"> </span><span class="kw">facet_wrap</span>(~variable) +<span class="st"> </span><span class="kw">xlim</span>(<span class="kw">c</span>(-<span class="dv">1</span>, <span class="dv">1</span>)) +<span class="st"> </span>
-<span class="st">  </span><span class="kw">geom_density</span>(<span class="dt">data=</span>nulldat, <span class="kw">aes</span>(value), <span class="dt">adjust=</span><span class="dv">2</span>) +<span class="st"> </span><span class="kw">xlab</span>(<span class="st">&quot;Kendall&#39;s tau&quot;</span>) +<span class="st"> </span><span class="kw">theme_bw</span>()</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(dat) + <span class="kw">geom_histogram</span>(<span class="kw">aes</span>(value, <span class="dt">y=</span>..density..), <span class="dt">binwidth=</span><span class="fl">0.3</span>, <span class="dt">alpha=</span>.<span class="dv">5</span>) +
+ <span class="kw">facet_wrap</span>(~variable) + <span class="kw">xlim</span>(<span class="kw">c</span>(-<span class="dv">1</span>, <span class="dv">1</span>)) + 
+  <span class="kw">geom_density</span>(<span class="dt">data=</span>nulldat, <span class="kw">aes</span>(value), <span class="dt">adjust=</span><span class="dv">2</span>) + <span class="kw">xlab</span>(<span class="st">&quot;Kendall&#39;s tau&quot;</span>) + <span class="kw">theme_bw</span>()</code></pre>
 <figure>
 <img src="http://farm9.staticflickr.com/8558/8747591959_9944ea987d_o.png" alt="plot of chunk unnamed-chunk-4" /><figcaption>plot of chunk unnamed-chunk-4</figcaption>
 </figure>
 <p>Load the <a href="https://github.com/cboettig/earlywarning/blob/712b63d2719839b6bbf4188d9affb34d7cec68ce/inst/examples/comment.md">allee model</a> and rename variables appropriately,</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">load</span>(<span class="st">&quot;comment_run.rda&quot;</span>)
-allee_dat &lt;-<span class="st"> </span>dat
-allee_null &lt;-<span class="st"> </span>nulldat
-allee_null_ts &lt;-<span class="st"> </span>nulldt</code></pre>
+allee_dat &lt;- dat
+allee_null &lt;- nulldat
+allee_null_ts &lt;- nulldt</code></pre>
 <p>For the Allee model, also plot the final distribution of indicator statistics, showing the width of the null,</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(dat) +<span class="st"> </span><span class="kw">geom_histogram</span>(<span class="kw">aes</span>(value, <span class="dt">y=</span>..density..), <span class="dt">binwidth=</span><span class="fl">0.3</span>, <span class="dt">alpha=</span>.<span class="dv">5</span>) +
-<span class="st"> </span><span class="kw">facet_wrap</span>(~variable) +<span class="st"> </span><span class="kw">xlim</span>(<span class="kw">c</span>(-<span class="dv">1</span>, <span class="dv">1</span>)) +<span class="st"> </span>
-<span class="st">  </span><span class="kw">geom_density</span>(<span class="dt">data=</span>nulldat, <span class="kw">aes</span>(value), <span class="dt">adjust=</span><span class="dv">2</span>) +<span class="st"> </span><span class="kw">xlab</span>(<span class="st">&quot;Kendall&#39;s tau&quot;</span>) +<span class="st"> </span><span class="kw">theme_bw</span>()</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(dat) + <span class="kw">geom_histogram</span>(<span class="kw">aes</span>(value, <span class="dt">y=</span>..density..), <span class="dt">binwidth=</span><span class="fl">0.3</span>, <span class="dt">alpha=</span>.<span class="dv">5</span>) +
+ <span class="kw">facet_wrap</span>(~variable) + <span class="kw">xlim</span>(<span class="kw">c</span>(-<span class="dv">1</span>, <span class="dv">1</span>)) + 
+  <span class="kw">geom_density</span>(<span class="dt">data=</span>nulldat, <span class="kw">aes</span>(value), <span class="dt">adjust=</span><span class="dv">2</span>) + <span class="kw">xlab</span>(<span class="st">&quot;Kendall&#39;s tau&quot;</span>) + <span class="kw">theme_bw</span>()</code></pre>
 <figure>
 <img src="http://farm8.staticflickr.com/7315/8748715116_c9440843f1_o.png" alt="plot of chunk unnamed-chunk-6" /><figcaption>plot of chunk unnamed-chunk-6</figcaption>
 </figure>
 <p>Tidy the data and plot a single replicate from each. Note the OU process has the correspondingly much wider null distribution due to</p>
-<pre class="sourceCode r"><code class="sourceCode r">allee_x &lt;-<span class="st"> </span><span class="kw">subset</span>(allee_null_ts, reps==<span class="dv">1</span>)
-ou_x &lt;-<span class="st"> </span><span class="kw">subset</span>(ou_null_ts, reps==<span class="dv">1</span>)
-allee_x &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">time =</span> allee_x$time, <span class="dt">value =</span> allee_x$value)
-ou_x &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">time =</span> ou_x$time, <span class="dt">value =</span> ou_x$value)
+<pre class="sourceCode r"><code class="sourceCode r">allee_x &lt;- <span class="kw">subset</span>(allee_null_ts, reps==<span class="dv">1</span>)
+ou_x &lt;- <span class="kw">subset</span>(ou_null_ts, reps==<span class="dv">1</span>)
+allee_x &lt;- <span class="kw">data.frame</span>(<span class="dt">time =</span> allee_x$time, <span class="dt">value =</span> allee_x$value)
+ou_x &lt;- <span class="kw">data.frame</span>(<span class="dt">time =</span> ou_x$time, <span class="dt">value =</span> ou_x$value)
 
-<span class="kw">ggplot</span>(allee_x, <span class="kw">aes</span>(time, value)) +<span class="st"> </span><span class="kw">geom_point</span>()</code></pre>
+<span class="kw">ggplot</span>(allee_x, <span class="kw">aes</span>(time, value)) + <span class="kw">geom_point</span>()</code></pre>
 <figure>
 <img src="http://farm8.staticflickr.com/7323/8747593003_dfbd94b355_o.png" alt="plot of chunk unnamed-chunk-7" /><figcaption>plot of chunk unnamed-chunk-7</figcaption>
 </figure>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(ou_x, <span class="kw">aes</span>(time, value)) +<span class="st"> </span><span class="kw">geom_point</span>()</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(ou_x, <span class="kw">aes</span>(time, value)) + <span class="kw">geom_point</span>()</code></pre>
 <figure>
 <img src="http://farm8.staticflickr.com/7295/8747593115_4320618635_o.png" alt="plot of chunk unnamed-chunk-7" /><figcaption>plot of chunk unnamed-chunk-7</figcaption>
 </figure>

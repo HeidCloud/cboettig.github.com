@@ -154,7 +154,7 @@ knit_hooks$<span class="kw">set</span>(<span class="dt">output =</span> function
     x, <span class="st">&quot;[/code]</span><span class="ch">\n</span><span class="st">&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot;&quot;</span>), <span class="dt">plot =</span> hook_plot_html)</code></pre>
 <p>Now we write some code chunks in this markdown file:</p>
 <pre class="sourceCode r"><code class="sourceCode r">## a simple calculator
-<span class="dv">1</span> +<span class="st"> </span><span class="dv">1</span></code></pre>
+<span class="dv">1</span> + <span class="dv">1</span></code></pre>
 <pre><code>## [1] 2</code></pre>
 <pre class="sourceCode r"><code class="sourceCode r">## boring random numbers
 <span class="kw">set.seed</span>(<span class="dv">123</span>)
@@ -162,18 +162,18 @@ knit_hooks$<span class="kw">set</span>(<span class="dt">output =</span> function
 <pre><code>## [1] -0.56048 -0.23018  1.55871  0.07051  0.12929</code></pre>
 <p>We can also produce plots which are uploaded to imgur.com:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggplot2)
-<span class="kw">qplot</span>(hp, mpg, <span class="dt">data =</span> mtcars) +<span class="st"> </span><span class="kw">geom_smooth</span>()</code></pre>
+<span class="kw">qplot</span>(hp, mpg, <span class="dt">data =</span> mtcars) + <span class="kw">geom_smooth</span>()</code></pre>
 <figure>
 <img src="ex-out-md-cars1.png" alt="plot of chunk md-cars" /><figcaption>plot of chunk md-cars</figcaption>
 </figure>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggpcp</span>(mtcars) +<span class="st"> </span><span class="kw">geom_line</span>()</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggpcp</span>(mtcars) + <span class="kw">geom_line</span>()</code></pre>
 <figure>
 <img src="ex-out-md-cars2.png" alt="plot of chunk md-cars" /><figcaption>plot of chunk md-cars</figcaption>
 </figure>
 <p>We can then post the result using RWordPress:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">require</span>(RWordPress)
-text =<span class="st"> </span><span class="kw">paste</span>(<span class="kw">readLines</span>(<span class="st">&quot;wordpress.md&quot;</span>), <span class="dt">collapse =</span> <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>)
-title =<span class="st"> &quot;Using knitr and RWordPress to publish results directly from R&quot;</span>
+text = <span class="kw">paste</span>(<span class="kw">readLines</span>(<span class="st">&quot;wordpress.md&quot;</span>), <span class="dt">collapse =</span> <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>)
+title = <span class="st">&quot;Using knitr and RWordPress to publish results directly from R&quot;</span>
 <span class="kw">newPost</span>(<span class="kw">list</span>(<span class="dt">description =</span> text, <span class="dt">title =</span> title), <span class="dt">publish =</span> <span class="ot">FALSE</span>)</code></pre>
 <p>Above we specify <code>publish = FALSE</code> which will make the post upload as a draft where we can preview it. To publish directly we could omit that command. Giving a title is intuitive. Note that we have to read the text in and substitue newline characters for line-breaks.</p>
 <p>Note that this requires setting the login options securely in .Rprofile, for example:</p>
@@ -227,7 +227,7 @@ title =<span class="st"> &quot;Using knitr and RWordPress to publish results dir
 
   <br/>
 
-   <p style="font-style:italic"> <i class="icon-signal"></i> pageviews: 567</p>
+   <p style="font-style:italic"> <i class="icon-signal"></i> pageviews: 577</p>
 
   <br/>
 

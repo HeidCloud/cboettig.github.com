@@ -1,0 +1,43 @@
+<ul>
+<li>Keep metadata as part of the object</li>
+<li>Recursion problem coming up.</li>
+</ul>
+<h2 id="validating">Validating:</h2>
+<ul>
+<li>https://github.com/ropensci/reml/issues/7</li>
+<li>Duncan has code using Matt’s java API</li>
+<li>If the EML isn’t valid, so what? Important for developers, users don’t care.</li>
+</ul>
+<h2 id="api-design">API design</h2>
+<ul>
+<li>what’s with the <code>do.call</code>? Can lead to unexpected behavior.</li>
+<li>Schema to create S4 objects</li>
+<li>Create R objects first, and then toXML</li>
+</ul>
+<h2 id="xmlschema">XMLSchema</h2>
+<ul>
+<li>will improve as we go</li>
+</ul>
+<h2 id="paper-outline">Paper outline</h2>
+<ul>
+<li>EML exists – metadata vs vertical</li>
+<li>metadata manual in, manual out</li>
+<li>data synthesis?</li>
+</ul>
+<h3 id="r-object-to-xml">R object to XML</h3>
+<ul>
+<li>Accept / identify losely defined fields (lists)</li>
+<li>Manually create a coercision method between R’s objects, e.g. “person” (attempt match of named elements to list slots automatically).<br /></li>
+<li>Separate coersion methods for read and write.</li>
+</ul>
+<h3 id="xml-to-r-object">XML to R object</h3>
+<ul>
+<li>ParseEML - because it saves us a lot to know this is EML.<br /></li>
+<li>Coerce into generic S4 R classes (class definitions from schema)</li>
+<li>Coerce automatically if element names are the same. Otherwise, manually coerce.</li>
+</ul>
+<h3 id="further-possibilities">Further possibilities</h3>
+<ul>
+<li>Translations to other languages (e.g. python) can be automated.<br /></li>
+<li>Then add higher level mapping manually.</li>
+</ul>

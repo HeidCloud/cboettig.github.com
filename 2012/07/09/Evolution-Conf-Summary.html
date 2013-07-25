@@ -193,10 +193,10 @@
 <h3 id="grabbing-my-twitter-notes-with-r">Grabbing my twitter-notes with R</h3>
 <p>Extracted with a few twitter commands</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(twitteR)
-me &lt;-<span class="st"> </span><span class="kw">userTimeline</span>(<span class="st">&quot;cboettig&quot;</span>, <span class="dt">n=</span><span class="dv">300</span>)
-me &lt;-<span class="st"> </span><span class="kw">twListToDF</span>(me)
-evol2012 &lt;-<span class="st"> </span><span class="kw">grep</span>(<span class="st">&quot;#evol2012&quot;</span>, me$text)
-ievobio &lt;-<span class="st"> </span><span class="kw">grep</span>(<span class="st">&quot;#ievobio&quot;</span>, me$text)
+me &lt;- <span class="kw">userTimeline</span>(<span class="st">&quot;cboettig&quot;</span>, <span class="dt">n=</span><span class="dv">300</span>)
+me &lt;- <span class="kw">twListToDF</span>(me)
+evol2012 &lt;- <span class="kw">grep</span>(<span class="st">&quot;#evol2012&quot;</span>, me$text)
+ievobio &lt;- <span class="kw">grep</span>(<span class="st">&quot;#ievobio&quot;</span>, me$text)
 <span class="kw">writeLines</span>(<span class="dt">con=</span><span class="st">&quot;evol2012.txt&quot;</span>, me$text[evol2012])
 <span class="kw">writeLines</span>(<span class="dt">con=</span><span class="st">&quot;ievobio.txt&quot;</span>, me$text[ievobio])</code></pre>
 <p>Should add some gsub commands to provide html markup. For the moment used vim:</p>

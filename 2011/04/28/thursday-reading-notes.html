@@ -181,7 +181,7 @@
 <h2 id="coding">Coding</h2>
 <p>Exploring better error handling for TreeBASE package. From Duncan:</p>
 <pre class="sourceCode r"><code class="sourceCode r">
-ans &lt;-<span class="st"> </span><span class="kw">try</span>(<span class="kw">read.nexus</span>(con))
+ans &lt;- <span class="kw">try</span>(<span class="kw">read.nexus</span>(con))
 <span class="co"># and then check the class of ans to see if it is &quot;try-error&quot;,</span>
  if(<span class="kw">is</span>(ans, <span class="st">&quot;try-error&quot;</span>)) {
      <span class="co"># do something for the error</span>
@@ -193,7 +193,7 @@ ans &lt;-<span class="st"> </span><span class="kw">try</span>(<span class="kw">r
 <p>The second approach is to manage the HTTP request for the document so that you can detect when the file is not available. You can use either getURL() or getURLContent() in the RCurl package.</p>
 </blockquote>
 <pre class="sourceCode r"><code class="sourceCode r">
- txt =<span class="st"> </span><span class="kw">getURL</span>(<span class="st">&quot;http://purl.org/phylo/treebase/phylows/tree/TB2:Tr9917?format=nexus&quot;</span>,
+ txt = <span class="kw">getURL</span>(<span class="st">&quot;http://purl.org/phylo/treebase/phylows/tree/TB2:Tr9917?format=nexus&quot;</span>,
                <span class="dt">header =</span> <span class="ot">TRUE</span>, <span class="dt">followlocation =</span> <span class="ot">TRUE</span>)
  <span class="kw">parseHTTPHeader</span>(txt)</code></pre>
 <blockquote>
@@ -201,7 +201,7 @@ ans &lt;-<span class="st"> </span><span class="kw">try</span>(<span class="kw">r
 </blockquote>
 <p>It would be better if the server returned a 40* error status indicating authorization problems.When getURL() returns regular content, you can pass that to read.nexus() as a text connection, e.g.</p>
 <pre class="sourceCode r"><code class="sourceCode r">
-  o =<span class="st"> </span><span class="kw">read.nexus</span>(<span class="kw">textConnection</span>(txt))</code></pre>
+  o = <span class="kw">read.nexus</span>(<span class="kw">textConnection</span>(txt))</code></pre>
 <h2 id="play-ubuntu-release">Play: ubuntu release</h2>
 <p>And wow, the new Ubuntu release (11.04, Natty Nawhal) is no small shift. OpenOffice-&gt;LibreOffice, Rhythmbox replaced with Banshee, and omg, the veritable GNOME interface replaced with something I’ve never heard of (<a href="http://en.wikipedia.org/wiki/Unity_%28desktop_environment%29">Unity</a>, developed by Canonical). Described as a “smart-phone style” interface and “easier than a Mac”, I don’t know – if those things should count as universal praise. Overall pretty <a href="http://www.zdnet.com/blog/open-source/what-you-need-to-know-about-the-new-ubuntu/8760">promising</a>.</p>
 <h2 id="references">References</h2>

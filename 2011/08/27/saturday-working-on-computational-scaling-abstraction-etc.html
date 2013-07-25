@@ -158,18 +158,18 @@ RLIBS=<span class="st">&quot;~/R/x86_64-redhat-linux-gnu-library/2.13&quot;</spa
 
 ### Direct RMPI way:
 <span class="kw">mpi.spawn.Rslaves</span>(<span class="dt">nslaves=</span><span class="dv">15</span>)
-slavefn &lt;-<span class="st"> </span>function() { <span class="kw">print</span>(<span class="kw">paste</span>(<span class="st">&quot;Hello from&quot;</span>, foldNumber)) }
-<span class="kw">mpi.bcast.cmd</span>(foldNumber &lt;-<span class="st"> </span><span class="kw">mpi.comm.rank</span>())
+slavefn &lt;- function() { <span class="kw">print</span>(<span class="kw">paste</span>(<span class="st">&quot;Hello from&quot;</span>, foldNumber)) }
+<span class="kw">mpi.bcast.cmd</span>(foldNumber &lt;- <span class="kw">mpi.comm.rank</span>())
 <span class="kw">mpi.bcast.Robj2slave</span>(slavefn)
-result &lt;-<span class="st"> </span><span class="kw">mpi.remote.exec</span>(<span class="kw">slavefn</span>())
+result &lt;- <span class="kw">mpi.remote.exec</span>(<span class="kw">slavefn</span>())
 <span class="kw">print</span>(result)
 <span class="kw">mpi.close.Rslaves</span>()
 
 
 <span class="kw">library</span>(snow)
 ## snow method
-cluster &lt;-<span class="st"> </span><span class="kw">makeCluster</span>(<span class="dv">16</span>, <span class="dt">type=</span><span class="st">&quot;MPI&quot;</span>)
-out &lt;-<span class="st"> </span><span class="kw">parSapply</span>(cluster, <span class="dv">1</span>:<span class="dv">16</span>, function(x) <span class="kw">print</span>(<span class="kw">paste</span>(<span class="st">&quot;snow hello from &quot;</span>, x)))
+cluster &lt;- <span class="kw">makeCluster</span>(<span class="dv">16</span>, <span class="dt">type=</span><span class="st">&quot;MPI&quot;</span>)
+out &lt;- <span class="kw">parSapply</span>(cluster, <span class="dv">1</span>:<span class="dv">16</span>, function(x) <span class="kw">print</span>(<span class="kw">paste</span>(<span class="st">&quot;snow hello from &quot;</span>, x)))
 <span class="kw">print</span>(out)
 <span class="kw">stopCluster</span>(cluster)
 
@@ -177,13 +177,13 @@ out &lt;-<span class="st"> </span><span class="kw">parSapply</span>(cluster, <sp
 <span class="kw">library</span>(snowfall)
 <span class="co"># default</span>
 <span class="kw">sfInit</span>( <span class="dt">parallel=</span><span class="ot">TRUE</span>, <span class="dt">cpus=</span><span class="dv">16</span>)
-out &lt;-<span class="st"> </span><span class="kw">sfSapply</span>(<span class="dv">1</span>:<span class="dv">16</span>, function(x) <span class="kw">print</span>(<span class="kw">paste</span>(<span class="st">&quot;snow hello from &quot;</span>, x)))
+out &lt;- <span class="kw">sfSapply</span>(<span class="dv">1</span>:<span class="dv">16</span>, function(x) <span class="kw">print</span>(<span class="kw">paste</span>(<span class="st">&quot;snow hello from &quot;</span>, x)))
 <span class="kw">print</span>(out)
 <span class="kw">sfStop</span>()
 
 <span class="co"># snowfall MPI</span>
 <span class="kw">sfInit</span>( <span class="dt">parallel=</span><span class="ot">TRUE</span>, <span class="dt">cpus=</span><span class="dv">16</span>, <span class="dt">type=</span><span class="st">&quot;MPI&quot;</span> )
-out &lt;-<span class="st"> </span><span class="kw">sfSapply</span>(<span class="dv">1</span>:<span class="dv">16</span>, function(x) <span class="kw">print</span>(<span class="kw">paste</span>(<span class="st">&quot;snow hello from &quot;</span>, x)))
+out &lt;- <span class="kw">sfSapply</span>(<span class="dv">1</span>:<span class="dv">16</span>, function(x) <span class="kw">print</span>(<span class="kw">paste</span>(<span class="st">&quot;snow hello from &quot;</span>, x)))
 <span class="kw">print</span>(out)
 <span class="kw">sfStop</span>()
 
@@ -191,7 +191,7 @@ out &lt;-<span class="st"> </span><span class="kw">sfSapply</span>(<span class="
 <p>exploring mpi in C on carver. Working example on carver. Will see about pure-C implementations of wrightscape. Pure c on warning signals will wait on better handling of the integration, see earlier <a href="http://www.carlboettiger.info/archives/1169">optimization</a> on this.</p>
 <p>on farm, need to load compiler first:</p>
 <pre class="sourceCode bash"><code class="sourceCode bash">
-<span class="kw">module</span> load gcc openmpi</code></pre>
+module load <span class="kw">gcc</span> openmpi</code></pre>
 
     </article>
   </div>
