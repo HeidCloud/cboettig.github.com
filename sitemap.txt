@@ -818,6 +818,7 @@ http://carlboettiger.info/2013/07/11/visit-to-WHOI.html
 http://carlboettiger.info/2013/07/10/notes.html  
 http://carlboettiger.info/2013/07/10/forking-the-R-journal.html  
 http://carlboettiger.info/2013/07/09/reviewing-software-revisited.html  
+http://carlboettiger.info/2013/07/08/reml-update.html  
 http://carlboettiger.info/2013/06/26/starting-an-EML-package-for-R.html  
 http://carlboettiger.info/2013/06/24/notes.html  
 http://carlboettiger.info/2013/06/23/notes-on-leveraging-the-ecological-markup-language.html  

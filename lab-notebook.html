@@ -144,7 +144,7 @@
   <div class="span3 offset1">
     <h4>  <a property="account" href="https://github.com/cboettig" onclick="recordOutboundLink(this, 'Outbound Links', 'Github'); return false;"><i class="icon-github" alt="github"></i> Coding </a></h4> 
      <div class="excerpt">
-        <ul><li>cboettig pushed to master at cboettig/reml: <em>Merge branch 'master' of github.com:ropensci/reml documentation updated from vignette</em> <a href="https://github.com/cboettig/reml/compare/606e9b537b...3ed47007f9">07:27 2013/07/25</a></li><li>cboettig pushed to master at ropensci/reml: <em>add comment about coercion methods</em> <a href="https://github.com/ropensci/reml/compare/dc275adc0b...3ed47007f9">07:27 2013/07/25</a></li><li>cboettig pushed to master at cboettig/labnotebook: <em>layout: post</em> <a href="https://github.com/cboettig/labnotebook/compare/bc95dd9c43...c97b66b55b">07:20 2013/07/25</a></li><li>cboettig pushed to master at cboettig/labnotebook: <em>fix code block rendering define post layout</em> <a href="https://github.com/cboettig/labnotebook/compare/daf4633c2a...bc95dd9c43">07:06 2013/07/25</a></li><li>cboettig pushed to master at cboettig/cboettig.github.com: <em>update site</em> <a href="https://github.com/cboettig/cboettig.github.com/compare/25e6ae25d6...0d4e5574e3">07:01 2013/07/25</a></li></ul>
+        <ul><li>cboettig pushed to master at cboettig/cboettig.github.com: <em>update site</em> <a href="https://github.com/cboettig/cboettig.github.com/compare/0d4e5574e3...54d6c0344a">08:13 2013/07/25</a></li><li>cboettig pushed to master at cboettig/reml: <em>Merge branch 'master' of github.com:ropensci/reml documentation updated from vignette</em> <a href="https://github.com/cboettig/reml/compare/606e9b537b...3ed47007f9">07:27 2013/07/25</a></li><li>cboettig pushed to master at ropensci/reml: <em>add comment about coercion methods</em> <a href="https://github.com/ropensci/reml/compare/dc275adc0b...3ed47007f9">07:27 2013/07/25</a></li><li>cboettig pushed to master at cboettig/labnotebook: <em>layout: post</em> <a href="https://github.com/cboettig/labnotebook/compare/bc95dd9c43...c97b66b55b">07:20 2013/07/25</a></li><li>cboettig pushed to master at cboettig/labnotebook: <em>fix code block rendering define post layout</em> <a href="https://github.com/cboettig/labnotebook/compare/daf4633c2a...bc95dd9c43">07:06 2013/07/25</a></li></ul>
     </div>
   </div>
   <div class="span3">
@@ -517,7 +517,7 @@ XML:::<span class="kw">xmlAttrsToDataFrame</span>(<span class="kw">getNodeSet</s
 <p><span>Great ideas from the Journal of Open Research Software</span></p>
 <p style="font-style:italic"> 09 Jul 2013</p>
 
-<p style="font-style:italic"> pageviews: 44 </p>
+<p style="font-style:italic"> pageviews: 49 </p>
 
 <article>
 <div class="excerpt">
@@ -560,6 +560,67 @@ XML:::<span class="kw">xmlAttrsToDataFrame</span>(<span class="kw">getNodeSet</s
      see _plugins/jekyll-labnotebook-plugins/raw_content --> 
 </article> 
 <p> <a href="/2013/07/09/reviewing-software-revisited.html"> <em>Read more</em></a> </p>
+<br />
+<br />
+
+
+        </div>
+      
+        <div class="span3">
+          <header><h4><a href="/2013/07/08/reml-update.html">Reml Update</a></h4></header>
+<p><span></span></p>
+<p style="font-style:italic"> 08 Jul 2013</p>
+
+<p style="font-style:italic"> pageviews: (not calculated) </p>
+
+<article>
+<div class="excerpt">
+<p>Made substanial progress on the <a href="https://github.com/ropensci/reml">reml</a> project. We have reached our <a href="https://github.com/ropensci/reml/issues?milestone=1&amp;state=closed">first milestone</a>, being able to:</p>
+<ul>
+<li>Successfully validate the EML generated (<a href="https://github.com/ropensci/reml/issues/28">#28</a>)</li>
+<li>Start a unit test suite write eml unit tests (<a href="https://github.com/ropensci/reml/issues/14">#14</a>)</li>
+<li>Extract appropriate R objects from EML dataTable read eml (<a href="https://github.com/ropensci/reml/issues/6">#6</a>)</li>
+<li>Add function to publish EML data through figshare publish eml (<a href="https://github.com/ropensci/reml/issues/3">#3</a>)</li>
+<li>Generate an EML file given a data.frame and appropriate metadata write eml (<a href="https://github.com/ropensci/reml/issues/2">#2</a>)</li>
+</ul>
+<p>As illustrated by the example shown in the Readme:</p>
+<h2 id="writing-r-data-into-eml">Writing R data into EML</h2>
+<p>Install and load:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;uuid&quot;</span>,,<span class="st">&#39;http://rforge.net/&#39;</span>,<span class="dt">type=</span><span class="st">&#39;source&#39;</span>)
+<span class="kw">library</span>(<span class="st">&quot;devtools&quot;</span>)
+<span class="kw">install_github</span>(<span class="st">&quot;reml&quot;</span>, <span class="st">&quot;ropensci&quot;</span>)
+<span class="kw">library</span>(<span class="st">&quot;reml&quot;</span>)</code></pre>
+<p>Configure general metadata you may want to reuse again and again through settings:</p>
+<pre class="sourceCode r"><code class="sourceCode r"> eml$<span class="kw">set</span>(<span class="dt">contact_givenName =</span> <span class="st">&quot;Carl&quot;</span>, <span class="dt">contact_surName =</span> <span class="st">&quot;Boettiger&quot;</span>, <span class="dt">contact_email =</span> <span class="st">&quot;cboettig@ropensci.org&quot;</span>)</code></pre>
+<p>Consider some dataset as an R <code>data.frame</code>.</p>
+<pre class="sourceCode r"><code class="sourceCode r">  dat = <span class="kw">data.frame</span>(<span class="dt">river=</span><span class="kw">c</span>(<span class="st">&quot;SAC&quot;</span>, <span class="st">&quot;SAC&quot;</span>, <span class="st">&quot;AM&quot;</span>),
+                        <span class="dt">spp =</span> <span class="kw">c</span>(<span class="st">&quot;king&quot;</span>, <span class="st">&quot;king&quot;</span>, <span class="st">&quot;ccho&quot;</span>),
+                        <span class="dt">stg =</span> <span class="kw">c</span>(<span class="st">&quot;smolt&quot;</span>, <span class="st">&quot;parr&quot;</span>, <span class="st">&quot;smolt&quot;</span>),
+                        <span class="dt">ct =</span>  <span class="kw">c</span>(293L, 410L, 210L))</code></pre>
+<p>Provide definitions for the columns. These are usually just plain text definitions, though a URI to a semantic definition can be particularly powerful. See “Advanced Use” for details on adding richer information, such as the method used to collect the data or set the geographic, taxanomic, or temporal coverage of an individual column.</p>
+<pre class="sourceCode r"><code class="sourceCode r">      col_metadata = <span class="kw">c</span>(<span class="dt">river =</span> <span class="st">&quot;http://dbpedia.org/ontology/River&quot;</span>,
+                       <span class="dt">spp =</span> <span class="st">&quot;http://dbpedia.org/ontology/Species&quot;</span>,
+                       <span class="dt">stg =</span> <span class="st">&quot;Life history stage&quot;</span>,
+                       <span class="dt">ct =</span> <span class="st">&quot;count&quot;</span>)</code></pre>
+<p>Define the units used in each column. For factors, this is a definition of the levels involved. For numeric data, specify the units from <a href="http://knb.ecoinformatics.org/software/eml/eml-2.1.1/eml-unitTypeDefinitions.html#StandardUnitDictionary">this list</a>. For dates, specify the format, (e.g. YYYY or MM-DD-YY). For character strings, a definition of the kind of string can be given, (e.g. species scientific name), otherwise the column description will be used.</p>
+<pre class="sourceCode r"><code class="sourceCode r">      unit_metadata =
+       <span class="kw">list</span>(<span class="dt">river =</span> <span class="kw">c</span>(<span class="dt">SAC =</span> <span class="st">&quot;The Sacramento River&quot;</span>, <span class="dt">AM =</span> <span class="st">&quot;The American River&quot;</span>),
+            <span class="dt">spp =</span> <span class="kw">c</span>(<span class="dt">king =</span> <span class="st">&quot;King Salmon&quot;</span>, <span class="dt">ccho =</span> <span class="st">&quot;Coho Salmon&quot;</span>),
+            <span class="dt">stg =</span> <span class="kw">c</span>(<span class="dt">parr =</span> <span class="st">&quot;third life stage&quot;</span>, <span class="dt">smolt =</span> <span class="st">&quot;fourth life stage&quot;</span>),
+            <span class="dt">ct =</span> <span class="st">&quot;number&quot;</span>)</code></pre>
+<p>The hard work is over, time to generate some EML.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">eml_write</span>(dat, col_metadata, unit_metadata, <span class="dt">.title=</span><span class="st">&quot;A test EML file&quot;</span>, <span class="dt">file=</span><span class="st">&quot;my_eml_data.xml&quot;</span>, <span class="dt">file_description=</span><span class="st">&quot;Test data, only intended for testing&quot;</span>)</code></pre>
+<p>See the <a href="https://github.com/ropensci/reml/tree/master/inst/doc/my_eml_data.xml">EML generated</a> by this example.</p>
+<h2 id="publish-eml">Publish EML</h2>
+<p>Once we have generated a basic EML file, we can publish it to a variety of academic repositories where it will be indexed, permenently archived, more easily citable, and publicly discoverable.</p>
+<p>In this example, we will publish the above EML to <a href="http://figshare.com">figshare</a> using the <a href="https://github.com/ropensci/rfigshare">rfigshare</a> package. Like most academic repostories, figshare requires some basic metadata for any entry. Much of this we can automatically extract from our existing EML file. Additional metadata unique to figshare (e.g. matching it’s allowed “categories” can also be provided.</p>
+<pre class="sourceCode r"><code class="sourceCode r">id = <span class="kw">eml_publish</span>(<span class="st">&quot;my_eml_data.xml&quot;</span>, <span class="dt">description=</span><span class="st">&quot;Example EML file from reml&quot;</span>, 
+                <span class="dt">categories =</span> <span class="st">&quot;Ecology&quot;</span>, <span class="dt">tags =</span> <span class="st">&quot;EML&quot;</span>, <span class="dt">destination=</span><span class="st">&quot;figshare&quot;</span>)</code></pre>
+ 
+<!-- not that raw_content depends on custom generator, 
+     see _plugins/jekyll-labnotebook-plugins/raw_content --> 
+</article> 
+<p> <a href="/2013/07/08/reml-update.html"> <em>Read more</em></a> </p>
 <br />
 <br />
 
@@ -622,111 +683,6 @@ XML:::<span class="kw">xmlAttrsToDataFrame</span>(<span class="kw">getNodeSet</s
      see _plugins/jekyll-labnotebook-plugins/raw_content --> 
 </article> 
 <p> <a href="/2013/06/26/starting-an-EML-package-for-R.html"> <em>Read more</em></a> </p>
-<br />
-<br />
-
-
-        </div>
-      
-        <div class="span3">
-          <header><h4><a href="/2013/06/24/notes.html">Notes</a></h4></header>
-<p><span></span></p>
-<p style="font-style:italic"> 24 Jun 2013</p>
-
-<p style="font-style:italic"> pageviews: 42 </p>
-
-<article>
-<div class="excerpt">
-<h2 id="exploring-xml-schema-in-r">Exploring XML Schema in R</h2>
-<p>I danced around the room after reading these lines in the excellent <a href="http://www.springer.com/statistics/computational+statistics/book/978-1-4614-7899-7">XML and Web Technologies for Data Sciences with R</a> book:</p>
-<blockquote>
-<p>We can generate S4 class definitions corresponding to the data structures that are represented in the XML document. We can programmatically generate R code that will map an XML document adhering to this schema to corresponding R data structures. Similarly, we can automate the creation of code to serialize, or write, an R object of a particular type to a suitable XML format corresponding to the schema</p>
-</blockquote>
-<p>Wow. Automatically turn EML objects into R objects and vice versa! Generate a NeXML parser for R automatically. The world is your oyster now!</p>
-<h2 id="diving-in">Diving in</h2>
-<p>Using <code>install_github(&quot;XMLSchema&quot;, &quot;omegahat&quot;)</code>.</p>
-<p>Trouble so far.</p>
-<h3 id="eml">EML</h3>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">readSchema</span>(<span class="st">&quot;eml.xsd&quot;</span>)</code></pre>
-<p>From Duncan:</p>
-<blockquote>
-<p>As I suspected from just the description of the problem, there is a recursive circularity in the schema files - eml-documentation.xsd imports eml-text.xsd which imports eml-documentation.xsd. I’ll try to find some time to handle this.</p>
-</blockquote>
-<p>Staying tuned…</p>
-<h3 id="nexml">NexML</h3>
-<p>This is a schema for phylogenetic trees. Being able to use this schema would be a big improvement over the current approach of our treebase package, which queries a vertically integrated database that is far less expressive then the NeXML schema.</p>
-<p>I tried this schema, but cannot download the file for some reason:</p>
-<pre class="sourceCode r"><code class="sourceCode r">nex &lt;- <span class="kw">readSchema</span>(<span class="st">&quot;http://www.nexml.org/2009/nexml.xsd&quot;</span>)
-failed to load HTTP resource
-Error: <span class="dv">1</span>: failed to load HTTP resource
-&gt; </code></pre>
-<p>I download a copy from here and set its xsd/ directory as my working directory:</p>
-<pre class="sourceCode r"><code class="sourceCode r">&gt; nex &lt;- <span class="kw">readSchema</span>(<span class="st">&quot;nexml.xsd&quot;</span>)
-Error: XML content does not seem to be XML: <span class="st">&#39;./continuous.xsd&#39;</span></code></pre>
-<p>because the path should be <code>characters/continuous.xsd</code>. Not sure why I’m not managing to navigate the paths correctly here.</p>
-<h3 id="kml-example-from-book">KML example from book</h3>
-<p>I cannot load the KML schema directly from the website:</p>
-<pre class="sourceCode r"><code class="sourceCode r">&gt; kx = <span class="st">&quot;https://developers.google.com/kml/schema/kml21.xsd&quot;</span>
-&gt; kml = <span class="kw">readSchema</span>(kx)
-Error: XML content does not seem to be XML: <span class="st">&#39;https://developers.google.com/kml/schema/kml21.xsd&#39;</span></code></pre>
-<p>Likewise,</p>
-<pre class="sourceCode r"><code class="sourceCode r">kml = <span class="kw">readSchema</span>( <span class="st">&quot;http://schemas.opengis.net/kml/2.2.0/ogckml22.xsd&quot;</span>)
-failed to load HTTP resource
-Error: <span class="dv">1</span>: failed to load HTTP resource</code></pre>
-<p>fails, though the other example works</p>
-<pre class="sourceCode r"><code class="sourceCode r">pmml = <span class="kw">readSchema</span>(<span class="st">&quot;http://www.dmg.org/v4-1/pmml-4-1.xsd&quot;</span>)</code></pre>
-<p>If I wget the xsd and save it locally first, then I can readSchema on the local file. If I have <code>options(error = recover)</code> set, then</p>
-<pre class="sourceCode r"><code class="sourceCode r"> <span class="kw">defineClasses</span>(kml)</code></pre>
-<p>gets me deep into the debugger. If I run it with <code>options(error=NULL)</code>, then I get warnings:</p>
-<pre class="sourceCode r"><code class="sourceCode r">&gt; <span class="kw">defineClasses</span>(kml)
-<span class="kw">character</span>(<span class="dv">0</span>)
-Warning messages:
-<span class="dv">1</span>: <span class="kw">In</span> (function (className, baseType, <span class="dt">where =</span> <span class="kw">globalenv</span>())  :
-  http<span class="er">://</span>earth.google.com/kml/<span class="fl">2.1</span>.Object is an existing class
-<span class="dv">2</span>: <span class="kw">In</span> (function (className, baseType, <span class="dt">where =</span> <span class="kw">globalenv</span>())  :
-  http<span class="er">://</span>earth.google.com/kml/<span class="fl">2.1</span>.Feature is an existing class
-<span class="dv">3</span>: <span class="kw">In</span> (function (className, baseType, <span class="dt">where =</span> <span class="kw">globalenv</span>())  :
-  http<span class="er">://</span>earth.google.com/kml/<span class="fl">2.1</span>.LookAt is an existing class
-<span class="dv">4</span>: <span class="kw">In</span> (function (className, baseType, <span class="dt">where =</span> <span class="kw">globalenv</span>())  :
-  http<span class="er">://</span>earth.google.com/kml/<span class="fl">2.1</span>.Geometry is an existing class
-<span class="dv">5</span>: <span class="kw">In</span> (function (className, baseType, <span class="dt">where =</span> <span class="kw">globalenv</span>())  :
-  http<span class="er">://</span>earth.google.com/kml/<span class="fl">2.1</span>.StyleSelector is an existing class
-<span class="dv">6</span>: <span class="kw">In</span> (function (className, baseType, <span class="dt">where =</span> <span class="kw">globalenv</span>())  :
-  http<span class="er">://</span>earth.google.com/kml/<span class="fl">2.1</span>.TimePrimitive is an existing class
-&gt; </code></pre>
-<p>I load an minimal <a href="http://en.wikipedia.org/wiki/Keyhole_Markup_Language">example file</a> and try fromXML, but hit an error:</p>
-<pre><code>&gt; doc &lt;- xmlParse(&quot;kmlexample.xml&quot;)
-&gt; fromXML(doc)
-Error in UseMethod(&quot;xmlAttrs&quot;, node) : 
-  no applicable method for &#39;xmlAttrs&#39; applied to an object of class &quot;c(&#39;XMLInternalDocument&#39;, &#39;XMLAbstractDocument&#39;)&quot;</code></pre>
-<p>Stay tuned for more from Duncan on getting this rolling..</p>
-<h3 id="reading">Reading</h3>
-<ul>
-<li><p>Early warning signals in multivariate dynamics: <code>r citet(&quot;http://arxiv.org/abs/1306.3465&quot;, &quot;discusses&quot;)</code>. Population size grows as approaches collapse, multidemensional data needed to detect slowing down (eigenvalue estimates from multidimensional autoregressive model)</p></li>
-<li><p>Little grants are more bang for the buck than big grants: <code>r citet(&quot;10.1371/journal.pone.0065263&quot;, &quot;discusses&quot;)</code></p></li>
-</ul>
-<h3 id="code-tricks">Code tricks</h3>
-<p>From Egan, on getting a useful version of rvm on Ubuntu 12.04 (lets me install <code>bundle install</code> on the lab-notebook gemfile so I can deploy from <code>zero.ucdavis</code>, etc.)</p>
-<blockquote>
-<p>RVM has to be installed locally because the packaged version is broken. Before installation, the following packages need to be installed globally (unless you have root access in which case the installer will take care of them):</p>
-</blockquote>
-<pre><code>    bison
-    libyaml-dev
-    libgdbm-dev
-    gawk
-    sqlite</code></pre>
-<blockquote>
-<p>To install RVM, run:</p>
-</blockquote>
-<pre><code>    \curl -L https://get.rvm.io | bash -s stable --ruby --autolibs=enable --auto-dotfiles</code></pre>
-<blockquote>
-<p>which takes a while because it downloads and builds a lot. The installer takes care of the configuration automatically and all you need to do after installation is log into a fresh shell to source the required functions and environment.</p>
-</blockquote>
- 
-<!-- not that raw_content depends on custom generator, 
-     see _plugins/jekyll-labnotebook-plugins/raw_content --> 
-</article> 
-<p> <a href="/2013/06/24/notes.html"> <em>Read more</em></a> </p>
 <br />
 <br />
 
