@@ -4,7 +4,7 @@
  <title>Lab Notebook - R</title>
  <link href="/blog.xml" rel="self"/>
  <link href="/"/>
- <updated>2013-07-25T15:25:12-07:00</updated>
+ <updated>2013-07-31T22:02:13-07:00</updated>
  <id>http://carlboettiger.info</id>
  <author>
    <name>Carl Boettiger</name>
@@ -72,7 +72,8 @@
    <link href="/2013/06/13/what-I-look-for-in-software-papers.html"/>
    <updated>2013-06-13T00:00:00-07:00</updated>
    <id>/2013/06/13/what-I-look-for-in-software-papers</id>
-   <content type="html">&lt;p&gt;I am more and more frequently reviewing ‘software papers:’ which I define as publications whose primary purpose is to publicize a piece of scientific software and provide a traditional research product with hopes that it will receive citations and recognition from other researchers in grant and job reviews. To me this feels very much like hacking the publication recognition system rather than the ideal way to recognize and track the role of software in research communities, but a very practical one in the current climate. I have written two myself, so I have been on both ends of this issue. In this post, I share what I look for in such papers and what omissions I see most frequently.&lt;/p&gt;
+   <content type="html">&lt;p&gt;&lt;strong&gt;Update&lt;/strong&gt; Thanks to the rich discussion in the comments and beyond, I’ve revised my thoughts on this somewhat, as I discuss in &lt;a href=&quot;/2013/07/09/reviewing-software-revisited.html&quot;&gt;this more recent post&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I am more and more frequently reviewing ‘software papers:’ which I define as publications whose primary purpose is to publicize a piece of scientific software and provide a traditional research product with hopes that it will receive citations and recognition from other researchers in grant and job reviews. To me this feels very much like hacking the publication recognition system rather than the ideal way to recognize and track the role of software in research communities, but a very practical one in the current climate. I have written two myself, so I have been on both ends of this issue. In this post, I share what I look for in such papers and what omissions I see most frequently.&lt;/p&gt;
 &lt;h2 id=&quot;reviewing-software&quot;&gt;Reviewing software&lt;/h2&gt;
 &lt;p&gt;If we are going to employ this hack of the publication system for software, we should at least use it to maximal advantage. As a reviewer, I feel that means reviewing not just the submitted manuscript but the software itself. If we can agree on nothing else, we as a community should at least be able to say:&lt;/p&gt;
 &lt;blockquote&gt;

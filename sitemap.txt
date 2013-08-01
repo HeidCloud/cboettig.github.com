@@ -811,6 +811,7 @@ http://carlboettiger.info/wordpress/archives/4482/index.html
 http://carlboettiger.info/archives/4482/index.html 
 
  
+http://carlboettiger.info/2013/07/28/nonparametric-bayes-wrapping-up-sensitivity.html  
 http://carlboettiger.info/2013/07/25/formal-semantics-with-reml.html  
 http://carlboettiger.info/2013/07/22/XML-parsing-strategies.html  
 http://carlboettiger.info/2013/07/19/notes.html  
