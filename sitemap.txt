@@ -811,10 +811,12 @@ http://carlboettiger.info/wordpress/archives/4482/index.html
 http://carlboettiger.info/archives/4482/index.html 
 
  
+http://carlboettiger.info/2013/08/14/ISEES-day-2.html  
 http://carlboettiger.info/2013/08/13/ISEES-Day-1.html  
 http://carlboettiger.info/2013/08/08/ESA-2013-notes-for-week.html  
 http://carlboettiger.info/2013/08/07/F1000-Research.html  
 http://carlboettiger.info/2013/08/06/summarizing-earlier-warning-signal-under-control-notes.html  
+http://carlboettiger.info/2013/08/01/notes.html  
 http://carlboettiger.info/2013/07/28/nonparametric-bayes-wrapping-up-sensitivity.html  
 http://carlboettiger.info/2013/07/25/formal-semantics-with-reml.html  
 http://carlboettiger.info/2013/07/22/XML-parsing-strategies.html  
