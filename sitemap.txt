@@ -811,6 +811,8 @@ http://carlboettiger.info/wordpress/archives/4482/index.html
 http://carlboettiger.info/archives/4482/index.html 
 
  
+http://carlboettiger.info/2013/08/26/notes.html  
+http://carlboettiger.info/2013/08/23/notes.html  
 http://carlboettiger.info/2013/08/14/ISEES-day-2.html  
 http://carlboettiger.info/2013/08/13/ISEES-Day-1.html  
 http://carlboettiger.info/2013/08/08/ESA-2013-notes-for-week.html  
@@ -1542,6 +1544,8 @@ http://carlboettiger.info/2010/05/05/Primates.html
 http://carlboettiger.info/2010/05/04/Alan-Meeting.html  
 http://carlboettiger.info/2010/05/04/Adaptive-Dynamics.html  
 http://carlboettiger.info/2010/05/03/Adaptive-Dynamics.html  
+http://carlboettiger.info/2010/05/01/phase1.html  
+http://carlboettiger.info/2010/05/01/coexistence-of-the-early-dimorphism.html  
 http://carlboettiger.info/2010/04/30/Adaptive-Dynamics.html  
 http://carlboettiger.info/2010/04/29/Adaptive-Dynamics.html  
 http://carlboettiger.info/2010/04/28/Meetings.html  
@@ -1551,11 +1555,13 @@ http://carlboettiger.info/2010/04/26/Adaptive-Dynamics.html
 http://carlboettiger.info/2010/04/23/Adaptive-Dynamics.html  
 http://carlboettiger.info/2010/04/22/Adaptive-Dynamics.html  
 http://carlboettiger.info/2010/04/21/Adaptive-Dynamics.html  
+http://carlboettiger.info/2010/04/20/waiting-time.html  
 http://carlboettiger.info/2010/04/20/R-sig-phylo.html  
 http://carlboettiger.info/2010/04/20/Alan-Meeting.html  
 http://carlboettiger.info/2010/04/19/Research.html  
 http://carlboettiger.info/2010/04/18/MATICCE.html  
 http://carlboettiger.info/2010/04/16/iEvoBio-Submission.html  
+http://carlboettiger.info/2010/04/15/branching-paper.html  
 http://carlboettiger.info/2010/04/14/Wednesday.html  
 http://carlboettiger.info/2010/04/13/Tuesday.html  
 http://carlboettiger.info/2010/04/13/Teaching.html  
@@ -1620,6 +1626,7 @@ http://carlboettiger.info/2010/02/17/Hastings-Meeting.html
 http://carlboettiger.info/2010/02/16/Updating-manuscript.html  
 http://carlboettiger.info/2010/02/15/Parametric-bootstrapping.html  
 http://carlboettiger.info/2010/02/15/Implementing-warning-signals-metrics.html  
+http://carlboettiger.info/2010/02/14/speciation.html  
 http://carlboettiger.info/2010/02/11/Teaching.html  
 http://carlboettiger.info/2010/02/10/Meeting-w--Alan.html  
 http://carlboettiger.info/2010/02/10/Follow-up-on-Parametric-Bootstrapping.html  
@@ -1633,5 +1640,10 @@ http://carlboettiger.info/2010/02/04/Teaching.html
 http://carlboettiger.info/2010/02/03/Hastings-Meeting.html  
 http://carlboettiger.info/2010/02/02/The-Lab-Notebook-Goes-Open-.html  
 http://carlboettiger.info/2010/01/25/Teaching.html  
+http://carlboettiger.info/2010/01/18/ProgressChallenges.html  
 http://carlboettiger.info/2010/01/10/cpb-thesis-proposal.html  
+http://carlboettiger.info/2009/08/25/stochastic-methods.html  
+http://carlboettiger.info/2009/08/25/drift-effects.html  
+http://carlboettiger.info/2009/08/25/diffusion-solution.html  
+http://carlboettiger.info/2009/07/28/branching-times.html  
 http://carlboettiger.info/2008/06/09/PopBio-Core-Review-Notes.html 

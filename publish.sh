@@ -7,9 +7,11 @@ git pull -s ours
 cd - 
 
 ## Compile the site
-jekyll build -d ~/Documents/code/cboettig.github.com 
+jekyll build -d ~/Documents/code/cboettig.github.com  ## Preferable to rsync?
 
-## rsync -az _site/ ~/Documents/code/cboettig.github.com  
+
+## Upload the site to github 
+##rsync -az _site/ ~/Documents/code/cboettig.github.com  
 cd ~/Documents/code/cboettig.github.com  
 git add *
 git commit -a -m "update site"
