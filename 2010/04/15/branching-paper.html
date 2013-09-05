@@ -264,8 +264,10 @@ u(p,t) &amp;= 1-e^{-p \psi(t) } \\
 <p>This can be integrated directly to solve for the mean time starting from <span class="math">\(p=x\)</span> to be absorbed at either boundary <span class="math">\(a=0\)</span> or <span class="math">\(b=1\)</span>:</p>
 <p><span class="math">\[\begin{aligned}
 T(x) &amp;= \frac{2 \left[\left(\int_a^x\frac{\mathrm{d}y}{\psi(y)}\right)\int_x^b \frac{\mathrm{d}y&#39;}{\psi(y&#39;)} \int_a^{y&#39;} \frac{\mathrm{d}z \psi(z)}{B(z)} - \left(\int_x^b\frac{\mathrm{d}y}{\psi(y)}\right)\int_a^x \frac{\mathrm{d}y&#39;}{\psi(y&#39;)} \int_a^{y&#39;} \frac{\mathrm{d}z \psi(z)}{B(z)}\right]}{\int_a^b \frac{\mathrm{d}y}{\psi(y)}}
-\label{7integrals} 
-\intertext{where}
+\label{7integrals}
+\end{aligned}\]</span></p>
+<p>where</p>
+<p><span class="math">\[\begin{aligned}
 \psi(x) &amp;= \exp\left( \int_0^x \mathrm{d}x&#39; \frac{2A(x&#39;)}{B(x&#39;)} \right)\end{aligned}\]</span></p>
 <p>Though these integrals can be computed numerically, a small noise limit (large populations) allows us to make an additional approximation by mapping this problem onto the familiar question of escape over a potential energy barrier. This question arises in basic chemistry, and is described by a similar stochastic differential equation where the <span class="math">\(A(x)\)</span> coefficent represents the gradient of the energy surface and <span class="math">\(B\)</span> the temperature. The analogy initially appears to fail, since in the chemical context the diffusion coefficent is determined by the temperature alone, and is independent of the state, while our <span class="math">\(B\)</span> term depends on the frequency <span class="math">\(p\)</span>. However, as it is not explicitly time dependent, there is always a transform to change variables into a context where <span class="math">\(B\)</span> is constant. The relevant transformation for us is known as the Lamperti Transform. Switching variables from <span class="math">\(p\)</span> to <span class="math">\(q\)</span> by means of the transform:</p>
 <p><span class="math">\[q = F(p) = \int_z^{p} \frac{1}{\sqrt{B(u)}} \mathrm{d}u
@@ -278,12 +280,11 @@ T(x) &amp;= \frac{2 \left[\left(\int_a^x\frac{\mathrm{d}y}{\psi(y)}\right)\int_x
 <p><span class="math">\[\exp{- (\min(V(0), V(1)) - V(p^*) )}\]</span></p>
 <h1 id="results">Results</h1>
 <figure>
-<img src="figure/short.jpg" />
+<img src="http://farm6.staticflickr.com/5445/9625166692_cedb531293_o.png" />
 </figure>
 <figure>
-<img src="figure/long.jpg" />
+<img src="http://farm3.staticflickr.com/2814/9621930087_57533b9105_o.png" />
 </figure>
-<p>[fig:times]</p>
 <section class="footnotes">
 <hr />
 <ol>
@@ -300,7 +301,7 @@ T(x) &amp;= \frac{2 \left[\left(\int_a^x\frac{\mathrm{d}y}{\psi(y)}\right)\int_x
     <time datetime="2010-04-15T00:00:00-07:00" 
     property="dc:created">15 Apr 2010</time></p>
   <p><small> modified: <time 
-            datetime="2013-08-29T11:58:58-07:00" 
+            datetime="2013-08-29T12:35:01-07:00" 
             property="dc:modified">29 Aug 2013</time></small></p>
 
  <br />
@@ -337,11 +338,11 @@ T(x) &amp;= \frac{2 \left[\left(\int_a^x\frac{\mathrm{d}y}{\psi(y)}\right)\int_x
 
   <br/>
 
-   <p style="font-style:italic"> <i class="icon-signal"></i> pageviews: (not calculated)</p>
+   <p style="font-style:italic"> <i class="icon-signal"></i> pageviews: 2</p>
 
   <br/>
 
-  <p><small> <i class="icon-barcode"></i> SHA Hash: <a href="https://github.com/cboettig/labnotebook/commit/not yet committed/_posts/2010-04-15-branching-paper.md"> not yet committed</a></small></p>
+  <p><small> <i class="icon-barcode"></i> SHA Hash: <a href="https://github.com/cboettig/labnotebook/commit/291b916c0bf35f8268dec8b7448c04ed29c58e68/_posts/2010-04-15-branching-paper.md"> 291b916c0bf35f8268dec8b7448c04ed29c58e68</a></small></p>
     
   <br/>
 
