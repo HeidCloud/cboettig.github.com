@@ -145,7 +145,7 @@
     <h4>  <a property="account" href="https://github.com/cboettig" onclick="recordOutboundLink(this, 'Outbound Links', 'Github'); return false;"><i class="icon-github" alt="github"></i> Coding </a></h4> 
     <div class="excerpt">
       <div class="scroll">
-        <ul><li>cboettig pushed to master at ropensci/reml: <em>include a .gitignore for xsd and automatically generated files we don… working on mock up example of synthesis started test for measurementScales</em> <a href="https://github.com/ropensci/reml/compare/58b2fe76d8...24a2262463">09:14 2013/09/05</a></li><li>cboettig pushed to devel at ropensci/reml: <em>include a .gitignore for xsd and automatically generated files we don… working on mock up example of synthesis started test for measurementScales</em> <a href="https://github.com/ropensci/reml/compare/71eea87f84...24a2262463">09:14 2013/09/05</a></li><li>cboettig starred prose/prose: <em></em> <a href="https://github.com/prose/prose">06:43 2013/09/05</a></li><li>cboettig pushed to master at ropensci/reml: <em>external validation test now working</em> <a href="https://github.com/ropensci/reml/compare/ddfe3efcad...58b2fe76d8">06:34 2013/09/05</a></li><li>cboettig pushed to master at ropensci/RNeXML: <em>share data initialization across tests</em> <a href="https://github.com/ropensci/RNeXML/compare/ced59fb9f6...049be7e747">04:49 2013/09/05</a></li></ul>
+        <ul><li>cboettig pushed to devel at ropensci/reml: <em>added accessor methods for eml_read, see README</em> <a href="https://github.com/ropensci/reml/compare/24a2262463...19f112c297">06:05 2013/09/06</a></li><li>cboettig pushed to master at ropensci/reml: <em>added accessor methods for eml_read, see README</em> <a href="https://github.com/ropensci/reml/compare/24a2262463...19f112c297">06:05 2013/09/06</a></li><li>cboettig pushed to master at cboettig/labnotebook: <em>released draft notes</em> <a href="https://github.com/cboettig/labnotebook/compare/291b916c0b...2440bdd284">06:04 2013/09/06</a></li><li>cboettig pushed to master at cboettig/cboettig.github.com: <em>update site</em> <a href="https://github.com/cboettig/cboettig.github.com/compare/810c649296...a9861c0316">10:01 2013/09/05</a></li><li>cboettig pushed to master at ropensci/reml: <em>include a .gitignore for xsd and automatically generated files we don… working on mock up example of synthesis started test for measurementScales</em> <a href="https://github.com/ropensci/reml/compare/58b2fe76d8...24a2262463">09:14 2013/09/05</a></li></ul>
       </div>
     </div>
   </div>
@@ -189,11 +189,125 @@
               ><i class="icon-rss" ></i> Entries</a></h4>
       
         <div class="span3">
+          <header><h4><a href="/2013/09/02/reml-milestone.html">Reml Milestone</a></h4></header>
+<p><span></span></p>
+<p style="font-style:italic"> 02 Sep 2013</p>
+
+<p style="font-style:italic"> pageviews: (not calculated) </p>
+
+<article>
+<div class="excerpt">
+<p>Reached a <a href="https://github.com/ropensci/reml/issues/milestones?state=closed&amp;with_issues=yes">milestone</a> in <a href="https://github.com/ropensci/reml">reml</a> development today with basic implementation of reading, writing, and publishing valid EML files and a working test suite.</p>
+<h3 id="an-s4-based-structure">An S4-based structure</h3>
+<p>This involved a complete re-write of the pre-ESA code and is now completely S4-class based, allowing a more flexible structure that is easier and faster to extend. For instance, rather than having to explicitly think about the commands to parse and serialize a new metadata element that needs to be added from the schema, we just define the class for the object. Then we can leverage automated methods that can read into this class from XML and write out of it.</p>
+<p>For instance, we recently added the class <code>alternativeTimeScale</code> following it’s <a href="knb.ecoinformatics.org/software/eml/eml-2.1.1/eml-coverage.html#alternativeTimeScale">definition in the Schema documentation</a>:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">setClass</span>(<span class="st">&quot;alternativeTimeScale&quot;</span>,
+         <span class="kw">representation</span>(<span class="dt">timeScaleName =</span> <span class="st">&quot;character&quot;</span>,
+                        <span class="dt">timeScaleAgeEstimate =</span> <span class="st">&quot;character&quot;</span>,
+                        <span class="dt">timeScaleAgeUncertainty =</span> <span class="st">&quot;character&quot;</span>,
+                        <span class="dt">timeScaleAgeExplanation =</span> <span class="st">&quot;character&quot;</span>,
+                        <span class="dt">timeScaleCitation =</span> <span class="st">&quot;character&quot;</span>) 
+                        <span class="co"># FIXME should be citation type</span>
+        )
+<span class="kw">setAs</span>(<span class="st">&quot;XMLInternalElementNode&quot;</span>, <span class="st">&quot;alternativeTimeScale&quot;</span>,   function(from) <span class="kw">emlToS4</span>(from))
+<span class="kw">setAs</span>(<span class="st">&quot;alternativeTimeScale&quot;</span>, <span class="st">&quot;XMLInternalElementNode&quot;</span>,   function(from) <span class="kw">S4Toeml</span>(from))</code></pre>
+<p>Rather than bother with the XML parsing and serializing, we simply point R to use our predefined S4 coercion methods, specified after the class definition.</p>
+<p>Note this need a little more work as the FIXME note indicates, since we have not yet written the <code>citation</code> class. Luckily, using the S4 approach this will be easy to update once that class is defined. In this manner, we can easily add elements that we need.</p>
+<p>Classes are defined in groups in files named after the class. Constructor functions are defined in files named after the functions themselves, which prefix <code>eml_</code> to the class name. This adds some clarity (e.g. calling a function <code>eml_dataset</code> vs <code>dataset</code>) can also reduce namespace collisions.</p>
+<p><strong>Note</strong> that the S4 code is intended only to be developer-facing. Users interact with documented constructor functions, which have more end-user documentation (though still in development).</p>
+<h2 id="examples-of-reading-writing-and-publishing-eml">Examples of reading, writing, and publishing EML</h2>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">&quot;devtools&quot;</span>)
+<span class="kw">install_github</span>(<span class="st">&quot;reml&quot;</span>, <span class="st">&quot;ropensci&quot;</span>)</code></pre>
+<p>Load the package:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">&quot;reml&quot;</span>)</code></pre>
+<h3 id="writing-r-data-into-eml">Writing R data into EML</h3>
+<p>Consider some dataset as an R <code>data.frame</code>.</p>
+<pre class="sourceCode r"><code class="sourceCode r">dat = <span class="kw">data.frame</span>(<span class="dt">river =</span> <span class="kw">c</span>(<span class="st">&quot;SAC&quot;</span>, <span class="st">&quot;SAC&quot;</span>, <span class="st">&quot;AM&quot;</span>),
+                 <span class="dt">spp   =</span> <span class="kw">c</span>(<span class="st">&quot;king&quot;</span>, <span class="st">&quot;king&quot;</span>, <span class="st">&quot;ccho&quot;</span>),
+                 <span class="dt">stg   =</span> <span class="kw">c</span>(<span class="st">&quot;smolt&quot;</span>, <span class="st">&quot;parr&quot;</span>, <span class="st">&quot;smolt&quot;</span>),
+                 <span class="dt">ct    =</span>  <span class="kw">c</span>(293L, 410L, 210L))</code></pre>
+<p>Provide a list giving the <strong>column header</strong> used in the data.frame, followed by a plain text definitions for the column, followed by a character vector giving the definition for the units:</p>
+<p><strong>column descriptions</strong>: These are usually just plain text definitions, though a URI to a semantic definition can be particularly powerful. See “Advanced Use” for details on adding richer information, such as the method used to collect the data or set the geographic, taxonomic, or temporal coverage of an individual column.</p>
+<p><strong>column units</strong>: For factors, this is a definition of the levels involved. For numeric data, specify the units from <a href="http://knb.ecoinformatics.org/software/eml/eml-2.1.1/eml-unitTypeDefinitions.html#StandardUnitDictionary">this list</a>. For dates, specify the format, (e.g. YYYY or MM-DD-YY). For character strings, a definition of the kind of string can be given, (e.g. species scientific name), otherwise the column description will be used.</p>
+<pre class="sourceCode r"><code class="sourceCode r">metadata &lt;- 
+  <span class="kw">list</span>(<span class="st">&quot;river&quot;</span> = <span class="kw">list</span>(<span class="st">&quot;river&quot;</span>,
+                      <span class="st">&quot;River site used for collection&quot;</span>,
+                      <span class="kw">c</span>(<span class="dt">SAC =</span> <span class="st">&quot;The Sacramento River&quot;</span>, 
+                        <span class="dt">AM =</span> <span class="st">&quot;The American River&quot;</span>)),
+       <span class="st">&quot;spp&quot;</span> = <span class="kw">list</span>(<span class="st">&quot;spp&quot;</span>,
+                    <span class="st">&quot;Species common name&quot;</span>, 
+                    <span class="kw">c</span>(<span class="dt">king =</span> <span class="st">&quot;King Salmon&quot;</span>, 
+                      <span class="dt">ccho =</span> <span class="st">&quot;Coho Salmon&quot;</span>)),
+       <span class="st">&quot;stg&quot;</span> = <span class="kw">list</span>(<span class="st">&quot;stg&quot;</span>,
+                    <span class="st">&quot;Life Stage&quot;</span>, 
+                    <span class="kw">c</span>(<span class="dt">parr =</span> <span class="st">&quot;third life stage&quot;</span>, 
+                      <span class="dt">smolt =</span> <span class="st">&quot;fourth life stage&quot;</span>)),
+       <span class="st">&quot;ct&quot;</span>  = <span class="kw">list</span>(<span class="st">&quot;ct&quot;</span>,
+                    <span class="st">&quot;count&quot;</span>, 
+                    <span class="st">&quot;number&quot;</span>))</code></pre>
+<p><em>for convenience, this metadata list can instead be constructed with the help of the reml wizard</em>. Just use <code>metadata &lt;- metadata_wizard(dat)</code> to begin. While this may be helpful starting out, regular users will find it faster to define the columns and units directly in the format above.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">eml_write</span>(dat, metadata, <span class="dt">title =</span> <span class="st">&quot;reml example&quot;</span>,  
+          <span class="dt">description =</span> <span class="st">&quot;An example, intended for</span>
+<span class="st">                              illustrative purposes only.&quot;</span>,
+          <span class="dt">creator =</span> <span class="st">&quot;Carl Boettiger &lt;cboettig@gmail.com&gt;&quot;</span>,
+          <span class="dt">file =</span> <span class="st">&quot;reml_example.xml&quot;</span>)</code></pre>
+<pre><code>[1] &quot;reml_example.xml&quot;</code></pre>
+<p>See the <a href="https://github.com/ropensci/reml/tree/master/inst/doc/reml_example.xml">EML generated</a> by this example. Note that if the <code>metadata</code> argument providing the definitions for the <code>data.frame</code> is not specified, <code>reml</code> will launch the wizard to prompt the user.</p>
+<h5 id="configuration">Configuration</h5>
+<p>Configure general metadata you may want to frequently reuse, avoiding having to specify things like the name of the creator or contact.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">eml_config</span>(<span class="dt">creator =</span> <span class="kw">list</span>(<span class="st">&quot;Carl Boettiger &lt;cboettig@ropensci.org&gt;&quot;</span>, <span class="st">&quot;Karthik Ram&quot;</span>), <span class="dt">contact =</span> <span class="st">&quot;Carl Boettiger &lt;cboettig@ropensci.org&gt;&quot;</span>)</code></pre>
+<ul>
+<li>See <a href="https://github.com/ropensci/reml/issues?labels=write+eml&amp;page=1&amp;state=open">Open issues in writing EML</a></li>
+</ul>
+<h3 id="publish-eml">Publish EML</h3>
+<p>Once we have generated a basic EML file, we can publish it to a variety of academic repositories where it will be indexed, permenently archived, more easily citable, and publicly discoverable.</p>
+<p>In this example, we will publish the above EML to <a href="http://figshare.com">figshare</a> using the <a href="https://github.com/ropensci/rfigshare">rfigshare</a> package. Like most academic repostories, figshare requires some basic metadata for any entry. Much of this we can automatically extract from our existing EML file. Additional metadata unique to figshare (e.g. matching it’s allowed “categories” can also be provided.</p>
+<p><em>Note: this example assumes <code>rfigshare</code> is installed, even though it is not required to use reml and run the examples in the other sections</em></p>
+<pre class="sourceCode r"><code class="sourceCode r">id = <span class="kw">eml_publish</span>(<span class="st">&quot;reml_example.xml&quot;</span>, <span class="dt">description=</span><span class="st">&quot;Example EML file from reml&quot;</span>, <span class="dt">categories =</span> <span class="st">&quot;Ecology&quot;</span>, <span class="dt">tags =</span> <span class="st">&quot;EML&quot;</span>, <span class="dt">destination=</span><span class="st">&quot;figshare&quot;</span>)</code></pre>
+<p>This creates a draft file visible only to the user configured in <code>rfigshare</code>. The document can be made (permanently) public using either the figshare web interface, the <code>rfigshare</code> package (using <code>fs_make_public(id)</code>) or just by adding the argument <code>visibility = TRUE</code> to the above <code>eml_publish</code> command.</p>
+<h3 id="reading-eml">Reading EML</h3>
+<pre class="sourceCode r"><code class="sourceCode r">obj &lt;- <span class="kw">eml_read</span>(<span class="st">&quot;reml_example.xml&quot;</span>)</code></pre>
+<p>We can use various accessor functions to return the data and metadata elements in native R formats.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">dataTable</span>(obj)</code></pre>
+<pre><code>  river  spp   stg  ct
+1   SAC king smolt 293
+2   SAC king  parr 410
+3    AM ccho smolt 210</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">metadata &lt;- <span class="kw">attributeList</span>(obj)</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">contact</span>(obj)</code></pre>
+<pre><code>[1] &quot;Carl Boettiger &lt;cboettig@gmail.com&gt;&quot;</code></pre>
+<p>Note that the contact has been coerced into R’s built-in ‘person’ object:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">class</span>(<span class="kw">contact</span>(obj))</code></pre>
+<pre><code>[1] &quot;person&quot;</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">citationInfo</span>(obj)</code></pre>
+<pre><code>Boettiger, Carl, 2013. reml example.</code></pre>
+<p>Vignette + read and extract examples</p>
+<h2 id="notes">Notes</h2>
+<ul>
+<li><p>Resolved the strange segfault errors that arise unpredictably in tests by avoiding use of <code>XMLInternalDocument</code> class. (Perhaps it is referencing the nodes after writing this and finding they have no address that causes this error?) Now segfault free.</p></li>
+<li><p>Still need to fix external validator test (currently not run by <code>testthat::test_dir</code> by avoiding the <code>test_</code> prefix on the filename…) <strong>EDIT</strong> 2013-09-05 Duncan has <a href="">fixed</a> this, looking into having the form give more structured output.</p></li>
+<li><p><strong>Edit</strong> 2013-09-04 some attribute definitions were not being written out correctly and have now been fixed. Still writing the <a href="">test cases</a>.</p></li>
+</ul>
+<h2 id="where-next">Where next?</h2>
+<p>Lots more can be done on the package, as documented in our extensive <a href="https://github.com/ropensci/reml/issues">issues</a> list and the discussions there-in.</p>
+<p>Further development will be driven around identifying and illustrating some particularly motivating use-cases beyond the basic creation and reading in of EML files, adding what additional functionality and debugging is required along the way.</p>
+ 
+<!-- not that raw_content depends on custom generator, 
+     see _plugins/jekyll-labnotebook-plugins/raw_content --> 
+</article> 
+<p> <a href="/2013/09/02/reml-milestone.html"> <em>Read more</em></a> </p>
+<br />
+<br />
+
+
+        </div>
+      
+        <div class="span3">
           <header><h4><a href="/2013/08/29/notes.html">Notes</a></h4></header>
 <p><span></span></p>
 <p style="font-style:italic"> 29 Aug 2013</p>
 
-<p style="font-style:italic"> pageviews: (not calculated) </p>
+<p style="font-style:italic"> pageviews: 2 </p>
 
 <article>
 <div class="excerpt">
@@ -254,6 +368,10 @@
 
         </div>
       
+    </div>
+
+    <div class="row">
+      
         <div class="span3">
           <header><h4><a href="/2013/08/26/notes.html">Notes</a></h4></header>
 <p><span></span></p>
@@ -290,10 +408,6 @@
 
 
         </div>
-      
-    </div>
-
-    <div class="row">
       
         <div class="span3">
           <header><h4><a href="/2013/08/23/notes.html">Notes</a></h4></header>
@@ -433,6 +547,10 @@
 
 
         </div>
+      
+    </div>
+
+    <div class="row">
       
         <div class="span3">
           <header><h4><a href="/2013/08/13/ISEES-Day-1.html">ISEES software lifecycle and components workshop, Day 1</a></h4></header>
@@ -586,10 +704,6 @@
 
         </div>
       
-    </div>
-
-    <div class="row">
-      
         <div class="span3">
           <header><h4><a href="/2013/08/08/ESA-2013-notes-for-week.html">Esa 2013 Notes For Week</a></h4></header>
 <p><span></span></p>
@@ -705,7 +819,7 @@
 <p><span></span></p>
 <p style="font-style:italic"> 07 Aug 2013</p>
 
-<p style="font-style:italic"> pageviews: 25 </p>
+<p style="font-style:italic"> pageviews: 26 </p>
 
 <article>
 <div class="excerpt">
@@ -721,59 +835,6 @@
      see _plugins/jekyll-labnotebook-plugins/raw_content --> 
 </article> 
 <p> <a href="/2013/08/07/F1000-Research.html"> <em>Read more</em></a> </p>
-<br />
-<br />
-
-
-        </div>
-      
-        <div class="span3">
-          <header><h4><a href="/2013/08/06/summarizing-earlier-warning-signal-under-control-notes.html">Summarizing Earlier Warning Signal Under Control Notes</a></h4></header>
-<p><span></span></p>
-<p style="font-style:italic"> 06 Aug 2013</p>
-
-<p style="font-style:italic"> pageviews: 14 </p>
-
-<article>
-<div class="excerpt">
-<ul>
-<li>NSF goals:</li>
-<li>combine control methods and warning signals</li>
-<li>do non-parametric or machine learning increase or decrease chance of transition</li>
-<li>learning</li>
-<li>Further areas (from comment piece)</li>
-<li>baselines (statistical; emperical)</li>
-<li>context-specific (additional data sources, reflecting context in model)</li>
-</ul>
-<h2 id="warning-signals-in-managed-systems">Warning signals in managed systems</h2>
-<p>Management decreases the signal: compare likelihood statistic in <a href="https://github.com/cboettig/pdg_control/blob/master/inst/examples/unmanaged_warning.md">unmanaged_warning</a> <a href="https://github.com/cboettig/pdg_control/blob/master/inst/examples/managed_warning.md">managed_warning</a>:</p>
-<figure>
-<img src="http://farm8.staticflickr.com/7108/7853909166_45ecb1af08_o.png" alt="unmanaged" /><figcaption>unmanaged</figcaption>
-</figure>
-<figure>
-<img src="http://farm9.staticflickr.com/8445/7889665150_d2f03f6f86_o.png" alt="managed" /><figcaption>managed</figcaption>
-</figure>
-<h2 id="estimating-stability-in-managed-systems">Estimating Stability in managed systems</h2>
-<p>Recovery rate in optimally fished vs unfished system (based on the OU model): <a href="https://github.com/cboettig/pdg_control/blob/e6aaf0ba27e4280cbbb04d5ecfeb9b18f158ca77/inst/examples/stability.md">stability.md</a></p>
-<figure>
-<img src="http://farm8.staticflickr.com/7041/6960365083_4b41dd1f0a_z.jpg" alt="OU parameters over replicates" /><figcaption>OU parameters over replicates</figcaption>
-</figure>
-<ul>
-<li>How would a use of a signal feed back into a control algorithm? Need probabilities of possible models for driving a belief SDP?</li>
-</ul>
-<h2 id="learning">Learning</h2>
-<p>Learning about a tipping point: models are the correct allee-threshold (Myers) model, and the best-fit Beverton Holt model. Inability to learn fast enough leads to crashes <a href="https://github.com/cboettig/pdg_control/blob/ff049e1f623413e1438555aec63ddbe65dec6d8f/inst/examples/model_uncertainty.md">model_uncertainty.md</a></p>
-<figure>
-<img src="http://farm8.staticflickr.com/7231/7019134197_cb196dbdb1_o.png" />
-</figure>
-<ul>
-<li>Active learning about parameters can be worse than not learning?</li>
-</ul>
- 
-<!-- not that raw_content depends on custom generator, 
-     see _plugins/jekyll-labnotebook-plugins/raw_content --> 
-</article> 
-<p> <a href="/2013/08/06/summarizing-earlier-warning-signal-under-control-notes.html"> <em>Read more</em></a> </p>
 <br />
 <br />
 
