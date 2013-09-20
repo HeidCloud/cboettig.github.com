@@ -185,7 +185,7 @@ with &#39;help(package=ouch)&#39;.</code></pre>
 <p>After running your code, consider creating a custom bibtex file containing the citation information for all the packages you have just used. (The file can be imported into most citation managers, if LaTeX isn’t your thing).</p>
 <pre class="sourceCode r"><code class="sourceCode r">
 <span class="kw">sink</span>(<span class="st">&quot;test.bib&quot;</span>)
-out &lt;- <span class="kw">sapply</span>(<span class="kw">names</span>(<span class="kw">sessionInfo</span>()$otherPkgs), 
+out &lt;-<span class="st"> </span><span class="kw">sapply</span>(<span class="kw">names</span>(<span class="kw">sessionInfo</span>()$otherPkgs), 
     function(x) <span class="kw">print</span>(<span class="kw">citation</span>(x), <span class="dt">style =</span> <span class="st">&quot;Bibtex&quot;</span>))</code></pre>
 <p>You can also simply generate the list of loaded package in LaTeX format, which could be automatically included.</p>
 <pre class="sourceCode r"><code class="sourceCode r">
@@ -268,7 +268,7 @@ out &lt;- <span class="kw">sapply</span>(<span class="kw">names</span>(<span cla
 
   <br/>
 
-   <p style="font-style:italic"> <i class="icon-signal"></i> pageviews: 1634</p>
+   <p style="font-style:italic"> <i class="icon-signal"></i> pageviews: 1649</p>
 
   <br/>
 

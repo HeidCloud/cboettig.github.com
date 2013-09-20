@@ -168,27 +168,27 @@
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">&quot;reml&quot;</span>)</code></pre>
 <h3 id="writing-r-data-into-eml">Writing R data into EML</h3>
 <p>Consider some dataset as an R <code>data.frame</code>.</p>
-<pre class="sourceCode r"><code class="sourceCode r">dat = <span class="kw">data.frame</span>(<span class="dt">river =</span> <span class="kw">c</span>(<span class="st">&quot;SAC&quot;</span>, <span class="st">&quot;SAC&quot;</span>, <span class="st">&quot;AM&quot;</span>),
+<pre class="sourceCode r"><code class="sourceCode r">dat =<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">river =</span> <span class="kw">c</span>(<span class="st">&quot;SAC&quot;</span>, <span class="st">&quot;SAC&quot;</span>, <span class="st">&quot;AM&quot;</span>),
                  <span class="dt">spp   =</span> <span class="kw">c</span>(<span class="st">&quot;king&quot;</span>, <span class="st">&quot;king&quot;</span>, <span class="st">&quot;ccho&quot;</span>),
                  <span class="dt">stg   =</span> <span class="kw">c</span>(<span class="st">&quot;smolt&quot;</span>, <span class="st">&quot;parr&quot;</span>, <span class="st">&quot;smolt&quot;</span>),
                  <span class="dt">ct    =</span>  <span class="kw">c</span>(293L, 410L, 210L))</code></pre>
 <p>Provide a list giving the <strong>column header</strong> used in the data.frame, followed by a plain text definitions for the column, followed by a character vector giving the definition for the units:</p>
 <p><strong>column descriptions</strong>: These are usually just plain text definitions, though a URI to a semantic definition can be particularly powerful. See “Advanced Use” for details on adding richer information, such as the method used to collect the data or set the geographic, taxonomic, or temporal coverage of an individual column.</p>
 <p><strong>column units</strong>: For factors, this is a definition of the levels involved. For numeric data, specify the units from <a href="http://knb.ecoinformatics.org/software/eml/eml-2.1.1/eml-unitTypeDefinitions.html#StandardUnitDictionary">this list</a>. For dates, specify the format, (e.g. YYYY or MM-DD-YY). For character strings, a definition of the kind of string can be given, (e.g. species scientific name), otherwise the column description will be used.</p>
-<pre class="sourceCode r"><code class="sourceCode r">metadata &lt;- 
-  <span class="kw">list</span>(<span class="st">&quot;river&quot;</span> = <span class="kw">list</span>(<span class="st">&quot;river&quot;</span>,
+<pre class="sourceCode r"><code class="sourceCode r">metadata &lt;-<span class="st"> </span>
+<span class="st">  </span><span class="kw">list</span>(<span class="st">&quot;river&quot;</span> =<span class="st"> </span><span class="kw">list</span>(<span class="st">&quot;river&quot;</span>,
                       <span class="st">&quot;River site used for collection&quot;</span>,
                       <span class="kw">c</span>(<span class="dt">SAC =</span> <span class="st">&quot;The Sacramento River&quot;</span>, 
                         <span class="dt">AM =</span> <span class="st">&quot;The American River&quot;</span>)),
-       <span class="st">&quot;spp&quot;</span> = <span class="kw">list</span>(<span class="st">&quot;spp&quot;</span>,
+       <span class="st">&quot;spp&quot;</span> =<span class="st"> </span><span class="kw">list</span>(<span class="st">&quot;spp&quot;</span>,
                     <span class="st">&quot;Species common name&quot;</span>, 
                     <span class="kw">c</span>(<span class="dt">king =</span> <span class="st">&quot;King Salmon&quot;</span>, 
                       <span class="dt">ccho =</span> <span class="st">&quot;Coho Salmon&quot;</span>)),
-       <span class="st">&quot;stg&quot;</span> = <span class="kw">list</span>(<span class="st">&quot;stg&quot;</span>,
+       <span class="st">&quot;stg&quot;</span> =<span class="st"> </span><span class="kw">list</span>(<span class="st">&quot;stg&quot;</span>,
                     <span class="st">&quot;Life Stage&quot;</span>, 
                     <span class="kw">c</span>(<span class="dt">parr =</span> <span class="st">&quot;third life stage&quot;</span>, 
                       <span class="dt">smolt =</span> <span class="st">&quot;fourth life stage&quot;</span>)),
-       <span class="st">&quot;ct&quot;</span>  = <span class="kw">list</span>(<span class="st">&quot;ct&quot;</span>,
+       <span class="st">&quot;ct&quot;</span>  =<span class="st"> </span><span class="kw">list</span>(<span class="st">&quot;ct&quot;</span>,
                     <span class="st">&quot;count&quot;</span>, 
                     <span class="st">&quot;number&quot;</span>))</code></pre>
 <p><em>for convenience, this metadata list can instead be constructed with the help of the reml wizard</em>. Just use <code>metadata &lt;- metadata_wizard(dat)</code> to begin. While this may be helpful starting out, regular users will find it faster to define the columns and units directly in the format above.</p>
@@ -209,17 +209,17 @@
 <p>Once we have generated a basic EML file, we can publish it to a variety of academic repositories where it will be indexed, permenently archived, more easily citable, and publicly discoverable.</p>
 <p>In this example, we will publish the above EML to <a href="http://figshare.com">figshare</a> using the <a href="https://github.com/ropensci/rfigshare">rfigshare</a> package. Like most academic repostories, figshare requires some basic metadata for any entry. Much of this we can automatically extract from our existing EML file. Additional metadata unique to figshare (e.g. matching it’s allowed “categories” can also be provided.</p>
 <p><em>Note: this example assumes <code>rfigshare</code> is installed, even though it is not required to use reml and run the examples in the other sections</em></p>
-<pre class="sourceCode r"><code class="sourceCode r">id = <span class="kw">eml_publish</span>(<span class="st">&quot;reml_example.xml&quot;</span>, <span class="dt">description=</span><span class="st">&quot;Example EML file from reml&quot;</span>, <span class="dt">categories =</span> <span class="st">&quot;Ecology&quot;</span>, <span class="dt">tags =</span> <span class="st">&quot;EML&quot;</span>, <span class="dt">destination=</span><span class="st">&quot;figshare&quot;</span>)</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">id =<span class="st"> </span><span class="kw">eml_publish</span>(<span class="st">&quot;reml_example.xml&quot;</span>, <span class="dt">description=</span><span class="st">&quot;Example EML file from reml&quot;</span>, <span class="dt">categories =</span> <span class="st">&quot;Ecology&quot;</span>, <span class="dt">tags =</span> <span class="st">&quot;EML&quot;</span>, <span class="dt">destination=</span><span class="st">&quot;figshare&quot;</span>)</code></pre>
 <p>This creates a draft file visible only to the user configured in <code>rfigshare</code>. The document can be made (permanently) public using either the figshare web interface, the <code>rfigshare</code> package (using <code>fs_make_public(id)</code>) or just by adding the argument <code>visibility = TRUE</code> to the above <code>eml_publish</code> command.</p>
 <h3 id="reading-eml">Reading EML</h3>
-<pre class="sourceCode r"><code class="sourceCode r">obj &lt;- <span class="kw">eml_read</span>(<span class="st">&quot;reml_example.xml&quot;</span>)</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">obj &lt;-<span class="st"> </span><span class="kw">eml_read</span>(<span class="st">&quot;reml_example.xml&quot;</span>)</code></pre>
 <p>We can use various accessor functions to return the data and metadata elements in native R formats.</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">dataTable</span>(obj)</code></pre>
 <pre><code>  river  spp   stg  ct
 1   SAC king smolt 293
 2   SAC king  parr 410
 3    AM ccho smolt 210</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r">metadata &lt;- <span class="kw">attributeList</span>(obj)</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">metadata &lt;-<span class="st"> </span><span class="kw">attributeList</span>(obj)</code></pre>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">contact</span>(obj)</code></pre>
 <pre><code>[1] &quot;Carl Boettiger &lt;cboettig@gmail.com&gt;&quot;</code></pre>
 <p>Note that the contact has been coerced into R’s built-in ‘person’ object:</p>
@@ -284,7 +284,7 @@
 
   <br/>
 
-   <p style="font-style:italic"> <i class="icon-signal"></i> pageviews: 11</p>
+   <p style="font-style:italic"> <i class="icon-signal"></i> pageviews: 17</p>
 
   <br/>
 

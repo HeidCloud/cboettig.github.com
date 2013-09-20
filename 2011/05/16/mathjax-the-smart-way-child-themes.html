@@ -162,7 +162,7 @@
 <span class="co">License: GPL v2</span>
 <span class="co">*/</span>
 <span class="dv">@import</span> url(<span class="st">&quot;../the-erudite/style.css&quot;</span>)</code></pre>
-<p>The stuff in the C-style comments is functional.  The only required lines are theme name and template.  template tells the style file to copy everything from the template theme (which will be updated whenever the template is updated).  The @import command imports the style file of the template theme.  Any changes to the style can be specified in CSS below. We won’t be changing anything on the style sheet.</p>
+<p>The stuff in the C-style comments is functional.  The only required lines are theme name and template.  template tells the style file to copy everything from the template theme (which will be updated whenever the template is updated).  The <span class="citation" data-cites="import">@import</span> command imports the style file of the template theme.  Any changes to the style can be specified in CSS below. We won’t be changing anything on the style sheet.</p>
 <p>What we want to do is change the header.  We do this the clever way using action hooks. I used <a href="http://themeshaper.com/2009/05/25/action-hooks-wordpress-child-themes/">this great reference</a> to get a handle on them, and the <a href="http://codex.wordpress.org/Child_Themes">Wordpress child themes guide</a> to see how functions.php works.</p>
 <ul>
 <li>Create a second file in the theme called functions.php:</li>
@@ -183,7 +183,7 @@
  <span class="kw">&lt;?php</span>
 }
 add_action<span class="ot">(</span><span class="st">&#39;wp_head&#39;</span><span class="ot">,</span> <span class="st">&#39;mathjax_cdn&#39;</span><span class="ot">);</span>
-<span class="er">?&gt;</span>
+<span class="kw">?&gt;</span>
 </code></pre>
 <p>This creates a function that inserts the HTML code for MathJax into the header. Note that we create a php function, break out of php to use the HTML code, and then return to php to close the function.  The add_action uses action hooks to insert our function into the header, specified where wp_head appears (check it out in header.php).</p>
 <ul>
@@ -236,7 +236,7 @@ add_action<span class="ot">(</span><span class="st">&#39;wp_head&#39;</span><spa
 
   <br/>
 
-   <p style="font-style:italic"> <i class="icon-signal"></i> pageviews: 26</p>
+   <p style="font-style:italic"> <i class="icon-signal"></i> pageviews: 28</p>
 
   <br/>
 

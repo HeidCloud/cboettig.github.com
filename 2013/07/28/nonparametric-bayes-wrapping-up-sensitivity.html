@@ -151,12 +151,12 @@
 <li><a href="https://github.com/cboettig/nonparametric-bayes/blob/fd3585230a01afa525f456d13f5f958df4606006/inst/examples/sensitivity-allen.md">sensitivity-allen.md</a></li>
 </ul>
 <p>Overall:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(yields_dat) + <span class="kw">geom_density</span>(<span class="kw">aes</span>(value)) </code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(yields_dat) +<span class="st"> </span><span class="kw">geom_density</span>(<span class="kw">aes</span>(value)) </code></pre>
 <figure>
 <img src="http://farm6.staticflickr.com/5455/9387766618_9772fca7e1_o.png" alt="plot of chunk unnamed-chunk-5" /><figcaption>plot of chunk unnamed-chunk-5</figcaption>
 </figure>
 <p>Compare over 12 simulation configurations with different parameters and different training data, the GP does consistently well. Only one case has relatively poor outcomes.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(yields_dat) + <span class="kw">geom_density</span>(<span class="kw">aes</span>(value, <span class="dt">color=</span><span class="kw">as.factor</span>(simulation), <span class="dt">fill=</span><span class="kw">as.factor</span>(simulation)), <span class="dt">alpha=</span>.<span class="dv">5</span>)</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(yields_dat) +<span class="st"> </span><span class="kw">geom_density</span>(<span class="kw">aes</span>(value, <span class="dt">color=</span><span class="kw">as.factor</span>(simulation), <span class="dt">fill=</span><span class="kw">as.factor</span>(simulation)), <span class="dt">alpha=</span>.<span class="dv">5</span>)</code></pre>
 <figure>
 <img src="http://farm4.staticflickr.com/3834/9385132341_ea3cffbb8d_o.png" alt="plot of chunk unnamed-chunk-6" /><figcaption>plot of chunk unnamed-chunk-6</figcaption>
 </figure>
@@ -169,9 +169,9 @@
 <li>looking at quick way to check out solutions to sums of Fisher wave equation over different diffusion coefficients (heterogenous dispersal rates), e.g. <a href="http://www.os-scientific.org/physics/react/index.html#fisher_kolgomorov_doc">in C</a></li>
 <li>Reply to Alex about wave + diffusion type solution pattern.</li>
 </ul>
-<pre class="sourceCode r"><code class="sourceCode r">f1 &lt;- function(t, <span class="dt">y =</span> <span class="dv">4</span>, <span class="dt">r =</span> <span class="dv">2</span>, <span class="dt">s =</span> <span class="dv">1</span>) (r * <span class="kw">dnorm</span>(y, <span class="dv">0</span>, <span class="dv">2</span> * r * <span class="kw">sqrt</span>(t)) + s * 
-    <span class="kw">dnorm</span>(y, <span class="dv">0</span>, <span class="dv">2</span> * s * <span class="kw">sqrt</span>(t)))/(<span class="kw">dnorm</span>(y, <span class="dv">0</span>, <span class="dv">2</span> * r * <span class="kw">sqrt</span>(t)) + <span class="kw">dnorm</span>(y, <span class="dv">0</span>, 
-    <span class="dv">2</span> * s * <span class="kw">sqrt</span>(t)))
+<pre class="sourceCode r"><code class="sourceCode r">f1 &lt;-<span class="st"> </span>function(t, <span class="dt">y =</span> <span class="dv">4</span>, <span class="dt">r =</span> <span class="dv">2</span>, <span class="dt">s =</span> <span class="dv">1</span>) (r *<span class="st"> </span><span class="kw">dnorm</span>(y, <span class="dv">0</span>, <span class="dv">2</span> *<span class="st"> </span>r *<span class="st"> </span><span class="kw">sqrt</span>(t)) +<span class="st"> </span>s *<span class="st"> </span>
+<span class="st">    </span><span class="kw">dnorm</span>(y, <span class="dv">0</span>, <span class="dv">2</span> *<span class="st"> </span>s *<span class="st"> </span><span class="kw">sqrt</span>(t)))/(<span class="kw">dnorm</span>(y, <span class="dv">0</span>, <span class="dv">2</span> *<span class="st"> </span>r *<span class="st"> </span><span class="kw">sqrt</span>(t)) +<span class="st"> </span><span class="kw">dnorm</span>(y, <span class="dv">0</span>, 
+    <span class="dv">2</span> *<span class="st"> </span>s *<span class="st"> </span><span class="kw">sqrt</span>(t)))
 <span class="kw">curve</span>(f1, <span class="fl">0.01</span>, <span class="dv">8</span>, <span class="dt">xlab =</span> <span class="st">&quot;time&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;mean dispersal&quot;</span>)</code></pre>
 <figure>
 <img src="http://farm4.staticflickr.com/3704/9387637650_939dd70f9c_o.png" alt="mean dispersal rate declines as slow population arrives" /><figcaption>mean dispersal rate declines as slow population arrives</figcaption>
@@ -227,7 +227,7 @@
 
   <br/>
 
-   <p style="font-style:italic"> <i class="icon-signal"></i> pageviews: 50</p>
+   <p style="font-style:italic"> <i class="icon-signal"></i> pageviews: 51</p>
 
   <br/>
 

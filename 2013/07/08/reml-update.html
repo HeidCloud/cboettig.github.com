@@ -161,18 +161,18 @@
 <p>Configure general metadata you may want to reuse again and again through settings:</p>
 <pre class="sourceCode r"><code class="sourceCode r"> eml$<span class="kw">set</span>(<span class="dt">contact_givenName =</span> <span class="st">&quot;Carl&quot;</span>, <span class="dt">contact_surName =</span> <span class="st">&quot;Boettiger&quot;</span>, <span class="dt">contact_email =</span> <span class="st">&quot;cboettig@ropensci.org&quot;</span>)</code></pre>
 <p>Consider some dataset as an R <code>data.frame</code>.</p>
-<pre class="sourceCode r"><code class="sourceCode r">  dat = <span class="kw">data.frame</span>(<span class="dt">river=</span><span class="kw">c</span>(<span class="st">&quot;SAC&quot;</span>, <span class="st">&quot;SAC&quot;</span>, <span class="st">&quot;AM&quot;</span>),
+<pre class="sourceCode r"><code class="sourceCode r">  dat =<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">river=</span><span class="kw">c</span>(<span class="st">&quot;SAC&quot;</span>, <span class="st">&quot;SAC&quot;</span>, <span class="st">&quot;AM&quot;</span>),
                         <span class="dt">spp =</span> <span class="kw">c</span>(<span class="st">&quot;king&quot;</span>, <span class="st">&quot;king&quot;</span>, <span class="st">&quot;ccho&quot;</span>),
                         <span class="dt">stg =</span> <span class="kw">c</span>(<span class="st">&quot;smolt&quot;</span>, <span class="st">&quot;parr&quot;</span>, <span class="st">&quot;smolt&quot;</span>),
                         <span class="dt">ct =</span>  <span class="kw">c</span>(293L, 410L, 210L))</code></pre>
 <p>Provide definitions for the columns. These are usually just plain text definitions, though a URI to a semantic definition can be particularly powerful. See “Advanced Use” for details on adding richer information, such as the method used to collect the data or set the geographic, taxanomic, or temporal coverage of an individual column.</p>
-<pre class="sourceCode r"><code class="sourceCode r">      col_metadata = <span class="kw">c</span>(<span class="dt">river =</span> <span class="st">&quot;http://dbpedia.org/ontology/River&quot;</span>,
+<pre class="sourceCode r"><code class="sourceCode r">      col_metadata =<span class="st"> </span><span class="kw">c</span>(<span class="dt">river =</span> <span class="st">&quot;http://dbpedia.org/ontology/River&quot;</span>,
                        <span class="dt">spp =</span> <span class="st">&quot;http://dbpedia.org/ontology/Species&quot;</span>,
                        <span class="dt">stg =</span> <span class="st">&quot;Life history stage&quot;</span>,
                        <span class="dt">ct =</span> <span class="st">&quot;count&quot;</span>)</code></pre>
 <p>Define the units used in each column. For factors, this is a definition of the levels involved. For numeric data, specify the units from <a href="http://knb.ecoinformatics.org/software/eml/eml-2.1.1/eml-unitTypeDefinitions.html#StandardUnitDictionary">this list</a>. For dates, specify the format, (e.g. YYYY or MM-DD-YY). For character strings, a definition of the kind of string can be given, (e.g. species scientific name), otherwise the column description will be used.</p>
 <pre class="sourceCode r"><code class="sourceCode r">      unit_metadata =
-       <span class="kw">list</span>(<span class="dt">river =</span> <span class="kw">c</span>(<span class="dt">SAC =</span> <span class="st">&quot;The Sacramento River&quot;</span>, <span class="dt">AM =</span> <span class="st">&quot;The American River&quot;</span>),
+<span class="st">       </span><span class="kw">list</span>(<span class="dt">river =</span> <span class="kw">c</span>(<span class="dt">SAC =</span> <span class="st">&quot;The Sacramento River&quot;</span>, <span class="dt">AM =</span> <span class="st">&quot;The American River&quot;</span>),
             <span class="dt">spp =</span> <span class="kw">c</span>(<span class="dt">king =</span> <span class="st">&quot;King Salmon&quot;</span>, <span class="dt">ccho =</span> <span class="st">&quot;Coho Salmon&quot;</span>),
             <span class="dt">stg =</span> <span class="kw">c</span>(<span class="dt">parr =</span> <span class="st">&quot;third life stage&quot;</span>, <span class="dt">smolt =</span> <span class="st">&quot;fourth life stage&quot;</span>),
             <span class="dt">ct =</span> <span class="st">&quot;number&quot;</span>)</code></pre>
@@ -182,7 +182,7 @@
 <h2 id="publish-eml">Publish EML</h2>
 <p>Once we have generated a basic EML file, we can publish it to a variety of academic repositories where it will be indexed, permenently archived, more easily citable, and publicly discoverable.</p>
 <p>In this example, we will publish the above EML to <a href="http://figshare.com">figshare</a> using the <a href="https://github.com/ropensci/rfigshare">rfigshare</a> package. Like most academic repostories, figshare requires some basic metadata for any entry. Much of this we can automatically extract from our existing EML file. Additional metadata unique to figshare (e.g. matching it’s allowed “categories” can also be provided.</p>
-<pre class="sourceCode r"><code class="sourceCode r">id = <span class="kw">eml_publish</span>(<span class="st">&quot;my_eml_data.xml&quot;</span>, <span class="dt">description=</span><span class="st">&quot;Example EML file from reml&quot;</span>, 
+<pre class="sourceCode r"><code class="sourceCode r">id =<span class="st"> </span><span class="kw">eml_publish</span>(<span class="st">&quot;my_eml_data.xml&quot;</span>, <span class="dt">description=</span><span class="st">&quot;Example EML file from reml&quot;</span>, 
                 <span class="dt">categories =</span> <span class="st">&quot;Ecology&quot;</span>, <span class="dt">tags =</span> <span class="st">&quot;EML&quot;</span>, <span class="dt">destination=</span><span class="st">&quot;figshare&quot;</span>)</code></pre>
 
     </article>

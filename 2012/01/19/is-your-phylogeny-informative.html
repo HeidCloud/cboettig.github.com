@@ -144,13 +144,13 @@
   <div class="span7 offset1">
     <article>
     <p>Yesterday my paper (Boettiger <em>et. al.</em> 2012)  appeared in early view in Evolution (<a href="http://www.mendeley.com/download/public/98752/4485545655/9a209c7dd29980fd2e47c06eb8b2d1d7dd6f70d4/dl.pdf">author’s preprint</a>),As the open access copy doesn’t appear on pubmed for a while, you can access my author’s copy <a href="http://www.mendeley.com/download/public/98752/4485545655/9a209c7dd29980fd2e47c06eb8b2d1d7dd6f70d4/dl.pdf">here</a>. so I’d like to take this chance to share the back-story and highlight my own view on some of our findings, and the associated <a href="http://cran.r-project.org/web/packages/pmc/index.html">package on CRAN</a>.Just submitted, meanwhile, the code is always on <a href="https://github.com/cboettig/pmc">github</a>.</p>
-<p>I didn’t set out to write this paper.  I set out to write a very different paper, introducing a new phylogenetic method for continuous traits that estimates changes in evolutionary constraint.  This adds _even more _parameters than already present in rich models multi-peak OU process, and I wanted to know if it could be justified – if there really was enough information to play the game we already had, before I went and made the situation even worse. Trying to find something rigorous enough to hang my hat on, I ended up writing this paper.</p>
+<p>I didn’t set out to write this paper.  I set out to write a very different paper, introducing a new phylogenetic method for continuous traits that estimates changes in evolutionary constraint.  This adds <em>even more </em>parameters than already present in rich models multi-peak OU process, and I wanted to know if it could be justified – if there really was enough information to play the game we already had, before I went and made the situation even worse. Trying to find something rigorous enough to hang my hat on, I ended up writing this paper.</p>
 <h3 id="the-short-of-it">The short of it</h3>
 <p>There’s essentially three conclusions I draw from the paper.</p>
 <ol type="1">
 <li><p>AIC is not a reliable way to select models.</p></li>
 <li><p>Certain parameters, such as <span class="math">\(\lambda\)</span>, a measure of “phylogenetic signal,” (Pagel, 1999) are going to be really hard to estimate.</p></li>
-<li><p>BUT as long as we <em>simulate extensively</em> to test model choice and parameter uncertainty, we won’t be misled by either of these.  So it’s okay to drink the koolaid (Losos, 2011), but <strong>drink responsibly.</strong></p></li>
+<li><p>BUT as long as we <em>simulate extensively</em> to test model choice and parameter uncertainty, we won’t be misled by either of these.  So it’s okay to drink the koolaid (Losos, 2011), but <strong>drink responsibly. </strong></p></li>
 </ol>
 <h3 id="a-few-reflections">A few reflections</h3>
 <p>I really have two problems with AIC and other information criteria when it comes to phylogenetic methods.  One is that it’s too easy to simulate data from one model, and have the information criteria choose a ridiculously over-parameterized model instead.  In one example, the wrong model has a <span class="math">\(\Delta\)</span>AIC of 10 points over the correct model.</p>
@@ -160,11 +160,11 @@
 <img src="http://farm8.staticflickr.com/7014/6727029515_bcfe58aedb_o.png" />
 </figure>
 <p>The package commands are explained in more detail in the <strong><a href="http://cran.r-project.org/web/packages/pmc/vignettes/pmc_tutorial.pdf">package vignette</a></strong>, but the idea is simple. Running the pmc comparison between two models (for the model-choice step) looks like this:</p>
-<pre class="sourceCode r"><code class="sourceCode r">bm_v_lambda &lt;- <span class="kw">pmc</span>(geospiza.tree, geospiza.data[<span class="st">&quot;wingL&quot;</span>],
+<pre class="sourceCode r"><code class="sourceCode r">bm_v_lambda &lt;-<span class="st"> </span><span class="kw">pmc</span>(geospiza.tree, geospiza.data[<span class="st">&quot;wingL&quot;</span>],
   <span class="st">&quot;BM&quot;</span>, <span class="st">&quot;lambda&quot;</span>, <span class="dt">nboot=</span><span class="dv">100</span>)</code></pre>
 <p>Extracting the distribution of estimates for the parameter lambda got from fitting the lambda model (B) to data made by simulating under lambda model (A):</p>
-<pre class="sourceCode r"><code class="sourceCode r">lambdas &lt;- <span class="kw">subset</span>(bm_v_lambda[<span class="st">&quot;par_dists&quot;</span>],
-  comparison==<span class="st">&quot;BB&quot;</span> &amp; parameter==<span class="st">&quot;lambda&quot;</span>)</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">lambdas &lt;-<span class="st"> </span><span class="kw">subset</span>(bm_v_lambda[<span class="st">&quot;par_dists&quot;</span>],
+  comparison==<span class="st">&quot;BB&quot;</span> &amp;<span class="st"> </span>parameter==<span class="st">&quot;lambda&quot;</span>)</code></pre>
 <p>To view the model comparison, just plot the pmc result:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(bm_v_lambda)</code></pre>
 <p>The substantial overlap in the likelihood ratios after simulating under either model indicate that we cannot choose between BM and lambda in this case.  I’ll leave the paper to explain this approach in more detail, but it’s just simulation and refitting.</p>

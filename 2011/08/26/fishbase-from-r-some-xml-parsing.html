@@ -166,12 +166,12 @@
 <p>The thing to note here is what followers the php?. There’s something called an identifier, which is set equal to the value FB-2. 2 is the id number of Nile tilapia. Change that to 3 (leave the rest the same) and you get African perch.</p>
 <p>We can grab the content of this page in R and parse the XML using these two packages:</p>
 <pre class="sourceCode r"><code class="sourceCode r">
-fish.id &lt;- <span class="dv">2</span>
- url &lt;- <span class="kw">paste</span>(<span class="st">&quot;http://fishbase.sinica.edu.tw/&quot;</span>,
+fish.id &lt;-<span class="st"> </span><span class="dv">2</span>
+ url &lt;-<span class="st"> </span><span class="kw">paste</span>(<span class="st">&quot;http://fishbase.sinica.edu.tw/&quot;</span>,
                <span class="st">&quot;maintenance/FB/showXML.php?identifier=FB-&quot;</span>,
               fish.id, <span class="st">&quot;&amp;ProviderDbase=03&quot;</span>, <span class="dt">sep=</span><span class="st">&quot;&quot;</span>)
-  tt &lt;- <span class="kw">getURLContent</span>(url, <span class="dt">followlocation=</span><span class="ot">TRUE</span>)
-  doc &lt;- <span class="kw">xmlParse</span>(tt)</code></pre>
+  tt &lt;-<span class="st"> </span><span class="kw">getURLContent</span>(url, <span class="dt">followlocation=</span><span class="ot">TRUE</span>)
+  doc &lt;-<span class="st"> </span><span class="kw">xmlParse</span>(tt)</code></pre>
 <p>We create the url with a given fish id. Then the getURLContent line is the equivalent of pointing your browser to that url. Because the page is XML, we then read or parse the page with xmlParse, creating an R object representation of all that XML. We are ready to rock and roll.</p>
 <p>If you look closely at the XML, you’ll see all these placed around the information we want, like the scientific names, identifying what they are. For instance, we see the lines that look like this:</p>
 <pre class="sourceCode xml"><code class="sourceCode xml">
@@ -180,7 +180,7 @@ fish.id &lt;- <span class="dv">2</span>
 <p>Clearly these are telling us the family and the Genus for this creature. The computer just has to look for the tag (this whole entry is called a node) and that’s the family. The dwc stands for Darwin Core, which is a big language or ontology created explicitly for taxonomic applications. It tells the computer that “Family” in Darwin-Core speak, is precisely the taxonomic meaning of the word. The computer can go and look up the dwc “namespace” given at the beginning of this document to learn exactly what that word means.</p>
 <p>To grab this text using R, we simply ask for the value of the node named dwc:Family:</p>
 <pre class="sourceCode r"><code class="sourceCode r">
-  Family &lt;- <span class="kw">xmlValue</span>(<span class="kw">getNodeSet</span>(doc, <span class="st">&quot;//dwc:Family&quot;</span>)[[<span class="dv">1</span>]]) 
+  Family &lt;-<span class="st"> </span><span class="kw">xmlValue</span>(<span class="kw">getNodeSet</span>(doc, <span class="st">&quot;//dwc:Family&quot;</span>)[[<span class="dv">1</span>]]) 
   Family</code></pre>
 <p>There’s two commands combined in that line. getNodeSet() is the first, getting any nodes that have the name dwc:Family anywhere (the // means anywhere) in the document. The [[1]] indicates that we want the first node it finds (since there’s only one of these in the entire document). Specifying which node we want makes use of the<a href="http://www.w3schools.com/xpath/default.asp">xpath syntax</a>, a powerful way of navigating XML which we’ll use more later.</p>
 <p>The xmlValue command just extracts the contents of that node, now that we’ve found it. If we ask R for the value it got for Family, it says Cichlidae, just as expected.</p>
@@ -194,9 +194,9 @@ fish.id &lt;- <span class="dv">2</span>
 <span class="kw">&lt;/dataObject&gt;</span></code></pre>
 <p>That identifier node tells us that this dataObject has size information. We can grab the content of that dc:description by first finding the identifier that says FB-Size-2, going up to it’s parent dataObject, and asking that dataObject for it’s child node called description. Like this:</p>
 <pre class="sourceCode r"><code class="sourceCode r">
-  size_node &lt;- <span class="kw">getNodeSet</span>(doc, <span class="kw">paste</span>(<span class="st">&quot;//dc:identifier[string(.) =</span>
+  size_node &lt;-<span class="st"> </span><span class="kw">getNodeSet</span>(doc, <span class="kw">paste</span>(<span class="st">&quot;//dc:identifier[string(.) =</span>
 <span class="st">FB-Size-&quot;</span>, fish.id, <span class="st">&quot;&#39;]/..&quot;</span>, <span class="dt">sep=</span><span class="st">&quot;&quot;</span>))
-size &lt;- <span class="kw">xmlValue</span>( size_node[[<span class="dv">1</span>]][[<span class="st">&quot;description&quot;</span>]] )</code></pre>
+size &lt;-<span class="st"> </span><span class="kw">xmlValue</span>( size_node[[<span class="dv">1</span>]][[<span class="st">&quot;description&quot;</span>]] )</code></pre>
 <p>Okay, so that looks crazy complicated – guess we got in a bit deep. See that link to xpath above? That’s a wee tutorial that will explain most of what’s going on here. It’s pretty simple if you take it slow. Using these kind of tricks, we can extract just the information we need from the XML.</p>
 <p>Meanwhile, if you want the fast-track option, I’ve put this together in a little R package called <a href="https://github.com/cboettig/rfishbase">rfishbase</a>. The package has a function called fishbase() which extracts various bits of information using these calls. Once you get the hang of it you can modify it pretty easily. I do a little extra processing to get numbers from text using <a href="http://en.wikipedia.org/wiki/Regular_expression">Regular Expressions</a>, a sorta desperate but powerful option when everything isn’t nicely labeled XML.</p>
 <p>Using this function we query a fish id number and get back the data in a nice R list, which we can happily manipulate. Here’s a quick demo:</p>
@@ -204,27 +204,27 @@ size &lt;- <span class="kw">xmlValue</span>( size_node[[<span class="dv">1</span
 <span class="kw">require</span>(rfishbase)
 
 ## a general function to loop over all fish ids to get data
-getData &lt;- function(fish.ids){
+getData &lt;-<span class="st"> </span>function(fish.ids){
   <span class="kw">suppressWarnings</span>(
     <span class="kw">lapply</span>(fish.ids, function(i) <span class="kw">try</span>(<span class="kw">fishbase</span>(i)))
   )
 }
 
 <span class="co"># A function to extract the ages, handling missing values</span>
-get.ages &lt;- function(fish.data){
+get.ages &lt;-<span class="st"> </span>function(fish.data){
               <span class="kw">sapply</span>(fish.data, function(out){
                  if(!(<span class="kw">is</span>(out,<span class="st">&quot;try-error&quot;</span>)))
-                   x &lt;- out$size_values[[<span class="st">&quot;age&quot;</span>]]
+                   x &lt;-<span class="st"> </span>out$size_values[[<span class="st">&quot;age&quot;</span>]]
                  else
-                   x &lt;- <span class="ot">NA</span>
+                   x &lt;-<span class="st"> </span><span class="ot">NA</span>
                  x
                })
   
 }
 
 <span class="co"># Process all the XML first, then extract the ages </span>
-fish.data &lt;- <span class="kw">getData</span>(<span class="dv">2</span>:<span class="dv">500</span>)
-yr &lt;- <span class="kw">get.ages</span>(fish.data)
+fish.data &lt;-<span class="st"> </span><span class="kw">getData</span>(<span class="dv">2</span>:<span class="dv">500</span>)
+yr &lt;-<span class="st"> </span><span class="kw">get.ages</span>(fish.data)
 
 <span class="co"># Plot data</span>
 <span class="kw">hist</span>(yr, <span class="dt">breaks=</span><span class="dv">40</span>, <span class="dt">main=</span><span class="st">&quot;Age Distribution&quot;</span>, <span class="dt">xlab=</span><span class="st">&quot;age (years)&quot;</span>); </code></pre>
@@ -278,7 +278,7 @@ yr &lt;- <span class="kw">get.ages</span>(fish.data)
 
   <br/>
 
-   <p style="font-style:italic"> <i class="icon-signal"></i> pageviews: 451</p>
+   <p style="font-style:italic"> <i class="icon-signal"></i> pageviews: 460</p>
 
   <br/>
 

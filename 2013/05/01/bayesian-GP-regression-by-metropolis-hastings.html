@@ -161,33 +161,33 @@
 <span class="co">#&#39; @return the MCMC output, as constructed by \link{metrop} from the mcmc package.</span>
 <span class="co">#&#39; @export</span>
 <span class="co">#&#39; @import mcmc  </span>
-gp_mcmc &lt;- function(x, y, <span class="dt">init_pars =</span> <span class="kw">c</span>(<span class="dt">l=</span><span class="dv">1</span>, <span class="dt">sigma.n=</span><span class="dv">1</span>), <span class="dt">n =</span> <span class="fl">1e4</span>, <span class="dt">d.p =</span> <span class="kw">c</span>(<span class="dv">5</span>,<span class="dv">5</span>), <span class="dt">s2.p =</span> <span class="kw">c</span>(<span class="dv">5</span>,<span class="dv">5</span>)){
+gp_mcmc &lt;-<span class="st"> </span>function(x, y, <span class="dt">init_pars =</span> <span class="kw">c</span>(<span class="dt">l=</span><span class="dv">1</span>, <span class="dt">sigma.n=</span><span class="dv">1</span>), <span class="dt">n =</span> <span class="fl">1e4</span>, <span class="dt">d.p =</span> <span class="kw">c</span>(<span class="dv">5</span>,<span class="dv">5</span>), <span class="dt">s2.p =</span> <span class="kw">c</span>(<span class="dv">5</span>,<span class="dv">5</span>)){
 
-  lpriors &lt;- function(pars){
-    prior &lt;- <span class="kw">unname</span>(
+  lpriors &lt;-<span class="st"> </span>function(pars){
+    prior &lt;-<span class="st"> </span><span class="kw">unname</span>(
       <span class="kw">dgamma</span>(<span class="kw">exp</span>(pars[<span class="dv">1</span>]), d.p[<span class="dv">1</span>], <span class="dt">scale =</span> d.p[<span class="dv">2</span>]) *
-      <span class="kw">dgamma</span>(<span class="kw">exp</span>(pars[<span class="dv">2</span>]), s2.p[<span class="dv">1</span>], s2.p[<span class="dv">2</span>]) 
+<span class="st">      </span><span class="kw">dgamma</span>(<span class="kw">exp</span>(pars[<span class="dv">2</span>]), s2.p[<span class="dv">1</span>], s2.p[<span class="dv">2</span>]) 
     )
     <span class="kw">log</span>(prior)
   }
-  posterior &lt;- function(pars, x, y){ 
-    l &lt;- <span class="kw">exp</span>(pars[<span class="dv">1</span>])
-    sigma.n &lt;- <span class="kw">exp</span>(pars[<span class="dv">2</span>])
+  posterior &lt;-<span class="st"> </span>function(pars, x, y){ 
+    l &lt;-<span class="st"> </span><span class="kw">exp</span>(pars[<span class="dv">1</span>])
+    sigma.n &lt;-<span class="st"> </span><span class="kw">exp</span>(pars[<span class="dv">2</span>])
     
-    cov &lt;- function(X, Y) <span class="kw">outer</span>(X, Y, SE, l)
-    I &lt;- <span class="kw">diag</span>(<span class="dv">1</span>, <span class="kw">length</span>(x))
-    K &lt;- <span class="kw">cov</span>(x, x) 
+    cov &lt;-<span class="st"> </span>function(X, Y) <span class="kw">outer</span>(X, Y, SE, l)
+    I &lt;-<span class="st"> </span><span class="kw">diag</span>(<span class="dv">1</span>, <span class="kw">length</span>(x))
+    K &lt;-<span class="st"> </span><span class="kw">cov</span>(x, x) 
     
-    loglik &lt;- - <span class="fl">0.5</span> * <span class="kw">t</span>(y) %*% <span class="kw">solve</span>(K + sigma.n^<span class="dv">2</span> * I) %*% y -
-      <span class="kw">log</span>(<span class="kw">det</span>(K + sigma.n^<span class="dv">2</span>*I)) -
-      <span class="kw">length</span>(y) * <span class="kw">log</span>(<span class="dv">2</span> * pi) / <span class="dv">2</span>
+    loglik &lt;-<span class="st"> </span>-<span class="st"> </span><span class="fl">0.5</span> *<span class="st"> </span><span class="kw">t</span>(y) %*%<span class="st"> </span><span class="kw">solve</span>(K +<span class="st"> </span>sigma.n^<span class="dv">2</span> *<span class="st"> </span>I) %*%<span class="st"> </span>y -
+<span class="st">      </span><span class="kw">log</span>(<span class="kw">det</span>(K +<span class="st"> </span>sigma.n^<span class="dv">2</span>*I)) -
+<span class="st">      </span><span class="kw">length</span>(y) *<span class="st"> </span><span class="kw">log</span>(<span class="dv">2</span> *<span class="st"> </span>pi) /<span class="st"> </span><span class="dv">2</span>
     
-    loglik + <span class="kw">lpriors</span>(pars)
+    loglik +<span class="st"> </span><span class="kw">lpriors</span>(pars)
   }
   
-  out &lt;- <span class="kw">metrop</span>(posterior, <span class="kw">log</span>(init_pars), n, <span class="dt">x =</span> obs$x, <span class="dt">y =</span> obs$y)  
-  out$d.p &lt;- d.p
-  out$s2.p &lt;- s2.p
+  out &lt;-<span class="st"> </span><span class="kw">metrop</span>(posterior, <span class="kw">log</span>(init_pars), n, <span class="dt">x =</span> obs$x, <span class="dt">y =</span> obs$y)  
+  out$d.p &lt;-<span class="st"> </span>d.p
+  out$s2.p &lt;-<span class="st"> </span>s2.p
   
   out
 }</code></pre>
@@ -197,37 +197,37 @@ gp_mcmc &lt;- function(x, y, <span class="dt">init_pars =</span> <span class="kw
 <span class="co">#&#39; @param covs if TRUE, return covariances instead of variances (set high thinning as this is memory intensive)</span>
 <span class="co">#&#39; @import reshape2</span>
 <span class="co">#&#39; @export</span>
-gp_predict &lt;- function(gp, x_predict, <span class="dt">burnin=</span><span class="dv">0</span>, <span class="dt">thin=</span><span class="dv">1</span>, <span class="dt">covs=</span><span class="ot">FALSE</span>){
+gp_predict &lt;-<span class="st"> </span>function(gp, x_predict, <span class="dt">burnin=</span><span class="dv">0</span>, <span class="dt">thin=</span><span class="dv">1</span>, <span class="dt">covs=</span><span class="ot">FALSE</span>){
 
-  postdist &lt;- <span class="kw">cbind</span>(<span class="dt">index=</span><span class="dv">1</span>:gp$nbatch, <span class="kw">as.data.frame</span>(<span class="kw">exp</span>(gp$batch)))
-  s &lt;- <span class="kw">seq</span>(burnin<span class="dv">+1</span>, gp$nbatch, <span class="dt">by=</span>thin)
-  postdist &lt;- postdist[s,]
-  <span class="kw">names</span>(postdist) &lt;- <span class="kw">c</span>(<span class="st">&quot;index&quot;</span>, <span class="kw">names</span>(gp$initial))
+  postdist &lt;-<span class="st"> </span><span class="kw">cbind</span>(<span class="dt">index=</span><span class="dv">1</span>:gp$nbatch, <span class="kw">as.data.frame</span>(<span class="kw">exp</span>(gp$batch)))
+  s &lt;-<span class="st"> </span><span class="kw">seq</span>(burnin<span class="dv">+1</span>, gp$nbatch, <span class="dt">by=</span>thin)
+  postdist &lt;-<span class="st"> </span>postdist[s,]
+  <span class="kw">names</span>(postdist) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;index&quot;</span>, <span class="kw">names</span>(gp$initial))
   
-  indices &lt;- <span class="dv">1</span>:<span class="kw">dim</span>(postdist)[<span class="dv">1</span>]
+  indices &lt;-<span class="st"> </span><span class="dv">1</span>:<span class="kw">dim</span>(postdist)[<span class="dv">1</span>]
   
-  out &lt;- <span class="kw">lapply</span>(indices, function(i){
-    l &lt;- postdist[i, <span class="st">&quot;l&quot;</span>]
-    sigma.n &lt;- postdist[i, <span class="st">&quot;sigma.n&quot;</span>]
+  out &lt;-<span class="st"> </span><span class="kw">lapply</span>(indices, function(i){
+    l &lt;-<span class="st"> </span>postdist[i, <span class="st">&quot;l&quot;</span>]
+    sigma.n &lt;-<span class="st"> </span>postdist[i, <span class="st">&quot;sigma.n&quot;</span>]
     
-    cov &lt;- function(X, Y) <span class="kw">outer</span>(X, Y, SE, l)
-    cov_xx_inv &lt;- <span class="kw">solve</span>(<span class="kw">cov</span>(obs$x, obs$x) + sigma.n^<span class="dv">2</span> * <span class="kw">diag</span>(<span class="dv">1</span>, <span class="kw">length</span>(obs$x)))
-    Ef &lt;- <span class="kw">cov</span>(x_predict, obs$x) %*% cov_xx_inv %*% obs$y
-    Cf &lt;- <span class="kw">cov</span>(x_predict, x_predict) - <span class="kw">cov</span>(x_predict, obs$x)  %*% cov_xx_inv %*% <span class="kw">cov</span>(obs$x, x_predict)
+    cov &lt;-<span class="st"> </span>function(X, Y) <span class="kw">outer</span>(X, Y, SE, l)
+    cov_xx_inv &lt;-<span class="st"> </span><span class="kw">solve</span>(<span class="kw">cov</span>(obs$x, obs$x) +<span class="st"> </span>sigma.n^<span class="dv">2</span> *<span class="st"> </span><span class="kw">diag</span>(<span class="dv">1</span>, <span class="kw">length</span>(obs$x)))
+    Ef &lt;-<span class="st"> </span><span class="kw">cov</span>(x_predict, obs$x) %*%<span class="st"> </span>cov_xx_inv %*%<span class="st"> </span>obs$y
+    Cf &lt;-<span class="st"> </span><span class="kw">cov</span>(x_predict, x_predict) -<span class="st"> </span><span class="kw">cov</span>(x_predict, obs$x)  %*%<span class="st"> </span>cov_xx_inv %*%<span class="st"> </span><span class="kw">cov</span>(obs$x, x_predict)
     <span class="kw">list</span>(<span class="dt">Ef =</span> Ef, <span class="dt">Cf =</span> Cf, <span class="dt">Vf =</span> <span class="kw">diag</span>(Cf))
   })
   
-  Ef_posterior &lt;- <span class="kw">sapply</span>(out, <span class="st">`</span><span class="dt">[[</span><span class="st">`</span>, <span class="st">&quot;Ef&quot;</span>)
-  Cf_posterior &lt;- <span class="kw">sapply</span>(out, <span class="st">`</span><span class="dt">[[</span><span class="st">`</span>, <span class="st">&quot;Cf&quot;</span>)
-  Vf_posterior &lt;- <span class="kw">sapply</span>(out, <span class="st">`</span><span class="dt">[[</span><span class="st">`</span>, <span class="st">&quot;Vf&quot;</span>)
+  Ef_posterior &lt;-<span class="st"> </span><span class="kw">sapply</span>(out, <span class="st">`</span><span class="dt">[[</span><span class="st">`</span>, <span class="st">&quot;Ef&quot;</span>)
+  Cf_posterior &lt;-<span class="st"> </span><span class="kw">sapply</span>(out, <span class="st">`</span><span class="dt">[[</span><span class="st">`</span>, <span class="st">&quot;Cf&quot;</span>)
+  Vf_posterior &lt;-<span class="st"> </span><span class="kw">sapply</span>(out, <span class="st">`</span><span class="dt">[[</span><span class="st">`</span>, <span class="st">&quot;Vf&quot;</span>)
   
   
-  E_Ef &lt;- <span class="kw">rowMeans</span>(Ef_posterior)
-  E_Cf &lt;- <span class="kw">matrix</span>( <span class="kw">apply</span>(Cf_posterior, <span class="dv">1</span>, sum) / <span class="kw">dim</span>(Cf_posterior)[<span class="dv">2</span>], <span class="dt">ncol =</span> <span class="kw">sqrt</span>(<span class="kw">dim</span>(Cf_posterior)[<span class="dv">1</span>]) )
-  E_Vf &lt;- <span class="kw">diag</span>(E_Cf) <span class="co"># same as rowMeans(Vf_posterior)</span>
+  E_Ef &lt;-<span class="st"> </span><span class="kw">rowMeans</span>(Ef_posterior)
+  E_Cf &lt;-<span class="st"> </span><span class="kw">matrix</span>( <span class="kw">apply</span>(Cf_posterior, <span class="dv">1</span>, sum) /<span class="st"> </span><span class="kw">dim</span>(Cf_posterior)[<span class="dv">2</span>], <span class="dt">ncol =</span> <span class="kw">sqrt</span>(<span class="kw">dim</span>(Cf_posterior)[<span class="dv">1</span>]) )
+  E_Vf &lt;-<span class="st"> </span><span class="kw">diag</span>(E_Cf) <span class="co"># same as rowMeans(Vf_posterior)</span>
   
   <span class="co"># list format better for return</span>
-  Cf_posterior &lt;- <span class="kw">lapply</span>(out, <span class="st">`</span><span class="dt">[[</span><span class="st">`</span>, <span class="st">&quot;Cf&quot;</span>)
+  Cf_posterior &lt;-<span class="st"> </span><span class="kw">lapply</span>(out, <span class="st">`</span><span class="dt">[[</span><span class="st">`</span>, <span class="st">&quot;Cf&quot;</span>)
   
   <span class="kw">list</span>(<span class="dt">Ef_posterior =</span> Ef_posterior, 
        <span class="dt">Vf_posterior =</span> Vf_posterior,
@@ -249,63 +249,63 @@ gp_predict &lt;- function(gp, x_predict, <span class="dt">burnin=</span><span cl
 <span class="co">#&#39; @import ggplot2</span>
 <span class="co">#&#39; @import plyr</span>
 <span class="co">#&#39; @export</span>
-summary_gp_mcmc &lt;- function(gp, <span class="dt">burnin=</span><span class="dv">0</span>, <span class="dt">thin=</span><span class="dv">1</span>){
+summary_gp_mcmc &lt;-<span class="st"> </span>function(gp, <span class="dt">burnin=</span><span class="dv">0</span>, <span class="dt">thin=</span><span class="dv">1</span>){
 
-  postdist &lt;- <span class="kw">cbind</span>(<span class="dt">index=</span><span class="dv">1</span>:gp$nbatch, <span class="kw">as.data.frame</span>(<span class="kw">exp</span>(gp$batch)))
-  s &lt;- <span class="kw">seq</span>(burnin<span class="dv">+1</span>, gp$nbatch, <span class="dt">by=</span>thin)
-  postdist &lt;- postdist[s,]
-  <span class="kw">names</span>(postdist) &lt;- <span class="kw">c</span>(<span class="st">&quot;index&quot;</span>, <span class="kw">names</span>(gp$initial))
+  postdist &lt;-<span class="st"> </span><span class="kw">cbind</span>(<span class="dt">index=</span><span class="dv">1</span>:gp$nbatch, <span class="kw">as.data.frame</span>(<span class="kw">exp</span>(gp$batch)))
+  s &lt;-<span class="st"> </span><span class="kw">seq</span>(burnin<span class="dv">+1</span>, gp$nbatch, <span class="dt">by=</span>thin)
+  postdist &lt;-<span class="st"> </span>postdist[s,]
+  <span class="kw">names</span>(postdist) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;index&quot;</span>, <span class="kw">names</span>(gp$initial))
   
   <span class="co"># TRACES</span>
-  df &lt;- <span class="kw">melt</span>(postdist, <span class="dt">id=</span><span class="st">&quot;index&quot;</span>)
-  traces_plot &lt;- 
-    <span class="kw">ggplot</span>(df) + <span class="kw">geom_line</span>(<span class="kw">aes</span>(index, value)) + 
-    <span class="kw">facet_wrap</span>(~ variable, <span class="dt">scale=</span><span class="st">&quot;free&quot;</span>, <span class="dt">ncol=</span><span class="dv">1</span>)
+  df &lt;-<span class="st"> </span><span class="kw">melt</span>(postdist, <span class="dt">id=</span><span class="st">&quot;index&quot;</span>)
+  traces_plot &lt;-<span class="st"> </span>
+<span class="st">    </span><span class="kw">ggplot</span>(df) +<span class="st"> </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(index, value)) +<span class="st"> </span>
+<span class="st">    </span><span class="kw">facet_wrap</span>(~<span class="st"> </span>variable, <span class="dt">scale=</span><span class="st">&quot;free&quot;</span>, <span class="dt">ncol=</span><span class="dv">1</span>)
   
-  s2.p &lt;- gp$s2.p
-  d.p &lt;- gp$d.p
-  s2_prior &lt;- function(x) <span class="kw">dgamma</span>(x, s2.p[<span class="dv">1</span>], s2.p[<span class="dv">2</span>])
-  d_prior &lt;- function(x) <span class="kw">dgamma</span>(x, d.p[<span class="dv">1</span>], <span class="dt">scale =</span> d.p[<span class="dv">2</span>])
-  prior_fns &lt;- <span class="kw">list</span>(<span class="dt">l =</span> d_prior, <span class="dt">sigma.n =</span> s2_prior)
+  s2.p &lt;-<span class="st"> </span>gp$s2.p
+  d.p &lt;-<span class="st"> </span>gp$d.p
+  s2_prior &lt;-<span class="st"> </span>function(x) <span class="kw">dgamma</span>(x, s2.p[<span class="dv">1</span>], s2.p[<span class="dv">2</span>])
+  d_prior &lt;-<span class="st"> </span>function(x) <span class="kw">dgamma</span>(x, d.p[<span class="dv">1</span>], <span class="dt">scale =</span> d.p[<span class="dv">2</span>])
+  prior_fns &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">l =</span> d_prior, <span class="dt">sigma.n =</span> s2_prior)
   
-  prior_curves &lt;- <span class="kw">ddply</span>(df, <span class="st">&quot;variable&quot;</span>, function(dd){
-    grid &lt;- <span class="kw">seq</span>(<span class="kw">min</span>(dd$value), <span class="kw">max</span>(dd$value), <span class="dt">length =</span> <span class="dv">100</span>)
+  prior_curves &lt;-<span class="st"> </span><span class="kw">ddply</span>(df, <span class="st">&quot;variable&quot;</span>, function(dd){
+    grid &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="kw">min</span>(dd$value), <span class="kw">max</span>(dd$value), <span class="dt">length =</span> <span class="dv">100</span>)
     <span class="kw">data.frame</span>(<span class="dt">value =</span> grid, <span class="dt">density =</span> prior_fns[[dd$variable[<span class="dv">1</span>]]](grid))
   })
   
   <span class="co"># Posteriors (easier to read than histograms)</span>
-  posteriors_plot &lt;- <span class="kw">ggplot</span>(df, <span class="kw">aes</span>(value)) + 
-    <span class="kw">stat_density</span>(<span class="dt">geom=</span><span class="st">&quot;path&quot;</span>, <span class="dt">position=</span><span class="st">&quot;identity&quot;</span>, <span class="dt">alpha=</span><span class="fl">0.7</span>) +
-    <span class="kw">geom_line</span>(<span class="dt">data=</span>prior_curves, <span class="kw">aes</span>(<span class="dt">x=</span>value, <span class="dt">y=</span>density), <span class="dt">col=</span><span class="st">&quot;red&quot;</span>) + 
-    <span class="kw">facet_wrap</span>(~ variable, <span class="dt">scale=</span><span class="st">&quot;free&quot;</span>, <span class="dt">ncol=</span><span class="dv">2</span>)
+  posteriors_plot &lt;-<span class="st"> </span><span class="kw">ggplot</span>(df, <span class="kw">aes</span>(value)) +<span class="st"> </span>
+<span class="st">    </span><span class="kw">stat_density</span>(<span class="dt">geom=</span><span class="st">&quot;path&quot;</span>, <span class="dt">position=</span><span class="st">&quot;identity&quot;</span>, <span class="dt">alpha=</span><span class="fl">0.7</span>) +
+<span class="st">    </span><span class="kw">geom_line</span>(<span class="dt">data=</span>prior_curves, <span class="kw">aes</span>(<span class="dt">x=</span>value, <span class="dt">y=</span>density), <span class="dt">col=</span><span class="st">&quot;red&quot;</span>) +<span class="st"> </span>
+<span class="st">    </span><span class="kw">facet_wrap</span>(~<span class="st"> </span>variable, <span class="dt">scale=</span><span class="st">&quot;free&quot;</span>, <span class="dt">ncol=</span><span class="dv">2</span>)
   
   <span class="kw">print</span>(traces_plot)
   <span class="kw">print</span>(posteriors_plot)
   
-  out &lt;- <span class="kw">list</span>(<span class="dt">traces_plot =</span> traces_plot, <span class="dt">posteriors_plot =</span> posteriors_plot)
+  out &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">traces_plot =</span> traces_plot, <span class="dt">posteriors_plot =</span> posteriors_plot)
   <span class="kw">invisible</span>(out)
 }
 
 <span class="co"># Helper function: The default covariance function</span>
-SE &lt;- function(Xi,Xj, l) <span class="kw">exp</span>(-<span class="fl">0.5</span> * (Xi - Xj) ^ <span class="dv">2</span> / l ^ <span class="dv">2</span>)</code></pre>
+SE &lt;-<span class="st"> </span>function(Xi,Xj, l) <span class="kw">exp</span>(-<span class="fl">0.5</span> *<span class="st"> </span>(Xi -<span class="st"> </span>Xj) ^<span class="st"> </span><span class="dv">2</span> /<span class="st"> </span>l ^<span class="st"> </span><span class="dv">2</span>)</code></pre>
 <h2 id="example">Example</h2>
-<pre class="sourceCode r"><code class="sourceCode r">x_predict &lt;- <span class="kw">seq</span>(-<span class="dv">5</span>,<span class="dv">5</span>,<span class="dt">len=</span><span class="dv">50</span>)
-obs &lt;- <span class="kw">data.frame</span>(<span class="dt">x =</span> <span class="kw">c</span>(-<span class="dv">4</span>, -<span class="dv">3</span>, -<span class="dv">1</span>,  <span class="dv">0</span>,  <span class="dv">2</span>),
+<pre class="sourceCode r"><code class="sourceCode r">x_predict &lt;-<span class="st"> </span><span class="kw">seq</span>(-<span class="dv">5</span>,<span class="dv">5</span>,<span class="dt">len=</span><span class="dv">50</span>)
+obs &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">x =</span> <span class="kw">c</span>(-<span class="dv">4</span>, -<span class="dv">3</span>, -<span class="dv">1</span>,  <span class="dv">0</span>,  <span class="dv">2</span>),
                   <span class="dt">y =</span> <span class="kw">c</span>(-<span class="dv">2</span>,  <span class="dv">0</span>,  <span class="dv">1</span>,  <span class="dv">2</span>, -<span class="dv">1</span>))</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r">gp &lt;- <span class="kw">gp_mcmc</span>(obs$x, obs$y, <span class="dt">d.p =</span> <span class="kw">c</span>(<span class="dv">2</span>,.<span class="dv">5</span>), <span class="dt">s2.p =</span> <span class="kw">c</span>(<span class="dv">2</span>,.<span class="dv">5</span>))</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">gp &lt;-<span class="st"> </span><span class="kw">gp_mcmc</span>(obs$x, obs$y, <span class="dt">d.p =</span> <span class="kw">c</span>(<span class="dv">2</span>,.<span class="dv">5</span>), <span class="dt">s2.p =</span> <span class="kw">c</span>(<span class="dv">2</span>,.<span class="dv">5</span>))</code></pre>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary_gp_mcmc</span>(gp)</code></pre>
 <p><img src="http://farm8.staticflickr.com/7285/8739390350_c4c06db5ab_o.png" alt="plot of chunk unnamed-chunk-6" /> <img src="http://farm8.staticflickr.com/7285/8739390438_50350c1a38_o.png" alt="plot of chunk unnamed-chunk-6" /></p>
-<pre class="sourceCode r"><code class="sourceCode r">gp_dat &lt;- <span class="kw">gp_predict</span>(gp, x_predict)</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r">tgp_dat &lt;- 
-    <span class="kw">data.frame</span>(  <span class="dt">x =</span> x_predict, 
+<pre class="sourceCode r"><code class="sourceCode r">gp_dat &lt;-<span class="st"> </span><span class="kw">gp_predict</span>(gp, x_predict)</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">tgp_dat &lt;-<span class="st"> </span>
+<span class="st">    </span><span class="kw">data.frame</span>(  <span class="dt">x =</span> x_predict, 
                  <span class="dt">y =</span> gp_dat$E_Ef, 
-                 <span class="dt">ymin =</span> gp_dat$E_Ef - <span class="dv">2</span> * <span class="kw">sqrt</span>(gp_dat$E_Vf), 
-                 <span class="dt">ymax =</span> gp_dat$E_Ef + <span class="dv">2</span> * <span class="kw">sqrt</span>(gp_dat$E_Vf) )
+                 <span class="dt">ymin =</span> gp_dat$E_Ef -<span class="st"> </span><span class="dv">2</span> *<span class="st"> </span><span class="kw">sqrt</span>(gp_dat$E_Vf), 
+                 <span class="dt">ymax =</span> gp_dat$E_Ef +<span class="st"> </span><span class="dv">2</span> *<span class="st"> </span><span class="kw">sqrt</span>(gp_dat$E_Vf) )
 
-<span class="kw">ggplot</span>(tgp_dat) + <span class="kw">geom_ribbon</span>(<span class="kw">aes</span>(x,y,<span class="dt">ymin=</span>ymin,<span class="dt">ymax=</span>ymax), <span class="dt">fill=</span><span class="st">&quot;gray80&quot;</span>) +
-    <span class="kw">geom_line</span>(<span class="kw">aes</span>(x, y), <span class="dt">lwd=</span><span class="dv">2</span>, <span class="dt">alpha=</span><span class="fl">0.8</span>) + 
-    <span class="kw">geom_point</span>(<span class="dt">data=</span>obs, <span class="kw">aes</span>(x,y), <span class="dt">alpha=</span><span class="fl">0.8</span>) + 
-    <span class="kw">xlab</span>(<span class="kw">expression</span>(X[t])) + <span class="kw">ylab</span>(<span class="kw">expression</span>(X[t<span class="dv">+1</span>])) </code></pre>
+<span class="kw">ggplot</span>(tgp_dat) +<span class="st"> </span><span class="kw">geom_ribbon</span>(<span class="kw">aes</span>(x,y,<span class="dt">ymin=</span>ymin,<span class="dt">ymax=</span>ymax), <span class="dt">fill=</span><span class="st">&quot;gray80&quot;</span>) +
+<span class="st">    </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(x, y), <span class="dt">lwd=</span><span class="dv">2</span>, <span class="dt">alpha=</span><span class="fl">0.8</span>) +<span class="st"> </span>
+<span class="st">    </span><span class="kw">geom_point</span>(<span class="dt">data=</span>obs, <span class="kw">aes</span>(x,y), <span class="dt">alpha=</span><span class="fl">0.8</span>) +<span class="st"> </span>
+<span class="st">    </span><span class="kw">xlab</span>(<span class="kw">expression</span>(X[t])) +<span class="st"> </span><span class="kw">ylab</span>(<span class="kw">expression</span>(X[t<span class="dv">+1</span>])) </code></pre>
 <figure>
 <img src="http://farm8.staticflickr.com/7282/8738272607_d913f04a10_o.png" alt="plot of chunk unnamed-chunk-8" /><figcaption>plot of chunk unnamed-chunk-8</figcaption>
 </figure>

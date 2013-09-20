@@ -145,8 +145,8 @@
     <article>
     <h2 id="teary">Teary</h2>
 <p>Some discussion on combining Greek letters with variables in R.  Previously have solved this with substitute() command,</p>
-<pre class="sourceCode r"><code class="sourceCode r">x = <span class="fl">4.5</span>
-<span class="kw">plot</span>(<span class="dv">1</span>:<span class="dv">10</span>, <span class="dt">main =</span> <span class="kw">substitute</span>(<span class="kw">paste</span>(<span class="st">&quot;Kendall &quot;</span>, tau == val), <span class="kw">list</span>(<span class="dt">val =</span> x[<span class="dv">1</span>])))</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">x =<span class="st"> </span><span class="fl">4.5</span>
+<span class="kw">plot</span>(<span class="dv">1</span>:<span class="dv">10</span>, <span class="dt">main =</span> <span class="kw">substitute</span>(<span class="kw">paste</span>(<span class="st">&quot;Kendall &quot;</span>, tau ==<span class="st"> </span>val), <span class="kw">list</span>(<span class="dt">val =</span> x[<span class="dv">1</span>])))</code></pre>
 <p>but Peter has a more elegant solution that can be vectorized:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sapply</span>(<span class="kw">interaction</span>(<span class="st">&quot;sigma&quot;</span>,<span class="dv">1</span>:<span class="dv">5</span>, <span class="dt">sep=</span><span class="st">&quot; == &quot;</span>),function(x)<span class="kw">parse</span>(<span class="dt">text=</span>x))
 <span class="co">#for instance</span>
@@ -246,7 +246,7 @@ document.write('<a h'+'ref'+'="ma'+'ilto'+':'+e+'">'+e+'<\/'+'a'+'>');
 
   <br/>
 
-   <p style="font-style:italic"> <i class="icon-signal"></i> pageviews: 11</p>
+   <p style="font-style:italic"> <i class="icon-signal"></i> pageviews: 12</p>
 
   <br/>
 

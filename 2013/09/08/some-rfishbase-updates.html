@@ -162,7 +162,7 @@
 <li>parse the table.</li>
 </ol>
 <p>In code, that looks like this:</p>
-<pre class="sourceCode r"><code class="sourceCode r">getTrophicLevel &lt;- function(<span class="dt">fish.data =</span> <span class="ot">NULL</span>,
+<pre class="sourceCode r"><code class="sourceCode r">getTrophicLevel &lt;-<span class="st"> </span>function(<span class="dt">fish.data =</span> <span class="ot">NULL</span>,
                             <span class="dt">path =</span> <span class="ot">NULL</span>,
                             <span class="dt">as_table=</span><span class="ot">FALSE</span>, 
                             <span class="dt">from =</span> <span class="kw">c</span>(<span class="st">&quot;diet composition&quot;</span>, <span class="st">&quot;individual food items&quot;</span>), 
@@ -170,11 +170,11 @@
                             <span class="dt">justSE =</span> <span class="ot">FALSE</span>,
                             <span class="dt">justReference =</span> <span class="ot">FALSE</span>){
 
-  ids &lt;- <span class="kw">getIds</span>(<span class="dt">fish.data =</span> fish.data, <span class="dt">path=</span>path)
-  out &lt;- <span class="kw">sapply</span>(ids, function(id){
-    summaryPage &lt;- <span class="kw">getSummary</span>(id)
-    ecologyPage &lt;- <span class="kw">getEcology</span>(summaryPage)
-    tab &lt;- <span class="kw">readTrophicLevel</span>(ecologyPage)
+  ids &lt;-<span class="st"> </span><span class="kw">getIds</span>(<span class="dt">fish.data =</span> fish.data, <span class="dt">path=</span>path)
+  out &lt;-<span class="st"> </span><span class="kw">sapply</span>(ids, function(id){
+    summaryPage &lt;-<span class="st"> </span><span class="kw">getSummary</span>(id)
+    ecologyPage &lt;-<span class="st"> </span><span class="kw">getEcology</span>(summaryPage)
+    tab &lt;-<span class="st"> </span><span class="kw">readTrophicLevel</span>(ecologyPage)
     if(as_table)
       tab
     else
@@ -184,51 +184,51 @@
 }</code></pre>
 <p>Which has a whole bunch of options just to let the user control the format of the output / target value, since there are different numbers.</p>
 <p>Each of the steps corresponds to it’s own function:</p>
-<pre class="sourceCode r"><code class="sourceCode r">getIds &lt;- function(<span class="dt">fish.data=</span><span class="ot">NULL</span>, <span class="dt">path=</span><span class="ot">NULL</span>){
+<pre class="sourceCode r"><code class="sourceCode r">getIds &lt;-<span class="st"> </span>function(<span class="dt">fish.data=</span><span class="ot">NULL</span>, <span class="dt">path=</span><span class="ot">NULL</span>){
   if(<span class="kw">is.null</span>(fish.data))
-    fish.data &lt;- <span class="kw">loadCache</span>(<span class="dt">path=</span>path)
-  ids &lt;- <span class="kw">sapply</span>(fish.data, <span class="st">`</span><span class="dt">[[</span><span class="st">`</span>, <span class="st">&#39;id&#39;</span>)
-  species.names &lt;- <span class="kw">sapply</span>(fish.data, <span class="st">`</span><span class="dt">[[</span><span class="st">`</span>, <span class="st">&#39;ScientificName&#39;</span>)
-  <span class="kw">names</span>(ids) &lt;- <span class="kw">gsub</span>(<span class="st">&quot; &quot;</span>, <span class="st">&quot;_&quot;</span>, species.names) <span class="co"># use underscores instead of spaces</span>
+    fish.data &lt;-<span class="st"> </span><span class="kw">loadCache</span>(<span class="dt">path=</span>path)
+  ids &lt;-<span class="st"> </span><span class="kw">sapply</span>(fish.data, <span class="st">`</span><span class="dt">[[</span><span class="st">`</span>, <span class="st">&#39;id&#39;</span>)
+  species.names &lt;-<span class="st"> </span><span class="kw">sapply</span>(fish.data, <span class="st">`</span><span class="dt">[[</span><span class="st">`</span>, <span class="st">&#39;ScientificName&#39;</span>)
+  <span class="kw">names</span>(ids) &lt;-<span class="st"> </span><span class="kw">gsub</span>(<span class="st">&quot; &quot;</span>, <span class="st">&quot;_&quot;</span>, species.names) <span class="co"># use underscores instead of spaces</span>
   ids
 }
 
 
-getSummary &lt;- function(id){ 
+getSummary &lt;-<span class="st"> </span>function(id){ 
   <span class="co"># Grab and parse page matching id</span>
-  url &lt;- <span class="kw">paste0</span>(<span class="st">&quot;http://www.fishbase.org/summary/speciessummary.php?id=&quot;</span>, id)
-  summaryPage &lt;- <span class="kw">htmlParse</span>(url) 
+  url &lt;-<span class="st"> </span><span class="kw">paste0</span>(<span class="st">&quot;http://www.fishbase.org/summary/speciessummary.php?id=&quot;</span>, id)
+  summaryPage &lt;-<span class="st"> </span><span class="kw">htmlParse</span>(url) 
 }
 
-getEcology &lt;- function(summaryPage){
-  link &lt;- <span class="kw">xpathApply</span>(summaryPage, <span class="st">&quot;//*[contains(@href, &#39;/Ecology/FishEcologySummary.php&#39;)][1]&quot;</span>, xmlAttrs)[[<span class="dv">1</span>]][[<span class="st">&quot;href&quot;</span>]]
-  ecologyPage &lt;- <span class="kw">htmlParse</span>(<span class="kw">paste0</span>(<span class="st">&quot;http://www.fishbase.org/&quot;</span>, <span class="kw">gsub</span>(<span class="st">&quot;</span><span class="ch">\\</span><span class="st">.</span><span class="ch">\\</span><span class="st">./&quot;</span>, <span class="st">&quot;&quot;</span>, link)))
+getEcology &lt;-<span class="st"> </span>function(summaryPage){
+  link &lt;-<span class="st"> </span><span class="kw">xpathApply</span>(summaryPage, <span class="st">&quot;//*[contains(@href, &#39;/Ecology/FishEcologySummary.php&#39;)][1]&quot;</span>, xmlAttrs)[[<span class="dv">1</span>]][[<span class="st">&quot;href&quot;</span>]]
+  ecologyPage &lt;-<span class="st"> </span><span class="kw">htmlParse</span>(<span class="kw">paste0</span>(<span class="st">&quot;http://www.fishbase.org/&quot;</span>, <span class="kw">gsub</span>(<span class="st">&quot;</span><span class="ch">\\</span><span class="st">.</span><span class="ch">\\</span><span class="st">./&quot;</span>, <span class="st">&quot;&quot;</span>, link)))
 }
 
 
-readTrophicLevel &lt;- function(ecologyPage){ 
-  tab &lt;- <span class="kw">readHTMLTable</span>(ecologyPage)[[<span class="dv">6</span>]]
+readTrophicLevel &lt;-<span class="st"> </span>function(ecologyPage){ 
+  tab &lt;-<span class="st"> </span><span class="kw">readHTMLTable</span>(ecologyPage)[[<span class="dv">6</span>]]
 }</code></pre>
 <p>which are all nice and short and potentially self-explanatory. Extracting values from the table we isolate is done rather crudely at the moment and could no doubt be improved, but this is what I came up with:</p>
-<pre class="sourceCode r"><code class="sourceCode r">parseTrophicLevel &lt;- function(tab, 
+<pre class="sourceCode r"><code class="sourceCode r">parseTrophicLevel &lt;-<span class="st"> </span>function(tab, 
                               <span class="dt">from =</span> <span class="kw">c</span>(<span class="st">&quot;diet composition&quot;</span>, <span class="st">&quot;individual food items&quot;</span>), 
                               <span class="dt">unfished =</span> <span class="ot">FALSE</span>,
                               <span class="dt">justSE =</span> <span class="ot">FALSE</span>,
                               <span class="dt">justReference =</span> <span class="ot">FALSE</span>){
-  from &lt;- <span class="kw">match.arg</span>(from)
+  from &lt;-<span class="st"> </span><span class="kw">match.arg</span>(from)
   if(justReference)
-    out &lt;- <span class="kw">as.character</span>(tab[<span class="dv">3</span>,<span class="dv">2</span>])
+    out &lt;-<span class="st"> </span><span class="kw">as.character</span>(tab[<span class="dv">3</span>,<span class="dv">2</span>])
   else{
-    col &lt;- <span class="dv">2</span>
-    adj &lt;- <span class="dv">0</span>
+    col &lt;-<span class="st"> </span><span class="dv">2</span>
+    adj &lt;-<span class="st"> </span><span class="dv">0</span>
     if(unfished)
-      col &lt;- <span class="dv">4</span>
+      col &lt;-<span class="st"> </span><span class="dv">4</span>
     if(justSE)
-      adj &lt;- <span class="dv">1</span>
-    if(from == <span class="st">&quot;diet composition&quot;</span>)
-      out &lt;- <span class="kw">as.numeric</span>(<span class="kw">as.character</span>(tab[<span class="dv">2</span>,col+adj]))
-    else if(from == <span class="st">&quot;individual food items&quot;</span>)
-      out &lt;- <span class="kw">as.numeric</span>(<span class="kw">as.character</span>(tab[<span class="dv">4</span>,col+adj]))
+      adj &lt;-<span class="st"> </span><span class="dv">1</span>
+    if(from ==<span class="st"> &quot;diet composition&quot;</span>)
+      out &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">as.character</span>(tab[<span class="dv">2</span>,col+adj]))
+    else if(from ==<span class="st"> &quot;individual food items&quot;</span>)
+      out &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">as.character</span>(tab[<span class="dv">4</span>,col+adj]))
   }
   out 
 }</code></pre>
@@ -295,7 +295,7 @@ readTrophicLevel &lt;- function(ecologyPage){
 
   <br/>
 
-   <p style="font-style:italic"> <i class="icon-signal"></i> pageviews: 14</p>
+   <p style="font-style:italic"> <i class="icon-signal"></i> pageviews: 20</p>
 
   <br/>
 

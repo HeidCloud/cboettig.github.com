@@ -152,37 +152,37 @@
 <span class="kw">require</span>(TreeSim); <span class="kw">require</span>(laser)
 
 ## tree age
-treeage &lt;- function(tree){
+treeage &lt;-<span class="st"> </span>function(tree){
   if(<span class="kw">is</span>(tree, <span class="st">&quot;phylo&quot;</span>)){
-    tree &lt;- <span class="kw">ape2ouch</span>(tree, <span class="dt">scale=</span><span class="ot">FALSE</span>)
-    time &lt;- <span class="kw">max</span>(tree@times)
+    tree &lt;-<span class="st"> </span><span class="kw">ape2ouch</span>(tree, <span class="dt">scale=</span><span class="ot">FALSE</span>)
+    time &lt;-<span class="st"> </span><span class="kw">max</span>(tree@times)
   } else {
-    time &lt;- <span class="dv">0</span>
+    time &lt;-<span class="st"> </span><span class="dv">0</span>
   }
   time
 }
 
 <span class="co"># r is diversification rate, b-d, and a is d/b</span>
 <span class="co"># we&#39;d rather have in terms of b and d</span>
-swp &lt;- function(r, a){
-  b = r/(<span class="dv">1</span>-a)
-  d = r*a/(<span class="dv">1</span>-a)
+swp &lt;-<span class="st"> </span>function(r, a){
+  b =<span class="st"> </span>r/(<span class="dv">1</span>-a)
+  d =<span class="st"> </span>r*a/(<span class="dv">1</span>-a)
   <span class="kw">c</span>(b,d)
 }</code></pre>
 <h2 id="simulating-birth-death-trees">Simulating Birth-Death Trees</h2>
 <p>We’ll start with the TreeSim function sim.bd.age to create birth-death trees.  These examples illustrate the diversity of possible outcomes that result from the <em>identical model</em>.  They also highlight subtleties in defining a model – such as, “was that the age from the origin, or the mrca?”  Our first tree: ((yeah, so this tutorial isn’t that introductory – check the help file on sim.bd.age if you’ve forgotten what the arguments to the function are. We assume knowledge of R b.c. students have used it all year now.))</p>
 <pre class="sourceCode r"><code class="sourceCode r">
 <span class="kw">set.seed</span>(<span class="dv">0</span>) <span class="co"># so we all get the same result</span>
-tree &lt;- <span class="kw">sim.bd.age</span>(<span class="dt">age=</span><span class="dv">2</span>,<span class="dt">numbsim=</span><span class="dv">1</span>,<span class="dt">lambda=</span><span class="dv">2</span>,<span class="dt">mu=</span><span class="dv">0</span>,<span class="dt">comp=</span>F, <span class="dt">mrca=</span>F)
+tree &lt;-<span class="st"> </span><span class="kw">sim.bd.age</span>(<span class="dt">age=</span><span class="dv">2</span>,<span class="dt">numbsim=</span><span class="dv">1</span>,<span class="dt">lambda=</span><span class="dv">2</span>,<span class="dt">mu=</span><span class="dv">0</span>,<span class="dt">comp=</span>F, <span class="dt">mrca=</span>F)
 <span class="kw">print</span>( <span class="kw">treeage</span>(tree[[<span class="dv">1</span>]])  )</code></pre>
 <p>We get age=1.907982. Less than the age 2 we asked for, as Tomomi had pointed out. This means the founder species took about 0.1 time steps before the first speciation event. We expect the waiting times to be exponentially distributed. This is easy to confirm:</p>
 <pre class="sourceCode r"><code class="sourceCode r">
 <span class="kw">set.seed</span>(<span class="dv">0</span>) <span class="co"># so we all get the same result</span>
-  trees &lt;- <span class="kw">sim.bd.age</span>(<span class="dt">age=</span><span class="dv">2</span>,<span class="dt">num=</span><span class="dv">100</span>,<span class="dt">lambda=</span><span class="dv">2</span>,<span class="dv">0</span>,<span class="dt">comp=</span>F, <span class="dt">mrca=</span>F)
-  times &lt;- <span class="kw">sapply</span>(trees, function(tr){
-    <span class="dv">2</span> - <span class="kw">treeage</span>(tr)
+  trees &lt;-<span class="st"> </span><span class="kw">sim.bd.age</span>(<span class="dt">age=</span><span class="dv">2</span>,<span class="dt">num=</span><span class="dv">100</span>,<span class="dt">lambda=</span><span class="dv">2</span>,<span class="dv">0</span>,<span class="dt">comp=</span>F, <span class="dt">mrca=</span>F)
+  times &lt;-<span class="st"> </span><span class="kw">sapply</span>(trees, function(tr){
+    <span class="dv">2</span> -<span class="st"> </span><span class="kw">treeage</span>(tr)
   })
-  times &lt;- times[times!=<span class="dv">2</span>] <span class="co"># trees that never branch don&#39;t contribute</span>
+  times &lt;-<span class="st"> </span>times[times!=<span class="dv">2</span>] <span class="co"># trees that never branch don&#39;t contribute</span>
 ## Plot Results
 <span class="kw">hist</span>(times, <span class="dt">freq=</span>F)
 <span class="kw">curve</span>(<span class="kw">dexp</span>(x, <span class="dv">2</span>), <span class="dt">add=</span>T) <span class="co"># theory</span></code></pre>
@@ -192,15 +192,15 @@ tree &lt;- <span class="kw">sim.bd.age</span>(<span class="dt">age=</span><span 
 <p>As we mentioned, setting the age equal to the most recent common ancestor (mrca) means the tree does have the age specified. We wondered if this held true when the tree had extinction, since it is possible the first branching event could end up with no descendants on one branch. In that case it isn’t the mrca of extant taxa, and it gets pruned, such that the total length of the tree is still the age given. ((So if we show the complete tree (complete=TRUE) with extinct taxa, is such a taxon floating or lost?)) This example tests this a bunch of times:</p>
 <pre class="sourceCode r"><code class="sourceCode r">
   ## This tree is exactly the age we asked for:
-  tree &lt;- <span class="kw">sim.bd.age</span>(<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">0</span>,<span class="dt">complete=</span>F, <span class="dt">mrca=</span>T)
+  tree &lt;-<span class="st"> </span><span class="kw">sim.bd.age</span>(<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">0</span>,<span class="dt">complete=</span>F, <span class="dt">mrca=</span>T)
   <span class="kw">print</span>(  <span class="kw">treeage</span>( tree[[<span class="dv">1</span>]] )  )
 
   ## This tree isn&#39;t always the age we asked for, or is it:
-  trees &lt;- <span class="kw">sim.bd.age</span>(<span class="dv">2</span>,<span class="dv">20</span>,<span class="dv">5</span>,<span class="fl">4.9</span>,<span class="dt">comp=</span>T, <span class="dt">mrca=</span>T)
+  trees &lt;-<span class="st"> </span><span class="kw">sim.bd.age</span>(<span class="dv">2</span>,<span class="dv">20</span>,<span class="dv">5</span>,<span class="fl">4.9</span>,<span class="dt">comp=</span>T, <span class="dt">mrca=</span>T)
   <span class="kw">print</span>(  <span class="kw">sapply</span>(trees, function(tr) <span class="kw">treeage</span>(tr))   )</code></pre>
 <p>Okay, onto visualizing differences in simulation outcomes. The most obvious is the variety in tip counts, as seen in this 6 taxon example:</p>
 <pre class="sourceCode r"><code class="sourceCode r">
-  trees &lt;- <span class="kw">sim.bd.age</span>(<span class="dt">age=</span><span class="dv">2</span>,<span class="dt">numbsim=</span><span class="dv">6</span>,<span class="dt">lambda=</span><span class="dv">2</span>,<span class="dt">mu=</span>.<span class="dv">5</span>,<span class="dt">mrca=</span><span class="ot">TRUE</span>,<span class="dt">complete=</span><span class="ot">FALSE</span>)
+  trees &lt;-<span class="st"> </span><span class="kw">sim.bd.age</span>(<span class="dt">age=</span><span class="dv">2</span>,<span class="dt">numbsim=</span><span class="dv">6</span>,<span class="dt">lambda=</span><span class="dv">2</span>,<span class="dt">mu=</span>.<span class="dv">5</span>,<span class="dt">mrca=</span><span class="ot">TRUE</span>,<span class="dt">complete=</span><span class="ot">FALSE</span>)
   <span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">2</span>))
   for(i in <span class="dv">1</span>:<span class="dv">6</span>)
     <span class="kw">plot</span>(trees[[i]])
@@ -246,62 +246,62 @@ Fitting Models
 <pre class="sourceCode r"><code class="sourceCode r">
 ### Let&#39;s take a closer look at estimating parameters from trees now.   ###
 ## Start with a simple tree
-  tree &lt;- <span class="kw">sim.bd.age</span>(<span class="dt">age=</span><span class="dv">2</span>,<span class="dt">numbsim=</span><span class="dv">1</span>,<span class="dt">lambda=</span><span class="dv">2</span>,<span class="dt">mu=</span><span class="fl">0.0</span>, <span class="dt">mrca=</span><span class="ot">FALSE</span>,<span class="dt">complete=</span><span class="ot">FALSE</span>)[[<span class="dv">1</span>]]
+  tree &lt;-<span class="st"> </span><span class="kw">sim.bd.age</span>(<span class="dt">age=</span><span class="dv">2</span>,<span class="dt">numbsim=</span><span class="dv">1</span>,<span class="dt">lambda=</span><span class="dv">2</span>,<span class="dt">mu=</span><span class="fl">0.0</span>, <span class="dt">mrca=</span><span class="ot">FALSE</span>,<span class="dt">complete=</span><span class="ot">FALSE</span>)[[<span class="dv">1</span>]]
 <span class="co"># fit a birth death model</span>
 <span class="co"># gives confidence levels that assume normality</span>
   <span class="kw">birthdeath</span>(tree)
 ## laser&#39;s way of estimating a model
-  model &lt;- <span class="kw">bd</span>(<span class="kw">branching.times</span>(tree))
+  model &lt;-<span class="st"> </span><span class="kw">bd</span>(<span class="kw">branching.times</span>(tree))
 ## estimate a yule model
-  yule &lt;- <span class="kw">pureBirth</span>(<span class="kw">branching.times</span>(tree))
+  yule &lt;-<span class="st"> </span><span class="kw">pureBirth</span>(<span class="kw">branching.times</span>(tree))
 <span class="co"># which one is better</span>
-  model$aic - yule$aic</code></pre>
+  model$aic -<span class="st"> </span>yule$aic</code></pre>
 <h3 id="bootstrapping-models">Bootstrapping Models</h3>
 <pre class="sourceCode r"><code class="sourceCode r">
 
 <span class="co"># simulate a tree, fit a birth-death model, pull out the b and d parameters</span>
-  tree &lt;- <span class="kw">sim.bd.age</span>(<span class="dt">age=</span><span class="dv">4</span>,<span class="dt">numbsim=</span><span class="dv">1</span>,<span class="dt">lambda=</span><span class="dv">2</span>,<span class="dt">mu=</span><span class="fl">0.9</span>,
+  tree &lt;-<span class="st"> </span><span class="kw">sim.bd.age</span>(<span class="dt">age=</span><span class="dv">4</span>,<span class="dt">numbsim=</span><span class="dv">1</span>,<span class="dt">lambda=</span><span class="dv">2</span>,<span class="dt">mu=</span><span class="fl">0.9</span>,
                       <span class="dt">mrca=</span><span class="ot">FALSE</span>,<span class="dt">complete=</span><span class="ot">FALSE</span>)[[<span class="dv">1</span>]]
-  fit &lt;- <span class="kw">bd</span>(<span class="kw">branching.times</span>(tree))
-  para &lt;- <span class="kw">swp</span>(fit$r, fit$a)
+  fit &lt;-<span class="st"> </span><span class="kw">bd</span>(<span class="kw">branching.times</span>(tree))
+  para &lt;-<span class="st"> </span><span class="kw">swp</span>(fit$r, fit$a)
 <span class="co"># simulate lots of trees</span>
-  boots &lt;- <span class="kw">sim.bd.age</span>(<span class="dt">age=</span><span class="dv">2</span>, <span class="dt">numbsim=</span><span class="dv">500</span>, <span class="dt">lambda=</span>para[<span class="dv">1</span>], <span class="dt">mu=</span>para[<span class="dv">2</span>],
+  boots &lt;-<span class="st"> </span><span class="kw">sim.bd.age</span>(<span class="dt">age=</span><span class="dv">2</span>, <span class="dt">numbsim=</span><span class="dv">500</span>, <span class="dt">lambda=</span>para[<span class="dv">1</span>], <span class="dt">mu=</span>para[<span class="dv">2</span>],
                       <span class="dt">mrca=</span><span class="ot">FALSE</span>, <span class="dt">comp=</span><span class="ot">FALSE</span>)
-  bd_dist &lt;- <span class="kw">sapply</span>(boots,
+  bd_dist &lt;-<span class="st"> </span><span class="kw">sapply</span>(boots,
               function(x){
-                fit &lt;- <span class="kw">try</span>(<span class="kw">bd</span>(<span class="kw">branching.times</span>(x)))
+                fit &lt;-<span class="st"> </span><span class="kw">try</span>(<span class="kw">bd</span>(<span class="kw">branching.times</span>(x)))
   ## Some fits fail because bd sucks too.  tell R to tough it out anyhow
                 if(!<span class="kw">is</span>(fit, <span class="st">&quot;try-error&quot;</span>))
-                  para &lt;- <span class="kw">swp</span>(fit$r, fit$a)
+                  para &lt;-<span class="st"> </span><span class="kw">swp</span>(fit$r, fit$a)
                 else
-                  para &lt;- <span class="ot">NA</span>
+                  para &lt;-<span class="st"> </span><span class="ot">NA</span>
                 <span class="kw">c</span>(para[<span class="dv">1</span>], para[<span class="dv">2</span>])
               })
   ## err, fix formatting if sapply failed to give me a matrix!
   if(<span class="kw">is</span>(bd_dist, <span class="st">&quot;list&quot;</span>))
-    bd_dist &lt;- <span class="kw">sapply</span>(<span class="dv">1</span>:<span class="kw">length</span>(bd_dist),
+    bd_dist &lt;-<span class="st"> </span><span class="kw">sapply</span>(<span class="dv">1</span>:<span class="kw">length</span>(bd_dist),
       function(i) <span class="kw">c</span>(bd_dist[[i]][<span class="dv">1</span>],bd_dist[[i]][<span class="dv">2</span>]))
-  bd_dist &lt;- <span class="kw">t</span>(bd_dist)</code></pre>
+  bd_dist &lt;-<span class="st"> </span><span class="kw">t</span>(bd_dist)</code></pre>
 <figure>
 <img src="http://farm4.staticflickr.com/3218/5736235990_81f961bf72_o.png" />
 </figure>
 <p>This didn’t condition on reality of N species being observed. We can repeat with sim.bd.taxa</p>
 <pre class="sourceCode r"><code class="sourceCode r">
-  tree &lt;- <span class="kw">sim.bd.taxa</span>(<span class="dt">n=</span><span class="dv">50</span>,<span class="dt">numbsim=</span><span class="dv">1</span>,<span class="dt">lambda=</span><span class="dv">2</span>,<span class="dt">mu=</span><span class="fl">0.9</span>,
+  tree &lt;-<span class="st"> </span><span class="kw">sim.bd.taxa</span>(<span class="dt">n=</span><span class="dv">50</span>,<span class="dt">numbsim=</span><span class="dv">1</span>,<span class="dt">lambda=</span><span class="dv">2</span>,<span class="dt">mu=</span><span class="fl">0.9</span>,
                       <span class="dt">complete=</span><span class="ot">FALSE</span>)[[<span class="dv">1</span>]][[<span class="dv">1</span>]]
-  fit &lt;- <span class="kw">bd</span>(<span class="kw">branching.times</span>(tree))
-  para &lt;- <span class="kw">swp</span>(fit$r, fit$a)
+  fit &lt;-<span class="st"> </span><span class="kw">bd</span>(<span class="kw">branching.times</span>(tree))
+  para &lt;-<span class="st"> </span><span class="kw">swp</span>(fit$r, fit$a)
 <span class="co"># simulate lots of trees</span>
-  boots &lt;- <span class="kw">sim.bd.taxa</span>(<span class="dt">n=</span><span class="dv">50</span>, <span class="dt">numbsim=</span><span class="dv">500</span>, <span class="dt">lambda=</span>para[<span class="dv">1</span>], <span class="dt">mu=</span>para[<span class="dv">2</span>],
+  boots &lt;-<span class="st"> </span><span class="kw">sim.bd.taxa</span>(<span class="dt">n=</span><span class="dv">50</span>, <span class="dt">numbsim=</span><span class="dv">500</span>, <span class="dt">lambda=</span>para[<span class="dv">1</span>], <span class="dt">mu=</span>para[<span class="dv">2</span>],
                       <span class="dt">comp=</span><span class="ot">FALSE</span>)[[<span class="dv">1</span>]]
-  bd_dist &lt;- <span class="kw">sapply</span>(boots,
+  bd_dist &lt;-<span class="st"> </span><span class="kw">sapply</span>(boots,
               function(x){
-                fit &lt;- <span class="kw">try</span>(<span class="kw">bd</span>(<span class="kw">branching.times</span>(x)))
+                fit &lt;-<span class="st"> </span><span class="kw">try</span>(<span class="kw">bd</span>(<span class="kw">branching.times</span>(x)))
   ## Some fits fail because bd sucks too.  tell R to tough it out anyhow
                 if(!<span class="kw">is</span>(fit, <span class="st">&quot;try-error&quot;</span>))
-                  para &lt;- <span class="kw">swp</span>(fit$r, fit$a)
+                  para &lt;-<span class="st"> </span><span class="kw">swp</span>(fit$r, fit$a)
                 else
-                  para &lt;- <span class="ot">NA</span>
+                  para &lt;-<span class="st"> </span><span class="ot">NA</span>
                 <span class="kw">c</span>(para[<span class="dv">1</span>], para[<span class="dv">2</span>])
               })</code></pre>
 <figure>
@@ -310,30 +310,30 @@ Fitting Models
 <p>How about David’s question on bootstrapping the likelihood?  How about when the birth-death model is inappropriate to the data?  Here we will tranform the tree to create a topology very different than any we’ve seen, where branching starts off rapidly and then seems to stop:</p>
 <p>Birth-death trees are quite twiggy, this seems like a rather unlikely tree for a birth-death process. <img src="http://farm6.staticflickr.com/5182/5736268982_d689ba66cb_o.png" /></p>
 <pre class="sourceCode r"><code class="sourceCode r">
-  tree &lt;- <span class="kw">sim.bd.taxa</span>(<span class="dt">n=</span><span class="dv">50</span>,<span class="dt">numbsim=</span><span class="dv">1</span>,<span class="dt">lambda=</span><span class="dv">2</span>,<span class="dt">mu=</span><span class="fl">0.9</span>,
+  tree &lt;-<span class="st"> </span><span class="kw">sim.bd.taxa</span>(<span class="dt">n=</span><span class="dv">50</span>,<span class="dt">numbsim=</span><span class="dv">1</span>,<span class="dt">lambda=</span><span class="dv">2</span>,<span class="dt">mu=</span><span class="fl">0.9</span>,
                       <span class="dt">complete=</span><span class="ot">FALSE</span>)[[<span class="dv">1</span>]][[<span class="dv">1</span>]]
 
-  tree &lt;- <span class="kw">lambdaTree</span>(tree, .<span class="dv">2</span>) ## TRANSFORM THE TREE
-  fit &lt;- <span class="kw">bd</span>(<span class="kw">branching.times</span>(tree))
-  para &lt;- <span class="kw">swp</span>(fit$r, fit$a)
+  tree &lt;-<span class="st"> </span><span class="kw">lambdaTree</span>(tree, .<span class="dv">2</span>) ## TRANSFORM THE TREE
+  fit &lt;-<span class="st"> </span><span class="kw">bd</span>(<span class="kw">branching.times</span>(tree))
+  para &lt;-<span class="st"> </span><span class="kw">swp</span>(fit$r, fit$a)
 <span class="co"># simulate lots of trees</span>
-  boots &lt;- <span class="kw">sim.bd.taxa</span>(<span class="dt">n=</span><span class="dv">50</span>, <span class="dt">numbsim=</span><span class="dv">500</span>, <span class="dt">lambda=</span>para[<span class="dv">1</span>], <span class="dt">mu=</span>para[<span class="dv">2</span>],
+  boots &lt;-<span class="st"> </span><span class="kw">sim.bd.taxa</span>(<span class="dt">n=</span><span class="dv">50</span>, <span class="dt">numbsim=</span><span class="dv">500</span>, <span class="dt">lambda=</span>para[<span class="dv">1</span>], <span class="dt">mu=</span>para[<span class="dv">2</span>],
                       <span class="dt">comp=</span><span class="ot">FALSE</span>)[[<span class="dv">1</span>]]
-  bd_dist &lt;- <span class="kw">sapply</span>(boots,
+  bd_dist &lt;-<span class="st"> </span><span class="kw">sapply</span>(boots,
               function(x){
-                fit &lt;- <span class="kw">try</span>(<span class="kw">bd</span>(<span class="kw">branching.times</span>(x)))
+                fit &lt;-<span class="st"> </span><span class="kw">try</span>(<span class="kw">bd</span>(<span class="kw">branching.times</span>(x)))
   ## Some fits fail because bd sucks too.  tell R to tough it out anyhow
                 if(!<span class="kw">is</span>(fit, <span class="st">&quot;try-error&quot;</span>)){
-                  para &lt;- <span class="kw">swp</span>(fit$r, fit$a)
-                  lh &lt;- fit$LH
+                  para &lt;-<span class="st"> </span><span class="kw">swp</span>(fit$r, fit$a)
+                  lh &lt;-<span class="st"> </span>fit$LH
                 }
                 else {
-                  para &lt;- <span class="ot">NA</span>
-                  lh &lt;- <span class="ot">NA</span>
+                  para &lt;-<span class="st"> </span><span class="ot">NA</span>
+                  lh &lt;-<span class="st"> </span><span class="ot">NA</span>
                 }
                 <span class="kw">c</span>(para[<span class="dv">1</span>], para[<span class="dv">2</span>], lh)
               })
-  bd_dist &lt;- <span class="kw">t</span>(bd_dist)
+  bd_dist &lt;-<span class="st"> </span><span class="kw">t</span>(bd_dist)
 
   ## give us a wee peek at some summary data
   <span class="kw">print</span>(<span class="kw">summary</span>(bd_dist))
@@ -405,7 +405,7 @@ Fitting Models
 
   <br/>
 
-   <p style="font-style:italic"> <i class="icon-signal"></i> pageviews: 111</p>
+   <p style="font-style:italic"> <i class="icon-signal"></i> pageviews: 113</p>
 
   <br/>
 

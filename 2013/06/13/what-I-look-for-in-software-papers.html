@@ -169,23 +169,23 @@
 <p>A scientific R package <em>must must must</em> have some automated tests that are run by <code>R CMD check</code>. Even if further development of the package doesn’t break anything (most likely only if further development doesn’t happen), changes to the package dependencies could still break things, and so it is crucial to have a mechanism in place to detect these problems when they arise. For code that runs quickly, the simplest way to do this is through the examples in the documentation. I don’t expect all scientific software to have a complete test suite with 100% coverage covering all the weird things that can happen if a user passes in a matrix when the function expects a data frame or has some unanticipated missing values, etc. Just some tests to make sure the basic examples execute and I’ll be happy. Longer running functions or those that need calls to external web resources shouldn’t be run in the examples (too much of a burden for CRAN’s automatic testing) so they should be marked <code>dontrun</code> and put in a separate test suite or vignette as it says in the manual.</p>
 <h3 id="passing-optional-arguments">Passing optional arguments</h3>
 <p>I see authors write functions like this all the time:</p>
-<pre class="sourceCode r"><code class="sourceCode r">f &lt;- <span class="kw">myfunction</span>(f, p){ 
+<pre class="sourceCode r"><code class="sourceCode r">f &lt;-<span class="st"> </span><span class="kw">myfunction</span>(f, p){ 
   <span class="co">#  stuff</span>
-  o &lt;- <span class="kw">optim</span>(f, p)
+  o &lt;-<span class="st"> </span><span class="kw">optim</span>(f, p)
   <span class="co">#  stuff</span>
 }</code></pre>
 <p>calling an existing library function like <code>optim</code> that has a whole host of very useful optional arguments that have a significant impact on how the algorithm functions. Whenever you a rich function like <code>optim</code>, please have the courtesy to make it’s arguments available to future users and developers through your function call. Yes, most users will just want the default arguments, (or your default arguments, if different), and that can be handled just fine by providing default values as optional arguments. R has a fantastic mechanism for this exact issue: the <code>...</code> argument. The above code could be fixed simply by using:</p>
-<pre class="sourceCode r"><code class="sourceCode r">f &lt;- <span class="kw">myfunction</span>(f, p, ...){ 
+<pre class="sourceCode r"><code class="sourceCode r">f &lt;-<span class="st"> </span><span class="kw">myfunction</span>(f, p, ...){ 
   <span class="co">#  stuff</span>
-  o &lt;- <span class="kw">optim</span>(f, p, ...)
+  o &lt;-<span class="st"> </span><span class="kw">optim</span>(f, p, ...)
   <span class="co">#  stuff</span>
 }</code></pre>
 <p>which works just they way you think it would. If you have more than one such function (ask yourself if you can write shorter functions first and then) pass optional arguments as lists,</p>
-<pre class="sourceCode r"><code class="sourceCode r">f &lt;- <span class="kw">myfunction</span>(f, p, optim_options, fn2_options){
+<pre class="sourceCode r"><code class="sourceCode r">f &lt;-<span class="st"> </span><span class="kw">myfunction</span>(f, p, optim_options, fn2_options){
   <span class="co"># stuff</span>
-  o &lt;- <span class="kw">do.call</span>(optim, <span class="kw">as.list</span>(<span class="kw">c</span>(f, p, optim_options)))
+  o &lt;-<span class="st"> </span><span class="kw">do.call</span>(optim, <span class="kw">as.list</span>(<span class="kw">c</span>(f, p, optim_options)))
   <span class="co"># stuff</span>
-  b &lt;- <span class="kw">do.call</span>(fn2, fn2_options)
+  b &lt;-<span class="st"> </span><span class="kw">do.call</span>(fn2, fn2_options)
   <span class="co"># stuff </span>
 }</code></pre>
 <p>arguments can also be extracted with <code>list(...)$arg1</code> etc.</p>
@@ -255,7 +255,7 @@
 
   <br/>
 
-   <p style="font-style:italic"> <i class="icon-signal"></i> pageviews: 730</p>
+   <p style="font-style:italic"> <i class="icon-signal"></i> pageviews: 735</p>
 
   <br/>
 

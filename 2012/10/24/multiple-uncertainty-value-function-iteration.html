@@ -145,28 +145,28 @@
     <article>
     <h3 id="multiple-uncertainty-algorithm">Multiple Uncertainty algorithm</h3>
 <p>Define each of the transition matrices:</p>
-<pre class="sourceCode r"><code class="sourceCode r">    D &lt;- <span class="kw">matrix</span>(<span class="ot">NA</span>, <span class="dt">nrow=</span><span class="kw">length</span>(x_grid), <span class="dt">ncol=</span>Tmax)  
-    P &lt;- <span class="kw">outer</span>(x_grid, h_grid, profit)
-    F &lt;- <span class="kw">outer</span>(x_grid, <span class="kw">f</span>(x_grid, <span class="dv">0</span>, p), pdfn, sigma_g)
-    M &lt;- <span class="kw">outer</span>(x_grid, x_grid, pdfn, sigma_m)
-    I &lt;- <span class="kw">outer</span>(h_grid, h_grid, pdfn, sigma_i)</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">    D &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="ot">NA</span>, <span class="dt">nrow=</span><span class="kw">length</span>(x_grid), <span class="dt">ncol=</span>Tmax)  
+    P &lt;-<span class="st"> </span><span class="kw">outer</span>(x_grid, h_grid, profit)
+    F &lt;-<span class="st"> </span><span class="kw">outer</span>(x_grid, <span class="kw">f</span>(x_grid, <span class="dv">0</span>, p), pdfn, sigma_g)
+    M &lt;-<span class="st"> </span><span class="kw">outer</span>(x_grid, x_grid, pdfn, sigma_m)
+    I &lt;-<span class="st"> </span><span class="kw">outer</span>(h_grid, h_grid, pdfn, sigma_i)</code></pre>
 <p>Probably row-normalize each:</p>
-<pre class="sourceCode r"><code class="sourceCode r">rownorm &lt;- function(M) <span class="kw">t</span>(<span class="kw">apply</span>(M, <span class="dv">1</span>, function(x) x/<span class="kw">sum</span>(x))</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">rownorm &lt;-<span class="st"> </span>function(M) <span class="kw">t</span>(<span class="kw">apply</span>(M, <span class="dv">1</span>, function(x) x/<span class="kw">sum</span>(x))</code></pre>
 <p>(Note the transpose is needed since the silly function of a vector turns the column into a row. Not an issue of margin 2)</p>
 <p>If we have no uncertainty in measurement or implementation, then the algorithm is:</p>
-<pre class="sourceCode r"><code class="sourceCode r">    V &lt;- P
+<pre class="sourceCode r"><code class="sourceCode r">    V &lt;-<span class="st"> </span>P
     for(t in <span class="dv">1</span>:Tmax){
-      D[,(Tmax-t<span class="dv">+1</span>)] &lt;- <span class="kw">apply</span>(V, <span class="dv">1</span>, which.max)
-      V &lt;- P + delta * F %*% V %*% D[, (Tmax-t<span class="dv">+1</span>)]  
+      D[,(Tmax-t<span class="dv">+1</span>)] &lt;-<span class="st"> </span><span class="kw">apply</span>(V, <span class="dv">1</span>, which.max)
+      V &lt;-<span class="st"> </span>P +<span class="st"> </span>delta *<span class="st"> </span>F %*%<span class="st"> </span>V %*%<span class="st"> </span>D[, (Tmax-t<span class="dv">+1</span>)]  
     }
     D</code></pre>
 <p>With uncertainty</p>
-<pre class="sourceCode r"><code class="sourceCode r">Ep &lt;- M %*% P %*% I
-U &lt;- <span class="kw">t</span>(M) %*% F %*% M 
-V &lt;- Ep
+<pre class="sourceCode r"><code class="sourceCode r">Ep &lt;-<span class="st"> </span>M %*%<span class="st"> </span>P %*%<span class="st"> </span>I
+U &lt;-<span class="st"> </span><span class="kw">t</span>(M) %*%<span class="st"> </span>F %*%<span class="st"> </span>M 
+V &lt;-<span class="st"> </span>Ep
   for(t in <span class="dv">1</span>:Tmax){
-    D[,(Tmax-t<span class="dv">+1</span>)] &lt;- <span class="kw">apply</span>(V, <span class="dv">1</span>, which.max)
-    V &lt;- Ep + delta * U %*% V %*% I %*% D[, (Tmax-t<span class="dv">+1</span>)]  
+    D[,(Tmax-t<span class="dv">+1</span>)] &lt;-<span class="st"> </span><span class="kw">apply</span>(V, <span class="dv">1</span>, which.max)
+    V &lt;-<span class="st"> </span>Ep +<span class="st"> </span>delta *<span class="st"> </span>U %*%<span class="st"> </span>V %*%<span class="st"> </span>I %*%<span class="st"> </span>D[, (Tmax-t<span class="dv">+1</span>)]  
   }</code></pre>
 <h3 id="description">Description</h3>
 <p>** rambling thinking while working out the above **</p>
@@ -235,7 +235,7 @@ V &lt;- Ep
 
   <br/>
 
-   <p style="font-style:italic"> <i class="icon-signal"></i> pageviews: 39</p>
+   <p style="font-style:italic"> <i class="icon-signal"></i> pageviews: 40</p>
 
   <br/>
 

@@ -149,74 +149,74 @@
 <li>Implemented MCMC sampler. Excerpt below based on my <a href="https://github.com/cboettig/nonparametric-bayes/blob/e6c9b3048fd0cc50d0ec7eb00ac7cb9b00591618/inst/examples/gaussian-process-basics.md">gaussian-process-basics.md</a> script, as updated to include this case.</li>
 </ul>
 <p>Define some example priors</p>
-<pre class="sourceCode r"><code class="sourceCode r">lpriors &lt;- function(pars){
-   d.p &lt;- <span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">5</span>)
-  s2.p &lt;- <span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">5</span>)  
+<pre class="sourceCode r"><code class="sourceCode r">lpriors &lt;-<span class="st"> </span>function(pars){
+   d.p &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">5</span>)
+  s2.p &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">5</span>)  
    
-  prior &lt;- <span class="kw">unname</span>(
+  prior &lt;-<span class="st"> </span><span class="kw">unname</span>(
     <span class="kw">dgamma</span>(<span class="kw">exp</span>(pars[<span class="dv">1</span>]), d.p[<span class="dv">1</span>], <span class="dt">scale =</span> d.p[<span class="dv">2</span>]) *
-    <span class="kw">dgamma</span>(<span class="kw">exp</span>(pars[<span class="dv">2</span>]), s2.p[<span class="dv">1</span>], s2.p[<span class="dv">2</span>]) 
+<span class="st">    </span><span class="kw">dgamma</span>(<span class="kw">exp</span>(pars[<span class="dv">2</span>]), s2.p[<span class="dv">1</span>], s2.p[<span class="dv">2</span>]) 
   )
   
   <span class="kw">log</span>(prior)
 }</code></pre>
 <p>Define the posterior function for our metropolis sampler</p>
-<pre class="sourceCode r"><code class="sourceCode r">posterior &lt;- function(pars, x, y){
+<pre class="sourceCode r"><code class="sourceCode r">posterior &lt;-<span class="st"> </span>function(pars, x, y){
   
-  l &lt;- <span class="kw">exp</span>(pars[<span class="dv">1</span>])
-  sigma.n &lt;- <span class="kw">exp</span>(pars[<span class="dv">2</span>])
+  l &lt;-<span class="st"> </span><span class="kw">exp</span>(pars[<span class="dv">1</span>])
+  sigma.n &lt;-<span class="st"> </span><span class="kw">exp</span>(pars[<span class="dv">2</span>])
   
-  cov &lt;- function(X, Y) <span class="kw">outer</span>(X, Y, SE, l)
-  I &lt;- <span class="kw">diag</span>(<span class="dv">1</span>, <span class="kw">length</span>(x))
-  K &lt;- <span class="kw">cov</span>(x, x) 
+  cov &lt;-<span class="st"> </span>function(X, Y) <span class="kw">outer</span>(X, Y, SE, l)
+  I &lt;-<span class="st"> </span><span class="kw">diag</span>(<span class="dv">1</span>, <span class="kw">length</span>(x))
+  K &lt;-<span class="st"> </span><span class="kw">cov</span>(x, x) 
   
-  loglik &lt;- - <span class="fl">0.5</span> * <span class="kw">t</span>(y) %*% <span class="kw">solve</span>(K + sigma.n^<span class="dv">2</span> * I) %*% y -
-    <span class="kw">log</span>(<span class="kw">det</span>(K + sigma.n^<span class="dv">2</span>*I)) -
-    <span class="kw">length</span>(y) * <span class="kw">log</span>(<span class="dv">2</span> * pi) / <span class="dv">2</span>
+  loglik &lt;-<span class="st"> </span>-<span class="st"> </span><span class="fl">0.5</span> *<span class="st"> </span><span class="kw">t</span>(y) %*%<span class="st"> </span><span class="kw">solve</span>(K +<span class="st"> </span>sigma.n^<span class="dv">2</span> *<span class="st"> </span>I) %*%<span class="st"> </span>y -
+<span class="st">    </span><span class="kw">log</span>(<span class="kw">det</span>(K +<span class="st"> </span>sigma.n^<span class="dv">2</span>*I)) -
+<span class="st">    </span><span class="kw">length</span>(y) *<span class="st"> </span><span class="kw">log</span>(<span class="dv">2</span> *<span class="st"> </span>pi) /<span class="st"> </span><span class="dv">2</span>
 
-  loglik + <span class="kw">lpriors</span>(pars)
+  loglik +<span class="st"> </span><span class="kw">lpriors</span>(pars)
 }
   </code></pre>
 <p>I do not think we have good conjugate priors we can use in this situation to accomplish Gibbs sampling. Instead we simply MCMC by the Metropolis-Hastings alogrithm,</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">require</span>(mcmc)
-n &lt;- <span class="fl">1e4</span>
-out &lt;- <span class="kw">metrop</span>(posterior, <span class="kw">log</span>(pars), n, <span class="dt">x =</span> obs$x, <span class="dt">y =</span> obs$y)
+n &lt;-<span class="st"> </span><span class="fl">1e4</span>
+out &lt;-<span class="st"> </span><span class="kw">metrop</span>(posterior, <span class="kw">log</span>(pars), n, <span class="dt">x =</span> obs$x, <span class="dt">y =</span> obs$y)
 out$accept</code></pre>
 <pre><code>[1] 0.1509</code></pre>
 <p>Very good, we want an acceptance rate around 20%, if the literature can be trusted on this account. We then plot transformed and untransformed traces.</p>
-<pre class="sourceCode r"><code class="sourceCode r">postdist &lt;- <span class="kw">cbind</span>(<span class="dt">index=</span><span class="dv">1</span>:n, <span class="kw">as.data.frame</span>(<span class="kw">exp</span>(out$batch)))
-<span class="kw">names</span>(postdist) &lt;- <span class="kw">c</span>(<span class="st">&quot;index&quot;</span>, <span class="kw">names</span>(pars))
-df &lt;- <span class="kw">melt</span>(postdist, <span class="dt">id=</span><span class="st">&quot;index&quot;</span>)
+<pre class="sourceCode r"><code class="sourceCode r">postdist &lt;-<span class="st"> </span><span class="kw">cbind</span>(<span class="dt">index=</span><span class="dv">1</span>:n, <span class="kw">as.data.frame</span>(<span class="kw">exp</span>(out$batch)))
+<span class="kw">names</span>(postdist) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;index&quot;</span>, <span class="kw">names</span>(pars))
+df &lt;-<span class="st"> </span><span class="kw">melt</span>(postdist, <span class="dt">id=</span><span class="st">&quot;index&quot;</span>)
 <span class="co"># TRACES</span>
-<span class="kw">ggplot</span>(df) + <span class="kw">geom_line</span>(<span class="kw">aes</span>(index, value)) + <span class="kw">facet_wrap</span>(~ variable, <span class="dt">scale=</span><span class="st">&quot;free&quot;</span>, <span class="dt">ncol=</span><span class="dv">1</span>)</code></pre>
+<span class="kw">ggplot</span>(df) +<span class="st"> </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(index, value)) +<span class="st"> </span><span class="kw">facet_wrap</span>(~<span class="st"> </span>variable, <span class="dt">scale=</span><span class="st">&quot;free&quot;</span>, <span class="dt">ncol=</span><span class="dv">1</span>)</code></pre>
 <figure>
 <img src="http://farm9.staticflickr.com/8395/8699032953_76e91621c7_o.png" />
 </figure>
 <pre class="sourceCode r"><code class="sourceCode r">
-<span class="kw">ggplot</span>(df) + <span class="kw">geom_line</span>(<span class="kw">aes</span>(index, <span class="kw">log</span>(value))) + <span class="kw">facet_wrap</span>(~ variable, <span class="dt">scale=</span><span class="st">&quot;free&quot;</span>, <span class="dt">ncol=</span><span class="dv">1</span>)</code></pre>
+<span class="kw">ggplot</span>(df) +<span class="st"> </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(index, <span class="kw">log</span>(value))) +<span class="st"> </span><span class="kw">facet_wrap</span>(~<span class="st"> </span>variable, <span class="dt">scale=</span><span class="st">&quot;free&quot;</span>, <span class="dt">ncol=</span><span class="dv">1</span>)</code></pre>
 <figure>
 <img src="http://farm9.staticflickr.com/8265/8699033067_631d27e6f7_o.png" />
 </figure>
 <p>Generate a plot to compare priors and posteriors</p>
-<pre class="sourceCode r"><code class="sourceCode r">d.p &lt;- <span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">5</span>)
-s2.p &lt;- <span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">5</span>)  
+<pre class="sourceCode r"><code class="sourceCode r">d.p &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">5</span>)
+s2.p &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">5</span>)  
    
-s2_prior &lt;- function(x) <span class="kw">dgamma</span>(x, s2.p[<span class="dv">1</span>], s2.p[<span class="dv">2</span>])
-d_prior &lt;- function(x) <span class="kw">dgamma</span>(x, d.p[<span class="dv">1</span>], <span class="dt">scale =</span> d.p[<span class="dv">2</span>])
-prior_fns &lt;- <span class="kw">list</span>(<span class="dt">l =</span> d_prior, <span class="dt">sigma.n =</span> s2_prior)
+s2_prior &lt;-<span class="st"> </span>function(x) <span class="kw">dgamma</span>(x, s2.p[<span class="dv">1</span>], s2.p[<span class="dv">2</span>])
+d_prior &lt;-<span class="st"> </span>function(x) <span class="kw">dgamma</span>(x, d.p[<span class="dv">1</span>], <span class="dt">scale =</span> d.p[<span class="dv">2</span>])
+prior_fns &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">l =</span> d_prior, <span class="dt">sigma.n =</span> s2_prior)
 
 
 <span class="kw">require</span>(plyr)
-prior_curves &lt;- <span class="kw">ddply</span>(df, <span class="st">&quot;variable&quot;</span>, function(dd){
-    grid &lt;- <span class="kw">seq</span>(<span class="kw">min</span>(dd$value), <span class="kw">max</span>(dd$value), <span class="dt">length =</span> <span class="dv">100</span>)
+prior_curves &lt;-<span class="st"> </span><span class="kw">ddply</span>(df, <span class="st">&quot;variable&quot;</span>, function(dd){
+    grid &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="kw">min</span>(dd$value), <span class="kw">max</span>(dd$value), <span class="dt">length =</span> <span class="dv">100</span>)
     <span class="kw">data.frame</span>(<span class="dt">value =</span> grid, <span class="dt">density =</span> prior_fns[[dd$variable[<span class="dv">1</span>]]](grid))
 })
 
 <span class="co"># Posteriors (easier to read than histograms)</span>
-<span class="kw">ggplot</span>(df, <span class="kw">aes</span>(value)) + 
-  <span class="kw">stat_density</span>(<span class="dt">geom=</span><span class="st">&quot;path&quot;</span>, <span class="dt">position=</span><span class="st">&quot;identity&quot;</span>, <span class="dt">alpha=</span><span class="fl">0.7</span>) +
-  <span class="kw">geom_line</span>(<span class="dt">data=</span>prior_curves, <span class="kw">aes</span>(<span class="dt">x=</span>value, <span class="dt">y=</span>density), <span class="dt">col=</span><span class="st">&quot;red&quot;</span>) + 
-  <span class="kw">facet_wrap</span>(~ variable, <span class="dt">scale=</span><span class="st">&quot;free&quot;</span>, <span class="dt">ncol=</span><span class="dv">2</span>)</code></pre>
+<span class="kw">ggplot</span>(df, <span class="kw">aes</span>(value)) +<span class="st"> </span>
+<span class="st">  </span><span class="kw">stat_density</span>(<span class="dt">geom=</span><span class="st">&quot;path&quot;</span>, <span class="dt">position=</span><span class="st">&quot;identity&quot;</span>, <span class="dt">alpha=</span><span class="fl">0.7</span>) +
+<span class="st">  </span><span class="kw">geom_line</span>(<span class="dt">data=</span>prior_curves, <span class="kw">aes</span>(<span class="dt">x=</span>value, <span class="dt">y=</span>density), <span class="dt">col=</span><span class="st">&quot;red&quot;</span>) +<span class="st"> </span>
+<span class="st">  </span><span class="kw">facet_wrap</span>(~<span class="st"> </span>variable, <span class="dt">scale=</span><span class="st">&quot;free&quot;</span>, <span class="dt">ncol=</span><span class="dv">2</span>)</code></pre>
 <figure>
 <img src="http://farm9.staticflickr.com/8405/8700155554_67aa26e564_o.png" alt="Note that posteriors closely match our priors, as we have only 4 data points in this toy example and our priors are reasonably informative." /><figcaption>Note that posteriors closely match our priors, as we have only 4 data points in this toy example and our priors are reasonably informative.</figcaption>
 </figure>

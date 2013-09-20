@@ -220,7 +220,7 @@
 <p>Mean <span class="math">\[ E(X_t) = \exp \left( - \sum \alpha_i \Delta t_i \right) \left( X_{t_i} + \sum \theta_i \left( e^{\alpha_i t_i}-e^{\alpha_i t_{i-1} } \right) \right) \]</span></p>
 <p>Covariances <span class="math">\[ \omega = \frac{\sigma^2}{2 \alpha } \left( e^{2\alpha t_i} - e^{2 \alpha t_{i-1}} \right) \]</span> <span class="math">\[ \langle x_i, x_i \rangle = \omega \exp( \alpha_i t_i - \alpha_j t_j) \]</span></p>
 <p>(Note - dates pulled out of html with vim gsub, note that vim needs the parentheses for grouping to be escaped (backwhacked!)</p>
-<pre class="sourceCode bash"><code class="sourceCode bash"> :%s/<span class="kw">&lt;</span>time.*<span class="ot">title=</span><span class="st">&quot;$.*$&quot;</span>.*time<span class="kw">&gt;</span>/\1/g</code></pre>
+<pre class="sourceCode bash"><code class="sourceCode bash"> :<span class="kw">%s</span>/<span class="kw">&lt;time.*title</span>=<span class="st">&quot;$.*$&quot;</span>.*time<span class="kw">&gt;</span>/\1/g</code></pre>
 
     </article>
   </div>

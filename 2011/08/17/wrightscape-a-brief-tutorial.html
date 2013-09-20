@@ -151,15 +151,15 @@
 <p>We’ll load a data set of 233 taxa of primates with their body sizes(REDDING <em>et. al.</em> 2010), kindly provided by Eastman et al.(Eastman <em>et. al.</em> 2011) in <a href="http://www.carlboettiger.info/archives/2337">the Auteur package</a>. We format this data-set using a wrightscape function, which converts both the tree and the data into the ouch format from the ape/geiger format. (Eventually the conversion step will be automated)</p>
 <pre class="sourceCode r"><code class="sourceCode r">
 <span class="kw">data</span>(primates)
-monkey &lt;- <span class="kw">format_data</span>(primates$phy, primates$dat)</code></pre>
+monkey &lt;-<span class="st"> </span><span class="kw">format_data</span>(primates$phy, primates$dat)</code></pre>
 <p>We just have to create the “painting” indicating which regimes can be treated separately, as in ouch. We do this using several handy functions from the<a href="http://openwetware.org/wiki/User:Carl_Boettiger/Notebook/Comparative_Phylogenetics/2010/04/18">maticce package</a>. Selecting the common ancestor two arbitrarily chosen species from different families of New World monkeys should do the trick to identify the New World clade, Platyrrhini.</p>
 <pre class="sourceCode r"><code class="sourceCode r">
 
 ## Paint the tree with a transition at New World monkeys
-new_world_ancestor &lt;- <span class="kw">mrcaOUCH</span>(<span class="kw">c</span>(<span class="st">&quot;Ateles_belzebuth&quot;</span>,
+new_world_ancestor &lt;-<span class="st"> </span><span class="kw">mrcaOUCH</span>(<span class="kw">c</span>(<span class="st">&quot;Ateles_belzebuth&quot;</span>,
                                  <span class="st">&quot;Leontopithecus_caissara&quot;</span>), 
                                monkey$tree)
-new_world &lt;- <span class="kw">paintBranches</span>(new_world_ancestor, monkey$tree,
+new_world &lt;-<span class="st"> </span><span class="kw">paintBranches</span>(new_world_ancestor, monkey$tree,
                             <span class="kw">c</span>(<span class="st">&quot;OldWorld&quot;</span>, <span class="st">&quot;NewWorld&quot;</span>))
 </code></pre>
 <figure>
@@ -171,14 +171,14 @@ new_world &lt;- <span class="kw">paintBranches</span>(new_world_ancestor, monkey
 <pre class="sourceCode r"><code class="sourceCode r">
 
 #####  Estimate the models by maximum likelihood, as in OUCH #####
-alphas &lt;- <span class="kw">multiTypeOU</span>(<span class="dt">data=</span>monkey$data, <span class="dt">tree=</span>monkey$tree,
+alphas &lt;-<span class="st"> </span><span class="kw">multiTypeOU</span>(<span class="dt">data=</span>monkey$data, <span class="dt">tree=</span>monkey$tree,
                       <span class="dt">regimes=</span>new_world,<span class="dt">model_spec =</span> 
                       <span class="kw">list</span>(<span class="dt">alpha=</span><span class="st">&quot;indep&quot;</span>,<span class="dt">sigma=</span><span class="st">&quot;global&quot;</span>, 
                       <span class="dt">theta=</span><span class="st">&quot;global&quot;</span>), <span class="dt">Xo=</span><span class="ot">NULL</span>, <span class="dt">alpha =</span> .<span class="dv">1</span>, 
                       <span class="dt">sigma =</span> <span class="dv">40</span>, <span class="dt">theta=</span><span class="ot">NULL</span>, <span class="dt">method =</span><span class="st">&quot;SANN&quot;</span>, 
                       <span class="dt">control =</span> <span class="kw">list</span>(<span class="dt">maxit=</span><span class="dv">100000</span>,<span class="dt">temp=</span><span class="dv">50</span>,<span class="dt">tmax=</span><span class="dv">20</span>))
 
-sigmas &lt;- <span class="kw">multiTypeOU</span>(<span class="dt">data=</span>monkey$data, <span class="dt">tree=</span>monkey$tree, 
+sigmas &lt;-<span class="st"> </span><span class="kw">multiTypeOU</span>(<span class="dt">data=</span>monkey$data, <span class="dt">tree=</span>monkey$tree, 
                       <span class="dt">regimes=</span>new_world, <span class="dt">model_spec=</span> 
                       <span class="kw">list</span>(<span class="dt">alpha=</span><span class="st">&quot;fixed&quot;</span>, <span class="dt">sigma=</span><span class="st">&quot;indep&quot;</span>, 
                       <span class="dt">theta=</span><span class="st">&quot;global&quot;</span>), <span class="dt">Xo=</span><span class="ot">NULL</span>, <span class="dt">alpha =</span> .<span class="dv">1</span>,
@@ -191,10 +191,10 @@ sigmas &lt;- <span class="kw">multiTypeOU</span>(<span class="dt">data=</span>mo
 <p><span class="math">\[ dX = \sigma_i dB_t \]</span></p>
 <p>Once these have run, we can do a simple comparison by likelihood:</p>
 <pre class="sourceCode r"><code class="sourceCode r">
-alphas$loglik - sigmas$loglik</code></pre>
+alphas$loglik -<span class="st"> </span>sigmas$loglik</code></pre>
 <p>To know if this is significant, we would do best to compare the models by PMC (my other package, with upcoming paper):</p>
 <pre class="sourceCode r"><code class="sourceCode r">
-alphas_v_sigmas &lt;- <span class="kw">montecarlotest</span>(alphas, sigmas, <span class="dt">cpu=</span><span class="dv">16</span>, <span class="dt">nboot=</span><span class="dv">200</span>)
+alphas_v_sigmas &lt;-<span class="st"> </span><span class="kw">montecarlotest</span>(alphas, sigmas, <span class="dt">cpu=</span><span class="dv">16</span>, <span class="dt">nboot=</span><span class="dv">200</span>)
 <span class="kw">plot</span>(alphas_v_sigmas)</code></pre>
 <p>We could instead estimate the posterior distributions by MCMC:</p>
 <pre class="sourceCode r"><code class="sourceCode r">

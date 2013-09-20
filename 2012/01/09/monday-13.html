@@ -148,7 +148,7 @@
 <p>Also, in writing the documentation I’d like to point the .Rnw file to my global library’s bibtex document, but then this means having the .Rnw/tex file generated to by the package pointing to a file that’s outside the package.</p>
 <p>To get around both of these issues, I’ve started using bibtool. Bibtool can generate a smaller bibfile of only the included citations, and remove the duplicates, which I can use in the package.</p>
 <pre class="sourceCode bash"><code class="sourceCode bash">
-bibtool -s -d -x paper.aux global.bib <span class="kw">&gt;</span> paper.bib</code></pre>
+<span class="kw">bibtool</span> -s -d -x paper.aux global.bib <span class="kw">&gt;</span> paper.bib</code></pre>
 <p>tex generates the aux file. bibtools generates a local bib file from the citations listed in the .aux using my global bib file, then bibtex can run on the aux and format these citations, which are inserted by re-running tex as usual. Note that this could combine different bibs instead of using a global.bib.</p>
 <ul>
 <li><p>The ubuntu version of bibtool (2.48 alpha) doesn’t handle large bibfiles well, the current version 2.53 seems to do fine. Inspiration for this from <a href="http://tex.stackexchange.com/questions/1380/how-to-avoid-bibtex-error-message-repeated-entry-for-an-entry-appearing-in-sev">tex Q&amp;A</a>.</p></li>
@@ -156,9 +156,12 @@ bibtool -s -d -x paper.aux global.bib <span class="kw">&gt;</span> paper.bib</co
 <li><p>R CMD check now gives a warning if data isn’t compressed.  Running R CMD build –resave-data will compress all files optimally, but then need to extract that tarball and copy the compressed data files into the development dirctory.  Would be <a href="https://github.com/hadley/devtools/issues/40">nice</a> if devtools handled this?  <strong>Update</strong>the function I wanted is[code]tools:resaveRdaFiles ```</p></li>
 <li><p>Many packages use print() to communicate with the user for progress, warnings, etc.  These should use message() and warning() so these can be suppressed when appropriate.  Working around this is hard, instead of suppressMessages, one can wrap the call as (ht Simon, <a href="http://stackoverflow.com/questions/8797314/suppress-messages-displayed-by-print-instead-of-message-or-warning-in-r/8797387">stackoverflow</a>):</p></li>
 </ul>
-<p>. ```R invisible(capture.output(</p>
-<p>out &lt;- some_noisy_function()</p>
-<p>)) ```</p>
+<p>.</p>
+<pre class="sourceCode R"><code class="sourceCode r"> <span class="kw">invisible</span>(<span class="kw">capture.output</span>(
+
+out &lt;-<span class="st"> </span><span class="kw">some_noisy_function</span>()
+
+))</code></pre>
 <h3 id="updated-approach-to-vignettes-with-sweaveknitr">Updated approach to vignettes with Sweave/knitr</h3>
 <p>The easiest way to make vignettes in knitr is a bit of a hack.  Create a subdirectory in the inst/doc (or vignettes) directory, and add the knitr .Rnw document there.  Use knitr to generate .Rnw (which is essentially just a tex document by then) in inst/doc.  I do this with a Makefile in that directory, which I run manually ahead of time.  The makefile also compiles the local bibliography from the global one.</p>
 <p>[gist id=1591001]</p>
@@ -168,13 +171,13 @@ bibtool -s -d -x paper.aux global.bib <span class="kw">&gt;</span> paper.bib</co
 <p>added TreePar example</p>
 <pre class="sourceCode R"><code class="sourceCode r">
 
-yule_4rate &lt;- <span class="kw">bd.shifts.optim</span>(x, <span class="dt">sampling =</span> <span class="kw">c</span>(<span class="dv">1</span>,
+yule_4rate &lt;-<span class="st"> </span><span class="kw">bd.shifts.optim</span>(x, <span class="dt">sampling =</span> <span class="kw">c</span>(<span class="dv">1</span>,
 <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>), <span class="dt">grid =</span> <span class="dv">5</span>, <span class="dt">start =</span> <span class="dv">0</span>, <span class="dt">end =</span> <span class="dv">60</span>, <span class="dt">ME =</span> <span class="ot">FALSE</span>,
 <span class="dt">yule =</span> <span class="ot">TRUE</span>)
 
-aic &lt;- <span class="kw">sapply</span>(yule_4rate[[<span class="dv">2</span>]], function(x) <span class="dv">2</span> *
+aic &lt;-<span class="st"> </span><span class="kw">sapply</span>(yule_4rate[[<span class="dv">2</span>]], function(x) <span class="dv">2</span> *
 
-(<span class="kw">length</span>(x) - <span class="dv">1</span>) + <span class="dv">2</span> * x[<span class="dv">1</span>] )
+(<span class="kw">length</span>(x) -<span class="st"> </span><span class="dv">1</span>) +<span class="st"> </span><span class="dv">2</span> *<span class="st"> </span>x[<span class="dv">1</span>] )
 <span class="kw">which.min</span>(aic)
 </code></pre>
 <p>and flushed out text. Sending to Peter and Duncan for a read over.</p>

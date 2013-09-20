@@ -152,72 +152,72 @@
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">require</span>(pdgControl)
 <span class="kw">require</span>(ggplot2)</code></pre>
 <p>Simulate some training data under a stochastic growth function with standard parameterization,</p>
-<pre class="sourceCode r"><code class="sourceCode r">f &lt;- BevHolt
-p &lt;- <span class="kw">c</span>(<span class="fl">1.5</span>, <span class="fl">0.05</span>)
-K &lt;- (p[<span class="dv">1</span>] - <span class="dv">1</span>)/p[<span class="dv">2</span>]</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">f &lt;-<span class="st"> </span>BevHolt
+p &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">1.5</span>, <span class="fl">0.05</span>)
+K &lt;-<span class="st"> </span>(p[<span class="dv">1</span>] -<span class="st"> </span><span class="dv">1</span>)/p[<span class="dv">2</span>]</code></pre>
 <p>Noise function</p>
-<pre class="sourceCode r"><code class="sourceCode r">z_g &lt;- function(sigma_g) <span class="kw">rlnorm</span>(<span class="dv">1</span>, <span class="dv">0</span>, sigma_g)  <span class="co">#1+(2*runif(1, 0,  1)-1)*sigma_g #</span></code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">z_g &lt;-<span class="st"> </span>function(sigma_g) <span class="kw">rlnorm</span>(<span class="dv">1</span>, <span class="dv">0</span>, sigma_g)  <span class="co">#1+(2*runif(1, 0,  1)-1)*sigma_g #</span></code></pre>
 <p>Parameter definitions</p>
-<pre class="sourceCode r"><code class="sourceCode r">x_grid = <span class="kw">seq</span>(<span class="dv">0</span>, <span class="fl">1.5</span> * K, <span class="dt">length =</span> <span class="dv">100</span>)
-T &lt;- <span class="dv">40</span>
-sigma_g &lt;- <span class="fl">0.1</span>
-x &lt;- <span class="kw">numeric</span>(T)
-x[<span class="dv">1</span>] &lt;- <span class="dv">1</span></code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">x_grid =<span class="st"> </span><span class="kw">seq</span>(<span class="dv">0</span>, <span class="fl">1.5</span> *<span class="st"> </span>K, <span class="dt">length =</span> <span class="dv">100</span>)
+T &lt;-<span class="st"> </span><span class="dv">40</span>
+sigma_g &lt;-<span class="st"> </span><span class="fl">0.1</span>
+x &lt;-<span class="st"> </span><span class="kw">numeric</span>(T)
+x[<span class="dv">1</span>] &lt;-<span class="st"> </span><span class="dv">1</span></code></pre>
 <p>Simulation</p>
-<pre class="sourceCode r"><code class="sourceCode r">for (t in <span class="dv">1</span>:(T - <span class="dv">1</span>)) x[t + <span class="dv">1</span>] = <span class="kw">z_g</span>(sigma_g) * <span class="kw">f</span>(x[t], <span class="dt">h =</span> <span class="dv">0</span>, <span class="dt">p =</span> p)
+<pre class="sourceCode r"><code class="sourceCode r">for (t in <span class="dv">1</span>:(T -<span class="st"> </span><span class="dv">1</span>)) x[t +<span class="st"> </span><span class="dv">1</span>] =<span class="st"> </span><span class="kw">z_g</span>(sigma_g) *<span class="st"> </span><span class="kw">f</span>(x[t], <span class="dt">h =</span> <span class="dv">0</span>, <span class="dt">p =</span> p)
 
 <span class="kw">plot</span>(x)</code></pre>
 <figure>
 <img src="http://farm9.staticflickr.com/8190/8117649167_f5002b7024_o.png" />
 </figure>
 <p>Predict the function over the target grid</p>
-<pre class="sourceCode r"><code class="sourceCode r">obs &lt;- <span class="kw">data.frame</span>(<span class="dt">x =</span> x[<span class="dv">1</span>:(T - <span class="dv">1</span>)], <span class="dt">y =</span> x[<span class="dv">2</span>:T])
-X &lt;- x_grid
+<pre class="sourceCode r"><code class="sourceCode r">obs &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">x =</span> x[<span class="dv">1</span>:(T -<span class="st"> </span><span class="dv">1</span>)], <span class="dt">y =</span> x[<span class="dv">2</span>:T])
+X &lt;-<span class="st"> </span>x_grid
 <span class="kw">library</span>(nonparametricbayes)
-gp &lt;- <span class="kw">gp_fit</span>(obs, X, <span class="kw">c</span>(<span class="dt">sigma_n =</span> <span class="fl">0.05</span>, <span class="dt">l =</span> <span class="dv">10</span>))</code></pre>
+gp &lt;-<span class="st"> </span><span class="kw">gp_fit</span>(obs, X, <span class="kw">c</span>(<span class="dt">sigma_n =</span> <span class="fl">0.05</span>, <span class="dt">l =</span> <span class="dv">10</span>))</code></pre>
 <p>Gaussian Process inference from this model. True model shown in red.</p>
-<pre class="sourceCode r"><code class="sourceCode r">df &lt;- <span class="kw">data.frame</span>(<span class="dt">x =</span> X, <span class="dt">y =</span> gp$Ef, <span class="dt">ymin =</span> (gp$Ef - <span class="dv">2</span> * <span class="kw">sqrt</span>(<span class="kw">abs</span>(<span class="kw">diag</span>(gp$Cf)))), 
-    <span class="dt">ymax =</span> (gp$Ef + <span class="dv">2</span> * <span class="kw">sqrt</span>(<span class="kw">abs</span>(<span class="kw">diag</span>(gp$Cf)))))
-true &lt;- <span class="kw">data.frame</span>(<span class="dt">x =</span> X, <span class="dt">y =</span> <span class="kw">sapply</span>(X, f, <span class="dv">0</span>, p))
+<pre class="sourceCode r"><code class="sourceCode r">df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">x =</span> X, <span class="dt">y =</span> gp$Ef, <span class="dt">ymin =</span> (gp$Ef -<span class="st"> </span><span class="dv">2</span> *<span class="st"> </span><span class="kw">sqrt</span>(<span class="kw">abs</span>(<span class="kw">diag</span>(gp$Cf)))), 
+    <span class="dt">ymax =</span> (gp$Ef +<span class="st"> </span><span class="dv">2</span> *<span class="st"> </span><span class="kw">sqrt</span>(<span class="kw">abs</span>(<span class="kw">diag</span>(gp$Cf)))))
+true &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">x =</span> X, <span class="dt">y =</span> <span class="kw">sapply</span>(X, f, <span class="dv">0</span>, p))
 <span class="kw">require</span>(ggplot2)
-<span class="kw">ggplot</span>(df) + <span class="kw">geom_ribbon</span>(<span class="kw">aes</span>(x, y, <span class="dt">ymin =</span> ymin, <span class="dt">ymax =</span> ymax), <span class="dt">fill =</span> <span class="st">&quot;gray80&quot;</span>) + 
-    <span class="kw">geom_line</span>(<span class="kw">aes</span>(x, y)) + <span class="kw">geom_point</span>(<span class="dt">data =</span> obs, <span class="kw">aes</span>(x, y)) + <span class="kw">geom_line</span>(<span class="dt">data =</span> true, 
+<span class="kw">ggplot</span>(df) +<span class="st"> </span><span class="kw">geom_ribbon</span>(<span class="kw">aes</span>(x, y, <span class="dt">ymin =</span> ymin, <span class="dt">ymax =</span> ymax), <span class="dt">fill =</span> <span class="st">&quot;gray80&quot;</span>) +<span class="st"> </span>
+<span class="st">    </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(x, y)) +<span class="st"> </span><span class="kw">geom_point</span>(<span class="dt">data =</span> obs, <span class="kw">aes</span>(x, y)) +<span class="st"> </span><span class="kw">geom_line</span>(<span class="dt">data =</span> true, 
     <span class="kw">aes</span>(x, y), <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">lty =</span> <span class="dv">2</span>)</code></pre>
 <figure>
 <img src="http://farm9.staticflickr.com/8336/8117660178_beeca82760_o.png" />
 </figure>
 <h2 id="another-example-using-the-may-model">Another example using the May model</h2>
-<pre class="sourceCode r"><code class="sourceCode r">f &lt;- May
-p &lt;- <span class="kw">c</span>(<span class="dt">r =</span> <span class="fl">0.75</span>, <span class="dt">k =</span> <span class="dv">10</span>, <span class="dt">a =</span> <span class="fl">1.2</span>, <span class="dt">H =</span> <span class="dv">1</span>, <span class="dt">Q =</span> <span class="dv">3</span>)
-K &lt;- <span class="dv">8</span>  <span class="co"># approx</span></code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">f &lt;-<span class="st"> </span>May
+p &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dt">r =</span> <span class="fl">0.75</span>, <span class="dt">k =</span> <span class="dv">10</span>, <span class="dt">a =</span> <span class="fl">1.2</span>, <span class="dt">H =</span> <span class="dv">1</span>, <span class="dt">Q =</span> <span class="dv">3</span>)
+K &lt;-<span class="st"> </span><span class="dv">8</span>  <span class="co"># approx</span></code></pre>
 <p>Model dynamics look like this:</p>
-<pre class="sourceCode r"><code class="sourceCode r">birth &lt;- function(x) p[<span class="st">&quot;r&quot;</span>] * (<span class="dv">1</span> - x/p[<span class="st">&quot;k&quot;</span>])
-death &lt;- function(x) p[<span class="st">&quot;a&quot;</span>] * x^(p[<span class="st">&quot;Q&quot;</span>] - <span class="dv">1</span>)/(x^p[<span class="st">&quot;Q&quot;</span>] + p[<span class="st">&quot;H&quot;</span>])
-df &lt;- <span class="kw">data.frame</span>(<span class="dt">x =</span> x_grid, <span class="dt">b =</span> <span class="kw">sapply</span>(x_grid, birth), <span class="dt">d =</span> <span class="kw">sapply</span>(x_grid, 
+<pre class="sourceCode r"><code class="sourceCode r">birth &lt;-<span class="st"> </span>function(x) p[<span class="st">&quot;r&quot;</span>] *<span class="st"> </span>(<span class="dv">1</span> -<span class="st"> </span>x/p[<span class="st">&quot;k&quot;</span>])
+death &lt;-<span class="st"> </span>function(x) p[<span class="st">&quot;a&quot;</span>] *<span class="st"> </span>x^(p[<span class="st">&quot;Q&quot;</span>] -<span class="st"> </span><span class="dv">1</span>)/(x^p[<span class="st">&quot;Q&quot;</span>] +<span class="st"> </span>p[<span class="st">&quot;H&quot;</span>])
+df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">x =</span> x_grid, <span class="dt">b =</span> <span class="kw">sapply</span>(x_grid, birth), <span class="dt">d =</span> <span class="kw">sapply</span>(x_grid, 
     death))
-<span class="kw">ggplot</span>(df) + <span class="kw">geom_line</span>(<span class="kw">aes</span>(x, b), <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>) + <span class="kw">geom_line</span>(<span class="kw">aes</span>(x, 
+<span class="kw">ggplot</span>(df) +<span class="st"> </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(x, b), <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>) +<span class="st"> </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(x, 
     d), <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>)</code></pre>
 <figure>
 <img src="http://farm9.staticflickr.com/8046/8117660240_31c8d052c4_o.png" />
 </figure>
 <p>Simulation</p>
-<pre class="sourceCode r"><code class="sourceCode r">x[<span class="dv">1</span>] = <span class="fl">2.5</span>
-for (t in <span class="dv">1</span>:(T - <span class="dv">1</span>)) x[t + <span class="dv">1</span>] = <span class="kw">z_g</span>(sigma_g) * <span class="kw">f</span>(x[t], <span class="dt">h =</span> <span class="dv">0</span>, <span class="dt">p =</span> p)
+<pre class="sourceCode r"><code class="sourceCode r">x[<span class="dv">1</span>] =<span class="st"> </span><span class="fl">2.5</span>
+for (t in <span class="dv">1</span>:(T -<span class="st"> </span><span class="dv">1</span>)) x[t +<span class="st"> </span><span class="dv">1</span>] =<span class="st"> </span><span class="kw">z_g</span>(sigma_g) *<span class="st"> </span><span class="kw">f</span>(x[t], <span class="dt">h =</span> <span class="dv">0</span>, <span class="dt">p =</span> p)
 <span class="kw">plot</span>(x)</code></pre>
 <figure>
 <img src="http://farm9.staticflickr.com/8330/8117649515_59c703d880_o.png" />
 </figure>
 <p>Predict the function over the target grid</p>
-<pre class="sourceCode r"><code class="sourceCode r">obs &lt;- <span class="kw">data.frame</span>(<span class="dt">x =</span> x[<span class="dv">1</span>:(T - <span class="dv">1</span>)], <span class="dt">y =</span> x[<span class="dv">2</span>:T])
-X &lt;- x_grid
+<pre class="sourceCode r"><code class="sourceCode r">obs &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">x =</span> x[<span class="dv">1</span>:(T -<span class="st"> </span><span class="dv">1</span>)], <span class="dt">y =</span> x[<span class="dv">2</span>:T])
+X &lt;-<span class="st"> </span>x_grid
 <span class="kw">library</span>(nonparametricbayes)
-gp &lt;- <span class="kw">gp_fit</span>(obs, X, <span class="kw">c</span>(<span class="dt">sigma_n =</span> <span class="fl">0.05</span>, <span class="dt">l =</span> <span class="dv">10</span>))</code></pre>
+gp &lt;-<span class="st"> </span><span class="kw">gp_fit</span>(obs, X, <span class="kw">c</span>(<span class="dt">sigma_n =</span> <span class="fl">0.05</span>, <span class="dt">l =</span> <span class="dv">10</span>))</code></pre>
 <p>Gaussian Process inference from this model</p>
-<pre class="sourceCode r"><code class="sourceCode r">df &lt;- <span class="kw">data.frame</span>(<span class="dt">x =</span> X, <span class="dt">y =</span> gp$Ef, <span class="dt">ymin =</span> (gp$Ef - <span class="dv">2</span> * <span class="kw">sqrt</span>(<span class="kw">abs</span>(<span class="kw">diag</span>(gp$Cf)))), 
-    <span class="dt">ymax =</span> (gp$Ef + <span class="dv">2</span> * <span class="kw">sqrt</span>(<span class="kw">abs</span>(<span class="kw">diag</span>(gp$Cf)))))
-true &lt;- <span class="kw">data.frame</span>(<span class="dt">x =</span> X, <span class="dt">y =</span> <span class="kw">sapply</span>(X, f, <span class="dv">0</span>, p))
-<span class="kw">ggplot</span>(df) + <span class="kw">geom_ribbon</span>(<span class="kw">aes</span>(x, y, <span class="dt">ymin =</span> ymin, <span class="dt">ymax =</span> ymax), <span class="dt">fill =</span> <span class="st">&quot;gray80&quot;</span>) + 
-    <span class="kw">geom_line</span>(<span class="kw">aes</span>(x, y)) + <span class="kw">geom_point</span>(<span class="dt">data =</span> obs, <span class="kw">aes</span>(x, y)) + <span class="kw">geom_line</span>(<span class="dt">data =</span> true, 
+<pre class="sourceCode r"><code class="sourceCode r">df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">x =</span> X, <span class="dt">y =</span> gp$Ef, <span class="dt">ymin =</span> (gp$Ef -<span class="st"> </span><span class="dv">2</span> *<span class="st"> </span><span class="kw">sqrt</span>(<span class="kw">abs</span>(<span class="kw">diag</span>(gp$Cf)))), 
+    <span class="dt">ymax =</span> (gp$Ef +<span class="st"> </span><span class="dv">2</span> *<span class="st"> </span><span class="kw">sqrt</span>(<span class="kw">abs</span>(<span class="kw">diag</span>(gp$Cf)))))
+true &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">x =</span> X, <span class="dt">y =</span> <span class="kw">sapply</span>(X, f, <span class="dv">0</span>, p))
+<span class="kw">ggplot</span>(df) +<span class="st"> </span><span class="kw">geom_ribbon</span>(<span class="kw">aes</span>(x, y, <span class="dt">ymin =</span> ymin, <span class="dt">ymax =</span> ymax), <span class="dt">fill =</span> <span class="st">&quot;gray80&quot;</span>) +<span class="st"> </span>
+<span class="st">    </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(x, y)) +<span class="st"> </span><span class="kw">geom_point</span>(<span class="dt">data =</span> obs, <span class="kw">aes</span>(x, y)) +<span class="st"> </span><span class="kw">geom_line</span>(<span class="dt">data =</span> true, 
     <span class="kw">aes</span>(x, y), <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">lty =</span> <span class="dv">2</span>)</code></pre>
 <figure>
 <img src="http://farm9.staticflickr.com/8325/8117660460_a53eb7c10c_o.png" />

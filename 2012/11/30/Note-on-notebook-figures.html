@@ -157,12 +157,12 @@
 </figure>
 <p>This is accomplished with the codeblock below. Note that we need to tell <code>knitr</code> chunks to set the background of the png device to transparent, as well as telling ggplot what we want to be transparent:</p>
 <pre class="sourceCode r"><code class="sourceCode r">opts_chunk$<span class="kw">set</span>(<span class="dt">dev.args=</span><span class="kw">list</span>(<span class="dt">bg=</span><span class="st">&quot;transparent&quot;</span>))
-theme_notebook &lt;- 
-  <span class="kw">theme_grey</span>() + 
-  <span class="kw">theme</span>(
+theme_notebook &lt;-<span class="st"> </span>
+<span class="st">  </span><span class="kw">theme_grey</span>() +<span class="st"> </span>
+<span class="st">  </span><span class="kw">theme</span>(
     <span class="dt">plot.background =</span> <span class="kw">element_rect</span>(<span class="dt">fill =</span> <span class="st">&quot;transparent&quot;</span>, <span class="dt">colour =</span> <span class="ot">NA</span>),
     <span class="dt">panel.grid.major =</span> <span class="kw">element_line</span>(<span class="dt">colour =</span> <span class="st">&quot;transparent&quot;</span>)),
-    panel.grid.minor = <span class="kw">element_line</span>(<span class="dt">colour =</span> <span class="st">&quot;transparent&quot;</span>)<span class="er">)</span>
+    panel.grid.minor =<span class="st"> </span><span class="kw">element_line</span>(<span class="dt">colour =</span> <span class="st">&quot;transparent&quot;</span>)<span class="er">)</span>
 <span class="kw">theme_set</span>(theme_notebook)</code></pre>
 <p>(It appears this makes the gridlines invisible, since they appear over the grey <code>panel.background</code>. For now, best to leave them white, which shows up against the grey background in any event).</p>
 <section class="footnotes">

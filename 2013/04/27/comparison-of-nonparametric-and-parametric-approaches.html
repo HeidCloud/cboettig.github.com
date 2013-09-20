@@ -162,102 +162,102 @@ opts_knit$<span class="kw">set</span>(<span class="dt">upload.fun =</span> socia
 <span class="kw">theme_set</span>(<span class="kw">theme_bw</span>(<span class="dt">base_size =</span> <span class="dv">10</span>))
 <span class="kw">theme_update</span>(<span class="dt">panel.background =</span> <span class="kw">element_rect</span>(<span class="dt">fill =</span> <span class="st">&quot;transparent&quot;</span>, 
     <span class="dt">colour =</span> <span class="ot">NA</span>), <span class="dt">plot.background =</span> <span class="kw">element_rect</span>(<span class="dt">fill =</span> <span class="st">&quot;transparent&quot;</span>, <span class="dt">colour =</span> <span class="ot">NA</span>))
-cbPalette &lt;- <span class="kw">c</span>(<span class="st">&quot;#000000&quot;</span>, <span class="st">&quot;#E69F00&quot;</span>, <span class="st">&quot;#56B4E9&quot;</span>, <span class="st">&quot;#009E73&quot;</span>, <span class="st">&quot;#F0E442&quot;</span>, 
+cbPalette &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;#000000&quot;</span>, <span class="st">&quot;#E69F00&quot;</span>, <span class="st">&quot;#56B4E9&quot;</span>, <span class="st">&quot;#009E73&quot;</span>, <span class="st">&quot;#F0E442&quot;</span>, 
     <span class="st">&quot;#0072B2&quot;</span>, <span class="st">&quot;#D55E00&quot;</span>, <span class="st">&quot;#CC79A7&quot;</span>)</code></pre>
 <h3 id="model-and-parameters">Model and parameters</h3>
 <p>Uses the model derived in Allen et al, of a Ricker-like growth curve with an allee effect, defined in the pdgControl package,</p>
-<pre class="sourceCode r"><code class="sourceCode r">f &lt;- RickerAllee
-p &lt;- <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">10</span>, <span class="dv">5</span>) 
-K &lt;- p[<span class="dv">2</span>]
-allee &lt;- p[<span class="dv">3</span>]</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">f &lt;-<span class="st"> </span>RickerAllee
+p &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">10</span>, <span class="dv">5</span>) 
+K &lt;-<span class="st"> </span>p[<span class="dv">2</span>]
+allee &lt;-<span class="st"> </span>p[<span class="dv">3</span>]</code></pre>
 <p>Various parameters defining noise dynamics, grid, and policy costs.</p>
-<pre class="sourceCode r"><code class="sourceCode r">sigma_g &lt;- <span class="fl">0.05</span>
-sigma_m &lt;- <span class="fl">0.0</span>
-z_g &lt;- function() <span class="kw">rlnorm</span>(<span class="dv">1</span>, <span class="dv">0</span>, sigma_g)
-z_m &lt;- function() <span class="dv">1</span>+(<span class="dv">2</span>*<span class="kw">runif</span>(<span class="dv">1</span>, <span class="dv">0</span>,  <span class="dv">1</span>)-<span class="dv">1</span>) * sigma_m
-x_grid &lt;- <span class="kw">seq</span>(<span class="dv">0</span>, <span class="fl">1.5</span> * K, <span class="dt">length=</span><span class="dv">101</span>)
-h_grid &lt;- x_grid
-profit &lt;- function(x,h) <span class="kw">pmin</span>(x, h)
-delta &lt;- <span class="fl">0.01</span>
-OptTime &lt;- <span class="dv">20</span>  <span class="co"># stationarity with unstable models is tricky thing</span>
-reward &lt;- <span class="dv">0</span>
-xT &lt;- <span class="dv">0</span>
-seed_i &lt;- <span class="dv">111</span>
-Xo &lt;- K <span class="co"># observations start from</span>
-x0 &lt;- Xo <span class="co"># simulation under policy starts from</span>
-Tobs &lt;- <span class="dv">35</span></code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">sigma_g &lt;-<span class="st"> </span><span class="fl">0.05</span>
+sigma_m &lt;-<span class="st"> </span><span class="fl">0.0</span>
+z_g &lt;-<span class="st"> </span>function() <span class="kw">rlnorm</span>(<span class="dv">1</span>, <span class="dv">0</span>, sigma_g)
+z_m &lt;-<span class="st"> </span>function() <span class="dv">1</span>+(<span class="dv">2</span>*<span class="kw">runif</span>(<span class="dv">1</span>, <span class="dv">0</span>,  <span class="dv">1</span>)-<span class="dv">1</span>) *<span class="st"> </span>sigma_m
+x_grid &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">0</span>, <span class="fl">1.5</span> *<span class="st"> </span>K, <span class="dt">length=</span><span class="dv">101</span>)
+h_grid &lt;-<span class="st"> </span>x_grid
+profit &lt;-<span class="st"> </span>function(x,h) <span class="kw">pmin</span>(x, h)
+delta &lt;-<span class="st"> </span><span class="fl">0.01</span>
+OptTime &lt;-<span class="st"> </span><span class="dv">20</span>  <span class="co"># stationarity with unstable models is tricky thing</span>
+reward &lt;-<span class="st"> </span><span class="dv">0</span>
+xT &lt;-<span class="st"> </span><span class="dv">0</span>
+seed_i &lt;-<span class="st"> </span><span class="dv">111</span>
+Xo &lt;-<span class="st"> </span>K <span class="co"># observations start from</span>
+x0 &lt;-<span class="st"> </span>Xo <span class="co"># simulation under policy starts from</span>
+Tobs &lt;-<span class="st"> </span><span class="dv">35</span></code></pre>
 <h3 id="sample-data">Sample Data</h3>
-<pre class="sourceCode r"><code class="sourceCode r">obs &lt;- <span class="kw">sim_obs</span>(Xo, z_g, f, p, <span class="dt">Tobs=</span>Tobs, <span class="dt">nz=</span><span class="dv">15</span>, 
+<pre class="sourceCode r"><code class="sourceCode r">obs &lt;-<span class="st"> </span><span class="kw">sim_obs</span>(Xo, z_g, f, p, <span class="dt">Tobs=</span>Tobs, <span class="dt">nz=</span><span class="dv">15</span>, 
                 <span class="dt">harvest =</span> <span class="kw">sort</span>(<span class="kw">rep</span>(<span class="kw">seq</span>(<span class="dv">0</span>, .<span class="dv">5</span>, <span class="dt">length=</span><span class="dv">7</span>), <span class="dv">5</span>)), <span class="dt">seed =</span> seed_i)</code></pre>
 <h2 id="maximum-likelihood">Maximum Likelihood</h2>
-<pre class="sourceCode r"><code class="sourceCode r">alt &lt;- <span class="kw">par_est</span>(obs,  <span class="dt">init =</span> <span class="kw">c</span>(<span class="dt">r =</span> p[<span class="dv">1</span>], 
+<pre class="sourceCode r"><code class="sourceCode r">alt &lt;-<span class="st"> </span><span class="kw">par_est</span>(obs,  <span class="dt">init =</span> <span class="kw">c</span>(<span class="dt">r =</span> p[<span class="dv">1</span>], 
                               <span class="dt">K =</span> <span class="kw">mean</span>(obs$x[obs$x&gt;<span class="dv">0</span>]), 
                               <span class="dt">s =</span> sigma_g))
-est &lt;- <span class="kw">par_est_allee</span>(obs, f, p,  
-                     <span class="dt">init =</span> <span class="kw">c</span>(<span class="dt">r =</span> p[<span class="dv">1</span>] + <span class="dv">1</span>, 
-                              <span class="dt">K =</span> p[<span class="dv">2</span>] + <span class="dv">2</span>, 
-                              <span class="dt">C =</span> p[<span class="dv">3</span>] + <span class="dv">2</span>, 
+est &lt;-<span class="st"> </span><span class="kw">par_est_allee</span>(obs, f, p,  
+                     <span class="dt">init =</span> <span class="kw">c</span>(<span class="dt">r =</span> p[<span class="dv">1</span>] +<span class="st"> </span><span class="dv">1</span>, 
+                              <span class="dt">K =</span> p[<span class="dv">2</span>] +<span class="st"> </span><span class="dv">2</span>, 
+                              <span class="dt">C =</span> p[<span class="dv">3</span>] +<span class="st"> </span><span class="dv">2</span>, 
                               <span class="dt">s =</span> sigma_g))</code></pre>
 <h2 id="non-parametric-bayes">Non-parametric Bayes</h2>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="co">#inv gamma has mean b / (a - 1) (assuming a&gt;1) and variance b ^ 2 / ((a - 2) * (a - 1) ^ 2) (assuming a&gt;2)</span>
-s2.p &lt;- <span class="kw">c</span>(<span class="dv">5</span>,<span class="dv">5</span>)  
-tau2.p &lt;- <span class="kw">c</span>(<span class="dv">5</span>,<span class="dv">1</span>)
-d.p = <span class="kw">c</span>(<span class="dv">10</span>, <span class="dv">1</span>/<span class="fl">0.1</span>, <span class="dv">10</span>, <span class="dv">1</span>/<span class="fl">0.1</span>)
-nug.p = <span class="kw">c</span>(<span class="dv">10</span>, <span class="dv">1</span>/<span class="fl">0.1</span>, <span class="dv">10</span>, <span class="dv">1</span>/<span class="fl">0.1</span>) <span class="co"># gamma mean</span>
-s2_prior &lt;- function(x) <span class="kw">dinvgamma</span>(x, s2.p[<span class="dv">1</span>], s2.p[<span class="dv">2</span>])
-tau2_prior &lt;- function(x) <span class="kw">dinvgamma</span>(x, tau2.p[<span class="dv">1</span>], tau2.p[<span class="dv">2</span>])
-d_prior &lt;- function(x) <span class="kw">dgamma</span>(x, d.p[<span class="dv">1</span>], <span class="dt">scale =</span> d.p[<span class="dv">2</span>]) + <span class="kw">dgamma</span>(x, d.p[<span class="dv">3</span>], <span class="dt">scale =</span> d.p[<span class="dv">4</span>])
-nug_prior &lt;- function(x) <span class="kw">dgamma</span>(x, nug.p[<span class="dv">1</span>], <span class="dt">scale =</span> nug.p[<span class="dv">2</span>]) + <span class="kw">dgamma</span>(x, nug.p[<span class="dv">3</span>], <span class="dt">scale =</span> nug.p[<span class="dv">4</span>])
-beta0_prior &lt;- function(x, tau) <span class="kw">dnorm</span>(x, <span class="dv">0</span>, tau)
-beta = <span class="kw">c</span>(<span class="dv">0</span>)
-priors &lt;- <span class="kw">list</span>(<span class="dt">s2 =</span> s2_prior, <span class="dt">tau2 =</span> tau2_prior, <span class="dt">beta0 =</span> dnorm, <span class="dt">nug =</span> nug_prior, <span class="dt">d =</span> d_prior, <span class="dt">ldetK =</span> function(x) <span class="dv">0</span>)</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r">  gp &lt;- <span class="kw">bgp</span>(<span class="dt">X=</span>obs$x, <span class="dt">XX=</span>x_grid, <span class="dt">Z=</span>obs$y, <span class="dt">verb=</span><span class="dv">0</span>,
+s2.p &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">5</span>,<span class="dv">5</span>)  
+tau2.p &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">5</span>,<span class="dv">1</span>)
+d.p =<span class="st"> </span><span class="kw">c</span>(<span class="dv">10</span>, <span class="dv">1</span>/<span class="fl">0.1</span>, <span class="dv">10</span>, <span class="dv">1</span>/<span class="fl">0.1</span>)
+nug.p =<span class="st"> </span><span class="kw">c</span>(<span class="dv">10</span>, <span class="dv">1</span>/<span class="fl">0.1</span>, <span class="dv">10</span>, <span class="dv">1</span>/<span class="fl">0.1</span>) <span class="co"># gamma mean</span>
+s2_prior &lt;-<span class="st"> </span>function(x) <span class="kw">dinvgamma</span>(x, s2.p[<span class="dv">1</span>], s2.p[<span class="dv">2</span>])
+tau2_prior &lt;-<span class="st"> </span>function(x) <span class="kw">dinvgamma</span>(x, tau2.p[<span class="dv">1</span>], tau2.p[<span class="dv">2</span>])
+d_prior &lt;-<span class="st"> </span>function(x) <span class="kw">dgamma</span>(x, d.p[<span class="dv">1</span>], <span class="dt">scale =</span> d.p[<span class="dv">2</span>]) +<span class="st"> </span><span class="kw">dgamma</span>(x, d.p[<span class="dv">3</span>], <span class="dt">scale =</span> d.p[<span class="dv">4</span>])
+nug_prior &lt;-<span class="st"> </span>function(x) <span class="kw">dgamma</span>(x, nug.p[<span class="dv">1</span>], <span class="dt">scale =</span> nug.p[<span class="dv">2</span>]) +<span class="st"> </span><span class="kw">dgamma</span>(x, nug.p[<span class="dv">3</span>], <span class="dt">scale =</span> nug.p[<span class="dv">4</span>])
+beta0_prior &lt;-<span class="st"> </span>function(x, tau) <span class="kw">dnorm</span>(x, <span class="dv">0</span>, tau)
+beta =<span class="st"> </span><span class="kw">c</span>(<span class="dv">0</span>)
+priors &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">s2 =</span> s2_prior, <span class="dt">tau2 =</span> tau2_prior, <span class="dt">beta0 =</span> dnorm, <span class="dt">nug =</span> nug_prior, <span class="dt">d =</span> d_prior, <span class="dt">ldetK =</span> function(x) <span class="dv">0</span>)</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">  gp &lt;-<span class="st"> </span><span class="kw">bgp</span>(<span class="dt">X=</span>obs$x, <span class="dt">XX=</span>x_grid, <span class="dt">Z=</span>obs$y, <span class="dt">verb=</span><span class="dv">0</span>,
           <span class="dt">meanfn=</span><span class="st">&quot;constant&quot;</span>, <span class="dt">bprior=</span><span class="st">&quot;b0&quot;</span>, <span class="dt">BTE=</span><span class="kw">c</span>(<span class="dv">2000</span>,<span class="dv">20000</span>,<span class="dv">2</span>),
           <span class="dt">m0r1=</span><span class="ot">FALSE</span>, <span class="dt">corr=</span><span class="st">&quot;exp&quot;</span>, <span class="dt">trace=</span><span class="ot">TRUE</span>, 
           <span class="dt">beta =</span> beta, <span class="dt">s2.p =</span> s2.p, <span class="dt">d.p =</span> d.p, <span class="dt">nug.p =</span> nug.p, <span class="dt">tau2.p =</span> tau2.p,
           <span class="dt">s2.lam =</span> <span class="st">&quot;fixed&quot;</span>, <span class="dt">d.lam =</span> <span class="st">&quot;fixed&quot;</span>, <span class="dt">nug.lam =</span> <span class="st">&quot;fixed&quot;</span>, <span class="dt">tau2.lam =</span> <span class="st">&quot;fixed&quot;</span>)      </code></pre>
-<pre class="sourceCode r"><code class="sourceCode r">hyperparameters &lt;- <span class="kw">c</span>(<span class="st">&quot;index&quot;</span>, <span class="st">&quot;s2&quot;</span>, <span class="st">&quot;tau2&quot;</span>, <span class="st">&quot;beta0&quot;</span>, <span class="st">&quot;nug&quot;</span>, <span class="st">&quot;d&quot;</span>, <span class="st">&quot;ldetK&quot;</span>)
-posteriors &lt;- <span class="kw">melt</span>(gp$trace$XX[[<span class="dv">1</span>]][,hyperparameters], <span class="dt">id=</span><span class="st">&quot;index&quot;</span>)
+<pre class="sourceCode r"><code class="sourceCode r">hyperparameters &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;index&quot;</span>, <span class="st">&quot;s2&quot;</span>, <span class="st">&quot;tau2&quot;</span>, <span class="st">&quot;beta0&quot;</span>, <span class="st">&quot;nug&quot;</span>, <span class="st">&quot;d&quot;</span>, <span class="st">&quot;ldetK&quot;</span>)
+posteriors &lt;-<span class="st"> </span><span class="kw">melt</span>(gp$trace$XX[[<span class="dv">1</span>]][,hyperparameters], <span class="dt">id=</span><span class="st">&quot;index&quot;</span>)
 
 <span class="co"># Traces </span>
-<span class="kw">ggplot</span>(posteriors) + <span class="kw">geom_line</span>(<span class="kw">aes</span>(index, value)) + <span class="kw">facet_wrap</span>(~ variable, <span class="dt">scale=</span><span class="st">&quot;free&quot;</span>, <span class="dt">ncol=</span><span class="dv">1</span>)</code></pre>
+<span class="kw">ggplot</span>(posteriors) +<span class="st"> </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(index, value)) +<span class="st"> </span><span class="kw">facet_wrap</span>(~<span class="st"> </span>variable, <span class="dt">scale=</span><span class="st">&quot;free&quot;</span>, <span class="dt">ncol=</span><span class="dv">1</span>)</code></pre>
 <figure>
 <img src="http://farm9.staticflickr.com/8261/8685360238_353dbc5894_o.png" alt="plot of chunk unnamed-chunk-3" /><figcaption>plot of chunk unnamed-chunk-3</figcaption>
 </figure>
 <pre class="sourceCode r"><code class="sourceCode r">
 
-prior_curves &lt;- <span class="kw">ddply</span>(posteriors, <span class="st">&quot;variable&quot;</span>, function(dd){
-    grid &lt;- <span class="kw">seq</span>(<span class="kw">min</span>(dd$value), <span class="kw">max</span>(dd$value), <span class="dt">length =</span> <span class="dv">100</span>)
+prior_curves &lt;-<span class="st"> </span><span class="kw">ddply</span>(posteriors, <span class="st">&quot;variable&quot;</span>, function(dd){
+    grid &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="kw">min</span>(dd$value), <span class="kw">max</span>(dd$value), <span class="dt">length =</span> <span class="dv">100</span>)
     <span class="kw">data.frame</span>(<span class="dt">value =</span> grid, <span class="dt">density =</span> priors[[dd$variable[<span class="dv">1</span>]]](grid))
 })
 
 <span class="co"># </span>
-<span class="kw">ggplot</span>(posteriors) + <span class="kw">geom_histogram</span>(<span class="kw">aes</span>(<span class="dt">x=</span>value, <span class="dt">y=</span>..density..), <span class="dt">alpha=</span><span class="fl">0.7</span>) +
-    <span class="kw">geom_line</span>(<span class="dt">data=</span>prior_curves, <span class="kw">aes</span>(<span class="dt">x=</span>value, <span class="dt">y=</span>density), <span class="dt">col=</span><span class="st">&quot;red&quot;</span>, <span class="dt">lwd=</span><span class="dv">2</span>) +
-    <span class="kw">facet_wrap</span>(~ variable, <span class="dt">scale=</span><span class="st">&quot;free&quot;</span>)</code></pre>
+<span class="kw">ggplot</span>(posteriors) +<span class="st"> </span><span class="kw">geom_histogram</span>(<span class="kw">aes</span>(<span class="dt">x=</span>value, <span class="dt">y=</span>..density..), <span class="dt">alpha=</span><span class="fl">0.7</span>) +
+<span class="st">    </span><span class="kw">geom_line</span>(<span class="dt">data=</span>prior_curves, <span class="kw">aes</span>(<span class="dt">x=</span>value, <span class="dt">y=</span>density), <span class="dt">col=</span><span class="st">&quot;red&quot;</span>, <span class="dt">lwd=</span><span class="dv">2</span>) +
+<span class="st">    </span><span class="kw">facet_wrap</span>(~<span class="st"> </span>variable, <span class="dt">scale=</span><span class="st">&quot;free&quot;</span>)</code></pre>
 <figure>
 <img src="http://farm9.staticflickr.com/8521/8685360484_e2ce943ebd_o.png" alt="plot of chunk unnamed-chunk-3" /><figcaption>plot of chunk unnamed-chunk-3</figcaption>
 </figure>
 <pre class="sourceCode r"><code class="sourceCode r">
-<span class="kw">ggplot</span>(posteriors, <span class="kw">aes</span>(value)) + <span class="kw">stat_density</span>(<span class="dt">geom=</span><span class="st">&quot;path&quot;</span>, <span class="dt">position=</span><span class="st">&quot;identity&quot;</span>, <span class="dt">alpha=</span><span class="fl">0.7</span>) +
-  <span class="kw">geom_line</span>(<span class="dt">data=</span>prior_curves, <span class="kw">aes</span>(<span class="dt">x=</span>value, <span class="dt">y=</span>density), <span class="dt">col=</span><span class="st">&quot;red&quot;</span>) + 
-  <span class="kw">facet_wrap</span>(~ variable, <span class="dt">scale=</span><span class="st">&quot;free&quot;</span>, <span class="dt">ncol=</span><span class="dv">2</span>)</code></pre>
+<span class="kw">ggplot</span>(posteriors, <span class="kw">aes</span>(value)) +<span class="st"> </span><span class="kw">stat_density</span>(<span class="dt">geom=</span><span class="st">&quot;path&quot;</span>, <span class="dt">position=</span><span class="st">&quot;identity&quot;</span>, <span class="dt">alpha=</span><span class="fl">0.7</span>) +
+<span class="st">  </span><span class="kw">geom_line</span>(<span class="dt">data=</span>prior_curves, <span class="kw">aes</span>(<span class="dt">x=</span>value, <span class="dt">y=</span>density), <span class="dt">col=</span><span class="st">&quot;red&quot;</span>) +<span class="st"> </span>
+<span class="st">  </span><span class="kw">facet_wrap</span>(~<span class="st"> </span>variable, <span class="dt">scale=</span><span class="st">&quot;free&quot;</span>, <span class="dt">ncol=</span><span class="dv">2</span>)</code></pre>
 <figure>
 <img src="http://farm9.staticflickr.com/8398/8685360552_d9ba680ff7_o.png" alt="plot of chunk unnamed-chunk-3" /><figcaption>plot of chunk unnamed-chunk-3</figcaption>
 </figure>
 <h4 id="parametric-bayes">Parametric Bayes</h4>
 <p>We initiate the MCMC chain (<code>init_p</code>) using the true values of the parameters <code>p</code> from the simulation. While impossible in real data, this gives the parametric Bayesian approach the best chance at succeeding. <code>y</code> is the timeseries (recall <code>obs</code> has the <span class="math">\(x_t\)</span>, <span class="math">\(x_{t+1}\)</span> pairs)</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="co"># a bit unfair to start with the correct values, but anyhow...</span>
-init_p = p
-<span class="kw">names</span>(init_p) = <span class="kw">c</span>(<span class="st">&quot;r0&quot;</span>, <span class="st">&quot;K&quot;</span>, <span class="st">&quot;theta&quot;</span>)
-y &lt;- obs$y[-<span class="dv">1</span>] 
+init_p =<span class="st"> </span>p
+<span class="kw">names</span>(init_p) =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;r0&quot;</span>, <span class="st">&quot;K&quot;</span>, <span class="st">&quot;theta&quot;</span>)
+y &lt;-<span class="st"> </span>obs$y[-<span class="dv">1</span>] 
 N=<span class="kw">length</span>(y);</code></pre>
 <p>We’ll be using the JAGS Gibbs sampler, a recent open source BUGS implementation with an R interface that works on most platforms. We initialize the usual MCMC parameters; see <code>?jags</code> for details.</p>
-<pre class="sourceCode r"><code class="sourceCode r">jags.data &lt;- <span class="kw">list</span>(<span class="st">&quot;N&quot;</span>,<span class="st">&quot;y&quot;</span>)
-n.chains = <span class="dv">1</span>
-n.iter = <span class="dv">20000</span>
-n.burnin = <span class="kw">floor</span>(n.iter/<span class="dv">2</span>)
-n.thin = <span class="kw">max</span>(<span class="dv">1</span>, <span class="kw">floor</span>(n.chains * (n.iter - n.burnin)/<span class="dv">1000</span>))</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">jags.data &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="st">&quot;N&quot;</span>,<span class="st">&quot;y&quot;</span>)
+n.chains =<span class="st"> </span><span class="dv">1</span>
+n.iter =<span class="st"> </span><span class="dv">20000</span>
+n.burnin =<span class="st"> </span><span class="kw">floor</span>(n.iter/<span class="dv">2</span>)
+n.thin =<span class="st"> </span><span class="kw">max</span>(<span class="dv">1</span>, <span class="kw">floor</span>(n.chains *<span class="st"> </span>(n.iter -<span class="st"> </span>n.burnin)/<span class="dv">1000</span>))</code></pre>
 <p>The actual model is defined in a <code>model.file</code> that contains an R function that is automatically translated into BUGS code by <em>R2WinBUGS</em>. The file defines the priors and the model, as seen when read in here</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">cat</span>(<span class="kw">readLines</span>(<span class="dt">con=</span><span class="st">&quot;bugmodel-GammaPrior.txt&quot;</span>), <span class="dt">sep=</span><span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>)</code></pre>
 <pre><code>## # Allen&#39;s Allee model based on a Ricker
@@ -292,12 +292,12 @@ n.thin = <span class="kw">max</span>(<span class="dv">1</span>, <span class="kw"
 ## }</code></pre>
 <p>We define which parameters to keep track of, and set the initial values of parameters in the transformed space used by the MCMC. We use logarithms to maintain strictly positive values of parameters where appropriate. Because our priors on the noise parameters are inverse gamma distributed.</p>
 <pre class="sourceCode r"><code class="sourceCode r">jags.params=<span class="kw">c</span>(<span class="st">&quot;K&quot;</span>,<span class="st">&quot;logr0&quot;</span>,<span class="st">&quot;logtheta&quot;</span>,<span class="st">&quot;iR&quot;</span>,<span class="st">&quot;iQ&quot;</span>) <span class="co"># Don&#39;t need to save &quot;x&quot;</span>
-jags.inits &lt;- function(){
+jags.inits &lt;-<span class="st"> </span>function(){
   <span class="kw">list</span>(<span class="st">&quot;K&quot;</span>=init_p[<span class="st">&quot;K&quot;</span>],<span class="st">&quot;logr0&quot;</span>=<span class="kw">log</span>(init_p[<span class="st">&quot;r0&quot;</span>]),<span class="st">&quot;logtheta&quot;</span>=<span class="kw">log</span>(init_p[<span class="st">&quot;theta&quot;</span>]),<span class="st">&quot;iQ&quot;</span>=<span class="dv">1</span>/<span class="fl">0.05</span>,<span class="st">&quot;iR&quot;</span>=<span class="dv">1</span>/<span class="fl">0.1</span>,<span class="st">&quot;x&quot;</span>=y,<span class="dt">.RNG.name=</span><span class="st">&quot;base::Wichmann-Hill&quot;</span>, <span class="dt">.RNG.seed=</span><span class="dv">123</span>)
 }
 <span class="kw">set.seed</span>(<span class="dv">12345</span>)
 time&lt;-<span class="kw">system.time</span>(       
-  jagsfit &lt;- <span class="kw">jags</span>(<span class="dt">data=</span>jags.data, <span class="dt">inits=</span>jags.inits, jags.params, <span class="dt">n.chains=</span>n.chains, 
+  jagsfit &lt;-<span class="st"> </span><span class="kw">jags</span>(<span class="dt">data=</span>jags.data, <span class="dt">inits=</span>jags.inits, jags.params, <span class="dt">n.chains=</span>n.chains, 
                   <span class="dt">n.iter=</span>n.iter, <span class="dt">n.thin=</span>n.thin, <span class="dt">n.burnin=</span>n.burnin,<span class="dt">model.file=</span><span class="st">&quot;bugmodel-GammaPrior.txt&quot;</span>)
 )         </code></pre>
 <pre><code>## Compiling model graph
@@ -306,30 +306,30 @@ time&lt;-<span class="kw">system.time</span>(
 ##    Graph Size: 394
 ## 
 ## Initializing model</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r">time &lt;- <span class="kw">unname</span>(time[<span class="st">&quot;elapsed&quot;</span>]);</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">time &lt;-<span class="st"> </span><span class="kw">unname</span>(time[<span class="st">&quot;elapsed&quot;</span>]);</code></pre>
 <h4 id="convergence-diagnostics-for-parametric-bayes">Convergence diagnostics for parametric bayes</h4>
-<pre class="sourceCode r"><code class="sourceCode r">jags_matrix &lt;- <span class="kw">as.data.frame</span>(<span class="kw">as.mcmc.bugs</span>(jagsfit$BUGSoutput))
-par_posteriors &lt;- <span class="kw">melt</span>(<span class="kw">cbind</span>(<span class="dt">index =</span> <span class="dv">1</span>:<span class="kw">dim</span>(jags_matrix)[<span class="dv">1</span>], jags_matrix), <span class="dt">id =</span> <span class="st">&quot;index&quot;</span>)
+<pre class="sourceCode r"><code class="sourceCode r">jags_matrix &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(<span class="kw">as.mcmc.bugs</span>(jagsfit$BUGSoutput))
+par_posteriors &lt;-<span class="st"> </span><span class="kw">melt</span>(<span class="kw">cbind</span>(<span class="dt">index =</span> <span class="dv">1</span>:<span class="kw">dim</span>(jags_matrix)[<span class="dv">1</span>], jags_matrix), <span class="dt">id =</span> <span class="st">&quot;index&quot;</span>)
 
 <span class="co"># Traces</span>
-<span class="kw">ggplot</span>(par_posteriors) + <span class="kw">geom_line</span>(<span class="kw">aes</span>(index, value)) + <span class="kw">facet_wrap</span>(~ variable, <span class="dt">scale=</span><span class="st">&quot;free&quot;</span>, <span class="dt">ncol=</span><span class="dv">1</span>)</code></pre>
+<span class="kw">ggplot</span>(par_posteriors) +<span class="st"> </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(index, value)) +<span class="st"> </span><span class="kw">facet_wrap</span>(~<span class="st"> </span>variable, <span class="dt">scale=</span><span class="st">&quot;free&quot;</span>, <span class="dt">ncol=</span><span class="dv">1</span>)</code></pre>
 <figure>
 <img src="http://farm9.staticflickr.com/8401/8684242957_c1958f5a03_o.png" alt="plot of chunk unnamed-chunk-8" /><figcaption>plot of chunk unnamed-chunk-8</figcaption>
 </figure>
 <pre class="sourceCode r"><code class="sourceCode r">
 <span class="co"># posterior distributiosn</span>
-<span class="kw">ggplot</span>(par_posteriors, <span class="kw">aes</span>(value)) + <span class="kw">stat_density</span>(<span class="dt">geom=</span><span class="st">&quot;path&quot;</span>, <span class="dt">position=</span><span class="st">&quot;identity&quot;</span>, <span class="dt">alpha=</span><span class="fl">0.7</span>) +
-  <span class="kw">facet_wrap</span>(~ variable, <span class="dt">scale=</span><span class="st">&quot;free&quot;</span>, <span class="dt">ncol=</span><span class="dv">2</span>)</code></pre>
+<span class="kw">ggplot</span>(par_posteriors, <span class="kw">aes</span>(value)) +<span class="st"> </span><span class="kw">stat_density</span>(<span class="dt">geom=</span><span class="st">&quot;path&quot;</span>, <span class="dt">position=</span><span class="st">&quot;identity&quot;</span>, <span class="dt">alpha=</span><span class="fl">0.7</span>) +
+<span class="st">  </span><span class="kw">facet_wrap</span>(~<span class="st"> </span>variable, <span class="dt">scale=</span><span class="st">&quot;free&quot;</span>, <span class="dt">ncol=</span><span class="dv">2</span>)</code></pre>
 <figure>
 <img src="http://farm9.staticflickr.com/8255/8684243073_7a0daf0466_o.png" alt="plot of chunk unnamed-chunk-8" /><figcaption>plot of chunk unnamed-chunk-8</figcaption>
 </figure>
-<pre class="sourceCode r"><code class="sourceCode r">mcmc &lt;- <span class="kw">as.mcmc</span>(jagsfit)
-mcmcall &lt;- mcmc[,-<span class="dv">2</span>]
-who &lt;- <span class="kw">colnames</span>(mcmcall)
+<pre class="sourceCode r"><code class="sourceCode r">mcmc &lt;-<span class="st"> </span><span class="kw">as.mcmc</span>(jagsfit)
+mcmcall &lt;-<span class="st"> </span>mcmc[,-<span class="dv">2</span>]
+who &lt;-<span class="st"> </span><span class="kw">colnames</span>(mcmcall)
 who </code></pre>
 <pre><code>## [1] &quot;K&quot;        &quot;iQ&quot;       &quot;iR&quot;       &quot;logr0&quot;    &quot;logtheta&quot;</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r">mcmcall &lt;- <span class="kw">cbind</span>(mcmcall[,<span class="dv">1</span>],mcmcall[,<span class="dv">2</span>],mcmcall[,<span class="dv">3</span>],mcmcall[,<span class="dv">4</span>],mcmcall[,<span class="dv">5</span>])
-<span class="kw">colnames</span>(mcmcall) &lt;- who</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">mcmcall &lt;-<span class="st"> </span><span class="kw">cbind</span>(mcmcall[,<span class="dv">1</span>],mcmcall[,<span class="dv">2</span>],mcmcall[,<span class="dv">3</span>],mcmcall[,<span class="dv">4</span>],mcmcall[,<span class="dv">5</span>])
+<span class="kw">colnames</span>(mcmcall) &lt;-<span class="st"> </span>who</code></pre>
 <h4 id="phase-space-diagram-of-the-expected-dynamics">Phase-space diagram of the expected dynamics</h4>
 <pre class="sourceCode r"><code class="sourceCode r">  <span class="kw">gp_plot</span>(gp, f, p, est$f, est$p, alt$f, alt$p, x_grid, obs, seed_i)</code></pre>
 <figure>
@@ -337,45 +337,45 @@ who </code></pre>
 </figure>
 <h2 id="optimal-policies-by-value-iteration">Optimal policies by value iteration</h2>
 <p>Compute the optimal policy under each model using stochastic dynamic programming.</p>
-<pre class="sourceCode r"><code class="sourceCode r">MaxT = <span class="dv">1000</span>
-matrices_gp &lt;- <span class="kw">gp_transition_matrix</span>(gp$ZZ.km, gp$ZZ.ks2, x_grid, h_grid)
-opt_gp &lt;- <span class="kw">value_iteration</span>(matrices_gp, x_grid, h_grid, MaxT, xT, profit, delta, reward)
+<pre class="sourceCode r"><code class="sourceCode r">MaxT =<span class="st"> </span><span class="dv">1000</span>
+matrices_gp &lt;-<span class="st"> </span><span class="kw">gp_transition_matrix</span>(gp$ZZ.km, gp$ZZ.ks2, x_grid, h_grid)
+opt_gp &lt;-<span class="st"> </span><span class="kw">value_iteration</span>(matrices_gp, x_grid, h_grid, MaxT, xT, profit, delta, reward)
 
-matrices_true &lt;- <span class="kw">f_transition_matrix</span>(f, p, x_grid, h_grid, sigma_g)
-opt_true &lt;- <span class="kw">value_iteration</span>(matrices_true, x_grid, h_grid, <span class="dt">OptTime=</span>MaxT, xT, profit, <span class="dt">delta=</span>delta)
+matrices_true &lt;-<span class="st"> </span><span class="kw">f_transition_matrix</span>(f, p, x_grid, h_grid, sigma_g)
+opt_true &lt;-<span class="st"> </span><span class="kw">value_iteration</span>(matrices_true, x_grid, h_grid, <span class="dt">OptTime=</span>MaxT, xT, profit, <span class="dt">delta=</span>delta)
 
-matrices_estimated &lt;- <span class="kw">f_transition_matrix</span>(est$f, est$p, x_grid, h_grid, est$sigma_g)
-opt_estimated &lt;- <span class="kw">value_iteration</span>(matrices_estimated, x_grid, h_grid, <span class="dt">OptTime=</span>MaxT, xT, profit, <span class="dt">delta=</span>delta)
+matrices_estimated &lt;-<span class="st"> </span><span class="kw">f_transition_matrix</span>(est$f, est$p, x_grid, h_grid, est$sigma_g)
+opt_estimated &lt;-<span class="st"> </span><span class="kw">value_iteration</span>(matrices_estimated, x_grid, h_grid, <span class="dt">OptTime=</span>MaxT, xT, profit, <span class="dt">delta=</span>delta)
 
-matrices_alt &lt;- <span class="kw">f_transition_matrix</span>(alt$f, alt$p, x_grid, h_grid, alt$sigma_g)
-opt_alt &lt;- <span class="kw">value_iteration</span>(matrices_alt, x_grid, h_grid, <span class="dt">OptTime=</span>MaxT, xT, profit, <span class="dt">delta=</span>delta)
-
-
-pardist &lt;- mcmcall
-pardist[,<span class="dv">4</span>] = <span class="kw">exp</span>(pardist[,<span class="dv">4</span>]) <span class="co"># transform model parameters back first</span>
-pardist[,<span class="dv">5</span>] = <span class="kw">exp</span>(pardist[,<span class="dv">5</span>])
+matrices_alt &lt;-<span class="st"> </span><span class="kw">f_transition_matrix</span>(alt$f, alt$p, x_grid, h_grid, alt$sigma_g)
+opt_alt &lt;-<span class="st"> </span><span class="kw">value_iteration</span>(matrices_alt, x_grid, h_grid, <span class="dt">OptTime=</span>MaxT, xT, profit, <span class="dt">delta=</span>delta)
 
 
-matrices_par_bayes &lt;- <span class="kw">parameter_uncertainty_SDP</span>(f, p, x_grid, h_grid, pardist)
-opt_par_bayes &lt;- <span class="kw">value_iteration</span>(matrices_par_bayes, x_grid, h_grid, <span class="dt">OptTime=</span>MaxT, xT, profit, <span class="dt">delta=</span>delta)
+pardist &lt;-<span class="st"> </span>mcmcall
+pardist[,<span class="dv">4</span>] =<span class="st"> </span><span class="kw">exp</span>(pardist[,<span class="dv">4</span>]) <span class="co"># transform model parameters back first</span>
+pardist[,<span class="dv">5</span>] =<span class="st"> </span><span class="kw">exp</span>(pardist[,<span class="dv">5</span>])
 
 
-OPT = <span class="kw">data.frame</span>(<span class="dt">GP =</span> opt_gp$D, <span class="dt">True =</span> opt_true$D, <span class="dt">MLE =</span> opt_estimated$D, <span class="dt">Ricker.MLE =</span> opt_alt$D, <span class="dt">Parametric.Bayes =</span> opt_par_bayes$D)
+matrices_par_bayes &lt;-<span class="st"> </span><span class="kw">parameter_uncertainty_SDP</span>(f, p, x_grid, h_grid, pardist)
+opt_par_bayes &lt;-<span class="st"> </span><span class="kw">value_iteration</span>(matrices_par_bayes, x_grid, h_grid, <span class="dt">OptTime=</span>MaxT, xT, profit, <span class="dt">delta=</span>delta)
+
+
+OPT =<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">GP =</span> opt_gp$D, <span class="dt">True =</span> opt_true$D, <span class="dt">MLE =</span> opt_estimated$D, <span class="dt">Ricker.MLE =</span> opt_alt$D, <span class="dt">Parametric.Bayes =</span> opt_par_bayes$D)
 colorkey=cbPalette
-<span class="kw">names</span>(colorkey) = <span class="kw">names</span>(OPT) </code></pre>
+<span class="kw">names</span>(colorkey) =<span class="st"> </span><span class="kw">names</span>(OPT) </code></pre>
 <h2 id="graph-of-the-optimal-policies">Graph of the optimal policies</h2>
-<pre class="sourceCode r"><code class="sourceCode r">policies &lt;- <span class="kw">melt</span>(<span class="kw">data.frame</span>(<span class="dt">stock=</span>x_grid, <span class="kw">sapply</span>(OPT, function(x) x_grid[x])), <span class="dt">id=</span><span class="st">&quot;stock&quot;</span>)
-<span class="kw">names</span>(policies) &lt;- <span class="kw">c</span>(<span class="st">&quot;stock&quot;</span>, <span class="st">&quot;method&quot;</span>, <span class="st">&quot;value&quot;</span>)
-<span class="kw">ggplot</span>(policies, <span class="kw">aes</span>(stock, stock - value, <span class="dt">color=</span>method)) +
-  <span class="kw">geom_line</span>(<span class="dt">lwd=</span><span class="fl">1.2</span>, <span class="dt">alpha=</span><span class="fl">0.8</span>) + <span class="kw">xlab</span>(<span class="st">&quot;stock size&quot;</span>) + <span class="kw">ylab</span>(<span class="st">&quot;escapement&quot;</span>)  +
-  <span class="kw">scale_colour_manual</span>(<span class="dt">values=</span>colorkey)</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">policies &lt;-<span class="st"> </span><span class="kw">melt</span>(<span class="kw">data.frame</span>(<span class="dt">stock=</span>x_grid, <span class="kw">sapply</span>(OPT, function(x) x_grid[x])), <span class="dt">id=</span><span class="st">&quot;stock&quot;</span>)
+<span class="kw">names</span>(policies) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;stock&quot;</span>, <span class="st">&quot;method&quot;</span>, <span class="st">&quot;value&quot;</span>)
+<span class="kw">ggplot</span>(policies, <span class="kw">aes</span>(stock, stock -<span class="st"> </span>value, <span class="dt">color=</span>method)) +
+<span class="st">  </span><span class="kw">geom_line</span>(<span class="dt">lwd=</span><span class="fl">1.2</span>, <span class="dt">alpha=</span><span class="fl">0.8</span>) +<span class="st"> </span><span class="kw">xlab</span>(<span class="st">&quot;stock size&quot;</span>) +<span class="st"> </span><span class="kw">ylab</span>(<span class="st">&quot;escapement&quot;</span>)  +
+<span class="st">  </span><span class="kw">scale_colour_manual</span>(<span class="dt">values=</span>colorkey)</code></pre>
 <figure>
 <img src="http://farm9.staticflickr.com/8542/8685372902_e8719a0c51_o.png" alt="plot of chunk unnamed-chunk-12" /><figcaption>plot of chunk unnamed-chunk-12</figcaption>
 </figure>
 <h2 id="simulate-100-realizations-managed-under-each-of-the-policies">Simulate 100 realizations managed under each of the policies</h2>
 <pre class="sourceCode r"><code class="sourceCode r">
 
-sims &lt;- <span class="kw">lapply</span>(OPT, function(D){
+sims &lt;-<span class="st"> </span><span class="kw">lapply</span>(OPT, function(D){
   <span class="kw">set.seed</span>(<span class="dv">1</span>)
   <span class="kw">lapply</span>(<span class="dv">1</span>:<span class="dv">100</span>, function(i) 
     <span class="kw">ForwardSimulate</span>(f, p, x_grid, h_grid, x0, D, z_g, <span class="dt">profit=</span>profit, <span class="dt">OptTime=</span>OptTime)
@@ -383,22 +383,22 @@ sims &lt;- <span class="kw">lapply</span>(OPT, function(D){
 })
 
   
-dat &lt;- <span class="kw">melt</span>(sims, <span class="dt">id=</span><span class="kw">names</span>(sims[[<span class="dv">1</span>]][[<span class="dv">1</span>]]))
-dt &lt;- <span class="kw">data.table</span>(dat)
+dat &lt;-<span class="st"> </span><span class="kw">melt</span>(sims, <span class="dt">id=</span><span class="kw">names</span>(sims[[<span class="dv">1</span>]][[<span class="dv">1</span>]]))
+dt &lt;-<span class="st"> </span><span class="kw">data.table</span>(dat)
 <span class="kw">setnames</span>(dt, <span class="kw">c</span>(<span class="st">&quot;L1&quot;</span>, <span class="st">&quot;L2&quot;</span>), <span class="kw">c</span>(<span class="st">&quot;method&quot;</span>, <span class="st">&quot;reps&quot;</span>)) 
 <span class="co"># Legend in original ordering please, not alphabetical: </span>
-dt$method = <span class="kw">factor</span>(dt$method, <span class="dt">ordered=</span><span class="ot">TRUE</span>, <span class="dt">levels=</span><span class="kw">names</span>(OPT))
+dt$method =<span class="st"> </span><span class="kw">factor</span>(dt$method, <span class="dt">ordered=</span><span class="ot">TRUE</span>, <span class="dt">levels=</span><span class="kw">names</span>(OPT))
 
-<span class="kw">ggplot</span>(dt) + 
-  <span class="kw">geom_line</span>(<span class="kw">aes</span>(time, fishstock, <span class="dt">group=</span><span class="kw">interaction</span>(reps,method), <span class="dt">color=</span>method), <span class="dt">alpha=</span>.<span class="dv">1</span>) +
-  <span class="kw">scale_colour_manual</span>(<span class="dt">values=</span>colorkey, <span class="dt">guide =</span> <span class="kw">guide_legend</span>(<span class="dt">override.aes =</span> <span class="kw">list</span>(<span class="dt">alpha =</span> <span class="dv">1</span>)))</code></pre>
+<span class="kw">ggplot</span>(dt) +<span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(time, fishstock, <span class="dt">group=</span><span class="kw">interaction</span>(reps,method), <span class="dt">color=</span>method), <span class="dt">alpha=</span>.<span class="dv">1</span>) +
+<span class="st">  </span><span class="kw">scale_colour_manual</span>(<span class="dt">values=</span>colorkey, <span class="dt">guide =</span> <span class="kw">guide_legend</span>(<span class="dt">override.aes =</span> <span class="kw">list</span>(<span class="dt">alpha =</span> <span class="dv">1</span>)))</code></pre>
 <figure>
 <img src="http://farm9.staticflickr.com/8400/8685373300_18931d5055_o.png" alt="plot of chunk unnamed-chunk-13" /><figcaption>plot of chunk unnamed-chunk-13</figcaption>
 </figure>
 <pre class="sourceCode r"><code class="sourceCode r">
-<span class="kw">ggplot</span>(dt) + 
-  <span class="kw">geom_line</span>(<span class="kw">aes</span>(time, harvest, <span class="dt">group=</span><span class="kw">interaction</span>(reps,method), <span class="dt">color=</span>method), <span class="dt">alpha=</span>.<span class="dv">1</span>) +
-  <span class="kw">scale_colour_manual</span>(<span class="dt">values=</span>colorkey, <span class="dt">guide =</span> <span class="kw">guide_legend</span>(<span class="dt">override.aes =</span> <span class="kw">list</span>(<span class="dt">alpha =</span> <span class="dv">1</span>)))</code></pre>
+<span class="kw">ggplot</span>(dt) +<span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(time, harvest, <span class="dt">group=</span><span class="kw">interaction</span>(reps,method), <span class="dt">color=</span>method), <span class="dt">alpha=</span>.<span class="dv">1</span>) +
+<span class="st">  </span><span class="kw">scale_colour_manual</span>(<span class="dt">values=</span>colorkey, <span class="dt">guide =</span> <span class="kw">guide_legend</span>(<span class="dt">override.aes =</span> <span class="kw">list</span>(<span class="dt">alpha =</span> <span class="dv">1</span>)))</code></pre>
 <figure>
 <img src="http://farm9.staticflickr.com/8535/8685373378_da45da3cbd_o.png" alt="plot of chunk unnamed-chunk-13" /><figcaption>plot of chunk unnamed-chunk-13</figcaption>
 </figure>
@@ -450,7 +450,7 @@ dt$method = <span class="kw">factor</span>(dt$method, <span class="dt">ordered=<
 
   <br/>
 
-   <p style="font-style:italic"> <i class="icon-signal"></i> pageviews: 85</p>
+   <p style="font-style:italic"> <i class="icon-signal"></i> pageviews: 86</p>
 
   <br/>
 

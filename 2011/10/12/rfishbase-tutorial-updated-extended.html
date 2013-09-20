@@ -169,22 +169,22 @@
 ###### Sample Analysis #########
 
 ## Lets start by looking at the distribution of all age data available:
-yr &lt;- <span class="kw">getSize</span>(fish.data, <span class="st">&quot;age&quot;</span>)
+yr &lt;-<span class="st"> </span><span class="kw">getSize</span>(fish.data, <span class="st">&quot;age&quot;</span>)
 <span class="kw">hist</span>(yr, <span class="dt">breaks=</span><span class="dv">40</span>, <span class="dt">main=</span><span class="st">&quot;Age Distribution&quot;</span>, <span class="dt">xlab=</span><span class="st">&quot;age (years)&quot;</span>); 
-nfish &lt;- <span class="kw">length</span>(fish.data)
+nfish &lt;-<span class="st"> </span><span class="kw">length</span>(fish.data)
 
 
 <span class="co"># We can create partitions by taxon.  For instance, we get the index</span>
 <span class="co"># to all fish wrasses and parrotfish by searching for both families</span>
 <span class="co"># note the use of a &quot;regular expression&quot; to specify the OR command in the search</span>
-labrid &lt;- <span class="kw">familySearch</span>(<span class="st">&quot;(Labridae|Scaridae)&quot;</span>, fish.data)
-goby &lt;- <span class="kw">familySearch</span>(<span class="st">&quot;Gobiidae&quot;</span>, fish.data)
+labrid &lt;-<span class="st"> </span><span class="kw">familySearch</span>(<span class="st">&quot;(Labridae|Scaridae)&quot;</span>, fish.data)
+goby &lt;-<span class="st"> </span><span class="kw">familySearch</span>(<span class="st">&quot;Gobiidae&quot;</span>, fish.data)
 
 
 ## Let&#39;s see if there are more labrid species or goby speices on reefs:
 
 <span class="co"># get all the labrids that are reefs </span>
-labrid.reef &lt;- <span class="kw">habitatSearch</span>(<span class="st">&quot;reef&quot;</span>, fish.data[labrid])
+labrid.reef &lt;-<span class="st"> </span><span class="kw">habitatSearch</span>(<span class="st">&quot;reef&quot;</span>, fish.data[labrid])
 <span class="co"># How many species are reef labrids:</span>
 <span class="kw">sum</span>(labrid.reef) <span class="co"># same as: length(fish.data[labrid][labrid.reef])</span>
 <span class="co"># How many reef gobies:</span>
@@ -198,7 +198,7 @@ labrid.reef &lt;- <span class="kw">habitatSearch</span>(<span class="st">&quot;r
           <span class="dt">col=</span><span class="kw">rgb</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,.<span class="dv">5</span>), <span class="dt">breaks=</span><span class="dv">40</span>, <span class="dt">add=</span>T, <span class="dt">freq=</span>F)
 
 <span class="co"># Note that we can also find anadromous fish:</span>
-anadromous &lt;-  <span class="kw">habitatSearch</span>(<span class="st">&quot;anadromous&quot;</span>, fish.data)
+anadromous &lt;-<span class="st">  </span><span class="kw">habitatSearch</span>(<span class="st">&quot;anadromous&quot;</span>, fish.data)
 
 
 
@@ -208,50 +208,50 @@ anadromous &lt;-  <span class="kw">habitatSearch</span>(<span class="st">&quot;a
 
 <span class="co"># get the species names (&amp; remove underscores)</span>
 tree$tip.label&lt;-<span class="kw">gsub</span>(<span class="st">&quot;_&quot;</span>, <span class="st">&quot; &quot;</span>, tree$tip.label)
-tip.labels &lt;- tree$tip.label
+tip.labels &lt;-<span class="st"> </span>tree$tip.label
 
 
-myfish &lt;- <span class="kw">findSpecies</span>(tip.labels, fish.data) 
-species.names &lt;- <span class="kw">sapply</span>(fish.data[myfish], function(x) x$ScientificName)
+myfish &lt;-<span class="st"> </span><span class="kw">findSpecies</span>(tip.labels, fish.data) 
+species.names &lt;-<span class="st"> </span><span class="kw">sapply</span>(fish.data[myfish], function(x) x$ScientificName)
 
 <span class="co"># create a trait matrix of fin data</span>
-traits &lt;- <span class="kw">getQuantTraits</span>(fish.data[myfish])
-<span class="kw">rownames</span>(traits) &lt;- species.names
-depths &lt;- <span class="kw">getDepth</span>(fish.data[myfish])
-<span class="kw">rownames</span>(depths) &lt;- species.names
+traits &lt;-<span class="st"> </span><span class="kw">getQuantTraits</span>(fish.data[myfish])
+<span class="kw">rownames</span>(traits) &lt;-<span class="st"> </span>species.names
+depths &lt;-<span class="st"> </span><span class="kw">getDepth</span>(fish.data[myfish])
+<span class="kw">rownames</span>(depths) &lt;-<span class="st"> </span>species.names
 
-size &lt;- <span class="kw">getSize</span>(fish.data[myfish], <span class="st">&quot;length&quot;</span>)
-<span class="kw">names</span>(size) &lt;- species.names
+size &lt;-<span class="st"> </span><span class="kw">getSize</span>(fish.data[myfish], <span class="st">&quot;length&quot;</span>)
+<span class="kw">names</span>(size) &lt;-<span class="st"> </span>species.names
 
 <span class="co"># who&#39;s missing from treebase entirely?</span>
-missing&lt;-tip.labels[! tip.labels %in% species.names ]
-tr&lt;- <span class="kw">drop.tip</span>(tree, missing)
+missing&lt;-tip.labels[!<span class="st"> </span>tip.labels %in%<span class="st"> </span>species.names ]
+tr&lt;-<span class="st"> </span><span class="kw">drop.tip</span>(tree, missing)
 <span class="co"># drop species with NAs for max depth</span>
-depth &lt;- depths[,<span class="dv">2</span>]
+depth &lt;-<span class="st"> </span>depths[,<span class="dv">2</span>]
 missing&lt;-<span class="kw">names</span>(depth[<span class="kw">is.na</span>(depth)])
-tr&lt;- <span class="kw">drop.tip</span>(tr, missing)
+tr&lt;-<span class="st"> </span><span class="kw">drop.tip</span>(tr, missing)
 <span class="co"># repeat for NAs for length</span>
 missing&lt;-<span class="kw">names</span>(size[<span class="kw">is.na</span>(size)])
-tr&lt;- <span class="kw">drop.tip</span>(tr, missing)
+tr&lt;-<span class="st"> </span><span class="kw">drop.tip</span>(tr, missing)
 
 <span class="co"># drop all the data not in the tree </span>
-pruned.names &lt;- tr$tip.label
-size &lt;- size[pruned.names]
-depth &lt;- depth[pruned.names]
+pruned.names &lt;-<span class="st"> </span>tr$tip.label
+size &lt;-<span class="st"> </span>size[pruned.names]
+depth &lt;-<span class="st"> </span>depth[pruned.names]
 
 <span class="co"># Does depth correlate with size after correcting for phylogeny?</span>
-x &lt;- <span class="kw">pic</span>(size, tr)
-y &lt;- <span class="kw">pic</span>(depth, tr)
+x &lt;-<span class="st"> </span><span class="kw">pic</span>(size, tr)
+y &lt;-<span class="st"> </span><span class="kw">pic</span>(depth, tr)
 <span class="kw">summary</span>(<span class="kw">lm</span>(y~x<span class="dv">-1</span>)) <span class="co"># Yes</span>
 
 
 <span class="kw">require</span>(geiger)
-bm &lt;- <span class="kw">fitContinuous</span>(tr, depth, <span class="dt">model=</span><span class="st">&quot;BM&quot;</span>)
-ou &lt;- <span class="kw">fitContinuous</span>(tr, depth, <span class="dt">model=</span><span class="st">&quot;OU&quot;</span>)
+bm &lt;-<span class="st"> </span><span class="kw">fitContinuous</span>(tr, depth, <span class="dt">model=</span><span class="st">&quot;BM&quot;</span>)
+ou &lt;-<span class="st"> </span><span class="kw">fitContinuous</span>(tr, depth, <span class="dt">model=</span><span class="st">&quot;OU&quot;</span>)
 
 
-invert &lt;- <span class="kw">sapply</span>(fish.data, function(x) <span class="kw">length</span>(<span class="kw">grep</span>(<span class="st">&quot;invertebrate&quot;</span>, x$trophic))&gt;<span class="dv">0</span>)
-piscivore &lt;- <span class="kw">sapply</span>(fish.data, function(x) <span class="kw">length</span>(<span class="kw">grep</span>(<span class="st">&quot;(piscivore|fish)&quot;</span>, x$trophic))&gt;<span class="dv">0</span>)
+invert &lt;-<span class="st"> </span><span class="kw">sapply</span>(fish.data, function(x) <span class="kw">length</span>(<span class="kw">grep</span>(<span class="st">&quot;invertebrate&quot;</span>, x$trophic))&gt;<span class="dv">0</span>)
+piscivore &lt;-<span class="st"> </span><span class="kw">sapply</span>(fish.data, function(x) <span class="kw">length</span>(<span class="kw">grep</span>(<span class="st">&quot;(piscivore|fish)&quot;</span>, x$trophic))&gt;<span class="dv">0</span>)
 <span class="kw">hist</span>(<span class="kw">log</span>( <span class="kw">getSize</span> (fish.data[invert], <span class="st">&quot;length&quot;</span>)),
          <span class="dt">col=</span><span class="kw">rgb</span>(<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,.<span class="dv">5</span>), <span class="dt">breaks=</span><span class="dv">40</span>, <span class="dt">freq=</span>F, <span class="dt">xlab=</span><span class="st">&quot;length&quot;</span>, <span class="dt">main=</span><span class="st">&quot;invert eaters vs piscivores&quot;</span>)
 <span class="kw">hist</span>(<span class="kw">log</span>( <span class="kw">getSize</span> (fish.data[piscivore], <span class="st">&quot;length&quot;</span>)),
@@ -319,7 +319,7 @@ piscivore &lt;- <span class="kw">sapply</span>(fish.data, function(x) <span clas
 
   <br/>
 
-   <p style="font-style:italic"> <i class="icon-signal"></i> pageviews: 134</p>
+   <p style="font-style:italic"> <i class="icon-signal"></i> pageviews: 135</p>
 
   <br/>
 

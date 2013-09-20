@@ -155,21 +155,21 @@ Revisited. _Ieee Intelligent Systems_, *21*, pp. 96-101. ISSN
 <span class="kw">library</span>(wordcloud)
 <span class="kw">library</span>(RColorBrewer)</code></pre>
 <p>We can get a list of pages to download from the sitemap</p>
-<pre class="sourceCode r"><code class="sourceCode r">pagelist &lt;- <span class="kw">readLines</span>(<span class="st">&quot;http://carlboettiger.info/sitemap.txt&quot;</span>)
-pagelist &lt;- pagelist[<span class="kw">grep</span>(<span class="st">&quot;/201</span><span class="ch">\\</span><span class="st">d/&quot;</span>, pagelist)]  <span class="co"># drop non-posts)</span>
-pages &lt;- <span class="kw">lapply</span>(pagelist, getURLContent, <span class="dt">followlocation =</span> <span class="ot">TRUE</span>)</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">pagelist &lt;-<span class="st"> </span><span class="kw">readLines</span>(<span class="st">&quot;http://carlboettiger.info/sitemap.txt&quot;</span>)
+pagelist &lt;-<span class="st"> </span>pagelist[<span class="kw">grep</span>(<span class="st">&quot;/201</span><span class="ch">\\</span><span class="st">d/&quot;</span>, pagelist)]  <span class="co"># drop non-posts)</span>
+pages &lt;-<span class="st"> </span><span class="kw">lapply</span>(pagelist, getURLContent, <span class="dt">followlocation =</span> <span class="ot">TRUE</span>)</code></pre>
 <p>Or, if an archive is available locally, (e.g. from figshare cache), we can read the files in directly.</p>
-<pre class="sourceCode r"><code class="sourceCode r">pages &lt;- <span class="kw">system</span>(<span class="st">&quot;ls ~/Documents/labnotebook/_site/2***/*/*/*.html&quot;</span>, 
+<pre class="sourceCode r"><code class="sourceCode r">pages &lt;-<span class="st"> </span><span class="kw">system</span>(<span class="st">&quot;ls ~/Documents/labnotebook/_site/2***/*/*/*.html&quot;</span>, 
     <span class="dt">intern =</span> <span class="ot">TRUE</span>)</code></pre>
 <p>We parse each of the pages as HTML so that we can manipulate them with XML tools</p>
-<pre class="sourceCode r"><code class="sourceCode r">html &lt;- <span class="kw">lapply</span>(pages, htmlParse)</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">html &lt;-<span class="st"> </span><span class="kw">lapply</span>(pages, htmlParse)</code></pre>
 <p>For instance, we can easily get the content of all entries:</p>
-<pre class="sourceCode r"><code class="sourceCode r">text &lt;- <span class="kw">sapply</span>(html, xpathSApply, <span class="st">&quot;//article&quot;</span>, xmlValue)</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">text &lt;-<span class="st"> </span><span class="kw">sapply</span>(html, xpathSApply, <span class="st">&quot;//article&quot;</span>, xmlValue)</code></pre>
 <p>We can also extract metadata based on the semantic markup.</p>
-<pre class="sourceCode r"><code class="sourceCode r">titles &lt;- <span class="kw">sapply</span>(html, xpathSApply, <span class="st">&quot;//title&quot;</span>, xmlValue)
-categories &lt;- <span class="kw">sapply</span>(html, xpathSApply, <span class="st">&quot;//node()[@class=&#39;category&#39;]&quot;</span>, 
+<pre class="sourceCode r"><code class="sourceCode r">titles &lt;-<span class="st"> </span><span class="kw">sapply</span>(html, xpathSApply, <span class="st">&quot;//title&quot;</span>, xmlValue)
+categories &lt;-<span class="st"> </span><span class="kw">sapply</span>(html, xpathSApply, <span class="st">&quot;//node()[@class=&#39;category&#39;]&quot;</span>, 
     xmlValue)
-tags &lt;- <span class="kw">sapply</span>(html, xpathSApply, <span class="st">&quot;//node()[@class=&#39;tag&#39;]&quot;</span>, xmlValue)</code></pre>
+tags &lt;-<span class="st"> </span><span class="kw">sapply</span>(html, xpathSApply, <span class="st">&quot;//node()[@class=&#39;tag&#39;]&quot;</span>, xmlValue)</code></pre>
 <p>R makes it easy to summarize this data, e.g. by generating a table of the number of entries in each category, or a wordcloud of the tags.</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">table</span>(<span class="kw">unlist</span>(categories))</code></pre>
 <pre><code>
@@ -182,9 +182,9 @@ tags &lt;- <span class="kw">sapply</span>(html, xpathSApply, <span class="st">&q
 <h3 id="extracting-citations">Extracting citations</h3>
 <p>Citation information can be encoded</p>
 <p>We can perform more direct text mining as well. For instance, we extract all DOIs found in the text:</p>
-<pre class="sourceCode r"><code class="sourceCode r">doi_pattern = <span class="st">&quot;</span><span class="ch">\\</span><span class="st">b(10[.][0-9]{4,}(?:[.][0-9]+)*/(?:(?![</span><span class="ch">\&quot;</span><span class="st">&amp;&#39;&lt;&gt;])</span><span class="ch">\\</span><span class="st">S)+)</span><span class="ch">\\</span><span class="st">b&quot;</span>
+<pre class="sourceCode r"><code class="sourceCode r">doi_pattern =<span class="st"> &quot;</span><span class="ch">\\</span><span class="st">b(10[.][0-9]{4,}(?:[.][0-9]+)*/(?:(?![</span><span class="ch">\&quot;</span><span class="st">&amp;&#39;&lt;&gt;])</span><span class="ch">\\</span><span class="st">S)+)</span><span class="ch">\\</span><span class="st">b&quot;</span>
 <span class="kw">require</span>(gsubfn)
-dois &lt;- <span class="kw">strapply</span>(text, doi_pattern, <span class="dt">perl =</span> <span class="ot">TRUE</span>)  <span class="co">#text[-462]</span>
+dois &lt;-<span class="st"> </span><span class="kw">strapply</span>(text, doi_pattern, <span class="dt">perl =</span> <span class="ot">TRUE</span>)  <span class="co">#text[-462]</span>
 <span class="kw">head</span>(<span class="kw">sort</span>(<span class="kw">table</span>(<span class="kw">unlist</span>(dois))))</code></pre>
 <pre><code>
 10.1002/(SICI)1520-6602(1998)1:1                 10.1002/bjs.6880 
@@ -195,15 +195,15 @@ dois &lt;- <span class="kw">strapply</span>(text, doi_pattern, <span class="dt">
                                1                                1 </code></pre>
 <p>Or generate a wordcloud of the full text</p>
 <pre class="sourceCode r"><code class="sourceCode r">
-carl &lt;- <span class="kw">Corpus</span>(<span class="kw">VectorSource</span>(text))
-carl &lt;- <span class="kw">tm_map</span>(carl, removePunctuation)
-carl &lt;- <span class="kw">tm_map</span>(carl, tolower)
-carl &lt;- <span class="kw">tm_map</span>(carl, function(x) <span class="kw">removeWords</span>(x, <span class="kw">stopwords</span>()))
+carl &lt;-<span class="st"> </span><span class="kw">Corpus</span>(<span class="kw">VectorSource</span>(text))
+carl &lt;-<span class="st"> </span><span class="kw">tm_map</span>(carl, removePunctuation)
+carl &lt;-<span class="st"> </span><span class="kw">tm_map</span>(carl, tolower)
+carl &lt;-<span class="st"> </span><span class="kw">tm_map</span>(carl, function(x) <span class="kw">removeWords</span>(x, <span class="kw">stopwords</span>()))
 
-carl.tdm &lt;- <span class="kw">TermDocumentMatrix</span>(carl)
-carl.m &lt;- <span class="kw">as.matrix</span>(carl.tdm)
-carl.v &lt;- <span class="kw">sort</span>(<span class="kw">rowSums</span>(carl.m), <span class="dt">decreasing =</span> <span class="ot">TRUE</span>)
-carl.d &lt;- <span class="kw">data.frame</span>(<span class="dt">word =</span> <span class="kw">names</span>(carl.v), <span class="dt">freq =</span> carl.v)
+carl.tdm &lt;-<span class="st"> </span><span class="kw">TermDocumentMatrix</span>(carl)
+carl.m &lt;-<span class="st"> </span><span class="kw">as.matrix</span>(carl.tdm)
+carl.v &lt;-<span class="st"> </span><span class="kw">sort</span>(<span class="kw">rowSums</span>(carl.m), <span class="dt">decreasing =</span> <span class="ot">TRUE</span>)
+carl.d &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">word =</span> <span class="kw">names</span>(carl.v), <span class="dt">freq =</span> carl.v)
 
 
 <span class="kw">wordcloud</span>(carl.d$word, carl.d$freq, <span class="dt">scale =</span> <span class="kw">c</span>(<span class="dv">8</span>, <span class="fl">0.4</span>), <span class="dt">min.freq =</span> <span class="dv">3</span>, 
@@ -217,7 +217,7 @@ carl.d &lt;- <span class="kw">data.frame</span>(<span class="dt">word =</span> <
 <p>RDFa is a way of adding these precise statements to HTML, again see the <a href="/2012/10/14/semantic-lab-notebook.html">earlier entry</a> on how this is done. The technically inclined will note that the namespaces of the RDFa itself are not accessible in the XML parsing we used above, since they do not correspond to nodes or attributes, but appear only in the values of attributes. Fortunately, there are many excellent tools to extract this RDFa data, turning it into the XML formatted RDF triples we need. e can perform this using the <a href="http://any23.org">Any23</a> API</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">download.file</span>(<span class="kw">paste</span>(<span class="st">&quot;http://any23.org/rdfxml&quot;</span>, <span class="st">&quot;http://carlboettiger.info&quot;</span>, 
     <span class="dt">sep =</span> <span class="st">&quot;/&quot;</span>), <span class="st">&quot;temp.xml&quot;</span>)
-doc &lt;- <span class="kw">xmlParse</span>(<span class="st">&quot;temp.xml&quot;</span>)</code></pre>
+doc &lt;-<span class="st"> </span><span class="kw">xmlParse</span>(<span class="st">&quot;temp.xml&quot;</span>)</code></pre>
 <p>Which creates a beautiful RDF XML file of all linked data found in the entry.</p>
 <pre class="sourceCode r"><code class="sourceCode r">doc</code></pre>
 <pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
@@ -366,7 +366,7 @@ doc &lt;- <span class="kw">xmlParse</span>(<span class="st">&quot;temp.xml&quot;
 
   <br/>
 
-   <p style="font-style:italic"> <i class="icon-signal"></i> pageviews: 112</p>
+   <p style="font-style:italic"> <i class="icon-signal"></i> pageviews: 113</p>
 
   <br/>
 

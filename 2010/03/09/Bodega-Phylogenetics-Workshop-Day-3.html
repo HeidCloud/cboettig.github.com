@@ -203,7 +203,7 @@
 </ul>
 <h2 id="research-progress">Research Progress</h2>
 <ul>
-<li>Figuring out strange behavior in ouch. the value kept at model@alpha is actually the <a href="http://en.wikipedia.org/wiki/Cholesky_decomposition" title="http://en.wikipedia.org/wiki/Cholesky_decomposition">Cholesky decomposition</a> of the alpha matrix, just as the values of sigma are the Cholesky decomposition of the σ<sup>2</sup> matrix. This seems like a strange convention, surely the user would rather specify the matrices as full matrices and let the software do the decomposition? Because this decomposes matrix <em>M</em> into <em>M</em> = <em>LL</em><sup><em>T</em></sup>, for single trait value alpha is a scalar and this is the square root. sym.par() function in ouch is often called in the source to assemble M from the decomposition…</li>
+<li>Figuring out strange behavior in ouch. the value kept at model@alpha is actually the <a href="http://en.wikipedia.org/wiki/Cholesky_decomposition" title="http://en.wikipedia.org/wiki/Cholesky_decomposition">Cholesky decomposition</a> of the alpha matrix, just as the values of sigma are the Cholesky decomposition of the σ<sup>2</sup> matrix. This seems like a strange convention, surely the user would rather specify the matrices as full matrices and let the software do the decomposition? Because this decomposes matrix <em>M</em> into <em>M</em> = *L**L*<sup><em>T</em></sup>, for single trait value alpha is a scalar and this is the square root. sym.par() function in ouch is often called in the source to assemble M from the decomposition…</li>
 </ul>
 <p><br /></p>
 

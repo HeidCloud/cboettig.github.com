@@ -150,51 +150,51 @@
 <h1 id="learning-admb">Learning ADMB</h1>
 <p>Plotting and knitr options, (can generally be ignored)</p>
 <h3 id="model-and-parameters">Model and parameters</h3>
-<pre class="sourceCode r"><code class="sourceCode r">f &lt;- function(x,h,p)  x * <span class="kw">exp</span>(p[<span class="dv">1</span>] * (<span class="dv">1</span> - x / p[<span class="dv">2</span>]) * (x - p[<span class="dv">3</span>]) / p[<span class="dv">2</span>] ) 
-p &lt;- <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">10</span>, <span class="dv">5</span>)
-K &lt;- <span class="dv">10</span>  <span class="co"># approx, a li&#39;l&#39; less</span>
-Xo &lt;- <span class="dv">6</span> <span class="co"># approx, a li&#39;l&#39; less</span></code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">f &lt;-<span class="st"> </span>function(x,h,p)  x *<span class="st"> </span><span class="kw">exp</span>(p[<span class="dv">1</span>] *<span class="st"> </span>(<span class="dv">1</span> -<span class="st"> </span>x /<span class="st"> </span>p[<span class="dv">2</span>]) *<span class="st"> </span>(x -<span class="st"> </span>p[<span class="dv">3</span>]) /<span class="st"> </span>p[<span class="dv">2</span>] ) 
+p &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">10</span>, <span class="dv">5</span>)
+K &lt;-<span class="st"> </span><span class="dv">10</span>  <span class="co"># approx, a li&#39;l&#39; less</span>
+Xo &lt;-<span class="st"> </span><span class="dv">6</span> <span class="co"># approx, a li&#39;l&#39; less</span></code></pre>
 <p>Various parameters defining noise dynamics, grid, and policy costs.</p>
-<pre class="sourceCode r"><code class="sourceCode r">sigma_g &lt;- <span class="fl">0.1</span>
-z_g &lt;- function() <span class="kw">rlnorm</span>(<span class="dv">1</span>,<span class="dv">0</span>, sigma_g)
-x_grid &lt;- <span class="kw">seq</span>(<span class="dv">0</span>, <span class="fl">1.5</span> * K, <span class="dt">length=</span><span class="dv">50</span>)
-Tobs &lt;- <span class="dv">40</span>
+<pre class="sourceCode r"><code class="sourceCode r">sigma_g &lt;-<span class="st"> </span><span class="fl">0.1</span>
+z_g &lt;-<span class="st"> </span>function() <span class="kw">rlnorm</span>(<span class="dv">1</span>,<span class="dv">0</span>, sigma_g)
+x_grid &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">0</span>, <span class="fl">1.5</span> *<span class="st"> </span>K, <span class="dt">length=</span><span class="dv">50</span>)
+Tobs &lt;-<span class="st"> </span><span class="dv">40</span>
 <span class="kw">set.seed</span>(<span class="dv">123</span>)</code></pre>
 <h3 id="sample-data">Sample Data</h3>
-<pre class="sourceCode r"><code class="sourceCode r">x &lt;- <span class="kw">numeric</span>(Tobs)
-x[<span class="dv">1</span>] &lt;- Xo
+<pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">numeric</span>(Tobs)
+x[<span class="dv">1</span>] &lt;-<span class="st"> </span>Xo
 for(t in <span class="dv">1</span>:(Tobs<span class="dv">-1</span>))
-  x[t<span class="dv">+1</span>] = <span class="kw">z_g</span>() * <span class="kw">f</span>(x[t], <span class="dt">h=</span><span class="dv">0</span>, <span class="dt">p=</span>p)
+  x[t<span class="dv">+1</span>] =<span class="st"> </span><span class="kw">z_g</span>() *<span class="st"> </span><span class="kw">f</span>(x[t], <span class="dt">h=</span><span class="dv">0</span>, <span class="dt">p=</span>p)
 <span class="kw">qplot</span>(<span class="dv">1</span>:Tobs, x)</code></pre>
 <figure>
 <img src="http://farm3.staticflickr.com/2807/8956942302_0d7d47ea49_o.png" alt="plot of chunk obs" /><figcaption>plot of chunk obs</figcaption>
 </figure>
 <h2 id="maximum-likelihood-by-hand">Maximum Likelihood “by hand”</h2>
-<pre class="sourceCode r"><code class="sourceCode r">STABLIZE = <span class="fl">1e-10</span>
-n = <span class="kw">length</span>(x)
-mloglik &lt;- function(pars){ 
-  r = pars[<span class="dv">1</span>]; k = pars[<span class="dv">2</span>]; c = pars[<span class="dv">3</span>]; s = pars[<span class="dv">4</span>];
-  mu = (x+STABLIZE) * <span class="kw">exp</span>( r * (<span class="dv">1</span> - x / (k+STABLIZE)) * (x - c) / (k + STABLIZE));
-  mu = <span class="kw">pmin</span>(<span class="fl">1e100</span>, mu) <span class="co"># avoid infinite values </span>
-  f = <span class="fl">0.5</span> * n * <span class="kw">log</span>(<span class="dv">2</span> * pi) + n * <span class="kw">log</span>(s + STABLIZE) + <span class="fl">0.5</span> * <span class="kw">sum</span>(x - mu + STABLIZE)^<span class="dv">2</span>/ (s + STABLIZE)^<span class="dv">2</span>;
+<pre class="sourceCode r"><code class="sourceCode r">STABLIZE =<span class="st"> </span><span class="fl">1e-10</span>
+n =<span class="st"> </span><span class="kw">length</span>(x)
+mloglik &lt;-<span class="st"> </span>function(pars){ 
+  r =<span class="st"> </span>pars[<span class="dv">1</span>]; k =<span class="st"> </span>pars[<span class="dv">2</span>]; c =<span class="st"> </span>pars[<span class="dv">3</span>]; s =<span class="st"> </span>pars[<span class="dv">4</span>];
+  mu =<span class="st"> </span>(x+STABLIZE) *<span class="st"> </span><span class="kw">exp</span>( r *<span class="st"> </span>(<span class="dv">1</span> -<span class="st"> </span>x /<span class="st"> </span>(k+STABLIZE)) *<span class="st"> </span>(x -<span class="st"> </span>c) /<span class="st"> </span>(k +<span class="st"> </span>STABLIZE));
+  mu =<span class="st"> </span><span class="kw">pmin</span>(<span class="fl">1e100</span>, mu) <span class="co"># avoid infinite values </span>
+  f =<span class="st"> </span><span class="fl">0.5</span> *<span class="st"> </span>n *<span class="st"> </span><span class="kw">log</span>(<span class="dv">2</span> *<span class="st"> </span>pi) +<span class="st"> </span>n *<span class="st"> </span><span class="kw">log</span>(s +<span class="st"> </span>STABLIZE) +<span class="st"> </span><span class="fl">0.5</span> *<span class="st"> </span><span class="kw">sum</span>(x -<span class="st"> </span>mu +<span class="st"> </span>STABLIZE)^<span class="dv">2</span>/<span class="st"> </span>(s +<span class="st"> </span>STABLIZE)^<span class="dv">2</span>;
 
   f
   }</code></pre>
 <p>Starting from the true values we mostly just shrink the noise parameter:</p>
-<pre class="sourceCode r"><code class="sourceCode r">init &lt;- <span class="kw">c</span>(p, sigma_g)
+<pre class="sourceCode r"><code class="sourceCode r">init &lt;-<span class="st"> </span><span class="kw">c</span>(p, sigma_g)
 <span class="kw">mloglik</span>(init) <span class="co">#true minus loglik</span></code></pre>
 <pre><code>[1] -35.72</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r">o &lt;- <span class="kw">optim</span>(init, mloglik, <span class="dt">method=</span><span class="st">&quot;L&quot;</span>, <span class="dt">lower=</span><span class="fl">1e-5</span>, <span class="dt">upper=</span><span class="fl">1e5</span>)
+<pre class="sourceCode r"><code class="sourceCode r">o &lt;-<span class="st"> </span><span class="kw">optim</span>(init, mloglik, <span class="dt">method=</span><span class="st">&quot;L&quot;</span>, <span class="dt">lower=</span><span class="fl">1e-5</span>, <span class="dt">upper=</span><span class="fl">1e5</span>)
 o$value</code></pre>
 <pre><code>[1] -247.6</code></pre>
 <pre class="sourceCode r"><code class="sourceCode r">o$par</code></pre>
 <pre><code>[1] 0.9967297 9.9813554 5.1742699 0.0008183</code></pre>
 <p>While starting from arbitrary values we still find the optim.</p>
-<pre class="sourceCode r"><code class="sourceCode r">init &lt;- <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>)  
-init &lt;- <span class="kw">c</span>(p, sigma_g)
+<pre class="sourceCode r"><code class="sourceCode r">init &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>)  
+init &lt;-<span class="st"> </span><span class="kw">c</span>(p, sigma_g)
 <span class="kw">mloglik</span>(init) <span class="co">#true minus loglik</span></code></pre>
 <pre><code>[1] -35.72</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r">o &lt;- <span class="kw">optim</span>(init, mloglik, <span class="dt">method=</span><span class="st">&quot;L&quot;</span>, <span class="dt">lower=</span><span class="fl">1e-5</span>, <span class="dt">upper=</span><span class="fl">1e5</span>)
+<pre class="sourceCode r"><code class="sourceCode r">o &lt;-<span class="st"> </span><span class="kw">optim</span>(init, mloglik, <span class="dt">method=</span><span class="st">&quot;L&quot;</span>, <span class="dt">lower=</span><span class="fl">1e-5</span>, <span class="dt">upper=</span><span class="fl">1e5</span>)
 o$value</code></pre>
 <pre><code>[1] -247.6</code></pre>
 <pre class="sourceCode r"><code class="sourceCode r">o$par</code></pre>
@@ -205,7 +205,7 @@ o$value</code></pre>
 <h2 id="admb-definition">ADMB definition</h2>
 <p>We still need to define the model using ADMB notation in the procedure section. This is mostly like R or C++, with the exception of special functions like <code>square</code> in place of <code>^2</code>, <code>norm2</code> for the sum of squares, and <code>elem_prod</code> istead of <code>*</code> for the element-wise product of two arrays. The constant <code>pi</code> is given as <code>M_PI</code>, as typical of C/C++ libraries. Where these other functions are defined I’m not sure, but some useful guides to <a href="http://fish.washington.edu/research/MPAM/resources/ADMB_Minte-Vera.pdf">ADMB vector/matrix operations</a> or an (undefined) list of <a href="http://www.admb-project.org/developers/contribute-documentation/functions/keywords.txt/view">keywords</a>…</p>
 <p>The equivalent model</p>
-<pre class="sourceCode r"><code class="sourceCode r">model &lt;- 
+<pre class="sourceCode r"><code class="sourceCode r">model &lt;-<span class="st"> </span>
 <span class="kw">paste</span>(<span class="st">&quot;</span>
 <span class="st">PARAMETER_SECTION</span>
 <span class="st">  vector mu(1,n) // per capita mort prob</span>
@@ -219,11 +219,11 @@ o$value</code></pre>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">setup_admb</span>(<span class="st">&quot;/var/admb&quot;</span>)</code></pre>
 <pre><code>[1] &quot;/var/admb&quot;</code></pre>
 <pre class="sourceCode r"><code class="sourceCode r">
-df &lt;- <span class="kw">data.frame</span>(<span class="dt">x=</span>x)
-params &lt;- <span class="kw">list</span>(<span class="dt">r =</span> <span class="dv">1</span>, <span class="dt">k =</span> <span class="dv">1</span>, <span class="dt">c =</span> <span class="dv">1</span>, <span class="dt">s =</span> <span class="dv">1</span>) ## starting parameters
-bounds &lt;- <span class="kw">list</span>(<span class="dt">r =</span> <span class="kw">c</span>(<span class="fl">1e-10</span>, <span class="fl">1e3</span>), <span class="dt">k=</span><span class="kw">c</span>(<span class="fl">1e-10</span>, <span class="fl">1e3</span>), <span class="dt">c=</span><span class="kw">c</span>(<span class="fl">1e-10</span>, <span class="fl">1e3</span>), <span class="dt">s =</span> <span class="kw">c</span>(<span class="fl">1e-5</span>,<span class="fl">1e3</span>)) ## bounds
-dat &lt;- <span class="kw">c</span>(<span class="kw">list</span>(<span class="dt">n =</span> <span class="kw">nrow</span>(df)), df)
-m1 &lt;- <span class="kw">do_admb</span>(<span class="st">&quot;model&quot;</span>,
+df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">x=</span>x)
+params &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">r =</span> <span class="dv">1</span>, <span class="dt">k =</span> <span class="dv">1</span>, <span class="dt">c =</span> <span class="dv">1</span>, <span class="dt">s =</span> <span class="dv">1</span>) ## starting parameters
+bounds &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">r =</span> <span class="kw">c</span>(<span class="fl">1e-10</span>, <span class="fl">1e3</span>), <span class="dt">k=</span><span class="kw">c</span>(<span class="fl">1e-10</span>, <span class="fl">1e3</span>), <span class="dt">c=</span><span class="kw">c</span>(<span class="fl">1e-10</span>, <span class="fl">1e3</span>), <span class="dt">s =</span> <span class="kw">c</span>(<span class="fl">1e-5</span>,<span class="fl">1e3</span>)) ## bounds
+dat &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">list</span>(<span class="dt">n =</span> <span class="kw">nrow</span>(df)), df)
+m1 &lt;-<span class="st"> </span><span class="kw">do_admb</span>(<span class="st">&quot;model&quot;</span>,
               <span class="dt">data =</span> dat,
               <span class="dt">params =</span> params,
               <span class="dt">bounds =</span> bounds,
@@ -236,9 +236,9 @@ Coefficients:
      r      k      c      s 
 0.9992 1.0023 1.0004 9.4369 </code></pre>
 <p>But does fine with good starting values. Hmm.. thought that was supposed to be the other way around…</p>
-<pre class="sourceCode r"><code class="sourceCode r">params &lt;- <span class="kw">list</span>(<span class="dt">r =</span> <span class="dv">1</span>, <span class="dt">k =</span> <span class="dv">10</span>, <span class="dt">c =</span> <span class="dv">5</span>, <span class="dt">s =</span> .<span class="dv">1</span>) ## starting parameters
+<pre class="sourceCode r"><code class="sourceCode r">params &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">r =</span> <span class="dv">1</span>, <span class="dt">k =</span> <span class="dv">10</span>, <span class="dt">c =</span> <span class="dv">5</span>, <span class="dt">s =</span> .<span class="dv">1</span>) ## starting parameters
 
-m1 &lt;- <span class="kw">do_admb</span>(<span class="st">&quot;model&quot;</span>,
+m1 &lt;-<span class="st"> </span><span class="kw">do_admb</span>(<span class="st">&quot;model&quot;</span>,
               <span class="dt">data =</span> dat,
               <span class="dt">params =</span> params,
               <span class="dt">bounds =</span> bounds,
@@ -309,7 +309,7 @@ Coefficients:
 
   <br/>
 
-   <p style="font-style:italic"> <i class="icon-signal"></i> pageviews: 63</p>
+   <p style="font-style:italic"> <i class="icon-signal"></i> pageviews: 65</p>
 
   <br/>
 

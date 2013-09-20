@@ -150,51 +150,51 @@
 <p>[code] Loading required package: populationdynamics</p>
 <p>```</p>
 <pre class="sourceCode R"><code class="sourceCode r">
-pars = <span class="kw">c</span>(<span class="dt">Xo =</span> <span class="dv">730</span>, <span class="dt">e =</span> <span class="fl">0.5</span>, <span class="dt">a =</span> <span class="dv">100</span>, <span class="dt">K =</span> <span class="dv">1000</span>, 
+pars =<span class="st"> </span><span class="kw">c</span>(<span class="dt">Xo =</span> <span class="dv">730</span>, <span class="dt">e =</span> <span class="fl">0.5</span>, <span class="dt">a =</span> <span class="dv">100</span>, <span class="dt">K =</span> <span class="dv">1000</span>, 
     <span class="dt">h =</span> <span class="dv">200</span>, <span class="dt">i =</span> <span class="dv">0</span>, <span class="dt">Da =</span> <span class="fl">0.09</span>, <span class="dt">Dt =</span> <span class="dv">0</span>, <span class="dt">p =</span> <span class="dv">2</span>)
-time = <span class="kw">seq</span>(<span class="dv">0</span>, <span class="dv">500</span>, <span class="dt">length =</span> <span class="dv">500</span>)
-sn &lt;- <span class="kw">saddle_node_ibm</span>(pars, time)
-X &lt;- <span class="kw">data.frame</span>(<span class="dt">time =</span> time, <span class="dt">value =</span> sn$x1)</code></pre>
+time =<span class="st"> </span><span class="kw">seq</span>(<span class="dv">0</span>, <span class="dv">500</span>, <span class="dt">length =</span> <span class="dv">500</span>)
+sn &lt;-<span class="st"> </span><span class="kw">saddle_node_ibm</span>(pars, time)
+X &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">time =</span> time, <span class="dt">value =</span> sn$x1)</code></pre>
 <p>compute the observed value:</p>
 <pre class="sourceCode R"><code class="sourceCode r">
 <span class="kw">require</span>(earlywarning)</code></pre>
 <p>[code] Loading required package: earlywarning</p>
 <p>```</p>
 <pre class="sourceCode R"><code class="sourceCode r">
-observed &lt;- <span class="kw">warningtrend</span>(X, window_autocorr)</code></pre>
+observed &lt;-<span class="st"> </span><span class="kw">warningtrend</span>(X, window_autocorr)</code></pre>
 <p>fit the models</p>
 <p>$ dX = (- X) dt + dB_t $</p>
 <p>$ dX = <em>t (- X) dt + (</em>t+) dB_t $</p>
 <pre class="sourceCode R"><code class="sourceCode r">
-A &lt;- <span class="kw">stability_model</span>(X, <span class="st">&quot;OU&quot;</span>)
-B &lt;- <span class="kw">stability_model</span>(X, <span class="st">&quot;LSN&quot;</span>)</code></pre>
+A &lt;-<span class="st"> </span><span class="kw">stability_model</span>(X, <span class="st">&quot;OU&quot;</span>)
+B &lt;-<span class="st"> </span><span class="kw">stability_model</span>(X, <span class="st">&quot;LSN&quot;</span>)</code></pre>
 <p>simulate some replicates</p>
 <pre class="sourceCode R"><code class="sourceCode r">
-reps &lt;- <span class="dv">100</span>
-Asim &lt;- <span class="kw">simulate</span>(A, reps)
-Bsim &lt;- <span class="kw">simulate</span>(B, reps)</code></pre>
+reps &lt;-<span class="st"> </span><span class="dv">100</span>
+Asim &lt;-<span class="st"> </span><span class="kw">simulate</span>(A, reps)
+Bsim &lt;-<span class="st"> </span><span class="kw">simulate</span>(B, reps)</code></pre>
 <p>tidy up the data a bit</p>
 <pre class="sourceCode R"><code class="sourceCode r">
 <span class="kw">require</span>(reshape2)</code></pre>
 <pre class="sourceCode R"><code class="sourceCode r">
-Asim &lt;- <span class="kw">melt</span>(Asim, <span class="dt">id =</span> <span class="st">&quot;time&quot;</span>)
-Bsim &lt;- <span class="kw">melt</span>(Bsim, <span class="dt">id =</span> <span class="st">&quot;time&quot;</span>)
-<span class="kw">names</span>(Asim)[<span class="dv">2</span>] &lt;- <span class="st">&quot;rep&quot;</span>
-<span class="kw">names</span>(Bsim)[<span class="dv">2</span>] &lt;- <span class="st">&quot;rep&quot;</span></code></pre>
+Asim &lt;-<span class="st"> </span><span class="kw">melt</span>(Asim, <span class="dt">id =</span> <span class="st">&quot;time&quot;</span>)
+Bsim &lt;-<span class="st"> </span><span class="kw">melt</span>(Bsim, <span class="dt">id =</span> <span class="st">&quot;time&quot;</span>)
+<span class="kw">names</span>(Asim)[<span class="dv">2</span>] &lt;-<span class="st"> &quot;rep&quot;</span>
+<span class="kw">names</span>(Bsim)[<span class="dv">2</span>] &lt;-<span class="st"> &quot;rep&quot;</span></code></pre>
 <p>Apply the <code>warningtrend</code> <code>window_autocorr</code> to each replicate</p>
 <pre class="sourceCode R"><code class="sourceCode r">
 <span class="kw">require</span>(plyr)</code></pre>
 <pre class="sourceCode R"><code class="sourceCode r">
-wsA &lt;- <span class="kw">ddply</span>(Asim, <span class="st">&quot;rep&quot;</span>, warningtrend, window_autocorr)
-wsB &lt;- <span class="kw">ddply</span>(Bsim, <span class="st">&quot;rep&quot;</span>, warningtrend, window_autocorr)</code></pre>
+wsA &lt;-<span class="st"> </span><span class="kw">ddply</span>(Asim, <span class="st">&quot;rep&quot;</span>, warningtrend, window_autocorr)
+wsB &lt;-<span class="st"> </span><span class="kw">ddply</span>(Bsim, <span class="st">&quot;rep&quot;</span>, warningtrend, window_autocorr)</code></pre>
 <p>And gather and plot the results</p>
 <pre class="sourceCode R"><code class="sourceCode r">
-tidy &lt;- <span class="kw">melt</span>(<span class="kw">data.frame</span>(<span class="dt">null =</span> wsA$tau, <span class="dt">test =</span> wsB$tau))</code></pre>
+tidy &lt;-<span class="st"> </span><span class="kw">melt</span>(<span class="kw">data.frame</span>(<span class="dt">null =</span> wsA$tau, <span class="dt">test =</span> wsB$tau))</code></pre>
 <pre class="sourceCode R"><code class="sourceCode r">
-<span class="kw">names</span>(tidy) &lt;- <span class="kw">c</span>(<span class="st">&quot;simulation&quot;</span>, <span class="st">&quot;value&quot;</span>)
+<span class="kw">names</span>(tidy) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;simulation&quot;</span>, <span class="st">&quot;value&quot;</span>)
 <span class="kw">require</span>(beanplot)</code></pre>
 <pre class="sourceCode R"><code class="sourceCode r">
-<span class="kw">beanplot</span>(value ~ simulation, tidy, <span class="dt">what =</span> <span class="kw">c</span>(<span class="dv">0</span>, 
+<span class="kw">beanplot</span>(value ~<span class="st"> </span>simulation, tidy, <span class="dt">what =</span> <span class="kw">c</span>(<span class="dv">0</span>, 
     <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>))
 <span class="kw">abline</span>(<span class="dt">h =</span> observed, <span class="dt">lty =</span> <span class="dv">2</span>)</code></pre>
 <figure>
@@ -203,11 +203,11 @@ tidy &lt;- <span class="kw">melt</span>(<span class="kw">data.frame</span>(<span
 <pre class="sourceCode R"><code class="sourceCode r">
 <span class="kw">require</span>(ggplot2)</code></pre>
 <pre class="sourceCode R"><code class="sourceCode r">
-roc &lt;- <span class="kw">roc_data</span>(tidy)</code></pre>
+roc &lt;-<span class="st"> </span><span class="kw">roc_data</span>(tidy)</code></pre>
 <p>[code] Area Under Curve = 0.819680311103255 True positive rate = 0.33 at false positive rate of 0.05</p>
 <p>```</p>
 <pre class="sourceCode R"><code class="sourceCode r">
-<span class="kw">ggplot</span>(roc) + <span class="kw">geom_line</span>(<span class="kw">aes</span>(False.positives, True.positives), 
+<span class="kw">ggplot</span>(roc) +<span class="st"> </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(False.positives, True.positives), 
     <span class="dt">lwd =</span> <span class="dv">1</span>)</code></pre>
 <figure>
 <img src="https://github.com/cboettig/earlywarning/wiki/roc.png" alt="plot of chunk roc" /><figcaption>plot of chunk roc</figcaption>
@@ -218,9 +218,9 @@ roc &lt;- <span class="kw">roc_data</span>(tidy)</code></pre>
 <span class="kw">require</span>(doMC)</code></pre>
 <pre class="sourceCode R"><code class="sourceCode r">
 <span class="kw">registerDoMC</span>()
-wsA &lt;- <span class="kw">ddply</span>(Asim, <span class="st">&quot;rep&quot;</span>, warningtrend, window_autocorr, 
+wsA &lt;-<span class="st"> </span><span class="kw">ddply</span>(Asim, <span class="st">&quot;rep&quot;</span>, warningtrend, window_autocorr, 
     <span class="dt">.parallel =</span> <span class="ot">TRUE</span>)
-wsB &lt;- <span class="kw">ddply</span>(Bsim, <span class="st">&quot;rep&quot;</span>, warningtrend, window_autocorr, 
+wsB &lt;-<span class="st"> </span><span class="kw">ddply</span>(Bsim, <span class="st">&quot;rep&quot;</span>, warningtrend, window_autocorr, 
     <span class="dt">.parallel =</span> <span class="ot">TRUE</span>)</code></pre>
 <p>Which works nicely (other than the progress indicator finishing early).</p>
 <p>In principle, this can be <a href="http://stackoverflow.com/questions/5559287/how-do-i-make-dosmp-play-nicely-with-plyr">parallelized over MPI</a> using <a href="http://www.numbertheory.nl/2011/11/14/parallelization-using-plyr-loading-objects-and-packages-into-worker-nodes/">an additional function</a>, seems to work:</p>
@@ -228,8 +228,8 @@ wsB &lt;- <span class="kw">ddply</span>(Bsim, <span class="st">&quot;rep&quot;</
 <span class="kw">library</span>(snow)
 <span class="kw">library</span>(doSNOW)
 <span class="kw">source</span>(<span class="st">&quot;../createCluster.R&quot;</span>)
-cl &lt;- <span class="kw">createCluster</span>(<span class="dv">4</span>, <span class="dt">export =</span> <span class="kw">ls</span>(), <span class="dt">lib =</span> <span class="kw">list</span>(<span class="st">&quot;earlywarning&quot;</span>))
-ws &lt;- <span class="kw">ddply</span>(Asim, <span class="st">&quot;rep&quot;</span>, warningtrend, window_autocorr, 
+cl &lt;-<span class="st"> </span><span class="kw">createCluster</span>(<span class="dv">4</span>, <span class="dt">export =</span> <span class="kw">ls</span>(), <span class="dt">lib =</span> <span class="kw">list</span>(<span class="st">&quot;earlywarning&quot;</span>))
+ws &lt;-<span class="st"> </span><span class="kw">ddply</span>(Asim, <span class="st">&quot;rep&quot;</span>, warningtrend, window_autocorr, 
     <span class="dt">.parallel =</span> <span class="ot">TRUE</span>)
 <span class="kw">stopCluster</span>(cl)
 <span class="kw">head</span>(ws)</code></pre>

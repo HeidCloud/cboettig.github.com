@@ -811,6 +811,9 @@ http://carlboettiger.info/wordpress/archives/4482/index.html
 http://carlboettiger.info/archives/4482/index.html 
 
  
+http://carlboettiger.info/2013/09/19/notes.html  
+http://carlboettiger.info/2013/09/18/notes.html  
+http://carlboettiger.info/2013/09/16/notes.html  
 http://carlboettiger.info/2013/09/11/extending-data-frame-class.html  
 http://carlboettiger.info/2013/09/11/ISEES-Workforce-Development-Day-2.html  
 http://carlboettiger.info/2013/09/10/ISEES-training-workshop-day-1.html  

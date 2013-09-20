@@ -183,7 +183,7 @@
 <li>Titles, people, dates, rest of citation information (via <code>dc:title</code>, <code>dc:contributor</code>, <code>prism:</code> or <code>fabio:</code> etc)</li>
 <li>attribute</li>
 </ul>
-<p>Would it be possible to create a XSLT stylesheet that one would apply to an EML file to produce corresponding RDF/XML file (that I could then amend to the original EML in an <code>additionalMetadata</code> element)? I see the value of having the semantic metadata embedded in a single file, but rather than merely implementing R code that says “when you write a <code>&lt;standardUnit&gt;Celsius</code> node, also write this <code>additionalMetadata</code> node, it seems logical to have a tool that could simply read EML and say,”hey, <code>&lt;standardUnit&gt;Celsius</code>, that’s an <code>&lt;RDF ...</code>&quot;. Perhaps similar mappings could be made for taxonomy (though might need to query ubio for the identifier etc and so be beyond the scope of XSLT)?</p>
+<p>Would it be possible to create a XSLT stylesheet that one would apply to an EML file to produce corresponding RDF/XML file (that I could then amend to the original EML in an <code>additionalMetadata</code> element)? I see the value of having the semantic metadata embedded in a single file, but rather than merely implementing R code that says “when you write a <code>&lt;standardUnit&gt;Celsius</code> node, also write this <code>additionalMetadata</code> node, it seems logical to have a tool that could simply read EML and say,”hey, <code>&lt;standardUnit&gt;Celsius</code>, that’s an <code>&lt;RDF ...</code>“. Perhaps similar mappings could be made for taxonomy (though might need to query ubio for the identifier etc and so be beyond the scope of XSLT)?</p>
 <p>Such an XSLT might also map things like <code>&lt;creator&gt;</code>, <code>&lt;title&gt;</code>, <code>&lt;intellectionalRights&gt;</code> etc to their ontological meanings too. Of course I don’t know anything about XSLT, and before we can programmatically combine spreadsheets, etc we really need to be adding custom semantics for all attributes, not just making RDFs of the things that are already defined…</p>
 <p>Whoops, we can get lost down the rabbit hole quickly here. e.g. Why not write all data to triples (e.g. see tools for <a href="http://www.w3.org/wiki/ConverterToRdf#CSV_.28Comma-Separated_Values.29">RDF from CSV</a>… (Longevity of RDF? Of any given XML schema?)</p>
 <ul>
@@ -247,7 +247,7 @@
 
   <br/>
 
-   <p style="font-style:italic"> <i class="icon-signal"></i> pageviews: 38</p>
+   <p style="font-style:italic"> <i class="icon-signal"></i> pageviews: 39</p>
 
   <br/>
 

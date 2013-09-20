@@ -143,64 +143,64 @@
 <div class="row">
   <div class="span7 offset1">
     <article>
-    <p>As discussed with Marc in yesterday’s meeting, it would be useful to compare the Gaussian process, as a nonparametric Bayesian estimate, to the optimal management solution under a <em>parametric</em> Bayesian case, e.g. with the correct underlying model. This is implemented in BUGS (jags) through the R interface as described in <span class="showtooltip" data-html="true" title="<p>Bolker B, Gardner B, Maunder M, Berg C, Brooks M, Comita L, Crone E, Cubaynes S, Davies T, de Valpine P, Ford J, Gimenez O, Kery M, Kim E, Lennert-Cody C, Magnusson A, Martell S, Nash J, Nielsen A, Regetz J, Skaug H and Zipkin E (2013). “Strategies For Fitting Nonlinear Ecological Models in R, ad Model Builder, And Bugs.” Methods in Ecology And Evolution, pp. n/a–n/a. .“&gt;<a href="http://dx.doi.org/10.1111/2041-210X.12044" rel="http://purl.org/spar/cito/usesMethodIn" >Bolker <em>et. al.</em> (2013)</a></span> , and follows the state-space model analysis along the lines outlined in <span class="showtooltip" data-html="true" title="<p>Pedersen M, Berg C, Thygesen U, Nielsen A and Madsen H (2011). “Estimation Methods For Nonlinear State-Space Models in Ecology.” Ecological Modelling, 222, pp. 1394–1400. ISSN 03043800.&quot;&gt;<a href="http://dx.doi.org/10.1016/j.ecolmodel.2011.01.007" rel="http://purl.org/spar/cito/usesMethodIn" >Pedersen <em>et. al.</em> (2011)</a></span> .</p>
+    <p>As discussed with Marc in yesterday’s meeting, it would be useful to compare the Gaussian process, as a nonparametric Bayesian estimate, to the optimal management solution under a <em>parametric</em> Bayesian case, e.g. with the correct underlying model. This is implemented in BUGS (jags) through the R interface as described in <span class="showtooltip" data-html="true" title="&lt;p&gt;Bolker B, Gardner B, Maunder M, Berg C, Brooks M, Comita L, Crone E, Cubaynes S, Davies T, de Valpine P, Ford J, Gimenez O, Kery M, Kim E, Lennert-Cody C, Magnusson A, Martell S, Nash J, Nielsen A, Regetz J, Skaug H and Zipkin E (2013). “Strategies For Fitting Nonlinear Ecological Models in R, ad Model Builder, And Bugs.” Methods in Ecology And Evolution, pp. n/a–n/a. .">Bolker B, Gardner B, Maunder M, Berg C, Brooks M, Comita L, Crone E, Cubaynes S, Davies T, de Valpine P, Ford J, Gimenez O, Kery M, Kim E, Lennert-Cody C, Magnusson A, Martell S, Nash J, Nielsen A, Regetz J, Skaug H and Zipkin E (2013). “Strategies For Fitting Nonlinear Ecological Models in R, ad Model Builder, And Bugs.” Methods in Ecology And Evolution, pp. n/a–n/a. .“&gt;<a href="http://dx.doi.org/10.1111/2041-210X.12044" rel="http://purl.org/spar/cito/usesMethodIn" >Bolker <em>et. al.</em> (2013)</a></span> , and follows the state-space model analysis along the lines outlined in <span class="showtooltip" data-html="true" title="<p>Pedersen M, Berg C, Thygesen U, Nielsen A and Madsen H (2011). “Estimation Methods For Nonlinear State-Space Models in Ecology.” Ecological Modelling, 222, pp. 1394–1400. ISSN 03043800.”&gt;<a href="http://dx.doi.org/10.1016/j.ecolmodel.2011.01.007" rel="http://purl.org/spar/cito/usesMethodIn" >Pedersen <em>et. al.</em> (2011)</a></span> .</p>
 <p>We base the estimate on the same simulated data as for the GP and MLE approaches,</p>
-<pre class="sourceCode r"><code class="sourceCode r">f &lt;- RickerAllee
-p &lt;- <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">10</span>, <span class="dv">5</span>)
-K &lt;- <span class="dv">10</span>
-allee &lt;- <span class="dv">5</span></code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">f &lt;-<span class="st"> </span>RickerAllee
+p &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">10</span>, <span class="dv">5</span>)
+K &lt;-<span class="st"> </span><span class="dv">10</span>
+allee &lt;-<span class="st"> </span><span class="dv">5</span></code></pre>
 <p>with the same parameters (many of which we won’t need until the SDP value iteration),</p>
-<pre class="sourceCode r"><code class="sourceCode r">sigma_g &lt;- <span class="fl">0.05</span>
-sigma_m &lt;- <span class="dv">0</span>
-z_g &lt;- function() <span class="kw">rlnorm</span>(<span class="dv">1</span>, <span class="dv">0</span>, sigma_g)
-z_m &lt;- function() <span class="dv">1</span> + (<span class="dv">2</span> * <span class="kw">runif</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>) - <span class="dv">1</span>) * sigma_m
-x_grid &lt;- <span class="kw">seq</span>(<span class="dv">0</span>, <span class="fl">1.5</span> * K, <span class="dt">length =</span> <span class="dv">101</span>)
-h_grid &lt;- x_grid
-profit &lt;- function(x, h) <span class="kw">pmin</span>(x, h)
-delta &lt;- <span class="fl">0.01</span>
-OptTime &lt;- <span class="dv">20</span>  <span class="co"># stationarity with unstable models is tricky thing</span>
-reward &lt;- <span class="dv">0</span>
-xT &lt;- <span class="dv">0</span>
-seed_i &lt;- <span class="dv">1</span>
-Xo &lt;- K  <span class="co"># observations start from</span>
-x0 &lt;- Xo  <span class="co"># simulation under policy starts from</span>
-Tobs &lt;- <span class="dv">35</span></code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">sigma_g &lt;-<span class="st"> </span><span class="fl">0.05</span>
+sigma_m &lt;-<span class="st"> </span><span class="dv">0</span>
+z_g &lt;-<span class="st"> </span>function() <span class="kw">rlnorm</span>(<span class="dv">1</span>, <span class="dv">0</span>, sigma_g)
+z_m &lt;-<span class="st"> </span>function() <span class="dv">1</span> +<span class="st"> </span>(<span class="dv">2</span> *<span class="st"> </span><span class="kw">runif</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>) -<span class="st"> </span><span class="dv">1</span>) *<span class="st"> </span>sigma_m
+x_grid &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">0</span>, <span class="fl">1.5</span> *<span class="st"> </span>K, <span class="dt">length =</span> <span class="dv">101</span>)
+h_grid &lt;-<span class="st"> </span>x_grid
+profit &lt;-<span class="st"> </span>function(x, h) <span class="kw">pmin</span>(x, h)
+delta &lt;-<span class="st"> </span><span class="fl">0.01</span>
+OptTime &lt;-<span class="st"> </span><span class="dv">20</span>  <span class="co"># stationarity with unstable models is tricky thing</span>
+reward &lt;-<span class="st"> </span><span class="dv">0</span>
+xT &lt;-<span class="st"> </span><span class="dv">0</span>
+seed_i &lt;-<span class="st"> </span><span class="dv">1</span>
+Xo &lt;-<span class="st"> </span>K  <span class="co"># observations start from</span>
+x0 &lt;-<span class="st"> </span>Xo  <span class="co"># simulation under policy starts from</span>
+Tobs &lt;-<span class="st"> </span><span class="dv">35</span></code></pre>
 <p>Generate the simulated data</p>
-<pre class="sourceCode r"><code class="sourceCode r">obs &lt;- <span class="kw">sim_obs</span>(Xo, z_g, f, p, <span class="dt">Tobs =</span> Tobs, <span class="dt">nz =</span> <span class="dv">1</span>, <span class="dt">harvest =</span> <span class="kw">sort</span>(<span class="kw">rep</span>(<span class="kw">seq</span>(<span class="dv">0</span>, 
+<pre class="sourceCode r"><code class="sourceCode r">obs &lt;-<span class="st"> </span><span class="kw">sim_obs</span>(Xo, z_g, f, p, <span class="dt">Tobs =</span> Tobs, <span class="dt">nz =</span> <span class="dv">1</span>, <span class="dt">harvest =</span> <span class="kw">sort</span>(<span class="kw">rep</span>(<span class="kw">seq</span>(<span class="dv">0</span>, 
     <span class="fl">0.5</span>, <span class="dt">length =</span> <span class="dv">7</span>), <span class="dv">5</span>)), <span class="dt">seed =</span> seed_i)</code></pre>
 <p>And fit the MLE models as before</p>
-<pre class="sourceCode r"><code class="sourceCode r">alt &lt;- <span class="kw">par_est</span>(obs, <span class="dt">init =</span> <span class="kw">c</span>(<span class="dt">r =</span> p[<span class="dv">1</span>], <span class="dt">K =</span> <span class="kw">mean</span>(obs$x[obs$x &gt; <span class="dv">0</span>]), 
+<pre class="sourceCode r"><code class="sourceCode r">alt &lt;-<span class="st"> </span><span class="kw">par_est</span>(obs, <span class="dt">init =</span> <span class="kw">c</span>(<span class="dt">r =</span> p[<span class="dv">1</span>], <span class="dt">K =</span> <span class="kw">mean</span>(obs$x[obs$x &gt;<span class="st"> </span><span class="dv">0</span>]), 
     <span class="dt">s =</span> sigma_g))
-est &lt;- <span class="kw">par_est_allee</span>(obs, f, p, <span class="dt">init =</span> <span class="kw">c</span>(<span class="dt">r =</span> p[<span class="dv">1</span>] + <span class="dv">1</span>, <span class="dt">K =</span> p[<span class="dv">2</span>] + 
-    <span class="dv">2</span>, <span class="dt">C =</span> p[<span class="dv">3</span>] + <span class="dv">2</span>, <span class="dt">s =</span> sigma_g))</code></pre>
+est &lt;-<span class="st"> </span><span class="kw">par_est_allee</span>(obs, f, p, <span class="dt">init =</span> <span class="kw">c</span>(<span class="dt">r =</span> p[<span class="dv">1</span>] +<span class="st"> </span><span class="dv">1</span>, <span class="dt">K =</span> p[<span class="dv">2</span>] +<span class="st"> </span>
+<span class="st">    </span><span class="dv">2</span>, <span class="dt">C =</span> p[<span class="dv">3</span>] +<span class="st"> </span><span class="dv">2</span>, <span class="dt">s =</span> sigma_g))</code></pre>
 <h2 id="parametric-bayesian-model-fit">Parametric Bayesian model fit</h2>
 <p>We will use the jags interface from R,</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(R2jags)</code></pre>
 <p>initialize parameters. The parametric equation (in this case, matching the true dynamics) and priors are defined <a href="https://github.com/cboettig/nonparametric-bayes/blob/795bf96ed92a708b44978610da7db3b49ebb4dce/inst/examples/BUGS/bugmodel-GammaPrior.txt">in BUGS notation in text file</a>.</p>
-<pre class="sourceCode r"><code class="sourceCode r">init_p = est$p
-<span class="kw">names</span>(init_p) = <span class="kw">c</span>(<span class="st">&quot;r0&quot;</span>, <span class="st">&quot;K&quot;</span>, <span class="st">&quot;theta&quot;</span>)
-y &lt;- obs$y[-<span class="dv">1</span>]
-N = <span class="kw">length</span>(y)</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r">jags.data &lt;- <span class="kw">list</span>(<span class="st">&quot;N&quot;</span>, <span class="st">&quot;y&quot;</span>)
-n.chains = <span class="dv">1</span>
-n.iter = <span class="dv">20000</span>
-n.burnin = <span class="kw">floor</span>(n.iter/<span class="dv">2</span>)
-n.thin = <span class="kw">max</span>(<span class="dv">1</span>, <span class="kw">floor</span>(n.chains * (n.iter - n.burnin)/<span class="dv">1000</span>))</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">init_p =<span class="st"> </span>est$p
+<span class="kw">names</span>(init_p) =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;r0&quot;</span>, <span class="st">&quot;K&quot;</span>, <span class="st">&quot;theta&quot;</span>)
+y &lt;-<span class="st"> </span>obs$y[-<span class="dv">1</span>]
+N =<span class="st"> </span><span class="kw">length</span>(y)</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">jags.data &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="st">&quot;N&quot;</span>, <span class="st">&quot;y&quot;</span>)
+n.chains =<span class="st"> </span><span class="dv">1</span>
+n.iter =<span class="st"> </span><span class="dv">20000</span>
+n.burnin =<span class="st"> </span><span class="kw">floor</span>(n.iter/<span class="dv">2</span>)
+n.thin =<span class="st"> </span><span class="kw">max</span>(<span class="dv">1</span>, <span class="kw">floor</span>(n.chains *<span class="st"> </span>(n.iter -<span class="st"> </span>n.burnin)/<span class="dv">1000</span>))</code></pre>
 <h2 id="jags-using-gamma-priors-on-precision">JAGS using gamma priors on precision</h2>
 <pre class="sourceCode r"><code class="sourceCode r">jags.params=<span class="kw">c</span>(<span class="st">&quot;K&quot;</span>,<span class="st">&quot;logr0&quot;</span>,<span class="st">&quot;logtheta&quot;</span>,<span class="st">&quot;iR&quot;</span>,<span class="st">&quot;iQ&quot;</span>); <span class="co"># Don&#39;t need to save &quot;x&quot;</span>
-jags.inits &lt;- function(){
+jags.inits &lt;-<span class="st"> </span>function(){
   <span class="kw">list</span>(<span class="st">&quot;K&quot;</span>=init_p[<span class="st">&quot;K&quot;</span>],<span class="st">&quot;logr0&quot;</span>=<span class="kw">log</span>(init_p[<span class="st">&quot;r0&quot;</span>]),<span class="st">&quot;logtheta&quot;</span>=<span class="kw">log</span>(init_p[<span class="st">&quot;theta&quot;</span>]),<span class="st">&quot;iQ&quot;</span>=<span class="dv">1</span>/<span class="fl">0.05</span>,<span class="st">&quot;iR&quot;</span>=<span class="dv">1</span>/<span class="fl">0.1</span>,<span class="st">&quot;x&quot;</span>=y,<span class="dt">.RNG.name=</span><span class="st">&quot;base::Wichmann-Hill&quot;</span>, <span class="dt">.RNG.seed=</span><span class="dv">123</span>)
 }
 <span class="kw">set.seed</span>(<span class="dv">12345</span>)
 time&lt;-<span class="kw">system.time</span>(       
-  jagsfit &lt;- <span class="kw">jags</span>(<span class="dt">data=</span>jags.data, <span class="dt">inits=</span>jags.inits, jags.params, <span class="dt">n.chains=</span>n.chains, 
+  jagsfit &lt;-<span class="st"> </span><span class="kw">jags</span>(<span class="dt">data=</span>jags.data, <span class="dt">inits=</span>jags.inits, jags.params, <span class="dt">n.chains=</span>n.chains, 
                   <span class="dt">n.iter=</span>n.iter, <span class="dt">n.thin=</span>n.thin, <span class="dt">n.burnin=</span>n.burnin,<span class="dt">model.file=</span><span class="st">&quot;bugmodel-GammaPrior.txt&quot;</span>)
 )         </code></pre>
-<pre class="sourceCode r"><code class="sourceCode r">time &lt;- <span class="kw">unname</span>(time[<span class="st">&quot;elapsed&quot;</span>]);</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">time &lt;-<span class="st"> </span><span class="kw">unname</span>(time[<span class="st">&quot;elapsed&quot;</span>]);</code></pre>
 <h2 id="summarize-the-results">Summarize the results</h2>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(emdbook)
 <span class="kw">library</span>(coda)
-tfit_jags_m &lt;- <span class="kw">as.mcmc.bugs</span>(jagsfit$BUGSoutput)
+tfit_jags_m &lt;-<span class="st"> </span><span class="kw">as.mcmc.bugs</span>(jagsfit$BUGSoutput)
 <span class="kw">print</span>(<span class="kw">xyplot</span>(tfit_jags_m))</code></pre>
 <figure>
 <img src="http://farm9.staticflickr.com/8258/8662939943_0e5faa9dc0_o.png" alt="Parameter traces provide a visual tool to assess performance and convergence of the MCMC routine" /><figcaption>Parameter traces provide a visual tool to assess performance and convergence of the MCMC routine</figcaption>
@@ -210,16 +210,16 @@ tfit_jags_m &lt;- <span class="kw">as.mcmc.bugs</span>(jagsfit$BUGSoutput)
 <img src="http://farm9.staticflickr.com/8261/8662940039_3f5dbeee9d_o.png" alt="The resulting posterior distributions for the model parameters inferred" /><figcaption>The resulting posterior distributions for the model parameters inferred</figcaption>
 </figure>
 <p>We collect model parameters over the replicate runs,</p>
-<pre class="sourceCode r"><code class="sourceCode r">mcmc &lt;- <span class="kw">as.mcmc</span>(jagsfit)
-mcmcall &lt;- mcmc[, -<span class="dv">2</span>]
-who &lt;- <span class="kw">colnames</span>(mcmcall)
-mcmcall &lt;- <span class="kw">cbind</span>(mcmcall[, <span class="dv">1</span>], mcmcall[, <span class="dv">2</span>], mcmcall[, <span class="dv">3</span>], mcmcall[, 
+<pre class="sourceCode r"><code class="sourceCode r">mcmc &lt;-<span class="st"> </span><span class="kw">as.mcmc</span>(jagsfit)
+mcmcall &lt;-<span class="st"> </span>mcmc[, -<span class="dv">2</span>]
+who &lt;-<span class="st"> </span><span class="kw">colnames</span>(mcmcall)
+mcmcall &lt;-<span class="st"> </span><span class="kw">cbind</span>(mcmcall[, <span class="dv">1</span>], mcmcall[, <span class="dv">2</span>], mcmcall[, <span class="dv">3</span>], mcmcall[, 
     <span class="dv">4</span>], mcmcall[, <span class="dv">5</span>])
-<span class="kw">colnames</span>(mcmcall) &lt;- who</code></pre>
+<span class="kw">colnames</span>(mcmcall) &lt;-<span class="st"> </span>who</code></pre>
 <h2 id="further-parameter-exploration">Further parameter exploration</h2>
 <p>We will need to integrate over parameter uncertainty. Can consider the discritized binning</p>
-<pre class="sourceCode r"><code class="sourceCode r">theta &lt;- <span class="kw">exp</span>(mcmcall[, <span class="st">&quot;logtheta&quot;</span>])
-theta_dist &lt;- <span class="kw">hist</span>(theta, <span class="dt">freq =</span> <span class="ot">FALSE</span>)</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">theta &lt;-<span class="st"> </span><span class="kw">exp</span>(mcmcall[, <span class="st">&quot;logtheta&quot;</span>])
+theta_dist &lt;-<span class="st"> </span><span class="kw">hist</span>(theta, <span class="dt">freq =</span> <span class="ot">FALSE</span>)</code></pre>
 <figure>
 <img src="http://farm9.staticflickr.com/8255/8662940161_6cfebf6a91_o.png" />
 </figure>
@@ -229,7 +229,7 @@ theta_dist &lt;- <span class="kw">hist</span>(theta, <span class="dt">freq =</sp
 <pre class="sourceCode r"><code class="sourceCode r">theta_dist$density</code></pre>
 <pre><code>##  [1] 1.154 0.256 0.130 0.092 0.068 0.058 0.044 0.042 0.042 0.018 0.022
 ## [12] 0.026 0.022 0.014 0.012</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r">delta &lt;- theta_dist$mids[<span class="dv">2</span>] - theta_dist$mids[<span class="dv">1</span>]</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">delta &lt;-<span class="st"> </span>theta_dist$mids[<span class="dv">2</span>] -<span class="st"> </span>theta_dist$mids[<span class="dv">1</span>]</code></pre>
 <p>Evaluating the value function given <span class="math">\(f\)</span> fixed at each of <code>theta_dist$mids</code> multiplied by <code>theta_dist$density * delta</code> and summed over each <span class="math">\(\theta\)</span> is going to be slow for a single parameter but simply unrealistic for higher dimensions.</p>
 <h2 id="references">References</h2>
 <ul>
