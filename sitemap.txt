@@ -811,6 +811,7 @@ http://carlboettiger.info/wordpress/archives/4482/index.html
 http://carlboettiger.info/archives/4482/index.html 
 
  
+http://carlboettiger.info/2013/10/07/nexml-phylo-class-extension.html  
 http://carlboettiger.info/2013/09/25/mozilla-software-review.html  
 http://carlboettiger.info/2013/09/23/notes.html  
 http://carlboettiger.info/2013/09/19/notes.html  

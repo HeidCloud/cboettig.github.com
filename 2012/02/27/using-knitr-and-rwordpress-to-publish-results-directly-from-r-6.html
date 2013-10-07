@@ -143,7 +143,8 @@
 <div class="row">
   <div class="span7 offset1">
     <article>
-    <p><strong>Update</strong>: The original <a href="https://raw.github.com/cboettig/sandbox/b71f7f359164b1ff3b9609d5ded2324fafdc14b6/wordpress_knit_.md">source file</a> for this post, generates <a href="https://raw.github.com/cboettig/sandbox/b71f7f359164b1ff3b9609d5ded2324fafdc14b6/wordpress.md">this output file</a> formatted for wordpress. The source file has been knitted for markdown formatting so this post displays in Jekyll.</p>
+    <p><strong>Update</strong>: The original <a href="https://raw.github.com/cboettig/sandbox/b71f7f359164b1ff3b9609d5ded2324fafdc14b6/wordpress_knit_.md">source file</a> for this post, generates <a href="https://raw.github.com/cboettig/sandbox/b71f7f359164b1ff3b9609d5ded2324fafdc14b6/wordpress.md">this output file</a> formatted for wordpress. The source file has been knitted for markdown formatting so this post displays in Jekyll. The rendered post relies on Wordpress shortcodes, as raw the output file shows above. The <a href="https://github.com/cboettig/sandbox/blob/b71f7f359164b1ff3b9609d5ded2324fafdc14b6/wordpress.md">markdown-based rendering</a> shows the images and the shortcodes wordpress uses for codeblocks.</p>
+<hr />
 <p>One of the great things about knitr is its flexibility. Here I set knitr up to publish to Wordpress. I will then use RWordPress to publish the output automatically.</p>
 <p>I will base the wordpress format on the github-flavored markdown format. I change the markup for output and source-code to use the nice codeblocks provided by the syntax highlighter plugin. I also specify that images should use the html markup instead of github markup, and I will take advantage of knitr support for imgur to upload and host the image files automatically.</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">render_gfm</span>()
@@ -163,13 +164,7 @@ knit_hooks$<span class="kw">set</span>(<span class="dt">output =</span> function
 <p>We can also produce plots which are uploaded to imgur.com:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggplot2)
 <span class="kw">qplot</span>(hp, mpg, <span class="dt">data =</span> mtcars) +<span class="st"> </span><span class="kw">geom_smooth</span>()</code></pre>
-<figure>
-<img src="ex-out-md-cars1.png" alt="plot of chunk md-cars" /><figcaption>plot of chunk md-cars</figcaption>
-</figure>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggpcp</span>(mtcars) +<span class="st"> </span><span class="kw">geom_line</span>()</code></pre>
-<figure>
-<img src="ex-out-md-cars2.png" alt="plot of chunk md-cars" /><figcaption>plot of chunk md-cars</figcaption>
-</figure>
 <p>We can then post the result using RWordPress:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">require</span>(RWordPress)
 text =<span class="st"> </span><span class="kw">paste</span>(<span class="kw">readLines</span>(<span class="st">&quot;wordpress.md&quot;</span>), <span class="dt">collapse =</span> <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>)
@@ -194,8 +189,8 @@ title =<span class="st"> &quot;Using knitr and RWordPress to publish results dir
     <time datetime="2012-02-27T18:31:51Z" 
     property="dc:created">27 Feb 2012</time></p>
   <p><small> modified: <time 
-            datetime="2013-02-19T10:27:50-08:00" 
-            property="dc:modified">19 Feb 2013</time></small></p>
+            datetime="2013-10-04T14:30:35-07:00" 
+            property="dc:modified">04 Oct 2013</time></small></p>
 
  <br />
 
@@ -227,11 +222,11 @@ title =<span class="st"> &quot;Using knitr and RWordPress to publish results dir
 
   <br/>
 
-   <p style="font-style:italic"> <i class="icon-signal"></i> pageviews: 653</p>
+   <p style="font-style:italic"> <i class="icon-signal"></i> pageviews: 659</p>
 
   <br/>
 
-  <p><small> <i class="icon-barcode"></i> SHA Hash: <a href="https://github.com/cboettig/labnotebook/commit/8c159703b2a376bd2c60f16e0e0d5cea04d20876/_posts/2012-02-27-using-knitr-and-rwordpress-to-publish-results-directly-from-r-6.md"> 8c159703b2a376bd2c60f16e0e0d5cea04d20876</a></small></p>
+  <p><small> <i class="icon-barcode"></i> SHA Hash: <a href="https://github.com/cboettig/labnotebook/commit/bf4ca0ca0a0dbe2d94f45d1e3e75dfa9530f4c5f/_posts/2012-02-27-using-knitr-and-rwordpress-to-publish-results-directly-from-r-6.md"> bf4ca0ca0a0dbe2d94f45d1e3e75dfa9530f4c5f</a></small></p>
     
   <br/>
 
