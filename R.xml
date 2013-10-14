@@ -4,7 +4,7 @@
  <title>Lab Notebook - R</title>
  <link href="/R.xml" rel="self"/>
  <link href="/"/>
- <updated>2013-10-07T15:26:28-07:00</updated>
+ <updated>2013-10-14T11:11:00-07:00</updated>
  <id>http://carlboettiger.info</id>
  <author>
    <name>Carl Boettiger</name>
@@ -88,7 +88,7 @@ Extended Version of the Birth-Death Models to
 &lt;pre&gt;&lt;code&gt;[1] &amp;quot;show&amp;quot;&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Again, we check a few methods:&lt;/p&gt;
 &lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt; b &amp;lt;-&lt;span class=&quot;st&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kw&quot;&gt;new&lt;/span&gt;(&lt;span class=&quot;st&quot;&gt;&amp;quot;nexmlTree&amp;quot;&lt;/span&gt;, bird.orders, &lt;span class=&quot;dt&quot;&gt;nexml =&lt;/span&gt; &lt;span class=&quot;kw&quot;&gt;as&lt;/span&gt;(bird.orders, &lt;span class=&quot;st&quot;&gt;&amp;quot;nexml&amp;quot;&lt;/span&gt;))
-&lt;span class=&quot;kw&quot;&gt;is&lt;/span&gt;(a, &lt;span class=&quot;st&quot;&gt;&amp;quot;phylo&amp;quot;&lt;/span&gt;)&lt;/code&gt;&lt;/pre&gt;
+&lt;span class=&quot;kw&quot;&gt;is&lt;/span&gt;(b, &lt;span class=&quot;st&quot;&gt;&amp;quot;phylo&amp;quot;&lt;/span&gt;)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;[1] TRUE&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&quot;sourceCode r&quot;&gt;&lt;code class=&quot;sourceCode r&quot;&gt;&lt;span class=&quot;kw&quot;&gt;bd.ext&lt;/span&gt;(b, S)   &lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;
