@@ -147,7 +147,7 @@
 <p>Without a model-based approach, it is difficult to leverage statistically meaningful comparisons to identify what is a real warning signal and what is just noise. We use two simple models, (a stationary OU process and temporally heterogeneous OU process) combined with a likelihood ratio bootstrap to do this, though other models and comparisons could be equally promising.</p>
 <p>The motivation for this paper comes somewhat from the appendices in the groundbreaking work by Dakos <em>et al</em> 2008, which compares several potential null distributions and shows that Kendall’s tau, the correlation statistic used to identify an increase, takes on almost any value in its range, which doesn’t leave us with much information to go by. I both wanted to confirm this distribution and see if I could improve upon it with the model-based approach. I was glad to see that not only could we quantify uncertainty more precisely with the model based-approach, but also improve upon the sensitivity relative to traditional indicators, as seen in our ROC curves.</p>
 <p>My talk at ESA last year gave an introduction to these results.</p>
-<div id="__ss_11357956" style="width:425px">
+<div style="width:425px" id="__ss_11357956">
 <strong style="display:block;margin:12px 0 4px"><a
 href="http://www.slideshare.net/cboettig/limits-to-detection-for-early-warning-signals-of-population-collapse"
 title="Limits to Detection for Early Warning Signals of
@@ -155,10 +155,10 @@ Population Collapse" target="_blank">Limits to Detection for Early Warning Signa
 src="http://www.slideshare.net/slideshow/embed_code/11357956"
 width="425" height="355" frameborder="0" marginwidth="0" marginheight="0"
 scrolling="no"></iframe>
-<div style="padding:5px 0 12px">
+<div style="padding:5px 0 12px"> 
 View more <a href="http://www.slideshare.net/" target="_blank">presentations</a> from <a href="http://www.slideshare.net/cboettig" target="_blank">Carl Boettiger</a>
-</div>
-</div>
+</div> </div>
+
 <h1 id="an-open-notebook-story">An Open Notebook Story</h1>
 <p>This project has gone through many iterations, dead ends, and transformations as it evolved over the past year and a half alongside my other research projects. In the process, there’s also been ample cross-pollination of ideas from different projects. The interplay of these ideas unfolds in the interleaved pages of my online lab notebook.</p>
 <p>Here are a few examples of this cross-pollination: Using the likelihood ratio bootstrap as the most powerful comparison of two composite (parameter-estimated) hypotheses first emerged in my evolutionary work which became the paper, <em>Is your phylogeny informative</em>, while solving the likelihood equation for the temporally heterogeneous OU process has it’s roots in my work on the evolutionary release of constraint that became the paper <em>Modeling Stabilizing Selection: Expanding the Ornstein-Uhlenbeck Model of Adaptive Evolution</em> and plays a role in my current <code>wrightscape</code> project. These projects share a central challenge of detecting faint signals of regime shifts from large data sets whilst quantifying uncertainty, despite substantial differences in the details of both model formulation and solution.</p>

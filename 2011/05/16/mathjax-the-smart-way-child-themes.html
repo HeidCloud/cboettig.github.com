@@ -162,7 +162,7 @@
 <span class="co">License: GPL v2</span>
 <span class="co">*/</span>
 <span class="dv">@import</span> url(<span class="st">&quot;../the-erudite/style.css&quot;</span>)</code></pre>
-<p>The stuff in the C-style comments is functional.  The only required lines are theme name and template.  template tells the style file to copy everything from the template theme (which will be updated whenever the template is updated).  The <span class="citation" data-cites="import">@import</span> command imports the style file of the template theme.  Any changes to the style can be specified in CSS below. We won’t be changing anything on the style sheet.</p>
+<p>The stuff in the C-style comments is functional.  The only required lines are theme name and template.  template tells the style file to copy everything from the template theme (which will be updated whenever the template is updated).  The @import command imports the style file of the template theme.  Any changes to the style can be specified in CSS below. We won’t be changing anything on the style sheet.</p>
 <p>What we want to do is change the header.  We do this the clever way using action hooks. I used <a href="http://themeshaper.com/2009/05/25/action-hooks-wordpress-child-themes/">this great reference</a> to get a handle on them, and the <a href="http://codex.wordpress.org/Child_Themes">Wordpress child themes guide</a> to see how functions.php works.</p>
 <ul>
 <li>Create a second file in the theme called functions.php:</li>
