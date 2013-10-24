@@ -164,7 +164,7 @@
   out = (x + y);
 end
 [X, Y] = meshgrid([<span class="fl">1</span>:<span class="fl">5</span>], [<span class="fl">1</span>:<span class="fl">5</span>])
-b = arrayfun(@ssum, X, Y, <span class="fl">1</span>)  <span class="co">%Works fine</span></code></pre>
+b = arrayfun(@ssum, X, Y, <span class="fl">1</span>)  %Works fine</code></pre>
 <p>But if the extra argument is a vector this fails.</p>
 <pre class="sourceCode matlab"><code class="sourceCode matlab">b = arrayfun(@ssum, X, Y, [<span class="fl">1</span>:<span class="fl">6</span>])</code></pre>
 <ul>
@@ -186,7 +186,7 @@ b = arrayfun(@ssum, X, Y, <span class="fl">1</span>)  <span class="co">%Works f
         if mu &gt; <span class="fl">0</span>
           out = unifpdf(P, mu * (<span class="fl">1</span> - s), mu * (<span class="fl">1</span> + s));
         end
-      else  <span class="co">% delta spike</span>
+      else  % delta spike
         P = snap_to_grid(P, grid);
         mu = snap_to_grid(mu, grid);
         out = (P == mu);

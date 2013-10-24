@@ -155,15 +155,13 @@ grid_n &lt;-<span class="st"> </span><span class="dv">100</span></code></pre>
 <pre class="sourceCode r"><code class="sourceCode r">x_grid &lt;-<span class="st"> </span><span class="kw">seq</span>(xmin, xmax, <span class="dt">length =</span> grid_n)
 h_grid &lt;-<span class="st"> </span>x_grid</code></pre>
 <p>With purely growth noise, a row of the matrix is given by the probability density of the growth noise with mean <span class="math">\(f(x,h)\)</span>, that is, the probability of tranistion from <span class="math">\(x\)</span> to <span class="math">\(x_{t+1}\)</span> at harvest <span class="math">\(h\)</span> is given by the function <span class="math">\(P(x_t+1, f(x,h))\)</span> for some probability density function <span class="math">\(P\)</span>. In the case of uncertainty in stock <span class="math">\(y\)</span> and harvest <span class="math">\(h\)</span>, we must integrate over the probability distributions for possible harvests and possible stock sizes,</p>
-<div> 
+<div>
 <span class="math">\[ \int dh \int dy P(x_{t+1}, f(y, h))P(y)P(h) \]</span>
 </div>
-
 <p>In general this convolution can be non-trivial to compute, but in the case of uniformly distributed harvest error of <span class="math">\(\pm \sigma_i\)</span> around some quota <span class="math">\(q\)</span>, and uniform measurement error of <span class="math">\(\pm \sigma_m\)</span> around the true stock size <span class="math">\(x\)</span>, the integrals can be written as,</p>
-<div> 
+<div>
 <span class="math">\[ \frac{\int_{\max(q-\sigma_i,0)}^{q+\sigma_i} dh \int_{\max(y-\sigma_h,0)}^{y+\sigma_h} dy P(x_{t+1}, f(y, h))}{\left((q+\sigma_i) - \max(q-\sigma_i,0)\right) \left((x+\sigma_m) - \max(x-\sigma_m,0)\right)} \]</span>
 </div>
-
 <p>Note we enforce the simple non-negative boundary on stock and harvest.</p>
 <p>So now we are left to merely integrate the <span class="math">\(f(y,h)\)</span> over these finite intervals. We can do this for arbitrary <span class="math">\(f\)</span> through multidimensional numerical integration (In fact we could have done this in the first place, but it is too slow for the convolutions of arbitrary probability densities)</p>
 <pre class="sourceCode r"><code class="sourceCode r">int_f</code></pre>

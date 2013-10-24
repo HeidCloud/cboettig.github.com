@@ -144,7 +144,7 @@
   <div class="span7 offset1">
     <article>
     <p>Looks like my troubles actually stem from a bug in the code. I summarize the problem here, just as I posted in my query to R sig phylo. Essentially the program erroneously squares alpha at the moment, explaining the pattern I found yesterday. Giving it root alpha preemptively should be a good work around.</p>
-<p><br /> ~~~~ {.de1} data(bimac) tree &lt;- with(bimac,ouchtree(node,ancestor,time/max(time),species)) print(h2 &lt;- hansen(log(bimac[‘size’]),tree,bimac[‘OU.1’],alpha=1,sigma=1)) ~~~~</p>
+<p><br /> ~<sub>~</sub> {.de1} data(bimac) tree &lt;- with(bimac,ouchtree(node,ancestor,time/max(time),species)) print(h2 &lt;- hansen(log(bimac[‘size’]),tree,bimac[‘OU.1’],alpha=1,sigma=1)) ~<sub>~</sub></p>
 <p>The print command says alpha = 0.1921554 The call h2@alpha says alpha = .4383554</p>
 <p>which is the sqrt of the other. Certainly these should all agree. The summary command agrees with the print command:</p>
 <pre class="de1"><code>smry = summary(h2)
