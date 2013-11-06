@@ -4,7 +4,7 @@
  <title>Lab Notebook - R</title>
  <link href="/R.xml" rel="self"/>
  <link href="/"/>
- <updated>2013-11-01T15:19:41-07:00</updated>
+ <updated>2013-11-06T16:58:17-05:00</updated>
  <id>http://carlboettiger.info</id>
  <author>
    <name>Carl Boettiger</name>
@@ -15,7 +15,7 @@
  <entry>
    <title>Extending ape::phylo class to NeXML:</title>
    <link href="/2013/10/07/nexml-phylo-class-extension.html"/>
-   <updated>2013-10-07T00:00:00-07:00</updated>
+   <updated>2013-10-07T00:00:00-04:00</updated>
    <id>/2013/10/07/nexml-phylo-class-extension</id>
    <content type="html">&lt;p&gt;While working on the &lt;a href=&quot;https://github.com/ropensci/RNeXML&quot;&gt;RNeXML&lt;/a&gt; package, I have recently I have been puzzling over extending S3 objects to share some of the nice properties of S4 objects and methods while continuing to function with the potentially huge library of functions written to work with them. &lt;a href=&quot;http://stackoverflow.com/questions/17976217/make-s4-object-act-as-an-s3-class&quot;&gt;SO:&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;To illustrate this issue, consider the S3 class &lt;code&gt;phylo&lt;/code&gt; provided by the &lt;code&gt;ape&lt;/code&gt; package and used by most of the 30+ packages that reverse depend or reverse import &lt;code&gt;ape&lt;/code&gt;. Despite this popularity, the S3 class has quite a few shortcomings (including inconsistent definition in ordering of it’s components, see the phylobase paper). To address these concerns, a hackathon consisting of many of the leading developers in this field created the &lt;code&gt;phylobase&lt;/code&gt; package with &lt;code&gt;S4&lt;/code&gt; definitions of &lt;code&gt;phylo&lt;/code&gt; objects that extend the class to handle additional types of data and address various other concerns that have arisen. Unfortunately, as far as I can tell, adoption of the new format has been lacking. In my mind, the greatest limitation of the new format is the lack of compatibility with existing methods build on the S3 type.&lt;/p&gt;
@@ -117,7 +117,7 @@ Extended Version of the Birth-Death Models to
  <entry>
    <title>Forking The R Journal</title>
    <link href="/2013/07/10/forking-the-R-journal.html"/>
-   <updated>2013-07-10T00:00:00-07:00</updated>
+   <updated>2013-07-10T00:00:00-04:00</updated>
    <id>/2013/07/10/forking-the-R-journal</id>
    <content type="html">&lt;p&gt;All I really wanted to do is cite a paper in &lt;em&gt;the R Journal&lt;/em&gt;, which is peer-reviewed, open access (CC-BY), LaTeX based and without author charges. Sure, I could do that already, but I like being able to programmatically generate citation metadata from a URL – we do have this thing called the internet now, and citations are just links, right? Unfortunately, nice as it is, the R journal doesn’t have HTML landing pages for articles that embed the metadata.&lt;/p&gt;
 &lt;p&gt;This makes it harder for Google Scholar to index the articles, and means that we cannot extract citation metadata from the URL using a tool like &lt;a href=&quot;http://greycite.knowledgeblog.org&quot;&gt;greycite&lt;/a&gt;. Until now.&lt;/p&gt;
@@ -130,7 +130,7 @@ Extended Version of the Birth-Death Models to
  <entry>
    <title>knitcitations</title>
    <link href="/2012/05/30/knitcitations.html"/>
-   <updated>2012-05-30T00:00:00-07:00</updated>
+   <updated>2012-05-30T00:00:00-04:00</updated>
    <id>/2012/05/30/knitcitations</id>
    <content type="html">&lt;p&gt;&lt;strong&gt;EDIT&lt;/strong&gt;: Note that this package has evolved quite a bit from this initial post. While the basic interface is the same, support for additional features and some choices in formatting differ from what is presented here. Please see the &lt;a href=&quot;https://github.com/cboettig/knitcitations/&quot;&gt;README&lt;/a&gt; for the latest introduction to the package. Readers may also be interested in the more recent post discussing the &lt;a href=&quot;http://www.carlboettiger.info/2013/02/22/semantic-citations-for-the-notebook-and-knitr.html&quot;&gt;introduction of several new features including semantic tools in the &lt;code&gt;knitcitations&lt;/code&gt; package&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Markdown is becoming an increasingly popular platform for lightweight and online publishing. While traditional publishing tools like LaTeX and word processors have long had integrated bibliographic management, few tools handle citations for lightweight publishing. I am finding myself more and more drawn to markdown rather then tex/Rnw as my standard format (not least of which is the ease of displaying the files on github, particularly now that we have automatic image uploading. I’ve taken a little whack at generating in-text citations using knitr and other R tools.&lt;/p&gt;

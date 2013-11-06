@@ -811,6 +811,8 @@ http://carlboettiger.info/wordpress/archives/4482/index.html
 http://carlboettiger.info/archives/4482/index.html 
 
  
+http://carlboettiger.info/2013/11/05/MBI-day-two.html  
+http://carlboettiger.info/2013/11/04/MBI-notes.html  
 http://carlboettiger.info/2013/10/17/RNeXML-semantic-considerations.html  
 http://carlboettiger.info/2013/10/11/is-it-time-to-retire-pagels-lambda.html  
 http://carlboettiger.info/2013/10/10/notes.html  
