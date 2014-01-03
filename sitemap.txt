@@ -811,6 +811,9 @@ http://carlboettiger.info/wordpress/archives/4482/index.html
 http://carlboettiger.info/archives/4482/index.html 
 
  
+http://carlboettiger.info/2014/01/02/open-science-literature-highlights.html  
+http://carlboettiger.info/2013/12/10/notes.html  
+http://carlboettiger.info/2013/11/26/notes.html  
 http://carlboettiger.info/2013/11/19/notes.html  
 http://carlboettiger.info/2013/11/17/RNeXML-metadata-queries.html  
 http://carlboettiger.info/2013/11/08/MBI-day-five-notes.html  
