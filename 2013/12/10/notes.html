@@ -22,7 +22,7 @@
 <!-- Ideally we would want date originally created from the _oldest_ git commit too...-->
 
 <!-- HTML5 metadata -->
-<meta name="keywords" content="nonparametric-bayes, derivation" />
+<meta name="keywords" content="warning-signals, derivation" />
 <meta name="description" content="" />
 <meta name="resource_type" content="website"/> 
 <!-- RDFa Metadata (in DublinCore) -->
@@ -146,8 +146,8 @@
     <p>Consider the model</p>
 <p><span class="math">\[d X_t = \alpha \left(\theta - X_t\right)dt + \sigma dB_t  \]</span></p>
 <p>By Ito Isometry, we have:</p>
-<p><span class="math">\[\langle X \rangle_t = E_t(X) = \theta \left(1 - e^{-\alpha t} \right) + X_0 e^{\-alpha t} \]</span></p>
-<p>$$X^2 <em>t</em>t - X <em>t^2 = V</em>t(X) = (1 - e^{-t} )</p>
+<p><span class="math">\[\langle X \rangle_t = E_t(X) = \theta \left(1 - e^{-\alpha t} \right) + X_0 e^{\-alpha t}\]</span></p>
+<p><span class="math">\[\langle X^2 \rangle_t_t - \langle X \rangle_t^2 = V_t(X) = \frac{\sigma^2}{2 \alpha }\left(1 - e^{-\alpha t} \right)\]</span></p>
 <p>If we assume discrete, uniform sampling of spacing <span class="math">\(\tau\)</span>, then we have,</p>
 <p><span class="math">\[P(\theta | X; \alpha, \sigma) = \sqrt{\frac{1}{2\pi V_{\tau} }}^{T-1} \exp\left(-\frac{\sum_t^{T-1} \left(X_{t+1} - E\right)^2 }{2V}\right) \]</span></p>
 <p>or more explicitly (taking <span class="math">\(\tau = 1\)</span> without loss of generality),</p>
@@ -162,9 +162,9 @@
 <p>For which we complete the square in <span class="math">\(\theta\)</span>,</p>
 <p><span class="math">\[ B^2 (T-1) \left( \left(\theta - \frac{\sum_t A_t}{B(T-1)}\right)^2 + \frac{\sum A_t ^2 - (\sum A_t)^2}{B^2 (T-1)} \right) \]</span></p>
 <p>Which lets us write <span class="math">\(P(\theta | X; \alpha, \sigma)\)</span> as a normal distribution in <span class="math">\(\theta\)</span> times some constant terms:</p>
-<p><span class="math">\[ P(\theta | X; \alpha, \sigma) = \exp\left(-\sum A_t ^2 + (\sum A_t)^2\right)  \sqrt{\frac{1}{2\pi V_{\tau} }}^{T-1} \int d\theta\exp\left( - \left(\theta -  \frac{\sum_t A_t}{B(T-1)} \right)^2 }{\tfrac{2V}{B^2 (T-1)}}\right) \]</span></p>
+<p><span class="math">\[ P(\theta | X; \alpha, \sigma) = \exp\left(-\sum A_t ^2 + (\sum A_t)^2\right)  \sqrt{\frac{1}{2\pi V_{\tau} }}^{T-1} \int d\theta\exp\left( -\frac{ \left(\theta -  \frac{\sum_t A_t}{B(T-1)} \right)^2 }{\tfrac{2V}{B^2 (T-1)}}\right) \]</span></p>
 <p>In which we recognize the integral as Gaussian with mean <span class="math">\(\mu = \frac{\sum_t A_t}{B(T-1)} \)</span> and variance <span class="math">\(\nu =  V/(B^2(T-1))\)</span>. Subsituting our expressions for <span class="math">\(V\)</span> and <span class="math">\(B\)</span> and simplifying, this variance can be written as:</p>
-<p><span class="math">\[ \frac{ \tfrac{\sigma^2}{2\alpha}(1-e^{-2\alpha})}} { (1-e^{-\alpha})^2 (T-1) } = \frac{\sigma^2 e^{-\alpha}}{(1-e^{-\alpha})^2(T-1)} \]</span></p>
+<p><span class="math">\[ \frac{ \tfrac{\sigma^2}{2\alpha}(1-e^{-2\alpha})}{ (1-e^{-\alpha})^2 (T-1) } = \frac{\sigma^2 e^{-\alpha}}{(1-e^{-\alpha})^2(T-1)} \]</span></p>
 <p>and after some rearranging our integral evalutes to</p>
 <p><span class="math">\[\sqrt{2\pi \nu} =  \sqrt{\frac{2 \pi \sigma^2}{T-1} (e^{\alpha} - e^{-\alpha} )} \]</span></p>
 <!-- 
@@ -238,7 +238,7 @@ $$\frac{1}{(T-1)\sqrt{2 \pi}^{T-2} } \frac{\tfrac{1}{2}^{T/2} \left( \sum M_t^2 
     
     <!-- http://schema.org/BlogPosting/keywords -->
     <a rel="og:tag" class="tag" 
-       href="/tags.html#nonparametric-bayes">#nonparametric-bayes</a>, 
+       href="/tags.html#warning-signals">#warning-signals</a>, 
     
     <!-- http://schema.org/BlogPosting/keywords -->
     <a rel="og:tag" class="tag" 
@@ -247,7 +247,7 @@ $$\frac{1}{(T-1)\sqrt{2 \pi}^{T-2} } \frac{\tfrac{1}{2}^{T/2} \left( \sum M_t^2 
 
   <br/>
 
-   <p style="font-style:italic"> <i class="icon-signal"></i> pageviews: (not calculated)</p>
+   <p style="font-style:italic"> <i class="icon-signal"></i> pageviews: 1</p>
 
   <br/>
 
