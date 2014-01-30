@@ -4,13 +4,102 @@
  <title>Lab Notebook - R</title>
  <link href="/blog.xml" rel="self"/>
  <link href="/"/>
- <updated>2014-01-03T10:11:13-08:00</updated>
+ <updated>2014-01-30T13:40:43-08:00</updated>
  <id>http://carlboettiger.info</id>
  <author>
    <name>Carl Boettiger</name>
    <email></email>
  </author>
 
+ 
+ <entry>
+   <title>So, you're active on Research Gate?</title>
+   <link href="/2013/11/14/research-gate.html"/>
+   <updated>2013-11-14T00:00:00-08:00</updated>
+   <id>/2013/11/14/research-gate</id>
+   <content type="html">&lt;p&gt;I have occassionally been getting this question:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;So, you’re active on ResearchGate?&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Sounds like being accused of some scandal, doesn’t it?&lt;/p&gt;
+&lt;p&gt;I’m not generally active on it - my impression is that the open science community is mostly skeptical about ResearchGate and any other “Social Network” for scientists, largely on the grounds that “we already use the same social networks everyone else uses.” Some object on more philosophical grounds (profit, Mendeley, etc), but heck I publish in Elsevier/Springer/Wiley so I won’t preach. That’s perhaps a US/elite institution centric view though; it seems more popular with a more international audience where things like basic access to pdfs may be more of an issue. I present no data to back any if that up.&lt;/p&gt;
+&lt;p&gt;Personally, it hasn’t added any value for me, in contrast to the value I get from interacting with other researchers on Github, G+ or Twitter. Still, as RG recently got $35 million from Bill Gates, they might actually build something useful. Certainly traditional publishers have left plenty of room for innovation in the space of sharing data, networking, etc. So I have a profile there to wait and see, next to a disclaimer that says “please see my website for updated information.”&lt;/p&gt;
+&lt;p&gt;However, I was actually impressed by ResearchGate this morning. While I thought I had successfully blocked most of their email notifications, one this morning had successfully found the full text of a recent paper of mine (albeit a few months after it had appeared). Instead of asking me to upload something, RG was able to obtain the full text from the publisher (Springer). On so doing, it also asks me if I would like to “follow” several of the researchers I cited who are also on ResearchGate.&lt;/p&gt;
+&lt;p&gt;Why is that impressive? Mendeley, for all it’s much more natural fit into most researcher’s workflows, never automatically discovers papers I publish. If I want them in my Mendeley profile, I have to add them manually. Manually maintaining profiles across different networks is so entirely a waste of time and the antithesis of a linked data web where I have already made this information machine readable that I find it the most annoying feature by far in any of these sites. Here, ResearchGate is actually doing the intelligent thing, whether by connecting my RG identity to my ORCID ID, or something more heuristic. (Google Scholar automatically adds things to my profile, but in a far less selective algorithm that can be easily gamed, see &lt;a href=&quot;http://doi.org/10.1002/asi.23056&quot;&gt;10.1002/asi.23056&lt;/a&gt;).&lt;/p&gt;
+&lt;p&gt;By obtaining the full-text directly from the publisher, they show the considerable advantage of a well-funded network. Presumably this indicates that access was negotiated directly with the publisher, who agrees and even facilitates me sharing the full-text of my otherwise paywalled article on my RG profile. That’s a non-trivial contribution towards open access: Contrast this to Mendeley’s more murky policy which encourages me to provide full text access through my user profile but places the legal responsibility directly on me to confirm that this permissible, or an organization like ORCID which despite (because of?) it’s more non-profit and utilitarian values does not have permission to distribute my paywalled pdfs on my profile. (Sure, my papers on arXiv already, but that isn’t the point).&lt;/p&gt;
+&lt;p&gt;Likewise, using the citation data against the RG data on which researchers have profiles shows a vaguely intelligent use of data other platforms mostly ignore (providing useful suggestions using some understanding of the academic process rather than mindless application of some friend-of-a-friend network algorithm).&lt;/p&gt;
+&lt;p&gt;(The fact that RG pings unfortunate souls who might have signed up once but have no desire to see my “Activity” on RG is one of it’s potentially effective marketing but more pernicious decisions. Use does not necessarily imply trust).&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Do we need a culture of Data Science in Academia?</title>
+   <link href="/2013/11/13/Data-Science-Center.html"/>
+   <updated>2013-11-13T00:00:00-08:00</updated>
+   <id>/2013/11/13/Data-Science-Center</id>
+   <content type="html">&lt;p&gt;Just my draft copy of a &lt;a href=&quot;http://dynamicecology.wordpress.com/2013/11/25/do-we-need-a-culture-of-data-science-in-academia-guest-post/&quot;&gt;Guest blog post&lt;/a&gt; I wrote for Dynamic Ecology.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;On Tuesday the &lt;a href=&quot;http://www.nitrd.gov/nitrdgroups/index.php?title=Data_to_Knowledge_to_Action&quot;&gt;Whitehouse Office of Science and Technology Policy&lt;/a&gt; announced the creation of a $37.8 million dollar initiative to promote a “Data Science Culture” in academic institutions, funded by the &lt;a href=&quot;http://www.moore.org/newsroom/press-releases/2013/11/12/%20bold_new_partnership_launches_to_harness_potential_of_data_scientists_and_big_data&quot;&gt;Gordon and Betty Moore Foundation&lt;/a&gt;, &lt;a href=&quot;http://www.sloan.org/fileadmin/media/files/press_releases/datascience.pdf&quot;&gt;Alfred P. Sloan Foundation&lt;/a&gt;, and hosted in centers at the universities UC Berkeley, University of Washington, and New York University. Sadly, these announcements give little description of just what such a center would do, beyond repeating the usual the hype of “Big Data.”&lt;/p&gt;
+&lt;p&gt;Fernando Perez, a research scientist at UC Berkeley closely involved with the process, paints a rather more provocative picture in his own perspective on &lt;a href=&quot;http://blog.fperez.org/2013/11/an-ambitious-experiment-in-data-science.html&quot;&gt;what this initiative might mean by a “Data Science Culture.”&lt;/a&gt; Rather than motivating the need for such a Center merely by expressing terabytes in scientific notation, Perez focuses on something not mentioned in the press releases. In his view, the objective of such a center stems from the observation that:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;the incentive mechanisms of academic research are at sharp odds with the rising need for highly collaborative interdisciplinary research, where computation and data are first-class citizens&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;His list of problems to be tackled by this Data Science Initiative includes some particularly catching references to issues that have raised themselves on Dynamic Ecology before:&lt;/p&gt;
+&lt;!--
+&gt; - An incentive structure that favors individualism, hyper-specialization and &quot;novelty&quot; to a toxic extreme
+--&gt; 
+
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;people grab methods like shirts from a rack, to see if they work with the pants they are wearing that day&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;methodologists tend to only offer proof-of-concept, synthetic examples, staying largely shielded from real-world concerns&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Well that’s a different tune than the usual big data hype&lt;sup&gt;&lt;a href=&quot;#fn1&quot; class=&quot;footnoteRef&quot; id=&quot;fnref1&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;. While it is easy to find anecdotes that support each of these charges, it is more difficult to assess just how rare or pervasive they really are. Though these are not new complaints among ecologists, the solutions (or at least antidotes) proposed in a Data Science Culture given a rather different emphasis. At first glance, the Data Science Culture sounds like the more familiar call for an interdisciplinary culture, emphasizing that the world would be a better place if only domain scientists learned more mathematics, statistics and computer science. It is not.&lt;/p&gt;
+&lt;h5 id=&quot;the-problem-part-1-statistical-machismo&quot;&gt;the problem, part 1: &lt;a href=&quot;http://dynamicecology.wordpress.com/2012/09/11/statistical-machismo/&quot;&gt;statistical machismo&lt;/a&gt;?&lt;/h5&gt;
+&lt;p&gt;As to whether ecologists choose methods to match their pants, we have at least some data beyond anecdote. A survey earlier this year by Joppa et al. &lt;a href=&quot;http://doi.org/10.1126/science.1231535&quot;&gt;(2013) &lt;em&gt;Science&lt;/em&gt;&lt;/a&gt;) has indeed shown that most ecologists select methods software guided primarily by concerns of fashion (in other words, whatever everybody else uses). The recent expansion of readily available statistical software has greatly increased the number of shirts on the rack. Titles in &lt;em&gt;Ecology&lt;/em&gt; reflect the trend of rising complexity in ecological models, such as &lt;a href=&quot;http://doi.org/10.1890/10-1124.1&quot;&gt;Living Dangerously with big fancy models&lt;/a&gt; and &lt;a href=&quot;http://doi.org/10.1890/10-0052.1&quot;&gt;Are exercises like this a good use of anybody’s time?&lt;/a&gt;). Because software enables researchers to make use of methods without the statistical knowledge of how to implement them from the ground up, many echo the position so memorably &lt;a href=&quot;http://press.princeton.edu/titles/8348.html&quot;&gt;articulated by Jim Clark&lt;/a&gt; that we “handing guns to children.” This belittling position usually leads to a call for improved education and training in mathematical and statistical underpinnings (see each of the 9 articles in another &lt;a href=&quot;http://doi.org/10.1890/08-1402.1&quot;&gt;&lt;em&gt;Ecology&lt;/em&gt; Forum&lt;/a&gt; on this topic), or the occassional wistful longing for a simpler time.&lt;/p&gt;
+&lt;h5 id=&quot;the-solution-part-1-data-publication&quot;&gt;the solution, part 1: data publication?&lt;/h5&gt;
+&lt;p&gt;What is most interesting to me in Perez’s perspective on the Data Science Institute in an emphasis on changing &lt;em&gt;incentives&lt;/em&gt; more than changing &lt;em&gt;educational&lt;/em&gt; practices. Perez characterizes the fundamental objective of the initiative as a &lt;em&gt;cultural shift in which&lt;/em&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;“The creation of usable, robust computational tools, and the work of data acquisition and analysis must be treated as equal partners to methodological advances or domain-specific results”&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;While this does not tackle the problem of misuse or misinterpretation of statistical methodology head-on, I believe it is a rather thought-provoking approach to mitigate the consequences of mistakes or limiting assumptions. By atomizing the traditional publication into such component parts: data, text, and software implementation, it becomes easier to recognize each for it’s own contributions. A brilliantly executed experimental manipulation need not live or die on some minor flaw in a routine statistical analysis when the data is a product in its own right. Programmatic access to raw data and computational libraries of statistical tools could make it easy to repeat or alter the methods chosen by the original authors, allowing the consequences of these mistakes to be both understood and corrected. In the current system in which access to the raw data is rare, statistical mistakes can be difficult to detect and even harder to remedy. This in turn places a high premium on the selection of appropriate statistical methods, while putting little selective pressure on the details of the data management or implementation of those methods. Allowing the data to stand by itself places a higher premium on careful collection and annotation of data (e.g. the adoption of metadata standards). To the extent that misapplication of statistical and modeling approaches could place a substantial error rate on the literature (&lt;a href=&quot;http://www.economist.com/news/briefing/21588057-scientists-think-science-self-correcting-alarming-degree-it-not-trouble?fsrc=scn/tw_ec/trouble_at_the_lab&quot;&gt;Economist&lt;/a&gt;, &lt;a href=&quot;http://doi.org/10.1371/journal.pmed.0020124&quot;&gt;Ioannidis 2005&lt;/a&gt;), independent data publication might be an intriguing antidote.&lt;/p&gt;
+&lt;!--
+Data scales in a way that publications do not, even (or rather, especially) within a particular sub-domain.  Given a single paper on a topic, it is much easier to read the conclusion than replicate it from the data.  Given 1000 papers on the topic vs having the underlying data in a standardized form, it becomes easier to replicate the analyses. Surely that would just lead to nonsense, given the idiosyncrasies of each different experiment that were never meant to be compared in that way?  Surely only by carefully reading not only each paper, but each supplement, can we really understand what was done well enough to replicate or re-analyze it?  Yet we cite papers as if they have demonstrated something in far more generality than all that.   
+
+--&gt;
+
+&lt;h5 id=&quot;the-problem-part-2-junk-software&quot;&gt;the problem, part 2: junk software&lt;/h5&gt;
+&lt;p&gt;As Perez is careful to point out, those implementing and publishing methods aren’t helping either. Unreliable, inextensible and opaque computational implementations act both as barriers to adoption and validation. Trouble with scientific software has been well recognized by the literature (e.g. &lt;a href=&quot;http://doi.org/10.1038/467775a&quot;&gt;Merali (2010), &lt;em&gt;Nature&lt;/em&gt;&lt;/a&gt;, &lt;a href=&quot;http://doi.org/10.1038/nature10836&quot;&gt;Inces et al. (2012), &lt;em&gt;Nature&lt;/em&gt;&lt;/a&gt;), the news (&lt;a href=&quot;http://www.timeshighereducation.co.uk/news/save-your-work-give-software-engineers-a-career-track/2006431.article&quot;&gt;Times Higher Education&lt;/a&gt;) and funding agencies (&lt;a href=&quot;http://www.nsf.gov/pubs/2013/nsf13525/nsf13525.htm&quot;&gt;National Science Foundation&lt;/a&gt;). While it is difficult to assess the frequency of software bugs that may really alter the results (though see Inces et al.), designs that will make software challenging or impossible to maintain, scale to larger tasks or extend as methods evolve are more readily apparent. Cultural challenges around software run as deep as they do around data. When Mozilla’s Science Lab &lt;a href=&quot;http://doi.org/10.1038/501472a&quot;&gt;undertook a review of code&lt;/a&gt; associated with scientific publications, they took some criticism from other &lt;a href=&quot;http://simplystatistics.org/2013/09/26/how-could-code-review-discourage-code-disclosure-reviewers-with-motivation/&quot;&gt;advocates&lt;/a&gt; of publishing code. I encountered this first hand in replies from authors, editors and reviewers on my own blog post &lt;a href=&quot;http://carlboettiger.info/2013/06/13/what-I-look-for-in-software-papers.html&quot;&gt;suggesting we raise the bar&lt;/a&gt; on the review of methodological implementations. Despite disagreement about where that bar should be, I think we all felt the community could benefit from clearer guidance or consensus on how to review papers in which the software implementation plays an essential part and contribution.&lt;/p&gt;
+&lt;h5 id=&quot;the-solution-part-2-software-publication&quot;&gt;the solution, part 2: software publication?&lt;/h5&gt;
+&lt;p&gt;As in the case of data, educational practices are the route usually suggested to address better programming practices, and no doubt these are important. Once again though, it is interesting to think how a higher incentive on such research products might also improve their quality, or at least facilitate distilling the good from the bad from the ugly, more easily. Yet in this case, I think there is a potential downside as well.&lt;/p&gt;
+&lt;h6 id=&quot;or-not&quot;&gt;Or not?&lt;/h6&gt;
+&lt;p&gt;While widespread recognition of its importance will no doubt help bring us faster software, fewer bugs and more user-friendly interfaces, it may do more harm than good. Promotion of software as a product can lead to empire-building, for which ESRI’s ArcGIS might be a poster child. The scientific concepts become increasingly opaque, while training in a conceptually rich academic field gives way to more mindless training in the user interface of a single giant software tool. I believe that good scientific software should be modular – small code bases that can be easily understood, inter-operable, and perform a single task well (the Unix model). This lets us build more robust computational infrastructure tailored to the problem at hand, just as individual Lego bricks may be assembled and reassembled. Unfortunately, I do not see how recognition for software products would promote small modules over vast software platforms, or interoperability with other software instead of an exclusive walled garden.&lt;/p&gt;
+&lt;!-- include image of lego brick tower?--&gt;
+
+
+&lt;h4 id=&quot;so-change-incentives-how&quot;&gt;So, change incentives &lt;em&gt;how&lt;/em&gt;?&lt;/h4&gt;
+&lt;p&gt;If this provides some argument as to why one might want to change incentives around data and software publication, I have said nothing to suggest how. After all, as ecologists we’re trained to reflect on the impact a policy would have, not advocate for what should be done about it. If the decision-makers agree about the effects of the given incentives, then choosing what to reward should be easier.&lt;/p&gt;
+&lt;!--
+#### Data Science Culture is Data Sharing Culture? 
+
+In raising these questions, Perez brings the role of a Data Science Institute down from the clouds of superficial pattern-finding in astronomically large data sets that bear no resemblance to what most of us work on, and places front and center the challenges of designing, selecting, implementing and interpreting the richer statistical analyses we face each day. In the process of bolstering the data and methodology upon which we base research today, we may open up the doors to better, faster, and bigger science tomorrow.  
+
+--&gt;
+
+
+&lt;section class=&quot;footnotes&quot;&gt;
+&lt;hr /&gt;
+&lt;ol&gt;
+&lt;li id=&quot;fn1&quot;&gt;&lt;p&gt;Probably for reasons discussed &lt;a href=&quot;http://dynamicecology.wordpress.com/2013/11/07/the-one-true-route-to-good-science-is/comment-page-1/#comment-20373&quot;&gt;recently on Dynamic Ecology&lt;/a&gt; about politicians and dirty laundry.&lt;a href=&quot;#fnref1&quot;&gt;↩&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/section&gt;
+</content>
+ </entry>
  
  <entry>
    <title>Is it time to retire Pagel's lambda?</title>
@@ -436,6 +525,42 @@ Is there a way to obtain DOI for a &lt;a href=&quot;https://twitter.com/github&q
 &lt;li&gt;&lt;a href=&quot;http://dx.doi.org/10.6084/m9.figshare.96919&quot;&gt;Lab Notebook, 2011&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;http://dx.doi.org/10.6084/m9.figshare.106620&quot;&gt;Lab Notebook, 2012&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Comforting Trends In Scientific Software Use</title>
+   <link href="/2013/05/21/comforting-trends-in-scientific-software-use.html"/>
+   <updated>2013-05-21T00:00:00-07:00</updated>
+   <id>/2013/05/21/comforting-trends-in-scientific-software-use</id>
+   <content type="html">&lt;p&gt;&lt;strong&gt;Author’s Note&lt;/strong&gt;: Having refrained from actually posting this for 8 months, as I think I have quite mellowed more my critique. I do believe that education and peer review are the best way forward in tackling these issues, but cannot overstate how much of a long and rocky road that process will be. The Mozilla Science Foundation is really leading these efforts with their code review pilots (as I have discussed in posts since writing this), and through their work with Software Carpentry training. Still, I leave this post as a bookmark of my intial thoughts and a reminder of these challenges.&lt;/p&gt;
+&lt;p&gt;Consider reading these other posts on software review and training:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://carlboettiger.info/2013/09/25/mozilla-software-review.html&quot;&gt;Reflections on the Mozilla Code Review Pilot&lt;/a&gt; (phase 1)&lt;/li&gt;
+&lt;li&gt;ISEES Meeting software lifecycle: &lt;a href=&quot;http://carlboettiger.info/2013/08/13/ISEES-Day-1.html&quot;&gt;Day 1&lt;/a&gt;, &lt;a href=&quot;http://carlboettiger.info/2013/08/14/ISEES-day-2.html&quot;&gt;Day 2&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;ISEES Software training &lt;a href=&quot;http://carlboettiger.info/2013/09/10/ISEES-training-workshop-day-1.html&quot;&gt;Day 1&lt;/a&gt;, &lt;a href=&quot;http://carlboettiger.info/2013/09/11/ISEES-Workforce-Development-Day-2.html&quot;&gt;Day 2&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://carlboettiger.info/2013/07/09/reviewing-software-revisited.html&quot;&gt;Reviewing Software, revisited&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;http://carlboettiger.info/2013/06/13/what-I-look-for-in-software-papers.html&quot;&gt;What I look for in software papers&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr /&gt;
+&lt;p&gt;I have just been reading through &lt;code&gt;r citet(&amp;quot;10.1126/science.1231535&amp;quot;, &amp;quot;critiques&amp;quot;)&lt;/code&gt;. While I agree with a lot of the sentiment in this article, (we place way too little emphasis on good coding practices, validation, etc.), I actually found this article incredibly frustrating. Following a little &lt;a href=&quot;https://plus.google.com/112929796403983408632/posts/8whV6rtvsuw&quot;&gt;rant on Google+&lt;/a&gt; (G+ has to be good for something, right?) and subsequent discussion, I’ve tried formulating my thoughts into a blog post here.&lt;/p&gt;
+&lt;p&gt;What first got my goat were the proposed “solutions” to the problem. I think it is hopelessly naive to write that the solution is “better computational education” and “peer review of code”.&lt;/p&gt;
+&lt;h3 id=&quot;calling-for-better-education-is-a-cop-out&quot;&gt;Calling for better education is a cop-out&lt;/h3&gt;
+&lt;p&gt;I completely agree that better education is sorely needed, and am delighted to see the authors cite the &lt;a href=&quot;http://softwarecarpentry.org&quot;&gt;Sofware Carpentry&lt;/a&gt; project (Though couldn’t they have made this a proper citations with a link?). However, this is an all too common cop-out of an answer that will do little to address the real problem. For decades such position papers have called for better education to address all our weaknesses – biologists should learn better mathematics, better statistics, better programming skills. They should also learn proper data management and archiving skills no doubt. While we’re at it, they should learn more about communicating science and public speaking too. What these calls to “raise standards” have in common is a &lt;strong&gt;dearth of incentives&lt;/strong&gt;. Reward these talents with jobs and advancement (publications and grants, after all, are just a means to such ends, are they not?) and the education will follow. Economics teaches us that if we want to change behavior, we change incentives. Unless this education translates into the currency of academia, we will only do our students a disservice by forcing it upon them. (I do note that Software Carpentry rightly claims that the kind of training it offers does promise to pay off in the current currency through time savings that will be realized down the line…)&lt;/p&gt;
+&lt;h3 id=&quot;peer-review-of-code-is-not-the-answer&quot;&gt;Peer review of code is not the answer&lt;/h3&gt;
+&lt;p&gt;If “peer review” were the ultimate solution to good code, we’d see that standard in the software industry too, wouldn’t we? Peer review actually is used in the software industry, if perhaps more the way we treat “friendly review” then with the black-and-white view we attach to peer review in the scientific literature. Peer review would never guarantee the validity of code, though it would certainly help. The real bugbear with peer review of code is just how difficult it would be to establish as a practice. The authors are silent on these challenges: organizing, incentivising, transitioning to, and paying for such a system would all be major hurdles to overcome.&lt;/p&gt;
+&lt;p&gt;I would trust software that has a long and active development history with an engaged user base much more than anything that has simply been “peer reviewed”. I suspect that instituting peer review of code in the sciences would be a huge challenge for a potentially limited payoff. If open source taught us nothing else, it is that “with many eyes all bugs are shallow”. Robust software must ultimately rely on bug report feedback cycle of users (and developers following the &lt;a href=&quot;&quot;&gt;“dog food” rule&lt;/a&gt;).&lt;/p&gt;
+&lt;h2 id=&quot;so-what-is-the-problem-exactly&quot;&gt;So what is the problem, exactly?&lt;/h2&gt;
+&lt;p&gt;If the proposed solutions are weak, the statement of the problem is not actually much more convincing. What, exactly, is the “troubling trend” alluded to in the title? The primary concern from their survey appears to be that scientists rely on personal recommendations, ease of use, and frequency of use in published studies when choosing what software to use. This approach is only “dangerous” if we assume that a scientist has a choice of N potential software applications to perform a task, of which some fraction F are faulty. (And that a “worrying” 80% want to become better programmers…)&lt;/p&gt;
+&lt;p&gt;But does this study argue any of the software there users approached was faulty? No. Do they provide evidence that the metrics a researcher uses (popularity, trust, ease of use) are not good predictors of decent software? No! They just assume this can’t possibly be a good criterion to evaluate software.&lt;/p&gt;
+&lt;p&gt;Suggesting that this criterion is to blame misses the underlying problem entirely. Researchers will always prefer software that has been used in published studies, is easy to use, and recommended by people they trust. If this is leading to problems, we must fix the software, not the people.&lt;/p&gt;
+&lt;p&gt;Reliance on common software is replacing reliance on undisclosed software written from scratch by each researcher. It is much easier to identify and correct errors when the community all uses a common piece of software then when everything is done from scratch. Crucially, this shows the emergence of a common code base – a shared software infrastructure, emerging in many fields. This development is to be celebrated and taken advantage of rather than something to fret over. A shared infrastructure is a powerful thing.&lt;/p&gt;
+&lt;h2 id=&quot;real-solutions-changing-incentives&quot;&gt;Real solutions: changing incentives&lt;/h2&gt;
+&lt;p&gt;Of course there are some real gems in the paper that should have recieved more emphasis.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Current models for how scientists and journals are rewarded must change, as the would-be editors of the Open Research Computation journal (now a series of the journal Source Code for Biology and Medicine) discovered during efforts to establish a journal for publishing peer-reviewed software ( 27).&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Reward software the way we reward papers. Github model of contributions.&lt;/p&gt;
 </content>
  </entry>
  
