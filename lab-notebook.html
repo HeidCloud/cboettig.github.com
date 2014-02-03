@@ -145,7 +145,7 @@
     <h4>  <a property="account" href="https://github.com/cboettig" onclick="recordOutboundLink(this, 'Outbound Links', 'Github'); return false;"><i class="icon-github" alt="github"></i> Coding </a></h4> 
     <div class="excerpt">
       <div class="scroll">
-        <ul><li>cboettig closed pull request ropensci/EML#98: <em>Project</em> <a href="https://github.com/ropensci/EML/pull/98">09:34 2014/01/31</a></li><li>cboettig pushed to master at cboettig/multiple_uncertainty: <em>reed and test_reed using purely deterministic approach</em> <a href="https://github.com/cboettig/multiple_uncertainty/compare/86585f0ac6...6fd44d47a2">09:28 2014/01/31</a></li><li>cboettig pushed to master at cboettig/multiple_uncertainty: <em>reed example using interpolation</em> <a href="https://github.com/cboettig/multiple_uncertainty/compare/adbfa9bf83...86585f0ac6">08:12 2014/01/31</a></li><li>cboettig pushed to master at cboettig/pdg_control: <em>Ricker dynamic shows steps in deterministic case Logistic (uniform noise), shows steps in deterministic policy (but no…</em> <a href="https://github.com/cboettig/pdg_control/compare/723ce82092...4c1b17537a">11:35 2014/01/30</a></li><li>cboettig pushed to master at cboettig/pdg_control: <em>BevertonHolt, lognormal noise Beverton Holt example</em> <a href="https://github.com/cboettig/pdg_control/compare/d544b761d1...723ce82092">10:48 2014/01/30</a></li></ul>
+        <ul><li>cboettig pushed to master at cboettig/multiple_uncertainty: <em>current versions, avoiding snap_to_grid support uncertainty correctly and allow for log-normal noise</em> <a href="https://github.com/cboettig/multiple_uncertainty/compare/6fd44d47a2...c6e464cb35">09:24 2014/02/03</a></li><li>cboettig pushed to master at cboettig/cboettig.github.com: <em>site updated</em> <a href="https://github.com/cboettig/cboettig.github.com/compare/9b35d42806...678d695cb6">11:15 2014/01/31</a></li><li>cboettig pushed to master at cboettig/labnotebook: <em>update site new draft renaming and organizing current drafts</em> <a href="https://github.com/cboettig/labnotebook/compare/301e4b3769...f9f7492bff">11:01 2014/01/31</a></li><li>cboettig closed pull request ropensci/EML#98: <em>Project</em> <a href="https://github.com/ropensci/EML/pull/98">09:34 2014/01/31</a></li><li>cboettig pushed to master at cboettig/multiple_uncertainty: <em>reed and test_reed using purely deterministic approach</em> <a href="https://github.com/cboettig/multiple_uncertainty/compare/86585f0ac6...6fd44d47a2">09:28 2014/01/31</a></li></ul>
       </div>
     </div>
   </div>
@@ -184,11 +184,72 @@
               ><i class="icon-rss" ></i> Entries</a></h4>
       
         <div class="span3">
+          <header><h4><a href="/2014/01/31/notes.html">Notes</a></h4></header>
+<p><span></span></p>
+<p style="font-style:italic"> 31 Jan 2014</p>
+
+<p style="font-style:italic"> pageviews: (not calculated) </p>
+
+<article>
+<div class="excerpt">
+<p>Scratch notes on uncertainty.</p>
+<p>Function definition: <a href="https://github.com/cboettig/multiple_uncertainty/blob/c6e464cb35cbdd9b852c8d63f8d35446152c1be1/inst/matlab/multiple_uncertainty.m">multiple_uncertainty.m</a></p>
+<p>Settings:</p>
+<pre class="sourceCode matlab"><code class="sourceCode matlab">f=@(x, h) max( (x-h) * (<span class="fl">1</span> - (x-h) ./ <span class="fl">100</span>) + (x-h), <span class="fl">0</span>);
+x_grid = [<span class="fl">0</span>:<span class="fl">5</span>:<span class="fl">100</span>];
+h_grid = x_grid; <span class="co">% Must be same dimensions as x_grid, or L91 errors...  </span>
+Tmax = <span class="fl">5</span>;
+sigma_g = <span class="fl">0.1</span>;
+sigma_m = <span class="fl">0</span>.;
+sigma_i = <span class="fl">0.0</span>;
+delta = <span class="fl">0.05</span>;
+pdf = @(p,mu,s) lognpdf(p ./ mu, <span class="fl">0</span>, s);
+<span class="co">%pdf = @(p,mu,s) unifpdf(p, mu .* (1 - s), mu .* (1 + s)); </span>
+
+[D, V, M, I, P, Ep, F, f_matrix] =  multiple_uncertainty(f, x_grid, h_grid, Tmax, sigma_g, sigma_m, sigma_i, delta, pdf);</code></pre>
+<p>Log normal noise gives the anticipated Reed solution:</p>
+<figure>
+<img src="http://farm8.staticflickr.com/7325/12242548754_7a4b40376b.jpg" />
+</figure>
+<p>Same settings but with uniform noise has a step:</p>
+<figure>
+<img src="http://farm8.staticflickr.com/7292/12242606504_5815e2d618.jpg" />
+</figure>
+<p>This step goes away under any one of the following tweaks:</p>
+<ul>
+<li>We use log-normal noise</li>
+</ul>
+<p>Avoids the finite support problem that makes uniform noise look deterministic.</p>
+<ul>
+<li>We use delta = 0</li>
+</ul>
+<p>Results in exact ties, but future isn’t discounted, so we choose the smallest h (default behavior of <code>min()</code> function for ties).</p>
+<ul>
+<li><p>Increase the noise size: <code>sigma_g = 0.5</code> doesn’t remove the step. Smaller, non-zero noise <code>sigma_g = 0.01</code>, or <code>sigma_g = 0.05</code> results in solutions with no escapement (under uniform noise; not a problem for log-normal noise).</p></li>
+<li><p>We use a finer mesh, which breaks this 1 step into lots of little steps.</p></li>
+</ul>
+<p>Deterministic system (obviously independent of noise structure, since pdf isn’t used) has losts steps when delta <span class="math">\(&gt; 0\)</span>.</p>
+<figure>
+<img src="http://farm3.staticflickr.com/2814/12242822336_672932882e.jpg" />
+</figure>
+<p>This is resolved by using the interpolation method to find the values off-grid.</p>
+ 
+<!-- not that raw_content depends on custom generator, 
+     see _plugins/jekyll-labnotebook-plugins/raw_content --> 
+</article> 
+<p> <a href="/2014/01/31/notes.html"> <em>Read more</em></a> </p>
+<br />
+<br />
+
+
+        </div>
+      
+        <div class="span3">
           <header><h4><a href="/2014/01/09/notes.html">Notes</a></h4></header>
 <p><span></span></p>
 <p style="font-style:italic"> 09 Jan 2014</p>
 
-<p style="font-style:italic"> pageviews: 5 </p>
+<p style="font-style:italic"> pageviews: 8 </p>
 
 <article>
 <div class="excerpt">
@@ -238,7 +299,7 @@ The other problem is nerd jargon. The problem with nerd jargon is that as a nerd
 <p><span></span></p>
 <p style="font-style:italic"> 07 Jan 2014</p>
 
-<p style="font-style:italic"> pageviews: 4 </p>
+<p style="font-style:italic"> pageviews: 6 </p>
 
 <article>
 <div class="excerpt">
@@ -269,12 +330,16 @@ The other problem is nerd jargon. The problem with nerd jargon is that as a nerd
 
         </div>
       
+    </div>
+
+    <div class="row">
+      
         <div class="span3">
           <header><h4><a href="/2014/01/06/notes.html">Notes</a></h4></header>
 <p><span></span></p>
 <p style="font-style:italic"> 06 Jan 2014</p>
 
-<p style="font-style:italic"> pageviews: 2 </p>
+<p style="font-style:italic"> pageviews: 3 </p>
 
 <article>
 <div class="excerpt">
@@ -305,16 +370,12 @@ The other problem is nerd jargon. The problem with nerd jargon is that as a nerd
 
         </div>
       
-    </div>
-
-    <div class="row">
-      
         <div class="span3">
           <header><h4><a href="/2014/01/02/open-science-literature-highlights.html">Open Science Literature Highlights</a></h4></header>
 <p><span></span></p>
 <p style="font-style:italic"> 02 Jan 2014</p>
 
-<p style="font-style:italic"> pageviews: 33 </p>
+<p style="font-style:italic"> pageviews: 40 </p>
 
 <article>
 <div class="excerpt">
@@ -390,7 +451,7 @@ The other problem is nerd jargon. The problem with nerd jargon is that as a nerd
 <p><span></span></p>
 <p style="font-style:italic"> 10 Dec 2013</p>
 
-<p style="font-style:italic"> pageviews: 59 </p>
+<p style="font-style:italic"> pageviews: 64 </p>
 
 <article>
 <div class="excerpt">
@@ -459,12 +520,16 @@ $$\frac{1}{(T-1)\sqrt{2 \pi}^{T-2} } \frac{\tfrac{1}{2}^{T/2} \left( \sum M_t^2 
 
         </div>
       
+    </div>
+
+    <div class="row">
+      
         <div class="span3">
           <header><h4><a href="/2013/11/26/notes.html">Notes</a></h4></header>
 <p><span></span></p>
 <p style="font-style:italic"> 26 Nov 2013</p>
 
-<p style="font-style:italic"> pageviews: 10 </p>
+<p style="font-style:italic"> pageviews: 12 </p>
 
 <article>
 <div class="excerpt">
@@ -495,16 +560,12 @@ $$\frac{1}{(T-1)\sqrt{2 \pi}^{T-2} } \frac{\tfrac{1}{2}^{T/2} \left( \sum M_t^2 
 
         </div>
       
-    </div>
-
-    <div class="row">
-      
         <div class="span3">
           <header><h4><a href="/2013/11/19/notes.html">Notes</a></h4></header>
 <p><span></span></p>
 <p style="font-style:italic"> 19 Nov 2013</p>
 
-<p style="font-style:italic"> pageviews: 67 </p>
+<p style="font-style:italic"> pageviews: 68 </p>
 
 <article>
 <div class="excerpt">
@@ -581,38 +642,6 @@ meta &lt;-<span class="st"> </span><span class="kw">get_metadata</span>(birds) <
      see _plugins/jekyll-labnotebook-plugins/raw_content --> 
 </article> 
 <p> <a href="/2013/11/17/RNeXML-metadata-queries.html"> <em>Read more</em></a> </p>
-<br />
-<br />
-
-
-        </div>
-      
-        <div class="span3">
-          <header><h4><a href="/2013/11/14/research-gate.html">So, you're active on Research Gate?</a></h4></header>
-<p><span></span></p>
-<p style="font-style:italic"> 14 Nov 2013</p>
-
-<p style="font-style:italic"> pageviews: 1 </p>
-
-<article>
-<div class="excerpt">
-<p>I have occassionally been getting this question:</p>
-<blockquote>
-<p>So, you’re active on ResearchGate?</p>
-</blockquote>
-<p>Sounds like being accused of some scandal, doesn’t it?</p>
-<p>I’m not generally active on it - my impression is that the open science community is mostly skeptical about ResearchGate and any other “Social Network” for scientists, largely on the grounds that “we already use the same social networks everyone else uses.” Some object on more philosophical grounds (profit, Mendeley, etc), but heck I publish in Elsevier/Springer/Wiley so I won’t preach. That’s perhaps a US/elite institution centric view though; it seems more popular with a more international audience where things like basic access to pdfs may be more of an issue. I present no data to back any if that up.</p>
-<p>Personally, it hasn’t added any value for me, in contrast to the value I get from interacting with other researchers on Github, G+ or Twitter. Still, as RG recently got $35 million from Bill Gates, they might actually build something useful. Certainly traditional publishers have left plenty of room for innovation in the space of sharing data, networking, etc. So I have a profile there to wait and see, next to a disclaimer that says “please see my website for updated information.”</p>
-<p>However, I was actually impressed by ResearchGate this morning. While I thought I had successfully blocked most of their email notifications, one this morning had successfully found the full text of a recent paper of mine (albeit a few months after it had appeared). Instead of asking me to upload something, RG was able to obtain the full text from the publisher (Springer). On so doing, it also asks me if I would like to “follow” several of the researchers I cited who are also on ResearchGate.</p>
-<p>Why is that impressive? Mendeley, for all it’s much more natural fit into most researcher’s workflows, never automatically discovers papers I publish. If I want them in my Mendeley profile, I have to add them manually. Manually maintaining profiles across different networks is so entirely a waste of time and the antithesis of a linked data web where I have already made this information machine readable that I find it the most annoying feature by far in any of these sites. Here, ResearchGate is actually doing the intelligent thing, whether by connecting my RG identity to my ORCID ID, or something more heuristic. (Google Scholar automatically adds things to my profile, but in a far less selective algorithm that can be easily gamed, see <a href="http://doi.org/10.1002/asi.23056">10.1002/asi.23056</a>).</p>
-<p>By obtaining the full-text directly from the publisher, they show the considerable advantage of a well-funded network. Presumably this indicates that access was negotiated directly with the publisher, who agrees and even facilitates me sharing the full-text of my otherwise paywalled article on my RG profile. That’s a non-trivial contribution towards open access: Contrast this to Mendeley’s more murky policy which encourages me to provide full text access through my user profile but places the legal responsibility directly on me to confirm that this permissible, or an organization like ORCID which despite (because of?) it’s more non-profit and utilitarian values does not have permission to distribute my paywalled pdfs on my profile. (Sure, my papers on arXiv already, but that isn’t the point).</p>
-<p>Likewise, using the citation data against the RG data on which researchers have profiles shows a vaguely intelligent use of data other platforms mostly ignore (providing useful suggestions using some understanding of the academic process rather than mindless application of some friend-of-a-friend network algorithm).</p>
-<p>(The fact that RG pings unfortunate souls who might have signed up once but have no desire to see my “Activity” on RG is one of it’s potentially effective marketing but more pernicious decisions. Use does not necessarily imply trust).</p>
- 
-<!-- not that raw_content depends on custom generator, 
-     see _plugins/jekyll-labnotebook-plugins/raw_content --> 
-</article> 
-<p> <a href="/2013/11/14/research-gate.html"> <em>Read more</em></a> </p>
 <br />
 <br />
 
